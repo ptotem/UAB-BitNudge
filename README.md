@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Temporary repository for the UAB project. This file serves as temporary documentation for now.
 
 The role and capability model works as follows-
@@ -7,3 +8,9 @@ Currently, they are in the form of read write permissions, so a typical document
 {collectionName:"User",controlList:[{role:"superAdmin",permission:[{r:"y",w:'y'}]}]}
 
 Each user has an array of roles that he has. Currently, during development, these roles are stored as strings, but they should be changed into ObjectID references.
+=======
+UAB-BitNudge
+============
+
+UAB-BitNudge
+>>>>>>> 04ae39633f5c36fc2f9fc6a86f2bdcfd81cc2014
