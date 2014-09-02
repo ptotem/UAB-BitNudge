@@ -55,4 +55,5 @@ passport.deserializeUser(function(name, done) {
     done(err, user);
   });
 });
-require('./routes.js');
+Routes=require('./routes.js');
+Routes.initializeRoutes(server,Collections,passport);
