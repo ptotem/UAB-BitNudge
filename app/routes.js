@@ -14,30 +14,54 @@ var initializeRoutes=function(server,Collections,passport){
       res.send('please login first.');
   });
 
+  server.get('/login',passport.authenticate('local'),function(req,res){
+    res.send(req.user);
+  });
+
   server.post('/organizations',function(req,res){
     checkLoginBlock(req,res);
     if(req.query.name&&req.query.teams)
-      res.send(Controller.addOrganization(Collections,res,req.user.role,req.query.name,req.query.teams));
+      Controller.addOrganization(Collections,res,req.user.role,req.query.name,req.query.teams);
   });
 
-  server.post('/teams',function(req,res){
-    if(req.query.name&&req.query.users)
-      res.send(Controller.addTeam(Collections,res,req.user.role,req.query.name,req.query.teams));
+  server.post('/organizations/:orgName',function(req,res){
+    checkLoginBlock(req,res);
+    //TODO:- check the query params here first. Make sure they
+    //are allowed to be changed/updated.
+    Controller.updateOrganization(Collections,res,req.user.role,req.params.orgName,req.query);
   });
 
-  server.get('/teams/:teamName',function(req,res){
-    checkLoginBlock(req,res)
-    res.send(Controller.getTeam(Collections,res,req.user.role,req.params.teamName));
+  server.del('/organizations/:orgName',function(req,res){
+    checkLoginBlock(req,res);
+    Controller.deleteOrganization(Collections,res,req.user.role,req.params.orgName);
   });
 
   server.get('/organizations/:orgName',function(req,res){
     checkLoginBlock(req,res);
-    res.send(Controller.getOrganization(Collections,res,req.user.role,req.params.orgName));
+    Controller.getOrganization(Collections,res,req.user.role,req.params.orgName);
   });
 
-  server.get('/login',passport.authenticate('local'),function(req,res){
-    res.send(req.user);
+  server.post('/teams',function(req,res){
+    if(req.query.name&&req.query.users)
+      Controller.addTeam(Collections,res,req.user.role,req.query.name,req.query.teams);
   });
+
+  server.post('/teams/:teamName',function(req,res){
+    checkLoginBlock(req,res);
+    //TODO:- check the fields in the query params first.
+    Controller.updateTeam(Collections,res,req.user.role,req.params.teamName,req.query);
+  });
+
+  server.del('/teams/:teamName',function(req,res){
+    checkLoginBlock(req,res);
+    Controller.deleteTeam(Collections,res,req.user.role,req.params.teamName);
+  });
+
+  server.get('/teams/:teamName',function(req,res){
+    checkLoginBlock(req,res);
+    Controller.getTeam(Collections,res,req.user.role,req.params.teamName);
+  });
+
 }
 module.exports={
   initializeRoutes:initializeRoutes
