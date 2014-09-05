@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <title>BitNudge</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!--// OPTIONAL & CONDITIONAL CSS FILES //-->
+    <!-- date picker css -->
+    <link rel="stylesheet" href="css/datepicker.css?v=1">
+    <!-- full calander css -->
+    <link rel="stylesheet" href="css/fullcalendar.css?v=1">
+    <!-- data tables extended CSS -->
+    <link rel="stylesheet" href="css/TableTools.css?v=1">
+    <!-- bootstrap wysimhtml5 editor -->
+    <link rel="stylesheet" href="css/bootstrap-wysihtml5.css?v=1">
+    <link rel="stylesheet" href="css/wysiwyg-color.css">
+    <!-- custom/responsive growl messages -->
+    <link rel="stylesheet" href="css/toastr.custom.css?v=1">
+    <link rel="stylesheet" href="css/toastr-responsive.css?v=1">
+    <link rel="stylesheet" href="css/jquery.jgrowl.css?v=1">
+
+    <!-- // DO NOT REMOVE OR CHANGE ORDER OF THE FOLLOWING // -->
+    <!-- bootstrap default css (DO NOT REMOVE) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--	<link rel="stylesheet" href="css/bootstrap-responsive.min.css?v=1">-->
+    <!-- font awsome and custom icons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css?v=1">
+    <link rel="stylesheet" href="css/cus-icons.css?v=1">
+    <!-- jarvis widget css -->
+    <link rel="stylesheet" href="css/jarvis-widgets.css?v=1">
+    <!-- Data tables, normal tables and responsive tables css -->
+    <link rel="stylesheet" href="css/DT_bootstrap.css?v=1">
+    <link rel="stylesheet" href="css/responsive-tables.css?v=1">
+    <!-- used where radio, select and form elements are used -->
+    <link rel="stylesheet" href="css/uniform.default.css?v=1">
+    <link rel="stylesheet" href="css/select2.css?v=1">
+    <!-- main theme files -->
+    <link rel="stylesheet" href="css/theme.css?v=1">
+    <link rel="stylesheet" href="css/theme-responsive.css?v=1">
+
+    <!-- // THEME CSS changed by javascript: the CSS link below will override the rules above // -->
+    <!-- For more information, please see the documentation for "THEMES" -->
+    <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">
+
+    <!-- BitNudge CSS -->
+    <link rel="stylesheet" href="css/bitnudge.css">
+
+    <!-- To switch to full width -->
+    <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
+
+    <!-- Webfonts -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700' type='text/css'>
+
+    <!-- All javascripts are located at the bottom except for HTML5 Shim -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="js/include/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- For Modern Browsers -->
+    <link rel="shortcut icon" href="img/favicons/favicon.png">
+    <!-- For everything else -->
+    <link rel="shortcut icon" href="img/favicons/favicon.ico">
+    <!-- For retina screens -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png">
+    <!-- For iPad 1-->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png">
+    <!-- For iPhone 3G, iPod Touch and Android -->
+    <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png">
+
+    <!-- iOS web-app metas -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Add your custom home screen title: -->
+    <meta name="apple-mobile-web-app-title" content="Jarvis">
+
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png"
+          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png"
+          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+</head>
+
+<body>
+<!-- .height-wrapper -->
+<div class="height-wrapper">
+
+<!-- header -->
+<header>
+    <!-- tool bar -->
+    <div id="header-toolbar" class="container-fluid">
+        <!-- .contained -->
+        <div class="contained">
+
+            <!-- theme name -->
+            <h1 style="font-size: 2em" class="appname"><img src="img/bitnudge/logo.png" style="height:28px"/> BitNudge
+            </h1>
+            <!-- end theme name -->
+
+            <!-- span4 -->
+            <div class="pull-right">
+                <!-- demo theme switcher-->
+                <div id="theme-switcher" class="btn-toolbar">
+
+                    <!-- search and log off button for phone devices -->
+                    <div class="btn-group pull-right visible-xs">
+                        <a href="javascript:void(0)" class="btn btn-inverse btn-sm"><i class="icon-search"></i></a>
+                        <a href="login.html" class="btn btn-inverse btn-sm"><i class="icon-off"></i></a>
+                    </div>
+                    <!-- end buttons for phone device -->
+
+                    <!-- dropdown mini-inbox-->
+                    <div class="btn-group">
+                        <!-- new mail ticker -->
+                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse dropdown-toggle"
+                           data-toggle="dropdown">
+                            <span class="mail-sticker">3</span>
+                            <i class="cus-bell"></i>
+                        </a>
+                        <!-- end new mail ticker -->
+
+                        <!-- email lists -->
+                        <div class="dropdown-menu toolbar pull-right">
+                            <h3>Inbox</h3>
+                            <!-- "mailbox-slimscroll-js" identifier is used with Slimscroll.js plugin -->
+                            <ul id="mailbox-slimscroll-js" class="mailbox">
+                                <li>
+                                    <a href="javascript:void(0)" class="unread">
+                                        <img src="img/email-important.png" alt="important mail">
+                                        New Goal
+                                        <i class="icon-paper-clip"></i>
+                                        <span>You have been assigned a new business goal. Click here to...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="unread attachment">
+
+                                        <img src="img/email-unread.png" alt="important mail">
+                                        Transaction Uploaded
+                                        <i class="icon-paper-clip"></i>
+                                        <span>Your loan of AED 100 mln to Tumult Solutions has been uploaded. Click...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="unread">
+                                        <img src="img/email-unread.png" alt="important mail">
+                                        MILO for September Pending
+                                        <i class="icon-paper-clip"></i>
+                                        <span>You haven't uploaded your MILO for the month. Please ensure that...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="read">
+                                        <img src="img/email-read.png" alt="important mail">
+                                        Bonus Points
+                                        <i class="icon-paper-clip"></i>
+                                        <span>You earned 100 bonus points for the manager commendation for...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="read">
+                                        <img src="img/email-read.png" alt="important mail">
+                                        2 Bugs found...
+                                        <i class="icon-paper-clip"></i>
+                                        <span>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales.</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="read">
+                                        <img src="img/email-read.png" alt="important mail">
+                                        Welcome to Jarvis!
+                                        <i class="icon-paper-clip"></i>
+                                        <span>Feugiat a, tellus. Phasellus viverra nulla ut metus varius. Quisque rutrum. Aenean imperdiet... </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a href="javascript:void(0);" id="go-to-inbox">Go to Inbox <i
+                                    class="icon-double-angle-right"></i></a>
+                        </div>
+                        <!-- end email lists -->
+                    </div>
+                    <!-- end dropdown mini-inbox-->
+
+                    <!-- Goals -->
+                    <div class="btn-group hidden-xs">
+                        <a href="javascript:void(0)" class="btn btn-inverse btn-sm">Critical Goals</a>
+                        <a href="javascript:void(0)" class="btn btn-inverse dropdown-toggle btn-sm"
+                           data-toggle="dropdown"><span class="caret"></span></a>
+
+                        <div class="dropdown-menu toolbar pull-right">
+                            <h3>Showing Critical Goals</h3>
+                            <ul class="progressbox">
+                                <li>
+                                    <strong><i class="online pull-left"></i>Net Interest Income</strong><b>Complete</b>
+
+                                    <div class="progress progress-success slim">
+                                        <div class="bar" style="width: 100%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>Net Fee Income</strong><b>70%</b>
+
+                                    <div class="progress progress-info slim">
+                                        <div class="bar" style="width: 70%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>Deposit Base</strong><b>50%</b>
+
+                                    <div class="progress progress-danger slim">
+                                        <div class="bar" style="width: 50%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>New to Bank Clients</strong><b>22%</b>
+
+                                    <div class="progress progress-danger slim">
+                                        <div class="bar" style="width: 22%;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="javascript:void(0);" id="go-to-goals">Go to All Goals <i
+                                    class="icon-double-angle-right"></i></a>
+                        </div>
+
+                    </div>
+                    <!-- end Tasks -->
+
+                    <!-- theme dropdown -->
+                    <div class="btn-group hidden-xs">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse" id="reset-widget"><i
+                                class="icon-refresh"></i></a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse dropdown-toggle"
+                           data-toggle="dropdown">Themes <span class="caret"></span></a>
+                        <ul id="theme-links-js" class="dropdown-menu toolbar pull-right">
+                            <li>
+                                <a href="javascript:void(0)" data-rel="purple"><i
+                                        class="icon-sign-blank purple-icon"></i>Royal Purple</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-rel="grey"><i class="icon-sign-blank grey-icon"></i>Grey</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-rel="green"><i
+                                        class="icon-sign-blank green-icon "></i>Emerald</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-rel="darkred"><i
+                                        class="icon-sign-blank red-icon "></i>Dark Rose</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-rel="default"><i
+                                        class="icon-sign-blank navyblue-icon"></i>Default</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end theme dropdown-->
+
+                </div>
+                <!-- end demo theme switcher-->
+            </div>
+            <!-- end span4 -->
+        </div>
+        <!-- end .contained -->
+    </div>
+    <!-- end tool bar -->
+
+</header>
+<!-- end header -->
+
+<div id="splash">
+    <h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>
+
+    <h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>
+</div>
+
+<div id="main" role="main" class="container-fluid">
+
+<div class="contained">
+<!-- aside -->
+<aside>
+
+    <!-- search box -->
+    <div class="main-search">
+        <label for="main-search"><i class="icon-search"></i></label>
+        <input id="main-search" type="text" placeholder="Search...">
+    </div>
+    <div class="divider"></div>
+    <!-- end search box -->
+
+    <!-- aside item: Mini profile -->
+    <!--<div class="my-profile">-->
+    <!--<a href="javascript:void(0)" class="my-profile-pic">-->
+    <!--<img src="img/avatar/avatar_8.jpg" alt=""/>-->
+    <!--</a>-->
+    <!--<span class="first-child"><strong>Shoaib Akhtar</strong></span>-->
+    <!--<span><a href="javascript:void(0);">Edit Profile </a></span>-->
+    <!--</div>-->
+    <!--<div class="divider"></div>-->
+    <!-- end aside item: Mini profile -->
+
+    <!-- aside item: Menu -->
+    <div class="sidebar-nav-fixed">
+
+        <ul class="menu" id="accordion-menu-js">
+            <li class="current">
+                <a href="javascript:void(0)"><i class="icon-home"></i>Home</a>
+            </li>
+            <li class="">
+                <a href="inbox.html"><i class="icon-envelope"></i>Inbox<span class="badge">3</span></a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)"><i class="icon-briefcase"></i>Transactions</a>
+                <ul>
+                    <li>
+                        <a href="forms.html">Add New Transaction</a>
+                    </li>
+                    <li>
+                        <a href="validation.html">My Transactions</a>
+                    </li>
+                    <li>
+                        <a href="wizard.html">Admin Requests</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)"><i class="icon-eye-open"></i>Goals<span class="badge">1</span></a>
+                <ul>
+                    <li>
+                        <a href="interface.html">My Goals</a>
+                    </li>
+                    <li>
+                        <a href="buttons.html">Challenges</a>
+                    </li>
+                    <li>
+                        <a href="buttons.html">Analyzer Engine</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)"><i class="icon-signal"></i>Standings</a>
+                <ul>
+                    <li>
+                        <a href="basic_charts.html">Points</a>
+                    </li>
+                    <li>
+                        <a href="adv_charts.html">Medals</a>
+                    </li>
+                    <li>
+                        <a href="raphael.html">Leaderboards</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="widgets.html"><i class="icon-dashboard"></i>Reports</a>
+            </li>
+            <li class="">
+                <a href="widgets.html"><i class="icon-gift"></i>Shop</a>
+            </li>
+            <li class="">
+                <a href="#"><i class="icon-certificate"></i>Trainings</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="divider"></div>
+    <!-- end aside item: Menu -->
+
+</aside>
+<!-- aside end -->
+
+<!-- main content -->
+<div id="page-content">
+<!-- page header -->
+<h1 id="page-header">My Profile <span class="pull-right">Sep 2014</span></h1>
+
+<div class="fluid-container">
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+<!--row 1 -->
+<div class="row">
+    <article class="col-md-12">
+        <!-- new widget -->
+        <div class="jarviswidget" id="widget-id-13">
+            <header>
+                <h2>Tier point summary</h2>
+            </header>
+            <div>
+
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
+
+                <div class="inner-spacer">
+                    <div class="widget-content-padding">
+                        <!-- content -->
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="btn-group">
+                                    <a class="btn btn-default" href="javascript:void(0);">Default</a>
+                                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                       href="javascript:void(0);"><span class="caret"></span></a>
+
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="javascript:void(0);">This month data</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">This year data</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br/>
+
+
+                        <!-- tier table chart -->
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="inner-spacer">
+                                    <!-- content goes here -->
+
+                                    <table class="table table-striped table-bordered responsive"
+                                           id="tier_point_summary_table">
+                                        <thead>
+                                        <tr>
+                                            <th>Target&nbsp;</th>
+                                            <th>Month till date&nbsp;</th>
+                                            <th>Points earned&nbsp;</th>
+                                            <th>Points to be at 100% achivement&nbsp;</th>
+                                            <th>Team average&nbsp;</th>
+                                            <th>Division average&nbsp;</th>
+                                            <th>Opportunities&nbsp;</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="odd gradeX ">
+                                            <td class="text-center">10000</td>
+                                            <td>
+                                                <div class="progress active-bar-danger active progress-striped">
+                                                    <div class="bar" style="width: 32%; "></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">7000</td>
+                                            <td class="text-center"> 10000</td>
+                                            <td class="text-center">10</td>
+                                            <td class="text-center"> 4</td>
+                                            <td class="text-center">
+
+                                                <a class="btn-xs btn-success" href="javascript:void(0);"><i
+                                                        class="icon-ok icon-white"></i></a>
+
+
+                                            </td>
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td class="text-center">20000</td>
+                                            <td>
+                                                <div class="progress active-bar-danger active progress-striped">
+                                                    <div class="bar" style="width: 42%; "></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">7780</td>
+                                            <td class="text-center">10000</td>
+                                            <td class="text-center">20</td>
+                                            <td class="text-center">5</td>
+                                            <td class="text-center">
+                                                <a class="btn-xs btn-success" href="javascript:void(0);"><i
+                                                        class="icon-ok icon-white"></i></a>
+
+
+                                            </td>
+
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td class="text-center">30000</td>
+                                            <td>
+                                                <div class="progress active-bar-danger active progress-striped">
+                                                    <div class="bar" style="width: 20%; "></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">8900</td>
+                                            <td class="text-center">10000</td>
+                                            <td class="text-center">20</td>
+                                            <td class="text-center">5</td>
+                                            <td class="text-center">
+                                                <a class="btn-xs btn-success" href="javascript:void(0);"><i
+                                                        class="icon-ok icon-white"></i></a>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td class="text-center">15000</td>
+                                            <td>
+                                                <div class="progress active-bar-danger active progress-striped">
+                                                    <div class="bar" style="width: 35%; "></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">7899</td>
+                                            <td class="text-center">10000</td>
+                                            <td class="text-center">30</td>
+                                            <td class="text-center">5</td>
+                                            <td class="text-center">
+
+                                                <a class="btn-xs btn-success" href="javascript:void(0);"><i
+                                                        class="icon-ok icon-white"></i></a>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td class="text-center">25000</td>
+                                            <td>
+                                                <div class="progress active-bar-danger active progress-striped">
+                                                    <div class="bar" style="width: 50%; "></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">9000</td>
+                                            <td class="text-center">10000</td>
+                                            <td class="text-center">30</td>
+                                            <td class="text-center">20</td>
+                                            <td class="text-center">
+                                                <a class="btn-xs btn-success" href="javascript:void(0);"><i
+                                                        class="icon-ok icon-white"></i></a>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td class="text-center">10000</td>
+                                            <td>
+                                                <div class="progress active-bar-danger active progress-striped">
+                                                    <div class="bar" style="width:55%;"></div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">4000</td>
+                                            <td class="text-center">10000</td>
+                                            <td class="text-center">30</td>
+                                            <td class="text-center">50</td>
+                                            <td class="text-center">
+                                                <a class="btn-xs btn-success" href="javascript:void(0);"><i
+                                                        class="icon-ok icon-white"></i></a>
+                                            </td>
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- end content-->
+
+                        <!-- end content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end widget -->
+    </article>
+</div>
+<!-- end row -->
+<!-- row -->
+
+<div class="row">
+
+    <article class="col-md-12">
+        <!-- new widget -->
+
+        <div class="jarviswidget" id="widget-id-9-tpp" data-widget-fullscreenbutton="false">
+            <header>
+                <h2>Tier point projection</h2>
+            </header>
+            <div>
+
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
+
+                <div class="inner-spacer">
+                    <div class="widget-content-padding">
+                        <!-- content goes here -->
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+
+                                <select class="btn btn-default dropdown-toggle btn-group" id="tpp_filter">
+                                    <option value="show_tpp_month_view">This month data</option>
+                                    <option value="show_tpp_year_view">This year data</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="row" id="tpp_month_view">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="progress-stats">
+                                    <div class="progress" style="margin-top: 5px;">
+                                        <div class="progress-bar active value" style="width: 30%">
+
+                                        </div>
+
+                                        <div class="progress-bar progress-bar-success value" style="width: 15%">
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning value" style="width: 25%">
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-danger value" style="width: 20%">
+
+                                        </div>
+                                        <div class="progress-bar progress-danger value" style="width: 10%">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td>Previous Month</td>
+                                        <td style="background-color:#428BCA"></td>
+                                        <td class="text-right">256</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Achieving top quartic average</td>
+                                        <td style="background-color:#5CB85C"></td>
+                                        <td class="text-right">89</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Achieving top 3 average</td>
+                                        <td style="background-color:#F0AD62"></td>
+                                        <td class="text-right">100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Achieving 100% target this month</td>
+                                        <td style="background-color:#D9534F"></td>
+                                        <td class="text-right">60</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Expected rank on the Year Till Date board</td>
+                                        <td style="background-color:#428BCA"></td>
+                                        <td class="text-right">70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>At current run rate</td>
+                                        <td></td>
+                                        <td class="text-right">40%</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" id="tpp_year_view" style="display: none">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="progress-stats">
+                                    <div class="progress" style="margin-top: 5px;">
+                                        <div class="progress-bar active value" style="width: 10%">
+
+                                        </div>
+
+                                        <div class="progress-bar progress-bar-success value" style="width: 25%">
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning value" style="width: 20%">
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-danger value" style="width: 10%">
+
+                                        </div>
+                                        <div class="progress-bar progress-danger value" style="width: 35%">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td>Previous Year</td>
+                                        <td style="background-color:#428BCA"></td>
+                                        <td class="text-right">256</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Achieving top quartic average</td>
+                                        <td style="background-color:#5CB85C"></td>
+                                        <td class="text-right">89</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Achieving top 3 average</td>
+                                        <td style="background-color:#F0AD62"></td>
+                                        <td class="text-right">100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Achieving 100% target this month</td>
+                                        <td style="background-color:#D9534F"></td>
+                                        <td class="text-right">60</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Expected rank on the Year Till Date board</td>
+                                        <td style="background-color:#428BCA"></td>
+                                        <td class="text-right">70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>At current run rate</td>
+                                        <td></td>
+                                        <td class="text-right">40%</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- chart -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end widget -->
+    </article>
+
+
+</div>
+<div class="row">
+
+    <article class="col-md-12">
+        <!-- new widget -->
+
+        <div class="jarviswidget" id="widget-id-9-tpp-activity" data-widget-fullscreenbutton="false">
+            <header>
+                <h2>Activity point projection</h2>
+            </header>
+            <div>
+
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
+
+                <div class="inner-spacer">
+                    <div class="widget-content-padding">
+                        <!-- content goes here -->
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+
+                                <select class="btn btn-default dropdown-toggle btn-group" id="activity_filter">
+                                    <option value="show_tpp_month_view">This month data</option>
+                                    <option value="show_tpp_year_view">This year data</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="row" id="activity_month_view">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="progress-stats">
+                                    <div class="progress" style="margin-top: 5px;">
+                                        <div class="progress-bar active value" style="width: 30%">
+
+                                        </div>
+
+                                        <div class="progress-bar progress-bar-success value" style="width: 15%">
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning value" style="width: 25%">
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-danger value" style="width: 20%">
+
+                                        </div>
+                                        <div class="progress-bar progress-danger value" style="width: 10%">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td>Previous Month</td>
+                                        <td style="background-color:#428BCA"></td>
+                                        <td class="text-right">350</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Achieving top quartic average</td>
+                                        <td style="background-color:#5CB85C"></td>
+                                        <td class="text-right">70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Achieving top 3 average</td>
+                                        <td style="background-color:#F0AD62"></td>
+                                        <td class="text-right">150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Achieving 100% target this month</td>
+                                        <td style="background-color:#D9534F"></td>
+                                        <td class="text-right">100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Expected rank on the Year Till Date board</td>
+                                        <td style="background-color:#428BCA"></td>
+                                        <td class="text-right">60</td>
+                                    </tr>
+                                    <tr>
+                                        <td>At current run rate</td>
+                                        <td></td>
+                                        <td class="text-right">50%</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" id="activity_year_view" style="display: none">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="progress-stats">
+                                    <div class="progress" style="margin-top: 5px;">
+                                        <div class="progress-bar active value" style="width: 10%">
+
+                                        </div>
+
+                                        <div class="progress-bar progress-bar-success value" style="width: 25%">
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning value" style="width: 20%">
+
+                                        </div>
+                                        <div class="progress-bar progress-bar-danger value" style="width: 10%">
+
+                                        </div>
+                                        <div class="progress-bar progress-danger value" style="width: 35%">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <table class="table table-condensed">
+                                    <tr>
+                                        <td>Previous Year</td>
+                                        <td style="background-color:#428BCA"></td>
+                                        <td class="text-right">256</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Achieving top quartic average</td>
+                                        <td style="background-color:#5CB85C"></td>
+                                        <td class="text-right">89</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Achieving top 3 average</td>
+                                        <td style="background-color:#F0AD62"></td>
+                                        <td class="text-right">100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Achieving 100% target this month</td>
+                                        <td style="background-color:#D9534F"></td>
+                                        <td class="text-right">60</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Expected rank on the Year Till Date board</td>
+                                        <td style="background-color:#428BCA"></td>
+                                        <td class="text-right">70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>At current run rate</td>
+                                        <td></td>
+                                        <td class="text-right">90%</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- chart -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end widget -->
+    </article>
+
+
+</div>
+<!-- end row -->
+</section>
+<!-- end widget grid -->
+</div>
+</div>
+<!-- end main content -->
+
+<!-- aside right on high res -->
+<aside class="right">
+
+    <!-- aside item: Tiny Stats -->
+    <div class="number-stats" style="text-align: center">
+        <ul>
+            <li><span>Class</span>Platinum</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <!-- end aside item: Tiny Stats -->
+
+    <!-- date picker -->
+    <div id="datepicker"></div>
+    <div class="divider"></div>
+    <!-- end date picker -->
+
+    <!-- sparkline stats -->
+    <div class="mystats indented" style="height: 320px;">
+        <h3 style="text-align: center">Quick Call Report</h3>
+
+        <form class="form-horizontal themed" id="quick-call" style="text-align: center">
+            <fieldset>
+                <div class="form-group" style="background: transparent; border:none;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="controls">
+                                <select id="select01" class="with-search">
+                                    <option value="AK">ABC Mining and Minerals</option>
+                                    <option value="HI">Khushnuma Exports</option>
+                                    <option value="CA">Robert Bedford and Sons</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea id="textarea" class="form-control textarea uniform" rows="5"
+                                      placeholder="Enter text ..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <a href="javascript:void(0);" class="btn medium btn-info"
+                   id="enable-select-demo">
+                    Submit
+                </a>
+            </fieldset>
+        </form>
+    </div>
+    <div class="divider"></div>
+    <!-- end sparkline stats -->
+
+</aside>
+
+<!-- end aside right -->
+</div>
+
+</div>
+<!--end fluid-container-->
+<div class="push"></div>
+</div>
+<!-- end .height wrapper -->
+
+<!-- footer -->
+
+<!-- if you like you can insert your footer here -->
+
+<!-- end footer -->
+
+<!--================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
+<!-- OPTIONAL: Use this migrate script for plugins that are not supported by jquery 1.9+ -->
+<!-- DISABLED <script src="js/libs/jquery.migrate-1.0.0.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script>window.jQuery.ui || document.write('<script src="js/libs/jquery.ui.min.js"><\/script>')</script>
+
+<!-- IMPORTANT: Jquery Touch Punch is always placed under Jquery UI -->
+<script src="js/include/jquery.ui.touch-punch.min.js"></script>
+
+<!-- REQUIRED: Mobile responsive menu generator -->
+<script src="js/include/selectnav.min.js"></script>
+
+<!-- REQUIRED: Datatable components -->
+<script src="js/include/jquery.accordion.min.js"></script>
+
+<!-- REQUIRED: Toastr & Jgrowl notifications  -->
+<script src="js/include/toastr.min.js"></script>
+<script src="js/include/jquery.jgrowl.min.js"></script>
+
+<!-- REQUIRED: Sleek scroll UI  -->
+<script src="js/include/slimScroll.min.js"></script>
+
+<!-- REQUIRED: Datatable components -->
+<script src="js/include/jquery.dataTables.min.js"></script>
+<script src="js/include/DT_bootstrap.min.js"></script>
+
+<!-- REQUIRED: Form element skin  -->
+<script src="js/include/jquery.uniform.min.js"></script>
+
+<!-- REQUIRED: AmCharts  -->
+<script src="js/include/amchart/amcharts.js"></script>
+<script src="js/include/amchart/amchart-draw1.js"></script>
+
+<script type="text/javascript">
+    var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    if (!ismobile) {
+
+        /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
+
+        /* REQUIRED: Datatable PDF/Excel output componant */
+
+        document.write('<script src="js/include/ZeroClipboard.min.js"><\/script>');
+        document.write('<script src="js/include/TableTools.min.js"><\/script>');
+        document.write('<script src="js/include/select2.min.js"><\/script>');
+        document.write('<script src="js/include/jquery.excanvas.min.js"><\/script>');
+        document.write('<script src="js/include/jquery.placeholder.min.js"><\/script>');
+
+        /** DEMO SCRIPTS **/
+        $(function () {
+
+
+            setTimeout(function () {
+                $('#splash').fadeOut(function () {
+                    $('#main').css('opacity', 1);
+                    $('header').fadeIn();
+                });
+            }, 500);
+
+
+            $('#tier_point_summary_table').dataTable({
+                "bInfo": true,
+                "bFilter": false,
+                "bSearchable": false,
+                "bLengthChange": false
+            });
+
+            $("#tpp_filter").change(function () {
+                var end = this.value;
+                if (end.contains("month")) {
+                    $("#tpp_month_view").show();
+                    $("#tpp_year_view").hide();
+                }
+                else {
+                    $("#tpp_month_view").hide();
+                    $("#tpp_year_view").show();
+                }
+            });
+
+            $("#activity_filter").change(function () {
+                var end = this.value;
+                if (end.contains("month")) {
+                    $("#activity_month_view").show();
+                    $("#activity_year_view").hide();
+                }
+                else {
+                    $("#activity_month_view").hide();
+                    $("#activity_year_view").show();
+                }
+            });
+
+
+
+            /* show tooltips */
+//            $.jGrowl("You are falling behind NTB targets. Time to focus on getting some new clients into the bank.", {
+//                header: 'Target Alert',
+//                sticky: false,
+//                life: 5000,
+//                speed: 500,
+//                theme: 'without-icon',
+//                position: 'bottom-right', //this is default position
+//                easing: 'easeOutBack',
+//                animateOpen: {
+//                    height: "show"
+//                },
+//                animateClose: {
+//                    opacity: 'hide'
+//                }
+//            });
+        });
+        /** end DEMO SCRIPTS **/
+
+    } else {
+
+        /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
+
+        document.write('<script src="js/include/selectnav.min.js"><\/script>');
+    }
+</script>
+
+<!-- REQUIRED: iButton -->
+<script src="js/include/jquery.ibutton.min.js"></script>
+
+<!-- REQUIRED: Justgage animated charts -->
+<script src="js/include/raphael.2.1.0.min.js"></script>
+<script src="js/include/justgage.min.js"></script>
+
+<!-- REQUIRED: Morris Charts -->
+<script src="js/include/morris.min.js"></script>
+<script src="js/include/morris-chart-settings.js"></script>
+
+<!-- REQUIRED: Animated pie chart -->
+<script src="js/include/jquery.easy-pie-chart.min.js"></script>
+
+<!-- REQUIRED: Functional Widgets -->
+<script src="js/include/jarvis.widget.min.js"></script>
+<script src="js/include/mobiledevices.min.js"></script>
+<!-- DISABLED (only needed for IE7 <script src="js/include/json2.js"></script> -->
+
+<!-- REQUIRED: Full Calendar -->
+<script src="js/include/jquery.fullcalendar.min.js"></script>
+
+<!-- REQUIRED: Flot Chart Engine -->
+<script src="js/include/jquery.flot.cust.min.js"></script>
+<script src="js/include/jquery.flot.resize.min.js"></script>
+<script src="js/include/jquery.flot.tooltip.min.js"></script>
+<script src="js/include/jquery.flot.orderBar.min.js"></script>
+<script src="js/include/jquery.flot.fillbetween.min.js"></script>
+<script src="js/include/jquery.flot.pie.min.js"></script>
+
+<!-- REQUIRED: Sparkline Charts -->
+<script src="js/include/jquery.sparkline.min.js"></script>
+
+<!-- REQUIRED: Infinite Sliding Menu (used with inbox page) -->
+<script src="js/include/jquery.inbox.slashc.sliding-menu.js"></script>
+
+<!-- REQUIRED: Form validation plugin -->
+<script src="js/include/jquery.validate.min.js"></script>
+
+<!-- REQUIRED: Progress bar animation -->
+<script src="js/include/bootstrap-progressbar.min.js"></script>
+
+<!-- REQUIRED: wysihtml5 editor -->
+<script src="js/include/wysihtml5-0.3.0.min.js"></script>
+<script src="js/include/bootstrap-wysihtml5.min.js"></script>
+
+<!-- REQUIRED: Masked Input -->
+<script src="js/include/jquery.maskedinput.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Date Picker -->
+<script src="js/include/bootstrap-datepicker.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Wizard -->
+<script src="js/include/bootstrap.wizard.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Color Picker -->
+<script src="js/include/bootstrap-colorpicker.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Time Picker -->
+<script src="js/include/bootstrap-timepicker.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Prompt -->
+<script src="js/include/bootbox.min.js"></script>
+
+<!-- REQUIRED: Bootstrap engine -->
+<script src="js/include/bootstrap.min.js"></script>
+
+<!-- DO NOT REMOVE: Theme Config file -->
+<script src="js/config.js"></script>
+
+<!-- d3 library placed at the bottom for better performance -->
+<!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
+<!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->
+<!-- DISABLED  <script src="js/include/adv_charts/d3-chart-2.js"></script> -->
+
+<!-- Google Geo Chart -->
+<!-- DISABLED <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script> -->
+<!-- DISABLED <script type='text/javascript' src='https://www.google.com/jsapi'></script>-->
+<!-- DISABLED <script src="js/include/adv_charts/geochart.js"></script> -->
+
+<!-- end scripts -->
+</body>
+</html>
