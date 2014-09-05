@@ -280,11 +280,11 @@
 </header>
 <!-- end header -->
 
-<div id="splash">
-    <h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>
+<!--<div id="splash">-->
+    <!--<h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>-->
 
-    <h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>
-</div>
+    <!--<h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>-->
+<!--</div>-->
 
 <div id="main" role="main" class="container-fluid">
 
@@ -384,7 +384,7 @@
 <!-- main content -->
 <div id="page-content">
 <!-- page header -->
-<h1 id="page-header">My Profile <span class="pull-right">Sep 2014</span></h1>
+<h1 id="page-header">My Profile</h1>
 
 <div class="fluid-container">
 
@@ -397,7 +397,7 @@
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-13">
             <header>
-                <h2>Tier point summary</h2>
+                <h2>Tier Point Summary</h2>
             </header>
             <div>
 
@@ -433,10 +433,10 @@
 
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="javascript:void(0);">This month data</a>
+                                            <a href="javascript:void(0);">This Month Data</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);">This year data</a>
+                                            <a href="javascript:void(0);">This Year Data</a>
                                         </li>
 
                                     </ul>
@@ -459,13 +459,13 @@
                                            id="tier_point_summary_table">
                                         <thead>
                                         <tr>
-                                            <th>Target&nbsp;</th>
-                                            <th>Month till date&nbsp;</th>
-                                            <th>Points earned&nbsp;</th>
-                                            <th>Points to be at 100% achivement&nbsp;</th>
-                                            <th>Team average&nbsp;</th>
-                                            <th>Division average&nbsp;</th>
-                                            <th>Opportunities&nbsp;</th>
+                                            <th>Target</th>
+                                            <th>Month Till Date</th>
+                                            <th>Points Earned</th>
+                                            <th>Points To Be at 100% Achivement</th>
+                                            <th>Team Average</th>
+                                            <th>Division Average</th>
+                                            <th>Opportunities</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -607,7 +607,7 @@
 
         <div class="jarviswidget" id="widget-id-9-tpp" data-widget-fullscreenbutton="false">
             <header>
-                <h2>Tier point projection</h2>
+                <h2>Tier Point Projection</h2>
             </header>
             <div>
 
@@ -788,7 +788,7 @@
 
         <div class="jarviswidget" id="widget-id-9-tpp-activity" data-widget-fullscreenbutton="false">
             <header>
-                <h2>Activity point projection</h2>
+                <h2>Activity Point Projection</h2>
             </header>
             <div>
 
@@ -1069,8 +1069,8 @@
 
 <!-- REQUIRED: Datatable components -->
 <script src="js/include/jquery.dataTables.min.js"></script>
-<script src="js/include/DT_bootstrap.min.js"></script>
-
+<!--<script src="js/include/DT_bootstrap.min.js"></script>-->
+<script src="js/include/DT_bootstrap3.js"></script>
 <!-- REQUIRED: Form element skin  -->
 <script src="js/include/jquery.uniform.min.js"></script>
 
@@ -1095,13 +1095,15 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
+            $('#main').css('opacity', 1);
+            $('header').fadeIn();
 
-            setTimeout(function () {
-                $('#splash').fadeOut(function () {
-                    $('#main').css('opacity', 1);
-                    $('header').fadeIn();
-                });
-            }, 500);
+//            setTimeout(function () {
+//                $('#splash').fadeOut(function () {
+//                    $('#main').css('opacity', 1);
+//                    $('header').fadeIn();
+//                });
+//            }, 500);
 
 
             $('#tier_point_summary_table').dataTable({
