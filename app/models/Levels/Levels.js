@@ -1,6 +1,13 @@
 var LevelsCollection=require('./LevelsCollection.js');
+var LevelRoutes=require('./LevelRoutes.js');
 var Levels={
   initialize:function(server){
+    //initializing routes.
+    for(property in LevelRoutes)
+    {
+      methods=property.split(" ");
+      eval("server."+methods[0]+"('"+methods[1]+"',"+LevelRoutes[property]+');');
+    }
     console.log("Levels initialized");
   },
   createLevel:function(organizationId,rangeMin,rangeMax){

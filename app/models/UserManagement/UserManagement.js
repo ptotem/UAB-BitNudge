@@ -1,6 +1,13 @@
 var UserCollection=require('./UserManagementCollection.js');
+var userRoutes=require('./UserManagementRoutes.js');
 var UserManagement={
   initialize:function(server){
+    //initializing routes.
+    for(property in userRoutes)
+    {
+      methods=property.split(" ");
+      eval("server."+methods[0]+"('"+methods[1]+"',"+userRoutes[property]+');');
+    }
     console.log("Users initialized");
   },
   getUserDetail:function(user,fieldName){
@@ -30,8 +37,40 @@ var UserManagement={
   setUserFieldById:function(id,fieldName,value,callback){
     UserCollection.update({_id:id},{$set:{fieldName:value}},callback);
   },
+  addRole:function(userId,role,callback){
+    UserCollection.update({_id:userId},{$push{roles:role}},callback);
+  },
+  addPoints:function(userId,points,callback){
+    UserCollection.update({_id:userId},{$push:{points:points}},callback);
+  },
   deleteUser:function(id,callback){
     UserCollection.remove({'_id':id},callback);
+  },
+  giveMedalToUser:function(userId,medalId,callback){
+    UserCollection.update({_id:userId},{$push:{medals:medalId}},callback);
+  },
+  giveItemToUser:function(userId,itemId,callback){
+    UserCollection.update({_id:userId},{$push:{items:itemId}},callback);
+  },
+  incrementUserCashAndPointsBy:function(userId,points,callback){
+    UserManagement.addPoints(userId,points,callback);
+    UserManagement.getUserDetail(userId,'cash',function(err,obj){
+      if(err) return;
+      else {
+        totalCash=obj+points;
+        UserManagement.setUserFieldById(userId,'cash',totalCash,callback);
+      }
+    });
+  },
+  decrementUserCashAndPointsBy:function(userId,points,callback){
+    UserManagement.addPoints(userId,points,callback);
+    UserManagement.getUserDetail(userId,'cash',function(err,obj){
+      if(err) return;
+      else {
+        totalCash=obj+points;
+        UserManagement.setUserFieldById(userId,'cash',totalCash,callback);
+      }
+    });
   },
   getUser:function(id,callback){
     UserCollection.findOne({_id:id},callback);

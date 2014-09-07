@@ -1,7 +1,15 @@
 var StoreItemsCollection=require('./StoreItemCollection.js');
 var Store=require('../Store');
+var StoreItemRoutes=require('./StoreItemRoutes.js');
+var UserModel=require('../UserManagement');
 var StoreItems={
   initialize:function(server){
+    //initializing routes.
+    for(property in StoreItemRoutes)
+    {
+      methods=property.split(" ");
+      eval("server."+methods[0]+"('"+methods[1]+"',"+StoreItemRoutes[property]+');');
+    }
     console.log("StoreItems initialized");
   },
   createStoreItemOfStore:function(storeId,data){
@@ -31,6 +39,7 @@ var StoreItems={
     });
   },
   buyItem:function(userId,itemId,callback){
+    UserModel.incrementUserPointsBy(userId,itemId.cost,callback);
   },
   updateStoreItem:function(id,fieldName,value,callback){
     var temp={};
