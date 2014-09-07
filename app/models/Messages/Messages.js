@@ -3,13 +3,15 @@ var Messages={
   initialize:function(server){
     console.log("messages initialized");
   },
-  createMessage:function(organizationId,name){
+  createMessage:function(organizationId,messageType,data){
+    data.messageType=messageType;
     data.organizationId=organizationId;
     var l=new MessagesCollection(data);
     l.save();
     return true;
   },
-  createMessageOfUser:function(organizationId,userId,name){
+  createMessageOfUser:function(organizationId,userId,messageType,data){
+    data.messageType=messageType;
     data.organizationId=organizationId;
     data.userId=userId;
     var l=new MessagesCollection(data);

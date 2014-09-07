@@ -55,23 +55,14 @@ var UserManagement={
   },
   incrementUserCashAndPointsBy:function(userId,points,callback){
     UserManagement.addPoints(userId,points,callback);
-    UserManagement.getUserDetail(userId,'cash',function(err,obj){
-      if(err) return;
-      else {
-        totalCash=obj+points;
-        UserManagement.setUserFieldById(userId,'cash',totalCash,callback);
-      }
-    });
-  },
-  decrementUserCashAndPointsBy:function(userId,points,callback){
-    UserManagement.addPoints(userId,points,callback);
-    UserManagement.getUserDetail(userId,'cash',function(err,obj){
-      if(err) return;
-      else {
-        totalCash=obj+points;
-        UserManagement.setUserFieldById(userId,'cash',totalCash,callback);
-      }
-    });
+    // UserManagement.getUserDetail(userId,'cash',function(err,obj){
+    //   if(err) return;
+    //   else {
+    //     totalCash=obj+points;
+    //     UserManagement.setUserFieldById(userId,'cash',totalCash,callback);
+    //   }
+    // });
+    UserCollection.update({_id:userId},{$inc:{cash:points}},callback);
   },
   getUser:function(id,callback){
     UserCollection.findOne({_id:id},callback);

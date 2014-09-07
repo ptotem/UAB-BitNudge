@@ -18,6 +18,12 @@ var MessageTypes={
   getMessageTypesOfOrganization:function(orgId,callback){
     MessageTypesCollection.find({organizationId:orgId},callback);
   },
+  getMessageTypePoints:function(id,callback){
+    MessageTypesCollection.findOne({_id:id},function(err,obj){
+      if(err) return callback(null);
+      callback(obj.points);
+    });
+  },
   getMessageTypeSchema:function(){
     return MessageTypesCollection.Schema;
   },
