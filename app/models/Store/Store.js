@@ -12,7 +12,7 @@ var Stores={
   getStore:function(id,callback){
     StoreCollection.findOne({_id:id},callback);
   },
-  getStoresOfOrganization(orgId,callback){
+  getStoresOfOrganization:function(orgId,callback){
     StoreCollection.find({organizationId:orgId},callback);
   },
   getStoresOfTeam:function(teamId,callback){
@@ -32,5 +32,6 @@ var Stores={
     temp[fieldName]=value;
     StoreCollection.update({_id:id},{$set:temp},callback);
   }
-};
+
+}
 module.exports=Stores;

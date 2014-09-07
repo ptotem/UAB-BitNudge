@@ -1,3 +1,4 @@
+
 var restify = require('restify')
 var server = module.exports = restify.createServer({
     name : 'BitNudge'
@@ -25,14 +26,7 @@ server.listen(3004, function () {
 });
 
 //loading models
-var userManagement=require('./models/UserManagement');
-userManagement.initialize(server);
-var levels=require('./models/Levels');
-levels.initialize(server);
-
-//loading modules
-var authentication=require('./modules/Authentication');
-authentication.initialize(server);
-
-// Routes=require('./routes.js');
-// Routes.initializeRoutes(server,Collections,passport);
+var Organization=require('./models/Organizations');
+Organization.initialize(server);
+var teams=require('./models/Teams');
+teams.initialize(server);
