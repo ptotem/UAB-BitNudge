@@ -3,8 +3,9 @@ var Goals={
   initialize:function(server){
     console.log("messages initialized");
   },
-  createGoal:function(organizationId,name){
-    var l=new GoalsCollection({organizationId:organizationId,name:name});
+  createGoal:function(organizationId,data){
+    data.organizationId=organizationId;
+    var l=new GoalsCollection(data);
     l.save();
     return true;
   },

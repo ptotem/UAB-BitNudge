@@ -10,10 +10,10 @@ var Team= {
     getTeamSchema:function(){
         return TeamsCollection.Schema;
     },
-    createTeam:function(data){
+    createTeam:function(organizationId,data){
+        data.organizationId=organizationId;
         var team=new TeamsCollection(data);
         team.save();
-        console.log('data Saved')
         return true;
     },
     deleteTeam:function(id,callback){
@@ -40,19 +40,19 @@ var Team= {
         TeamsCollection.update({_id:id},{$set:temp},callback);
     },
     addMembersToTeam:function(teamId,memberData,callback){
-        TeamsCollection.update({_id:teamId},{$set:memberData},callback);
+        TeamsCollection.update({_id:teamId},{$push:memberData},callback);
     },
     removeMembersToTeam:function(teamId,members,callback){
         TeamsCollection.update({_id:teamId},{$pull:{members:members}},callback);
     },
     addTeamsToTeam:function(teamId,teamData,callback){
-        TeamsCollection.update({_id:teamId},{$set:teamData},callback);
+        TeamsCollection.update({_id:teamId},{push:teamData},callback);
     },
     removeTeamsToTeam:function(teamId,teams,callback){
         TeamsCollection.update({_id:teamId},{$pull:{teams:teams}},callback);
     },
     addStoresToTeam:function(teamId,storeData,callback){
-        TeamsCollection.update({_id:teamId},{$set:storeData},callback);
+        TeamsCollection.update({_id:teamId},{$push:storeData},callback);
     },
     createTeamInOrg:function(data,org_id){
         var team=new TeamsCollection({data:data,organizationId :org_id});

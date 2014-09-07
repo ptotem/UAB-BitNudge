@@ -10,8 +10,9 @@ var Stores={
     }
     console.log("Stores initialized");
   },
-  createStore:function(data){
+  createStore:function(organizationId,data){
     //do some validation to check if approp fields are supplied
+    data.organizationId=organizationId;
     var l=new StoresCollection(data);
     l.save();
     return true;

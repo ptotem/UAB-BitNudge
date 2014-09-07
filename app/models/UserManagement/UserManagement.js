@@ -16,9 +16,10 @@ var UserManagement={
     return UserCollection.Schema;
   },
   //the attribute data is an object which contains key value pairs of the fields and values.
-  createUser:function(data){
+  createUser:function(organizationId,data){
     //password is in plain text, they must be salted and shed
     //obviously, salt and hash it properly.
+    data.organizationId=organizationId;
     if(data.password){
       data.passwordSalt=data.password+"salt!";
       data.passwordHash=data.password+"hash!";

@@ -12,8 +12,9 @@ var StoreItems={
     }
     console.log("StoreItems initialized");
   },
-  createStoreItemOfStore:function(storeId,data){
+  createStoreItemOfStore:function(organizationId,storeId,data){
     data.storeId=storeId;
+    data.organizationId=organizationId;
     var l=new StoreItemsCollection(data);
     l.save();
     Store.addItemToStore(storeId);

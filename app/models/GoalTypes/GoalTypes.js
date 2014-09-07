@@ -3,8 +3,9 @@ var GoalTypes={
   initialize:function(server){
     console.log("medals initialized");
   },
-  createGoalType:function(organizationId,name){
-    var l=new GoalTypesCollection({organizationId:organizationId,name:name});
+  createGoalType:function(organizationId,data){
+    data.organizationId=organizationId;
+    var l=new GoalTypesCollection(data);
     l.save();
     return true;
   },

@@ -3,8 +3,9 @@ var Medals={
   initialize:function(server){
     console.log("medals initialized");
   },
-  createMedal:function(organizationId,name){
-    var l=new MedalsCollection({organizationId:organizationId,name:name});
+  createMedal:function(organizationId,data){
+    data.organizationId=organizationId;
+    var l=new MedalsCollection(data);
     l.save();
     return true;
   },

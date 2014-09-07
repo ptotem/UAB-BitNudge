@@ -3,8 +3,9 @@ var MessageTypes={
   initialize:function(server){
     console.log("medals initialized");
   },
-  createMessageType:function(organizationId,name){
-    var l=new MessageTypesCollection({organizationId:organizationId,name:name});
+  createMessageType:function(organizationId,data){
+    data.organizationId=organizationId;
+    var l=new MessageTypesCollection(data);
     l.save();
     return true;
   },

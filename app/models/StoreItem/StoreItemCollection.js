@@ -8,6 +8,7 @@ var storeItemSchema=new Schema({
   desc:String,
   pic:Schema.Types.Buffer,
   storeId:Schema.Types.ObjectId,
+  organizationId:Schema.Types.ObjectId
 });
 var storeItems=mongoose.model('storeItem',storeItemSchema);
 module.exports=storeItems;

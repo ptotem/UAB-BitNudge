@@ -10,10 +10,11 @@ var Levels={
     }
     console.log("Levels initialized");
   },
-  createLevel:function(organizationId,rangeMin,rangeMax){
-    if(!Levels.validateRanges(rangeMin,rangeMax))
+  createLevel:function(organizationId,data){
+    if(!Levels.validateRanges(data.rangeMin,data.rangeMax))
       return false;
-    var l=new LevelsCollection({organizationId:organizationId,rangeMin:rangeMin,rangeMax:rangeMax});
+    data.organizationId=organizationId;
+    var l=new LevelsCollection(data);
     l.save();
     return true;
   },

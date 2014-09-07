@@ -13,7 +13,6 @@ var Organization= {
     createOrganization:function(data){
         var org=new OrganizationsCollection(data);
         org.save();
-        console.log('data Saved')
         return true;
     },
     deleteOrganization:function(id,callback){
@@ -31,7 +30,7 @@ var Organization= {
         OrganizationsCollection.update({_id:id},{$set:temp},callback);
     },
     addStoresToOrganizations:function(orgId,storeData,callback){
-        OrganizationsCollection.update({_id:orgId},{$set:storeData},callback);
+        OrganizationsCollection.update({_id:orgId},{$push:storeData},callback);
     }
 }
 module.exports=Organization;

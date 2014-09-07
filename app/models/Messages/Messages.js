@@ -4,12 +4,23 @@ var Messages={
     console.log("messages initialized");
   },
   createMessage:function(organizationId,name){
-    var l=new MessagesCollection({organizationId:organizationId,name:name});
+    data.organizationId=organizationId;
+    var l=new MessagesCollection(data);
+    l.save();
+    return true;
+  },
+  createMessageOfUser:function(organizationId,userId,name){
+    data.organizationId=organizationId;
+    data.userId=userId;
+    var l=new MessagesCollection(data);
     l.save();
     return true;
   },
   getMessage:function(id,callback){
     MessagesCollection.findOne({_id:id},callback);
+  },
+  getMessagesOfUser:function(userId,callback){
+    MessagesCollection.find({userId:userId},callback);
   },
   getMessagesOfOrganization:function(orgId,callback){
     MessagesCollection.find({organizationId:orgId},callback);
