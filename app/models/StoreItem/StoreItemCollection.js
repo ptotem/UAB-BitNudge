@@ -4,6 +4,7 @@ var storeItemSchema=new Schema({
   name:String,
   url:String,
   quantity:Number,
+  cost:Number,
   desc:String,
   pic:Schema.Types.Buffer,
   storeId:Schema.Types.ObjectId,
