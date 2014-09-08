@@ -93,7 +93,7 @@
 
 </head>
 
-<body onload="deviceReady()">
+<body>
 <!-- .height-wrapper -->
 <div class="height-wrapper">
 
@@ -280,11 +280,11 @@
 </header>
 <!-- end header -->
 
-<!--<div id="splash">-->
-    <!--<h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>-->
+<div id="splash">
+    <h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>
 
-    <!--<h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>-->
-<!--</div>-->
+    <h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>
+</div>
 
 <div id="main" role="main" class="container-fluid">
 
@@ -1221,13 +1221,13 @@
 
         /** DEMO SCRIPTS **/
         $(function () {
-//
-//            setTimeout(function () {
-//                $('#splash').fadeOut(function () {
-//                    $('#main').css('opacity', 1);
-//                    $('header').fadeIn();
-//                });
-//            }, 500);
+
+            setTimeout(function () {
+                $('#splash').fadeOut(function () {
+                    $('#main').css('opacity', 1);
+                    $('header').fadeIn();
+                });
+            }, 500);
 
             /* show tooltips */
 //            $.jGrowl("You are falling behind NTB targets. Time to focus on getting some new clients into the bank.", {
