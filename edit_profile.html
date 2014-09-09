@@ -280,34 +280,31 @@
 </header>
 <!-- end header -->
 
-<div id="splash">
-    <h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>
-
-    <h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>
-</div>
-
 <div id="main" role="main" class="container-fluid">
 
 <div class="contained">
 <!-- aside -->
 <aside>
 
-    <!-- search box -->
-    <div class="main-search">
-        <label for="main-search"><i class="icon-search"></i></label>
-        <input id="main-search" type="text" placeholder="Search...">
-    </div>
-    <div class="divider"></div>
-    <!-- end search box -->
-
     <!-- aside item: Mini profile -->
-    <div class="my-profile">
-        <a href="javascript:void(0)" class="my-profile-pic">
-            <img src="img/avatar/avatar_8.jpg" alt=""/>
-        </a>
-        <span class="first-child"><strong>Shoaib Akhtar</strong></span>
-        <span><a href="javascript:void(0);">Edit Profile </a></span>
+    <div class="mystats indented">
+        <div class="my-profile my-profile-lrg" style="margin-top: 10px;">
+            <a href="javascript:void(0)" class="my-profile-pic my-profile-pic-lrg">
+                <img src="img/avatar/avatar_8.jpg" alt="" class="profile-img-lrg"/>
+            </a>
+            <span class="first-child"><strong>Shoaib Akhtar</strong></span>
+            <span class="nullify-bold">HR Head</span>
+            <span class="nullify-bold">Walves</span>
+            <span><a href="edit_profile.html">Edit Profile</a></span>
+        </div>
+        <br>
+        <div class="my-profile semi-block">
+            <strong>Profile Complete</strong><strong class="pull-right">89%</strong>
+            <div class="progress progress-danger slim"><div class="bar" data-percentage="89"></div></div>
+        </div>
     </div>
+
+
     <div class="divider"></div>
     <!-- end aside item: Mini profile -->
 
@@ -316,64 +313,39 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li class="current">
-                <a href="javascript:void(0)"><i class="icon-home"></i>Home</a>
+                <a href="dashboard.html"><i class="icon-home"></i>Home</a>
             </li>
             <li class="">
-                <a href="inbox.html"><i class="icon-envelope"></i>Inbox<span class="badge">3</span></a>
+                <a href="profile.html"><i class="icon-user"></i>Profile</a>
             </li>
             <li class="">
-                <a href="javascript:void(0)"><i class="icon-briefcase"></i>Transactions</a>
-                <ul>
-                    <li>
-                        <a href="forms.html">Add New Transaction</a>
-                    </li>
-                    <li>
-                        <a href="validation.html">My Transactions</a>
-                    </li>
-                    <li>
-                        <a href="wizard.html">Admin Requests</a>
-                    </li>
-                </ul>
+                <a href="leaderboard.html"><i class="icon-dashboard"></i>Leaderboard</a>
             </li>
             <li class="">
-                <a href="javascript:void(0)"><i class="icon-eye-open"></i>Goals<span class="badge">1</span></a>
-                <ul>
-                    <li>
-                        <a href="interface.html">My Goals</a>
-                    </li>
-                    <li>
-                        <a href="buttons.html">Challenges</a>
-                    </li>
-                    <li>
-                        <a href="buttons.html">Analyzer Engine</a>
-                    </li>
-                </ul>
+                <a href="challenges.html"><i class="icon-dashboard"></i>Challenges</a>
             </li>
             <li class="">
-                <a href="javascript:void(0)"><i class="icon-signal"></i>Standings</a>
-                <ul>
-                    <li>
-                        <a href="basic_charts.html">Points</a>
-                    </li>
-                    <li>
-                        <a href="adv_charts.html">Medals</a>
-                    </li>
-                    <li>
-                        <a href="raphael.html">Leaderboards</a>
-                    </li>
-                </ul>
+                <a href="#"><i class="icon-inbox"></i>Wall</a>
             </li>
             <li class="">
-                <a href="widgets.html"><i class="icon-dashboard"></i>Reports</a>
+                <a href="error-page.html"><i class="icon-certificate"></i>Redeem Points</a>
             </li>
             <li class="">
-                <a href="widgets.html"><i class="icon-gift"></i>Shop</a>
+                <a href="#"><i class="icon-signal"></i>Result Analysis</a>
             </li>
             <li class="">
-                <a href="#"><i class="icon-certificate"></i>Trainings</a>
+                <a href="faq.html"><i class="icon-signal"></i>FAQs</a>
             </li>
         </ul>
 
+    </div>
+    <div class="divider"></div>
+    <div class="number-stats">
+        <ul>
+            <li>4579<span>My <br>Points</span></li>
+            <li>571<span>Total <br>Points</span></li>
+            <li>879<span>Team <br>Points</span></li>
+        </ul>
     </div>
     <div class="divider"></div>
     <!-- end aside item: Menu -->
@@ -427,14 +399,18 @@
 
                 <!-- content -->
                 <div class="inner-spacer">
+                    <div class="widget-content-padding">
                     <!-- content goes here -->
                     <div class="progress-stats">
-                        <div class="widget-content-padding">
+                        <div class="">
                             <div class="row">
-                                <div class="col-md-3"><img alt="" src="img/avatar/avatar_8.jpg" width="100px"><br><br>
-                                <input type="file">
+                                <div class="col-md-3 col-xs-3">
+                                    <img alt="" src="img/avatar/avatar_8.jpg" width="100px"><br><br>
+                                    <label class="cabinet">
+                                        <input type="file" class="file" />
+                                    </label>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-9">
                                     <div class="row">
                                         <input  class="form-control" type="text" placeholder="Name">
 
@@ -457,10 +433,10 @@
                                     <br>
                                     <div class="row">
                                     <div class="col-md-6 col-xs-6">
-                                        <button class="btn medium btn-danger" type="reset"> Cancel </button>
+                                        <button class="btn medium btn-danger pull-right" type="reset"> Cancel </button>
                                         </div>
                                         <div class="col-md-6 col-xs-6">
-                                            <button class="btn medium btn-primary" type="submit"> Save changes </button>
+                                            <button class="btn medium btn-primary pull-left" type="submit" onclick="window.location='profile.html'"> Save changes </button>
                                         </div>
 
                                     </div>
@@ -468,16 +444,7 @@
 
 
                                 </div>
-                                <div class="col-md-3 text-center">
-                                    <h4>Rank</h4>
 
-                                    <div class="rank-circle">
-                                        <div class="rank-value">
-                                            34
-                                        </div>
-                                    </div>
-
-                                </div>
                             </div>
 
 
@@ -485,6 +452,7 @@
 
                         </div>
                     </div>
+                        </div>
                 </div>
                 <!-- end content -->
 
@@ -702,7 +670,7 @@
                         <td>Manager Likes</td>
                         </tr>
                         </table>
-</div>
+                    </div>
 
                     <!-- end content -->
                 </div>
@@ -945,11 +913,11 @@
 <aside class="right">
 
     <!-- aside item: Tiny Stats -->
-    <div class="number-stats" style="text-align: center">
-        <ul>
-            <li><span>Class</span>Platinum</li>
-        </ul>
-    </div>
+    <!--<div class="number-stats" style="text-align: center">-->
+        <!--<ul>-->
+            <!--<li><span>Class</span>Platinum</li>-->
+        <!--</ul>-->
+    <!--</div>-->
     <div class="divider"></div>
     <!-- end aside item: Tiny Stats -->
 
@@ -1068,10 +1036,8 @@
         $(function () {
 
             setTimeout(function () {
-                $('#splash').fadeOut(function () {
-                    $('#main').css('opacity', 1);
-                    $('header').fadeIn();
-                });
+                $('#main').css('opacity', 1);
+                $('header').fadeIn();
             }, 500);
 
             /* show tooltips */
