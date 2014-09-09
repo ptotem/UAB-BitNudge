@@ -1,0 +1,30 @@
+.form_style
+{
+    background: linear-gradient(to bottom, #45484d 0%, #000000 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #353535;
+    border-radius: 4px;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+    left: 0 !important;
+    top: 50% !important;
+    margin: 0 auto !important;
+    max-width: 40% !important;
+    position: inherit !important;
+
+
+}
+
+
+.award-box
+{
+    height: 100%;
+    width: 100%;
+
+
+}
+
+.award
+{
+    height: 50px;
+    width: 90%;
+
+}
