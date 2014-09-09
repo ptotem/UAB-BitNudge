@@ -1090,7 +1090,7 @@
 
             $("#tpp_filter").change(function () {
                 var end = this.value;
-                if (end.contains("month")) {
+                if (end.indexOf("month")>-1) {
                     $("#tpp_month_view").show();
                     $("#tpp_year_view").hide();
                 }
@@ -1102,7 +1102,7 @@
 
             $("#activity_filter").change(function () {
                 var end = this.value;
-                if (end.contains("month")) {
+                if (end.indexOf("month")>-1) {
                     $("#activity_month_view").show();
                     $("#activity_year_view").hide();
                 }

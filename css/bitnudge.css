@@ -155,3 +155,6 @@ header{
 .leaderboard-btn-width{
     width: 100%;
 }
+.shooting{
+    float: left;
+}
