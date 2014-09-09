@@ -128,7 +128,7 @@ header{
 }
 .my-profile-pic-lrg{
     width: 39%;
-    height: 75px;
+    /*height: 75px;*/
 }
 .profile-img-lrg{
     width: 100%;
@@ -154,4 +154,25 @@ header{
 }
 .leaderboard-btn-width{
     width: 100%;
+}
+
+.dashboard-pg-stats-block h1 {
+    color: #f0f0f0;
+    display: inline-block;
+    /*float: left;*/
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 14px;
+    margin: 0 0 20px;
+    position: relative;
+    text-transform: uppercase;
+    width: 87px;
+}
+
+.dashboard-pg-stats-block h1 span {
+    color: #d1d1d1;
+    display: block;
+    font-size: 10px;
+    font-weight: normal;
+    margin-bottom: 7px;
 }
