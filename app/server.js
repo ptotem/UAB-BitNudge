@@ -26,7 +26,11 @@ server.listen(3004, function () {
 });
 
 //loading models
-var Organization=require('./models/Organizations');
+var Organization=require('./System/models/Organizations');
 Organization.initialize(server);
-var teams=require('./models/Teams');
+var teams=require('./System/models/Teams');
 teams.initialize(server);
+
+//server.on('connection', function (stream) {
+//    console.log('someone connected!');
+//});
