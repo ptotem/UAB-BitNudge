@@ -176,3 +176,35 @@ header{
     font-weight: normal;
     margin-bottom: 7px;
 }
+
+
+.product-block {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.product-block .product-image {
+    height: 168px;
+    width: 100%;
+    padding: 12px;
+}
+
+.product-block .product-info{
+    padding: 5px;
+    height: 100px;
+}
+
+/*.product-block .product-info .product-name {*/
+    /*height: 2%;*/
+/*}*/
+
+.product-block .product-info > div {
+    /*width: 100%;*/
+    /*clear: both;*/
+    white-space: nowrap;
+    width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
