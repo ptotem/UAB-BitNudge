@@ -304,9 +304,13 @@
             <span><a href="javascript:void(0);">Edit Profile </a></span>
         </div>
         <br>
+
         <div class="my-profile semi-block">
             <strong>Profile Complete</strong><strong class="pull-right">89%</strong>
-            <div class="progress progress-danger slim"><div class="bar" data-percentage="89"></div></div>
+
+            <div class="progress progress-danger slim">
+                <div class="bar" data-percentage="89"></div>
+            </div>
         </div>
     </div>
 
@@ -361,856 +365,1018 @@
 
 <!-- main content -->
 <div id="page-content">
-    <!-- page header -->
-    <h1 id="page-header">Dashboard <span class="pull-right">Sep 2014</span></h1>
+<!-- page header -->
+<h1 id="page-header">Dashboard <span class="pull-right">Sep 2014</span></h1>
 
-    <div class="fluid-container">
+<div class="fluid-container">
 
-        <!-- widget grid -->
-        <section id="widget-grid" class="">
+<!-- widget grid -->
+<section id="widget-grid" class="">
 
-            <!-- Row 1 Starts -->
+<!-- Row 1 Starts -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="well light">
+            <!--<h3>Quote</h3>-->
             <div class="row">
-                <div class="col-md-12">
-                    <div class="well light">
-                        <!--<h3>Quote</h3>-->
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <!--<h3>Quote</h3>-->
-                                <blockquote style="border: none;">
-                                    <p>
-                                        “I’m not in this world to live up to your expectations and you’re not in this world to live up to mine.”
-                                    </p>
-                                    <small><cite title="Bruce Lee">Bruce Lee</cite></small>
-                                </blockquote>
+                <div class="col-md-8 col-md-offset-2">
+                    <!--<h3>Quote</h3>-->
+                    <blockquote style="border: none;">
+                        <p>
+                            “I’m not in this world to live up to your expectations and you’re not in this world to live
+                            up to mine.”
+                        </p>
+                        <small><cite title="Bruce Lee">Bruce Lee</cite></small>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Row 1 Ends -->
+
+<!-- Row 2 Starts -->
+<div class="row">
+<article class="col-md-12">
+
+<!-- new widget -->
+<div class="jarviswidget" id="uab-dashboard-widget-lb-cb">
+<header>
+    <h2>Leaderboard & Challengeboard</h2>
+</header>
+
+<!-- widget div-->
+<div>
+<!-- widget edit box -->
+<div class="jarviswidget-editbox">
+    <div>
+        <label>Title:</label>
+        <input type="text"/>
+    </div>
+    <div>
+        <label>Styles:</label>
+        <span data-widget-setstyle="purple" class="purple-btn"></span>
+        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+        <span data-widget-setstyle="green" class="green-btn"></span>
+        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+        <span data-widget-setstyle="orange" class="orange-btn"></span>
+        <span data-widget-setstyle="pink" class="pink-btn"></span>
+        <span data-widget-setstyle="red" class="red-btn"></span>
+        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+        <span data-widget-setstyle="black" class="black-btn"></span>
+    </div>
+</div>
+<!-- end widget edit box -->
+
+<!-- content -->
+<div class="inner-spacer widget-content-padding">
+<!-- content goes here -->
+<ul id="lb_and_cb_tab" class="nav nav-tabs default-tabs">
+    <li class="active">
+        <a href="#leader_board_item_content" data-toggle="tab">Leaderboard</a>
+    </li>
+    <li>
+        <a href="#challenge_board_item_content" data-toggle="tab">Challengeboard</a>
+    </li>
+</ul>
+<div id="lb_and_cb_tabContent" class="tab-content">
+<div class="tab-pane fade in active" id="leader_board_item_content">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="controls">
+                <select id="leaderBoard-form-control" class="form-control">
+                    <option value="AK">This Month</option>
+                    <option value="HI">Previous Month</option>
+                    <option value="CA">This Quarter</option>
+                    <option value="CA">This Year</option>
+                    <option value="CA">All Time</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+    <table class="table table-striped table-bordered responsive" id="leader_board_table">
+        <thead>
+        <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Avatar</th>
+            <th>Team</th>
+            <th>Tier Point</th>
+            <th>Activity</th>
+            <th>Last 3 Periods</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="even">
+            <td class="text-center">1</td>
+            <td class="text-center">Loren</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_0.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Red</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">2</button>
+                <button type="button" class="btn btn-warning btn-xs">5</i></button>
+                <button type="button" class="btn btn-danger btn-xs">7</button>
+            </td>
+        </tr>
+        <tr class="odd">
+            <td class="text-center">2</td>
+            <td class="text-center">Mike</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_1.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Blue</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">3</button>
+                <button type="button" class="btn btn-warning btn-xs">5</button>
+                <button type="button" class="btn btn-danger btn-xs">7</button>
+            </td>
+        </tr>
+        <tr class="even">
+            <td class="text-center">3</td>
+            <td class="text-center">Billy</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_2.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Green</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">8</button>
+                <button type="button" class="btn btn-warning btn-xs">3</button>
+                <button type="button" class="btn btn-danger btn-xs">9</button>
+            </td>
+        </tr>
+        <tr class="odd">
+            <td class="text-center">4</td>
+            <td class="text-center">Carol</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_5.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Green</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">1</button>
+                <button type="button" class="btn btn-warning btn-xs">6</button>
+                <button type="button" class="btn btn-danger btn-xs">1</button>
+            </td>
+        </tr>
+        <tr class="even">
+            <td class="text-center">5</td>
+            <td class="text-center">Julia</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_6.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Red</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">3</button>
+                <button type="button" class="btn btn-warning btn-xs">5</button>
+                <button type="button" class="btn btn-danger btn-xs">12</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="row hidden-xs hidden-sm">
+                <div class="col-md-4 col-md-offset-4">
+                    <a class="btn btn-danger" title="" href="javascript:void(0);">Click to see <br> tips to improve your
+                        ranking</a>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-success pull-right" title="" href="javascript:void(0);">Click to see <br> gap
+                        analysis to reach top 3</a>
+                </div>
+            </div>
+            <div class="row visible-xs visible-sm">
+                <a class="btn btn-danger btn-fullest" href="#">Click to see <br> tips to improve your ranking</a>
+                <a style="margin-top: 5px" class="btn btn-success btn-fullest" href="#">Click to see <br> gap analysis
+                    to reach top 3</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-pane fade" id="challenge_board_item_content">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="controls">
+                <select id="challengeBoard-form-control" class="form-control">
+                    <option value="AK">This Month</option>
+                    <option value="HI">Previous Month</option>
+                    <option value="CA">This Quarter</option>
+                    <option value="CA">This Year</option>
+                    <option value="CA">All Time</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+    <table class="table table-striped table-bordered responsive" id="challenge_board_table">
+        <thead>
+        <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Avatar</th>
+            <th>Team</th>
+            <th>Tier Point</th>
+            <th>Activity</th>
+            <th>Last 3 Periods</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="even">
+            <td class="text-center">1</td>
+            <td class="text-center">Loren</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_0.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Red</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">2</button>
+                <button type="button" class="btn btn-warning btn-xs">5</i></button>
+                <button type="button" class="btn btn-danger btn-xs">7</button>
+            </td>
+        </tr>
+        <tr class="odd">
+            <td class="text-center">2</td>
+            <td class="text-center">Mike</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_1.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Blue</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">3</button>
+                <button type="button" class="btn btn-warning btn-xs">5</button>
+                <button type="button" class="btn btn-danger btn-xs">7</button>
+            </td>
+        </tr>
+        <tr class="even">
+            <td class="text-center">3</td>
+            <td class="text-center">Billy</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_2.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Green</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">8</button>
+                <button type="button" class="btn btn-warning btn-xs">3</button>
+                <button type="button" class="btn btn-danger btn-xs">9</button>
+            </td>
+        </tr>
+        <tr class="odd">
+            <td class="text-center">4</td>
+            <td class="text-center">Carol</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_5.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Green</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">1</button>
+                <button type="button" class="btn btn-warning btn-xs">6</button>
+                <button type="button" class="btn btn-danger btn-xs">1</button>
+            </td>
+        </tr>
+        <tr class="even">
+            <td class="text-center">5</td>
+            <td class="text-center">Julia</td>
+            <td class="text-center">
+                <img src="img/avatar/avatar_6.jpg" alt="" style="border-radius: 4px" height="22px"
+                     width="22px"/>
+            </td>
+            <td class="text-center">Red</td>
+            <td class="text-center">50</td>
+            <td class="text-center">100</td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success btn-xs">3</button>
+                <button type="button" class="btn btn-warning btn-xs">5</button>
+                <button type="button" class="btn btn-danger btn-xs">12</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-6">
+            <div class="row">
+                <div class="col-xs-6 col-md-6">
+                    <a class="btn btn-danger" title="" href="javascript:void(0);">Click to see <br> tips to
+                        improve <br>your ranking</a>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <a class="btn btn-success pull-right" title="" href="javascript:void(0);">Click to see
+                        <br> gap analysis <br> to reach top 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- end content -->
+
+</div>
+<!-- end widget div -->
+</div>
+<!-- end widget -->
+
+</article>
+</div>
+<!-- Row 2 Ends -->
+
+<!-- Row 3 Starts -->
+<div class="row">
+
+    <article class="col-md-6">
+
+        <!-- new widget -->
+        <div class="jarviswidget" id="uab-dashboard-widget-goal-status">
+            <header>
+                <h2>Goal Status</h2>
+            </header>
+            <div>
+
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
+
+                <div class="inner-spacer">
+                    <!-- content goes here -->
+                    <div class="progress-stats">
+                        <div class="widget-content-padding">
+                            <div class="semi-block">
+                                <strong>Star Meeting</strong><strong class="pull-right">90%</strong>
+
+                                <div class="progress progress-success slim">
+                                    <div class="bar" data-percentage="90"></div>
+                                </div>
                             </div>
+                            <div class="semi-block">
+                                <strong>AIG Meeting</strong><strong class="pull-right">45%</strong>
+
+                                <div class="progress progress-danger slim">
+                                    <div class="bar" data-percentage="45"></div>
+                                </div>
+                            </div>
+                            <div class="semi-block">
+                                <strong>eBay Meeting</strong><strong class="pull-right">85%</strong>
+
+                                <div class="progress progress-success slim">
+                                    <div class="bar" data-percentage="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end content -->
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end widget -->
+    </article>
+
+    <article class="col-md-6">
+
+        <!-- new widget -->
+        <div class="jarviswidget" id="uab-dashboard-widget-stats">
+            <header>
+                <h2>Statistics</h2>
+            </header>
+            <div>
+
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
+
+                <div class="inner-spacer">
+                    <!-- content goes here -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="widget-content-padding" style="padding-bottom: 0">
+                                <div class="row">
+                                    <div class="col-md-6 text-center">
+                                        <div class="dashboard-pg-stats-block">
+                                            <h1 style="color: #333"><span style="color: #666">Total Points:</span>
+                                                <span style="color: #0075b0; font-size: 19px; font-weight: bold; line-height: 14px; margin: 0 0 20px; position: relative;">17,349</span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                        <div class="dashboard-pg-stats-block">
+                                            <h1 style="color: #333"><span style="color: #666">Total Money:</span>
+                                                <span style="color: #5cb85c; font-size: 19px; font-weight: bold; line-height: 14px; margin: 0 0 20px; position: relative;">15,000</span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inner-spacer widget-content-padding">
+                        <a href="javascript:void(0);" title="" class="btn btn-danger btn-fullest">See Detailed
+                            Reports</a>
+                    </div>
+
+                    <!-- end content -->
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end widget -->
+    </article>
+
+</div>
+<!-- Row 3 Ends -->
+
+<!-- Row 4 Starts -->
+<div class="row">
+    <article class="col-md-6">
+
+        <!-- new widget -->
+        <div class="jarviswidget" id="uab-dashboard-widget-player-in-news">
+            <header>
+                <h2>Player in the News</h2>
+            </header>
+            <div>
+
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
+
+                <div class="inner-spacer">
+                    <!-- content goes here -->
+                    <!-- bar chart -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-center player_news">Shooting Star of the Month</h5>
+
+                            <div id="shooting_g6"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-right player_new">Star of the Quarter</h5>
+
+                            <div id="quarter_g6"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Row 1 Ends -->
 
-            <!-- Row 2 Starts -->
-            <div class="row">
-                <article class="col-md-12">
-
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="uab-dashboard-widget-lb-cb">
-                        <header>
-                            <h2>Leaderboard & Challengeboard</h2>
-                        </header>
-
-                        <!-- widget div-->
-                        <div>
-                        <!-- widget edit box -->
-                        <div class="jarviswidget-editbox">
-                            <div>
-                                <label>Title:</label>
-                                <input type="text"/>
-                            </div>
-                            <div>
-                                <label>Styles:</label>
-                                <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                <span data-widget-setstyle="green" class="green-btn"></span>
-                                <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                <span data-widget-setstyle="red" class="red-btn"></span>
-                                <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                <span data-widget-setstyle="black" class="black-btn"></span>
-                            </div>
-                        </div>
-                        <!-- end widget edit box -->
-
-                        <!-- content -->
-                        <div class="inner-spacer widget-content-padding">
-                            <!-- content goes here -->
-                            <ul id="lb_and_cb_tab" class="nav nav-tabs default-tabs">
-                                <li class="active">
-                                    <a href="#leader_board_item_content" data-toggle="tab">Leaderboard</a>
-                                </li>
-                                <li>
-                                    <a href="#challenge_board_item_content" data-toggle="tab">Challengeboard</a>
-                                </li>
-                            </ul>
-                            <div id="lb_and_cb_tabContent" class="tab-content">
-                                <div class="tab-pane fade in active" id="leader_board_item_content">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="controls">
-                                                <select id="leaderBoard-form-control" class="form-control">
-                                                    <option value="AK">This Month</option>
-                                                    <option value="HI">Previous Month</option>
-                                                    <option value="CA">This Quarter</option>
-                                                    <option value="CA">This Year</option>
-                                                    <option value="CA">All Time</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <table class="table table-striped table-bordered responsive" id="leader_board_table">
-                                        <thead>
-                                        <tr>
-                                            <th>Position</th>
-                                            <th>Name</th>
-                                            <th>Avatar</th>
-                                            <th>Team</th>
-                                            <th>Tier Point</th>
-                                            <th>Activity</th>
-                                            <th>Last 3 Periods</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="even">
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">Loren</td>
-                                                <td class="text-center">
-                                                    <img src="img/avatar/avatar_0.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                         width="22px"/>
-                                                </td>
-                                                <td class="text-center">Red</td>
-                                                <td class="text-center">50</td>
-                                                <td class="text-center">100</td>
-                                                <td class="text-center">
-                                                    <button type="button" class="btn btn-success btn-xs">2</button>
-                                                    <button type="button" class="btn btn-warning btn-xs">5</i></button>
-                                                    <button type="button" class="btn btn-danger btn-xs">7</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td class="text-center">2</td>
-                                                <td class="text-center">Mike</td>
-                                                <td class="text-center">
-                                                    <img src="img/avatar/avatar_1.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                         width="22px"/>
-                                                </td>
-                                                <td class="text-center">Blue</td>
-                                                <td class="text-center">50</td>
-                                                <td class="text-center">100</td>
-                                                <td class="text-center">
-                                                    <button type="button" class="btn btn-success btn-xs">3</button>
-                                                    <button type="button" class="btn btn-warning btn-xs">5</button>
-                                                    <button type="button" class="btn btn-danger btn-xs">7</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td class="text-center">3</td>
-                                                <td class="text-center">Billy</td>
-                                                <td class="text-center">
-                                                    <img src="img/avatar/avatar_2.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                         width="22px"/>
-                                                </td>
-                                                <td class="text-center">Green</td>
-                                                <td class="text-center">50</td>
-                                                <td class="text-center">100</td>
-                                                <td class="text-center">
-                                                    <button type="button" class="btn btn-success btn-xs">8</button>
-                                                    <button type="button" class="btn btn-warning btn-xs">3</button>
-                                                    <button type="button" class="btn btn-danger btn-xs">9</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td class="text-center">4</td>
-                                                <td class="text-center">Carol</td>
-                                                <td class="text-center">
-                                                    <img src="img/avatar/avatar_5.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                         width="22px"/>
-                                                </td>
-                                                <td class="text-center">Green</td>
-                                                <td class="text-center">50</td>
-                                                <td class="text-center">100</td>
-                                                <td class="text-center">
-                                                    <button type="button" class="btn btn-success btn-xs">1</button>
-                                                    <button type="button" class="btn btn-warning btn-xs">6</button>
-                                                    <button type="button" class="btn btn-danger btn-xs">1</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td class="text-center">5</td>
-                                                <td class="text-center">Julia</td>
-                                                <td class="text-center">
-                                                    <img src="img/avatar/avatar_6.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                         width="22px"/>
-                                                </td>
-                                                <td class="text-center">Red</td>
-                                                <td class="text-center">50</td>
-                                                <td class="text-center">100</td>
-                                                <td class="text-center">
-                                                    <button type="button" class="btn btn-success btn-xs">3</button>
-                                                    <button type="button" class="btn btn-warning btn-xs">5</button>
-                                                    <button type="button" class="btn btn-danger btn-xs">12</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-md-12 col-xs-12">
-                                            <div class="row hidden-xs hidden-sm">
-                                                <div class="col-md-4 col-md-offset-4">
-                                                    <a class="btn btn-danger" title="" href="javascript:void(0);">Click to see <br> tips to improve your ranking</a>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <a class="btn btn-success pull-right" title="" href="javascript:void(0);">Click to see <br> gap analysis to reach top 3</a>
-                                                </div>
-                                            </div>
-                                            <div class="row visible-xs visible-sm">
-                                                <a class="btn btn-danger btn-fullest" href="#">Click to see <br> tips to improve your ranking</a>
-                                                <a style="margin-top: 5px" class="btn btn-success btn-fullest" href="#">Click to see <br> gap analysis to reach top 3</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="challenge_board_item_content">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="controls">
-                                                <select id="challengeBoard-form-control" class="form-control">
-                                                    <option value="AK">This Month</option>
-                                                    <option value="HI">Previous Month</option>
-                                                    <option value="CA">This Quarter</option>
-                                                    <option value="CA">This Year</option>
-                                                    <option value="CA">All Time</option>
-
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <table class="table table-striped table-bordered responsive" id="challenge_board_table">
-                                        <thead>
-                                        <tr>
-                                            <th>Position</th>
-                                            <th>Name</th>
-                                            <th>Avatar</th>
-                                            <th>Team</th>
-                                            <th>Tier Point</th>
-                                            <th>Activity</th>
-                                            <th>Last 3 Periods</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr class="even">
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">Loren</td>
-                                            <td class="text-center">
-                                                <img src="img/avatar/avatar_0.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                     width="22px"/>
-                                            </td>
-                                            <td class="text-center">Red</td>
-                                            <td class="text-center">50</td>
-                                            <td class="text-center">100</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-success btn-xs">2</button>
-                                                <button type="button" class="btn btn-warning btn-xs">5</i></button>
-                                                <button type="button" class="btn btn-danger btn-xs">7</button>
-                                            </td>
-                                        </tr>
-                                        <tr class="odd">
-                                            <td class="text-center">2</td>
-                                            <td class="text-center">Mike</td>
-                                            <td class="text-center">
-                                                <img src="img/avatar/avatar_1.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                     width="22px"/>
-                                            </td>
-                                            <td class="text-center">Blue</td>
-                                            <td class="text-center">50</td>
-                                            <td class="text-center">100</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-success btn-xs">3</button>
-                                                <button type="button" class="btn btn-warning btn-xs">5</button>
-                                                <button type="button" class="btn btn-danger btn-xs">7</button>
-                                            </td>
-                                        </tr>
-                                        <tr class="even">
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">Billy</td>
-                                            <td class="text-center">
-                                                <img src="img/avatar/avatar_2.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                     width="22px"/>
-                                            </td>
-                                            <td class="text-center">Green</td>
-                                            <td class="text-center">50</td>
-                                            <td class="text-center">100</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-success btn-xs">8</button>
-                                                <button type="button" class="btn btn-warning btn-xs">3</button>
-                                                <button type="button" class="btn btn-danger btn-xs">9</button>
-                                            </td>
-                                        </tr>
-                                        <tr class="odd">
-                                            <td class="text-center">4</td>
-                                            <td class="text-center">Carol</td>
-                                            <td class="text-center">
-                                                <img src="img/avatar/avatar_5.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                     width="22px"/>
-                                            </td>
-                                            <td class="text-center">Green</td>
-                                            <td class="text-center">50</td>
-                                            <td class="text-center">100</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-success btn-xs">1</button>
-                                                <button type="button" class="btn btn-warning btn-xs">6</button>
-                                                <button type="button" class="btn btn-danger btn-xs">1</button>
-                                            </td>
-                                        </tr>
-                                        <tr class="even">
-                                            <td class="text-center">5</td>
-                                            <td class="text-center">Julia</td>
-                                            <td class="text-center">
-                                                <img src="img/avatar/avatar_6.jpg" alt="" style="border-radius: 4px" height="22px"
-                                                     width="22px"/>
-                                            </td>
-                                            <td class="text-center">Red</td>
-                                            <td class="text-center">50</td>
-                                            <td class="text-center">100</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-success btn-xs">3</button>
-                                                <button type="button" class="btn btn-warning btn-xs">5</button>
-                                                <button type="button" class="btn btn-danger btn-xs">12</button>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-md-6 col-md-offset-6">
-                                            <div class="row">
-                                                <div class="col-xs-6 col-md-6">
-                                                    <a class="btn btn-danger" title="" href="javascript:void(0);">Click to see <br> tips to
-                                                        improve <br>your ranking</a>
-                                                </div>
-                                                <div class="col-xs-6 col-md-6">
-                                                    <a class="btn btn-success pull-right" title="" href="javascript:void(0);">Click to see
-                                                        <br> gap analysis <br> to reach top 3</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end content -->
-
-                        </div>
-                        <!-- end widget div -->
-                    </div>
-                    <!-- end widget -->
-
-                </article>
-            </div>
-            <!-- Row 2 Ends -->
-
-            <!-- Row 3 Starts -->
-            <div class="row">
-
-                <article class="col-md-6">
-
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="uab-dashboard-widget-goal-status">
-                        <header>
-                            <h2>Goal Status</h2>
-                        </header>
-                        <div>
-
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    <label>Styles:</label>
-                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                    <span data-widget-setstyle="green" class="green-btn"></span>
-                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                    <span data-widget-setstyle="red" class="red-btn"></span>
-                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                    <span data-widget-setstyle="black" class="black-btn"></span>
-                                </div>
-                            </div>
-
-                            <div class="inner-spacer">
-                                <!-- content goes here -->
-                                <div class="progress-stats">
-                                    <div class="widget-content-padding">
-                                        <div class="semi-block">
-                                            <strong>Star Meeting</strong><strong class="pull-right">90%</strong>
-                                            <div class="progress progress-success slim"><div class="bar" data-percentage="90"></div></div>
-                                        </div>
-                                        <div class="semi-block">
-                                            <strong>AIG Meeting</strong><strong class="pull-right">45%</strong>
-                                            <div class="progress progress-danger slim"><div class="bar" data-percentage="45"></div></div>
-                                        </div>
-                                        <div class="semi-block">
-                                            <strong>eBay Meeting</strong><strong class="pull-right">85%</strong>
-                                            <div class="progress progress-success slim"><div class="bar" data-percentage="85"></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end content -->
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </article>
-
-                <article class="col-md-6">
-
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="uab-dashboard-widget-stats">
-                        <header>
-                            <h2>Statistics</h2>
-                        </header>
-                        <div>
-
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    <label>Styles:</label>
-                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                    <span data-widget-setstyle="green" class="green-btn"></span>
-                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                    <span data-widget-setstyle="red" class="red-btn"></span>
-                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                    <span data-widget-setstyle="black" class="black-btn"></span>
-                                </div>
-                            </div>
-
-                            <div class="inner-spacer">
-                                <!-- content goes here -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="widget-content-padding" style="padding-bottom: 0">
-                                            <div class="row">
-                                                <div class="col-md-6 text-center">
-                                                    <div class="dashboard-pg-stats-block">
-                                                        <h1 style="color: #333"><span style="color: #666">Total Points:</span>
-                                                            <span style="color: #0075b0; font-size: 19px; font-weight: bold; line-height: 14px; margin: 0 0 20px; position: relative;">17,349</span>
-                                                        </h1>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-center">
-                                                    <div class="dashboard-pg-stats-block">
-                                                        <h1 style="color: #333"><span style="color: #666">Total Money:</span>
-                                                            <span style="color: #5cb85c; font-size: 19px; font-weight: bold; line-height: 14px; margin: 0 0 20px; position: relative;">15,000</span>
-                                                        </h1>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="inner-spacer widget-content-padding">
-                                    <a href="javascript:void(0);" title="" class="btn btn-danger btn-fullest">See Detailed Reports</a>
-                                </div>
-
-                                <!-- end content -->
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </article>
 
             </div>
-            <!-- Row 3 Ends -->
+        </div>
+        <!-- end widget -->
+    </article>
+    <article class="col-md-6">
 
-            <!-- Row 4 Starts -->
-            <div class="row">
-                <article class="col-md-6">
+        <!-- new widget -->
+        <div class="jarviswidget" id="uab-dashboard-widget-team-in-news">
+            <header>
+                <h2>Team in the News</h2>
+            </header>
+            <div>
 
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="uab-dashboard-widget-player-in-news">
-                        <header>
-                            <h2>Player in the News</h2>
-                        </header>
-                        <div>
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
 
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    <label>Styles:</label>
-                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                    <span data-widget-setstyle="green" class="green-btn"></span>
-                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                    <span data-widget-setstyle="red" class="red-btn"></span>
-                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                    <span data-widget-setstyle="black" class="black-btn"></span>
-                                </div>
-                            </div>
+                <div class="inner-spacer">
+                    <!-- content goes here -->
+                    <!-- bar chart -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-center player_news">Shooting Star of the Month</h5>
 
-                            <div class="inner-spacer">
-                                <!-- content goes here -->
-                                <!-- bar chart -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5 class="text-center player_news">Shooting Star of the Month</h5>
-                                        <div id="shooting_g6"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5 class="text-right player_new">Star of the Quarter</h5>
-                                        <div id="quarter_g6"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div id="shooting_team_g6" class="last"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-right player_new">Star of the Quarter</h5>
 
-
+                            <div id="quarter_team_g6" class="last"></div>
                         </div>
                     </div>
-                    <!-- end widget -->
-                </article>
-                <article class="col-md-6">
 
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="uab-dashboard-widget-team-in-news">
-                        <header>
-                            <h2>Team in the News</h2>
-                        </header>
-                        <div>
+                    <!-- end content -->
+                </div>
 
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    <label>Styles:</label>
-                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                    <span data-widget-setstyle="green" class="green-btn"></span>
-                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                    <span data-widget-setstyle="red" class="red-btn"></span>
-                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                    <span data-widget-setstyle="black" class="black-btn"></span>
-                                </div>
-                            </div>
-
-                            <div class="inner-spacer">
-                                <!-- content goes here -->
-                                <!-- bar chart -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5 class="text-center player_news">Shooting Star of the Month</h5>
-                                        <div id="shooting_team_g6" class="last"></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5 class="text-center">Star of the Quarter</h5>
-                                        <div id="quarter_team_g6" class="last"></div>
-                                    </div>
-                                </div>
-
-                                <!-- end content -->
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </article>
-            </div>
-            <!-- Row 4 Ends -->
-
-            <!-- Row 5 Starts -->
-            <div class="row">
-
-                <article class="col-md-6">
-
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="uab-dashboard-widget-awards">
-                        <header>
-                            <h2>Awards</h2>
-                        </header>
-                        <div>
-
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    <label>Styles:</label>
-                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                    <span data-widget-setstyle="green" class="green-btn"></span>
-                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                    <span data-widget-setstyle="red" class="red-btn"></span>
-                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                    <span data-widget-setstyle="black" class="black-btn"></span>
-                                </div>
-                            </div>
-
-                            <div class="inner-spacer">
-                                <div class="widget-content-padding">
-                                    <!-- content goes here -->
-                                    <div class="row">
-
-                                        <div class="col-md-4 col-xs-4">
-                                            <div class="award">
-                                                <img src="./img/1.png" class="img-responsive center-block">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4 col-xs-4">
-                                            <div class="award">
-                                                <img src="./img/3.png" class="img-responsive center-block">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-xs-4">
-                                            <div class="award">
-                                                <img src="./img/4.png" class="img-responsive center-block">
-                                            </div>
-                                        </div>
-
-
-
-
-                                    </div>
-                                </div>
-
-                                <!-- end content -->
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </article>
-                <article class="col-md-6">
-
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="uab-dashboard-widget-reputation">
-                        <header>
-                            <h2>Reputation </h2>
-                        </header>
-                        <div>
-
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    <label>Styles:</label>
-                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                    <span data-widget-setstyle="green" class="green-btn"></span>
-                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                    <span data-widget-setstyle="red" class="red-btn"></span>
-                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                    <span data-widget-setstyle="black" class="black-btn"></span>
-                                </div>
-                            </div>
-
-                            <div class="inner-spacer">
-                                <!-- content goes here -->
-                                <div class="widget-content-padding">
-                                    <table class="table table-condensed">
-                                        <tr>
-                                            <td>21</td>
-                                            <td>Follower</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>CEO likes</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Manager Likes</td>
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <!-- end content -->
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <!-- end widget -->
-                </article>
 
             </div>
-            <!-- Row 5 Ends  -->
+        </div>
+        <!-- end widget -->
+    </article>
+</div>
+<!-- Row 4 Ends -->
 
-            <!-- Row 6 Starts -->
-            <div class="row">
-                <article class="col-md-12">
+<!-- Row 5 Starts -->
+<div class="row">
 
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="uab-dashboard-widget-wall">
-                        <header>
-                            <h2>NudgeWall</h2>
-                        </header>
+    <article class="col-md-6">
 
-                        <!-- widget div-->
-                        <div>
-                            <!-- widget edit box -->
-                            <div class="jarviswidget-editbox">
-                                <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    <label>Styles:</label>
-                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                    <span data-widget-setstyle="green" class="green-btn"></span>
-                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                    <span data-widget-setstyle="red" class="red-btn"></span>
-                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                    <span data-widget-setstyle="black" class="black-btn"></span>
-                                </div>
-                            </div>
-                            <!-- end widget edit box -->
+        <!-- new widget -->
+        <div class="jarviswidget" id="uab-dashboard-widget-awards">
+            <header>
+                <h2>Awards</h2>
+            </header>
+            <div>
 
-                            <!-- content -->
-                            <div class="inner-spacer widget-content-padding">
-                                <div class="media block-update-card">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object update-card-MDimentions"
-                                             src="img/avatar/avatar_3.jpg"
-                                             alt="...">
-                                    </a>
-                                    <div class="media-body update-card-body">
-                                        <h4 class="media-heading">Manning Hilton</h4>
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
 
-                                        <p>This is the body content of this media.This can be
-                                            used as an update panel</p>
-                                    </div>
-                                    <div class="pull-right" style="padding: 10px;color:#aaa">
-                                        <h4 style="margin:0;padding:0">
-                                            <i class="icon-thumbs-up"></i>
-                                            <i class="icon-comments"></i>
-                                            <i class="icon-random"></i>
-                                        </h4>
-                                    </div>
+                <div class="inner-spacer">
+                    <div class="widget-content-padding">
+                        <!-- content goes here -->
+                        <div class="row">
 
-                                </div>
-                                <div class="media block-update-card">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object update-card-MDimentions"
-                                             src="img/avatar/avatar_2.jpg"
-                                             alt="...">
-                                    </a>
-                                    <div class="media-body update-card-body">
-                                        <h4 class="media-heading">Manning Hilton</h4>
-
-                                        <p>This is the body content of this media.This can be
-                                            used as an update panel</p>
-                                    </div>
-                                    <div class="pull-right" style="padding: 10px;color:#aaa">
-                                        <h4 style="margin:0;padding:0">
-                                            <i class="icon-thumbs-up"></i>
-                                            <i class="icon-comments"></i>
-                                            <i class="icon-random"></i>
-                                        </h4>
-                                    </div>
-
-                                </div>
-                                <div class="media block-update-card">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object update-card-MDimentions"
-                                             src="img/avatar/avatar_0.jpg"
-                                             alt="...">
-                                    </a>
-
-                                    <div class="media-body update-card-body">
-                                        <h4 class="media-heading">Manning Hilton</h4>
-
-                                        <p>This is the body content of this media.This can be
-                                            used as an update panel</p>
-                                    </div>
-                                    <div class="pull-right" style="padding: 10px;color:#aaa">
-                                        <h4 style="margin:0;padding:0">
-                                            <i class="icon-thumbs-up"></i>
-                                            <i class="icon-comments"></i>
-                                            <i class="icon-random"></i>
-                                        </h4>
-                                    </div>
-
-                                </div>
-                                <div class="media block-update-card">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object update-card-MDimentions"
-                                             src="img/avatar/avatar_1.jpg"
-                                             alt="...">
-                                    </a>
-                                    <div class="media-body update-card-body">
-                                        <h4 class="media-heading">Manning Hilton</h4>
-
-                                        <p>This is the body content of this media.This can be
-                                            used as an update panel</p>
-                                    </div>
-                                    <div class="pull-right" style="padding: 10px;color:#aaa">
-                                        <h4 style="margin:0;padding:0">
-                                            <i class="icon-thumbs-up"></i>
-                                            <i class="icon-comments"></i>
-                                            <i class="icon-random"></i>
-                                        </h4>
-                                    </div>
-
-                                </div>
-                                <div class="row chat-box">
-                                    <textarea name="enter-message" rows="3" cols="1" placeholder="Enter your message..."
-                                              id="chat-box-textarea"></textarea>
-
-                                    <div class="row">
-                                        <div class="col-md-6 type-effect" style="display:none"><img src="img/loaders/misc/16-2.gif"
-                                                                                                    alt=""> Shoaib is typing...
-                                        </div>
-                                        <div class="col-md-6 chat-box-buttons pull-right">
-                                            <input type="submit" name="chat-box-textarea" class="btn medium btn-danger pull-right"
-                                                   value="Update Status" id="send-msg-js">
-                                            <a href="javascript:void(0);" title="" class="pull-right"><i
-                                                    class="icon-camera"></i></a>
-                                        </div>
-                                    </div>
+                            <div class="col-md-4 col-xs-4">
+                                <div class="award">
+                                    <img src="./img/1.png" class="img-responsive center-block">
                                 </div>
                             </div>
-                            <!-- end content -->
+
+                            <div class="col-md-4 col-xs-4">
+                                <div class="award">
+                                    <img src="./img/3.png" class="img-responsive center-block">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <div class="award">
+                                    <img src="./img/4.png" class="img-responsive center-block">
+                                </div>
+                            </div>
+
+
+
 
                         </div>
-                        <!-- end widget div -->
+
                     </div>
-                    <!-- end widget -->
 
-                </article>
+                    <!-- end content -->
+                </div>
+
+
             </div>
-            <!-- Row 6 Ends -->
+        </div>
+        <!-- end widget -->
+    </article>
+    <article class="col-md-6">
 
-        </section>
-        <!-- end widget grid -->
+        <!-- new widget -->
+        <div class="jarviswidget" id="uab-dashboard-widget-reputation">
+            <header>
+                <h2>Reputation </h2>
+            </header>
+            <div>
 
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
+                </div>
+
+                <div class="inner-spacer">
+                    <!-- content goes here -->
+                    <div class="widget-content-padding">
+                        <table class="table table-condensed">
+                            <tr>
+                                <td>21</td>
+                                <td>Follower</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>CEO likes</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Manager Likes</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- end content -->
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end widget -->
+    </article>
+
+</div>
+<!-- Row 5 Ends  -->
+
+<!-- Row 6 Starts -->
+<div class="row">
+<article class="col-md-12">
+
+<!-- new widget -->
+<div class="jarviswidget" id="uab-dashboard-widget-wall">
+<header>
+    <h2>NudgeWall</h2>
+</header>
+
+<!-- widget div-->
+<div>
+<!-- widget edit box -->
+<div class="jarviswidget-editbox">
+    <div>
+        <label>Title:</label>
+        <input type="text"/>
     </div>
+    <div>
+        <label>Styles:</label>
+        <span data-widget-setstyle="purple" class="purple-btn"></span>
+        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+        <span data-widget-setstyle="green" class="green-btn"></span>
+        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+        <span data-widget-setstyle="orange" class="orange-btn"></span>
+        <span data-widget-setstyle="pink" class="pink-btn"></span>
+        <span data-widget-setstyle="red" class="red-btn"></span>
+        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+        <span data-widget-setstyle="black" class="black-btn"></span>
+    </div>
+</div>
+<!-- end widget edit box -->
+
+<!-- content -->
+<div class="inner-spacer widget-content-padding">
+<div class="media block-update-card" style="padding-bottom: 15px;">
+    <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="img/avatar/avatar_3.jpg" alt="...">
+    </a>
+    <div class="media-body update-card-body">
+        <h4 class="media-heading">Manning Hilton</h4>
+        <p>This is the body content of this media.This can be used as an update panel</p>
+        <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
+            <h4 style="margin:0;padding:0">
+                <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
+                <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
+            </h4>
+        </div>
+        <div class="show-comments-block">
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="write-comment-block">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <!--<input type="text" class="form-control comment-box-text-field">-->
+                    <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="media block-update-card" style="padding-bottom: 15px;">
+    <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="img/avatar/avatar_4.jpg" alt="...">
+    </a>
+    <div class="media-body update-card-body">
+        <h4 class="media-heading">Caral Lam</h4>
+        <p>This is the body content of this media.This can be used as an update panel</p>
+        <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
+            <h4 style="margin:0;padding:0">
+                <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
+                <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
+            </h4>
+        </div>
+        <div class="show-comments-block">
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="write-comment-block">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <!--<input type="text" class="form-control comment-box-text-field">-->
+                    <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="media block-update-card" style="padding-bottom: 15px;">
+    <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="img/avatar/avatar_5.jpg" alt="...">
+    </a>
+    <div class="media-body update-card-body">
+        <h4 class="media-heading">Victoria Bitter</h4>
+        <p>This is the body content of this media.This can be used as an update panel</p>
+        <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
+            <h4 style="margin:0;padding:0">
+                <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
+                <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
+            </h4>
+        </div>
+        <div class="show-comments-block">
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="write-comment-block">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <!--<input type="text" class="form-control comment-box-text-field">-->
+                    <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="media block-update-card" style="padding-bottom: 15px;">
+    <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="img/avatar/avatar_6.jpg" alt="...">
+    </a>
+    <div class="media-body update-card-body">
+        <h4 class="media-heading">Julia Berry</h4>
+        <p>This is the body content of this media.This can be used as an update panel</p>
+        <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
+            <h4 style="margin:0;padding:0">
+                <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
+                <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
+            </h4>
+        </div>
+        <div class="show-comments-block">
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="write-comment-block">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <!--<input type="text" class="form-control comment-box-text-field">-->
+                    <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="row chat-box">-->
+<!--<textarea name="enter-message" rows="3" cols="1" placeholder="Enter your message..."-->
+<!--id="chat-box-textarea"></textarea>-->
+
+<!--<div class="row">-->
+<!--<div class="col-md-6 type-effect" style="display:none"><img src="img/loaders/misc/16-2.gif"-->
+<!--alt=""> Shoaib is typing...-->
+<!--</div>-->
+<!--<div class="col-md-6 chat-box-buttons pull-right">-->
+<!--<input type="submit" name="chat-box-textarea" class="btn medium btn-danger pull-right"-->
+<!--value="Update Status" id="send-msg-js">-->
+<!--<a href="javascript:void(0);" title="" class="pull-right"><i-->
+<!--class="icon-camera"></i></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+</div>
+<!-- end content -->
+
+</div>
+<!-- end widget div -->
+</div>
+<!-- end widget -->
+
+</article>
+</div>
+<!-- Row 6 Ends -->
+
+</section>
+<!-- end widget grid -->
+
+</div>
 
 </div>
 <!-- end main content -->
@@ -1222,6 +1388,7 @@
     <div class="mystats indented" style="text-align: center">
         <div class="inner-spacer">
             <h4>Rank</h4>
+
             <div class="rank-circle">
                 <div class="rank-value">
                     34
@@ -1230,14 +1397,14 @@
             <br>
             <table class="table table-condensed" style="color: #cacaca;">
                 <tbody>
-                    <tr>
-                        <td>My Global Rank</td>
-                        <td>230</td>
-                    </tr>
-                    <tr>
-                        <td>My Team Rank</td>
-                        <td>23</td>
-                    </tr>
+                <tr>
+                    <td>My Global Rank</td>
+                    <td>230</td>
+                </tr>
+                <tr>
+                    <td>My Team Rank</td>
+                    <td>23</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -1422,6 +1589,34 @@
             $('#main').css('opacity', 1);
             $('header').fadeIn();
 
+            $('.uab-like-icon').on('click', function () {
+                if ($(this).hasClass("uab-blue-icon")) {
+                    $(this).removeClass("uab-blue-icon");
+                }
+                else {
+                    $(this).addClass("uab-blue-icon");
+                }
+            });
+
+            $('.uab-comment-icon').on('click', function () {
+                $(this).parents('.block-update-card').find(".write-comment-block").show();
+            });
+
+            $('.uab-post-comment-btn').on('click', function () {
+                var posted_comment = $(this).parents('.block-update-card').find(".comment-box-text-field").val();
+                var posted_comment_html =
+                        '<div class="row" style="margin-top: 1%; margin-bottom: 1%;">' +
+                        '<div class="col-md-1 col-xs-1">' +
+                        '<img class="" src="img/avatar/avatar_0.jpg">' +
+                        '</div>' +
+                        '<div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">' +
+                        '<span class="uab-user-name"><strong>Veronica</strong></span>' +
+                        '<span class="uab-user-comment">' + " " + posted_comment + '</span>' +
+                        '</div>' +
+                        '</div>';
+                $(this).parents('.block-update-card').find(".show-comments-block").append(posted_comment_html);
+            });
+
             var shooting_g6 = new JustGage({
                 id: "shooting_g6",
                 value: getRandomInt(0, 100),
@@ -1483,8 +1678,6 @@
                 refreshAnimationTime: 1,
                 refreshAnimationType: "linear"
             });
-
-
 
 
         });

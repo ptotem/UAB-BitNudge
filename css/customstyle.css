@@ -132,3 +132,24 @@ and (orientation : landscape)
     -moz-opacity: 0;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
+
+.uab-fa-icon{
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+.uab-blue-icon{
+    color: #0000ff;
+}
+
+.show-comments-block{
+    height: 100%;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.write-comment-block{
+    display: none;
+    clear: both;
+    width: 90%;
+}
