@@ -176,6 +176,7 @@ header{
     font-weight: normal;
     margin-bottom: 7px;
 
+
 }
 
 @media only screen
@@ -227,5 +228,110 @@ and (orientation : portrait){
         font-size: 10px;
         width: 33%;
         text-align: center;
+    }
+}
+
+
+
+
+.product-block {
+    /*height: 100%;*/
+    /*width: 100%;*/
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+
+}
+
+ .product-image {
+    height: 100%;
+    /*width: 100%;*/
+    padding: 12px;
+     /*float: left;*/
+}
+
+.product-block .product-info{
+    padding: 0px 5px 6px 5px;
+    height: 100px;
+    text-align: center;
+}
+
+/*.product-block .product-info .product-name {*/
+    /*height: 2%;*/
+/*}*/
+
+.product-block .product-info > div {
+    /*width: 100%;*/
+    /*clear: both;*/
+    white-space: nowrap;
+    width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.product-border{
+    border: 1px solid red;
+    height: 160px;
+}
+@media only screen
+and (min-device-width : 300px)
+and (max-device-width : 480px)
+and (orientation : portrait){
+    .product-block{
+        margin-left: 4%;
+    }
+}
+@media only screen
+and (min-device-width : 300px)
+and (max-device-width : 480px)
+and (orientation : landscape){
+    .product-block{
+        margin-left: 30%;
+    }
+}
+@media only screen
+and (min-device-width : 360px)
+and (max-device-width : 640px)
+and (orientation : portrait){
+    .product-block{
+        margin-left: 13%;
+    }
+}
+@media only screen
+and (min-device-width : 481px)
+and (max-device-width : 640px)
+and (orientation : landscape){
+    .product-block{
+        margin-left: 7%;
+    }
+}
+@media only screen
+and (min-device-width : 980px)
+and (max-device-width : 1280px)
+and (orientation : portrait){
+    .product-block{
+        margin-left: 18%;
+    }
+}
+@media only screen
+and (min-device-width : 980px)
+and (max-device-width :1280px)
+and (orientation : landscape){
+    .product-block{
+        margin-left: 7%;
+    }
+}
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 979px)
+and (orientation : portrait){
+    .product-block{
+        margin-left: 11%;
+    }
+}
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width :979px)
+and (orientation : landscape){
+    .product-block{
+        margin-left: 7%;
     }
 }
