@@ -208,3 +208,7 @@ header{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.uab-pagination {
+    display: none;
+}
