@@ -874,10 +874,10 @@
                     <!-- content goes here -->
                     <!-- bar chart -->
                     <div class="row">
-                        <div class=" col-md-6 ">
+                        <div class=" col-md-6 shooting">
                             <div id="shooting_g6"></div>
                         </div>
-                        <div class="col-md-6 ">
+                        <div class="col-md-6 shooting">
                             <div id="quarter_g6"></div>
                         </div>
                     </div>
@@ -1857,6 +1857,7 @@
                 max: 100,
                 title: "Shooting Star of the Month",
                 label: "Julia Berry",
+                relativeGaugeSize: true,
                 showMinMax: false,
                 levelColors: [$chrt_second],
                 showInnerShadow: false,
@@ -1870,6 +1871,7 @@
                 value: getRandomInt(0, 100),
                 min: 0,
                 max: 100,
+                relativeGaugeSize: true,
                 title: "Shooting Star of the Month",
                 label: "The wolves",
                 showMinMax: false,
@@ -1886,6 +1888,7 @@
                 value: getRandomInt(0, 100),
                 min: 0,
                 max: 100,
+                relativeGaugeSize: true,
                 title: "Star of the Quarter",
                 label: "Julia Berry",
                 showMinMax: false,
@@ -1900,6 +1903,7 @@
                 id: "quarter_team_g6",
                 value: getRandomInt(0, 100),
                 min: 0,
+                relativeGaugeSize: true,
                 max: 100,
                 title: "Star of the Quarter",
                 label: "Falicon",
@@ -1913,7 +1917,7 @@
             });
             $("#tpp_filter").change(function () {
                 var end = this.value;
-                if (end.contains("month")) {
+                if (end.indexOf("month")>-1) {
                     $("#tpp_month_view").show();
                     $("#tpp_year_view").hide();
                 }
@@ -1925,7 +1929,7 @@
 
             $("#activity_filter").change(function () {
                 var end = this.value;
-                if (end.contains("month")) {
+                if (end.indexOf("month")>-1) {
                     $("#activity_month_view").show();
                     $("#activity_year_view").hide();
                 }

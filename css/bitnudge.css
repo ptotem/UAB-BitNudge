@@ -100,7 +100,7 @@ header{
     font-size: 14px;
     border-top: #e0e0e0 1px solid;
     padding-top: 5px;
-    margin: 0px;
+    margin: 0;
 }
 .block-update-card .card-bottom-status:hover {
     background-color: #dd4b39;
@@ -120,7 +120,7 @@ header{
     margin-bottom: 1%;
 }
 .nullify-margin-top{
-    margin-top: 0%;
+    margin-top: 0;
 }
 .my-profile-lrg{
     width: 100%;
@@ -211,4 +211,60 @@ header{
 
 .uab-pagination {
     display: none;
+}
+
+
+@media only screen
+and (min-device-width : 980px)
+and (max-device-width : 1280px)
+and (orientation : portrait){
+    .tab-size-fixing{
+        font-size: 13px;
+        width: 28%;
+        text-align: center;
+    }
+}
+
+@media only screen
+and (min-device-width : 360px)
+and (max-device-width : 640px)
+and (orientation : portrait){
+    .tab-size-fixing{
+        font-size: 10px;
+        width: 33.3%;
+        text-align: center;
+    }
+}
+
+@media only screen
+and (min-device-width : 300px)
+and (max-device-width : 640px)
+and (orientation : landscape){
+    .tab-size-fixing{
+        font-size: 10px;
+        width: 28%;
+        text-align: center;
+    }
+}
+
+@media only screen
+and (min-device-width : 300px)
+and (max-device-width : 480px)
+and (orientation : landscape){
+    .tab-size-fixing{
+        font-size: 15px;
+        width: 33%;
+        text-align: center;
+    }
+}
+
+@media only screen
+and (min-device-width : 300px)
+and (max-device-width : 480px)
+and (orientation : portrait){
+    .tab-size-fixing{
+        font-size: 10px;
+        width: 33%;
+        text-align: center;
+    }
 }
