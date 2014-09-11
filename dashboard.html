@@ -91,6 +91,18 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
     <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+
+    <style>
+        /*#g1, #g2, #g3, #g4, #g5, #g6*/
+        #shooting_g6, #quarter_g6, #shooting_team_g6, #quarter_team_g6{
+            /*width: 200px; */
+            width: 160px;
+            height:120px;
+            display: inline-block;
+            /*margin: 1em;*/
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -344,7 +356,7 @@
                 <a href="redeem_points.html"><i class="icon-certificate"></i>Redeem Points</a>
             </li>
             <li class="">
-                <a href="#"><i class="icon-signal"></i>Result Analysis</a>
+                <a href="result_analysis.html"><i class="icon-signal"></i>Result Analysis</a>
             </li>
             <li class="">
                 <a href="faq.html"><i class="icon-signal"></i>FAQs</a>
@@ -881,18 +893,15 @@
                     </div>
                 </div>
 
-                <div class="inner-spacer">
+                <div class="inner-spacer widget-content-padding">
                     <!-- content goes here -->
-                    <!-- bar chart -->
                     <div class="row">
-                        <div class="col-md-6">
-                            <h5 class="text-center">Shooting Star of the Month</h5>
-
+                        <div class="col-md-6 text-center">
+                            <h5>Shooting Star of the <br>Month</h5>
                             <div id="shooting_g6"></div>
                         </div>
-                        <div class="col-md-6">
-                            <h5 class="text-center">Star of the Quarter</h5>
-
+                        <div class="col-md-6 text-center">
+                            <h5>Star of the <br>Quarter</h5>
                             <div id="quarter_g6"></div>
                         </div>
                     </div>
@@ -931,18 +940,16 @@
                     </div>
                 </div>
 
-                <div class="inner-spacer">
+                <div class="inner-spacer widget-content-padding">
                     <!-- content goes here -->
                     <!-- bar chart -->
                     <div class="row">
-                        <div class="col-md-6">
-                            <h5 class="text-center">Shooting Star of the Month</h5>
-
+                        <div class="col-md-6 text-center">
+                            <h5>Shooting Star of the <br>Month</h5>
                             <div id="shooting_team_g6" class="last"></div>
                         </div>
-                        <div class="col-md-6">
-                            <h5 class="text-center">Star of the Quarter</h5>
-
+                        <div class="col-md-6 text-center">
+                            <h5>Star of the <br>Quarter</h5>
                             <div id="quarter_team_g6" class="last"></div>
                         </div>
                     </div>
@@ -1087,292 +1094,292 @@
 
 <!-- Row 6 Starts -->
 <div class="row">
-    <article class="col-md-12">
+<article class="col-md-12">
 
-        <!-- new widget -->
-        <div class="jarviswidget" id="uab-dashboard-widget-wall">
-            <header>
-                <h2>NudgeWall</h2>
-            </header>
+<!-- new widget -->
+<div class="jarviswidget" id="uab-dashboard-widget-wall">
+<header>
+    <h2>NudgeWall</h2>
+</header>
 
-            <!-- widget div-->
-            <div>
-                <!-- widget edit box -->
-                <div class="jarviswidget-editbox">
-                    <div>
-                        <label>Title:</label>
-                        <input type="text"/>
-                    </div>
-                    <div>
-                        <label>Styles:</label>
-                        <span data-widget-setstyle="purple" class="purple-btn"></span>
-                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                        <span data-widget-setstyle="green" class="green-btn"></span>
-                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                        <span data-widget-setstyle="orange" class="orange-btn"></span>
-                        <span data-widget-setstyle="pink" class="pink-btn"></span>
-                        <span data-widget-setstyle="red" class="red-btn"></span>
-                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                        <span data-widget-setstyle="black" class="black-btn"></span>
-                    </div>
-                </div>
-                <!-- end widget edit box -->
+<!-- widget div-->
+<div>
+<!-- widget edit box -->
+<div class="jarviswidget-editbox">
+    <div>
+        <label>Title:</label>
+        <input type="text"/>
+    </div>
+    <div>
+        <label>Styles:</label>
+        <span data-widget-setstyle="purple" class="purple-btn"></span>
+        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+        <span data-widget-setstyle="green" class="green-btn"></span>
+        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+        <span data-widget-setstyle="orange" class="orange-btn"></span>
+        <span data-widget-setstyle="pink" class="pink-btn"></span>
+        <span data-widget-setstyle="red" class="red-btn"></span>
+        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+        <span data-widget-setstyle="black" class="black-btn"></span>
+    </div>
+</div>
+<!-- end widget edit box -->
 
-                <!-- content -->
-                <div class="inner-spacer widget-content-padding">
-                    <div class="media block-update-card" style="padding-bottom: 15px;">
-                        <a class="pull-left" href="#">
-                            <img class="media-object update-card-MDimentions" src="img/avatar/avatar_3.jpg" alt="...">
-                        </a>
-                        <div class="media-body update-card-body">
-                            <h4 class="media-heading">Manning Hilton</h4>
-                            <p>This is the body content of this media.This can be used as an update panel</p>
-                            <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
-                                <h4 style="margin:0;padding:0">
-                                    <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
-                                    <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
-                                </h4>
-                            </div>
-                            <div class="show-comments-block">
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="write-comment-block">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-1">
-                                        <!--<input type="text" class="form-control comment-box-text-field">-->
-                                        <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media block-update-card" style="padding-bottom: 15px;">
-                        <a class="pull-left" href="#">
-                            <img class="media-object update-card-MDimentions" src="img/avatar/avatar_4.jpg" alt="...">
-                        </a>
-                        <div class="media-body update-card-body">
-                            <h4 class="media-heading">Caral Lam</h4>
-                            <p>This is the body content of this media.This can be used as an update panel</p>
-                            <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
-                                <h4 style="margin:0;padding:0">
-                                    <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
-                                    <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
-                                </h4>
-                            </div>
-                            <div class="show-comments-block">
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="write-comment-block">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-1">
-                                        <!--<input type="text" class="form-control comment-box-text-field">-->
-                                        <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media block-update-card" style="padding-bottom: 15px;">
-                        <a class="pull-left" href="#">
-                            <img class="media-object update-card-MDimentions" src="img/avatar/avatar_5.jpg" alt="...">
-                        </a>
-                        <div class="media-body update-card-body">
-                            <h4 class="media-heading">Victoria Bitter</h4>
-                            <p>This is the body content of this media.This can be used as an update panel</p>
-                            <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
-                                <h4 style="margin:0;padding:0">
-                                    <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
-                                    <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
-                                </h4>
-                            </div>
-                            <div class="show-comments-block">
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="write-comment-block">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-1">
-                                        <!--<input type="text" class="form-control comment-box-text-field">-->
-                                        <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media block-update-card" style="padding-bottom: 15px;">
-                        <a class="pull-left" href="#">
-                            <img class="media-object update-card-MDimentions" src="img/avatar/avatar_6.jpg" alt="...">
-                        </a>
-                        <div class="media-body update-card-body">
-                            <h4 class="media-heading">Julia Berry</h4>
-                            <p>This is the body content of this media.This can be used as an update panel</p>
-                            <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
-                                <h4 style="margin:0;padding:0">
-                                    <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
-                                    <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
-                                </h4>
-                            </div>
-                            <div class="show-comments-block">
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                                    <div class="col-md-1 col-xs-1">
-                                        <img src="img/avatar/avatar_0.jpg" class="">
-                                    </div>
-                                    <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
-                                        <span class="uab-user-name"><strong>Veronica</strong></span>
-                                        <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="write-comment-block">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-1">
-                                        <!--<input type="text" class="form-control comment-box-text-field">-->
-                                        <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--<div class="row chat-box">-->
-                        <!--<textarea name="enter-message" rows="3" cols="1" placeholder="Enter your message..."-->
-                                  <!--id="chat-box-textarea"></textarea>-->
-
-                        <!--<div class="row">-->
-                            <!--<div class="col-md-6 type-effect" style="display:none"><img src="img/loaders/misc/16-2.gif"-->
-                                                                                        <!--alt=""> Shoaib is typing...-->
-                            <!--</div>-->
-                            <!--<div class="col-md-6 chat-box-buttons pull-right">-->
-                                <!--<input type="submit" name="chat-box-textarea" class="btn medium btn-danger pull-right"-->
-                                       <!--value="Update Status" id="send-msg-js">-->
-                                <!--<a href="javascript:void(0);" title="" class="pull-right"><i-->
-                                        <!--class="icon-camera"></i></a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                </div>
-                <!-- end content -->
-
-            </div>
-            <!-- end widget div -->
+<!-- content -->
+<div class="inner-spacer widget-content-padding">
+<div class="media block-update-card" style="padding-bottom: 15px;">
+    <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="img/avatar/avatar_3.jpg" alt="...">
+    </a>
+    <div class="media-body update-card-body">
+        <h4 class="media-heading">Manning Hilton</h4>
+        <p>This is the body content of this media.This can be used as an update panel</p>
+        <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
+            <h4 style="margin:0;padding:0">
+                <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
+                <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
+            </h4>
         </div>
-        <!-- end widget -->
+        <div class="show-comments-block">
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+        </div>
 
-    </article>
+        <div class="write-comment-block">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <!--<input type="text" class="form-control comment-box-text-field">-->
+                    <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="media block-update-card" style="padding-bottom: 15px;">
+    <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="img/avatar/avatar_4.jpg" alt="...">
+    </a>
+    <div class="media-body update-card-body">
+        <h4 class="media-heading">Caral Lam</h4>
+        <p>This is the body content of this media.This can be used as an update panel</p>
+        <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
+            <h4 style="margin:0;padding:0">
+                <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
+                <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
+            </h4>
+        </div>
+        <div class="show-comments-block">
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="write-comment-block">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <!--<input type="text" class="form-control comment-box-text-field">-->
+                    <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="media block-update-card" style="padding-bottom: 15px;">
+    <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="img/avatar/avatar_5.jpg" alt="...">
+    </a>
+    <div class="media-body update-card-body">
+        <h4 class="media-heading">Victoria Bitter</h4>
+        <p>This is the body content of this media.This can be used as an update panel</p>
+        <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
+            <h4 style="margin:0;padding:0">
+                <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
+                <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
+            </h4>
+        </div>
+        <div class="show-comments-block">
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="write-comment-block">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <!--<input type="text" class="form-control comment-box-text-field">-->
+                    <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="media block-update-card" style="padding-bottom: 15px;">
+    <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="img/avatar/avatar_6.jpg" alt="...">
+    </a>
+    <div class="media-body update-card-body">
+        <h4 class="media-heading">Julia Berry</h4>
+        <p>This is the body content of this media.This can be used as an update panel</p>
+        <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
+            <h4 style="margin:0;padding:0">
+                <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
+                <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
+            </h4>
+        </div>
+        <div class="show-comments-block">
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                <div class="col-md-1 col-xs-1">
+                    <img src="img/avatar/avatar_0.jpg" class="">
+                </div>
+                <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                    <span class="uab-user-name"><strong>Veronica</strong></span>
+                    <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="write-comment-block">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-1">
+                    <!--<input type="text" class="form-control comment-box-text-field">-->
+                    <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success uab-post-comment-btn">Post Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="row chat-box">-->
+<!--<textarea name="enter-message" rows="3" cols="1" placeholder="Enter your message..."-->
+<!--id="chat-box-textarea"></textarea>-->
+
+<!--<div class="row">-->
+<!--<div class="col-md-6 type-effect" style="display:none"><img src="img/loaders/misc/16-2.gif"-->
+<!--alt=""> Shoaib is typing...-->
+<!--</div>-->
+<!--<div class="col-md-6 chat-box-buttons pull-right">-->
+<!--<input type="submit" name="chat-box-textarea" class="btn medium btn-danger pull-right"-->
+<!--value="Update Status" id="send-msg-js">-->
+<!--<a href="javascript:void(0);" title="" class="pull-right"><i-->
+<!--class="icon-camera"></i></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+</div>
+<!-- end content -->
+
+</div>
+<!-- end widget div -->
+</div>
+<!-- end widget -->
+
+</article>
 </div>
 <!-- Row 6 Ends -->
 
@@ -1573,6 +1580,9 @@
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
 <script type="text/javascript">
+//    var g1, g2, g3, g4, g5, g6;
+    var shooting_g6, quarter_g6, shooting_team_g6, quarter_team_g6;
+
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -1620,15 +1630,17 @@
                 $(this).parents('.block-update-card').find(".show-comments-block").append(posted_comment_html);
             });
 
+
             var shooting_g6 = new JustGage({
                 id: "shooting_g6",
                 value: getRandomInt(0, 100),
                 min: 0,
                 max: 100,
-                title: "Julia Berry",
+                title: "Veronica",
                 label: "",
                 showMinMax: false,
-                levelColors: [$chrt_second],
+                gaugeColor: "#fff",
+                levelColors: ["#0055ff"],
                 showInnerShadow: false,
                 startAnimationTime: 1,
                 startAnimationType: "linear",
@@ -1640,10 +1652,11 @@
                 value: getRandomInt(0, 100),
                 min: 0,
                 max: 100,
-                title: "The wolves",
+                title: "John D. Rockfeller",
                 label: "",
                 showMinMax: false,
-                levelColors: [$chrt_second],
+                gaugeColor: "#fff",
+                levelColors: ["#0055ff"],
                 showInnerShadow: false,
                 startAnimationTime: 1,
                 startAnimationType: "linear",
@@ -1656,10 +1669,11 @@
                 value: getRandomInt(0, 100),
                 min: 0,
                 max: 100,
-                title: "Julia Berry",
+                title: "Natalia",
                 label: "",
                 showMinMax: false,
-                levelColors: [$chrt_second],
+                gaugeColor: "#fff",
+                levelColors: ["#0055ff"],
                 showInnerShadow: false,
                 startAnimationTime: 1,
                 startAnimationType: "linear",
@@ -1671,10 +1685,11 @@
                 value: getRandomInt(0, 100),
                 min: 0,
                 max: 100,
-                title: "Falicon",
+                title: "Adam",
                 label: "",
                 showMinMax: false,
-                levelColors: [$chrt_second],
+                gaugeColor: "#fff",
+                levelColors: ["#0055ff"],
                 showInnerShadow: false,
                 startAnimationTime: 1,
                 startAnimationType: "linear",

@@ -90,7 +90,7 @@
     <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png"
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-        <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+    <link href="css/customstyle.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -295,12 +295,16 @@
             <span class="first-child"><strong>Shoaib Akhtar</strong></span>
             <span class="nullify-bold">HR Head</span>
             <span class="nullify-bold">Walves</span>
-            <span><a href="edit_profile.html">Edit Profile</a></span>
+            <span><a href="javascript:void(0);">Edit Profile </a></span>
         </div>
         <br>
+
         <div class="my-profile semi-block">
             <strong>Profile Complete</strong><strong class="pull-right">89%</strong>
-            <div class="progress progress-danger slim"><div class="bar" data-percentage="89"></div></div>
+
+            <div class="progress progress-danger slim">
+                <div class="bar" data-percentage="89"></div>
+            </div>
         </div>
     </div>
 
@@ -325,13 +329,16 @@
                 <a href="challenges.html"><i class="icon-dashboard"></i>Challenges</a>
             </li>
             <li class="">
-                <a href="#"><i class="icon-inbox"></i>Wall</a>
+                <a href="wall.html"><i class="icon-inbox"></i>Wall</a>
             </li>
             <li class="">
-                <a href="error-page.html"><i class="icon-certificate"></i>Redeem Points</a>
+                <a href="messages.html"><i class="icon-inbox"></i>Messages</a>
             </li>
             <li class="">
-                <a href="#"><i class="icon-signal"></i>Result Analysis</a>
+                <a href="redeem_points.html"><i class="icon-certificate"></i>Redeem Points</a>
+            </li>
+            <li class="">
+                <a href="result_analysis.html"><i class="icon-signal"></i>Result Analysis</a>
             </li>
             <li class="">
                 <a href="faq.html"><i class="icon-signal"></i>FAQs</a>
@@ -400,59 +407,70 @@
                 <!-- content -->
                 <div class="inner-spacer">
                     <div class="widget-content-padding">
-                    <!-- content goes here -->
-                    <div class="progress-stats">
-                        <div class="">
-                            <div class="row">
-                                <div class="col-md-3 col-xs-3">
-                                    <img alt="" src="img/avatar/avatar_8.jpg" width="100px"><br><br>
-                                    <label class="cabinet">
-                                        <input type="file" class="file" />
-                                    </label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="row">
-                                        <input  class="form-control" type="text" placeholder="Name">
-
+                        <!-- content goes here -->
+                        <div class="progress-stats">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-md-3 col-xs-3">
+                                        <img alt="" src="img/avatar/avatar_8.jpg" class="img-responsive"
+                                             width="100px"><br><br>
+                                        <label class="cabinet">
+                                            <input type="file" class="file"/>
+                                        </label>
                                     </div>
-                                    <br>
-                                    <div class="row">
-                                        <input  class="form-control" type="text" placeholder="Designation">
+                                    <div class="col-md-9">
+                                          <div class="row">
+                                              <div class="col-md-12">
+                                            <input class="form-control" type="text" placeholder="Name">
+                                           </div>
+                                              </div>
 
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <input  class="form-control" type="text" placeholder="Department">
+                                        <br>
 
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <input  class="form-control" type="text" placeholder="Quote">
+                                        <div class="row">
+                                         <div class="col-md-12">
 
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                    <div class="col-md-6 col-xs-6">
-                                        <button class="btn medium btn-danger pull-right" type="reset"> Cancel </button>
+                                            <input class="form-control" type="text" placeholder="Designation">
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <button class="btn medium btn-primary pull-left" type="submit" onclick="window.location='profile.html'"> Save changes </button>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            <input class="form-control" type="text" placeholder="Department">
+                                             </div>
                                         </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                            <input class="form-control" type="text" placeholder="Quote">
+                                             </div>
+                                        </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-6">
+                                                <button class="btn medium btn-danger pull-right" type="reset"> Cancel
+                                                </button>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <button class="btn medium btn-primary pull-left" type="submit"
+                                                        onclick="window.location='profile.html'"> Save changes
+                                                </button>
+                                            </div>
+
+                                        </div>
+
 
                                     </div>
 
-
-
                                 </div>
+
 
                             </div>
-
-
-
-
                         </div>
                     </div>
-                        </div>
                 </div>
                 <!-- end content -->
 
@@ -509,30 +527,31 @@
 
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-3 ">
+                                    <div class="col-md-3 col-sm-3 text-center">
                                         <div class="mychart" id="balance" style="width:35px"></div>
                                         <br>
-                                        <h5 style="color: #333"><span style="color: #666">Total Points:</span>17,349</h5>
-
+                                        <h5 style="color: #333"><span style="color: #666">Total Points:</span>17,349
+                                        </h5>
 
 
                                     </div>
-                                    <div class="col-md-3 ">
+                                    <div class="col-md-3 col-sm-3 text-center">
                                         <div class="mychart" id="support" style="width:35px"></div>
                                         <br>
-                                        <h5 style="color: #333"><span style="color: #666">Total Points:</span>17,349</h5>
+                                        <h5 style="color: #333"><span style="color: #666">Peer Points:</span>17,349</h5>
 
                                     </div>
-                                    <div class="col-md-3 ">
+                                    <div class="col-md-3 col-sm-3 text-center">
                                         <div class="mychart" id="subscribe" style="width:35px"></div>
                                         <br>
-                                        <h5 style="color: #333"><span style="color: #666">Total Points:</span>17,349</h5>
+                                        <h5 style="color: #333"><span style="color: #666">Action Points:</span>17,349
+                                        </h5>
 
                                     </div>
-                                    <div class="col-md-3 ">
+                                    <div class="col-md-3 col-sm-3 text-center">
                                         <div class="mychart" id="clicks" style="width:35px"></div>
                                         <br>
-                                        <h5 style="color: #333"><span style="color: #666">Total Points:</span>17,349</h5>
+                                        <h5 style="color: #333"><span style="color: #666">Team Points:</span>17,349</h5>
                                     </div>
                                 </div>
 
@@ -587,35 +606,29 @@
 
                 <div class="inner-spacer">
                     <div class="widget-content-padding">
-                    <!-- content goes here -->
-                    <div class="row">
+                        <!-- content goes here -->
+                        <div class="row">
 
-                        <div class="col-md-3">
-                        <div class="award progress-bar-success text-center">
-                        gold
-                        </div>
-                        </div>
-                        <div class="col-md-3">
-                        <div class="award progress-bar-danger text-center">
-                        silver
-                        </div>
-                        </div>
-                        <div class="col-md-3 ">
-                        <div class="award progress-bar-warning text-center">
-                        bronze
-                        </div>
-                        </div>
-                        <div class="col-md-3">
-                        <div class="award  progress-bar-info text-center">
-                        gold
-                        </div>
-                        </div>
+                            <div class="col-md-4 col-xs-4">
+                                <div class="award">
+                                    <img src="./img/1.png" class="img-responsive center-block">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-xs-4">
+                                <div class="award">
+                                    <img src="./img/3.png" class="img-responsive center-block">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <div class="award">
+                                    <img src="./img/4.png" class="img-responsive center-block">
+                                </div>
+                            </div>
 
 
-
-
+                        </div>
                     </div>
-                        </div>
 
                     <!-- end content -->
                 </div>
@@ -655,20 +668,20 @@
 
                 <div class="inner-spacer">
                     <!-- content goes here -->
-                        <div class="widget-content-padding">
+                    <div class="widget-content-padding">
                         <table class="table table-condensed">
-                        <tr>
-                        <td>21</td>
-                        <td>Follower</td>
-                        </tr>
-                        <tr>
-                        <td>2</td>
-                        <td>CEO likes</td>
-                        </tr>
-                        <tr>
-                        <td>4</td>
-                        <td>Manager Likes</td>
-                        </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Follower</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>CEO likes</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Manager Likes</td>
+                            </tr>
                         </table>
                     </div>
 
@@ -738,7 +751,6 @@
                             </ul>
 
 
-
                         </div>
 
                         <!-- end widget div -->
@@ -757,149 +769,152 @@
 <!-- Row 3 -->
 <div class="row">
 
-<article class="col-md-12">
+    <article class="col-md-12">
 
-    <!-- new widget -->
-    <div class="jarviswidget" id="latestpost">
-        <header>
-            <h2>Latest Post</h2>
-        </header>
+        <!-- new widget -->
+        <div class="jarviswidget" id="latestpost">
+            <header>
+                <h2>Latest Post</h2>
+            </header>
 
-        <!-- widget div-->
-        <div>
-            <!-- widget edit box -->
-            <div class="jarviswidget-editbox">
-                <div>
-                    <label>Title:</label>
-                    <input type="text"/>
+            <!-- widget div-->
+            <div>
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <div>
+                        <label>Title:</label>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <label>Styles:</label>
+                        <span data-widget-setstyle="purple" class="purple-btn"></span>
+                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                        <span data-widget-setstyle="green" class="green-btn"></span>
+                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                        <span data-widget-setstyle="orange" class="orange-btn"></span>
+                        <span data-widget-setstyle="pink" class="pink-btn"></span>
+                        <span data-widget-setstyle="red" class="red-btn"></span>
+                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                        <span data-widget-setstyle="black" class="black-btn"></span>
+                    </div>
                 </div>
-                <div>
-                    <label>Styles:</label>
-                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                    <span data-widget-setstyle="green" class="green-btn"></span>
-                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                    <span data-widget-setstyle="red" class="red-btn"></span>
-                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                    <span data-widget-setstyle="black" class="black-btn"></span>
-                </div>
-            </div>
-            <!-- end widget edit box -->
+                <!-- end widget edit box -->
 
-            <!-- content -->
-            <div class="inner-spacer widget-content-padding">
-                <div class="media block-update-card">
-                    <a class="pull-left" href="#">
-                        <img class="media-object update-card-MDimentions"
-                             src="img/avatar/avatar_3.jpg"
-                             alt="...">
-                    </a>
-                    <div class="media-body update-card-body">
-                        <h4 class="media-heading">Manning Hilton</h4>
+                <!-- content -->
+                <div class="inner-spacer widget-content-padding">
+                    <div class="media block-update-card">
+                        <a class="pull-left" href="#">
+                            <img class="media-object update-card-MDimentions"
+                                 src="img/avatar/avatar_3.jpg"
+                                 alt="...">
+                        </a>
 
-                        <p>This is the body content of this media.This can be
-                            used as an update panel</p>
-                    </div>
-                    <div class="pull-right" style="padding: 10px;color:#aaa">
-                        <h4 style="margin:0;padding:0">
-                            <i class="icon-thumbs-up"></i>
-                            <i class="icon-comments"></i>
-                            <i class="icon-random"></i>
-                        </h4>
-                    </div>
+                        <div class="media-body update-card-body">
+                            <h4 class="media-heading">Manning Hilton</h4>
 
-                </div>
-                <div class="media block-update-card">
-                    <a class="pull-left" href="#">
-                        <img class="media-object update-card-MDimentions"
-                             src="img/avatar/avatar_2.jpg"
-                             alt="...">
-                    </a>
-                    <div class="media-body update-card-body">
-                        <h4 class="media-heading">Manning Hilton</h4>
-
-                        <p>This is the body content of this media.This can be
-                            used as an update panel</p>
-                    </div>
-                    <div class="pull-right" style="padding: 10px;color:#aaa">
-                        <h4 style="margin:0;padding:0">
-                            <i class="icon-thumbs-up"></i>
-                            <i class="icon-comments"></i>
-                            <i class="icon-random"></i>
-                        </h4>
-                    </div>
-
-                </div>
-                <div class="media block-update-card">
-                    <a class="pull-left" href="#">
-                        <img class="media-object update-card-MDimentions"
-                             src="img/avatar/avatar_0.jpg"
-                             alt="...">
-                    </a>
-
-                    <div class="media-body update-card-body">
-                        <h4 class="media-heading">Manning Hilton</h4>
-
-                        <p>This is the body content of this media.This can be
-                            used as an update panel</p>
-                    </div>
-                    <div class="pull-right" style="padding: 10px;color:#aaa">
-                        <h4 style="margin:0;padding:0">
-                            <i class="icon-thumbs-up"></i>
-                            <i class="icon-comments"></i>
-                            <i class="icon-random"></i>
-                        </h4>
-                    </div>
-
-                </div>
-                <div class="media block-update-card">
-                    <a class="pull-left" href="#">
-                        <img class="media-object update-card-MDimentions"
-                             src="img/avatar/avatar_1.jpg"
-                             alt="...">
-                    </a>
-                    <div class="media-body update-card-body">
-                        <h4 class="media-heading">Manning Hilton</h4>
-
-                        <p>This is the body content of this media.This can be
-                            used as an update panel</p>
-                    </div>
-                    <div class="pull-right" style="padding: 10px;color:#aaa">
-                        <h4 style="margin:0;padding:0">
-                            <i class="icon-thumbs-up"></i>
-                            <i class="icon-comments"></i>
-                            <i class="icon-random"></i>
-                        </h4>
-                    </div>
-
-                </div>
-                <div class="row chat-box">
-                    <textarea name="enter-message" rows="3" cols="1" placeholder="Enter your message..."
-                              id="chat-box-textarea"></textarea>
-
-                    <div class="row">
-                        <div class="col-md-6 type-effect" style="display:none"><img src="img/loaders/misc/16-2.gif"
-                                                                                    alt=""> Shoaib is typing...
+                            <p>This is the body content of this media.This can be
+                                used as an update panel</p>
                         </div>
-                        <div class="col-md-6 chat-box-buttons pull-right">
-                            <input type="submit" name="chat-box-textarea" class="btn medium btn-danger pull-right"
-                                   value="Update Status" id="send-msg-js">
-                            <a href="javascript:void(0);" title="" class="pull-right"><i
-                                    class="icon-camera"></i></a>
+                        <div class="pull-right" style="padding: 10px;color:#aaa">
+                            <h4 style="margin:0;padding:0">
+                                <i class="icon-thumbs-up"></i>
+                                <i class="icon-comments"></i>
+                                <i class="icon-random"></i>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="media block-update-card">
+                        <a class="pull-left" href="#">
+                            <img class="media-object update-card-MDimentions"
+                                 src="img/avatar/avatar_2.jpg"
+                                 alt="...">
+                        </a>
+
+                        <div class="media-body update-card-body">
+                            <h4 class="media-heading">Manning Hilton</h4>
+
+                            <p>This is the body content of this media.This can be
+                                used as an update panel</p>
+                        </div>
+                        <div class="pull-right" style="padding: 10px;color:#aaa">
+                            <h4 style="margin:0;padding:0">
+                                <i class="icon-thumbs-up"></i>
+                                <i class="icon-comments"></i>
+                                <i class="icon-random"></i>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="media block-update-card">
+                        <a class="pull-left" href="#">
+                            <img class="media-object update-card-MDimentions"
+                                 src="img/avatar/avatar_0.jpg"
+                                 alt="...">
+                        </a>
+
+                        <div class="media-body update-card-body">
+                            <h4 class="media-heading">Manning Hilton</h4>
+
+                            <p>This is the body content of this media.This can be
+                                used as an update panel</p>
+                        </div>
+                        <div class="pull-right" style="padding: 10px;color:#aaa">
+                            <h4 style="margin:0;padding:0">
+                                <i class="icon-thumbs-up"></i>
+                                <i class="icon-comments"></i>
+                                <i class="icon-random"></i>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="media block-update-card">
+                        <a class="pull-left" href="#">
+                            <img class="media-object update-card-MDimentions"
+                                 src="img/avatar/avatar_1.jpg"
+                                 alt="...">
+                        </a>
+
+                        <div class="media-body update-card-body">
+                            <h4 class="media-heading">Manning Hilton</h4>
+
+                            <p>This is the body content of this media.This can be
+                                used as an update panel</p>
+                        </div>
+                        <div class="pull-right" style="padding: 10px;color:#aaa">
+                            <h4 style="margin:0;padding:0">
+                                <i class="icon-thumbs-up"></i>
+                                <i class="icon-comments"></i>
+                                <i class="icon-random"></i>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="row chat-box">
+                        <textarea name="enter-message" rows="3" cols="1" placeholder="Enter your message..."
+                                  id="chat-box-textarea"></textarea>
+
+                        <div class="row">
+                            <div class="col-md-6 type-effect" style="display:none"><img src="img/loaders/misc/16-2.gif"
+                                                                                        alt=""> Shoaib is typing...
+                            </div>
+                            <div class="col-md-6 chat-box-buttons pull-right">
+                                <input type="submit" name="chat-box-textarea" class="btn medium btn-danger pull-right"
+                                       value="Update Status" id="send-msg-js">
+                                <a href="javascript:void(0);" title="" class="pull-right"><i
+                                        class="icon-camera"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end content -->
+                <!-- end content -->
 
+            </div>
+            <!-- end widget div -->
         </div>
-        <!-- end widget div -->
-    </div>
-    <!-- end widget -->
+        <!-- end widget -->
 
-</article>
+    </article>
 </div>
 <!-- end row -->
 
@@ -914,9 +929,9 @@
 
     <!-- aside item: Tiny Stats -->
     <!--<div class="number-stats" style="text-align: center">-->
-        <!--<ul>-->
-            <!--<li><span>Class</span>Platinum</li>-->
-        <!--</ul>-->
+    <!--<ul>-->
+    <!--<li><span>Class</span>Platinum</li>-->
+    <!--</ul>-->
     <!--</div>-->
     <div class="divider"></div>
     <!-- end aside item: Tiny Stats -->
