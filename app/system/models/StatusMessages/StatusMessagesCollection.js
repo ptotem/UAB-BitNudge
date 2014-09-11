@@ -9,7 +9,7 @@ var statusMessageSchema=new Schema({
     org_Id : {type:Schema.Types.ObjectId,ref:'organization'},
     messages : [{type:String}],
     likes : String,
-    created_at :Date
+    createdAt :Date
 });
 var StatusMessage=mongoose.model('status_messages',statusMessageSchema);
 module.exports=StatusMessage;

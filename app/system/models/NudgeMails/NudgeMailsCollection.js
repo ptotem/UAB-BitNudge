@@ -8,7 +8,7 @@ var nudgeMailsSchema=new Schema({
     timestamp:String,
     organizationId:{type:Schema.Types.ObjectId,ref:'organization'},
     read :String,
-    created_at:Date
+    createdAt:Date
 });
 var nudgeMail=mongoose.model('nudgeMail',nudgeMailsSchema);
 module.exports=nudgeMail;

@@ -1,9 +1,7 @@
 var ProductsCollection=require('./ProductsCollection.js');
 
 var Product= {
-    initialize: function (server) {
-        console.log("Product initialized");
-    },
+
     getProductDetail:function(product_id,fieldName){
         ProductsCollection.find(({'_id' :product_id}).fieldName,callback);
     },

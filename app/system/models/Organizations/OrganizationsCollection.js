@@ -6,7 +6,7 @@ var organizationSchema=new Schema({
     name:String,
     location:String,
     revenue :[{type:Schema.Types.ObjectId,ref:'revenues'}],
-    created_at:Date
+    createdAt:Date
 });
 var Organization=mongoose.model('organization',organizationSchema);
 module.exports=Organization;

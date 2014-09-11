@@ -1,9 +1,6 @@
 var OrganizationsCollection=require('./OrganizationsCollection.js');
 
 var Organization= {
-    initialize: function (server) {
-        console.log("Organization initialized");
-    },
     getOrganizationDetail:function(org,fieldName){
         OrganizationsCollection.find(({'_id' :org}).fieldName,callback);
     },
@@ -49,11 +46,4 @@ var Organization= {
 
     }
 }
-//module.exports=Organization;
-//.findOne({ title: 'Once upon a timex.' })
-//    .populate('_creator')
-//    .exec(function (err, story) {
-//        if (err) return handleError(err);
-//        console.log('The creator is %s', story._creator.name);
-//        // prints "The creator is Aaron"
-//    })
+module.exports=Organization;

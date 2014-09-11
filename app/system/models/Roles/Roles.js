@@ -1,9 +1,6 @@
 var RolesCollection=require('./RolesCollection.js');
 
 var Role= {
-    initialize: function (server) {
-        console.log("Roles initialized");
-    },
     getRoleDetail:function(org,fieldName){
         RolesCollection.find(({'_id' :org}).fieldName,callback);
     },

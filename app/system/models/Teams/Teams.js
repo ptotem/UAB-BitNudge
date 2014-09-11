@@ -97,7 +97,7 @@ var Team= {
                 return leader.teamLeaderId.name;
             })
 
-    },
+    }
 //    findTeam_of_Member: function (memberid, callback) {
 //
 //        for (var i = 0; i<TeamsCollection[0].members.length; i++) {

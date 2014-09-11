@@ -1,9 +1,6 @@
 var NudgeMailsCollection=require('./ClientsCollection.js');
 
 var NudgeMail= {
-    initialize: function (server) {
-        console.log("NudgeMails initialized");
-    },
     getNudgeMailDetail:function(client,fieldName){
         NudgeMailsCollection.find(({'_id' :client}).fieldName,callback);
     },
@@ -13,7 +10,7 @@ var NudgeMail= {
     },
     createNudgeMail:function(data){
         var mail=new NudgeMailsCollection(data);
-        mail.created_at=new Date();
+        mail.createdAt=new Date();
         mail.save();
         return true;
     },

@@ -1,9 +1,6 @@
 var ClientsCollection=require('./ClientsCollection.js');
 
 var Client= {
-    initialize: function (server) {
-        console.log("Clients initialized");
-    },
     getClientDetail:function(client,fieldName){
         ClientsCollection.find( { fieldName: { $exists: true} } )
         ClientsCollection.find(({'_id' :client}).fieldName,callback);
@@ -13,7 +10,7 @@ var Client= {
     },
     createClient:function(data){
         var client=new ClientsCollection(data);
-        client.created_at=new Date();
+        client.createdAt=new Date();
         client.save();
         return true;
     },
@@ -51,4 +48,3 @@ var Client= {
 
 }
 module.exports=Client;
-//Add Client in Organizations:
