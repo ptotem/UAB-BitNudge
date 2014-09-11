@@ -47,7 +47,7 @@ and (max-device-width : 480px)
         left: 50% !important;
     }
     .mychart{
-        padding-left: 40%;
+        padding-left: 35%;
     }
 
 
@@ -63,6 +63,23 @@ and (orientation : landscape) {
     }
 }
 
+/* iPads (landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation :portrait ) {
+    .edit_profile_text
+    {
+        padding-right: 10px;
+
+    }
+}
+
+
+
+
+
+
 @media only screen
 and (min-device-width : 360px)
 and (max-device-height : 640px)
@@ -75,9 +92,28 @@ and (max-device-height : 640px)
 
 
     .mychart{
-        padding-left: 40%;
+        padding-left: 35%;
     }
 }
+
+@media only screen
+and (min-device-width : 360px)
+and (max-device-height : 640px)
+and (orientation: landscape)
+{
+    .form_style
+    {
+        left: 50% !important;
+
+    }
+
+
+    .mychart{
+        padding-left: 42%;
+    }
+}
+
+
 /* Large screens ----------- */
 @media only screen
 and (min-width : 1824px)
