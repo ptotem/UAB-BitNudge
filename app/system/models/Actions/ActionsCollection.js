@@ -9,7 +9,7 @@ var actionSchema=new Schema({
         assign:String,
         approve:String
     }}],
-    created_at:Date
+    createdAt:Date
 
 });
 var actionSchemas=mongoose.model('action',actionSchema);

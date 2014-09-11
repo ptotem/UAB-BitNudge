@@ -1,6 +1,0 @@
-
-var property
- var PointsEngine={
-
-
- }
