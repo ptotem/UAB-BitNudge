@@ -507,6 +507,46 @@
                         </div>
                     </div>
                 </div>
+                <div class="show-comments-block visible-xs">
+                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                        <div class="col-md-1 col-xs-1">
+                            <img src="img/avatar/avatar_0.jpg" class="">
+                        </div>
+                        <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                            <span class="uab-user-name"><strong>Veronica</strong></span>
+                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                        <div class="col-md-1 col-xs-1">
+                            <img src="img/avatar/avatar_0.jpg" class="">
+                        </div>
+                        <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                            <span class="uab-user-name"><strong>Veronica</strong></span>
+                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
+                        <div class="col-md-1 col-xs-1">
+                            <img src="img/avatar/avatar_0.jpg" class="">
+                        </div>
+                        <div class="col-md-9 col-xs-9 col-xs-offset-1 col-md-offset-0">
+                            <span class="uab-user-name"><strong>Veronica</strong></span>
+                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="write-comment-block visible-xs">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-1">
+                            <!--<input type="text" class="form-control comment-box-text-field">-->
+                            <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-success uab-post-comment-btn" >Post Comment</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="media block-update-card" style="padding-bottom: 15px;">
@@ -1063,10 +1103,8 @@
 
         /** DEMO SCRIPTS **/
         $(function () {
-
             $('#main').css('opacity', 1);
             $('header').fadeIn();
-
             $('.uab-like-icon').on('click', function () {
                 if ($(this).hasClass("uab-blue-icon")) {
                     $(this).removeClass("uab-blue-icon");
@@ -1075,11 +1113,9 @@
                     $(this).addClass("uab-blue-icon");
                 }
             });
-
             $('.uab-comment-icon').on('click', function () {
                 $(this).parents('.block-update-card').find(".write-comment-block").show();
             });
-
             $('.uab-post-comment-btn').on('click', function () {
                 var posted_comment = $(this).parents('.block-update-card').find(".comment-box-text-field").val();
                 var posted_comment_html =
@@ -1093,38 +1129,25 @@
                         '</div>' +
                         '</div>';
                 $(this).parents('.block-update-card').find(".show-comments-block").append(posted_comment_html);
-
                 $('.comment-box-text-field').focus  (function() {
                     $(this).val('');
                 });
             });
-
-
-
-
-
         });
         /** end DEMO SCRIPTS **/
-
     } else {
-
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
-
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
 </script>
-
 <!-- REQUIRED: iButton -->
 <script src="js/include/jquery.ibutton.min.js"></script>
-
 <!-- REQUIRED: Justgage animated charts -->
 <script src="js/include/raphael.2.1.0.min.js"></script>
 <script src="js/include/justgage.min.js"></script>
-
 <!-- REQUIRED: Morris Charts -->
 <script src="js/include/morris.min.js"></script>
 <script src="js/include/morris-chart-settings.js"></script>
-
 <!-- REQUIRED: Animated pie chart -->
 <script src="js/include/jquery.easy-pie-chart.min.js"></script>
 
@@ -1132,10 +1155,8 @@
 <script src="js/include/jarvis.widget.min.js"></script>
 <script src="js/include/mobiledevices.min.js"></script>
 <!-- DISABLED (only needed for IE7 <script src="js/include/json2.js"></script> -->
-
 <!-- REQUIRED: Full Calendar -->
 <script src="js/include/jquery.fullcalendar.min.js"></script>
-
 <!-- REQUIRED: Flot Chart Engine -->
 <script src="js/include/jquery.flot.cust.min.js"></script>
 <script src="js/include/jquery.flot.resize.min.js"></script>
