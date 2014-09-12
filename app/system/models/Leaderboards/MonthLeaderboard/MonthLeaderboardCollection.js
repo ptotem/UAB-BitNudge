@@ -1,7 +1,7 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var LeaderboardSchema=new Schema({
-  date:Date,
+  month:Date,
   orgId:Schema.Types.ObjectId,
   playerRanks:[{
     rankNo:Number,

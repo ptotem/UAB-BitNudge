@@ -14,15 +14,15 @@ server.use(restify.queryParser({ mapParams : false }));
 server.use(restify.urlEncodedBodyParser());
 server.use(restify.bodyParser({ mapParams : false }));
 server.use(restify.throttle({
-    burst : 100
-    , rate : 50
-    , ip : true
-    , overrides : {
+    burst : 100 ,
+    rate : 50 ,
+    ip : true ,
+    overrides : {
 
     }
 }));
 server.listen(3004, function () {
-    console.log('%s listening at %s', server.name, server.url)
+    console.log('%s listening at %s', server.name, server.url);
 });
 
 //loading models
@@ -31,6 +31,9 @@ server.listen(3004, function () {
 // var teams=require('./System/models/Teams');
 // teams.initialize(server);
 var RankController=require('./controllers/PointsEngine/RankController.js');
+console(new Date().getTime());
+RankController.calculateRankOfMonth("",new Date());
+console.log(new Date().getTime());
 
 //server.on('connection', function (stream) {
 //    console.log('someone connected!');

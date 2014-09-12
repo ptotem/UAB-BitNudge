@@ -1,12 +1,10 @@
-var TeamPointsCollection=require('./TeamPointsCollection.js');
+var TeamMonthPoints=require('./TeamMonthPoints');
+var TeamQuarterPoints=require('./TeamQuarterPoints');
+var TeamYearPoints=require('./TeamYearPoints');
 
-var TeamPoints= {
-  getTeamPointsOfMonth:function(userId,month,callback){
-    TeamPointsCollection.findOne({userId:userId},fields,options,callback);
-  },
-  getAllSortedTeamPointsOfMonth:function(month,callback){
-    TeamPointsCollection.find({$where:"this.date.getMonth()=="+month.getMonth()+"&&this.date.getYear()=="+month.getYear()}).sort("totalPoints").exec(callback);
-  }
-
+var TeamPoints={
+  TeamMonthPoints:TeamMonthPoints,
+  TeamQuarterPoints:TeamQuarterPoints,
+  TeamYearPoints:TeamYearPoints
 };
 module.exports=TeamPoints;
