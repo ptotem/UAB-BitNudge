@@ -9,5 +9,5 @@ var teamPointsSchema=new Schema({
   orgId:Schema.Types.ObjectId,
   createdAt:Date
 });
-var actionSchemas=mongoose.model('action',teamPointsSchema);
+var actionSchemas=mongoose.model('teamYearPoints',teamPointsSchema);
 module.exports=actionSchemas;

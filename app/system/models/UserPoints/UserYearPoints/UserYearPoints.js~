@@ -1,4 +1,4 @@
-var UserPointsCollection=require('./UserYearPointsCollection.js');
+var UserPointsCollection=require('./UserPointsCollection.js');
 
 var UserPoints= {
   getUserPointsOfMonth:function(userId,month,callback){

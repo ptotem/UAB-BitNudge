@@ -27,5 +27,5 @@ var LeaderboardSchema=new Schema({
     player:{type:Schema.Types.ObjectId,ref:'users'}
   }]
 });
-var LeaderboardCollection=mongoose.model('leaderboard',LeaderboardSchema);
+var LeaderboardCollection=mongoose.model('yearLeaderboard',LeaderboardSchema);
 module.exports=LeaderboardCollection;

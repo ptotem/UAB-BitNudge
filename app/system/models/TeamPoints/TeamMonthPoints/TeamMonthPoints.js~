@@ -1,4 +1,4 @@
-var TeamPointsCollection=require('./TeamYearPointsCollection.js');
+var TeamPointsCollection=require('./TeamPointsCollection.js');
 
 var TeamPoints= {
   getTeamPointsOfMonth:function(userId,month,callback){

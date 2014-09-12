@@ -8,5 +8,5 @@ var userPointsSchema=new Schema({
     orgId:Schema.Types.ObjectId,
     createdAt:Date
 });
-var actionSchemas=mongoose.model('action',userPointsSchema);
+var actionSchemas=mongoose.model('userYearPoints',userPointsSchema);
 module.exports=actionSchemas;

@@ -1,5 +1,6 @@
 var TeamsCollection=require('./TeamsCollection.js');
 //var UserCollection=require('./UserManagementCollection.js');
+var userRoutes=require('./TeamsRoutes.js');
 
 var Team= {
     getTeamDetail: function (team, fieldName) {

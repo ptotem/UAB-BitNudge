@@ -1,4 +1,4 @@
-var RanksCollection=require('./MonthLeaderboardCollection.js');
+var RanksCollection=require('./RanksCollection.js');
 var moment=require('moment');
 var Leaderboard={
   createLeaderboard:function(orgId,leaderboardData,callback){
