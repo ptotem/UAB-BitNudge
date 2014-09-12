@@ -1,9 +1,9 @@
 var NudgeChatModel=require('../../models/NudgeChat');
 var NudgeChatController={
-  getNudgeChatOfUser:function(userId,limit,callback){
+  getNudgeChatOfUser:function(req,res){
     NudgeChatModel.getNudgeChatOfUser(userId,callback);
   },
-  sendNudgeMessage:function(userId,messageData,callback){
+  sendNudgeMessage:function(req,res){
     NudgeChatModel.addMessageToChat(userId,messageData,callback);
   }
 };

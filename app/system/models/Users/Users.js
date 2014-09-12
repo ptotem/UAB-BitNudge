@@ -48,6 +48,9 @@ var UserManagement={
   deleteUser:function(id,callback){
     UserCollection.remove({'_id':id},callback);
   },
+  sortUsersByField(queryObj,fieldName,callback){
+    UserCollection.find(queryObj).sort(fieldName).exec(callback);
+  }
   //pointsData is an object {pointsEarned,fromTransaction,fromGoal}
   incrementUserCashAndPointsBy:function(userId,pointsData,callback){
     var points=pointsData.pointsEarned;

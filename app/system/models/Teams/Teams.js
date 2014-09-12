@@ -15,6 +15,9 @@ var Team= {
         team.save();
         return true;
     },
+    sortTeamsByField:function(queryObj,fieldName,callback){
+      TeamsCollection.find(queryObj).sort(fieldName).exec(callback);
+    }
     deleteTeam: function (id, callback) {
         TeamsCollection.remove({'_id': id}, callback);
     },
@@ -24,8 +27,8 @@ var Team= {
     setTeamFieldById: function (id, fieldName, value, callback) {
         TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
     },
-    Teams_in_org: function (id, callback) {
-        TeamsCollection.find({organizationId: id}, callback);
+    getTeamsInOrg: function (id, fields,options, populationData,callback) {
+        TeamsCollection.find({organizationId: id}).populate(populationData).exec(callback);
     },
     getTeamLeader: function (id, callback) {
         TeamsCollection.findOne(({'_id': id}).teamLeaderId, callback);

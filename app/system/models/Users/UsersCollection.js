@@ -12,7 +12,7 @@ var userSchema=new Schema({
   medals:[{type:Schema.Types.ObjectId,rel:'medals'}],
   items:[{type:Schema.Types.ObjectId,rel:'storeItems'}],
   level:Number,
-  // totalPoints:Number,
+  totalPoints:Number,
   totalCash:Number,
   goals:[{type:Schema.Types.ObjectId,rel:'goals'}],
   // clients:[{type:Schema.Types.ObjectId,rel:'clients'}],

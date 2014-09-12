@@ -1,10 +1,10 @@
 var NudgeMailsModel=require('../../models/NudgeMails');
 var NudgeMailboxModel=require('../../models/NudgeMailbox');
 var NudgeMailsController={
-  createMail:function(orgId,mailData,callback){
+  createMail:function(req,res){
     NudgeMailsModel.createNudgeMail(orgId,mailData,callback);
   },
-  sendMail:function(mailData,callback){
+  sendMail:function(req,res){
     var receivers=mailData.receivers;
     NudgeMailsModel.createNudgeMail(orgId,mailData,function(err,obj){
       if(err) return handleError(err);
@@ -14,10 +14,10 @@ var NudgeMailsController={
       return callback(err,obj);
     });
   },
-  editMail:function(id,updatedData,callback){
+  editMail:function(req,res){
     NudgeMailsModel.updateMail(id,updatedData,callback);
   },
-  deleteMail:function(id,callback){
+  deleteMail:function(req,res){
     NudgeMailsModel.deleteMail(id,callback);
   }
 };

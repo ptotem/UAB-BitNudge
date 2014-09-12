@@ -14,8 +14,8 @@ var LeaderboardSchema=new Schema({
   playerInTeamRanks:[{
     team:Schema.Types.ObjectId,
     playerRanks:[{
-    rankNo:Number,
-    player:{type:Schema.Types.ObjectId,ref:'users'}
+      rankNo:Number,
+      player:{type:Schema.Types.ObjectId,ref:'users'}
     }]
   }],
   movers:[{

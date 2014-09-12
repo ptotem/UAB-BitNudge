@@ -10,22 +10,34 @@ var Leaderboard={
     RanksCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   //here month is a Date object
-  getLeaderboardOfWeek:function(week,fields,options,populationData,callback){
-    var currDate=moment(week);
-    RanksCollection.find({$where:"this.week.getMonth()=="+week.getMonth()+"&&this.week.getYear()=="+week.getYear()},fields,options).populate(populationData).exec(callback);
+  getLeaderboardOfMonth:function(month,fields,options,populationData,callback){
+    var currDate=moment(month);
+    RanksCollection.find({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear()},fields,options).populate(populationData).exec(callback);
   },
-  //here week is a Date object
-  getLeaderboardOfQuarter:function(quarter,fields,options,populationData,callback){
-    var currDate=moment(quarter);
-    RanksCollection.find({$where:"this.quarter.getMonth()=="+quarter.getMonth()+"&&this.quarter.getYear()=="+quarter.getYear()},fields,options).populate(populationData).exec(function(err,docs){
-      docs.forEach(function(doc){
-        var date=moment(doc.date);
-        if(currDate.quarter()==date.quarter())
-          return callback(err,doc);
-      });
-      return callback(err,null);
-    });
+  setRankOfUser:function(month,rankNo,userId,callback){
+    var rankObj={rankNo:rankNo,player:userId};
+    RanksCollection.update({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear()},{$push:{$each:[rankObj],$position:rankNo}});
   },
+  setRankOfUserInTeam:function(month,rankNo,userId,teamId,callback){
+    var rankObj={rankNo:rankNo,player:userId};
+    RanksCollection.update({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear(),"playerInTeamRanks.team":teamId},{$push:{playerInTeamRanks:{$each:[rankObj],$position:rankNo}}},callback);
+  },
+  setRankOfTeam:function(month,rankNo,teamId,callback){
+    var rankObj={rankNo:rankNo,team:teamId};
+    RanksCollection.update({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear()},{$push:{$each:[rankObj],$position:rankNo}});
+  },
+  // //here quarter is a Date object
+  // getLeaderboardOfQuarter:function(quarter,fields,options,populationData,callback){
+  //   var currDate=moment(quarter);
+  //   RanksCollection.find({$where:"this.quarter.getMonth()=="+quarter.getMonth()+"&&this.quarter.getYear()=="+quarter.getYear()},fields,options).populate(populationData).exec(function(err,docs){
+  //     docs.forEach(function(doc){
+  //       var date=moment(doc.date);
+  //       if(currDate.quarter()==date.quarter())
+  //         return callback(err,doc);
+  //     });
+  //     return callback(err,null);
+  //   });
+  // },
   getRankSchema:function(){
     return RanksCollection.Schema;
   }

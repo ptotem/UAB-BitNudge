@@ -2,7 +2,7 @@ var StatusMessagesModel=require('../../models/StatusMessages');
 var UsersModel=require('../../models/Users');
 var SocialFeedModel=require('../../models/SocialFeed');
 var StatusMessagesController={
-  createStatusMessage:function(orgId,userId,statusData,callback){
+  createStatusMessage:function(req,res){
     StatusMessagesModel.createStatusMessage(orgId,userId,statusData,function(err,obj){
       if(err) handleError(err);
       UsersModel.findOne({_id:userId},function(err,user){
@@ -13,16 +13,16 @@ var StatusMessagesController={
       return callback(err,obj);
     });
   },
-  getStatusMessage:function(id,params,callback){
+  getStatusMessage:function(req,res){
     StatusMessagesModel.getStatusMessage(id,callback);
   },
-  getStatusMessagesOfUser:function(userId,callback){
+  getStatusMessagesOfUser:function(req,res){
     StatusMessagesModel.getStatusMessagesOfUser(userId,callback);
   },
-  updateStatusMessage:function(id,updatedData,callback){
+  updateStatusMessage:function(req,res){
     StatusMessagesModel.updateStatusMessage(id,updatedData,callback);
   },
-  deleteStatusMessage:function(id,callback){
+  deleteStatusMessage:function(req,res){
     StatusMessagesModel.deleteStatusMessage(id,callback);
   }
 };

@@ -1,6 +1,6 @@
 var SocialFeedModel=require('../../models/SocialFeed');
 var SocialFeedController={
-  getSocialFeedOfUser:function(userId,limit,callback){
+  getSocialFeedOfUser:function(req,res){
     SocialFeedModel.getSocialFeedOfUser(userId,null,callback);
   }
 };
