@@ -5,7 +5,7 @@ var UserMonthPoints= {
     UserMonthPointsCollection.findOne({userId:userId},fields,options,callback);
   },
   getAllSortedUserPointsOfMonth:function(month,callback){
-    UserMonthPointsCollection.find({$where:"this.date.getMonth()=="+month.getMonth()+"&&this.date.getYear()=="+month.getYear()}).sort("totalPoints").exec(callback);
+    UserMonthPointsCollection.find({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear()}).sort("totalPoints").exec(callback);
   },
   getSomeSortedUserMonthPointsOfMonth:function(queryObj,month,callback){
     queryObj['$where']="this.date.getMonth()=="+month.getMonth()+"&&this.date.getYear()=="+month.getYear();
