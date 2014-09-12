@@ -112,5 +112,6 @@ var Team= {
 //        }
 //    }
 
-}
+};
+
 module.exports=Team;

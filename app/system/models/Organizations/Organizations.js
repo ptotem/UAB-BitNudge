@@ -48,8 +48,9 @@ var Organization= {
        return true;
 
     }
-}
-//module.exports=Organization;
+};
+
+module.exports=Organization;
 //.findOne({ title: 'Once upon a timex.' })
 //    .populate('_creator')
 //    .exec(function (err, story) {
