@@ -7,6 +7,6 @@ var User_Point= {
         points.created_at=new Date();
         points.save();
         return true;
-    }
+    },
 
 }

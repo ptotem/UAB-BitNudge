@@ -1,4 +1,5 @@
 var mongoose=require('mongoose');
+mongoose.connect('mongodb://localhost/uab');
 var Schema=mongoose.Schema;
 var actionSchema=new Schema({
     capabilities:[{model:String,permission:{
@@ -12,5 +13,9 @@ var actionSchema=new Schema({
     createdAt:Date
 
 });
+
+
+
 var actionSchemas=mongoose.model('action',actionSchema);
 module.exports=actionSchemas;
+

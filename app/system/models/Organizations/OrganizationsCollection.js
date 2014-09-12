@@ -1,5 +1,5 @@
 var mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/uab');
 var Schema=mongoose.Schema;
 
 var organizationSchema=new Schema({

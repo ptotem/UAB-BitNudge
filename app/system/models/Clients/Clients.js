@@ -44,6 +44,9 @@ var Client= {
         client.save();
         console.log('data Saved')
         return true;
+    },
+    getClient:function(id,fields,options,populationData,callback){
+        ClientsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     }
 
 }

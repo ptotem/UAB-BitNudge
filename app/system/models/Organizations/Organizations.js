@@ -34,7 +34,7 @@ var Organization= {
     findRevenueDetailsOfOrg:function(id,fieldname,calback)
     {
         var field=fieldname;
-      OrganizationsCollection..findOne({ '_id': id })
+      OrganizationsCollection.findOne({ '_id': id })
           .populate('revenue').exec(function (err, revenues) {
               if (err) return handleError(err);
               console.log('The creator is %s', revenues.revenue.field);
