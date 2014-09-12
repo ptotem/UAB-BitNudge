@@ -16,7 +16,7 @@ var Leaderboard={
   },
   setRankOfUser:function(month,rankNo,userId,callback){
     var rankObj={rankNo:rankNo,player:userId};
-    RanksCollection.update({$where:"this.month.getYear()=="+month.getYear()},{$push:{$each:[rankObj],$position:rankNo}});
+    RanksCollection.update({$where:"this.month.getYear()=="+month.getYear()},{$push:{playerRanks:{$each:[rankObj],$position:rankNo}}});
   },
   setRankOfUserInTeam:function(year,rankNo,userId,teamId,callback){
     var rankObj={rankNo:rankNo,player:userId};
@@ -24,7 +24,7 @@ var Leaderboard={
   },
   setRankOfTeam:function(year,rankNo,teamId,callback){
     var rankObj={rankNo:rankNo,team:teamId};
-    RanksCollection.update({$where:"this.year.getYear()=="+year.getYear()},{$push:{$each:[rankObj],$position:rankNo}});
+    RanksCollection.update({$where:"this.year.getYear()=="+year.getYear()},{$push:{teamRanks:{$each:[rankObj],$position:rankNo}}});
   },
   getRankSchema:function(){
     return RanksCollection.Schema;

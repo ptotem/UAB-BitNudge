@@ -16,7 +16,7 @@ var Leaderboard={
   },
   setRankOfUser:function(month,rankNo,userId,callback){
     var rankObj={rankNo:rankNo,player:userId};
-    RanksCollection.update({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear()},{$push:{$each:[rankObj],$position:rankNo}});
+    RanksCollection.update({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear()},{$push:{playerRanks:{$each:[rankObj],$position:rankNo}}});
   },
   setRankOfUserInTeam:function(month,rankNo,userId,teamId,callback){
     var rankObj={rankNo:rankNo,player:userId};
@@ -24,7 +24,7 @@ var Leaderboard={
   },
   setRankOfTeam:function(month,rankNo,teamId,callback){
     var rankObj={rankNo:rankNo,team:teamId};
-    RanksCollection.update({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear()},{$push:{$each:[rankObj],$position:rankNo}});
+    RanksCollection.update({$where:"this.month.getMonth()=="+month.getMonth()+"&&this.month.getYear()=="+month.getYear()},{$push:{teamRanks:{$each:[rankObj],$position:rankNo}}});
   },
   // //here quarter is a Date object
   // getLeaderboardOfQuarter:function(quarter,fields,options,populationData,callback){

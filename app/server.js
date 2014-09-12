@@ -1,10 +1,20 @@
-
-var restify = require('restify')
+var restify = require('restify');
 var server = module.exports = restify.createServer({
-    name : 'BitNudge'
-    , version : '0.0.1-dev'
+    name : 'BitNudge' ,
+    version : '0.0.1-dev'
 });
 var escape=require('escape-html');
+var mongoose=require('mongoose');
+
+mongoose.connect('mongodb://localhost/uabTest');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  // yay!
+  
+  console.log("db working");
+});
+// db.close();
 
 // Middlewares
 server.use(restify.acceptParser(server.acceptable));
@@ -31,9 +41,11 @@ server.listen(3004, function () {
 // var teams=require('./System/models/Teams');
 // teams.initialize(server);
 var RankController=require('./system/controllers/PointsEngine/RankController.js');
-console.log(new Date().getTime());
-RankController.calculateRankOfMonth("",new Date());
-console.log(new Date().getTime());
+setTimeout(function(){
+  console.log(new Date().getTime());
+  RankController.calculateRankOfMonth("",new Date());
+  console.log(new Date().getTime());
+},5000);
 
 //server.on('connection', function (stream) {
 //    console.log('someone connected!');
