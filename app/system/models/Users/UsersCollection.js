@@ -18,8 +18,12 @@ var userSchema=new Schema({
   // clients:[{type:Schema.Types.ObjectId,rel:'clients'}],
   revenue:Number,
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],
+<<<<<<< HEAD
   createdAt:Date,
     rank:Number
+=======
+  createdAt:Date
+>>>>>>> ea0f592aeb0fe3eb55ebd5ec758b01b91637afc3
 });
 var User=mongoose.model('user',userSchema);
 module.exports=User;

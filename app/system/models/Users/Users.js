@@ -25,7 +25,11 @@ var UserManagement={
     UserCollection.update({_id:id},{$set:updateData},callback);
   },
   addRole:function(userId,role,callback){
+<<<<<<< HEAD
     UserCollection.update({_id:userId},{$push:{roles:role}},callback);
+=======
+    UserCollection.update({_id:userId},{$push{roles:role}},callback);
+>>>>>>> ea0f592aeb0fe3eb55ebd5ec758b01b91637afc3
   },
   addPoints:function(userId,points,callback){
     UserCollection.update({_id:userId},{$push:{points:points}},callback);
@@ -62,8 +66,11 @@ var UserManagement={
     UserCollection.findOne({username:username,passwordSalt:passwordSalt},callback);
   }
 }
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> ea0f592aeb0fe3eb55ebd5ec758b01b91637afc3
 module.exports=UserManagement;
