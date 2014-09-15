@@ -13,7 +13,22 @@ var StoreItemController={
     buyItemUser:function(req,res,callback){
       var cost=StoreItemModel.getStoreItemCost(req.id);
         UserModel.buyItemToUser(req.id,req.storedata,cost,callback);
+    },
+    getStoreItem:function(req,res,callback){
+        StoreItemModel.getStoreItem(res.storeId)
+
+    },
+    createStoreItemInOrg:function(req,res,callback){
+        StoreItemModel.createStoreItem(req.organizationId,req.data);
+    },
+     updateStoreItem:function(req,res,callback){
+         StoreItemModel.updateStoreItem(req,res);
+     },
+    deleteStoreItem:function(req,res,callback){
+        StoreItemModel.deleteStoreItem(res.storeItemId);
     }
+
+
 
 
 };

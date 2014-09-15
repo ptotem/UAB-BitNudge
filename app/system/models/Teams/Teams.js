@@ -110,6 +110,9 @@ var Team= {
     },
     addStoreToTeam:function(teamId,itemData,callback){
         TeamsCollection.update({_id:teamId},{$set:itemData},callback);
+    },
+    removeStoresToTeam: function (teamId, stores, callback) {
+        TeamsCollection.update({_id: teamId}, {$pull: {stores: stores}}, callback);
     }
 
 

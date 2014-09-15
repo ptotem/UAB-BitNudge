@@ -31,6 +31,15 @@ var HierarchyEngine={
 //        if(AuthorizationController.IsAuthorized(req.userId,teams,delete,callback)) {
             TeamModel.removeTeamsToTeam(req.id, req.teams, callback)
 //        }
+    },
+    deleteTeamFromOrg:function(res,req,callback){
+        TeamModel.deleteTeam(res.teamId);
+    },
+    updateTeam:function(req,res,callack){
+        TeamModel.updateTeam(req,res,callback);
+    },
+    addMembersToTeam:function(req,res,callback){
+        TeamModel.addMembersToTeam(req.teadId,req.data,callback);
     }
 
 

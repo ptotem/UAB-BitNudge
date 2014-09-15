@@ -30,8 +30,23 @@ var StoreController={
         if (AuthorizationController.IsAuthorized(req.userId, Store, write, callback)) {
             TeamModel.addStoresToTeam(req.teamId, req.data, callback);
         }
-    }
+    },
+    removeStoreFromTeam:function(req,res,callback){
+        TeamModel.removeStoresToTeam(req.teamId,req.stores,callback)
 
+    },
+    getStore:function(req,res,callback){
+        if(AuthorizationController.IsAuthorized(req.userId,Store,read,callback)) {
+            StoreModel.getStore(req.id, callback);
+        }
+    },
+    updateStoreInTeam:function(req,res,callback){
+        StoreModel.updateStore()
+    },
+    updateStoreInOrg:function(req,res,callback){
+        StoreModel.updateStore()
+    }
+//    updateStore
 
 
 };

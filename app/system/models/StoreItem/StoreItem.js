@@ -34,6 +34,12 @@ var StoreItems={
     getStoreItemCost:function(id,callback){
         StoreItemsCollection.findOne(({_id:id}).cost,callback);
 
-}
+},
+    getStoresOfOrg:function(orgId,fields,options,callback){
+        StoresCollection.findOne({organizationId:orgId},fields,options,function(err,obj){
+            if(err) handleError(err);
+            return callback(err,obj.name);
+        });
+    }
 };
 module.exports=StoreItems;

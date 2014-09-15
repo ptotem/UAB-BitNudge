@@ -2,7 +2,7 @@ var ProductsCollection=require('./ProductsCollection.js');
 
 var Product= {
 
-    getProductDetail:function(product_id,fieldName){
+    getProductDetail:function(product_id,fieldName,callback){
         ProductsCollection.find(({'_id' :product_id}).fieldName,callback);
     },
     getProductSchema:function(){

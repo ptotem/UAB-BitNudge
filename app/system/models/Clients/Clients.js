@@ -1,7 +1,7 @@
 var ClientsCollection=require('./ClientsCollection.js');
 
 var Client= {
-    getClientDetail:function(client,fieldName){
+    getClientDetail:function(client,fieldName,callback){
         ClientsCollection.find( { fieldName: { $exists: true} } )
         ClientsCollection.find(({'_id' :client}).fieldName,callback);
     },
@@ -44,6 +44,12 @@ var Client= {
     },
     getClientOfOrg:function(orgId,fields,options,populationParams,callback){
         ClientsCollection.find({organizationId:orgId},fields,options).populate(populationParams).exec(callback);
+    },
+    assignClientToUser:function(){
+
+    },
+    fetchClientOfUser:function(userId,callback){
+
     }
 
 }

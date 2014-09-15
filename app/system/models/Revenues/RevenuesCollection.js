@@ -1,6 +1,7 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var revenueSchema=new Schema({
+    name:String,
     product:{type:Schema.Types.ObjectId,ref:'products'},
     client:{type:Schema.Types.ObjectId,ref:'clientType'},
     user:{type:Schema.Types.ObjectId,ref:'user'},
