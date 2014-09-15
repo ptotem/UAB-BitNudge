@@ -1,8 +1,9 @@
 var RanksCollection=require('./YearLeaderboardCollection.js');
+var mongoose=require('mongoose');
 var moment=require('moment');
 var Leaderboard={
   createLeaderboard:function(orgId,leaderboardData,callback){
-    leaderboardData.orgId=orgId;
+    leaderboardData.orgId=mongoose.Schema.Types.ObjectId(orgId);
     leaderboardData.date=new Date();
     var leaderboard=new RanksCollection(leaderboardData);
   },
@@ -12,19 +13,27 @@ var Leaderboard={
   //here month is a Date object
   getLeaderboardOfYear:function(year,fields,options,populationData,callback){
     var currDate=moment(year);
-    RanksCollection.find({$where:"this.year.getYear()=="+year.getYear()},fields,options).populate(populationData).exec(callback);
+    var start=moment().year(moment(year)).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().year(moment(year)+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    RanksCollection.find({month:{$gte:start,$lt:end}},fields,options).populate(populationData).exec(callback);
   },
   setRankOfUser:function(month,rankNo,userId,callback){
     var rankObj={rankNo:rankNo,player:userId};
-    RanksCollection.update({$where:"this.month.getYear()=="+month.getYear()},{$push:{playerRanks:{$each:[rankObj],$position:rankNo}}});
+    var start=moment().year(moment(year)).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().year(moment(year)+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    RanksCollection.update({month:{$gte:start,$lt:end}},{$push:{playerRanks:{$each:[rankObj],$position:rankNo}}});
   },
   setRankOfUserInTeam:function(year,rankNo,userId,teamId,callback){
     var rankObj={rankNo:rankNo,player:userId};
-    RanksCollection.update({$where:"this.year.getYear()=="+year.getYear(),"playerInTeamRanks.team":teamId},{$push:{playerInTeamRanks:{$each:[rankObj],$position:rankNo}}},callback);
+    var start=moment().year(moment(year)).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().year(moment(year)+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    RanksCollection.update({month:{$gte:start,$lt:end},"playerInTeamRanks.team":teamId},{$push:{"playerInTeamRanks.$.playerRanks":{$each:[rankObj],$position:rankNo}}},callback);
   },
   setRankOfTeam:function(year,rankNo,teamId,callback){
     var rankObj={rankNo:rankNo,team:teamId};
-    RanksCollection.update({$where:"this.year.getYear()=="+year.getYear()},{$push:{teamRanks:{$each:[rankObj],$position:rankNo}}});
+    var start=moment().year(moment(year)).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().year(moment(year)+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    RanksCollection.update({month:{$gte:start,$lt:end}},{$push:{teamRanks:{$each:[rankObj],$position:rankNo}}});
   },
   getRankSchema:function(){
     return RanksCollection.Schema;

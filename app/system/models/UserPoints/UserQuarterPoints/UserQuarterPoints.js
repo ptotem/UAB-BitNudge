@@ -1,16 +1,39 @@
 var UserQuarterPointsCollection=require('./UserQuarterPointsCollection.js');
 
 var UserQuarterPoints= {
-  getUserQuarterPointsOfQuarter:function(userId,month,callback){
+  createUserQuarterPoints:function(orgId, data){
+    data.orgId=mongoose.Schema.Types.ObjectId(orgId);
+    data.quarter=new Date();
+    var user= new UserQuarterPointsCollection(data);
+    user.save();
+  },
+  getUserQuarterPointsOfQuarter:function(userId,quarter,callback){
     UserQuarterPointsCollection.findOne({userId:userId},fields,options,callback);
-  }
-  // getAllSortedUserQuarterPointsOfQuarter:function(month,callback){
-  //   UserQuarterPointsCollection.find({$where:"this.date.getMonth()=="+month.getMonth()+"&&this.date.getYear()=="+month.getYear()}).sort("totalPoints").exec(callback);
+  },
+  // getAllSortedUserPointsOfQuarter:function(quarter,callback){
+  //   var currDate=moment(quarter);
+  //   var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
+  //   var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
+  //   UserQuarterPointsCollection.find({quarter:{$gte:start,$lt:end}}).sort("totalPoints").exec(callback);
   // },
-  // getSomeSortedUserQuarterPointsOfMonth:function(queryObj,month,callback){
-  //   queryObj['$where']="this.date.getMonth()=="+month.getMonth()+"&&this.date.getYear()=="+month.getYear();
-  //   UserQuarterPointsCollection.find(queryObj).sort("totalPoints").exec(callback);
-  // }
-
+  getSortedUserPointsOfQuarter:function(queryObj,quarter,callback){
+    var currDate=moment(quarter);
+    var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
+    queryObj.quarter={$gte:start,$lt:end};
+    UserQuarterPointsCollection.find(queryObj).sort("totalPoints").exec(callback);
+  },
+  updateUserQuarterPoints:function(userId,quarter,updateData,callback){
+    var currDate=moment(quarter);
+    var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
+    UserQuarterPointsCollection.update({userId:userId,quarter:{$gte:start,$lt:end}},updateData,callback);
+  },
+  addPointsObject:function(userId,quarter,pointsObj,callback){
+    var currDate=moment(quarter);
+    var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
+    UserQuarterPointsCollection.update({userId:userId,quarter:{$gte:start,$lt:end}},{$push:{points:pointsObj}},callback);
+  }
 };
 module.exports=UserQuarterPoints;

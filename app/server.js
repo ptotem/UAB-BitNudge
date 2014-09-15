@@ -35,16 +35,34 @@ server.listen(3004, function () {
     console.log('%s listening at %s', server.name, server.url);
 });
 
+//var rank = require("./system/models/Leaderboards");
+//rank.MonthLeaderboard.createLeaderboard("5412d2990eeb4a320ca12d9e", {});
+
+// var orgModel = require("./system/models/Organizations");
+// orgModel.createOrganization({name: "org1"});
+
+
+/* var userModel = require("./system/models/Users/UsersCollection.js");
+ var points=require("./system/models/UserPoints");
+userModel.find({},function(err,objs){
+	objs.forEach(function(obj){
+		points.UserMonthPoints.createUserMonthPoints("5412d2990eeb4a320ca12d9e", {userId: obj._id, month: new Date(), totalPoints: Math.floor((Math.random()*9001)+1000)});
+	});
+});
+
+*/
+
 //loading models
 // var Organization=require('./System/models/Organizations');
 // Organization.initialize(server);
 // var teams=require('./System/models/Teams');
 // teams.initialize(server);
+
 var RankController=require('./system/controllers/PointsEngine/RankController.js');
 setTimeout(function(){
-  console.log(new Date().getTime());
-  RankController.calculateRankOfMonth("",new Date());
-  console.log(new Date().getTime());
+console.log(new Date().getTime());
+RankController.calculateRankOfMonth("",new Date());
+console.log(new Date().getTime());
 },5000);
 
 //server.on('connection', function (stream) {

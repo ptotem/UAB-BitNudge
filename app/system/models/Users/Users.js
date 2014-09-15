@@ -1,4 +1,5 @@
 var UserCollection=require('./UsersCollection.js');
+var mongoose=require('mongoose');
 var UserManagement={
   getUserSchema:function(){
     return UserCollection.Schema;
@@ -8,7 +9,8 @@ var UserManagement={
     //password is in plain text, they must be salted and shed
     //obviously, salt and hash it properly.
     data.createdAt=new Date();
-    data.organizationId=organizationId;
+    data.orgId=organizationId;
+    // data.organizationId=mongoose.Schema.Types.ObjectId(organizationId);
     if(data.password){
       data.passwordSalt=data.password+"salt!";
       data.passwordHash=data.password+"hash!";

@@ -1,6 +1,5 @@
 var TeamsCollection=require('./TeamsCollection.js');
 //var UserCollection=require('./UserManagementCollection.js');
-var userRoutes=require('./TeamsRoutes.js');
 
 var Team= {
     getTeamDetail: function (team, fieldName) {
@@ -28,7 +27,9 @@ var Team= {
         TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
     },
     getTeamsInOrg: function (id, fields,options, populationData,callback) {
+      if(populationData)
         TeamsCollection.find({organizationId: id}).populate(populationData).exec(callback);
+      else TeamsCollection.find({orgId:id},callback);
     },
     getTeamLeader: function (id, callback) {
         TeamsCollection.findOne(({'_id': id}).teamLeaderId, callback);

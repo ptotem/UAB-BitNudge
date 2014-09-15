@@ -1,9 +1,11 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var userSchema=new Schema({
+  _id:String,
   name:String,
   address:String,
-  organizationId:Schema.Types.ObjectId,
+    orgId:String,
+  // orgId:Schema.Types.ObjectId,
   roles:[{type:Schema.Types.ObjectId,rel:'roles'}],
   email:String,
   passwordSalt:String,
