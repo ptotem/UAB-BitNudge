@@ -9,8 +9,9 @@ var Revenue= {
         return RevenuesCollection.Schema;
     },
     createRevenue:function(data){
+        data.crewatedAt=new Date();
         var revenue=new RevenuesCollection(data);
-        revenue.created_at=new Date();
+//        revenue.created_at=new Date();
         revenue.save();
         return true;
     },
@@ -27,7 +28,11 @@ var Revenue= {
         var temp={};
         temp[fieldName]=value;
         RevenuesCollection.update({_id:id},{$set:temp},callback);
+    },
+    getRevenue:function(id,fields,options,populationData,callback){
+        RevenuesCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     }
+
 }
 module.exports=Revenue;
 

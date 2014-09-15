@@ -1,8 +1,12 @@
-var OrgModel=require('../../System/models/Organizations');
-var TeamModel=require('../../System/models/Teams');
-//var TeamModel=require('../../System/models/UserManagement');
+var OrgModel=require('../../models/Organizations');
+var TeamModel=require('../../models/Teams');
+var AuthorizationController=('../../controllers/AuthorizationController.js');
 var HierarchyEngine={
-
+    getTeamOrg:function(req,res,callback){
+        if(AuthorizationController.IsAuthorized(req.userId,teams,read,callback)){
+        TeamModel.getTeamOrg(req.id,callback);
+        }
+    },
     addTeamToOrg:function(req,res,callback){
         TeamModel.createTeam(req.orgId,req.data,function(err,obj){
             if(err) callback(err);
@@ -24,37 +28,12 @@ var HierarchyEngine={
     },
     removeTeamFromTeam:function(res,req,callback)
     {
-        TeamModel.removeTeamsToTeam(req.id,req.teams,callback)
+//        if(AuthorizationController.IsAuthorized(req.userId,teams,delete,callback)) {
+            TeamModel.removeTeamsToTeam(req.id, req.teams, callback)
+//        }
     }
 
 
 
 }
-
-
-
-//
-//var NudgeMailsModel=require('../../models/NudgeMails');
-//var NudgeMailboxModel=require('../../models/NudgeMailbox');
-//var NudgeMailsController={
-//    createMail:function(orgId,mailData,callback){
-//        NudgeMailsModel.createNudgeMail(orgId,mailData,callback);
-//    },
-//    sendMail:function(mailData,callback){
-//        var receivers=mailData.receivers;
-//        NudgeMailsModel.createNudgeMail(orgId,mailData,function(err,obj){
-//            if(err) return handleError(err);
-//            receivers.forEach(function(receiver){
-//                NudgeMailboxModel.addMailToUserMailbox(userId,obj._id,function(){});
-//            });
-//            return callback(err,obj);
-//        });
-//    },
-//    editMail:function(id,updatedData,callback){
-//        NudgeMailsModel.updateMail(id,updatedData,callback);
-//    },
-//    deleteMail:function(id,callback){
-//        NudgeMailsModel.deleteMail(id,callback);
-//    }
-//};
-module.exports=NudgeMailsController;
+module.exports=HierarchyEngine;

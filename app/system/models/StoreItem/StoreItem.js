@@ -30,6 +30,10 @@ var StoreItems={
     var temp={};
     temp[fieldName]=value;
     StoreItemsCollection.update({_id:id},{$set:temp},callback);
-  }
+  },
+    getStoreItemCost:function(id,callback){
+        StoreItemsCollection.findOne(({_id:id}).cost,callback);
+
+}
 };
 module.exports=StoreItems;

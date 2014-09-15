@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-//var RanksCollection=require('./RanksCollection.js');
-=======
+
 var RanksCollection=require('./RanksCollection.js');
->>>>>>> ea0f592aeb0fe3eb55ebd5ec758b01b91637afc3
+
+
 var moment=require('moment');
 var Leaderboard={
   createLeaderboard:function(orgId,leaderboardData,callback){

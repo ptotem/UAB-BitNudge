@@ -34,6 +34,14 @@ var Product= {
         product.save();
         console.log('data Saved')
         return true;
+    },
+    sellProductToClient:function(product_id,client_id,calback){
+        ProductsCollection.update(({_id: product_id}, {$push: {client: client_id}}, callback))
     }
 }
 module.exports=Product;
+
+
+//addTeamsToTeam: function (teamId, teamData, callback) {
+//    TeamsCollection.update({_id: teamId}, {$push: {teams: teamData}}, callback);
+//}

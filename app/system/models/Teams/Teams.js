@@ -54,12 +54,6 @@ var Team= {
     addStoresToTeam: function (teamId, storeData, callback) {
         TeamsCollection.update({_id: teamId}, {$push: storeData}, callback);
     },
-//    createTeamInOrg:function(data,org_id){
-//        var team=new TeamsCollection({data:data,organizationId :org_id});
-//        team.save();
-//        console.log('data Saved')
-//        return true;
-//    },
     assign_trainingToTeam: function (teamId, training_id, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
     },
@@ -70,8 +64,6 @@ var Team= {
         team.save();
         return true;
     },
-
-
     findDetailsOfTeam: function (id, fieldname, calback) {
         var field = fieldname;
         TeamsCollection..findOne({ '_id': id })
@@ -97,16 +89,31 @@ var Team= {
                 return leader.teamLeaderId.name;
             })
 
+    },
+
+    //New Content:
+
+
+
+    createTeam:function(organizationId,data){
+        data.organizationId=organizationId;
+        data.createdAt=new Date();
+        var team=new TeamsCollection(data);
+        team.save();
+        return true;
+    },
+    getTeam:function(id,fields,options,populationData,callback){
+        TeamsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+    },
+    getSocialFeedOfUser:function(userId,fields,options,populationParams,callback){
+        TeamsCollection.find({userId:userId},fields,options).populate(populationParams).exec(callback);
+    },
+    addStoreToTeam:function(teamId,itemData,callback){
+        TeamsCollection.update({_id:teamId},{$set:itemData},callback);
     }
-//    findTeam_of_Member: function (memberid, callback) {
-//
-//        for (var i = 0; i<TeamsCollection[0].members.length; i++) {
-//            if(TeamsCollection[0].members[i]==memberid)
-//            {
-//                console.log(TeamsCollection[0].members[i]);
-//            }
-//        }
-//    }
+
+
+
 
 }
 module.exports=Team;

@@ -3,7 +3,7 @@ var Schema=mongoose.Schema;
 var storeSchema=new Schema({
   name:String,
   // Url:String,
-  organizationId:Schema.Types.ObjectId,
+  organizationId:{type:Schema.Types.ObjectId,ref:'organization'},
   items:[{type:Schema.Types.ObjectId,ref:'storeItems'}],
   storeDesc:String,
   createdAt:Date

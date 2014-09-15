@@ -25,11 +25,11 @@ var UserManagement={
     UserCollection.update({_id:id},{$set:updateData},callback);
   },
   addRole:function(userId,role,callback){
-<<<<<<< HEAD
+
     UserCollection.update({_id:userId},{$push:{roles:role}},callback);
-=======
-    UserCollection.update({_id:userId},{$push{roles:role}},callback);
->>>>>>> ea0f592aeb0fe3eb55ebd5ec758b01b91637afc3
+
+    UserCollection.update({_id:userId},{$push:{roles:role}},callback);
+
   },
   addPoints:function(userId,points,callback){
     UserCollection.update({_id:userId},{$push:{points:points}},callback);
@@ -64,13 +64,12 @@ var UserManagement={
   getUserByAuthentication:function(username,password,callback){
     passwordSalt=password+"salt!";
     UserCollection.findOne({username:username,passwordSalt:passwordSalt},callback);
-  }
+  },
+    buyItemToUser:function(userId,itemsdata,cost,callback){
+        UserCollection.update({_id:userId},{$push:{items:itemsdata},$inc:{totalCash:-cost}},callback);
+    },
+    getUserRole:function(userId,callback){
+        UserCollection.findOne({_id:id}).roles
+    }
 }
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> ea0f592aeb0fe3eb55ebd5ec758b01b91637afc3
 module.exports=UserManagement;

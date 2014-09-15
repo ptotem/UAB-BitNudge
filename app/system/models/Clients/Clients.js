@@ -29,24 +29,21 @@ var Client= {
         temp[fieldName]=value;
         ClientsCollection.update({_id:id},{$set:temp},callback);
     },
-    AddClientInOrg:function(org_id,data,callback){
-        ClientsCollection.update({organizationId:org_id},{$set:data},callback)
-    },
-//    AddClientInOrg:function(data,org_id){
-//        var client=new ClientsCollection({data:data,organizationId :org_id});
-//        client.save();
-//        console.log('data Saved')
-//        return true;
+//    AddClientInOrg:function(org_id,data,callback){
+//        ClientsCollection.update({organizationId:org_id},{$set:data},callback)
 //    },
     AddClientInOrg:function(data,org_id){
+        data.organizationId=org_id;
         var client=new ClientsCollection(data);
-        client.organizationId=org_id;
         client.save();
         console.log('data Saved')
         return true;
     },
     getClient:function(id,fields,options,populationData,callback){
         ClientsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+    },
+    getClientOfOrg:function(orgId,fields,options,populationParams,callback){
+        ClientsCollection.find({organizationId:orgId},fields,options).populate(populationParams).exec(callback);
     }
 
 }
