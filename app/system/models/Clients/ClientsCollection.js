@@ -4,8 +4,10 @@ var clientSchema=new Schema({
     name:String,
     org_Name:String,
     organizationId:{type:Schema.Types.ObjectId,ref:'organization'},
-    created_at:Date
+    createdAt:Date
 });
-var clientTypes=mongoose.model('clientType',clientSchema);
-module.exports=clientTypes;
+var clientTypes=mongoose.model('client',clientSchema);
+clientTypes.save();
+//module.exports=clientTypes;
 //{ type: Schema.Types.ObjectId, ref: 'Story' }
+

@@ -1,5 +1,4 @@
 var LevelsCollection=require('./LevelsCollection.js');
-var LevelRoutes=require('./LevelRoutes.js');
 var Levels={
   createLevel:function(organizationId,data){
 //    if(!Levels.validateRanges(data.rangeMin,data.rangeMax))

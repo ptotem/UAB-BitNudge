@@ -91,6 +91,18 @@ var UserManagement={
   getUserByAuthentication:function(username,password,callback){
     passwordSalt=password+"salt!";
     UserCollection.findOne({username:username,passwordSalt:passwordSalt},callback);
-  }
+  },
+    buyItemToUser:function(userId,itemsdata,cost,callback){
+        UserCollection.update({_id:userId},{$push:{items:itemsdata},$inc:{totalCash:-cost}},callback);
+    },
+    // getUserRole:function(userId,callback){
+    //     UserCollection.findOne({_id:userId}).roles
+    // },
+    // getGoalOfUser:function(userId,callback){ //fetch goal of user
+    //     UserCollection.findOne({_id:userId}).goals
+    // },
+    addGoalToUser:function(userId,goaldata,callback){
+        UserCollection.update({_id:userId},{$push:{goals:goaldata}});//add goal to user
+    }
 };
 module.exports=UserManagement;

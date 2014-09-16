@@ -29,6 +29,9 @@ var Training= {
         temp.created_at=new Date();
         temp[fieldName]=value;
         TrainingsCollection.update({_id:id},{$set:temp},callback);
+    },
+    assignTrainingToUser:function(trainingId,userdata){
+        TrainingsCollection.update({_id:trainingId},{$push:{user:userdata}});
     }
 
 }

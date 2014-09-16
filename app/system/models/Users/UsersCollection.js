@@ -20,7 +20,12 @@ var userSchema=new Schema({
   // clients:[{type:Schema.Types.ObjectId,rel:'clients'}],
   revenue:Number,
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],
-  createdAt:Date
+
+  createdAt:Date,
+    rank:Number
+
+
+
 });
 var User=mongoose.model('user',userSchema);
 module.exports=User;

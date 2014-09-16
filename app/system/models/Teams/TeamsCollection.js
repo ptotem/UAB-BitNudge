@@ -14,7 +14,7 @@ var teamsSchema=new Schema({
     clients :[{type:Schema.Types.ObjectId,ref:'clientType'}],
     revenue :[{type:Schema.Types.ObjectId,ref:'revenues'}],
     points:String,
-    created_at : Date
+    createdAt : Date
 });
 var Team=mongoose.model('team',teamsSchema);
 module.exports=Team;
@@ -24,4 +24,5 @@ module.exports=Team;
 //{name,users,teams,leader,orgId,goals,stores,clients,revenue}
 
 //org_Id :{type:Schema.Types.ObjectId,ref:'organization'}
+
 

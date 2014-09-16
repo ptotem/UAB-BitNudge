@@ -9,7 +9,7 @@ var SocialEngine={
       eval("server."+methods[0]+"('"+methods[1]+"',"+SocialEngineRoutes[property]+');');
     }
     console.log("Users initialized");
-  }
+  },
   addCommentToStatus:function(orgId,statusId,messageData,callback){
     MessagesModel.createMessage(orgId,messageData,function(err,obj){
       if(err) callback(err);

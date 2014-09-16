@@ -1,10 +1,8 @@
 var ProductsCollection=require('./ProductsCollection.js');
 
 var Product= {
-    initialize: function (server) {
-        console.log("Product initialized");
-    },
-    getProductDetail:function(product_id,fieldName){
+
+    getProductDetail:function(product_id,fieldName,callback){
         ProductsCollection.find(({'_id' :product_id}).fieldName,callback);
     },
     getProductSchema:function(){
@@ -36,6 +34,14 @@ var Product= {
         product.save();
         console.log('data Saved')
         return true;
+    },
+    sellProductToClient:function(product_id,client_id,calback){
+        ProductsCollection.update(({_id: product_id}, {$push: {client: client_id}}, callback))
     }
 }
 module.exports=Product;
+
+
+//addTeamsToTeam: function (teamId, teamData, callback) {
+//    TeamsCollection.update({_id: teamId}, {$push: {teams: teamData}}, callback);
+//}

@@ -53,17 +53,16 @@ userModel.find({},function(err,objs){
 */
 
 //loading models
-// var Organization=require('./System/models/Organizations');
-// Organization.initialize(server);
-// var teams=require('./System/models/Teams');
-// teams.initialize(server);
 
-var RankController=require('./system/controllers/PointsEngine/RankController.js');
-setTimeout(function(){
-console.log(new Date().getTime());
-RankController.calculateRankOfMonth("",new Date());
-console.log(new Date().getTime());
-},5000);
+var OrganizationResources=require('./app/RestApi/OrganizationResources');
+var TeamResources=require('./app/RestApi/TeamResources');
+var UserResources=require('./api/RestApi/UserResources');
+OrganizationResources.initilize(server);
+//var Organization=require('./system/models/Organizations');
+//Organization.createOrganization({name:"Amit"});
+//Organization.initialize(server);
+//var teams=require('./system/models/Teams');
+//teams.initialize(server);
 
 //server.on('connection', function (stream) {
 //    console.log('someone connected!');

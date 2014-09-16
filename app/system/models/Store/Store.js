@@ -29,6 +29,15 @@ var Stores={
     var temp={};
     temp[fieldName]=value;
     StoresCollection.update({_id:id},{$set:temp},callback);
-  }
+  },
+    getStoresOfOrg:function(orgId,fields,options,callback){
+        StoresCollection.findOne({organizationId:orgId},fields,options,function(err,obj){
+            if(err) handleError(err);
+            return callback(err,obj.name);
+        });
+    }
+
 }
 module.exports=Stores;
+
+

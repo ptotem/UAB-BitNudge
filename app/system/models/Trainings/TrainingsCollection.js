@@ -5,7 +5,8 @@ var trainingSchema=new Schema({
     link:String,
     point_function:String,
     organizationId:{type:Schema.Types.ObjectId,ref:'organization'},
-    created_at:Date
+    user:[{type:Schema.Types.ObjectId,ref:'user'}],
+    createdAt:Date
 });
 var training=mongoose.model('training',trainingSchema);
 module.exports=training;

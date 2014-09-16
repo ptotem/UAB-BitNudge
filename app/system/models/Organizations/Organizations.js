@@ -1,9 +1,6 @@
 var OrganizationsCollection=require('./OrganizationsCollection.js');
 
 var Organization= {
-    initialize: function (server) {
-        console.log("Organization initialized");
-    },
     getOrganizationDetail:function(org,fieldName){
         OrganizationsCollection.find(({'_id' :org}).fieldName,callback);
     },

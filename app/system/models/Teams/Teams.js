@@ -72,5 +72,4 @@ var Team= {
         return true;
     }
 };
-
 module.exports=Team;
