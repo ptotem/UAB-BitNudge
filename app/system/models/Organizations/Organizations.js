@@ -1,8 +1,9 @@
 var OrganizationsCollection=require('./OrganizationsCollection.js');
+var mongoose=require('mongoose');
 
 var Organization= {
-    getOrganizationDetail:function(org,fieldName){
-        OrganizationsCollection.find(({'_id' :org}).fieldName,callback);
+    getOrganizationDetail:function(org,fields,callback){
+        OrganizationsCollection.findOne(({'_id' :org},fields),callback);
     },
     getOrganizationSchema:function(){
         return OrganizationsCollection;
@@ -17,16 +18,13 @@ var Organization= {
         OrganizationsCollection.remove({'_id':id},callback);
     },
     getOrganization:function(id,fields,options,populationData,callback){
-        OrganizationsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+        OrganizationsCollection.findOne({_id:mongoose.Types.ObjectId(id)},fields,options).exec(callback);
     },
     setOrganizationFieldById:function(id,fieldName,value,callback){
-        OrganizationsCollection.update({_id:id},{$set:{fieldName:value}},callback);
+        OrganizationsCollection.update({_id:mongoose.Types.ObjectId(id)},{$set:{fieldName:value}},callback);
     },
-    updateOrg:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-        OrganizationsCollection.update({_id:id},{$set:temp},callback);
+    updateOrg:function(id,updatedData,callback){
+        OrganizationsCollection.update({_id:id},{$set:updatedData},callback);
     },
     findRevenueDetailsOfOrg:function(id,fieldname,calback)
     {

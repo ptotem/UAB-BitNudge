@@ -9,8 +9,7 @@ var UserManagement={
     //password is in plain text, they must be salted and shed
     //obviously, salt and hash it properly.
     data.createdAt=new Date();
-    data.orgId=organizationId;
-    // data.organizationId=mongoose.Schema.Types.ObjectId(organizationId);
+    data.organizationId=mongoose.Types.ObjectId(organizationId);
     if(data.password){
       data.passwordSalt=data.password+"salt!";
       data.passwordHash=data.password+"hash!";
@@ -86,7 +85,7 @@ var UserManagement={
     // UserCollection.update({_id:userId},{$inc:{cash:points}},callback);
   },
   getUser:function(id,fields,options,populationData,callback){
-    UserCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+    UserCollection.findOne({_id:id},fields,options).exec(callback);
   },
   getUserByAuthentication:function(username,password,callback){
     passwordSalt=password+"salt!";

@@ -1,5 +1,5 @@
-var RoleModel=require('../../models/Roles');
-var UserModel=require('../../models/User');
+var RoleModel=require('../models/Roles');
+var UserModel=require('../models/Users');
 
 var AuthorizationController={
     IsAuthorized:function(userId,model,operation,callback){
@@ -10,7 +10,7 @@ var AuthorizationController={
                  var modelData=model.model;
                  var permission=model.permission;
                  if(modelData==model) {
-                    if(permission.operation==true){
+                    if(permission.operation===true){
                        return true;
                     }
                     else{
@@ -20,6 +20,5 @@ var AuthorizationController={
     });
 });
     }
-}
-
+};
 module.exports=AuthorizationController;

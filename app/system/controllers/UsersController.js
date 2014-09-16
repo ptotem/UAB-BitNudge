@@ -14,7 +14,7 @@ var UsersController={
     });
   },
   getUser:function(req,res){
-    UsersModel.getUser(id,function(err,obj){
+    UsersModel.getUser(req.params.userId,function(err,obj){
       res.send(obj);
     });
   },

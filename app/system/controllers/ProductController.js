@@ -1,5 +1,5 @@
-var ProductModel=require('../../models/Products');
-var AuthorizationController=('../../controllers/AuthorizationController.js');
+var ProductModel=require('../models/Products');
+var AuthorizationController=('./AuthorizationController.js');
 var ProductController={
      addProductToOrg:function(req,res,callback){
          if(AuthorizationController.IsAuthorized(req.userId,Product,write,callback)) {
@@ -19,11 +19,10 @@ var ProductController={
         ProductModel.deleteProduct(req.productId,callback);
     },
     getProduct:function(req,res,callback){
-        ProductModel.getProduct(req.productId,callback)
+        ProductModel.getProduct(req.productId,callback);
     },
     updateProducts:function(req,res,callback){
-        ProductModel.updateProduct(req.data)
+        ProductModel.updateProduct(req.data);
     }
-
 };
 module.exports=ProductController;

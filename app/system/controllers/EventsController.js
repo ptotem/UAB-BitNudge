@@ -1,5 +1,5 @@
-var PointsEngine=require('./PointsEngine');
-var RevenuesController=require('./RevenuesController.js');
+var PointsEngine=require('./PointsEngine/RankController.js');
+var RevenuesController=require('./RevenueController.js');
 var EventsController={
   onRegisterTransaction:function(){
   },
@@ -8,10 +8,10 @@ var EventsController={
   triggerSystemActivity:function(){
   },
   triggerRankCalculation:function(orgId){
-    PointsEngine.RankController.calculateRank(orgId);
+    PointsEngine.calculateRank(orgId);
   },
   triggerLevelCalculation:function(orgId){
-    PointsEngine.LevelController.calculateLevel(orgId);
+    // PointsEngine.calculateLevel(orgId);
   },
   triggerRevenueCalculation:function(orgId){
     RevenuesController.calculateRevenues(orgId);

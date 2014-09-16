@@ -1,5 +1,5 @@
-var ClientModel=require('../../models/clients');
-var AuthorizationController=('../../controllers/AuthorizationController.js');
+var ClientModel=require('../models/Clients');
+var AuthorizationController=('./AuthorizationController.js');
 var ClientController={
 
     addClientsToOrg:function(req,res,callback){

@@ -5,6 +5,17 @@ var server = module.exports = restify.createServer({
 });
 var escape=require('escape-html');
 var mongoose=require('mongoose');
+// var cors=require('cors');
+// var corsMiddleware = require('restify-cors-middleware');
+//
+// var cors = corsMiddleware({
+//   origins: ['http://192.168.2.23'],//http://web.myapp.com'],
+//   // allowHeaders: ['API-Token'],
+//   // exposeHeaders: ['API-Token-Expiry']
+// });
+//
+// server.pre(cors.preflight);
+// server.use(cors.actual);
 
 mongoose.connect('mongodb://localhost/uabTest');
 var db = mongoose.connection;
@@ -23,6 +34,7 @@ server.use(restify.dateParser());
 server.use(restify.queryParser({ mapParams : false }));
 server.use(restify.urlEncodedBodyParser());
 server.use(restify.bodyParser({ mapParams : false }));
+server.use(restify.jsonp());
 server.use(restify.throttle({
     burst : 100 ,
     rate : 50 ,
@@ -31,6 +43,21 @@ server.use(restify.throttle({
 
     }
 }));
+// restify.CORS.ALLOW_HEADERS.push('accept');
+// restify.CORS.ALLOW_HEADERS.push('sid');
+// restify.CORS.ALLOW_HEADERS.push('lang');
+// restify.CORS.ALLOW_HEADERS.push('origin');
+// restify.CORS.ALLOW_HEADERS.push('withcredentials');
+// restify.CORS.ALLOW_HEADERS.push('x-requested-with');
+// server.use(restify.CORS());
+// server.use(restify.fullResponse());
+// server.use(
+//   function crossOrigin(req,res,next){
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     return next();
+//   }
+// );
 server.listen(3004, function () {
     console.log('%s listening at %s', server.name, server.url);
 });
@@ -50,14 +77,14 @@ userModel.find({},function(err,objs){
 	});
 });
 
+
 */
+//init routes
+var routes=require('./RestApi/RestApi.js');
+routes.initialize(server);
 
 //loading models
 
-var OrganizationResources=require('./app/RestApi/OrganizationResources');
-var TeamResources=require('./app/RestApi/TeamResources');
-var UserResources=require('./api/RestApi/UserResources');
-OrganizationResources.initilize(server);
 //var Organization=require('./system/models/Organizations');
 //Organization.createOrganization({name:"Amit"});
 //Organization.initialize(server);

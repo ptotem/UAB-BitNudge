@@ -1,5 +1,5 @@
-var RevenueModel=require('../../models/Products');
-var AuthorizationController=('../../controllers/AuthorizationController.js');
+var RevenueModel=require('../models/Products');
+var AuthorizationController=('./AuthorizationController.js');
 var RevenueController={
 
     revenueEntry:function(req,res,callback){

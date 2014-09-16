@@ -10,29 +10,29 @@ var RankController=require('../app/system/controllers/PointsEngine/RankControlle
 mongoose.connect('mongodb://localhost/uabTest');
 describe("test ranks",function(){
   describe("static tests",function(){
-    // it("should create user related everything",function(done){
-    //   OrganizationsModel.createOrganization({_id:"org1",name:"Ptotem",location:"Wadala"},done);
-    //   for(var i=0;i<100;i++){
-    //     UsersModel.createUser("org1",{_id:"user"+i,name:"User"+i,password:"test"});
-    //   }
-    //   for(i=0;i<100;i++){
-    //     var points=Math.floor(Math.random()*9001+1000);
-    //     UserPointsModel.UserMonthPoints.createUserMonthPoints("org1",{userId:"user"+i,_id:"points"+i,month:new Date(),totalPoints:points});
-    //   }
-    //   LeaderboardModel.MonthLeaderboard.createLeaderboard("org1",{});
-    //   for(i=0;i<10;i++){
-    //   }
-    // });
-    it("should calculateRankOfMonth properly",function(done){
-      this.timeout(15000);
-      console.log("starting now");
-      console.log(new Date().getTime());
-      RankController.calculateRankOfMonth("org1",new Date(),function(t){
-        console.log("ending now");
-        console.log(new Date().getTime());
-        done(t);
-      });
+    it("should create user related everything",function(done){
+      // OrganizationsModel.createOrganization({name:"Ptotem",location:"Wadala"},done);
+      // for(var i=0;i<100;i++){
+        UsersModel.createUser("54181686aa57cbbe938e52b4",{name:"User1",password:"test"});
+      // }
+      // for(i=0;i<100;i++){
+      //   var points=Math.floor(Math.random()*9001+1000);
+      //   UserPointsModel.UserMonthPoints.createUserMonthPoints("org1",{userId:"user"+i,_id:"points"+i,month:new Date(),totalPoints:points});
+      // }
+      // LeaderboardModel.MonthLeaderboard.createLeaderboard("org1",{});
+      // for(i=0;i<10;i++){
+      // }
     });
+    // it("should calculateRankOfMonth properly",function(done){
+    //   this.timeout(15000);
+    //   console.log("starting now");
+    //   console.log(new Date().getTime());
+    //   RankController.calculateRankOfMonth("org1",new Date(),function(t){
+    //     console.log("ending now");
+    //     console.log(new Date().getTime());
+    //     done(t);
+    //   });
+    // });
     // it("should set setRankOfTeam",function(){
     //   LeaderboardModel.MonthLeaderboard.setRankOfUser(new Date(),1,"user1");
     // });
