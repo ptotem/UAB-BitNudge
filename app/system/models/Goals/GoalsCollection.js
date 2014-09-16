@@ -3,8 +3,8 @@ var Schema=mongoose.Schema;
 var goalsSchema=new Schema({
   creator:Schema.Types.ObjectId,
   name:String,
-  // players:[Schema.Types.ObjectId],
-  steps:[{transactionSchema:Schema.Types.ObjectId,quantity:Number,done:Boolean}],
+  steps:[{stepNo:Number,transactionSchema:Schema.Types.ObjectId,quantity:Number}],
+  totalSteps:Number,
   points:Number,
   medals:[{type:Schema.Types.ObjectId,ref:'medals'}],
   startDate:Date,

@@ -16,7 +16,7 @@ var userSchema=new Schema({
   level:Number,
   totalPoints:Number,
   totalCash:Number,
-  goals:[{type:Schema.Types.ObjectId,rel:'goals'}],
+  // goals:[{type:Schema.Types.ObjectId,rel:'goals'}],
   // clients:[{type:Schema.Types.ObjectId,rel:'clients'}],
   revenue:Number,
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],

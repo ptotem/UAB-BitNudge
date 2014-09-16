@@ -7,6 +7,7 @@ var organizationSchema=new Schema({
     name:String,
     location:String,
     revenue :[{type:Schema.Types.ObjectId,ref:'revenues'}],
+    // goals:[{tyep:Schema.Types.ObjectId,ref:'goals'}],
     createdAt:Date
 });
 var Organization=mongoose.model('organizations',organizationSchema);

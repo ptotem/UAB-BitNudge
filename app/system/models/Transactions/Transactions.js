@@ -17,13 +17,14 @@ var Transactions={
   getTransactionSchema:function(){
     return TransactionsCollection.Schema;
   },
-  approveTransaction:function(id,approver,callback){
-    TransactionsCollection.findOne({_id:id},function(err,obj){
-      if(err) return callback(err,null);
-      if(obj.moderator==id)
-        TransactionsCollection.update({_id:id},{$set:{moderated:true},callback);
-      else return callback(err,null);    
-    });
+  approveTransaction:function(id,callback){
+    TransactionsCollection.update({_id:id},{$set:{moderated:true}},callback);
+    // TransactionsCollection.findOne({_id:id},function(err,obj){
+    //   if(err) return callback(err,null);
+    //   if(obj.moderator==id)
+    //     TransactionsCollection.update({_id:id},{$set:{moderated:true},callback);
+    //   else return callback(err,null);    
+    // });
   },
   deleteTransaction:function(id,callback){
     TransactionsCollection.remove({_id:id},callback);

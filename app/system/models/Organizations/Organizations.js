@@ -19,8 +19,8 @@ var Organization= {
     deleteOrganization:function(id,callback){
         OrganizationsCollection.remove({'_id':id},callback);
     },
-    getOrganization:function(id,fields,options,callback){
-        OrganizationsCollection.findOne({_id:id},fields,options,callback);
+    getOrganization:function(id,fields,options,populationData,callback){
+        OrganizationsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     },
     setOrganizationFieldById:function(id,fieldName,value,callback){
         OrganizationsCollection.update({_id:id},{$set:{fieldName:value}},callback);
@@ -31,9 +31,6 @@ var Organization= {
         temp[fieldName]=value;
         OrganizationsCollection.update({_id:id},{$set:temp},callback);
     },
-//    addStoresToOrganizations:function(orgId,storeData,callback){
-//        OrganizationsCollection.update({_id:orgId},{$push:storeData},callback);
-//    }
     findRevenueDetailsOfOrg:function(id,fieldname,calback)
     {
         var field=fieldname;
@@ -46,15 +43,6 @@ var Organization= {
     },
     handleError:function(err){
        return true;
-
     }
 };
-
 module.exports=Organization;
-//.findOne({ title: 'Once upon a timex.' })
-//    .populate('_creator')
-//    .exec(function (err, story) {
-//        if (err) return handleError(err);
-//        console.log('The creator is %s', story._creator.name);
-//        // prints "The creator is Aaron"
-//    })

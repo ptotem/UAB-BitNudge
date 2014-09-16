@@ -22,10 +22,8 @@ var Medals={
   // deleteMedal:function(id,callback){
   //   MedalsCollection.remove({_id:id},callback);
   // },
-  updateMedal:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    MedalsCollection.update({_id:id},{$set:temp},callback);
+  updateMedal:function(id,updatedData,callback){
+    MedalsCollection.update({_id:id},{$set:updatedData},callback);
   }
 };
 module.exports=Medals;

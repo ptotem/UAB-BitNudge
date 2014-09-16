@@ -1,0 +1,42 @@
+var UsersModel=require('../models/Users');
+
+var UsersController={
+  createUser:function(req,res){
+    UsersModel.createUser(orgId,data);
+    SocialFeedModel.createSocialFeed(orgId,{});
+    NudgeMailbox.createNudgeMailbox(orgId,{});
+    NudgeChat.createNudgeChat(orgId,{});
+    NotificationCenterModel.createNotificationCenter(orgId,{});
+  },
+  updateUser:function(req,res){
+    UsersModel.updateUser(id,updateData,function(err,obj){
+      res.send(obj);
+    });
+  },
+  getUser:function(req,res){
+    UsersModel.getUser(id,function(err,obj){
+      res.send(obj);
+    });
+  },
+  getUsersOfOrganization:function(req,res){
+    UsersModel.getUsers(userId,function(err,goals){
+      res.send(goals);
+    });
+  },
+  assignUserToUser:function(req,res){
+    UsersModel.giveUserToUser(userId,medalId,function(err,obj){
+      res.send("success");
+    });
+  },
+  deleteUser:function(req,res){
+    UsersModel.deleteUser(userId,function(err,obj){
+      res.send("success");
+    });
+  },
+  addUserToTeam:function(req,res){
+    TeamsModel.addMembersToTeam(teamId,members,function(err,obj){
+      res.send("success");
+    });
+  }
+};
+module.exports=UsersController;

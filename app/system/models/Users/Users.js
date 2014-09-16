@@ -25,15 +25,43 @@ var UserManagement={
   updateUser:function(id,updateDate,callback){
     UserCollection.update({_id:id},{$set:updateData},callback);
   },
+  // getGoals:function(id,fields,options,callback){
+  //   UserCollection.findOne({_id:id},fields,options).populate('goals').exec(function(err,objs){
+  //     if(objs)
+  //       return callback(err,objs.goals);
+  //     else return callback(err,null);
+  //   });
+  // },
+  getRoles:function(id,fields,options,callback){
+    UserCollection.findOne({_id:id},fields,options).populate('roles').exec(function(err,objs){
+      if(objs)
+        return callback(err,objs.roles);
+      else return callback(err,null);
+    });
+  },
+  getMedals:function(id,fields,options,callback){
+    UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
+      if(objs)
+        return callback(err,objs.medals);
+      else return callback(err,null);
+    });
+  },
+  getItems:function(id,fields,options,callback){
+    UserCollection.findOne({_id:id},fields,options).populate('items').exec(function(err,objs){
+      if(objs)
+        return callback(err,objs.items);
+      else return callback(err,null);
+    });
+  },
   addRole:function(userId,role,callback){
     UserCollection.update({_id:userId},{$push:{roles:role}},callback);
   },
   addPoints:function(userId,points,callback){
     UserCollection.update({_id:userId},{$push:{points:points}},callback);
   },
-  addGoal:function(userId,goalId,callback){
-    UserCollection.update({userId:userId},{$push:{goals:goalId}},callback);
-  },
+  // addGoal:function(userId,goalId,callback){
+  //   UserCollection.update({userId:userId},{$push:{goals:goalId}},callback);
+  // },
   addClient:function(userId,clientId,callback){
     UserCollection.update({userId:userId},{$push:{clients:clientId}},callback);
   },
@@ -52,10 +80,9 @@ var UserManagement={
   sortUsersByField:function(queryObj,fieldName,callback){
     UserCollection.find(queryObj).sort(fieldName).exec(callback);
   },
-  //pointsData is an object {pointsEarned,fromTransaction,fromGoal}
-  incrementUserCashAndPointsBy:function(userId,pointsData,callback){
-    var points=pointsData.pointsEarned;
-    UserCollection.update({_id:userId},{$push:{points:pointsData},$inc:{totalPoints:points,totalCash:points}},callback);
+  //pointsData is an object {pointsEarned,from,fromGoal}
+  incrementUserCashAndPointsBy:function(userId,points,callback){
+    UserCollection.update({_id:userId},{$inc:{totalPoints:points,totalCash:points}},callback);
     // UserCollection.update({_id:userId},{$inc:{cash:points}},callback);
   },
   getUser:function(id,fields,options,populationData,callback){
@@ -65,5 +92,5 @@ var UserManagement={
     passwordSalt=password+"salt!";
     UserCollection.findOne({username:username,passwordSalt:passwordSalt},callback);
   }
-}
+};
 module.exports=UserManagement;

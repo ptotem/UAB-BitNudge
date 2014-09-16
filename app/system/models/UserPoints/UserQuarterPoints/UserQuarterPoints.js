@@ -29,11 +29,11 @@ var UserQuarterPoints= {
     var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
     UserQuarterPointsCollection.update({userId:userId,quarter:{$gte:start,$lt:end}},updateData,callback);
   },
-  addPointsObject:function(userId,quarter,pointsObj,callback){
+  addPoints:function(userId,quarter,points,callback){
     var currDate=moment(quarter);
     var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
-    UserQuarterPointsCollection.update({userId:userId,quarter:{$gte:start,$lt:end}},{$push:{points:pointsObj}},callback);
+    UserQuarterPointsCollection.update({userId:userId,quarter:{$gte:start,$lt:end}},{$inc:{totalPoints:points}},callback);
   }
 };
 module.exports=UserQuarterPoints;

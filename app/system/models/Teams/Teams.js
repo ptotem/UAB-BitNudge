@@ -20,8 +20,8 @@ var Team= {
     deleteTeam:function (id, callback) {
         TeamsCollection.remove({'_id': id}, callback);
     },
-    getTeam: function (id, callback) {
-        TeamsCollection.findOne({'_id': id}, callback);
+    getTeam: function (id,fields,options,populationData, callback) {
+        TeamsCollection.findOne({'_id': id},fields,options).populate(populationData).exec(callback);
     },
     setTeamFieldById: function (id, fieldName, value, callback) {
         TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
@@ -55,63 +55,22 @@ var Team= {
     removeTeamsToTeam: function (teamId, teams, callback) {
         TeamsCollection.update({_id: teamId}, {$pull: {teams: teams}}, callback);
     },
+    // addGoalToTeam:function(teamId,data,callback){
+    //   TeamsCollection.update({_id:teamId},{$push:{goals:data}},callback);
+    // },
     addStoresToTeam: function (teamId, storeData, callback) {
         TeamsCollection.update({_id: teamId}, {$push: storeData}, callback);
     },
-//    createTeamInOrg:function(data,org_id){
-//        var team=new TeamsCollection({data:data,organizationId :org_id});
-//        team.save();
-//        console.log('data Saved')
-//        return true;
-//    },
-    assign_trainingToTeam: function (teamId, training_id, callback) {
+    assignTrainingToTeam: function (teamId, training_id, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
     },
-    AddTeamIn_org: function (organizationId, data) {
+    AddTeamInOrg: function (organizationId, data) {
         data.organizationId = organizationId;
         var team = new TeamsCollection(data);
         team.created_at = new Date();
         team.save();
         return true;
-    },
-
-
-    findDetailsOfTeam: function (id, fieldname, calback) {
-        var field = fieldname;
-        TeamsCollection.findOne({ '_id': id })
-            .populate('revenue').exec(function (err, revenues) {
-                if (err) return handleError(err);
-                console.log('The creator is %s', revenues.revenue.field);
-                return revenues.revenue.field;
-            })
-    },
-    findParent_Team_name_ofTeam: function (id, calback) {
-        TeamsCollection.findOne({'_id': id })
-            .populate('parentTeamId').exec(function (err, parent) {
-                if (err) return handleError(err);
-//                console.log('The creator is %s', revenues.revenue.field);
-                return parent.parentTeamId.name;
-            })
-    },
-    findLeader_name_ofTeam: function (id, calback) {
-        TeamsCollection.findOne({'_id': id })
-            .populate('teamLeaderId').exec(function (err, leader) {
-                if (err) return handleError(err);
-//                console.log('The creator is %s', revenues.revenue.field);
-                return leader.teamLeaderId.name;
-            })
-
-    },
-//    findTeam_of_Member: function (memberid, callback) {
-//
-//        for (var i = 0; i<TeamsCollection[0].members.length; i++) {
-//            if(TeamsCollection[0].members[i]==memberid)
-//            {
-//                console.log(TeamsCollection[0].members[i]);
-//            }
-//        }
-//    }
-
+    }
 };
 
 module.exports=Team;
