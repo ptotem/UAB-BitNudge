@@ -1,12 +1,13 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var nudgeMailsSchema=new Schema({
+    _id:String,
     subject:String,
     content:String,
-    sender:{type:Schema.Types.ObjectId,ref:'user'},
-    receivers:[{type:Schema.Types.ObjectId,ref:'user'}],
+    sender:String,//{type:Schema.Types.ObjectId,ref:'user'},
+    receivers:String,//[{type:Schema.Types.ObjectId,ref:'user'}],
     timestamp:String,
-    organizationId:{type:Schema.Types.ObjectId,ref:'organization'},
+    organizationId:String,//{type:Schema.Types.ObjectId,ref:'organization'},
     read :String,
     createdAt:Date
 });

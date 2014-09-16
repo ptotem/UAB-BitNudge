@@ -29,3 +29,4 @@ var NudgeChat={
   //   NudgeChatCollection.update({_id:id},{$set:temp},callback);
   // }
 };
+module.exports=NudgeChat;

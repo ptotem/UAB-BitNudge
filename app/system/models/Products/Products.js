@@ -1,7 +1,6 @@
 var ProductsCollection=require('./ProductsCollection.js');
 
 var Product= {
-
     getProductDetail:function(product_id,fieldName,callback){
         ProductsCollection.find(({'_id' :product_id}).fieldName,callback);
     },
@@ -23,25 +22,17 @@ var Product= {
     getProductByOrgId:function(orgid,callback){
         ProductsCollection.find(({organizationId :orgid}),callback);
     },
-    updateProduct:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-        ProductsCollection.update({_id:id},{$set:temp},callback);
+    updateProduct:function(id,updateData,callback){
+        ProductsCollection.update({_id:id},{$set:updateData},callback);
     },
     addProductInOrg:function(data,org_id){
         var product=new ProductsCollection({data:data,organizationId :org_id});
         product.save();
-        console.log('data Saved')
+        console.log('data Saved');
         return true;
     },
     sellProductToClient:function(product_id,client_id,calback){
-        ProductsCollection.update(({_id: product_id}, {$push: {client: client_id}}, callback))
+        ProductsCollection.update(({_id: product_id}, {$push: {client: client_id}}, callback));
     }
-}
+};
 module.exports=Product;
-
-
-//addTeamsToTeam: function (teamId, teamData, callback) {
-//    TeamsCollection.update({_id: teamId}, {$push: {teams: teamData}}, callback);
-//}

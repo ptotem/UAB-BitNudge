@@ -25,6 +25,9 @@ var StoreItems={
       else callback(obj.quantity>0);
     });
   },
+  updateStoreItem:function(id,updateDate,callback){
+    StoreItemsCollection.update({_id:id},{$set:updateData},callback);
+  },
   updateStoreItem:function(id,fieldName,value,callback){
     var temp={};
     temp[fieldName]=value;
@@ -33,12 +36,12 @@ var StoreItems={
     getStoreItemCost:function(id,callback){
         StoreItemsCollection.findOne(({_id:id}).cost,callback);
 
-},
-    getStoresOfOrg:function(orgId,fields,options,callback){
-        StoresCollection.findOne({organizationId:orgId},fields,options,function(err,obj){
-            if(err) handleError(err);
-            return callback(err,obj.name);
-        });
-    }
+  },
+  getStoresOfOrg:function(orgId,fields,options,callback){
+    StoresCollection.findOne({organizationId:orgId},fields,options,function(err,obj){
+      if(err) handleError(err);
+      return callback(err,obj.name);
+    });
+  }
 };
 module.exports=StoreItems;

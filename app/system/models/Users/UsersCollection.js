@@ -10,7 +10,6 @@ var userSchema=new Schema({
   email:String,
   passwordSalt:String,
   passwordHash:String,
-  // points:[{pointsEarned:Number,fromTransaction:{type:Schema.Types.ObjectId,rel:'transactions'},fromGoal:{type:Schema.Types.ObjectId,rel:'goals'}}],
   medals:[{type:Schema.Types.ObjectId,rel:'medals'}],
   items:[{type:Schema.Types.ObjectId,rel:'storeItems'}],
   level:Number,

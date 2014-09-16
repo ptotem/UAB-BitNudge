@@ -11,8 +11,8 @@ var NudgeMailbox={
   getNudgeMailbox:function(id,fields,options,populationData,callback){
     NudgeMailboxCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getNudgeMailboxOfUser:function(userId,callback){
-    NudgeMailboxCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
+  getNudgeMailboxOfUser:function(userId,fields,options,populationData,callback){
+    NudgeMailboxCollection.findOne({userId:userId},fields,options).populate(populationData).exec(callback);
   },
   addMailToUserMailbox:function(userId,mailId,callback){
     NudgeMailboxCollection.update({userId:userId},{$push:{mails:mailId}},callback);
@@ -22,5 +22,6 @@ var NudgeMailbox={
   },
   deleteNudgeMailbox:function(id,callback){
     NudgeMailboxCollection.remove({_id:id},callback);
-  },
+  }
 };
+module.exports=NudgeMailbox;

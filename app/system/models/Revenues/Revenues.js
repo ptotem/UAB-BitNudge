@@ -1,8 +1,8 @@
-var RevenuesCollection=require('./ClientsCollection.js');
+var RevenuesCollection=require('./RevenuesCollection.js');
 
 var Revenue= {
 
-    getRevenueDetail:function(revenue_id,fieldName){
+    getRevenueDetail:function(revenue_id,fieldName,callback){
         RevenuesCollection.find(({'_id' :revenue_id}).fieldName,callback);
     },
     getRevenueSchema:function(){
@@ -24,17 +24,8 @@ var Revenue= {
     getRevenueByOrgId:function(orgid,callback){
         RevenuesCollection.find(({organizationId :orgid}),callback);
     },
-    updateRevenue:function(id,fieldName,value,callback){
-        var temp={};
-        temp[fieldName]=value;
-        RevenuesCollection.update({_id:id},{$set:temp},callback);
-    },
-    getRevenue:function(id,fields,options,populationData,callback){
-        RevenuesCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+    updateRevenue:function(id,updateData,callback){
+        RevenuesCollection.update({_id:id},{$set:updateData},callback);
     }
-
-}
+};
 module.exports=Revenue;
-
-
-//Inside organizations add revenue

@@ -12,8 +12,7 @@ var roleSchema=new Schema({
         assign:Boolean,
         approve:Boolean
     }}],
-//    action:[{type:Schema.Types.ObjectId,ref:'action'}],
-    org_Id :{type:Schema.Types.ObjectId,ref:'organization'},
+    orgId :{type:Schema.Types.ObjectId,ref:'organization'},
     createdAt :Date
 });
 var Role=mongoose.model('role',roleSchema);

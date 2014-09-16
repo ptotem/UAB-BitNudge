@@ -1,11 +1,9 @@
 var TrainingsCollection=require('./TrainingsCollection.js');
 
 var Training= {
-
     getTrainingDetail:function(_id,fieldName){
         TrainingsCollection.find(({'_id' :_id}).fieldName,callback);
     },
-
     getTrainingSchema:function(){
         return TrainingsCollection.Schema;
     },
@@ -24,18 +22,11 @@ var Training= {
     getTrainingByOrgId:function(orgid,callback){
         TrainingsCollection.find(({organizationId :orgid}),callback);
     },
-    updateTraining:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-        TrainingsCollection.update({_id:id},{$set:temp},callback);
+    updateTraining:function(id,updateData,callback){
+        TrainingsCollection.update({_id:id},{$set:updateData},callback);
     },
     assignTrainingToUser:function(trainingId,userdata){
         TrainingsCollection.update({_id:trainingId},{$push:{user:userdata}});
     }
-
-}
+};
 module.exports=Training;
-
-
-//Assign Training to Teams and Organizations

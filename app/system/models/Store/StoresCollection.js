@@ -1,6 +1,7 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var storeSchema=new Schema({
+    // _id:String,
   name:String,
   // Url:String,
   organizationId:{type:Schema.Types.ObjectId,ref:'organization'},

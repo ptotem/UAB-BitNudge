@@ -1,8 +1,5 @@
 var MedalsCollection=require('./MedalsCollection.js');
 var Medals={
-  initialize:function(server){
-    console.log("medals initialized");
-  },
   createMedal:function(organizationId,data){
     data.organizationId=organizationId;
     data.createdAt=new Date();
@@ -19,11 +16,8 @@ var Medals={
   getMedalSchema:function(){
     return MedalsCollection.Schema;
   },
-  // deleteMedal:function(id,callback){
-  //   MedalsCollection.remove({_id:id},callback);
-  // },
-  updateMedal:function(id,updatedData,callback){
-    MedalsCollection.update({_id:id},{$set:updatedData},callback);
+  updateMedal:function(id,updateData,callback){
+    MedalsCollection.update({_id:id},{$set:updateData},callback);
   }
 };
 module.exports=Medals;

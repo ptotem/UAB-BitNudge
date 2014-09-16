@@ -2,7 +2,7 @@ var SocialFeedCollection=require('./SocialFeedCollection.js');
 
 var SocialFeed={
   createSocialFeed:function(organizationId,data){
-    data.orgId:organizationId;
+    data.orgId=organizationId;
     data.createdAt=new Date();
     var l=new SocialFeedCollection(data);
     l.save();
@@ -23,9 +23,8 @@ var SocialFeed={
   deleteSocialFeed:function(id,callback){
     SocialFeedCollection.remove({_id:id},callback);
   },
-  updateSocialFeed:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    SocialFeedCollection.update({_id:id},{$set:temp},callback);
+  updateSocialFeed:function(id,updateData,callback){
+    SocialFeedCollection.update({_id:id},{$set:updateData},callback);
   }
 };
+module.exports=SocialFeed;

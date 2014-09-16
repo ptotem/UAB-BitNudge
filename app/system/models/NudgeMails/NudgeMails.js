@@ -1,4 +1,4 @@
-var NudgeMailsCollection=require('./ClientsCollection.js');
+var NudgeMailsCollection=require('./NudgeMailsCollection.js');
 
 var NudgeMail= {
     getNudgeMailDetail:function(client,fieldName){
@@ -23,21 +23,18 @@ var NudgeMail= {
     getNudgeMailByOrgId:function(orgid,callback){
         NudgeMailsCollection.find(({organizationId :orgid}),callback);
     },
-    updateNudgeMail:function(id,fieldName,value,callback){
-        var temp={};
-        temp[fieldName]=value;
-        NudgeMailsCollection.update({_id:id},{$set:temp},callback);
+    updateNudgeMail:function(id,updateData,callback){
+        NudgeMailsCollection.update({_id:id},{$set:updateData},callback);
     },
     addReceiverNudgeMail :function(id,receiverId,calback){
         NudgeMailsCollection.update({'_id':id},{$push:{
             receivers:receiverId
-        }})
+        }});
     },
     deleteReceiverNudgeMail :function(id,receiverId,calback){
-        NudgeMailsCollection.update({'_id':id},{$pull:{
-            receivers:receiverId
-        }})
+      NudgeMailsCollection.update({'_id':id},{$pull:{
+        receivers:receiverId
+      }});
     }
-
-}
+};
 module.exports=NudgeMail;

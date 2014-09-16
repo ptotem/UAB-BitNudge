@@ -13,16 +13,8 @@ var teamsSchema=new Schema({
     training :[{type:Schema.Types.ObjectId,ref:'training'}],
     clients :[{type:Schema.Types.ObjectId,ref:'clientType'}],
     revenue :[{type:Schema.Types.ObjectId,ref:'revenues'}],
-    points:String,
+    points:Number,
     createdAt : Date
 });
-var Team=mongoose.model('team',teamsSchema);
+var Team=mongoose.model('teams',teamsSchema);
 module.exports=Team;
-
-//name:String,teamLeaderId:String,organizationId:String,members:Array, parentTeamId:String, teams:Array
-
-//{name,users,teams,leader,orgId,goals,stores,clients,revenue}
-
-//org_Id :{type:Schema.Types.ObjectId,ref:'organization'}
-
-

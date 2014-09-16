@@ -23,8 +23,8 @@ var Organization= {
     setOrganizationFieldById:function(id,fieldName,value,callback){
         OrganizationsCollection.update({_id:mongoose.Types.ObjectId(id)},{$set:{fieldName:value}},callback);
     },
-    updateOrg:function(id,updatedData,callback){
-        OrganizationsCollection.update({_id:id},{$set:updatedData},callback);
+    updateOrg:function(id,updateData,callback){
+        OrganizationsCollection.update({_id:id},{$set:updateData},callback);
     },
     findRevenueDetailsOfOrg:function(id,fieldname,calback)
     {

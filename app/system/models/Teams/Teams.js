@@ -37,11 +37,8 @@ var Team= {
     setTeamLeader: function (id, leader_id, callback) {
         TeamsCollection.update({_id: id}, {$set: {teamLeaderId: leader_id}}, callback);
     },
-    updateTeam: function (id, fieldName, value, callback) {
-        var temp = {};
-        temp.created_at = new Date();
-        temp[fieldName] = value;
-        TeamsCollection.update({_id: id}, {$set: temp}, callback);
+    updateTeam: function (id, updateDate, callback) {
+        TeamsCollection.update({_id: id}, {$set: updateData}, callback);
     },
     addMembersToTeam: function (teamId, memberData, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {members: memberData}}, callback);

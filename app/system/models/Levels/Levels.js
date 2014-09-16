@@ -20,10 +20,8 @@ var Levels={
   deleteLevel:function(id,callback){
     LevelsCollection.remove({_id:id},callback);
   },
-  updateLevel:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    LevelsCollection.update({_id:id},{$set:temp},callback);
+  updateLevel:function(id,updateData,callback){
+    LevelsCollection.update({_id:id},{$set:updateData},callback);
   },
   validateRanges:function(rangeMin,rangeMax){
     //put some validation effects. The ranges must not intersect.
