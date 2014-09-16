@@ -1,7 +1,17 @@
 
+
 // End Points For Users:
 var userModel=require('../../system/controllers/AuthorizationController.js');
 var userModelRoutes={
+    initialize:function(server){
+        //initializing routes.
+        for(property in userModelRoutes)
+        {
+            methods=property.split(" ");
+            eval("server."+methods[0]+"('"+methods[1]+"',"+userModelRoutes[property]+');');
+        }
+        console.log("User Model initialized");
+    },
     'get org/:orgId/users/:userId':function(req,res) {
         userModel.getuser(req.id),function(err,obj){
             console.log(err+obj);
@@ -32,6 +42,15 @@ var userModelRoutes={
  // End Points for Roles:
 var roleModel=require('../../system/controllers/RoleController.js');
 var roleModelRoutes={
+    initialize:function(server){
+        //initializing routes.
+        for(property in roleModelRoutes)
+        {
+            methods=property.split(" ");
+            eval("server."+methods[0]+"('"+methods[1]+"',"+userModelRoutes[property]+');');
+        }
+        console.log("Role Model initialized");
+    },
     'get org/:orgId/roles/:roleId':function(req,res) {
         roleModel.getRole(req,res),function(err,obj){
             console.log(err+obj);
@@ -55,6 +74,16 @@ var roleModelRoutes={
 // End Points for Stores
 var storeModel=require('../../system/controllers/eCommerceEngine/StoreController');
 var storeModelRoutes={
+    initialize:function(server){
+        //initializing routes.
+        for(property in storeModelRoutes)
+        {
+            methods=property.split(" ");
+            eval("server."+methods[0]+"('"+methods[1]+"',"+storeModelRoutes[property]+');');
+        }
+        console.log("store Model initialized");
+    },
+
     'get org/:orgId/stores/:storeId':function(req,res) {
         storeModel.getStoreOrg(req,res),function(err,obj){
             console.log(err+obj);
@@ -102,6 +131,15 @@ var storeModelRoutes={
 
 var storeItemModel=require('../../system/controllers/eCommerceEngine/StoreItemController.js');
 var storeItemModelRoutes={
+    initialize:function(server){
+        //initializing routes.
+        for(property in storeItemModelRoutes)
+        {
+            methods=property.split(" ");
+            eval("server."+methods[0]+"('"+methods[1]+"',"+storeItemModelRoutes[property]+');');
+        }
+        console.log("store Item Model initialized");
+    },
     'get org/:orgId/storeItems/:storeItemId':function(req,res) {
         storeItemModel.getStoreItemOrg(req,res),function(err,obj){
             console.log(err+obj);
@@ -126,6 +164,15 @@ var storeItemModelRoutes={
 
 var teamModel=require('../../system/controllers/HierarchyEngine/HierarchyEngine.js');
 var teamModelRoutes={
+    initialize:function(server){
+        //initializing routes.
+        for(property in teamModelRoutes)
+        {
+            methods=property.split(" ");
+            eval("server."+methods[0]+"('"+methods[1]+"',"+teamModelRoutes[property]+');');
+        }
+        console.log("store Team Model initialized");
+    },
     'get org/:orgId/teams/:teamId':function(req,res) {
         teamModel.getTeamOrg(req,res),function(err,obj){
             console.log(err+obj);
@@ -151,6 +198,15 @@ var teamModelRoutes={
 
 var medalModel=require('../../system/controllers/HierarchyEngine/HierarchyEngine.js');
 var medalModelRoutes={
+    initialize:function(server){
+        //initializing routes.
+        for(property in medalModelRoutes)
+        {
+            methods=property.split(" ");
+            eval("server."+methods[0]+"('"+methods[1]+"',"+medalModelRoutes[property]+');');
+        }
+        console.log("store Medal Model initialized");
+    },
     'get org/:orgId/medals':function(req,res) {
         medalModel.getOrgMedal(req,res),function(err,obj){
             console.log(err+obj);
@@ -193,6 +249,15 @@ var medalModelRoutes={
 var productModel=require('../../system/controllers/ProductController.js');
 var productModelRoutes={
 
+    initialize:function(server){
+        //initializing routes.
+        for(property in productModelRoutes)
+        {
+            methods=property.split(" ");
+            eval("server."+methods[0]+"('"+methods[1]+"',"+productModelRoutes[property]+');');
+        }
+        console.log("store Product Model initialized");
+    },
     'get org/:orgId/products':function(req,res) {
         medalModel.getProductFromOrg(req,res),function(err,obj){
             console.log(err+obj);
@@ -226,6 +291,15 @@ var productModelRoutes={
 
 var revenuesModel=require('../../system/controllers/RevenueController.js');
  var revenueModelRoutes={
+     initialize:function(server){
+         //initializing routes.
+         for(property in productModelRoutes)
+         {
+             methods=property.split(" ");
+             eval("server."+methods[0]+"('"+methods[1]+"',"+productModelRoutes[property]+');');
+         }
+         console.log("store Product Model initialized");
+     },
      'get org/:orgId/revenue':function(req,res) {
          revenuesModel.getProductFromOrg(req,res),function(err,obj){
              console.log(err+obj);
@@ -431,7 +505,7 @@ var ClientsModelRoutes={
     },
 
     'del org/:orgId/:clients':function(req,res){
-        clientModel.removeTraining(req,res),function(err,obj){
+        clientModel.removeClients(req,res),function(err,obj){
             if(err)
                 res.send(err);
             else res.send(obj);
@@ -439,3 +513,6 @@ var ClientsModelRoutes={
     }
 
 }
+
+module.export(ClientsModelRoutes,leaderBoardModelRoutes,goalModelRoutes,trainingModelRoutes,revenueModelRoutes,productModelRoutes,medalModelRoutes,teamModelRoutes,
+    storeItemModelRoutes,storeModelRoutes,roleModelRoutes,userModelRoutes)

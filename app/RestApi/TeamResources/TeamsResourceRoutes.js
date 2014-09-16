@@ -41,13 +41,8 @@ var storesRoutes={
 
  var rankModel=require('../../system/controllers/eCommerceEngine/StoreController.js');
 var rankRoutes={
-    'get org/:orgId/teams/:teamId/ranks':function(req,res) {
-        storeModel.getStoreTeam(req,res),function(err,obj){
-            console.log(err+obj);
-        }
-    },
-    'post/org/:orgId /teams/:teamId/stores':function(req,res){
-        storeModel.addStoreInTeam(req,res);
+    'post/org/:orgId /teams/:teamId/ranks':function(req,res){
+        storeModel.addrankToTeam(req,res);
     }
     // Delete Store From Teams:function Name : removeStoreFromTeam
 
@@ -55,3 +50,34 @@ var rankRoutes={
 
 
 //End Points For Level in team resources:
+var levelModel=require('../../system/controllers/eCommerceEngine/levelController.js');
+var levelModelRoutes={
+    'post/org/:orgId /teams/:teamId/levels':function(req,res){
+        storeModel.assignLevelToTeams(req,res);
+    }
+}
+
+//End Points For Goals:
+var goalModel=require('../../system/controllers/goalController.js');
+var goalModelRoutes={
+    'get org/:orgId/teams/:teamId/goals':function(req,res) {
+        storeModel.getGoalOfTeam(req,res),function(err,obj){
+            console.log(err+obj);
+        }
+    },
+
+    'post/org/:orgId /teams/:teamId/stores':function(req,res){
+        storeModel.assignGoalToTeam(req,res);
+    }
+}
+
+
+//End Points for LeaderBoard:
+var leaderBoardModel=require('../../system/controllers/LeaderBoard.js');
+var leaderBoardModelRoutes={
+    'get org/:orgId/teams/:teamId/leaderBoard':function(req,res) {
+        leaderBoardModel.getLeaderBoardOfTeam(req,res),function(err,obj){
+            console.log(err+obj);
+        }
+    }
+}

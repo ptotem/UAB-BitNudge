@@ -26,6 +26,11 @@ server.listen(3004, function () {
 });
 
 //loading models
+
+var OrganizationResources=require('./app/RestApi/OrganizationResources');
+var TeamResources=require('./app/RestApi/TeamResources');
+var UserResources=require('./api/RestApi/UserResources');
+OrganizationResources.initilize(server);
 //var Organization=require('./system/models/Organizations');
 //Organization.createOrganization({name:"Amit"});
 //Organization.initialize(server);

@@ -69,7 +69,13 @@ var UserManagement={
         UserCollection.update({_id:userId},{$push:{items:itemsdata},$inc:{totalCash:-cost}},callback);
     },
     getUserRole:function(userId,callback){
-        UserCollection.findOne({_id:id}).roles
+        UserCollection.findOne({_id:userId}).roles
+    },
+    getGoalOfUser:function(userId,callback){ //fetch goal of user
+        UserCollection.findOne({_id:userId}).goals
+    },
+    addGoalToUser:function(userId,goaldata,callback){
+        UserCollection.update({_id:userId},{$push:{goals:goaldata}});//add goal to user
     }
 }
 module.exports=UserManagement;
