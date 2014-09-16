@@ -26,12 +26,8 @@ var Role= {
     setRoleFieldById:function(id,fieldName,value,callback){
         RolesCollection.update({_id:id},{$set:{fieldName:value}},callback);
     },
-    updateRole:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-
-        RolesCollection.update({_id:id},{$set:temp},callback);
+    updateRole:function(id,updateData,callback){
+        RolesCollection.update({_id:id},{$set:updateData},callback);
     },
     add_actionIntoRole:function(id,action_id,callback)
     {

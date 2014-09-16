@@ -4,7 +4,7 @@ var Client= {
     initialize: function (server) {
         console.log("Clients initialized");
     },
-    getClientDetail:function(client,fieldName){
+    getClientDetail:function(client,fieldName, callback){
         ClientsCollection.find( { fieldName: { $exists: true} } )
         ClientsCollection.find(({'_id' :client}).fieldName,callback);
     },
@@ -26,11 +26,8 @@ var Client= {
     getClientByOrg:function(orgid,callback){
         ClientsCollection.find(({organizationId :orgid}),callback);
     },
-    updateClient:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-        ClientsCollection.update({_id:id},{$set:temp},callback);
+    updateClient:function(id,updateData,callback){
+        ClientsCollection.update({_id:id},{$set:updateData},callback);
     },
     AddClientInOrg:function(org_id,data,callback){
         ClientsCollection.update({organizationId:org_id},{$set:data},callback)

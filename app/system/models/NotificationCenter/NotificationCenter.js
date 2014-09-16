@@ -26,9 +26,8 @@ var NotificationCenter={
   getNotificationCenterSchema:function(){
     return NotificationCenterCollection.Schema;
   },
-  updateNotificationCenter:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    NotificationCenterCollection.update({_id:id},{$set:temp},callback);
+  updateNotificationCenter:function(id,updateData,callback){
+    NotificationCenterCollection.update({_id:id},{$set:updateData},callback);
   }
 };
+module.exports=NotificationCenter;

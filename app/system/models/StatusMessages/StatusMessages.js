@@ -4,7 +4,7 @@ var StatusMessage= {
     initialize: function (server) {
         console.log("StatusMessage initialized");
     },
-    getStatusMessageDetail:function(id,fieldName){
+    getStatusMessageDetail:function(id,fieldName,callback){
         StatusMessageCollection.find(({'_id' :id}).fieldName,callback);
     },
 
@@ -23,21 +23,14 @@ var StatusMessage= {
     getStatusMessage:function(id,callback){
         StatusMessageCollection.findOne({_id:id},callback);
     },
-    setStatusMessageFieldById:function(id,fieldName,value,callback){
-        StatusMessageCollection.update({_id:id},{$set:{fieldName:value}},callback);
+    updateStatusMessage:function(id,updateDate,callback){
+        StatusMessageCollection.update({_id:id},{$set:updateData},callback);
     },
-    updateStatusMessage:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-
-        StatusMessageCollection.update({_id:id},{$set:temp},callback);
-    },
-    add_actionIntoStatusMessage:function(id,action_id,callback)
+    addActionIntoStatusMessage:function(id,action_id,callback)
     {
         StatusMessageCollection.update({_id:id},{$push:{action:action_id}},callback);
     },
-    remove_actionIntoStatusMessage:function(id,action_id,callback)
+    removeActionFromStatusMessage:function(id,action_id,callback)
     {
         StatusMessageCollection.update({_id:id},{$pull:{action:action_id}},callback);
     }

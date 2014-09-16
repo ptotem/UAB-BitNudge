@@ -19,13 +19,8 @@ var Medals={
   getMedalSchema:function(){
     return MedalsCollection.Schema;
   },
-  // deleteMedal:function(id,callback){
-  //   MedalsCollection.remove({_id:id},callback);
-  // },
-  updateMedal:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    MedalsCollection.update({_id:id},{$set:temp},callback);
+  updateMedal:function(id,updateData,callback){
+    MedalsCollection.update({_id:id},{$set:updateData},callback);
   }
 };
 module.exports=Medals;

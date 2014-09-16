@@ -4,7 +4,7 @@ var Product= {
     initialize: function (server) {
         console.log("Product initialized");
     },
-    getProductDetail:function(product_id,fieldName){
+    getProductDetail:function(product_id,fieldName, callback){
         ProductsCollection.find(({'_id' :product_id}).fieldName,callback);
     },
     getProductSchema:function(){
@@ -25,11 +25,8 @@ var Product= {
     getProductByOrgId:function(orgid,callback){
         ProductsCollection.find(({organizationId :orgid}),callback);
     },
-    updateProduct:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-        ProductsCollection.update({_id:id},{$set:temp},callback);
+    updateProduct:function(id,updateData,callback){
+        ProductsCollection.update({_id:id},{$set:updateData},callback);
     },
     addProductInOrg:function(data,org_id){
         var product=new ProductsCollection({data:data,organizationId :org_id});

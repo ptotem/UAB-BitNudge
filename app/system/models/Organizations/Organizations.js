@@ -25,11 +25,8 @@ var Organization= {
     setOrganizationFieldById:function(id,fieldName,value,callback){
         OrganizationsCollection.update({_id:id},{$set:{fieldName:value}},callback);
     },
-    updateOrg:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-        OrganizationsCollection.update({_id:id},{$set:temp},callback);
+    updateOrg:function(id,updateData,callback){
+        OrganizationsCollection.update({_id:id},{$set:updateData},callback);
     },
 //    addStoresToOrganizations:function(orgId,storeData,callback){
 //        OrganizationsCollection.update({_id:orgId},{$push:storeData},callback);

@@ -28,10 +28,8 @@ var Transactions={
   deleteTransaction:function(id,callback){
     TransactionsCollection.remove({_id:id},callback);
   },
-  updateTransaction:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    TransactionsCollection.update({_id:id},{$set:temp},callback);
+  updateTransaction:function(id,updateDate,callback){
+    TransactionsCollection.update({_id:id},{$set:updateData},callback);
   },
   validateRanges:function(rangeMin,rangeMax){
     //put some validation effects. The ranges must not intersect.

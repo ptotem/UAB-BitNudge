@@ -24,11 +24,8 @@ var Training= {
     getTrainingByOrgId:function(orgid,callback){
         TrainingsCollection.find(({organizationId :orgid}),callback);
     },
-    updateTraining:function(id,fieldName,value,callback){
-        var temp={};
-        temp.created_at=new Date();
-        temp[fieldName]=value;
-        TrainingsCollection.update({_id:id},{$set:temp},callback);
+    updateTraining:function(id,updateDate,callback){
+        TrainingsCollection.update({_id:id},{$set:updateData},callback);
     }
 
 }

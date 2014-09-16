@@ -4,8 +4,8 @@ var Schema=mongoose.Schema;
 
 var roleSchema=new Schema({
     name:String,
-    action:[{type:Schema.Types.ObjectId,ref:'action'}],
-    org_Id :{type:Schema.Types.ObjectId,ref:'organization'}
+    action:String,//[{type:Schema.Types.ObjectId,ref:'action'}],
+    org_Id :String,//{type:Schema.Types.ObjectId,ref:'organization'}
 });
 var Role=mongoose.model('role',roleSchema);
 module.exports=Role;

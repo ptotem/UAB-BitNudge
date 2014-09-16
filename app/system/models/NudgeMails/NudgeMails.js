@@ -1,10 +1,10 @@
-var NudgeMailsCollection=require('./ClientsCollection.js');
+var NudgeMailsCollection=require('./NudgeMailsCollection.js');
 
 var NudgeMail= {
     initialize: function (server) {
         console.log("NudgeMails initialized");
     },
-    getNudgeMailDetail:function(client,fieldName){
+    getNudgeMailDetail:function(client,fieldName,callback){
         NudgeMailsCollection.find(({'_id' :client}).fieldName,callback);
     },
 
@@ -26,10 +26,8 @@ var NudgeMail= {
     getNudgeMailByOrgId:function(orgid,callback){
         NudgeMailsCollection.find(({organizationId :orgid}),callback);
     },
-    updateNudgeMail:function(id,fieldName,value,callback){
-        var temp={};
-        temp[fieldName]=value;
-        NudgeMailsCollection.update({_id:id},{$set:temp},callback);
+    updateNudgeMail:function(id,updateData,callback){
+        NudgeMailsCollection.update({_id:id},{$set:updateData},callback);
     },
     addReceiverNudgeMail :function(id,receiverId,calback){
         NudgeMailsCollection.update({'_id':id},{$push:{

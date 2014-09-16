@@ -25,10 +25,8 @@ var Stores={
   deleteStore:function(id,callback){
     StoresCollection.remove({_id:id},callback);
   },
-  updateStore:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    StoresCollection.update({_id:id},{$set:temp},callback);
+  updateStore:function(id,updateDate,callback){
+    StoresCollection.update({_id:id},{$set:updateData},callback);
   }
 }
 module.exports=Stores;

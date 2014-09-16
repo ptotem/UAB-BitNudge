@@ -26,10 +26,8 @@ var StoreItems={
       else callback(obj.quantity>0);
     });
   },
-  updateStoreItem:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    StoreItemsCollection.update({_id:id},{$set:temp},callback);
+  updateStoreItem:function(id,updateDate,callback){
+    StoreItemsCollection.update({_id:id},{$set:updateData},callback);
   }
 };
 module.exports=StoreItems;
