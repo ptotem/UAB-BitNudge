@@ -13,7 +13,7 @@ var teamsSchema=new Schema({
     training :[{type:Schema.Types.ObjectId,ref:'training'}],
     clients :[{type:Schema.Types.ObjectId,ref:'clientType'}],
     revenue :[{type:Schema.Types.ObjectId,ref:'revenues'}],
-    points:String,
+    points:Number,
     created_at : Date
 });
 var Team=mongoose.model('team',teamsSchema);
