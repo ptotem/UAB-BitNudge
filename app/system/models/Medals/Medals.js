@@ -1,10 +1,11 @@
 var MedalsCollection=require('./MedalsCollection.js');
+var mongoose=require('mongoose');
 var Medals={
   initialize:function(server){
     console.log("medals initialized");
   },
-  createMedal:function(organizationId,data){
-    data.organizationId=organizationId;
+  createMedal:function(orgId,data){
+    data.orgId=mongoose.Types.ObjectId(orgId);
     data.createdAt=new Date();
     var l=new MedalsCollection(data);
     l.save();
@@ -14,7 +15,7 @@ var Medals={
     MedalsCollection.findOne({_id:id},callback);
   },
   getMedalsOfOrganization:function(orgId,callback){
-    MedalsCollection.find({organizationId:orgId},callback);
+    MedalsCollection.find({orgId:orgId},callback);
   },
   getMedalSchema:function(){
     return MedalsCollection.Schema;

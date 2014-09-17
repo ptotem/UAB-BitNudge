@@ -1,5 +1,5 @@
 var NudgeMailsCollection=require('./NudgeMailsCollection.js');
-
+var mongoose=require('mongoose');
 var NudgeMail= {
     initialize: function (server) {
         console.log("NudgeMails initialized");
@@ -11,9 +11,10 @@ var NudgeMail= {
     getNudgeMailSchema:function(){
         return NudgeMailsCollection.Schema;
     },
-    createNudgeMail:function(data){
+    createNudgeMail:function(orgId,data){
         var mail=new NudgeMailsCollection(data);
-        mail.created_at=new Date();
+        mail.orgId=mongoose.Types.ObjectId(orgId);
+        mail.createdAt=new Date();
         mail.save();
         return true;
     },

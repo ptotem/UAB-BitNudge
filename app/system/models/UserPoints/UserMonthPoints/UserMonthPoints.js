@@ -5,7 +5,6 @@ var moment=require('moment');
 var UserMonthPoints= {
   createUserMonthPoints:function(orgId, data){
     data.orgId=orgId;
-    // data.orgId=mongoose.Schema.Types.ObjectId(orgId);
     data.month=new Date();
     var user= new UserMonthPointsCollection(data);
     user.save();

@@ -1,12 +1,11 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var storeSchema=new Schema({
-    _id:String,
   name:String,
   // Url:String,
-  organizationId:String,//Schema.Types.ObjectId,
-  items:String,//[{type:Schema.Types.ObjectId,ref:'storeItems'}],
-  storeDesc:String,
+  orgId:Schema.Types.ObjectId,
+  items:[{type:Schema.Types.ObjectId,ref:'storeItems'}],
+  desc:String,
   createdAt:Date
 });
 var stores=mongoose.model('store',storeSchema);

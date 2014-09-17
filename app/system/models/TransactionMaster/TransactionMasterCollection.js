@@ -8,5 +8,5 @@ var TransactionMasterSchema=new Schema({
   onApproved:String,  //function that will be called after approval
   createdAt:Date
 });
-var TransactionMasterCollection=mongoose.model('transactionMaster',transactionSchema);
+var TransactionMasterCollection=mongoose.model('transactionMaster',TransactionMasterSchema);
 module.exports=TransactionMasterCollection;

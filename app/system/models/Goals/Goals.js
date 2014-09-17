@@ -1,11 +1,12 @@
 var GoalsCollection=require('./GoalsCollection.js');
+var mongoose = require('mongoose');
 var Goals={
-  createGoal:function(organizationId,data){
-    data.organizationId=organizationId;
-    data.createdAt=new Date();
-    var l=new GoalsCollection(data);
-    l.save();
-    return true;
+  createGoal:function(orgId,data){
+      data.createdAt=new Date();
+      data.orgId=mongoose.Types.ObjectId(orgId);
+      var l=new GoalsCollection(data);
+      l.save();
+      return true;
   },
   addMedalToGoal:function(goalId,medalId,callback){
     GoalsCollection.update({_id:goalId},{$push:{medals:medalId}},callback);
@@ -35,7 +36,7 @@ var Goals={
     });
   },
   incrementCompletedCount:function(id,callback){
-    GoalsCollection.update({_id:id},{$inc:{lengthCompleted:1},callback);
+    GoalsCollection.update({_id:id},{$inc:{lengthCompleted:1}},callback);
   },
   //the callback takes arg err and return value.
   getGoalProgress:function(userId,goalId,callback){

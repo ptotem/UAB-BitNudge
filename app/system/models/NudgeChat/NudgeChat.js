@@ -1,8 +1,8 @@
 var NudgeChatCollection=require('./NudgeChatCollection.js');
-
+var mongoose=require('mongoose');
 var NudgeChat={
-  createNudgeChat:function(organizationId,data){
-    data.orgId=organizationId;
+  createNudgeChat:function(orgId,data){
+    data.orgId=mongoose.Types.ObjectId(orgId);
     data.createdAt=new Date();
     var l=new NudgeChatCollection(data);
     l.save();

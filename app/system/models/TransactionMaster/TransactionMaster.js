@@ -15,3 +15,4 @@ var TransactionMaster={
   //   TransactionMasterCollection.find({_id:id},callback);
   // }
 };
+module.export=TransactionMaster;

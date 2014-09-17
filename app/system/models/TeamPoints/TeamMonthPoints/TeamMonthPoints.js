@@ -15,6 +15,7 @@ var TeamMonthPoints= {
   createTeamPoints:function(orgId,data){
     data.orgId=mongoose.Schema.Types.ObjectId(orgId);
     data.month=new Date();
+    data.createdAt=new Date();
     var temp=TeamMonthPointsCollection(data);
     temp.save();
   },

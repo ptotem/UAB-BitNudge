@@ -4,7 +4,7 @@ var moment=require('moment');
 var Leaderboard={
   createLeaderboard:function(orgId,leaderboardData,callback){
     // leaderboardData.orgId=mongoose.Schema.Types.ObjectId(orgId);
-    leaderboardData.orgId=orgId;
+    leaderboardData.orgId=mongoose.Types.ObjectId(orgId);;
     leaderboardData.month=new Date();
     var leaderboard=new RanksCollection(leaderboardData,false);
     leaderboard.save();

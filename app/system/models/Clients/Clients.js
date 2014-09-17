@@ -1,5 +1,5 @@
 var ClientsCollection=require('./ClientsCollection.js');
-
+var Schema=mongoose.Schema;
 var Client= {
     initialize: function (server) {
         console.log("Clients initialized");
@@ -11,10 +11,11 @@ var Client= {
     getClientSchema:function(){
         return ClientsCollection.Schema;
     },
-    createClient:function(data){
-        var client=new ClientsCollection(data);
-        client.created_at=new Date();
-        client.save();
+    createClient:function(orgId, data){
+        data.createdAt=new Date();
+        data.orgId=mongoose.Types.ObjectId(orgId);
+        var l=new ClientsCollection(data);
+        l.save();
         return true;
     },
     deleteClient:function(id,callback){
@@ -23,14 +24,14 @@ var Client= {
     getClient:function(id,callback){
         ClientsCollection.findOne({_id:id},callback);
     },
-    getClientByOrg:function(orgid,callback){
-        ClientsCollection.find(({organizationId :orgid}),callback);
+    getClientByOrg:function(orgId,callback){
+        ClientsCollection.find(({orgId :orgId}),callback);
     },
     updateClient:function(id,updateData,callback){
         ClientsCollection.update({_id:id},{$set:updateData},callback);
     },
-    AddClientInOrg:function(org_id,data,callback){
-        ClientsCollection.update({organizationId:org_id},{$set:data},callback)
+    AddClientInOrg:function(orgId,data,callback){
+        ClientsCollection.update({orgId:orgId},{$set:data},callback)
     },
 //    AddClientInOrg:function(data,org_id){
 //        var client=new ClientsCollection({data:data,organizationId :org_id});
@@ -38,9 +39,9 @@ var Client= {
 //        console.log('data Saved')
 //        return true;
 //    },
-    AddClientInOrg:function(data,org_id){
+    AddClientInOrg:function(orgId,data){
         var client=new ClientsCollection(data);
-        client.organizationId=org_id;
+        client.orgId=mongoose.Types.ObjectId(orgId);
         client.save();
         console.log('data Saved')
         return true;

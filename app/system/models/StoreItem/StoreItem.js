@@ -1,7 +1,6 @@
 var StoreItemsCollection=require('./StoreItemCollection.js');
 var Store=require('../Store');
-var StoreItemRoutes=require('./StoreItemRoutes.js');
-var UserModel=require('../UserManagement');
+var UserModel=require('../Users');
 var StoreItems={
   createStoreItem:function(organizationId,data){
     data.createdAt=new Date();

@@ -9,7 +9,7 @@ var goalsSchema=new Schema({
   medals:[{type:Schema.Types.ObjectId,ref:'medals'}],
   startDate:Date,
   endDate:Date,
-  organizationId:Schema.Types.ObjectId,
+  orgId:Schema.Types.ObjectId,
   createdAt:Date
 });
 var goals=mongoose.model('goals',goalsSchema);

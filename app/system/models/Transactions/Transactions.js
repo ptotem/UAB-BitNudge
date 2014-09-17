@@ -21,7 +21,7 @@ var Transactions={
     TransactionsCollection.findOne({_id:id},function(err,obj){
       if(err) return callback(err,null);
       if(obj.moderator==id)
-        TransactionsCollection.update({_id:id},{$set:{moderated:true},callback);
+        TransactionsCollection.update({_id:id},{$set:{moderated:true}},callback);
       else return callback(err,null);    
     });
   },
@@ -36,3 +36,4 @@ var Transactions={
     return true;
   }
 };
+module.export=Transactions;

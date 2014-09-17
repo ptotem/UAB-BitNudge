@@ -1,8 +1,9 @@
 var StoresCollection=require('./StoresCollection.js');
+var mongoose = require('mongoose');
 var Stores={
-  createStore:function(organizationId,data){
+  createStore:function(orgId,data){
     data.createdAt=new Date();
-    data.organizationId=organizationId;
+    data.orgId=mongoose.Types.ObjectId(orgId);
     var l=new StoresCollection(data);
     l.save();
     return true;

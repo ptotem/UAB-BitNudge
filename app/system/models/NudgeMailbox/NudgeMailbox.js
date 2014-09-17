@@ -1,8 +1,8 @@
 var NudgeMailboxCollection=require('./NudgeMailboxCollection.js');
-
+var mongoose=require('mongoose');
 var NudgeMailbox={
-  createNudgeMailbox:function(organizationId,data){
-    data.orgId=organizationId;
+  createNudgeMailbox:function(orgId,data){
+    data.orgId=mongoose.Types.ObjectId(orgId);
     data.createdAt=new Date();
     var l=new NudgeMailboxCollection(data);
     l.save();

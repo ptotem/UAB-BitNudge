@@ -1,8 +1,8 @@
 var NotificationCenterCollection=require('./NotificationCenterCollection.js');
-
+var mongoose=require('mongoose');
 var NotificationCenter={
-  createNotificationCenter:function(organizationId,data){
-    data.orgId=organizationId;
+  createNotificationCenter:function(orgId,data){
+    data.orgId=orgId;
     data.createdAt=new Date();
     var l=new NotificationCenterCollection(data);
     l.save();
