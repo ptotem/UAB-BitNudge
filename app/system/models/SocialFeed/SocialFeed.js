@@ -1,8 +1,8 @@
 var SocialFeedCollection=require('./SocialFeedCollection.js');
-
+var mongoose=require('mongoose');
 var SocialFeed={
-  createSocialFeed:function(organizationId,data){
-    data.orgId=organizationId;
+  createSocialFeed:function(orgId,data){
+    data.orgId=mongoose.Types.ObjectId(orgId);
     data.createdAt=new Date();
     var l=new SocialFeedCollection(data);
     l.save();

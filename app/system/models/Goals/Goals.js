@@ -15,7 +15,7 @@ var Goals={
     GoalsCollection.update({_id:goalId},{$push:{steps:stepData}},callback);
   },
   getGoal:function(id,fields,options,populationData,callback){
-    GoalsCollection.findOne({_id:id},callback);
+    GoalsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   // getGoalsOfOrganization:function(orgId,callback){
   //   GoalsCollection.find({organizationId:orgId},callback);

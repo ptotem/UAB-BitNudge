@@ -1,27 +1,28 @@
 var RolesCollection=require('./RolesCollection.js');
-
+var mongoose=require('mongoose');
 var Role= {
     initialize: function (server) {
         console.log("Roles initialized");
     },
-    getRoleDetail:function(org,fieldName){
-        RolesCollection.find(({'_id' :org}).fieldName,callback);
-    },
+    //getRoleDetail:function(org,fields,options,populationData,callback){
+    //    RolesCollection.find(({'_id' :org}),fields,options).populate(populationData).exec(callback);
+//    },
 
     getRoleSchema:function(){
         return RolesCollection.Schema;
     },
-    createRole:function(data){
+    createRole:function(orgId,data){
         var role=new RolesCollection(data);
-        role.created_at=new Date();
+        role.orgId=mongoose.Types.ObjectId(orgId)
+        role.createdAt=new Date();
         role.save();
         return true;
     },
     deleteRole:function(id,callback){
         RolesCollection.remove({'_id':id},callback);
     },
-    getRole:function(id,callback){
-        RolesCollection.findOne({_id:id},callback);
+    getRole:function(id,fields,options,populationData,callback){
+        RolesCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     },
     setRoleFieldById:function(id,fieldName,value,callback){
         RolesCollection.update({_id:id},{$set:{fieldName:value}},callback);

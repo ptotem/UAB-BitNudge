@@ -1,11 +1,10 @@
 var mongoose=require('mongoose');
-//mongoose.connect('mongodb://localhost/test');
 var Schema=mongoose.Schema;
 
 var teamsSchema=new Schema({
     name:String,
     teamLeaderId:{type:Schema.Types.ObjectId,ref:'user'},
-    organizationId:{type:Schema.Types.ObjectId,ref:'organization'},
+    orgId:{type:Schema.Types.ObjectId,ref:'organization'},
     members :[{type:Schema.Types.ObjectId,ref:'user'}],
     parentTeamId :{type:Schema.Types.ObjectId,ref:'team'},
     teams :[{type:Schema.Types.ObjectId,ref:'team'}],

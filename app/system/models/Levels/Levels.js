@@ -8,11 +8,11 @@ var Levels={
       l.save();
       return true;
   },
-  getLevel:function(id,callback){
-    LevelsCollection.findOne({_id:id},callback);
+  getLevel:function(id,fields,options,populationData,callback){
+    LevelsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getLevelsOfOrganization:function(orgId,callback){
-    LevelsCollection.find({orgId:orgId},callback);
+  getLevelsOfOrganization:function(orgId,fields,options,populationData,callback){
+    LevelsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   },
   getLevelSchema:function(){
     return LevelsCollection.Schema;

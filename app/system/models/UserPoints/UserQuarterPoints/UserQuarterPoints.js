@@ -7,8 +7,11 @@ var UserQuarterPoints= {
     var user= new UserQuarterPointsCollection(data);
     user.save();
   },
-  getUserQuarterPointsOfQuarter:function(userId,quarter,callback){
-    UserQuarterPointsCollection.findOne({userId:userId},fields,options,callback);
+  getUserQuarterPointsOfQuarter:function(userId,fields,options,populationData,callback){
+    var currDate=moment(quarter);
+    var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
+    UserQuarterPointsCollection.find({quarter:{$gte:start,$lt:end},userId:userId},fields,options).populate(populationData).exec(callback);
   },
   // getAllSortedUserPointsOfQuarter:function(quarter,callback){
   //   var currDate=moment(quarter);
@@ -21,7 +24,7 @@ var UserQuarterPoints= {
     var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
     queryObj.quarter={$gte:start,$lt:end};
-    UserQuarterPointsCollection.find(queryObj).sort("totalPoints").exec(callback);
+    UserQuarterPointsCollection.find(queryObj).sort("-totalPoints").exec(callback);
   },
   updateUserQuarterPoints:function(userId,quarter,updateData,callback){
     var currDate=moment(quarter);

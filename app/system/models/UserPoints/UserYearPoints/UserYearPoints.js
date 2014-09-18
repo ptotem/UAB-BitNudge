@@ -1,11 +1,11 @@
 var UserPointsCollection=require('./UserYearPointsCollection.js');
 
 var UserPoints= {
-  getUserPointsOfYear:function(userId,year,callback){
+  getUserPointsOfYear:function(userId,year,fields,options,populationData,callback){
     var currDate=moment(year);
     var start=moment().year(moment(year)).month(0).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().year(moment(year)+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
-    UserPointsCollection.findOne({year:{$gte:start,$lt:end},userId:userId},fields,options,callback);
+    UserPointsCollection.findOne({year:{$gte:start,$lt:end},userId:userId},fields,options).populate(populationData).exec(callback);
   },
   getSortedUserPointsOfYear:function(userId,queryObj,year,callback){
     var currDate=moment(year);
@@ -13,7 +13,7 @@ var UserPoints= {
     var end=moment().year(moment(year)+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
     queryObj.userId=userId;
     queryObj.year={year:{$gte:start,$lt:end}};
-    UserPointsCollection.find(queryObj).sort("totalPoints").exec(callback);
+    UserPointsCollection.find(queryObj).sort("-totalPoints").exec(callback);
   },
   createUserYearPoints:function(orgId, data){
     data.orgId=mongoose.Schema.Types.ObjectId(orgId);

@@ -1,16 +1,17 @@
 var StoreItemsCollection=require('./StoreItemCollection.js');
 var Store=require('../Store');
 var UserModel=require('../Users');
+var mongoose=require('mongoose');
 var StoreItems={
-  createStoreItem:function(organizationId,data){
+  createStoreItem:function(orgId,data){
     data.createdAt=new Date();
-    data.organizationId=organizationId;
+    data.orgId=mongoose.Types.ObjectId(orgId);
     var l=new StoreItemsCollection(data);
     l.save();
     return true;
   },
   getStoreItem:function(storeId,fields,options,populationData,callback){
-    StoreItemsCollection.find({storeId:storeId},fields,options,callback);
+    StoreItemsCollection.find({storeId:storeId},fields,options).populate(populationData).exec(callback);
   },
   getStoreItemSchema:function(){
     return StoreItemsCollection.Schema;

@@ -1,16 +1,18 @@
 var TeamsCollection=require('./TeamsCollection.js');
+var mongoose=require('mongoose');
 //var UserCollection=require('./UserManagementCollection.js');
 
 var Team= {
-    getTeamDetail: function (team, fieldName) {
-        TeamsCollection.find(({'_id': team}).fieldName, callback);
-    },
+//    getTeamDetail: function (team,fields,options,populationData,callback){
+//        TeamsCollection.find(({'_id': team}),fields,options).populate(populationData).exec(callback);
+//    },
     getTeamSchema: function () {
         return TeamsCollection.Schema;
     },
-    createTeam: function (organizationId, data) {
+    createTeam: function (orgId, data) {
         var team = new TeamsCollection(data);
-        team.created_at = new Date();
+        team.orgId=mongoose.Types.ObjectId(orgId);
+        team.createdAt = new Date();
         team.save();
         return true;
     },
@@ -20,22 +22,20 @@ var Team= {
     deleteTeam:function (id, callback) {
         TeamsCollection.remove({'_id': id}, callback);
     },
-    getTeam: function (id, callback) {
-        TeamsCollection.findOne({'_id': id}, callback);
+    getTeam: function (id,fields,options,populationData,callback){
+        TeamsCollection.findOne({'_id': id},fields,options).populate(populationData).exec(callback);
     },
     setTeamFieldById: function (id, fieldName, value, callback) {
         TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
     },
-    getTeamsInOrg: function (id, fields,options, populationData,callback) {
-      if(populationData)
-        TeamsCollection.find({organizationId: id}).populate(populationData).exec(callback);
-      else TeamsCollection.find({orgId:id},callback);
+    getTeamsInOrg: function (orgId, fields,options, populationData,callback) {
+        TeamsCollection.find({orgId: orgId},fields,options).populate(populationData).exec(callback);
     },
-    getTeamLeader: function (id, callback) {
-        TeamsCollection.findOne(({'_id': id}).teamLeaderId, callback);
+    getTeamLeader: function (id,fields,options,populationData,callback){
+        TeamsCollection.findOne(({'_id': id}),fields,options).populate(populationData).exec(callback);
     },
-    setTeamLeader: function (id, leader_id, callback) {
-        TeamsCollection.update({_id: id}, {$set: {teamLeaderId: leader_id}}, callback);
+    setTeamLeader: function (id, leaderId, callback) {
+        TeamsCollection.update({_id: id}, {$set: {teamLeaderId: leaderId}}, callback);
     },
     updateTeam: function (id, updateDate, callback) {
         TeamsCollection.update({_id: id}, {$set: updateData}, callback);
@@ -61,13 +61,13 @@ var Team= {
 //        console.log('data Saved')
 //        return true;
 //    },
-    assign_trainingToTeam: function (teamId, training_id, callback) {
-        TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
+    assign_trainingToTeam: function (teamId, trainingId, callback) {
+        TeamsCollection.update({_id: teamId}, {$push: {training: trainingId}}, callback);
     },
-    AddTeamIn_org: function (organizationId, data) {
-        data.organizationId = organizationId;
+    AddTeamInOrg: function (orgId, data) {
+        data.orgId = mongoose.Types.ObjectId(orgId);
         var team = new TeamsCollection(data);
-        team.created_at = new Date();
+        team.createdAt = new Date();
         team.save();
         return true;
     },
@@ -98,7 +98,7 @@ var Team= {
                 return leader.teamLeaderId.name;
             })
 
-    },
+    }
 //    findTeam_of_Member: function (memberid, callback) {
 //
 //        for (var i = 0; i<TeamsCollection[0].members.length; i++) {

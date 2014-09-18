@@ -1,13 +1,12 @@
 var ClientsCollection=require('./ClientsCollection.js');
-var Schema=mongoose.Schema;
+var mongoose=require('mongoose');
 var Client= {
     initialize: function (server) {
         console.log("Clients initialized");
     },
-    getClientDetail:function(client,fieldName, callback){
-        ClientsCollection.find( { fieldName: { $exists: true} } )
-        ClientsCollection.find(({'_id' :client}).fieldName,callback);
-    },
+    // getClientDetail:function(client,fieldName, callback){
+    //     ClientsCollection.find(({'_id' :client}).fieldName,callback);
+    // },
     getClientSchema:function(){
         return ClientsCollection.Schema;
     },
@@ -21,11 +20,11 @@ var Client= {
     deleteClient:function(id,callback){
         ClientsCollection.remove({'_id':id},callback);
     },
-    getClient:function(id,callback){
-        ClientsCollection.findOne({_id:id},callback);
+    getClient:function(id,fields,options,populationData,callback){
+        ClientsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     },
-    getClientByOrg:function(orgId,callback){
-        ClientsCollection.find(({orgId :orgId}),callback);
+    getClientByOrg:function(orgId,fields,options,populationData,callback){
+        ClientsCollection.find(({orgId :orgId}),fields,options).populate(populationData).exec(callback);
     },
     updateClient:function(id,updateData,callback){
         ClientsCollection.update({_id:id},{$set:updateData},callback);

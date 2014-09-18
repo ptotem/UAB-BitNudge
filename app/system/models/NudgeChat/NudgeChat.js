@@ -9,10 +9,10 @@ var NudgeChat={
     return true;
   },
   getNudgeChat:function(id,fields,options,populationData,callback){
-    NudgeChatCollection.findOne({_id:id},fields,options,populationData,callback);
+    NudgeChatCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   getNudgeChatOfUser:function(userId,fields,options,populationData,callback){
-    NudgeChatCollection.find({userId:userId},fields,options,populationData,callback);
+    NudgeChatCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
   },
   getNudgeChatSchema:function(){
     return NudgeChatCollection.Schema;

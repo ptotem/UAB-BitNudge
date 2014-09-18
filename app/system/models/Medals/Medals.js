@@ -11,11 +11,11 @@ var Medals={
     l.save();
     return true;
   },
-  getMedal:function(id,callback){
-    MedalsCollection.findOne({_id:id},callback);
+  getMedal:function(id,fields,options,populationData,callback){
+    MedalsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getMedalsOfOrganization:function(orgId,callback){
-    MedalsCollection.find({orgId:orgId},callback);
+  getMedalsOfOrganization:function(orgId,fields,options,populationData,callback){
+    MedalsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   },
   getMedalSchema:function(){
     return MedalsCollection.Schema;

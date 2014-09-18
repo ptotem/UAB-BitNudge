@@ -19,8 +19,8 @@ describe("test nudge-mail",function(){
         });
 
         it("should get social-feeds",function(done){
-            SocialFeedsModel.getSocialFeed("social1","","","");
-            done();
+            SocialFeedsModel.getSocialFeed("social1","","","",done);
+            //done();
         });
 
         it("should get social-feeds of userId",function(done){

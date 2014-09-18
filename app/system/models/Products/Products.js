@@ -4,8 +4,8 @@ var Product= {
     initialize: function (server) {
         console.log("Product initialized");
     },
-    getProductDetail:function(product_id,fieldName, callback){
-        ProductsCollection.find(({'_id' :product_id}).fieldName,callback);
+    getProductDetail:function(productId,fields,options,populationData,callback){
+        ProductsCollection.find(({'_id' :productId}),fields,options).populate(populationData).exec(callback);
     },
     getProductSchema:function(){
         return ProductsCollection.Schema;
@@ -19,19 +19,19 @@ var Product= {
     deleteProduct:function(id,callback){
         ProductsCollection.remove({'_id':id},callback);
     },
-    getProduct:function(id,callback){
-        ProductsCollection.findOne({_id:id},callback);
+    getProduct:function(id,fields,options,populationData,callback){
+        ProductsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     },
-    getProductByOrgId:function(orgid,callback){
-        ProductsCollection.find(({organizationId :orgid}),callback);
+    getProductByOrgId:function(orgId,fields,options,populationData,callback){
+        ProductsCollection.find(({orgId :orgId}),fields,options).populate(populationData).exec(callback);
     },
     updateProduct:function(id,updateData,callback){
         ProductsCollection.update({_id:id},{$set:updateData},callback);
     },
-    addProductInOrg:function(data,org_id){
-        var product=new ProductsCollection({data:data,organizationId :org_id});
+    addProductInOrg:function(orgId,data){
+        var product=new ProductsCollection({data:data,orgId :orgId});
         product.save();
-        console.log('data Saved')
+        console.log('Data Saved')
         return true;
     }
 }

@@ -1,4 +1,4 @@
-var ActionsCollection=require('./ClientsCollection.js');
+var ActionsCollection=require('./ActionsCollection.js');
 
 var Action= {
     initialize: function (server) {

@@ -4,8 +4,8 @@ var Organization= {
     initialize: function (server) {
         console.log("Organization initialized");
     },
-    getOrganizationDetail:function(org,fieldName){
-        OrganizationsCollection.find(({'_id' :org}).fieldName,callback);
+    getOrganizationDetail:function(org,fields,options,populationData,callback){
+        OrganizationsCollection.findOne({'_id' :org},fields,options).populate(populationData).exec(callback);
     },
     getOrganizationSchema:function(){
         return OrganizationsCollection;
@@ -19,7 +19,7 @@ var Organization= {
     deleteOrganization:function(id,callback){
         OrganizationsCollection.remove({'_id':id},callback);
     },
-    getOrganization:function(id,fields,options,callback){
+    getOrganization:function(id,fields,options,populationData,callback){
         OrganizationsCollection.findOne({_id:id},fields,options,callback);
     },
     setOrganizationFieldById:function(id,fieldName,value,callback){
@@ -33,7 +33,7 @@ var Organization= {
 //    }
     findRevenueDetailsOfOrg:function(id,fieldname,calback)
     {
-        var field=fieldname;
+      var field=fieldname;
       OrganizationsCollection.findOne({ '_id': id })
           .populate('revenue').exec(function (err, revenues) {
               if (err) return handleError(err);

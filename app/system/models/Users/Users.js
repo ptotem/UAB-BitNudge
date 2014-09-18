@@ -5,11 +5,11 @@ var UserManagement={
     return UserCollection.Schema;
   },
   //the attribute data is an object which contains key value pairs of the fields and values.
-  createUser:function(organizationId,data){
+  createUser:function(orgId,data){
     //password is in plain text, they must be salted and shed
     //obviously, salt and hash it properly.
     data.createdAt=new Date();
-    data.orgId=organizationId;
+    data.orgId=mongoose.Types.ObjectId(orgId);
     // data.organizationId=mongoose.Schema.Types.ObjectId(organizationId);
     if(data.password){
       data.passwordSalt=data.password+"salt!";
@@ -61,9 +61,10 @@ var UserManagement={
   getUser:function(id,fields,options,populationData,callback){
     UserCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getUserByAuthentication:function(username,password,callback){
+  getUserByAuthentication:function(email,password,callback){
     passwordSalt=password+"salt!";
-    UserCollection.findOne({username:username,passwordSalt:passwordSalt},callback);
+    passwordHash=password+"hash!";
+    UserCollection.findOne({email:email,passwordHash:passwordHash},callback);
   }
 }
 module.exports=UserManagement;

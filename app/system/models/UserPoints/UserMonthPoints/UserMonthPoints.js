@@ -4,13 +4,15 @@ var moment=require('moment');
 
 var UserMonthPoints= {
   createUserMonthPoints:function(orgId, data){
-    data.orgId=orgId;
+    data.orgId=mongoose.Types.ObjectId(orgId);
     data.month=new Date();
     var user= new UserMonthPointsCollection(data);
     user.save();
   },
-  getUserMonthPointsOfMonth:function(userId,month,callback){
-    UserMonthPointsCollection.findOne({userId:userId},fields,options,callback);
+  getUserMonthPointsOfMonth:function(userId,fields,options,populationData,callback){
+    var start=moment().month(month.getMonth()).date(1).hour(0).minute(0).second(0).toDate();
+    var end=moment().month(month.getMonth()+1).date(1).hour(0).minute(0).second(0).toDate();
+    UserMonthPointsCollection.find({month:{$gte:start,$lt:end},userId:userId},fields,options).populate(populationData).exec(callback);
   },
   // getAllSortedUserPointsOfMonth:function(month,callback){
   //   var start=moment().month(month.getMonth()).date(1).hour(0).minute(0).second(0).toDate();

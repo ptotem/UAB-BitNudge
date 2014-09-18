@@ -9,13 +9,13 @@ var Stores={
     return true;
   },
   getStore:function(id,fields,options,populationData,callback){
-    StoresCollection.findOne({_id:id},fields,options,populationData,callback);
+    StoresCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   // getStoresOfOrganization(orgId,callback){
-  //   StoresCollection.find({organizationId:orgId},callback);
+  //   StoresCollection.find({orgId:orgId},callback);
   // },
   getStoresOfTeam:function(teamId,fields,options,populationData,callback){
-    StoresCollection.find({teamId:teamId},fields,options,populationData,callback);
+    StoresCollection.find({teamId:teamId},fields,options).populate(populationData).exec(callback);
   },
   addItemToStore:function(storeId,itemData,callback){
     StoresCollection.update({_id:storeId},{$set:itemData},callback);

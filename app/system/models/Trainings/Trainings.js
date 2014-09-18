@@ -1,28 +1,29 @@
 var TrainingsCollection=require('./TrainingsCollection.js');
-
+var mongoose=require('mongoose');
 var Training= {
 
-    getTrainingDetail:function(_id,fieldName){
-        TrainingsCollection.find(({'_id' :_id}).fieldName,callback);
-    },
+//    getTrainingDetail:function(_id,fields,options,populationData,callback){
+//        TrainingsCollection.find(({'_id' :_id}),fields,options).populate(populationData).exec(callback);
+//    },
 
     getTrainingSchema:function(){
         return TrainingsCollection.Schema;
     },
-    createTraining:function(data){
+    createTraining:function(orgId,data){
         var training=new TrainningsCollection(data);
-        training.created_at=new Date();
+        training.orgId=mongoose.Types.ObjectId(orgId);
+        training.createdAt=new Date();
         training.save();
         return true;
     },
     deleteTraining:function(id,callback){
         TrainingsCollection.remove({'_id':id},callback);
     },
-    getTraining:function(id,callback){
-        TrainingsCollection.findOne({_id:id},callback);
+    getTraining:function(id,fields,options,populationData,callback){
+        TrainingsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     },
-    getTrainingByOrgId:function(orgid,callback){
-        TrainingsCollection.find(({organizationId :orgid}),callback);
+    getTrainingByOrgId:function(orgId,fields,options,populationData,callback){
+        TrainingsCollection.find(({orgId :orgId}),fields,options).populate(populationData).exec(callback);
     },
     updateTraining:function(id,updateDate,callback){
         TrainingsCollection.update({_id:id},{$set:updateData},callback);
