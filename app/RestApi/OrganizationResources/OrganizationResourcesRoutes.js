@@ -1,10 +1,7 @@
-
-
 // End Points For Users:
 var userModel=require('../../system/controllers/UsersController.js');
 var userModelRoutes={
     'get org/:orgId/users/:userId':function(req,res) {
-      // console.log("slfsjdf");
       userModel.getUser(req,res);
     },
     'post /org/:orgId/users':function(req,res){
@@ -15,16 +12,30 @@ var userModelRoutes={
     },
     'del org/:orgId/users/:userId':function(req,res){
       userModel.deleteUser(req,res);
+    },
+    'post /org/:orgId/teams/:teamId/members':function(req,res){
+      userModel.addUserToTeam(req,res);
     }
 };
 
-var orgModel=require('../../system/controllers/HierarchyEngine');
-var orgModelRoutes={
-  'get org/:orgId':function(req,res,next){
-    orgModel.getOrganization(req,res);
+var hierarchyModel=require('../../system/controllers/HierarchyEngine');
+var teamRoutes={
+  'get /org/:orgId/teams':function(req,res){
+    hierarchyModel.TeamsController.getTeamsInOrg(req,res);
+  },
+  'post /org/:orgId/teams':function(req,res){
+    hierarchyModel.TeamsController.createTeam(req,res);
   }
 };
 
+var orgRoutes={
+  'post /org':function(req,res){
+    hierarchyModel.OrganizationsController.createOrganization(req,res);
+  },
+  'get /org/:orgId':function(req,res){
+    hierarchyModel.OrganizationsController.getOrganization(req,res);
+  }
+};
  // End Points for Roles:
 // var roleModel=require('../../system/controllers/RoleController.js');
 // var roleModelRoutes={
@@ -49,47 +60,23 @@ var orgModelRoutes={
 // }
 
 // End Points for Stores
-var storeModel=require('../../system/controllers/eCommerceEngine/StoreController');
+var eCommerceEngine=require('../../system/controllers/eCommerceEngine');
 var storeModelRoutes={
-    'get org/:orgId/stores/:storeId':function(req,res) {
-        storeModel.getStoreOrg(req,res,function(err,obj){
-            console.log(err+obj);
-        });
-    },
-    'get org/:orgId/stores':function(req,res) {
-        storeModel.getStore(req,res,function(err,obj){
-            console.log(err+obj);
-        });
-    },
-    'get org/:orgId/teams/:teamId/stores/:storeId':function(req,res) {
-        storeModel.getStoreTeam(req,res,function(err,obj){
-            console.log(err+obj);
-        });
-    },
-    'get org/:orgId/teams/:teamId/stores':function(req,res) {
-        storeModel.getStoreTeam(req,res,function(err,obj){
-            console.log(err+obj);
-        });
-    },
-    'post /org/:orgId/stores':function(req,res){
-        storeModel.addStoreInOrg(req.query);
-    },
-    'post /org/:orgId/teams/:teamId/stores':function(req,res){
-        storeModel.addStoreInTeam(req.query);
-    },
-    'post /org/:orgId/stores/:storeId':function(req,res){
-        storeModel.addStoreInOrg(req.query);
-    },
-    'post /org/:orgId/teams/:teamId/stores/:storeId':function(req,res){
-        storeModel.addStoreInTeam(req.query);
-    },
-    'del org/:orgId/stores/:storeId':function(req,res){
-        storeModel.deleteUser(req.params.id,function(err,obj){
-            if(err)
-                res.send(err);
-            else res.send(obj);
-        });
-    }
+  'get org/:orgId/stores/:storeId':function(req,res) {
+    eCommerceEngine.StoreController.getStore(req,res);
+  },
+  'get org/:orgId/stores':function(req,res) {
+    eCommerceEngine.StoreController.getStoresOfOrganization(req,res);
+  },
+  'post /org/:orgId/stores':function(req,res){
+    eCommerceEngine.StoreController.createStore(req,res);
+  },
+  'post /org/:orgId/stores/:storeId':function(req,res){
+    eCommerceEngine.StoreController.updateStore(req,res);
+  },
+  'del org/:orgId/stores/:storeId':function(req,res){
+    eCommerceEngine.StoreController.removeStoreFromAllTeams(req,res);
+  }
 };
 
 //End Points for StoreItems
@@ -118,28 +105,28 @@ var storeItemModelRoutes={
 
 //End Points for Teams:
 
-var teamModel=require('../../system/controllers/HierarchyEngine/HierarchyEngine.js');
-var teamModelRoutes={
-    'get org/:orgId/teams/:teamId':function(req,res) {
-        teamModel.getTeamOrg(req,res,function(err,obj){
-            console.log(err+obj);
-        });
-    },
-    'post /org/:orgId/teams':function(req,res){
-        teamModel.addTeamToOrg(req,res);
-    },
-    'post /org/:orgId/teams/:teamId':function(req,res){
-        teamModel.updateTeam(res,req);
-    },
-    'del org/:orgId/team/:teamId':function(req,res){
-        teamModel.deleteTeamFromOrg(req.params.teamId,function(err,obj){
-            if(err)
-                res.send(err);
-            else res.send(obj);
-        });
-    }
-
-};
+// var teamModel=require('../../system/controllers/HierarchyEngine/HierarchyEngine.js');
+// var teamModelRoutes={
+//     'get org/:orgId/teams/:teamId':function(req,res) {
+//         teamModel.getTeamOrg(req,res,function(err,obj){
+//             console.log(err+obj);
+//         });
+//     },
+//     'post /org/:orgId/teams':function(req,res){
+//         teamModel.addTeamToOrg(req,res);
+//     },
+//     'post /org/:orgId/teams/:teamId':function(req,res){
+//         teamModel.updateTeam(res,req);
+//     },
+//     'del org/:orgId/team/:teamId':function(req,res){
+//         teamModel.deleteTeamFromOrg(req.params.teamId,function(err,obj){
+//             if(err)
+//                 res.send(err);
+//             else res.send(obj);
+//         });
+//     }
+//
+// };
 
 //End Points for Medals:
 
@@ -289,103 +276,52 @@ var revenuesModel=require('../../system/controllers/RevenueController.js');
 
 var goalModel=require('../../system/controllers/GoalsController.js');
 var goalModelRoutes={
-    'get org/:orgId/goals':function(req,res) {
-        goalModel.getGoalsOrg(req,res,function(err,obj){
-            console.log(err+obj);
-        });
+    'post org/:orgId/goals':function(req,res) {
+        goalModel.createGoal(req,res);
     },
     'get org/:orgId/goals/:goalId':function(req,res) {
-        goalModel.getGoalInfo(req,res,function(err,obj){
-            console.log(err+obj);
-        });
+        goalModel.getGoal(req,res);
     },
-    'get org/:orgId/teams/:teamId/goals':function(req,res) {
-        goalModel.getTeamGoal(req,res,function(err,obj){
-            console.log(err+obj);
-        });
+    // 'get org/:orgId/teams/:teamId/goals':function(req,res) {
+    //     goalModel.getTeamGoal(req,res,function(err,obj){
+    //         console.log(err+obj);
+    //     });
+    // },
+    // 'post /org/:orgId/goals/:goalId':function(req,res){
+    //     goalModel.updateGoal(req,res);
+    // },
+    'get /org/:orgId/goals':function(req,res){
+        goalModel.getGoalsOfOrganization(res,req);
     },
-    'get org/:orgId/users/:userId/goals':function(req,res) {
-        goalModel.getUserGoal(req,res,function(err,obj){
-            console.log(err+obj);
-        });
-    },
-    'post /org/:orgId/goals/goalId':function(req,res){
-        goalModel.updateGoal(req,res);
-    },
-    'post /org/:orgId/goals':function(req,res){
-        goalModel.addGoalToOrg(res,req);
-    },
-    'post /org/:orgId/teams/:teamId/goals':function(req,res){
-        goalModel.addGoalToTeam(res,req);
-    },
-    'post /org/:orgId/users/:userId/goals':function(req,res){
-        goalModel.addGoalToUser(res,req);
-    },
-    'post /org/:orgId/teams/:teamId/goals/goalId':function(req,res){
-        goalModel.updateGoalToTeam(res,req);
-    },
-    'post /org/:orgId/teams/:userId/goals/goalId':function(req,res){
-        goalModel.updateGoalToUser(res,req);
-    },
-    'del org/:orgId/:goalId':function(req,res){
-        goalModel.removeTraining(req,res,function(err,obj){
-            if(err)
-                res.send(err);
-            else res.send(obj);
-        });
-    }
+    // 'post /org/:orgId/teams/:teamId/goals':function(req,res){
+    //     goalModel.addGoalToTeam(res,req);
+    // },
+    // 'post /org/:orgId/teams/:teamId/goals/goalId':function(req,res){
+    //     goalModel.updateGoalToTeam(res,req);
+    // },
+    // 'post /org/:orgId/teams/:userId/goals/goalId':function(req,res){
+    //     goalModel.updateGoalToUser(res,req);
+    // },
+    // 'del org/:orgId/:goalId':function(req,res){
+    //     goalModel.removeTraining(req,res,function(err,obj){
+    //         if(err)
+    //             res.send(err);
+    //         else res.send(obj);
+    //     });
+    // }
 };
 
 //End Points For LeaderBoard:
 
-// var leaderBoardModel=require('../../system/controllers/leaderBoardController.js');
-// var leaderBoardModelRoutes={
-//     'get org/:orgId/leaderBoard':function(req,res) {
-//         leaderBoardModel.getleaderBoardOrg(req,res),function(err,obj){
-//             console.log(err+obj);
-//         }
-//     },
-//     'get org/:orgId/leaderBoard/:leaderBoardId':function(req,res) {
-//         leaderBoardModel.getleaderBoardModelInfo(req,res),function(err,obj){
-//             console.log(err+obj);
-//         }
-//     },
-//     'get org/:orgId/teams/:teamId/leaderBoard':function(req,res) {
-//         leaderBoardModel.getleaderBoardTeam(req,res),function(err,obj){
-//             console.log(err+obj);
-//         }
-//     }
-//    'get org/:orgId/users/:userId/leaderBoard':function(req,res) {
-//        goalModel.getUserGoal(req,res),function(err,obj){
-//            console.log(err+obj);
-//        }
-//    },
-//    'post /org/:orgId /leaderBoards/leaderBoardId':function(req,res){
-//        goalModel.updateGoal(req,res);
-//    },
-//    'post /org/:orgId /leaderBoards':function(req,res){
-//        goalModel.addGoalToOrg(res,req);
-//    },
-//    'post /org/:orgId /teams/:teamId/leaderBoards':function(req,res){
-//        goalModel.addGoalToTeam(res,req);
-//    },
-//    'post /org/:orgId /users/:userId/leaderBoards':function(req,res){
-//        goalModel.addGoalToUser(res,req);
-//    },
-//    'post /org/:orgId /teams/:teamId/leaderBoards/leaderBoardId':function(req,res){
-//        goalModel.updateGoalToTeam(res,req);
-//    },
-//    'post /org/:orgId /teams/:userId/leaderBoards/leaderBoardId':function(req,res){
-//        goalModel.updateGoalToUser(res,req);
-//    },
-//    'del org/:orgId/:leaderBoardId':function(req,res){
-//        goalModel.removeTraining(req,res),function(err,obj){
-//            if(err)
-//                res.send(err);
-//            else res.send(obj);
-//        };
-//    }
-// }
+var leaderboardModel=require('../../system/controllers/LeaderboardController.js');
+var leaderboardModelRoutes={
+    'get org/:orgId/leaderboard':function(req,res) {
+        leaderboardModel.getOrganizationLeaderboard(req,res);
+    },
+    // 'get org/:orgId/teams/:teamId/leaderboard':function(req,res) {
+    //     leaderboardModel.getleaderboardTeam(req,res);
+    // },
+};
 
 //End Points for Clients:
 
@@ -412,13 +348,12 @@ var ClientsModelRoutes={
     'post /org/:orgId/clients':function(req,res){
         clientModel.addClientsToOrg(res,req);
     },
-    'post /org/:orgId/leaderBoards':function(req,res){
+    'post /org/:orgId/leaderboards':function(req,res){
         clientModel.addGoalToTeam(res,req);
     },
     'post /org/:orgId/users/:userId/clients':function(req,res){
         clientModel.assignClientToUser(res,req);
     },
-
     'del org/:orgId/:clients':function(req,res){
         clientModel.removeClients(req,res,function(err,obj){
             if(err)
@@ -426,17 +361,15 @@ var ClientsModelRoutes={
             else res.send(obj);
         });
     }
-
 };
-var stuff=[ClientsModelRoutes/* leaderBoardModelRoutes */,goalModelRoutes/* ,trainingModelRoutes */,revenueModelRoutes,productModelRoutes,medalModelRoutes,teamModelRoutes, storeItemModelRoutes,storeModelRoutes/* ,roleModelRoutes */,userModelRoutes,orgModelRoutes];
+var stuff=[ClientsModelRoutes,leaderboardModelRoutes,goalModelRoutes/* ,trainingModelRoutes ,revenueModelRoutes,productModelRoutes,medalModelRoutes,/* storeItemModelRoutes,storeModelRoutes,roleModelRoutes */,userModelRoutes,teamRoutes,orgRoutes];
 module.exports={
   initialize:function(server){
     stuff.forEach(function(routesObj){
-    for(var property in routesObj)
-    {
-      methods=property.split(" ");
-      eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
-    }
+      for(var property in routesObj) {
+        methods=property.split(" ");
+        eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
+      }
     });
     console.log("Org Routes initialized");
   }

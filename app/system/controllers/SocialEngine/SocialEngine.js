@@ -1,9 +1,14 @@
-var MessagesModel=require('../../models/Messages');
-var SocialEngineRoutes=require('./SocialEngineRoutes');
+// var MessagesModel=require('../../models/Messages');
+// var SocialEngineRoutes=require('./SocialEngineRoutes');
+var StatusMessagesController=require('./StatusMessagesController.js');
+var SocialFeedController=require('./SocialFeedController.js');
+var NudgeChatController=require('./NudgeChatController.js');
+var NudgeMailboxController=require('./NudgeMailboxController.js');
+var NudgeMailsController=require('./NudgeMailsController.js');
 var SocialEngine={
   initialize:function(server){
     //initializaing routes
-    for(property in SocialEngineRoutes)
+    for(var property in SocialEngineRoutes)
     {
       methods=property.split(" ");
       eval("server."+methods[0]+"('"+methods[1]+"',"+SocialEngineRoutes[property]+');');
@@ -28,4 +33,10 @@ var SocialEngine={
     MessagesModel.getMessagesOfUser(userId,callback);
   }
 };
-module.exports=SocialEngine;
+module.exports={
+  StatusMessagesController:StatusMessagesController,
+  SocialFeedController:SocialFeedController,
+  NudgeChatController:NudgeChatController,
+  NudgeMailboxController:NudgeMailboxController,
+  NudgeMailsController:NudgeMailsController
+};

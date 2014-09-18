@@ -1,20 +1,27 @@
 var StoresCollection=require('./StoresCollection.js');
+var mongoose=require('mongoose');
 var Stores={
-  createStore:function(organizationId,data){
+  createStore:function(organizationId,data,callback){
     data.createdAt=new Date();
-    data.organizationId=organizationId;
+    data.orgId=mongoose.Types.ObjectId(organizationId);
     var l=new StoresCollection(data);
-    l.save();
+    l.save(callback);
     return true;
   },
   getStore:function(id,fields,options,populationData,callback){
     StoresCollection.findOne({_id:id},fields,options,populationData,callback);
   },
-  // getStoresOfOrganization(orgId,callback){
-  //   StoresCollection.find({organizationId:orgId},callback);
-  // },
+  getStoresOfOrganization:function(orgId,fields,options,populationData,callback){
+    if(populationData)
+      StoresCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
+    else
+      StoresCollection.find({orgId:orgId},fields,options).exec(callback);
+  },
   getStoresOfTeam:function(teamId,fields,options,populationData,callback){
-    StoresCollection.find({teamId:teamId},fields,options,populationData,callback);
+    if(populationData)
+      StoresCollection.find({teamId:teamId},fields,options).populate(populationData).exec(callback);
+    else
+      StoresCollection.find({teamId:teamId},fields,options).exec(callback);
   },
   addItemToStore:function(storeId,itemData,callback){
     StoresCollection.update({_id:storeId},{$set:itemData},callback);

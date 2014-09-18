@@ -1,12 +1,13 @@
 var GoalsCollection=require('./GoalsCollection.js');
+var mongoose=require('mongoose');
 var Goals={
-  createGoal:function(organizationId,data){
-    data.organizationId=organizationId;
+  createGoal:function(organizationId,data,callback){
+    data.organizationId=mongoose.Types.ObjectId(organizationId);
     data.createdAt=new Date();
     if(data.steps)
       data.totalSteps=data.steps.length;
     var l=new GoalsCollection(data);
-    l.save();
+    l.save(callback);
     return true;
   },
   // addMedalToGoal:function(goalId,medalId,callback){
@@ -18,9 +19,9 @@ var Goals={
   getGoal:function(id,fields,options,populationData,callback){
     GoalsCollection.findOne({_id:id},callback);
   },
-  // getGoalsOfOrganization:function(orgId,callback){
-  //   GoalsCollection.find({organizationId:orgId},callback);
-  // },
+  getGoalsOfOrganization:function(orgId,callback){
+    GoalsCollection.find({orgId:orgId},callback);
+  },
   getPointsToBeIncremented:function(goalId,callback){
     Goals.getGoal(goalId,function(err,obj){
       if(err) return callback(err,0);

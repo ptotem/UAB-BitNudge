@@ -21,6 +21,9 @@ var Revenue= {
     getRevenue:function(id,callback){
         RevenuesCollection.findOne({_id:id},callback);
     },
+    getRevenuesOfUserId:function(userId,callback){
+      RevenuesCollection.find({user:userId},fields,options,callback);
+    },
     getRevenueByOrgId:function(orgid,callback){
         RevenuesCollection.find(({organizationId :orgid}),callback);
     },

@@ -2,44 +2,97 @@ var OrganizationsModel=require('../../models/Organizations');
 var TeamModel=require('../../models/Teams');
 var AuthorizationController=('../../controllers/AuthorizationController.js');
 var HierarchyEngine={
-    getTeamOrg:function(req,res){
-        if(AuthorizationController.IsAuthorized(req.userId,teams,read)){
-        TeamModel.getTeamOrg(req.id);
-        }
-    },
-    addTeamToOrg:function(req,res){
-        TeamModel.createTeam(req.orgId,req.data,function(err,obj){
-            if(err) callback(err);
-            else{
-                TeamModel.addTeamsToTeam(obj._id,req.data);
-            }
-        });
-    },
-    addMemberToTeam:function(req,res){
-        TeamModel.addMembersToTeam(req.id,req.data,function(err,obj){
-            if(err){
-
-            }
-            if(err) callback(err);
-            else{
-                TeamModel.addMemberToTeam(obj._id,req.data);
-            }
-        });
-    },
-    removeTeamFromTeam:function(res,req)
-    {
-//        if(AuthorizationController.IsAuthorized(req.userId,teams,delete)) {
-            TeamModel.removeTeamsToTeam(req.id, req.teams, callback)
-//        }
-    },
-    deleteTeamFromOrg:function(res,req){
-        TeamModel.deleteTeam(res.teamId);
-    },
-    updateTeam:function(req,res,callack){
-        TeamModel.updateTeam(req,res);
-    },
-    addMembersToTeam:function(req,res){
-        TeamModel.addMembersToTeam(req.teadId,req.data);
-    }
+  getTeam:function(req,res){
+    TeamModel.getTeam(req.params.teamId,{_id:0},{},{path:'teams'},function(err,obj){
+      if(err){
+        res.send("fail"+err);
+        return handleError(err);
+      }
+      res.send(obj);
+    });
+  },
+  getTeamsInOrg:function(req,res){
+    TeamModel.getTeamsInOrg(req.params.orgId,{_id:0},{},null,function(err,objs){
+      if(err){
+        res.send("fail");
+        return handleError(err);
+      }
+      res.send({teams:objs});
+    });
+  },
+  createTeam:function(req,res){
+    TeamModel.createTeam(req.params.orgId,req.query,function(err,obj){
+      if(err) res.send("fail");
+      else res.send(obj);
+    });
+  },
+  updateTeam:function(req,res){
+    TeamModel.updateTeam(req.params.teamId,req.query,function(err,obj){
+      if(err){
+        res.send("fail");
+        return handleError(err);
+      }
+      res.send(objs);
+    });
+  },
+  addMemberToTeam:function(req,res){
+      TeamModel.addMembersToTeam(req.id,req.data,function(err,obj){
+          if(err){
+            res.send("fail");
+            return handleError(err);
+          }
+          else{
+            res.send("success");
+          }
+      });
+  },
+  removeMemberFromTeam:function(req,res){
+      TeamModel.removeMemberFromTeam(req.params.teamId,req.params.userId,function(err,obj){
+          if(err){
+            res.send("fail");
+            return handleError(err);
+          }
+          else{
+            res.send("success");
+          }
+      });
+  },
+  removeSubteam:function(res,req)
+  {
+    TeamModel.removeSubteam(req.params.teamId, req.params.subteamId, function(err){
+      if(err){
+        res.send("fail");
+        return handleError(err);
+      }
+      else{
+        res.send("success");
+      }
+    });
+  },
+  getSubteams:function(req,res){
+    TeamModel.getTeam(req.params.teamId,"teams",{},{path:"teams"},function(err,teams){
+      if(err){
+        res.send("fail");
+        return handleError(err);
+      }
+      else{
+        res.send(teams);
+      }
+    });
+  },
+  // deleteTeamFromOrg:function(res,req){
+  //     TeamModel.deleteTeam(res.teamId);
+  // },
+  addSubteam:function(req,res){
+    TeamModel.addSubteams(req.params.teamId,req.query.subteam,function(err,obj){
+      if(err){
+        res.send("fail");
+        return handleError(err);
+      }
+      else{
+        res.send("success");
+      }
+    });
+  }
 };
 module.exports=HierarchyEngine;

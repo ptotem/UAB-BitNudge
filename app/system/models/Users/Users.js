@@ -87,6 +87,9 @@ var UserManagement={
   getUser:function(id,fields,options,populationData,callback){
     UserCollection.findOne({_id:id},fields,options).exec(callback);
   },
+  getUsersOfOrganization:function(orgId,fields,options,populationData,callback){
+    UserCollection.find({orgId:orgId},fields,options).exec(callback);
+  },
   getUserByAuthentication:function(username,password,callback){
     passwordSalt=password+"salt!";
     UserCollection.findOne({username:username,passwordSalt:passwordSalt},callback);

@@ -1,11 +1,10 @@
 var MedalsCollection=require('./MedalsCollection.js');
 var Medals={
-  createMedal:function(organizationId,data){
+  createMedal:function(organizationId,data,callback){
     data.organizationId=organizationId;
     data.createdAt=new Date();
     var l=new MedalsCollection(data);
-    l.save();
-    return true;
+    l.save(callback);
   },
   getMedal:function(id,callback){
     MedalsCollection.findOne({_id:id},callback);

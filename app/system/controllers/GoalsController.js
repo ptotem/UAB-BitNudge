@@ -1,8 +1,12 @@
 var GoalsModel=require('../models/Goals');
+var UserGoalsModel=require('../models/UserGoals');
 
 var GoalsController={
   createGoal:function(req,res){
-    GoalsModel.createGoal(orgId,data);
+    GoalsModel.createGoal(orgId,data,function(err,obj){
+      if(err)res.send(err);
+      else res.send("success");
+    });
   },
   // updateGoal:function(req,res){
   //   GoalsModel.UpdateGoal(id,updateData,function(err,obj){
@@ -16,6 +20,11 @@ var GoalsController={
   },
   getGoalsOfUser:function(req,res){
     UsersModel.getGoals(userId,function(err,goals){
+      res.send(goals);
+    });
+  },
+  getGoalsOfOrganization:function(req,res){
+    UsersModel.getGoals(req.params.orgId,function(err,goals){
       res.send(goals);
     });
   },

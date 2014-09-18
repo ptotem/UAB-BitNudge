@@ -1,5 +1,4 @@
 var SocialFeedCollection=require('./SocialFeedCollection.js');
-
 var SocialFeed={
   createSocialFeed:function(organizationId,data){
     data.orgId=organizationId;
@@ -12,7 +11,10 @@ var SocialFeed={
     SocialFeedCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   getSocialFeedOfUser:function(userId,fields,options,populationParams,callback){
-    SocialFeedCollection.find({userId:userId},fields,options).populate(populationParams).exec(callback);
+    if(populationData)
+      SocialFeedCollection.find({userId:userId},fields,options).populate(populationParams).exec(callback);
+    else 
+      SocialFeedCollection.find({userId:userId},fields,options).exec(callback);
   },
   addMessageToFeed:function(userId,messageId,callback){
     SocialFeedCollection.update({userId:userId},{$push:{messages:messageId}},callback);

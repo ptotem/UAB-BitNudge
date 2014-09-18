@@ -1,10 +1,9 @@
 var RevenueModel=require('../models/Products');
 var AuthorizationController=('./AuthorizationController.js');
 var RevenueController={
-
-    revenueEntry:function(req,res,callback){
-        if(AuthorizationController.IsAuthorized(req.userId,Revenue,write,callback)) {
-            RevenueModel.createRevenue(req.data, callback);
+    revenueEntry:function(req,res){
+        if(AuthorizationController.IsAuthorized(req.userId,Revenue,write)) {
+            RevenueModel.createRevenue(req.data);
         }
     }
 };

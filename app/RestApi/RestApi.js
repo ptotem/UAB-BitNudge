@@ -4,8 +4,8 @@ var UserResources=require('./UserResources');
 var RestApi={
   initialize:function(server){
     OrganizationResources.initialize(server);
-    // TeamResources.initialize(server);
-    // UserResources.initialize(server);
+    TeamResources.initialize(server);
+    UserResources.initialize(server);
     //
     // UserResources.forEach(function(routesObj){
     //   for(var property in routesObj)

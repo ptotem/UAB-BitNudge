@@ -19,14 +19,14 @@ var Training= {
     getTraining:function(id,callback){
         TrainingsCollection.findOne({_id:id},callback);
     },
-    getTrainingByOrgId:function(orgid,callback){
-        TrainingsCollection.find(({organizationId :orgid}),callback);
+    getTrainingOfOrganization:function(orgid,callback){
+        TrainingsCollection.find(({orgId :orgid}),callback);
     },
     updateTraining:function(id,updateData,callback){
         TrainingsCollection.update({_id:id},{$set:updateData},callback);
-    },
-    assignTrainingToUser:function(trainingId,userdata){
-        TrainingsCollection.update({_id:trainingId},{$push:{user:userdata}});
     }
+    // assignTrainingToUser:function(trainingId,userdata){
+    //     TrainingsCollection.update({_id:trainingId},{$push:{user:userdata}});
+    // }
 };
 module.exports=Training;

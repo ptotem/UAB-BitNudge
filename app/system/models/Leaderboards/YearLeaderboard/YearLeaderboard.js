@@ -15,7 +15,10 @@ var Leaderboard={
     var currDate=moment(year);
     var start=moment().year(moment(year)).month(0).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().year(moment(year)+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
-    RanksCollection.find({month:{$gte:start,$lt:end}},fields,options).populate(populationData).exec(callback);
+    if(populationData)
+      RanksCollection.find({year:{$gte:start,$lt:end}},fields,options).populate(populationData).exec(callback);
+    else
+      RanksCollection.find({year:{$gte:start,$lt:end}},fields,options).exec(callback);
   },
   setRankOfUser:function(month,rankNo,userId,callback){
     var rankObj={rankNo:rankNo,player:userId};

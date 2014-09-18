@@ -1,5 +1,5 @@
 var TeamsCollection=require('./TeamsCollection.js');
-//var UserCollection=require('./UserManagementCollection.js');
+var mongoose=require('mongoose');
 
 var Team= {
     getTeamDetail: function (team, fieldName) {
@@ -8,11 +8,11 @@ var Team= {
     getTeamSchema: function () {
         return TeamsCollection.Schema;
     },
-    createTeam: function (organizationId, data) {
-        var team = new TeamsCollection(data);
-        team.created_at = new Date();
-        team.save();
-        return true;
+    createTeam:function(organizationId, data,callback) {
+      data.orgId=mongoose.Types.ObjectId(organizationId);
+      data.createdAt = new Date();
+      var team = new TeamsCollection(data);
+      team.save(callback);
     },
     sortTeamsByField:function(queryObj,fieldName,callback){
       TeamsCollection.find(queryObj).sort(fieldName).exec(callback);
@@ -28,8 +28,10 @@ var Team= {
     },
     getTeamsInOrg: function (id, fields,options, populationData,callback) {
       if(populationData)
-        TeamsCollection.find({organizationId: id}).populate(populationData).exec(callback);
-      else TeamsCollection.find({orgId:id},callback);
+        TeamsCollection.find({orgId: id}).populate(populationData).exec(callback);
+      else{ 
+        TeamsCollection.find({orgId:mongoose.Types.ObjectId(id)},callback);
+      }
     },
     getTeamLeader: function (id, callback) {
         TeamsCollection.findOne(({'_id': id}).teamLeaderId, callback);
@@ -43,13 +45,13 @@ var Team= {
     addMembersToTeam: function (teamId, memberData, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {members: memberData}}, callback);
     },
-    removeMembersToTeam: function (teamId, members, callback) {
+    removeMembersFromTeam: function (teamId, members, callback) {
         TeamsCollection.update({_id: teamId}, {$pull: {members: members}}, callback);
     },
-    addTeamsToTeam: function (teamId, teamData, callback) {
+    addSubteams: function (teamId, teamData, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {teams: teamData}}, callback);
     },
-    removeTeamsToTeam: function (teamId, teams, callback) {
+    removeSubteam: function (teamId, teams, callback) {
         TeamsCollection.update({_id: teamId}, {$pull: {teams: teams}}, callback);
     },
     // addGoalToTeam:function(teamId,data,callback){
@@ -58,15 +60,21 @@ var Team= {
     addStoresToTeam: function (teamId, storeData, callback) {
         TeamsCollection.update({_id: teamId}, {$push: storeData}, callback);
     },
+    removeStoresFromTeam: function (teamId, storeData, callback) {
+        TeamsCollection.update({_id: teamId}, {$pull: storeData}, callback);
+    },
+    removeStoresFromAllTeams:function(storeData, callback) {
+        TeamsCollection.update({}, {$pull: storeData}, callback);
+    },
     assignTrainingToTeam: function (teamId, training_id, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
-    },
-    AddTeamInOrg: function (organizationId, data) {
-        data.organizationId = organizationId;
-        var team = new TeamsCollection(data);
-        team.created_at = new Date();
-        team.save();
-        return true;
     }
+    // AddTeamInOrg: function (organizationId, data) {
+    //     data.organizationId = organizationId;
+    //     var team = new TeamsCollection(data);
+    //     team.created_at = new Date();
+    //     team.save();
+    //     return true;
+    // }
 };
 module.exports=Team;

@@ -6,6 +6,18 @@ var TeamPointsModel=require('../../models/TeamPoints');
 var TeamsModel=require('../../models/Teams');
 
 var RankController={
+  getUserRank:function(req,res){
+    LeaderboardModel.MonthLeaderboard.getUserRank(req.params.userId,new Date(),function(err,obj){
+      if(err) res.send(err);
+      else res.send(obj);
+    });
+  },
+  getTeamRank:function(req,res){
+    LeaderboardModel.MonthLeaderboard.getTeamRank(req.params.teamId,new Date(),function(err,obj){
+      if(err) res.send(err);
+      else res.send(obj);
+    });
+  },
   calculateRankOfMonth:function(orgId,month,callback){
     //setting user global ranks.
     UserPointsModel.UserMonthPoints.getSortedUserPointsOfMonth({},month,function(err,userpoints){

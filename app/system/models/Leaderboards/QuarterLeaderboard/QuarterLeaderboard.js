@@ -8,21 +8,20 @@ var Leaderboard={
     var leaderboard=new RanksCollection(leaderboardData);
   },
   getLeaderboard:function(id,fields,options,populationData,callback){
-    RanksCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+    if(populationData)
+      RanksCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+    else
+      RanksCollection.findOne({_id:id},fields,options).exec(callback);
   },
   //here quarter is a Date object
   getLeaderboardOfQuarter:function(quarter,fields,options,populationData,callback){
     var currDate=moment(quarter);
     var start=moment().month(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().month(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
-    RanksCollection.find({quarter:{$gte:start,$lt:end}},fields,options).populate(populationData).exec(function(err,docs){
-      docs.forEach(function(doc){
-        var date=moment(doc.date);
-        if(currDate.quarter()==date.quarter())
-          return callback(err,doc);
-      });
-      return callback(err,null);
-    });
+    if(populationData)
+      RanksCollection.find({quarter:{$gte:start,$lt:end}},fields,options).populate(populationData).exec(callback);
+    else
+      RanksCollection.find({quarter:{$gte:start,$lt:end}},fields,options).exec(callback);
   },
   setRankOfUser:function(quarter,rankNo,userId,callback){
     var rankObj={rankNo:rankNo,player:userId};
