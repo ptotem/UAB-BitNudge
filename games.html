@@ -688,18 +688,18 @@
             });
 
             $(".games_link").click(function() {
-                console.log($(this).attr('data-href'));
-                if ($(this).attr('data-href').contains("quizspin"))
-                {
-                    $("#game_frame").attr("src", "");
-                    $("#game_frame").hide();
-                    $("#coming_soon_frame").show();
-                }
-                else{
-                    $("#coming_soon_frame").hide();
+                //console.log($(this).attr('data-href'));
+//                if ($(this).attr('data-href').contains("quizspin"))
+//                {
+//                    $("#game_frame").attr("src", "");
+//                    $("#game_frame").hide();
+//                    $("#coming_soon_frame").show();
+//                }
+//                else{
+                    //$("#coming_soon_frame").hide();
                     $("#game_frame").attr("src", $(this).attr('data-href'));
-                    $("#game_frame").show();
-                }
+                    //$("#game_frame").show();
+//                }
 
             });
 
