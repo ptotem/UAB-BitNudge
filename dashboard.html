@@ -13,6 +13,10 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <!--<meta content="authenticity_token" name="csrf-param">-->
+    <!--<meta content="nhomkJYv4DNUCcxMxasy4Lx3Mont05qgF1atB7jC70c=" name="csrf-token">-->
+
+
     <!--// OPTIONAL & CONDITIONAL CSS FILES //-->
     <!-- date picker css -->
     <link rel="stylesheet" href="css/datepicker.css?v=1">
@@ -312,20 +316,19 @@
     <div class="mystats indented">
         <div class="my-profile my-profile-lrg" style="margin-top: 10px;">
             <a href="javascript:void(0)" class="my-profile-pic my-profile-pic-lrg">
-                <img src="img/avatar/avatar_8.jpg" alt="" class="profile-img-lrg"/>
+                <img id="user_photo" src="img/avatar/avatar_8.jpg" alt="" class="profile-img-lrg"/>
             </a>
-            <span class="first-child"><strong>Shoaib Akhtar</strong></span>
-            <span class="nullify-bold">HR Head</span>
-            <span class="nullify-bold">Walves</span>
+            <strong><span class="first-child" id="user_name">Shoaib Akhtar</span></strong>
+            <span class="nullify-bold" id="user_designation">HR Head</span>
+            <span class="nullify-bold" id="user_team">Walves</span>
             <span><a href="javascript:void(0);">Edit Profile </a></span>
         </div>
         <br>
 
-        <div class="my-profile semi-block">
-            <strong>Profile Complete</strong><strong class="pull-right">89%</strong>
-
+        <div class="my-profile semi-block" id="profile_meter">
+            <strong>Profile Complete</strong><strong class="pull-right"> <span id="profile_percentage" style="float: left">89</span>%</strong>
             <div class="progress progress-danger slim">
-                <div class="bar" data-percentage="89"></div>
+                <div class="bar" id="profile_percentage_progress_bar" data-percentage="89"></div>
             </div>
         </div>
     </div>
@@ -361,6 +364,9 @@
             </li>
             <li class="">
                 <a href="result_analysis.html"><i class="icon-signal"></i>Result Analysis</a>
+            </li>
+            <li class="">
+                <a href="submissions.html"><i class="icon-signal"></i>Submissions</a>
             </li>
             <li class="">
                 <a href="faq.html"><i class="icon-signal"></i>FAQs</a>
@@ -401,11 +407,8 @@
                 <div class="col-md-8 col-md-offset-2">
                     <!--<h3>Quote</h3>-->
                     <blockquote style="border: none;">
-                        <p>
-                            “I’m not in this world to live up to your expectations and you’re not in this world to live
-                            up to mine.”
-                        </p>
-                        <small><cite title="Bruce Lee">Bruce Lee</cite></small>
+                        <p id="user_quote">“I’m not in this world to live up to your expectations and you’re not in this world to live up to mine.”</p>
+                        <!--<small><cite title="Bruce Lee">Bruce Lee</cite></small>-->
                     </blockquote>
                 </div>
             </div>
@@ -1588,9 +1591,13 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+<script src="js/dummy_data.js"></script>
+
 <script type="text/javascript">
 //    var g1, g2, g3, g4, g5, g6;
     var shooting_g6, quarter_g6, shooting_team_g6, quarter_team_g6;
+    var remote_host = "http://192.168.2.11:3004/";
+
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -1610,6 +1617,62 @@
 
             $('#main').css('opacity', 1);
             $('header').fadeIn();
+
+            //$("#user_name").text(myJSON.user_data.personal_info.name);
+            //$("#user_photo").attr('src',myJSON.user_data.personal_info.avatar);
+            //$("#user_quote").text(myJSON.user_data.personal_info.quote);
+
+            //$("#user_designation").text(myJSON.user_data.organizational_info.designation);
+            //$("#user_team").text(myJSON.user_data.organizational_info.team_name);
+
+            //$("#profile_percentage").text(myJSON.user_data.organizational_info.profile_complete_percent);
+            //$("#profile_percentage_progress_bar").attr('data-percentage', myJSON.user_data.organizational_info.profile_complete_percent);
+
+            $.ajax({
+                url: remote_host+"org/54181686aa57cbbe938e52b4/users/5418175604c38ac094ed0fbe?callback=?",
+                type: 'getJSON',  /* Dont use post it JSONP doesnt support */
+                dataType: 'jsonp',
+//                jsonpCallback: 'myfunc', // the function to call
+//                jsonp: 'callback', // name of the var specifying the callback in the request
+                success: function(res) {
+                    console.log(res);
+                    $("#user_name").text(res.name);
+                    $("#user_designation").text(res.designation);
+                    $("#profile_percentage").text(res.profileCompleteness);
+                    $("#profile_percentage_progress_bar").attr('data-percentage', res.profileCompleteness);
+                    $("#profile_percentage_progress_bar").css('width', res.profileCompleteness+"%");
+
+//                    processResponse(res);
+                }
+                ,
+                error: function(e , msg){
+                    alert(msg);
+                    processError(e,msg);
+                }
+            });
+
+
+            //$("#leader_board_table").find('tbody').empty();
+            var row_html;
+//            $.each(top_five_leaders_JSON.leaders, function( index, value ) {
+//                //console.log(value.name)
+//                row_html = '<tr class="even">'+
+//                                '<td class="text-center">' +value.position+ '</td>' +
+//                                '<td class="text-center">' +value.name+ '</td>' +
+//                                '<td class="text-center">' +
+//                                    '<img src='+value.avatar+' style="border-radius: 4px" height=22px width=22px/>' +
+//                                '</td>' +
+//                                '<td class="text-center">' +value.team+ '</td>' +
+//                                '<td class="text-center">50</td>' +
+//                                '<td class="text-center">100</td>' +
+//                                '<td class="text-center">' +
+//                                    '<button type="button" class="btn btn-success btn-xs">2</button>' +
+//                                    '<button type="button" class="btn btn-warning btn-xs">5</i></button>' +
+//                                    '<button type="button" class="btn btn-danger btn-xs">7</button>' +
+//                                '</td>' +
+//                            '</tr>';
+//                $("#leader_board_table").find('tbody').append(row_html)
+//            });
 
             $('.uab-like-icon').on('click', function () {
                 if ($(this).hasClass("uab-blue-icon")) {
@@ -1716,6 +1779,22 @@
 
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
+
+function processError(e , msg){
+    console.log(e)
+}
+
+
+//The res object you get is a JSON object
+// Since the JSON response is
+// {"totalInterestPmtAmt":5092.79,"totalPmtAmt":15092.79}
+//yes the call back method name will
+//be removed by Jquery isn that neat
+
+function processResponse(res){
+    alert('totalInterestPmtAmt='+ res.totalInterestPmtAmt);
+    alert('totalPmtAmt='+ res.totalPmtAmt);
+}
 </script>
 
 <!-- REQUIRED: iButton -->

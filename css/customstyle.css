@@ -11,6 +11,21 @@
     /*position: inherit !important;*/
 }
 
+.form-signin input[type="email"] {
+    border: 1px solid #ccc;
+    height: 35px;
+    margin-bottom: 0;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.form-signin input[type="email"]:focus, {
+    border: 1px solid #305F9C;
+    /*box-shadow: none !important;*/
+    /*transition: none 0s ease 0s !important;*/
+}
+
+
 .player_news
 {
     padding-left: 10px;

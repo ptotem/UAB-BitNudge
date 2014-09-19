@@ -151,7 +151,7 @@
 				<!-- end .contained -->
 			</div>
 			<!-- end tool bar -->
-			
+
 		</header>
 		<!-- end header -->	
 			<!--<div id="login-logo"></div>-->
@@ -164,19 +164,17 @@
 					<!-- content goes here -->
 					<div id="main-content">
 						
-						<form class="form-signin" id="target">
+						<form class="form-signin" method="post">
 							<div class="form-group">
-								<input type="text" class="input-block-level" autofocus placeholder="Username" >
+								<input type="email" id="user_email" class="input-block-level" autofocus placeholder="E-mail" >
 							</div>
 							<div class="form-group">
-								<input type="password" class="input-block-level" placeholder="Password">
+								<input type="password" id="user_password" class="input-block-level" placeholder="Password">
 							</div>
 							<div class="form-group no-border">
                                 <div class="row">
                                     <div class="col-md-4 col-xs-4 col-sm-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
-                                        <!--<div style="text-align: right;">-->
-                                            <input class="btn btn-primary" type="submit" value="Sign in">
-                                        <!--</div>-->
+                                        <input class="btn btn-primary" id="sign_in_form_submit_btn" type="submit" value="Sign in">
                                     </div>
                                 </div>
 							</div>
@@ -246,7 +244,8 @@
 	<script src="js/include/amchart/amchart-draw1.js"></script>
 	    
 	<script type="text/javascript">
-		var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));	
+		var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+        var remote_host = "http://192.168.2.11:3004/";
 	    if(!ismobile){
 	    	
 	    	/** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
@@ -277,6 +276,7 @@
 //						opacity: 'hide'
 //					}
 //				});
+
 	        });
 	        
 	    }else{
@@ -285,6 +285,58 @@
 	    	
 	    	document.write('<script src="js/include/responsive-tables.min.js"><\/script>');
 	    }
+
+        $("#sign_in_form_submit_btn").click(function() {
+            var user_email = $("#user_email").val();
+            var user_password = $("#user_password").val();
+//            var dataString = 'password='+ user_password + '&username=' + user_email;
+            //var dataString = [{"username":"nilesh"}]
+            var dataString = {
+                username: user_email,
+                password: user_password
+            };
+            //console.log(dataString);
+
+            $.post(remote_host+"login?username="+user_email+'&password='+user_password);
+            /*$.ajax({
+                type: "POST",
+                url: remote_host+"login?",
+                data: dataString,
+                dataType: 'json',
+                success: function(){
+                    console.log("success")
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                xhrFields: {
+                    withCredentials: true
+                },
+                crossDomain: true
+            });*/
+            return false;
+        });
+
+//        $( "#sign_in_form_submit_btn" ).click(function() {
+//            var email, password, combined;
+//            // Stop form from submitting normally
+//            // Get some values from elements on the page:
+//            var $form = $("#sign_in_form"),
+//                    //term = $form.find( "input[name='s']" ).val(),
+//                    email = $form.find("#user_email").val(),
+//                    password = $form.find("#user_password").val(),
+//                    //url = $form.attr( "action" );
+//                    url = remote_host+"login";
+//            combined = "username="+email+"&password"+password;
+//            // Send the data using post
+//            var posting = $.post( url );
+//            // Put the results in a div
+//            posting.done(function( data ) {
+//                console.log("done")
+//            });
+//            return false;
+//        });
+
 	</script>
 
 	<!-- REQUIRED: iButton -->
