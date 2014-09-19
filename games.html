@@ -91,6 +91,23 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 
+    <style>
+        #game_frame {
+            -ms-zoom: 0.5;
+            -ms-transform-origin: 0 0;
+            -moz-transform: scale(0.8);
+            -moz-transform-origin: 28px 122px 17px;
+            -o-transform: scale(0.8);
+            -o-transform-origin: 28px 122px 17px;
+            -webkit-transform: scale(0.8);
+            -webkit-transform-origin: 0 0;
+        }
+        #game_frame {
+            width: 936px;
+            height: 634px;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
@@ -442,7 +459,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <iframe id="game_frame" src="" width="100%;"  height="460px" frameborder="0"></iframe>
                             <iframe style="display: none" id="coming_soon_frame" src="coming_soon.html" width="100%;"  height="460px" frameborder="0"></iframe>
                         </div>
