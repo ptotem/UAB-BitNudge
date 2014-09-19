@@ -11,6 +11,31 @@
     /*position: inherit !important;*/
 }
 
+.form-signin input[type="email"] {
+    border: 1px solid #ccc;
+    height: 35px;
+    margin-bottom: 0;
+    padding: 0 10px;
+    width: 100%;
+}
+.form-signin input[type="email"]:focus
+{
+    border-color: #305F9C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .player_news
 {
     padding-left: 10px;
@@ -115,9 +140,8 @@ and (orientation: landscape)
     .mychart{
         padding-left: 42%;
     }
+
 }
-
-
 /* Large screens ----------- */
 @media only screen
 and (min-width : 1824px)
