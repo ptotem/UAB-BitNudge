@@ -57,6 +57,13 @@ var rankRoutes={
         pointsEngine.RankController.getTeamRank(req,res);
     }
 };
+//End Points for LeaderBoard:
+var leaderboardModel=require('../../system/controllers/LeaderboardController.js');
+var leaderboardModelRoutes={
+    'get org/:orgId/teams/:teamId/leaderboard':function(req,res) {
+        leaderboardModel.getTeamLeaderboard(req,res);
+    }
+};
 
 
 //End Points For Level in team resources:
@@ -76,13 +83,6 @@ var goalModelRoutes={
 };
 
 
-//End Points for LeaderBoard:
-var leaderboardModel=require('../system/controllers/PointsEngine/LeaderBoard.js');
-var leaderboardModelRoutes={
-    'get org/:orgId/teams/:teamId/leaderboard':function(req,res) {
-        leaderboardModel.getTeamLeaderboard(req,res);
-    }
-};
 
 
 var stuff=[/* leaderboardModelRoutes */,memberTeamsRoutes,rankRoutes,storesRoutes/* ,levelModelRoutes *//* ,goalModelRoutes */];

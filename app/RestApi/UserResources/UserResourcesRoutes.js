@@ -11,6 +11,13 @@ var userModel=require('../../system/controllers/UsersController.js');
 //     }
 // };
 
+var passport=require('passport');
+// var AuthenticationController=require('../../system/controllers/AuthenticationController.js');
+// // AuthenticationController.initialize(server);
+// var loginRoutes={
+//   // 'get /login':passport.authenticate('local')
+// };
+
 var userModelRoutes={
   'get /org/:orgId/users/:userId':function(req,res){
     userModel.getUser(req,res);
@@ -234,6 +241,18 @@ module.exports={
       methods=property.split(" ");
       eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
     }
+    server.post('/login',passport.authenticate('local'));
+    // server.post('/login',function(req,res,next){
+    //   // res.header("Access-Control-Allow-Origin", "*"); 
+    //   // res.header("Access-Control-Allow-Headers", "Origin,X-Requested-With");
+    //   // res.header("Access-Control-Allow-Methods", "POST");
+    //   console.log(req.query);
+    //   res.send("slfdsdjf");
+    //   return next();
+    // });
+    // server.opts('/login',function(req,res){
+    //   res.send(200);
+    // });
     });
     console.log("User Routes initialized");
   }

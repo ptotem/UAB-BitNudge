@@ -92,7 +92,8 @@ var UserManagement={
   },
   getUserByAuthentication:function(username,password,callback){
     passwordSalt=password+"salt!";
-    UserCollection.findOne({username:username,passwordSalt:passwordSalt},callback);
+    console.log(username+" "+passwordSalt);
+    UserCollection.findOne({email:username,passwordSalt:passwordSalt},callback);
   },
     buyItemToUser:function(userId,itemsdata,cost,callback){
         UserCollection.update({_id:userId},{$push:{items:itemsdata},$inc:{totalCash:-cost}},callback);

@@ -5,27 +5,17 @@ var server = module.exports = restify.createServer({
 });
 var escape=require('escape-html');
 var mongoose=require('mongoose');
-// var cors=require('cors');
-// var corsMiddleware = require('restify-cors-middleware');
-//
-// var cors = corsMiddleware({
-//   origins: ['http://192.168.2.23'],//http://web.myapp.com'],
-//   // allowHeaders: ['API-Token'],
-//   // exposeHeaders: ['API-Token-Expiry']
-// });
-//
-// server.pre(cors.preflight);
-// server.use(cors.actual);
+var sessions=require('client-sessions');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
+//mongoose init.
 mongoose.connect('mongodb://localhost/uabTest');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-  // yay!
-  
   console.log("db working");
 });
-// db.close();
 
 // Middlewares
 server.use(restify.acceptParser(server.acceptable));
@@ -43,6 +33,38 @@ server.use(restify.throttle({
 
     }
 }));
+
+//passport init.
+server.use(passport.initialize());
+// server.use(passport.session());
+// server.use(sessions({
+//     cookieName:"session",
+//     secret:'ungessableString',
+//     duration:24*60*60*1000
+// }));
+var UsersModel=require('./system/models/Users');
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    console.log('trying to authenticate.');
+    UsersModel.getUserByAuthentication(username,password,function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username or password.' });
+      }
+      console.log(user);
+      return done(null, user);
+    });
+  }
+));
+// passport.serializeUser(function(user, done) {
+//   done(null, user._id);
+// });
+// passport.deserializeUser(function(id, done) {
+//   UsersModel.getUser(id,function(done){
+//     done(err, user);
+//   });
+// });
+
 // restify.CORS.ALLOW_HEADERS.push('accept');
 // restify.CORS.ALLOW_HEADERS.push('sid');
 // restify.CORS.ALLOW_HEADERS.push('lang');
@@ -53,8 +75,9 @@ server.use(restify.throttle({
 // server.use(restify.fullResponse());
 // server.use(
 //   function crossOrigin(req,res,next){
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     // res.header("Access-Control-Allow-Origin", "*");
+//     // res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//     // res.header("Access-Control-Allow-Methods", "POST");
 //     return next();
 //   }
 // );
