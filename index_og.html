@@ -90,7 +90,7 @@
     <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png"
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-    <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -280,35 +280,34 @@
 </header>
 <!-- end header -->
 
+<div id="splash">
+    <h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>
+
+    <h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>
+</div>
+
 <div id="main" role="main" class="container-fluid">
 
 <div class="contained">
 <!-- aside -->
 <aside>
 
-    <!-- aside item: Mini profile -->
-    <div class="mystats indented">
-        <div class="my-profile my-profile-lrg" style="margin-top: 10px;">
-            <a href="javascript:void(0)" class="my-profile-pic my-profile-pic-lrg">
-                <img src="img/avatar/avatar_8.jpg" alt="" class="profile-img-lrg"/>
-            </a>
-            <span class="first-child"><strong>Shoaib Akhtar</strong></span>
-            <span class="nullify-bold">HR Head</span>
-            <span class="nullify-bold">Walves</span>
-            <span><a href="javascript:void(0);">Edit Profile </a></span>
-        </div>
-        <br>
-
-        <div class="my-profile semi-block">
-            <strong>Profile Complete</strong><strong class="pull-right">89%</strong>
-
-            <div class="progress progress-danger slim">
-                <div class="bar" data-percentage="89"></div>
-            </div>
-        </div>
+    <!-- search box -->
+    <div class="main-search">
+        <label for="main-search"><i class="icon-search"></i></label>
+        <input id="main-search" type="text" placeholder="Search...">
     </div>
+    <div class="divider"></div>
+    <!-- end search box -->
 
-
+    <!-- aside item: Mini profile -->
+    <div class="my-profile">
+        <a href="javascript:void(0)" class="my-profile-pic">
+            <img src="img/avatar/avatar_8.jpg" alt=""/>
+        </a>
+        <span class="first-child"><strong>Shoaib Akhtar</strong></span>
+        <span><a href="javascript:void(0);">Edit Profile </a></span>
+    </div>
     <div class="divider"></div>
     <!-- end aside item: Mini profile -->
 
@@ -317,48 +316,64 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li class="current">
-                <a href="dashboard.html"><i class="icon-home"></i>Home</a>
+                <a href="javascript:void(0)"><i class="icon-home"></i>Home</a>
             </li>
             <li class="">
-                <a href="profile.html"><i class="icon-user"></i>Profile</a>
+                <a href="inbox.html"><i class="icon-envelope"></i>Inbox<span class="badge">3</span></a>
             </li>
             <li class="">
-                <a href="leaderboard.html"><i class="icon-dashboard"></i>Leaderboard</a>
+                <a href="javascript:void(0)"><i class="icon-briefcase"></i>Transactions</a>
+                <ul>
+                    <li>
+                        <a href="forms.html">Add New Transaction</a>
+                    </li>
+                    <li>
+                        <a href="validation.html">My Transactions</a>
+                    </li>
+                    <li>
+                        <a href="wizard.html">Admin Requests</a>
+                    </li>
+                </ul>
             </li>
             <li class="">
-                <a href="challenges.html"><i class="icon-dashboard"></i>Challenges</a>
+                <a href="javascript:void(0)"><i class="icon-eye-open"></i>Goals<span class="badge">1</span></a>
+                <ul>
+                    <li>
+                        <a href="interface.html">My Goals</a>
+                    </li>
+                    <li>
+                        <a href="buttons.html">Challenges</a>
+                    </li>
+                    <li>
+                        <a href="buttons.html">Analyzer Engine</a>
+                    </li>
+                </ul>
             </li>
             <li class="">
-                <a href="wall.html"><i class="icon-inbox"></i>Wall</a>
+                <a href="javascript:void(0)"><i class="icon-signal"></i>Standings</a>
+                <ul>
+                    <li>
+                        <a href="basic_charts.html">Points</a>
+                    </li>
+                    <li>
+                        <a href="adv_charts.html">Medals</a>
+                    </li>
+                    <li>
+                        <a href="raphael.html">Leaderboards</a>
+                    </li>
+                </ul>
             </li>
             <li class="">
-                <a href="messages.html"><i class="icon-inbox"></i>Messages</a>
+                <a href="widgets.html"><i class="icon-dashboard"></i>Reports</a>
             </li>
             <li class="">
-                <a href="redeem_points.html"><i class="icon-certificate"></i>Redeem Points</a>
+                <a href="widgets.html"><i class="icon-gift"></i>Shop</a>
             </li>
             <li class="">
-                <a href="result_analysis.html"><i class="icon-signal"></i>Result Analysis</a>
-            </li>
-            <li class="">
-                <a href="submissions.html"><i class="icon-signal"></i>Submissions</a>
-            </li>
-            <li class="">
-                <a href="games.html"><i class="icon-certificate"></i>Games</a>
-            </li>
-            <li class="">
-                <a href="faq.html"><i class="icon-signal"></i>FAQs</a>
+                <a href="#"><i class="icon-certificate"></i>Trainings</a>
             </li>
         </ul>
 
-    </div>
-    <div class="divider"></div>
-    <div class="number-stats">
-        <ul>
-            <li>4579<span>My <br>Points</span></li>
-            <li>571<span>Total <br>Points</span></li>
-            <li>879<span>Team <br>Points</span></li>
-        </ul>
     </div>
     <div class="divider"></div>
     <!-- end aside item: Menu -->
@@ -369,7 +384,7 @@
 <!-- main content -->
 <div id="page-content">
 <!-- page header -->
-<h1 id="page-header">My Profile</h1>
+<h1 id="page-header">Dashboard <span class="pull-right">Sep 2014</span></h1>
 
 <div class="fluid-container">
 
@@ -379,12 +394,12 @@
 <!-- Row 1 -->
 <div class="row">
 
-    <article class="col-md-12">
+    <article class="col-md-6">
 
         <!-- new widget -->
-        <div class="jarviswidget" id="widget-id-121">
+        <div class="jarviswidget" id="widget-id-12">
             <header>
-                <h2>Profile Details</h2>
+                <h2>Game Plan for the Month</h2>
             </header>
 
             <!-- widget div-->
@@ -415,66 +430,42 @@
                     <!-- content goes here -->
                     <div class="progress-stats">
                         <div class="widget-content-padding">
-                            <div class="row">
-                                <!--<div class="col-md-12 text-right">-->
-                                <div class="col-xs-4 col-xs-offset-8 col-md-3 col-md-offset-9 col-sm-3 col-sm-offset-9 text-center">
-                                    <a href="edit_profile.html" style="color: #0075b0;" class="edit_profile_text">Edit
-                                        Profile</a>
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td style="width: 80%"><strong>Points this Month</strong></td>
+                                    <td style="background: #5cb85c"></td>
+                                    <td>Peer</td>
+                                    <td style="background: #f0ad4e"></td>
+                                    <td>Activity</td>
+                                </tr>
+                            </table>
+
+                            <div class="progress" style="margin-top: 5px;">
+                                <div class="progress-bar progress-bar-success value" style="width: 35%">
+                                    256
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 col-xs-3">
-                                    <img alt="" src="img/avatar/avatar_8.jpg" width="100px"
-                                         class="img-responsive"><br><br>
-
-                                    <!--<input type="file" class="custom-file">-->
-                                </div>
-                                <div class="col-md-6 col-xs-8 col-sm-6">
-                                    <div class="row">
-
-                                        <h5>Shoaib Akhtar</h5>
-
-
-                                    </div>
-
-                                    <div class="row">
-                                        <h5>HR Head</h5>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <h5>Sales</h5>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <h5>Our greatest weakness lies in giving up. The most certain way to succeed is
-                                            always to try just one more time.</h5>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="progress progress-danger">
-                                            <div class="bar filled-text" data-percentage="90" style="width: 100%;">90%
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="col-md-3 text-center">
-
-                                    <h4>Rank</h4>
-
-                                    <div class="rank-circle">
-                                        <div class="rank-value">
-                                            34
-                                        </div>
-                                    </div>
-
+                                <div class="progress-bar progress-bar-warning value" style="width: 20%">
+                                    142
                                 </div>
                             </div>
 
-
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>Points needed to keep class</td>
+                                    <td>350</td>
+                                </tr>
+                                <tr>
+                                    <td>Points needed to reach top 3</td>
+                                    <td>2560</td>
+                                </tr>
+                                <tr>
+                                    <td>Points needed to go up a rank</td>
+                                    <td>157</td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <a href="#" class="btn btn-info btn-fullest">Take a Challenge</a>
+                            <a href="#" class="btn btn-success btn-fullest" style="margin-top: 5px">Take a Training</a>
                         </div>
                     </div>
                 </div>
@@ -486,16 +477,7 @@
         <!-- end widget -->
 
     </article>
-
-
-</div>
-<!-- end row -->
-
-
-<!--Row 2-->
-
-<div class="row">
-    <article class="col-md-12">
+    <article class="col-md-6">
 
         <!-- new widget -->
         <div class="jarviswidget" id="widget-id-77">
@@ -527,129 +509,76 @@
                 <!-- end widget edit box -->
 
                 <div class="inner-spacer">
-                    <div class="widget-content-padding">
-                        <!-- content goes here -->
-                        <div class="row">
+                    <!-- content goes here -->
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div style="text-align: center">
+                                <br/>
+                                <h4>Rank</h4>
 
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 text-center">
-                                        <div class="mychart" id="balance" style="width:35px"></div>
-                                        <br>
-                                        <h5 style="color: #333"><span style="color: #666">Total Points:</span>17,349
-                                        </h5>
-
-
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 text-center">
-                                        <div class="mychart" id="support" style="width:35px"></div>
-                                        <br>
-                                        <h5 style="color: #333"><span style="color: #666">Peer Points:</span>15,300</h5>
-
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 text-center">
-                                        <div class="mychart" id="subscribe" style="width:35px"></div>
-                                        <br>
-                                        <h5 style="color: #333"><span style="color: #666">Action Points:</span>2,049
-                                        </h5>
-
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 text-center">
-                                        <div class="mychart" id="clicks" style="width:35px"></div>
-                                        <br>
-                                        <h5 style="color: #333"><span style="color: #666">Team Points:</span>145k+</h5>
+                                <div class="rank-circle">
+                                    <div class="rank-value">
+                                        34
                                     </div>
                                 </div>
-
-
+                                <br/>
+                                <a class="btn btn-danger" href="#" style="height:80px;">
+                                    Go to the <br/>Standings <br/>Page
+                                </a>
+                                <br/>
+                                <br/>
                             </div>
 
                         </div>
+                        <div class="col-md-6">
+                            <ul class="midpanel mystats">
+                                <li class="first">
+                                    <h1 style="color: #333"><span style="color: #666">Total Points:</span>17,349</h1>
 
-                        <!-- end widget div -->
-                    </div>
-                </div>
-                <!-- end widget -->
-            </div>
-        </div>
-    </article>
+                                    <div class="mychart" id="balance" style="width:35px"></div>
+                                </li>
+                                <li>
+                                    <h1 style="color: #333"><span style="color: #666">Peer Points:</span>15,300</h1>
 
+                                    <div class="mychart" id="support" style="width:35px"></div>
+                                </li>
+                                <li>
+                                    <h1 style="color: #333"><span style="color: #666">Act. Points:</span>2,049</h1>
 
-</div>
-<!--end row-->
+                                    <div class="mychart" id="subscribe" style="width:35px"></div>
+                                </li>
+                                <li class="last">
+                                    <h1 style="color: #333"><span style="color: #666">Team Points:</span>145k+</h1>
 
-
-<!-- Row 3 -->
-<div class="row">
-
-    <article class="col-md-6">
-
-        <!-- new widget -->
-        <div class="jarviswidget" id="awards_widget">
-            <header>
-                <h2>Awards</h2>
-            </header>
-            <div>
-
-                <div class="jarviswidget-editbox">
-                    <div>
-                        <label>Title:</label>
-                        <input type="text"/>
-                    </div>
-                    <div>
-                        <label>Styles:</label>
-                        <span data-widget-setstyle="purple" class="purple-btn"></span>
-                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                        <span data-widget-setstyle="green" class="green-btn"></span>
-                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                        <span data-widget-setstyle="orange" class="orange-btn"></span>
-                        <span data-widget-setstyle="pink" class="pink-btn"></span>
-                        <span data-widget-setstyle="red" class="red-btn"></span>
-                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                        <span data-widget-setstyle="black" class="black-btn"></span>
-                    </div>
-                </div>
-
-                <div class="inner-spacer">
-                    <div class="widget-content-padding">
-                        <!-- content goes here -->
-                        <div class="row">
-
-                            <div class="col-md-4 col-xs-4">
-                                <div class="award">
-                                    <img src="./img/1.png" class="img-responsive center-block">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-xs-4">
-                                <div class="award">
-                                    <img src="./img/3.png" class="img-responsive center-block">
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <div class="award">
-                                    <img src="./img/4.png" class="img-responsive center-block">
-                                </div>
-                            </div>
-
-
+                                    <div class="mychart" id="clicks" style="width:35px"></div>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
 
+                    </div>
                     <!-- end content -->
+
                 </div>
 
-
             </div>
+            <!-- end widget div -->
         </div>
         <!-- end widget -->
+
     </article>
-    <article class="col-md-6">
+
+</div>
+<!-- end row -->
+
+<!-- Row 2 -->
+<div class="row">
+
+    <article class="col-md-12">
 
         <!-- new widget -->
-        <div class="jarviswidget" id="reputation_widget">
+        <div class="jarviswidget" id="widget-id-1">
             <header>
-                <h2>Reputation </h2>
+                <h2>Goals for the Month</h2>
             </header>
             <div>
 
@@ -674,27 +603,100 @@
 
                 <div class="inner-spacer">
                     <!-- content goes here -->
-                    <div class="widget-content-padding">
-                       <div class="row">
-                       <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                    <div class="row">
+                        <div class="col-md-3" style="text-align: center">
+                            <br/>
+                            <!-- easy pie chart -->
+                            <div class="easypie">
+                                <div class="percentage" data-percent="68">
+                                    <span>68</span>%
+                                </div>
+                                <div class="easypie-text">
+                                    Month Completed
+                                    <br/>
+                                    <br/>
+                                    <a class="btn btn-success" href="#">Transaction History</a>
+                                </div>
+                            </div>
 
-                        21<br>
-                          <h5> Follower</h5>
-                       </div>
-                           <div class="col-md-4 col-sm-4 col-xs-4 text-center reputaion_border">
+                            <!-- end easy pie chart -->
+                        </div>
+                        <div class="col-md-5">
+                            <div class="progress-stats">
+                                <div class="widget-content-padding">
+                                    <strong>Net Interest Income</strong><strong class="pull-right">100%</strong>
 
-                               3<br>
-                               <h5> CEO Likes</h5>
+                                    <div class="progress progress-success value">
+                                        <div class="bar" data-percentage="100" data-amount-part="1544"
+                                             data-amount-total="1544">
+                                            1544 / 1544
+                                        </div>
+                                    </div>
 
-                           </div>
-                           <div class="col-md-4 col-sm-4 col-xs-4 text-center ">
+                                    <div class="semi-block">
+                                        <strong>Net Fee Income</strong><strong class="pull-right">70%</strong>
 
-                               5<br>
-                               <h5> Manager Likes</h5>
+                                        <div class="progress progress-info value">
+                                            <div class="bar" data-percentage="70" data-amount-part="456"
+                                                 data-amount-total="631">456 / 631
+                                            </div>
+                                        </div>
+                                    </div>
 
-                           </div>
+                                    <div class="semi-block">
+                                        <strong>Deposit Base</strong><strong class="pull-right">50%</strong>
 
-                       </div>
+                                        <div class="progress progress-warning value">
+                                            <div class="bar" data-percentage="50" data-amount-part="71"
+                                                 data-amount-total="141">
+                                                71 / 141
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="semi-block">
+                                        <strong>New to Bank Clients</strong><strong class="pull-right">22%</strong>
+
+                                        <div class="progress progress-danger value">
+                                            <div class="bar" data-percentage="22" data-amount-part="22"
+                                                 data-amount-total="100">
+                                                22 / 100
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <br/>
+                            <table class="table condensed-table" id="binary-goals">
+                                <tr>
+                                    <td><input type="checkbox"/></td>
+                                    <td>MILO Upload</td>
+                                    <td><a href="#" class="btn btn-info btn-xs">Upload</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"/></td>
+                                    <td>Pipeline Upload</td>
+                                    <td><a href="#" class="btn btn-info btn-xs">Upload</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"/></td>
+                                    <td>WILO Uploads</td>
+                                    <td><a href="#" class="btn btn-info btn-xs">Upload</a></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"/></td>
+                                    <td>Credit Reviews</td>
+                                    <td><a href="#" class="btn btn-info btn-xs">Update</a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><a href="#" class="btn btn-warning btn-full">Go to All Goals</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
                     </div>
 
                     <!-- end content -->
@@ -708,20 +710,350 @@
 
 </div>
 <!-- end row -->
-<!--Row 2-->
 
+<!-- Row 3 -->
+<div class="row">
+<article class="col-md-6">
+
+    <!-- new widget -->
+    <div class="jarviswidget" id="widget-id-2">
+        <header>
+            <h2>NudgeChat</h2>
+        </header>
+
+        <!-- widget div-->
+        <div>
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <div>
+                    <label>Title:</label>
+                    <input type="text"/>
+                </div>
+                <div>
+                    <label>Styles:</label>
+                    <span data-widget-setstyle="purple" class="purple-btn"></span>
+                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                    <span data-widget-setstyle="green" class="green-btn"></span>
+                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                    <span data-widget-setstyle="orange" class="orange-btn"></span>
+                    <span data-widget-setstyle="pink" class="pink-btn"></span>
+                    <span data-widget-setstyle="red" class="red-btn"></span>
+                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                    <span data-widget-setstyle="black" class="black-btn"></span>
+                </div>
+            </div>
+            <!-- end widget edit box -->
+
+            <!-- content -->
+            <div class="inner-spacer chat-widget widget-content-padding">
+
+                <!-- chat tabs -->
+                <ul id="myChat" class="nav nav-tabs chat-tabs">
+                    <li class="active">
+                        <button class="btn btn-mini pull-right chat-close-btn"><i class="icon-remove"></i></button>
+                        <a href="#user1" data-toggle="tab"><i class="online"></i>Nicolas Cage</a>
+                    </li>
+                    <li>
+                        <button class="btn btn-mini pull-right chat-close-btn"><i class="icon-remove"></i></button>
+                        <a href="#user2" data-toggle="tab"><i class="away"></i>David Simpson</a>
+                    </li>
+                    <li class="pull-right">
+
+                        <div id="chat-user-control" class="btn-group hidden-xs">
+                            <button class="btn dropdown-toggle btn-sm btn-link" data-toggle="dropdown"><i
+                                    class="cus-status-online"></i></button>
+                            <ul class="dropdown-menu btn-sm pull-right">
+                                <li>
+                                    <a href="javascript:void(0);"><i class="cus-status-online"></i> Available</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);"><i class="cus-cross-shield-2"></i> Busy</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);"><i class="cus-clock"></i> Away</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript:void(0);"><i class="cus-disconnect"></i> Disconnect</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </li>
+                </ul>
+                <!-- end chat tabs -->
+
+                <!-- chat box -->
+                <div id="myChatTab" class="tab-content chat-content">
+
+                    <!-- chat user1 -->
+                    <div class="tab-pane fade in active" id="user1">
+
+                        <!-- chat messages -->
+                        <div class="chat-messages">
+
+                            <!-- message-id-1 -->
+                            <p id="message-id-1" class="message-box">
+                                <img src="img/avatar/avatar_1.jpg" alt="">
+															<span class="message">
+																<strong>Nicolas Cage</strong>
+																<span class="message-time">14:23pm, 4th Jan 2013</span>
+																<span class="message-text">Hehehe....sem quam semper libero, sit amet adipiscing sem neque sed ipsum. <i
+                                                                        class="cus-emoticon-tongue"></i></span>
+															</span>
+                            </p>
+                            <!-- end message-id-1 -->
+
+                            <!-- message-id-2 -->
+                            <p id="message-id-2" class="message-box you">
+                                <img src="img/avatar/avatar_8.jpg" alt="">
+															<span class="message">
+																<strong>Me</strong>
+																<span class="message-time">14:25pm, 4th Jan 2013</span>
+																<span class="message-text"> Faucibus! Nullam quis ante. Donec sodales sagittis magna.  <i
+                                                                        class="cus-emoticon-smile"></i></span>
+															</span>
+                            </p>
+                            <!-- end message-id-2 -->
+
+                            <!-- message-id-3 -->
+                            <p id="message-id-3" class="message-box">
+                                <img src="img/avatar/avatar_1.jpg" alt="">
+															<span class="message">
+																<strong>Nicolas Cage</strong>
+																<span class="message-time">14:23pm, 4th Jan 2013</span>
+																<span class="message-text">Hey Vicky! Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. LOLOL!  Maecenas tempus, tellus eget condimentum rhoncus. </span>
+															</span>
+                            </p>
+                            <!-- end message-id-3 -->
+
+                        </div>
+                        <!-- end chat messages -->
+
+                    </div>
+                    <!-- end chat user1 -->
+
+                    <!-- chat user2 -->
+                    <div class="tab-pane fade" id="user2">
+
+                        <!-- chat messages -->
+                        <div class="chat-messages">
+
+                            <!-- message-id-1 -->
+                            <p id="message-id-4" class="message-box">
+                                <img src="img/avatar/avatar_2.jpg" alt="">
+															<span class="message">
+																<strong>David Simpson</strong>
+																<span class="message-time">14:23pm, 4th Jan 2013</span>
+																<span class="message-text">Hi Victoria, Yes you have uploaded it and its currently in que. I will have a look at it and send you an email shortly.</span>
+															</span>
+                            </p>
+                            <!-- end message-id-1 -->
+
+                            <!-- message-id-2 -->
+                            <p id="message-id-5" class="message-box you">
+                                <img src="img/avatar/avatar_8.jpg" alt="">
+															<span class="message">
+																<strong>Me</strong>
+																<span class="message-time">14:25pm, 4th Jan 2013</span>
+																<span class="message-text">Hi David, I just submitted a theme on wrapbootstrap, not sure if it went through. Did I do it right? :S</span>
+															</span>
+                            </p>
+                            <!-- end message-id-2 -->
+
+                        </div>
+                        <!-- end chat messages -->
+
+                    </div>
+                    <!-- end chat user2 -->
+
+                </div>
+                <!-- end chat box -->
+
+                <div class="row chat-box">
+
+                    <textarea name="enter-message" rows="3" cols="1" placeholder="Enter your message..."
+                              id="chat-box-textarea"></textarea>
+
+                    <div class="row">
+                        <div class="col-md-6 type-effect" style="display:none"><img src="img/loaders/misc/16-2.gif"
+                                                                                    alt=""> Shaoib is typing...
+                        </div>
+                        <div class="col-md-6 chat-box-buttons pull-right">
+                            <input type="submit" name="chat-box-textarea" class="btn medium btn-danger pull-right"
+                                   value="Send" id="send-msg-js">
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- end content -->
+
+        </div>
+        <!-- end widget div -->
+    </div>
+    <!-- end widget -->
+
+</article>
+<article class="col-md-6">
+
+    <!-- new widget -->
+    <div class="jarviswidget" id="widget-id-42">
+        <header>
+            <h2>NudgeWall</h2>
+        </header>
+
+        <!-- widget div-->
+        <div>
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <div>
+                    <label>Title:</label>
+                    <input type="text"/>
+                </div>
+                <div>
+                    <label>Styles:</label>
+                    <span data-widget-setstyle="purple" class="purple-btn"></span>
+                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                    <span data-widget-setstyle="green" class="green-btn"></span>
+                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                    <span data-widget-setstyle="orange" class="orange-btn"></span>
+                    <span data-widget-setstyle="pink" class="pink-btn"></span>
+                    <span data-widget-setstyle="red" class="red-btn"></span>
+                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                    <span data-widget-setstyle="black" class="black-btn"></span>
+                </div>
+            </div>
+            <!-- end widget edit box -->
+
+            <!-- content -->
+            <div class="inner-spacer widget-content-padding">
+                <div class="media block-update-card">
+                    <a class="pull-left" href="#">
+                        <img class="media-object update-card-MDimentions"
+                             src="img/avatar/avatar_3.jpg"
+                             alt="...">
+                    </a>
+                    <div class="media-body update-card-body">
+                        <h4 class="media-heading">Manning Hilton</h4>
+
+                        <p>This is the body content of this media.This can be
+                            used as an update panel</p>
+                    </div>
+                    <div class="pull-right" style="padding: 10px;color:#aaa">
+                        <h4 style="margin:0;padding:0">
+                            <i class="icon-thumbs-up"></i>
+                            <i class="icon-comments"></i>
+                            <i class="icon-random"></i>
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="media block-update-card">
+                    <a class="pull-left" href="#">
+                        <img class="media-object update-card-MDimentions"
+                             src="img/avatar/avatar_2.jpg"
+                             alt="...">
+                    </a>
+                    <div class="media-body update-card-body">
+                        <h4 class="media-heading">Manning Hilton</h4>
+
+                        <p>This is the body content of this media.This can be
+                            used as an update panel</p>
+                    </div>
+                    <div class="pull-right" style="padding: 10px;color:#aaa">
+                        <h4 style="margin:0;padding:0">
+                            <i class="icon-thumbs-up"></i>
+                            <i class="icon-comments"></i>
+                            <i class="icon-random"></i>
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="media block-update-card">
+                    <a class="pull-left" href="#">
+                        <img class="media-object update-card-MDimentions"
+                             src="img/avatar/avatar_0.jpg"
+                             alt="...">
+                    </a>
+
+                    <div class="media-body update-card-body">
+                        <h4 class="media-heading">Manning Hilton</h4>
+
+                        <p>This is the body content of this media.This can be
+                            used as an update panel</p>
+                    </div>
+                    <div class="pull-right" style="padding: 10px;color:#aaa">
+                        <h4 style="margin:0;padding:0">
+                            <i class="icon-thumbs-up"></i>
+                            <i class="icon-comments"></i>
+                            <i class="icon-random"></i>
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="media block-update-card">
+                    <a class="pull-left" href="#">
+                        <img class="media-object update-card-MDimentions"
+                             src="img/avatar/avatar_1.jpg"
+                             alt="...">
+                    </a>
+                    <div class="media-body update-card-body">
+                        <h4 class="media-heading">Manning Hilton</h4>
+
+                        <p>This is the body content of this media.This can be
+                            used as an update panel</p>
+                    </div>
+                    <div class="pull-right" style="padding: 10px;color:#aaa">
+                        <h4 style="margin:0;padding:0">
+                            <i class="icon-thumbs-up"></i>
+                            <i class="icon-comments"></i>
+                            <i class="icon-random"></i>
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="row chat-box">
+                    <textarea name="enter-message" rows="3" cols="1" placeholder="Enter your message..."
+                              id="chat-box-textarea"></textarea>
+
+                    <div class="row">
+                        <div class="col-md-6 type-effect" style="display:none"><img src="img/loaders/misc/16-2.gif"
+                                                                                    alt=""> Shoaib is typing...
+                        </div>
+                        <div class="col-md-6 chat-box-buttons pull-right">
+                            <input type="submit" name="chat-box-textarea" class="btn medium btn-danger pull-right"
+                                   value="Update Status" id="send-msg-js">
+                            <a href="javascript:void(0);" title="" class="pull-right"><i
+                                    class="icon-camera"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end content -->
+
+        </div>
+        <!-- end widget div -->
+    </div>
+    <!-- end widget -->
+
+</article>
+</div>
+<!-- end row -->
+
+<!-- Row 4 -->
 <div class="row">
     <article class="col-md-12">
-
         <!-- new widget -->
-        <div class="jarviswidget" id="all-goals-widget">
+        <div class="jarviswidget" id="widget-id-3">
             <header>
-                <h2>All Goals</h2>
+                <h2>Revenues Chart</h2>
             </header>
-
-            <!-- widget div-->
             <div>
-                <!-- widget edit box -->
+
                 <div class="jarviswidget-editbox">
                     <div>
                         <label>Title:</label>
@@ -740,42 +1072,22 @@
                         <span data-widget-setstyle="black" class="black-btn"></span>
                     </div>
                 </div>
-                <!-- end widget edit box -->
 
                 <div class="inner-spacer">
-                    <div class="widget-content-padding">
-                        <!-- content goes here -->
-                        <div class="row">
-                            <ul>
-                                <li>Acquire n New Clients this quarter</li>
-                                <li>
-                                    Ensure Client Coverage for n Existing Clients
-                                    <ul>
-                                        <li>WILO Upload</li>
-                                        <li>Exception Regularization</li>
-                                        <li>Meeting Call Report Submission</li>
-                                        <li>Phone Call Report Submission</li>
-                                    </ul>
-                                </li>
-                                <li>Generate AED X of Income</li>
-                                <li>Have Liabilities AUM of X by the end of the month</li>
-                                <li>Maintain an Account Plan for Client X</li>
-                            </ul>
+                    <!-- content -->
 
+                    <!-- sales chart -->
+                    <div id="saleschart" class="chart"></div>
 
-                        </div>
-
-                        <!-- end widget div -->
-                    </div>
+                    <!-- end content -->
                 </div>
-                <!-- end widget -->
+
             </div>
         </div>
+        <!-- end widget -->
     </article>
-
-
 </div>
-<!--end row-->
+<!-- end row -->
 
 
 </section>
@@ -788,12 +1100,12 @@
 <aside class="right">
 
     <!-- aside item: Tiny Stats -->
-    <!--<div class="number-stats" style="text-align: center">-->
-    <!--<ul>-->
-    <!--<li><span>Class</span>Platinum</li>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--<div class="divider"></div>-->
+    <div class="number-stats" style="text-align: center">
+        <ul>
+            <li><span>Class</span>Platinum</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
     <!-- end aside item: Tiny Stats -->
 
     <!-- date picker -->
@@ -911,9 +1223,28 @@
         $(function () {
 
             setTimeout(function () {
-                $('#main').css('opacity', 1);
-                $('header').fadeIn();
+                $('#splash').fadeOut(function () {
+                    $('#main').css('opacity', 1);
+                    $('header').fadeIn();
+                });
             }, 500);
+
+            /* show tooltips */
+//            $.jGrowl("You are falling behind NTB targets. Time to focus on getting some new clients into the bank.", {
+//                header: 'Target Alert',
+//                sticky: false,
+//                life: 5000,
+//                speed: 500,
+//                theme: 'without-icon',
+//                position: 'bottom-right', //this is default position
+//                easing: 'easeOutBack',
+//                animateOpen: {
+//                    height: "show"
+//                },
+//                animateClose: {
+//                    opacity: 'hide'
+//                }
+//            });
         });
         /** end DEMO SCRIPTS **/
 
