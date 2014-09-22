@@ -12,7 +12,6 @@ var Organization= {
         var org=new OrganizationsCollection(data);
         org.createdAt=new Date();
         org.save(callback);
-        return true;
     },
     deleteOrganization:function(id,callback){
         OrganizationsCollection.remove({'_id':id},callback);
@@ -23,7 +22,8 @@ var Organization= {
     setOrganizationFieldById:function(id,fieldName,value,callback){
         OrganizationsCollection.update({_id:mongoose.Types.ObjectId(id)},{$set:{fieldName:value}},callback);
     },
-    updateOrg:function(id,updateData,callback){
+    updateOrganization:function(id,updateData,callback){
+      console.log(updateData);
         OrganizationsCollection.update({_id:id},{$set:updateData},callback);
     },
     findRevenueDetailsOfOrg:function(id,fieldname,calback)

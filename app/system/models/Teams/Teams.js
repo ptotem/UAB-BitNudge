@@ -26,11 +26,12 @@ var Team= {
     setTeamFieldById: function (id, fieldName, value, callback) {
         TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
     },
-    getTeamsInOrg: function (id, fields,options, populationData,callback) {
+    getTeamsOfOrganization: function (id, fields,options, populationData,callback) {
+      // TeamsCollection.find({}).populate(populationData).exec(callback);
       if(populationData)
         TeamsCollection.find({orgId: id}).populate(populationData).exec(callback);
       else{ 
-        TeamsCollection.find({orgId:mongoose.Types.ObjectId(id)},callback);
+        TeamsCollection.find({orgId:mongoose.Types.ObjectId(id)},fields,options,callback);
       }
     },
     getTeamLeader: function (id, callback) {
@@ -39,7 +40,7 @@ var Team= {
     setTeamLeader: function (id, leader_id, callback) {
         TeamsCollection.update({_id: id}, {$set: {teamLeaderId: leader_id}}, callback);
     },
-    updateTeam: function (id, updateDate, callback) {
+    updateTeam: function (id, updateData, callback) {
         TeamsCollection.update({_id: id}, {$set: updateData}, callback);
     },
     addMembersToTeam: function (teamId, memberData, callback) {

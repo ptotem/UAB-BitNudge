@@ -1,12 +1,13 @@
 var NudgeChatCollection=require('./NudgeChatCollection.js');
+var mongoose=require('mongoose');
 
 var NudgeChat={
-  createNudgeChat:function(organizationId,data){
-    data.orgId=organizationId;
+  createNudgeChat:function(organizationId,userId,data,callback){
+    data.orgId=mongoose.Types.ObjectId(organizationId);
     data.createdAt=new Date();
+    data.userId=mongoose.Types.ObjectId(userId);
     var l=new NudgeChatCollection(data);
-    l.save();
-    return true;
+    l.save(callback);
   },
   getNudgeChat:function(id,fields,options,populationData,callback){
     NudgeChatCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
@@ -17,8 +18,8 @@ var NudgeChat={
   getNudgeChatSchema:function(){
     return NudgeChatCollection.Schema;
   },
-  deleteNudgeChat:function(id,callback){
-    NudgeChatCollection.remove({_id:id},callback);
+  deleteNudgeChat:function(userId,callback){
+    NudgeChatCollection.remove({userId:userId},callback);
   },
   addMessageToChat:function(userId,message,callback){
     NudgeChatCollection.update({userId:userId},{$push:{messages:message}},callback);

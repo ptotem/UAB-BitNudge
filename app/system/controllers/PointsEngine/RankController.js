@@ -20,7 +20,8 @@ var RankController={
   },
   calculateRankOfMonth:function(orgId,month,callback){
     //setting user global ranks.
-    UserPointsModel.UserMonthPoints.getSortedUserPointsOfMonth({},month,function(err,userpoints){
+    UserPointsModel.UserMonthPoints.getSortedUserPointsOfMonth({orgId:orgId},month,function(err,userpoints){
+      // console.log(userpoints);
       userpoints.forEach(function(userpoint,index){
         LeaderboardModel.MonthLeaderboard.setRankOfUser(month,index+1,userpoint.userId,function(err,obj){
           if(err) handleError(err);
@@ -33,6 +34,7 @@ var RankController={
 
     //setting team ranks.
     TeamPointsModel.TeamMonthPoints.getSortedTeamPointsOfMonth(null,month,function(err,teampoints){
+      console.log(teampoints);
       teampoints.forEach(function(teampoint,index){
         LeaderboardModel.MonthLeaderboard.setRankOfTeam(month,index+1,teampoint.teamId,function(err,obj){
           if(err) handleError(err);
@@ -43,7 +45,7 @@ var RankController={
       });
     });
     //setting users ranks in teams
-    TeamsModel.getTeamsInOrg(orgId,function(err,teams){
+    TeamsModel.getTeamsOfOrganization(orgId,function(err,teams){
       if(err) return handleError(err);
       teams.forEach(function(team){
         team.members.forEach(function(memberId,index){

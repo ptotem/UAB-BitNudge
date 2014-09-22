@@ -2,13 +2,13 @@ var MedalsModel=require('../models/Medals');
 
 var MedalsController={
   createMedal:function(req,res){
-    MedalsModel.createMedal(req.params.orgId,req.query,function(err,obj){
+    MedalsModel.createMedal(req.params.orgId,req.body,function(err,obj){
       if(err) res.send(err);
-      else res.send("success");
+      else res.send(obj);
     });
   },
   updateMedal:function(req,res){
-    MedalsModel.updateMedal(req.params.medalId,req.query,function(err,obj){
+    MedalsModel.updateMedal(req.params.medalId,req.body,function(err,obj){
       if(err) res.send(err);
       else res.send("success");
     });
@@ -26,13 +26,13 @@ var MedalsController={
     });
   },
   getMedalsOfOrganization:function(req,res){
-    UserMedalsModel.getMedalsOfOrganization(req.params.orgId,function(err,objs){
+    MedalsModel.getMedalsOfOrganization(req.params.orgId,function(err,objs){
       if(err) res.send(err);
       else res.send(objs);
     });
   },
   assignMedalToUser:function(req,res){
-    UsersModel.giveMedalToUser(req.params.userId,req.query.medal,function(err,obj){
+    UsersModel.giveMedalToUser(req.params.userId,req.body.medal,function(err,obj){
       if(err) res.send(err);
       else res.send("success");
     });

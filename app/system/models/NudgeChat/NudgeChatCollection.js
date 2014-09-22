@@ -1,7 +1,6 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var NudgeChatSchema=new Schema({
-_id:String,
   userId:Schema.Types.ObjectId,
   orgId:Schema.Types.ObjectId,
   messages:[{

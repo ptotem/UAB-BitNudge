@@ -47,16 +47,15 @@ var userModelRoutes={
 
 //End Points for StoreItems in UserResourcesRoutes:
 
-// var storesItemModel=require('../system/controllers/eCommerceEngine/StoreController.js');
-// var storeItemModelRoutes={
-//     'get org/:orgId/users/:userId/transactions':function(req,res) {
-//         transactionModel.getstoreItemofUser(req,res);
-//     }
-// //    'post /org/:orgId /users/:userId/transactions/':function(req,res){
-// //        transactionModel.createTransaction(req,res);
-// //    }
-//
-// };
+var storeItemModel=require('../../system/controllers/eCommerceEngine').StoreItemController;
+var storeItemModelRoutes={
+  'get org/:orgId/users/:userId/items':function(req,res) {
+    storeItemModel.getStoreItemsOfUser(req,res);
+  },
+  'post /org/:orgId/users/:userId/items/':function(req,res){
+    storeItemModel.buyItemForUser(req,res);
+  }
+};
 
 
 var rankModel=require('../../system/controllers/PointsEngine/RankController.js');
@@ -84,18 +83,6 @@ var medalModelRoutes={
     },
     'post /org/:orgId/users/:userId/medals':function(req,res){
       medalController.assignMedalToUser(req,res);
-    },
-    'get /org/:orgId/medals':function(req,res){
-      medalController.getMedalsOfOrganization(req,res);
-    },
-    'post /org/:orgId/medals':function(req,res){
-      medalController.createMedal(req,res);
-    },
-    'post /org/:orgId/medals/:medalId':function(req,res){
-      medalController.updateMedal(req,res);
-    },
-    'get /org/:orgId/medals/:medalId':function(req,res){
-      medalController.getMedal(req,res);
     }
 };
 
@@ -150,19 +137,19 @@ var medalModelRoutes={
 // };
 
 //End Points For Goals:
-var goalModel=require('../../system/controllers/GoalsController.js');
-var goalModelRoutes={
-    'get org/:orgId/users/:userId/goals':function(req,res){
-      goalModel.getLiveUserGoals(req,res);
-    },
-    'post /org/:orgId/users/:userId/goals':function(req,res){
-      goalModel.assignGoalToUser(req,res);
-    }
-};
+// var goalModel=require('../../system/controllers/GoalsController.js');
+// var goalModelRoutes={
+//     'get org/:orgId/users/:userId/goals':function(req,res){
+//       goalModel.getLiveUserGoals(req,res);
+//     },
+//     'post /org/:orgId/users/:userId/goals':function(req,res){
+//       goalModel.assignGoalToUser(req,res);
+//     }
+// };
 
 var leaderboardModel=require('../../system/controllers/LeaderboardController.js');
 var leaderboardRoutes={
-  'get org/:orgId/users/leaderboard':function(req,res){
+  'get org/:orgId/leaderboard/users':function(req,res){
     leaderboardModel.getUserLeaderboard(req,res);
   }
 };
@@ -226,7 +213,7 @@ var nudgeMailRoutes={
         socialEngine.NudgeMailsController.deleteMail(req,res);
     }
 };
-var stuff=[/* roleModelRoutes transactionModelRoutes/* ,storeItemModelRoutes */rankModelRoutes,userModelRoutes,socialFeedRoutes,leaderboardRoutes/*,levelModelRoutes,medalModelRoutes,productModelRoutes,revenueModelRoutes/* ,trainingModelRoutes,goalModelRoutes */,nudgeChatRoutes,nudgeMailBoxModelRoutes,nudgeMailRoutes];
+var stuff=[storeItemModelRoutes,leaderboardRoutes,userModelRoutes/* roleModelRoutes transactionModelRoutes/* ,storeItemModelRoutes rankModelRoutes,userModelRoutes,socialFeedRoutes,leaderboardRoutes/*,levelModelRoutes,medalModelRoutes,productModelRoutes,revenueModelRoutes/* ,trainingModelRoutes,goalModelRoutes ,nudgeChatRoutes,nudgeMailBoxModelRoutes,nudgeMailRoutes*/];
 module.exports={
   initialize:function(server){
     stuff.forEach(function(routesObj){

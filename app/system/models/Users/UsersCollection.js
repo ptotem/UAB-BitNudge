@@ -5,7 +5,7 @@ var userSchema=new Schema({
   name:String,
   address:String,
     // orgId:String,
-  orgId:Schema.Types.ObjectId,
+  orgId:{type:Schema.Types.ObjectId,rel:'organizations'},
   roles:[{type:Schema.Types.ObjectId,rel:'roles'}],
   email:String,
   passwordSalt:String,
@@ -19,10 +19,10 @@ var userSchema=new Schema({
   totalCash:Number,
   // goals:[{type:Schema.Types.ObjectId,rel:'goals'}],
   // clients:[{type:Schema.Types.ObjectId,rel:'clients'}],
-  revenue:Number,
+  // revenue:Number,
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],
   createdAt:Date,
     rank:Number
 });
-var User=mongoose.model('user',userSchema);
+var User=mongoose.model('users',userSchema);
 module.exports=User;

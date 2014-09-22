@@ -1,12 +1,13 @@
 var NudgeMailboxCollection=require('./NudgeMailboxCollection.js');
+var mongoose=require('mongoose');
 
 var NudgeMailbox={
-  createNudgeMailbox:function(organizationId,data){
-    data.orgId=organizationId;
+  createNudgeMailbox:function(organizationId,userId,data,callback){
+    data.orgId=mongoose.Types.ObjectId(organizationId);
     data.createdAt=new Date();
+    data.userId=mongoose.Types.ObjectId(userId);
     var l=new NudgeMailboxCollection(data);
-    l.save();
-    return true;
+    l.save(callback);
   },
   getNudgeMailbox:function(id,fields,options,populationData,callback){
     NudgeMailboxCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
@@ -20,8 +21,8 @@ var NudgeMailbox={
   getNudgeMailboxSchema:function(){
     return NudgeMailboxCollection.Schema;
   },
-  deleteNudgeMailbox:function(id,callback){
-    NudgeMailboxCollection.remove({_id:id},callback);
+  deleteNudgeMailbox:function(userId,callback){
+    NudgeMailboxCollection.remove({userId:userId},callback);
   }
 };
 module.exports=NudgeMailbox;

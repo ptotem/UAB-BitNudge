@@ -10,7 +10,7 @@ var TeamMonthPoints= {
   getSortedTeamPointsOfMonth:function(teamId,month,callback){
     var start=moment().month(month.getMonth()).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().month(month.getMonth()+1).date(1).hour(0).minute(0).second(0).toDate();
-    TeamMonthPointsCollection.find({month:{$gte:start,$lt:end},teamId:teamId}).sort("totalPoints").exec(callback);
+    TeamMonthPointsCollection.find({month:{$gte:start,$lt:end}}).sort("totalPoints").exec(callback);
   },
   createTeamPoints:function(orgId,data){
     data.orgId=mongoose.Schema.Types.ObjectId(orgId);

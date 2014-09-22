@@ -11,23 +11,8 @@ var HierarchyEngine={
       res.send(obj);
     });
   },
-  getTeamsInOrg:function(req,res){
-    TeamModel.getTeamsInOrg(req.params.orgId,{_id:0},{},null,function(err,objs){
-      if(err){
-        res.send("fail");
-        return handleError(err);
-      }
-      res.send({teams:objs});
-    });
-  },
-  createTeam:function(req,res){
-    TeamModel.createTeam(req.params.orgId,req.query,function(err,obj){
-      if(err) res.send("fail");
-      else res.send(obj);
-    });
-  },
-  updateTeam:function(req,res){
-    TeamModel.updateTeam(req.params.teamId,req.query,function(err,obj){
+  getTeamsOfOrganization:function(req,res){
+    TeamModel.getTeamsOfOrganization(req.params.orgId,{_id:0},{},{path:'teams'},function(err,objs){
       if(err){
         res.send("fail");
         return handleError(err);
@@ -35,8 +20,34 @@ var HierarchyEngine={
       res.send(objs);
     });
   },
+  createTeam:function(req,res){
+    TeamModel.createTeam(req.params.orgId,req.body,function(err,obj){
+      if(err) res.send("fail");
+      else res.send(obj);
+    });
+  },
+  updateTeam:function(req,res){
+    TeamModel.updateTeam(req.params.teamId,req.body,function(err,obj){
+      if(err){
+        res.send("fail");
+        return handleError(err);
+      }
+      res.send("success");
+    });
+  },
   addMemberToTeam:function(req,res){
-      TeamModel.addMembersToTeam(req.id,req.data,function(err,obj){
+      TeamModel.addMembersToTeam(req.id,req.body,function(err,obj){
+          if(err){
+            res.send("fail");
+            return handleError(err);
+          }
+          else{
+            res.send("success");
+          }
+      });
+  },
+  getMembersOfTeam:function(req,res){
+      TeamModel.getTeam(req.params.teamId,"members","","members",function(err,obj){
           if(err){
             res.send("fail");
             return handleError(err);
@@ -84,7 +95,7 @@ var HierarchyEngine={
   //     TeamModel.deleteTeam(res.teamId);
   // },
   addSubteam:function(req,res){
-    TeamModel.addSubteams(req.params.teamId,req.query.subteam,function(err,obj){
+    TeamModel.addSubteams(req.params.teamId,req.body.subteam,function(err,obj){
       if(err){
         res.send("fail");
         return handleError(err);

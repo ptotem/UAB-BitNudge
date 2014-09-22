@@ -1,7 +1,6 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var nudgeMailsSchema=new Schema({
-    _id:String,
     subject:String,
     content:String,
     sender:String,//{type:Schema.Types.ObjectId,ref:'user'},

@@ -1,7 +1,8 @@
 var MedalsCollection=require('./MedalsCollection.js');
+var mongoose=require('mongoose');
 var Medals={
   createMedal:function(organizationId,data,callback){
-    data.organizationId=organizationId;
+    data.orgId=mongoose.Types.ObjectId(organizationId);
     data.createdAt=new Date();
     var l=new MedalsCollection(data);
     l.save(callback);
