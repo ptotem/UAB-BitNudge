@@ -271,9 +271,10 @@ and (orientation : portrait){
     /*float: left;*/
 }
 
-.product-info{
+.product-info
+{
     padding: 0px 5px 6px 5px;
-    height: 100px;
+    height: 110px;
     text-align: center;
 }
 

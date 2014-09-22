@@ -90,7 +90,7 @@
     <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png"
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-
+    <link href="css/customstyle.css" rel="stylesheet" type="text/css">
     <style>
         #game_frame {
             -ms-zoom: 0.5;
@@ -106,8 +106,102 @@
             width: 936px;
             height: 634px;
             overflow: hidden;
+
         }
-    </style>
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 480px)
+        and (orientation :portrait ) {
+            #game_frame {
+                width: 297px;
+                height: 634px;
+                overflow: hidden;
+
+             }
+
+        }
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 480px)
+        and (orientation :landscape ) {
+            #game_frame {
+                width: 495px;
+                height: 634px;
+                overflow: hidden;
+
+            }
+
+        }
+        @media only screen
+        and (min-device-width : 360px)
+        and (max-device-height : 640px)
+        and (orientation :portrait ) {
+            #game_frame {
+                width: 344px;
+                height: 634px;
+                overflow: hidden;
+            }
+
+        }
+        @media only screen
+        and (min-device-width : 481px)
+        and (max-device-height : 640px)
+        and (orientation :landscape ) {
+            #game_frame {
+                height: 634px;
+                overflow:hidden;
+                width: 629px;
+            }
+
+        }
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-height : 1024px)
+        and (orientation :portrait ) {
+            #game_frame {
+                width: 679px;
+                height: 634px;
+                overflow: hidden;
+            }
+
+        }
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation :landscape ) {
+            #game_frame {
+                width: 818px;
+                height: 634px;
+                overflow: hidden;
+            }
+
+        }
+
+
+
+        @media only screen
+        and (min-device-width : 800px)
+        and (max-device-height : 1280px)
+        and (orientation :portrait ) {
+            #game_frame {
+                width: 720px;
+                height: 634px;
+                overflow: hidden;
+            }
+
+        }
+        @media only screen
+        and (min-device-width : 1025px)
+        and (max-device-width : 1280px)
+        and (orientation :landscape ) {
+            #game_frame {
+                width: 845px;
+                height: 634px;
+                overflow: hidden;
+            }
+
+        }
+   </style>
 </head>
 
 <body>
@@ -625,7 +719,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
 <script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
 <!-- OPTIONAL: Use this migrate script for plugins that are not supported by jquery 1.9+ -->
 <!-- DISABLED <script src="js/libs/jquery.migrate-1.0.0.min.js"></script> -->

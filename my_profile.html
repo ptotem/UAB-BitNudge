@@ -1072,22 +1072,12 @@
 
             $('#main').css('opacity', 1);
             $('header').fadeIn();
-
-            //            setTimeout(function () {
-            //                $('#splash').fadeOut(function () {
-            //                    $('#main').css('opacity', 1);
-            //                    $('header').fadeIn();
-            //                });
-            //            }, 500);
-
-
             $('#tier_point_summary_table').dataTable({
                 "bInfo": true,
                 "bFilter": false,
                 "bSearchable": false,
                 "bLengthChange": false
             });
-
             $("#tpp_filter").change(function () {
                 var end = this.value;
                 if (end.indexOf("month")>-1) {
@@ -1099,7 +1089,6 @@
                     $("#tpp_year_view").show();
                 }
             });
-
             $("#activity_filter").change(function () {
                 var end = this.value;
                 if (end.indexOf("month")>-1) {
@@ -1113,11 +1102,8 @@
             });
         });
         /** end DEMO SCRIPTS **/
-
     } else {
-
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
-
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
 </script>
