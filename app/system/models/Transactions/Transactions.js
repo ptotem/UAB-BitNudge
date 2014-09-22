@@ -1,9 +1,9 @@
 var TransactionsCollection=require('./TransactionsCollection.js');
-
+var mongoose=require('mongoose');
 var Transactions={
-  createTransaction:function(organizationId,data){
+  createTransaction:function(orgId,data){
     data.createdAt=new Date();
-    data.orgId=organizationId;
+    data.orgId=mongoose.Types.ObjectId(orgId);
     var l=new TransactionsCollection(data);
     l.save();
     return true;
@@ -11,20 +11,19 @@ var Transactions={
   getTransaction:function(id,fields,options,populationData,callback){
     TransactionsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getTransactionsOfUser:function(userId,callback){
+  getTransactionsOfUser:function(userId,fields,options,populationData,callback){
     TransactionsCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
   },
   getTransactionSchema:function(){
     return TransactionsCollection.Schema;
   },
-  approveTransaction:function(id,callback){
-    TransactionsCollection.update({_id:id},{$set:{moderated:true}},callback);
-    // TransactionsCollection.findOne({_id:id},function(err,obj){
-    //   if(err) return callback(err,null);
-    //   if(obj.moderator==id)
-    //     TransactionsCollection.update({_id:id},{$set:{moderated:true},callback);
-    //   else return callback(err,null);    
-    // });
+  approveTransaction:function(id,approver,callback){
+    TransactionsCollection.findOne({_id:id},function(err,obj){
+      if(err) return callback(err,null);
+      if(obj.moderator==id)
+        TransactionsCollection.update({_id:id},{$set:{moderated:true}},callback);
+      else return callback(err,null);    
+    });
   },
   deleteTransaction:function(id,callback){
     TransactionsCollection.remove({_id:id},callback);
@@ -37,3 +36,4 @@ var Transactions={
     return true;
   }
 };
+module.export=Transactions;

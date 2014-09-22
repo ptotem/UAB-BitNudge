@@ -13,10 +13,7 @@ var SocialFeed={
     SocialFeedCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   getSocialFeedOfUser:function(userId,fields,options,populationParams,callback){
-    if(populationData)
-      SocialFeedCollection.find({userId:userId},fields,options).populate(populationParams).exec(callback);
-    else 
-      SocialFeedCollection.find({userId:userId},fields,options).exec(callback);
+    SocialFeedCollection.find({userId:userId},fields,options).populate(populationParams).exec(callback);
   },
   addMessageToFeed:function(userId,messageId,callback){
     SocialFeedCollection.update({userId:userId},{$push:{messages:messageId}},callback);

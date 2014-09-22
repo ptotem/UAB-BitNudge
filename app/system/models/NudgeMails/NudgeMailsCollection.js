@@ -3,10 +3,10 @@ var Schema=mongoose.Schema;
 var nudgeMailsSchema=new Schema({
     subject:String,
     content:String,
-    sender:String,//{type:Schema.Types.ObjectId,ref:'user'},
-    receivers:String,//[{type:Schema.Types.ObjectId,ref:'user'}],
+    sender:{type:Schema.Types.ObjectId,ref:'user'},
+    receivers:[{type:Schema.Types.ObjectId,ref:'user'}],
     timestamp:String,
-    organizationId:String,//{type:Schema.Types.ObjectId,ref:'organization'},
+    orgId:{type:Schema.Types.ObjectId,ref:'organization'},
     read :String,
     createdAt:Date
 });

@@ -1,17 +1,17 @@
 var TeamPointsCollection=require('./TeamQuarterPointsCollection.js');
 
 var TeamPoints= {
-  getTeamPointsOfMonth:function(teamId,month,callback){
+  getTeamPointsOfQuarter:function(teamId,quarter,fields,options,populationData,callback){
     var currDate=moment(quarter);
     var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
-    TeamPointsCollection.findOne({$gte:start,$lt:end,teamId:teamId},fields,options,callback);
+    TeamPointsCollection.findOne({$gte:start,$lt:end,teamId:teamId},fields,options).populate(populationData).exec(callback);
   },
-  getAllSortedTeamPointsOfMonth:function(teamId,month,callback){
+  getAllSortedTeamPointsOfQuarter:function(teamId,month,callback){
     var currDate=moment(quarter);
     var start=moment().quarter(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().quarter(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
-    TeamPointsCollection.find({$gte:start,$lt:end,teamId:teamId}).sort("totalPoints").exec(callback);
+    TeamPointsCollection.find({$gte:start,$lt:end,teamId:teamId}).sort("-totalPoints").exec(callback);
   },
   createTeamQuarterPoints:function(orgId, data){
     data.orgId=mongoose.Schema.Types.ObjectId(orgId);

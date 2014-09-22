@@ -1,5 +1,5 @@
 var StoreItemsCollection=require('./StoreItemCollection.js');
-// var Store=require('../Store');
+var Store=require('../Store');
 var UserModel=require('../Users');
 var mongoose=require('mongoose');
 var StoreItems={
@@ -10,7 +10,7 @@ var StoreItems={
     l.save(callback);
   },
   getStoreItem:function(storeId,fields,options,populationData,callback){
-    StoreItemsCollection.findOne({_id:storeId},fields,options,callback);
+    StoreItemsCollection.findOne({storeId:storeId},fields,options).populate(populationData).exec(callback);
   },
   getStoreItemSchema:function(){
     return StoreItemsCollection.Schema;

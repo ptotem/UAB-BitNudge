@@ -18,14 +18,7 @@ var Stores={
       StoresCollection.find({orgId:orgId},fields,options).exec(callback);
   },
   getStoresOfTeam:function(teamId,fields,options,populationData,callback){
-    if(populationData)
-      StoresCollection.find({teamId:teamId},fields,options).populate(populationData).exec(callback);
-    else
-      StoresCollection.find({teamId:teamId},fields,options).exec(callback);
-  },
-  addItemToStore:function(storeId,itemId,callback){
-    console.log(itemId);
-    StoresCollection.update({_id:storeId},{$push:{items:itemId}},callback);
+    StoresCollection.find({teamId:teamId},fields,options).populate(populationData).exec(callback);
   },
   removeStoreItemFromAllStores:function(storeItemId,callback){
     StoresCollection.update({},{$pull:{items:storeItemId}},callback);

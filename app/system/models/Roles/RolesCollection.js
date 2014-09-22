@@ -1,5 +1,4 @@
 var mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost/test');
 var Schema=mongoose.Schema;
 
 var roleSchema=new Schema({
@@ -13,7 +12,7 @@ var roleSchema=new Schema({
         approve:Boolean
     }}],
     orgId :{type:Schema.Types.ObjectId,ref:'organization'},
-    createdAt :Date
+    createdAt:Date
 });
 var Role=mongoose.model('role',roleSchema);
 module.exports=Role;

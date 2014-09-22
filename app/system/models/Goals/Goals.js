@@ -17,7 +17,14 @@ var Goals={
   //   GoalsCollection.update({_id:goalId},{$push:{steps:stepData}},callback);
   // },
   getGoal:function(id,fields,options,populationData,callback){
-    GoalsCollection.findOne({_id:id},callback);
+    GoalsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+  },
+  // getGoalsOfOrganization:function(orgId,callback){
+  //   GoalsCollection.find({organizationId:orgId},callback);
+  // },
+  addPlayerToGoal:function(id,userId,callback){
+    //TODO:- add this goal to the list of goals in user
+    GoalsCollection.update({_id:id},{$push:{players:userId}},callback);
   },
   getGoalsOfOrganization:function(orgId,callback){
     GoalsCollection.find({orgId:orgId},callback);

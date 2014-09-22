@@ -1,5 +1,5 @@
 var StatusMessageCollection=require('./StatusMessagesCollection.js');
-
+var mongoose=require('mongoose');
 var StatusMessage= {
     getStatusMessageDetail:function(id,fieldName,callback){
         StatusMessageCollection.find(({'_id' :id}).fieldName,callback);
@@ -34,7 +34,5 @@ var StatusMessage= {
     {
         StatusMessageCollection.update({_id:id},{$pull:{action:action_id}},callback);
     }
-//    AddRoles_toUser:function
 };
-//if()
 module.exports=StatusMessage;

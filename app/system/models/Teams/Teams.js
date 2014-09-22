@@ -2,9 +2,9 @@ var TeamsCollection=require('./TeamsCollection.js');
 var mongoose=require('mongoose');
 
 var Team= {
-    getTeamDetail: function (team, fieldName) {
-        TeamsCollection.find(({'_id': team}).fieldName, callback);
-    },
+//    getTeamDetail: function (team,fields,options,populationData,callback){
+//        TeamsCollection.find(({'_id': team}),fields,options).populate(populationData).exec(callback);
+//    },
     getTeamSchema: function () {
         return TeamsCollection.Schema;
     },
@@ -20,7 +20,7 @@ var Team= {
     deleteTeam:function (id, callback) {
         TeamsCollection.remove({'_id': id}, callback);
     },
-    getTeam: function (id,fields,options,populationData, callback) {
+    getTeam: function (id,fields,options,populationData,callback){
         TeamsCollection.findOne({'_id': id},fields,options).populate(populationData).exec(callback);
     },
     setTeamFieldById: function (id, fieldName, value, callback) {
@@ -34,11 +34,11 @@ var Team= {
         TeamsCollection.find({orgId:mongoose.Types.ObjectId(id)},fields,options,callback);
       }
     },
-    getTeamLeader: function (id, callback) {
-        TeamsCollection.findOne(({'_id': id}).teamLeaderId, callback);
+    getTeamLeader: function (id,fields,options,populationData,callback){
+        TeamsCollection.findOne(({'_id': id}),fields,options).populate(populationData).exec(callback);
     },
-    setTeamLeader: function (id, leader_id, callback) {
-        TeamsCollection.update({_id: id}, {$set: {teamLeaderId: leader_id}}, callback);
+    setTeamLeader: function (id, leaderId, callback) {
+        TeamsCollection.update({_id: id}, {$set: {teamLeaderId: leaderId}}, callback);
     },
     updateTeam: function (id, updateData, callback) {
         TeamsCollection.update({_id: id}, {$set: updateData}, callback);
@@ -69,7 +69,7 @@ var Team= {
     },
     assignTrainingToTeam: function (teamId, training_id, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
-    }
+    },
     // AddTeamInOrg: function (organizationId, data) {
     //     data.organizationId = organizationId;
     //     var team = new TeamsCollection(data);
@@ -77,5 +77,58 @@ var Team= {
     //     team.save();
     //     return true;
     // }
+//    createTeamInOrg:function(data,org_id){
+//        var team=new TeamsCollection({data:data,organizationId :org_id});
+//        team.save();
+//        console.log('data Saved')
+//        return true;
+//    },
+    assign_trainingToTeam: function (teamId, trainingId, callback) {
+        TeamsCollection.update({_id: teamId}, {$push: {training: trainingId}}, callback);
+    },
+    AddTeamInOrg: function (orgId, data) {
+        data.orgId = mongoose.Types.ObjectId(orgId);
+        var team = new TeamsCollection(data);
+        team.createdAt = new Date();
+        team.save();
+        return true;
+    },
+
+
+    findDetailsOfTeam: function (id, fieldname, calback) {
+        var field = fieldname;
+        TeamsCollection.findOne({ '_id': id })
+            .populate('revenue').exec(function (err, revenues) {
+                if (err) return handleError(err);
+                console.log('The creator is %s', revenues.revenue.field);
+                return revenues.revenue.field;
+            });
+    },
+    findParent_Team_name_ofTeam: function (id, calback) {
+        TeamsCollection.findOne({'_id': id })
+            .populate('parentTeamId').exec(function (err, parent) {
+                if (err) return handleError(err);
+//                console.log('The creator is %s', revenues.revenue.field);
+                return parent.parentTeamId.name;
+            });
+    },
+    findLeader_name_ofTeam: function (id, calback) {
+        TeamsCollection.findOne({'_id': id })
+            .populate('teamLeaderId').exec(function (err, leader) {
+                if (err) return handleError(err);
+//                console.log('The creator is %s', revenues.revenue.field);
+                return leader.teamLeaderId.name;
+            });
+
+    }
+//    findTeam_of_Member: function (memberid, callback) {
+//
+//        for (var i = 0; i<TeamsCollection[0].members.length; i++) {
+//            if(TeamsCollection[0].members[i]==memberid)
+//            {
+//                console.log(TeamsCollection[0].members[i]);
+//            }
+//        }
+//    }
 };
 module.exports=Team;

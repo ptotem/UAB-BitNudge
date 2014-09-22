@@ -10,10 +10,10 @@ var NotificationCenter={
     l.save(callback);
   },
   getNotificationCenter:function(id,fields,options,populationData,callback){
-    NotificationCenterCollection.findOne({_id:id},fields,options,callback);
+    NotificationCenterCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getNotificationCenterOfUser:function(userId,fields,options,callback){
-    NotificationCenterCollection.find({userId:userId},fields,options,callback);
+  getNotificationCenterOfUser:function(userId,fields,options,populationData,callback){
+    NotificationCenterCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
   },
   getNotificationsOfUser:function(userId,fields,options,callback){
     NotificationCenterCollection.findOne({userId:userId},fields,options,function(err,obj){
