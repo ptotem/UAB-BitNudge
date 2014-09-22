@@ -27,5 +27,3 @@ var GoalMaster= {
     }
 };
 module.exports=GoalMaster;
-
-
