@@ -18,23 +18,17 @@
     padding: 0 10px;
     width: 100%;
 }
-.form-signin input[type="email"]:focus
-{
+
+/*.form-signin input[type="email"]:focus, {*/
+    /*border: 1px solid #305F9C;*/
+    /*box-shadow: none !important;*/
+    /*transition: none 0s ease 0s !important;*/
+/*}*/
+
+
+.form-signin input[type="email"]:focus{
     border-color: #305F9C;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .player_news
 {
