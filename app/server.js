@@ -123,9 +123,16 @@ userModel.find({},function(err,objs){
 
 */
 
-// var leader=require('./system/controllers/PointsEngine');
+var leader=require('./system/controllers/PointsEngine');
 // console.log(new Date().getTime());
 // leader.calculateRankOfMonth("5417f10a195e61022fff91ee",new Date(),function(err){console.log(new Date().getTime());});
+
+//testing ranks
+
+server.get('/org/:orgId/calc',function(req,res){
+});
+
+
 
 //init routes
 var routes=require('./RestApi/RestApi.js');
