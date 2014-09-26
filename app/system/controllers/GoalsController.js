@@ -1,9 +1,10 @@
 var GoalsModel=require('../models/Goals');
 var UserGoalsModel=require('../models/UserGoals');
-
+var TeamsModel=require('../models/Teams');
+var UsersModel=require('../models/Users');
 var GoalsController={
   createGoal:function(req,res){
-    GoalsModel.createGoal(orgId,data,function(err,obj){
+    GoalsModel.createGoal(req.orgId,req.data,function(err,obj){
       if(err)res.send(err);
       else res.send("success");
     });
@@ -14,7 +15,7 @@ var GoalsController={
   //   });
   // },
   getGoal:function(req,res){
-    GoalsModel.getGoal(id,function(err,obj){
+    GoalsModel.getGoal(req.params.id,function(err,obj){
       res.send(obj);
     });
   },
@@ -29,7 +30,7 @@ var GoalsController={
     });
   },
   getLiveUserGoals:function(req,res){
-    UserGoalsModel.getLiveUserGoals(userId,function(err,objs){
+    UserGoalsModel.getLiveUserGoals(req.params.userId,function(err,objs){
       res.send(objs);
     });
   },

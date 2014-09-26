@@ -252,7 +252,7 @@ var leaderboardModel=require('../../system/controllers/LeaderboardController.js'
 var leaderboardModelRoutes={
     'get org/:orgId/leaderboard':function(req,res) {
         leaderboardModel.getOrganizationLeaderboard(req,res);
-    },
+    }
     // 'get org/:orgId/teams/:teamId/leaderboard':function(req,res) {
     //     leaderboardModel.getleaderboardTeam(req,res);
     // },

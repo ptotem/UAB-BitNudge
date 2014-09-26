@@ -21,7 +21,7 @@ var RankController={
   calculateRankOfMonth:function(orgId,month,callback){
     //setting user global ranks.
     UserPointsModel.UserMonthPoints.getSortedUserPointsOfMonth({orgId:orgId},month,function(err,userpoints){
-      // console.log(userpoints);
+//        console.log(userpoints);
       userpoints.forEach(function(userpoint,index){
         LeaderboardModel.MonthLeaderboard.setRankOfUser(month,index+1,userpoint.userId,function(err,obj){
           if(err) handleError(err);

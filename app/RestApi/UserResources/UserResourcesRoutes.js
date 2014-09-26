@@ -137,15 +137,15 @@ var medalModelRoutes={
 // };
 
 //End Points For Goals:
-// var goalModel=require('../../system/controllers/GoalsController.js');
-// var goalModelRoutes={
-//     'get org/:orgId/users/:userId/goals':function(req,res){
-//       goalModel.getLiveUserGoals(req,res);
-//     },
-//     'post /org/:orgId/users/:userId/goals':function(req,res){
-//       goalModel.assignGoalToUser(req,res);
-//     }
-// };
+var goalModel=require('../../system/controllers/GoalsController.js');
+var goalModelRoutes={
+     'get org/:orgId/users/:userId/goals':function(req,res){
+       goalModel.getLiveUserGoals(req,res);
+     },
+     'post /org/:orgId/users/:userId/goals':function(req,res){
+       goalModel.assignGoalToUser(req,res);
+     }
+};
 
 var leaderboardModel=require('../../system/controllers/LeaderboardController.js');
 var leaderboardRoutes={
@@ -174,7 +174,7 @@ var statusMessagesRoutes={
   },
   'get /org/:orgId/users/:userId/statuses/:statusId':function(req,res){
     socialEngine.StatusMessagesController.getStatusMessage(req,res);
-  },
+  }
   // 'del /org/:orgId/users/:userId/statuses/:statusId':function(req,res){
   //   socialEngine.StatusMessagesController.deleteStatusMessage(req,res);
   // }
@@ -213,7 +213,21 @@ var nudgeMailRoutes={
         socialEngine.NudgeMailsController.deleteMail(req,res);
     }
 };
-var stuff=[storeItemModelRoutes,leaderboardRoutes,userModelRoutes/* roleModelRoutes transactionModelRoutes/* ,storeItemModelRoutes rankModelRoutes,userModelRoutes,socialFeedRoutes,leaderboardRoutes/*,levelModelRoutes,medalModelRoutes,productModelRoutes,revenueModelRoutes/* ,trainingModelRoutes,goalModelRoutes ,nudgeChatRoutes,nudgeMailBoxModelRoutes,nudgeMailRoutes*/];
+
+// End Points For Ranking
+//var rankEngine=require('../../system/controllers/PointsEngine');
+//var rankRoutes={
+//    'post /org/:orgId/ranks':function(req,res) {
+//        rankEngine.RankController.calculateRankOfMonth(req.orgId,req.month);
+//
+//    },
+//    'get org/:orgId/users/:userId/rank':function(req,res){
+////        socialEngine.NudgeMailsController.getMail(req,res);
+////        rankEngine.RankController
+//    }
+//
+//}
+var stuff=[storeItemModelRoutes,leaderboardRoutes,userModelRoutes,rankModelRoutes,medalModelRoutes/* roleModelRoutes transactionModelRoutes/* ,storeItemModelRoutes rankModelRoutes,userModelRoutes,socialFeedRoutes,leaderboardRoutes/*,levelModelRoutes,medalModelRoutes,productModelRoutes,revenueModelRoutes/* ,trainingModelRoutes,goalModelRoutes ,nudgeChatRoutes,nudgeMailBoxModelRoutes,nudgeMailRoutes*/];
 module.exports={
   initialize:function(server){
     stuff.forEach(function(routesObj){

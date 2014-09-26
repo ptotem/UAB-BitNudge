@@ -37,8 +37,13 @@ var UserManagement={
       else return callback(err,null);
     });
   },
-  getMedals:function(id,fields,options,callback){
+    getTotalCash: function (id,fields,options,populationData,callback){
+        UserCollection.findOne({_id: id},fields,options).populate(populationData).exec(callback);
+    },
+
+    getMedals:function(id,fields,options,callback){
     UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
+        console.log(objs.medals)
       if(objs)
         return callback(err,objs.medals);
       else return callback(err,null);
@@ -94,6 +99,8 @@ var UserManagement={
     UserCollection.findOne({email:username,passwordSalt:passwordSalt},callback);
   },
   buyItemForUser:function(userId,itemsdata,cost,callback){
+//      console.log(UserCollection.findOne({_id:userId}));
+
       UserCollection.update({_id:userId},{$push:{items:itemsdata},$inc:{totalCash:-cost}},callback);
   },
   // getUserRole:function(userId,callback){

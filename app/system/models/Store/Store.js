@@ -29,6 +29,10 @@ var Stores={
   deleteStore:function(id,callback){
     StoresCollection.remove({_id:id},callback);
   },
+    addItemToStore:function(storeItemId,storeId,callback){
+     StoresCollection.update({_id:storeId},{$push:{items:storeItemId}},callback);
+
+},
   updateStore:function(id,updateData,callback){
     StoresCollection.update({_id:id},{$set:updateData},callback);
   }

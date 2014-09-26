@@ -2,6 +2,7 @@ var RanksCollection=require('./MonthLeaderboardCollection.js');
 var mongoose=require('mongoose');
 var moment=require('moment');
 var Leaderboard={
+
   createLeaderboard:function(orgId,leaderboardData,callback){
     // leaderboardData.orgId=mongoose.Schema.Types.ObjectId(orgId);
     leaderboardData.orgId=mongoose.Types.ObjectId(orgId);;
@@ -15,6 +16,7 @@ var Leaderboard={
     else
       RanksCollection.findOne({_id:id},fields,options).exec(callback);
   },
+
   //here month is a Date object
   getLeaderboardOfMonth:function(orgId,month,fields,options,populationData,callback){
     var currDate=moment(month);

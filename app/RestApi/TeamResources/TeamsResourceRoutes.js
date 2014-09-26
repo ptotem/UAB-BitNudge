@@ -47,7 +47,7 @@ var teamModelRoutes={
 var eCommerceEngine=require('../../system/controllers/eCommerceEngine');
 var storesRoutes={
     'get org/:orgId/teams/:teamId/stores':function(req,res) {
-      eCommerceEngine.StoreController.getStoresOfTeam(req,res);
+        hierarchyModel.TeamsController.getStoresOfTeam(req,res);
     },
     'post /org/:orgId/teams/:teamId/stores':function(req,res){
       eCommerceEngine.StoreController.addStoreInTeam(req,res);

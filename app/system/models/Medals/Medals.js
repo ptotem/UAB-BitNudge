@@ -8,10 +8,18 @@ var Medals={
     l.save(callback);
   },
   getMedal:function(id,fields,options,populationData,callback){
-    MedalsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+      if(populationData)
+          MedalsCollection.find({_id:id},fields,options).populate(populationData).exec(callback);
+      else
+          MedalsCollection.find({_id:id},fields,options).exec(callback);
+//    MedalsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   getMedalsOfOrganization:function(orgId,fields,options,populationData,callback){
-    MedalsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
+      if(populationData)
+          MedalsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
+      else
+          MedalsCollection.find({orgId:orgId},fields,options).exec(callback);
+//    MedalsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   },
   getMedalSchema:function(){
     return MedalsCollection.Schema;

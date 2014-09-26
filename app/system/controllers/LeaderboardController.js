@@ -49,6 +49,7 @@ var LeaderboardsController={
     //   else res.send(goals);
     // });
   },
+
   getOrganizationLeaderboard:function(req,res){
     if(req.query.month)
       LeaderboardsModel.MonthLeaderboard.getLeaderboardOfMonth(req.params.orgId,new Date(req.query.month),"teamRanks",{},{path:'teamRanks.team'},function(err,obj){

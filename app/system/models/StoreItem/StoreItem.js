@@ -10,7 +10,7 @@ var StoreItems={
     l.save(callback);
   },
   getStoreItem:function(storeId,fields,options,populationData,callback){
-    StoreItemsCollection.findOne({storeId:storeId},fields,options).populate(populationData).exec(callback);
+    StoreItemsCollection.findOne({_id:storeId},fields,options).populate(populationData).exec(callback);
   },
   getStoreItemSchema:function(){
     return StoreItemsCollection.Schema;
@@ -32,7 +32,7 @@ var StoreItems={
     StoreItemsCollection.findOne(({_id:id}).cost,callback);
   },
   getStoreItemsOfOrganization:function(orgId,fields,options,populationData,callback){
-    StoreItemsCollection.find({orgId:orgId},fields,options,callback);
+    StoreItemsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   }
 };
 module.exports=StoreItems;

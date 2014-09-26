@@ -18,21 +18,34 @@ var Team= {
       TeamsCollection.find(queryObj).sort(fieldName).exec(callback);
     },
     deleteTeam:function (id, callback) {
-        TeamsCollection.remove({'_id': id}, callback);
+        TeamsCollection.remove({_id: id}, callback);
+    },
+    getStoresOfTeam:function(teamId,fields,options,populationData,callback){
+//        if(populationData)
+//        TeamsCollection.find({_id: teamId}).populate(populationData).exec(callback);
+//      else{
+//        TeamsCollection.find({_id:mongoose.Types.ObjectId(teamId)},fields,options,callback);
+//      }
+        TeamsCollection.findOne({'_id': teamId},fields,options).populate(populationData).exec(callback);
+    },
+    getTeamOfUser: function (id,fields,options,populationData,callback){
+        TeamsCollection.findOne({members: id},fields,options).populate(populationData).exec(callback);
     },
     getTeam: function (id,fields,options,populationData,callback){
         TeamsCollection.findOne({'_id': id},fields,options).populate(populationData).exec(callback);
+
+//        TeamsCollection.findOne({members:id},fields,options).populate(populationData).exec(callback));
     },
     setTeamFieldById: function (id, fieldName, value, callback) {
         TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
     },
     getTeamsOfOrganization: function (id, fields,options, populationData,callback) {
-      // TeamsCollection.find({}).populate(populationData).exec(callback);
-      if(populationData)
-        TeamsCollection.find({orgId: id}).populate(populationData).exec(callback);
-      else{ 
-        TeamsCollection.find({orgId:mongoose.Types.ObjectId(id)},fields,options,callback);
-      }
+      TeamsCollection.find({}).populate(populationData).exec(callback);
+//      if(populationData)
+//        TeamsCollection.find({orgId: id}).populate(populationData).exec(callback);
+//      else{
+//        TeamsCollection.find({orgId:mongoose.Types.ObjectId(id)},fields,options,callback);
+//      }
     },
     getTeamLeader: function (id,fields,options,populationData,callback){
         TeamsCollection.findOne(({'_id': id}),fields,options).populate(populationData).exec(callback);
@@ -46,14 +59,14 @@ var Team= {
     addMembersToTeam: function (teamId, memberData, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {members: memberData}}, callback);
     },
-    removeMembersFromTeam: function (teamId, members, callback) {
+    removeMemberFromTeam: function (teamId, members, callback) {
         TeamsCollection.update({_id: teamId}, {$pull: {members: members}}, callback);
     },
     addSubteams: function (teamId, teamData, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {teams: teamData}}, callback);
     },
-    removeSubteam: function (teamId, teams, callback) {
-        TeamsCollection.update({_id: teamId}, {$pull: {teams: teams}}, callback);
+    removeSubteam: function (teamId, subteams, callback) {
+        TeamsCollection.update({_id: teamId}, {$pull: {teams: subteams}}, callback);
     },
     // addGoalToTeam:function(teamId,data,callback){
     //   TeamsCollection.update({_id:teamId},{$push:{goals:data}},callback);
@@ -69,6 +82,10 @@ var Team= {
     },
     assignTrainingToTeam: function (teamId, training_id, callback) {
         TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
+    },
+    findTeamOfUser:function(orgId,userId,callback){
+        TeamsCollection.findOne({orgId:orgId})
+//        db.blogpost.find({ 'tags' : 'tag1'}); //1
     },
     // AddTeamInOrg: function (organizationId, data) {
     //     data.organizationId = organizationId;

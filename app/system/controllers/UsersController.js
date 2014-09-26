@@ -4,6 +4,7 @@ var SocialFeedModel=require('../models/SocialFeed');
 var NudgeMailbox=require('../models/NudgeMailbox');
 var NudgeChat=require('../models/NudgeChat');
 var NotificationCenterModel=require('../models/NotificationCenter');
+var OrganizationalModel=require('../models/Organizations');
 
 var UsersController={
   createUser:function(req,res){
@@ -24,7 +25,37 @@ var UsersController={
   },
   getUser:function(req,res){
     UsersModel.getUser(req.params.userId,"","","",function(err,obj){
-      res.send(obj);
+        if(!err){
+            var userData={};
+            userData.user=obj;
+//            var Data={};
+//            var personalInfo={};
+//            var organizationalInfo={};
+//            personalInfo.name = obj.name;
+//            personalInfo.quote=obj.quote;
+//            Data.personalInfo=personalInfo;
+//            organizationalInfo.designation=obj.designation;
+//            organizationalInfo.profileCompleteness=obj.profilecompleteness;
+            TeamsModel.getTeamOfUser(req.params.userId,"","","",function(err,data)
+            {
+                userData.teamName=data.name;
+//                Data.organizationalInfo=organizationalInfo;
+//                userData.userdata=Data;
+                res.header('Content-type','application/jsonp');
+                res.header('Charset','utf8');
+                res.send(req.query.callback + '('+ JSON.stringify(userData) + ');');
+
+            })
+//            organizationalInfo.teamName=
+//            Data.organizationalInfo=organizationalInfo;
+//            userData.userdata=Data;
+//            res.header('Content-type','application/jsonp');
+//            res.header('Charset','utf8');
+//            res.send(req.query.callback + '('+ JSON.stringify(userData) + ');');
+        }
+        else{
+            res.end('error');
+        }
     });
   },
   getUsersOfOrganization:function(req,res){
@@ -52,6 +83,7 @@ var UsersController={
       }
     });
   },
+//    findTeamOfUser
   addUserToTeam:function(req,res){
     TeamsModel.addMembersToTeam(req.params.teamId,req.body.userId,function(err,obj){
       if(err){
