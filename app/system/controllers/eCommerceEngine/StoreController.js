@@ -49,7 +49,7 @@ var StoreController={
     },
     addStoreInTeam:function(req,res) {
         // if (AuthorizationController.IsAuthorized(req.userId, Store, write)) {
-            TeamModel.addStoresToT54191265d185bc0000884dfbeam(req.params.teamId, req.body.store,function(err,obj){
+            TeamModel.addStoresToTeam(req.params.teamId, req.body.stores,function(err,obj){
               if(err) res.send(err);
               else res.send(obj);
             });

@@ -11,7 +11,7 @@ var userSchema=new Schema({
   medals:[{type:Schema.Types.ObjectId,rel:'medals'}],
   items:[{time:Date,item:{type:Schema.Types.ObjectId,rel:'storeItems'}}],
   level:Number,
-  profileCompleteness:Number,
+  profilecompleteness:Number,
   designation:String,
   totalPoints:Number,
   totalCash:Number,
@@ -34,7 +34,8 @@ var userSchema=new Schema({
   }],
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],
   createdAt:Date,
-    rank:Number
+    rank:Number,
+    quote:String
 });
 var User=mongoose.model('users',userSchema);
 module.exports=User;

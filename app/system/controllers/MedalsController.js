@@ -1,5 +1,5 @@
 var MedalsModel=require('../models/Medals');
-
+var UsersModel=require('../models/Users');
 var MedalsController={
   createMedal:function(req,res){
     MedalsModel.createMedal(req.params.orgId,req.body,function(err,obj){
@@ -36,6 +36,6 @@ var MedalsController={
       if(err) res.send(err);
       else res.send("success");
     });
-  },
+  }
 };
 module.exports=MedalsController;

@@ -37,7 +37,11 @@ var UserManagement={
       else return callback(err,null);
     });
   },
-  getMedals:function(id,fields,options,callback){
+    getTotalCash: function (id,fields,options,populationData,callback){
+        UserCollection.findOne({_id: id},fields,options).populate(populationData).exec(callback);
+    },
+
+    getMedals:function(id,fields,options,callback){
     UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
       if(objs)
         return callback(err,objs.medals);
@@ -69,8 +73,8 @@ var UserManagement={
   giveMedalToUser:function(userId,medalId,callback){
     UserCollection.update({_id:userId},{$push:{medals:medalId}},callback);
   },
-  giveItemToUser:function(userId,itemId,time,callback){
-    UserCollection.update({_id:userId},{$push:{items:temp}},callback);
+  giveItemToUser:function(userId,itemId,callback){
+    UserCollection.update({_id:userId},{$push:{items:itemId}},callback);
   },
   deleteUser:function(id,callback){
     UserCollection.remove({'_id':id},callback);

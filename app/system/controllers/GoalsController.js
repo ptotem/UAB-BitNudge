@@ -1,6 +1,5 @@
-// var GoalsModel=require('../models/Goals');
-var UserGoalsModel=require('../models/UserGoals/UserGoals.js');
-
+var GoalsModel=require('../models/Goals');
+var UserGoalsModel=require('../models/UserGoals');
 var GoalsController={
   createGoal:function(req,res){
     UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
@@ -14,7 +13,7 @@ var GoalsController={
   //   });
   // },
   getGoal:function(req,res){
-    GoalsModel.getGoal(id,function(err,obj){
+    GoalsModel.getGoal(req.params.id,function(err,obj){
       res.send(obj);
     });
   },
