@@ -69,8 +69,8 @@ var UserManagement={
   giveMedalToUser:function(userId,medalId,callback){
     UserCollection.update({_id:userId},{$push:{medals:medalId}},callback);
   },
-  giveItemToUser:function(userId,itemId,callback){
-    UserCollection.update({_id:userId},{$push:{items:itemId}},callback);
+  giveItemToUser:function(userId,itemId,time,callback){
+    UserCollection.update({_id:userId},{$push:{items:temp}},callback);
   },
   deleteUser:function(id,callback){
     UserCollection.remove({'_id':id},callback);
@@ -93,8 +93,19 @@ var UserManagement={
     passwordSalt=password+"salt!";
     UserCollection.findOne({email:username,passwordSalt:passwordSalt},callback);
   },
-  buyItemForUser:function(userId,itemsdata,cost,callback){
-      UserCollection.update({_id:userId},{$push:{items:itemsdata},$inc:{totalCash:-cost}},callback);
+  buyItemForUser:function(userId,itemId,time,cost,callback){
+    var temp={
+      time:time,
+      item:itemId
+    };
+    UserCollection.update({_id:userId},{$push:{items:temp},$inc:{totalCash:-cost}},callback);
+  },
+  getLiveUserGoalsOfUser:function(userId,currDate,fields,options,populationData,callback){
+    // UserGoalsCollection.findOne({_id:userId,startDate:{$lte:currDate},endDate:{$gte:currDate}},fields,options).populate(populationData).exec(callback);{_id:userId,startDate:,endDate:{$gte:currDate}};
+    UserCollection.aggregate({$match:{_id:userId}}, {$unwind:'$goals'}, {$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate}}}, {$group:{_id:'$_id',goals:{$push:'$goals'}}});
+  },
+  getTransactionHistoryOfUser:function(userId,callback){
+    UserCollection.findOne({_id:userId},"items",{sort:"items.time"}).populate("items.item").exec(callback);
   },
   // getUserRole:function(userId,callback){
   //     UserCollection.findOne({_id:userId}).roles

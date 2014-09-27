@@ -34,7 +34,8 @@ var UserMonthPoints= {
   addPointsObject:function(userId,month,pointsObj,callback){
     var start=moment().month(month.getMonth()).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().month(month.getMonth()+1).date(1).hour(0).minute(0).second(0).toDate();
-    UserMonthPointsCollection.update({userId:userId,month:{$gte:start,$lt:end}},{$push:{points:pointsObj},$inc:{totalPoints:pointsObj.pointsEarned}},callback);
+    // UserMonthPointsCollection.update({userId:userId,month:{$gte:start,$lt:end}},{$push:{points:pointsObj},$inc:{totalPoints:pointsObj.pointsEarned}},callback);
+    UserMonthPointsCollection.update({userId:userId},{$push:{points:pointsObj},$inc:{totalPoints:pointsObj.pointsEarned}},callback);
   }
 
 };

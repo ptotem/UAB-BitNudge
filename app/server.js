@@ -56,8 +56,8 @@ server.use(restify.throttle({
 // restify.CORS.ALLOW_HEADERS.push('origin');
 // restify.CORS.ALLOW_HEADERS.push('withcredentials');
 // restify.CORS.ALLOW_HEADERS.push('x-requested-with');
-// server.use(restify.CORS());
-// server.use(restify.fullResponse());
+server.use(restify.CORS());
+server.use(restify.fullResponse());
 // server.use(
 //   function crossOrigin(req,res,next){
 //     res.header("Access-Control-Allow-Origin", "*");
@@ -97,12 +97,12 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  UserModel.getUser(id,function(err,user){
+  UserModel.getUser(id,"","","",function(err,user){
     done(err, user);
   });
 });
 server.post('/login',passport.authenticate('local'), function(req,res){
-  res.send(req.user);
+  res.send({_id:req.user._id,orgId:req.user.orgId});
 });
 
 //var rank = require("./system/models/Leaderboards");

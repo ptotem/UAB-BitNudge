@@ -32,18 +32,21 @@ var userModelRoutes={
 
 // End Points for Transactions in UserResourcesRoutes:
 
-// var transactionModel=require('../../system/controllers/TransactionController.js');
-// var transactionModelRoutes={
-//     'get org/:orgId/users/:userId/transactions':function(req,res) {
-//         transactionModel.getTransactionofUser(req,res);
-//     },
-//     'post /org/:orgId /users/:userId/transactions/':function(req,res){
-//         transactionModel.createTransaction(req,res);
-//     },
-//     'del org/:orgId/users/:userId/transaction/:transactionId':function(req,res){
-//         roleModel.deleteTransactionOfUser(req,res);
-//     }
-// };
+var transactionModel=require('../../system/controllers/TransactionController.js');
+var transactionModelRoutes={
+    'get org/:orgId/users/:userId/transactions':function(req,res) {
+        transactionModel.getTransactionsOfUser(req,res);
+    },
+    'get org/:orgId/users/:userId/transactions/:transactionId/approve':function(req,res){
+      transactionModel.approveTransaction(req,res);
+    },
+    'post /org/:orgId/users/:userId/transactions/':function(req,res){
+        transactionModel.createTransaction(req,res);
+    },
+    'del org/:orgId/users/:userId/transaction/:transactionId':function(req,res){
+        roleModel.deleteTransactionOfUser(req,res);
+    }
+};
 
 //End Points for StoreItems in UserResourcesRoutes:
 
@@ -54,6 +57,11 @@ var storeItemModelRoutes={
   },
   'post /org/:orgId/users/:userId/items/':function(req,res){
     storeItemModel.buyItemForUser(req,res);
+  }
+};
+var transactionHistoryRoutes={
+  'get /org/:orgId/users/:userId/transactionHistory':function(req,res){
+    userModel.getTransactionHistoryOfUser(req,res);
   }
 };
 
@@ -86,42 +94,7 @@ var medalModelRoutes={
     }
 };
 
-//End Points for Clients:
-// var levelModelRoutes={
-//     'get org/:orgId/users/:userId/rank':function(req,res) {
-//         userModel.getUserRank(req,res);
-//     },
-//     'post /org/:orgId /users/:userId/rank/':function(req,res){
-//         transactionModel.setUserRank(req,res);
-//     }
-// };
 
-//End Points For Products:
-// var productModel=require('../../system/controllers/ProductController.js');
-// var productModelRoutes={
-//     'get org/:orgId/users/:userId/product':function(req,res) {
-//         userModel.getUserRank(req,res);
-//     },
-//     'post /org/:orgId /users/:userId/rank/':function(req,res){
-//         transactionModel.setUserRank(req,res);
-//     }
-// };
-
-
-//End Points for Revenues:
-// var revenueModel=require('../../system/controllers/revenueController.js');
-// var revenueModelRoutes={
-//     'get org/:orgId/users/:userId/revenue':function(req,res){
-// //        revenueModel.getRevenueByOrgId(req.params.orgId);
-//         revenueModel.getRevenueByOrgId(req,res);
-//     },
-//     //    'get org/:orgId/users/:userId/product':function(req,res) {
-//     //        userModel.getUserRank(req,res)
-//     //    },
-//     'post /org/:orgId/users/:userId/revenue/':function(req,res){
-//            revenueModel.setRevenue(req.params.userId,req.params.revenue);
-//         }
-// };
 
 //End Points For Trainings:
 // var trainingModel=require('../../system/controllers/trainingController.js');
@@ -137,15 +110,15 @@ var medalModelRoutes={
 // };
 
 //End Points For Goals:
-// var goalModel=require('../../system/controllers/GoalsController.js');
-// var goalModelRoutes={
-//     'get org/:orgId/users/:userId/goals':function(req,res){
-//       goalModel.getLiveUserGoals(req,res);
-//     },
-//     'post /org/:orgId/users/:userId/goals':function(req,res){
-//       goalModel.assignGoalToUser(req,res);
-//     }
-// };
+var goalModel=require('../../system/controllers/GoalsController.js');
+var goalModelRoutes={
+    'get org/:orgId/users/:userId/goals':function(req,res){
+      goalModel.getLiveUserGoals(req,res);
+    },
+    'post /org/:orgId/users/:userId/goals':function(req,res){
+      goalModel.createGoal(req,res);
+    }
+};
 
 var leaderboardModel=require('../../system/controllers/LeaderboardController.js');
 var leaderboardRoutes={
@@ -175,9 +148,9 @@ var statusMessagesRoutes={
   'get /org/:orgId/users/:userId/statuses/:statusId':function(req,res){
     socialEngine.StatusMessagesController.getStatusMessage(req,res);
   },
-  // 'del /org/:orgId/users/:userId/statuses/:statusId':function(req,res){
-  //   socialEngine.StatusMessagesController.deleteStatusMessage(req,res);
-  // }
+  'del /org/:orgId/users/:userId/statuses/:statusId':function(req,res){
+    socialEngine.StatusMessagesController.deleteStatusMessage(req,res);
+  }
 };
 
 
@@ -213,7 +186,7 @@ var nudgeMailRoutes={
         socialEngine.NudgeMailsController.deleteMail(req,res);
     }
 };
-var stuff=[storeItemModelRoutes,leaderboardRoutes,userModelRoutes/* roleModelRoutes transactionModelRoutes/* ,storeItemModelRoutes rankModelRoutes,userModelRoutes,socialFeedRoutes,leaderboardRoutes/*,levelModelRoutes,medalModelRoutes,productModelRoutes,revenueModelRoutes/* ,trainingModelRoutes,goalModelRoutes ,nudgeChatRoutes,nudgeMailBoxModelRoutes,nudgeMailRoutes*/];
+var stuff=[storeItemModelRoutes,leaderboardRoutes,userModelRoutes,transactionModelRoutes,transactionHistoryRoutes,goalModelRoutes/* roleModelRoutes transactionModelRoutes/* ,storeItemModelRoutes rankModelRoutes,userModelRoutes,socialFeedRoutes,leaderboardRoutes/*,levelModelRoutes,medalModelRoutes,productModelRoutes,revenueModelRoutes/* ,trainingModelRoutes,goalModelRoutes ,nudgeChatRoutes,nudgeMailBoxModelRoutes,nudgeMailRoutes*/];
 module.exports={
   initialize:function(server){
     stuff.forEach(function(routesObj){

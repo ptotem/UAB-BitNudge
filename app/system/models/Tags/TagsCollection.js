@@ -1,10 +1,11 @@
 var mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost/test');
 var Schema=mongoose.Schema;
 var tagSchema=new Schema({
     name:String,
+    type:String,
+    value:String,
     organizationId :{type:Schema.Types.ObjectId,ref:'organization'},
     createdAt :Date
 });
-var Tag=mongoose.model('tag',tagSchema);
+var Tag=mongoose.model('tags',tagSchema);
 module.exports=Tag;

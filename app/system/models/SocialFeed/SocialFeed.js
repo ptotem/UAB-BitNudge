@@ -15,8 +15,8 @@ var SocialFeed={
   getSocialFeedOfUser:function(userId,fields,options,populationParams,callback){
     SocialFeedCollection.find({userId:userId},fields,options).populate(populationParams).exec(callback);
   },
-  addMessageToFeed:function(userId,messageId,callback){
-    SocialFeedCollection.update({userId:userId},{$push:{messages:messageId}},callback);
+  addMessageToFeed:function(orgId,messageId,callback){
+    SocialFeedCollection.update({orgId:orgId},{$push:{messages:messageId}},callback);
   },
   getSocialFeedSchema:function(){
     return SocialFeedCollection.Schema;

@@ -1,12 +1,12 @@
 var TransactionsCollection=require('./TransactionsCollection.js');
 var mongoose=require('mongoose');
 var Transactions={
-  createTransaction:function(orgId,data){
+  createTransaction:function(orgId,userId,data,callback){
     data.createdAt=new Date();
+    data.userId=mongoose.Types.ObjectId(userId);
     data.orgId=mongoose.Types.ObjectId(orgId);
     var l=new TransactionsCollection(data);
-    l.save();
-    return true;
+    l.save(callback);
   },
   getTransaction:function(id,fields,options,populationData,callback){
     TransactionsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
@@ -20,9 +20,9 @@ var Transactions={
   approveTransaction:function(id,approver,callback){
     TransactionsCollection.findOne({_id:id},function(err,obj){
       if(err) return callback(err,null);
-      if(obj.moderator==id)
-        TransactionsCollection.update({_id:id},{$set:{moderated:true}},callback);
-      else return callback(err,null);    
+      // if(obj.moderator==id)
+        // TransactionsCollection.update({_id:id},{$set:{moderated:true}},callback);
+      else return callback(err,obj);    
     });
   },
   deleteTransaction:function(id,callback){
@@ -30,10 +30,6 @@ var Transactions={
   },
   updateTransaction:function(id,updateDate,callback){
     TransactionsCollection.update({_id:id},{$set:updateData},callback);
-  },
-  validateRanges:function(rangeMin,rangeMax){
-    //put some validation effects. The ranges must not intersect.
-    return true;
   }
 };
-module.export=Transactions;
+module.exports=Transactions;

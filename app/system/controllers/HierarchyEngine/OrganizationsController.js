@@ -3,7 +3,7 @@ var OrganizationsModel=require('../../models/Organizations');
 var AuthorizationController=('../../controllers/AuthorizationController.js');
 var OrganizationsController={
   createOrganization:function(req,res){
-    OrganizationsModel.createOrganization(req.query,function(err,obj){
+    OrganizationsModel.createOrganization(req.body,function(err,obj){
       if(err) return handleError(err);
       else res.send(obj);
     });

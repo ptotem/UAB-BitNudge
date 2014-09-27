@@ -21,8 +21,8 @@ var NotificationCenter={
       return callback(err,obj.notifications);
     });
   },
-  addNotification:function(id,notificationData,callback){
-    NotificationCenterCollection.update({_id:id},{$push:{notifications:notificationData}},callback);
+  addNotification:function(userId,notificationData,callback){
+    NotificationCenterCollection.update({userId:userId},{$push:{notifications:notificationData}},callback);
   },
   getNotificationCenterSchema:function(){
     return NotificationCenterCollection.Schema;

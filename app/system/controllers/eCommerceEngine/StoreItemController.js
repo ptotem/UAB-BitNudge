@@ -25,7 +25,7 @@ var StoreItemController={
     buyItemForUser:function(req,res){
       StoreItemModel.getStoreItem(req.body.item,{_id:0,cost:1},"","",function(err,item){
         if(err) return res.send("fail");
-        UserModel.buyItemForUser(req.params.userId,req.body.item,item.cost,function(err1,obj){
+        UserModel.buyItemForUser(req.params.userId,req.body.item,new Date(),item.cost,function(err1,obj){
           if(err1) res.send("fail");
           else res.send("success");
         });

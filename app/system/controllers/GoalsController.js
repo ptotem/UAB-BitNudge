@@ -1,9 +1,9 @@
-var GoalsModel=require('../models/Goals');
-var UserGoalsModel=require('../models/UserGoals');
+// var GoalsModel=require('../models/Goals');
+var UserGoalsModel=require('../models/UserGoals/UserGoals.js');
 
 var GoalsController={
   createGoal:function(req,res){
-    GoalsModel.createGoal(orgId,data,function(err,obj){
+    UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
       if(err)res.send(err);
       else res.send("success");
     });
@@ -29,7 +29,8 @@ var GoalsController={
     });
   },
   getLiveUserGoals:function(req,res){
-    UserGoalsModel.getLiveUserGoals(userId,function(err,objs){
+    UserGoalsModel.getLiveGoalsOfUser(req.params.userId,new Date("2014-09-27"),"","","",function(err,objs){
+      if(err) res.send(err);
       res.send(objs);
     });
   },
@@ -54,13 +55,13 @@ var GoalsController={
       UserGoalsModel.approveUserGoal(userId,goalId,function(err,obj){
         if(err) return handleError(err);
       });
-      UserPointsModel.UserMonthPoints.addPointsObject(obj.userId,new Date(),{pointsEarned:goalObj.points,type:"goal",from:goalObj._id},function(){});
+      UserPointsModel.UserMonthPoints.addPointsObject(obj.userId,new Date(),{pointsEarned:goalObj.points,type:"goals",from:goalObj._id},function(){});
       UserPointsModel.UserQuarterPoints.addPoints(obj.userId,new Date(),goalObj.points,function(){});
       UserPointsModel.UserYearPoints.addPoints(obj.userId,new Date(),goalObj.points,function(){});
       UsersModel.incrementUserCashAndPointsBy(obj.userId,goalObj.points,function(){});
       EventsController.onApproved(transObj._id);
     });
-  },
+  }
   // deleteGoal:function(req,res){
   //   GoalsModel.deleteGoal(id,function(){});
   // }

@@ -8,6 +8,7 @@ var NotificationCenterModel=require('../models/NotificationCenter');
 var UsersController={
   createUser:function(req,res){
     UsersModel.createUser(req.params.orgId,req.body,function(err,user){
+      EventsModel.createEvents(req.params.orgId,user._id,function(){});
       SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
       NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
       NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
@@ -24,12 +25,20 @@ var UsersController={
   },
   getUser:function(req,res){
     UsersModel.getUser(req.params.userId,"","","",function(err,obj){
-      res.send(obj);
+      if(req.user._id==req.params.userId)
+        res.send(obj);
+      else res.send(401,{status:{http:401,message:'Not Authorized'}});
     });
   },
   getUsersOfOrganization:function(req,res){
     UsersModel.getUsersOfOrganization(req.params.orgId,"","","",function(err,goals){
       res.send(goals);
+    });
+  },
+  getTransactionHistoryOfUser:function(req,res){
+    UsersModel.getTransactionHistoryOfUser(req.params.userId,function(err,objs){
+      if(err) res.send(err);
+      else res.send(objs);
     });
   },
   // assignUserToUser:function(req,res){

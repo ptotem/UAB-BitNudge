@@ -1,8 +1,9 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var TransactionsSchema=new Schema({
-  transactionSchema:{type:Schema.Types.ObjectId,ref:'transactionMaster'},
-  params:[{name:String,value:String}],
+  transactionMaster:{type:Schema.Types.ObjectId,ref:'transactionMasters'},
+  tags:[{name:String,value:String}],
+  target:Number,
   userId:Schema.Types.ObjectId,
   moderated:Boolean,
   moderator:{type:Schema.Types.ObjectId,ref:'users'},
