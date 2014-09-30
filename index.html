@@ -12,7 +12,7 @@
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <meta name="_token" content="{{ csrf_token() }}"/>
 	<!--// OPTIONAL & CONDITIONAL CSS FILES //-->   
 	<!-- date picker css -->
 	<link rel="stylesheet" href="css/datepicker.css?v=1">
@@ -245,7 +245,7 @@
 	    
 	<script type="text/javascript">
 		var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
-        var remote_host = "http://192.168.2.11:3004/";
+        var remote_host = "http://192.168.2.18:3004/";
 	    if(!ismobile){
 	    	
 	    	/** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
@@ -286,36 +286,70 @@
 	    	document.write('<script src="js/include/responsive-tables.min.js"><\/script>');
 	    }
 
-//        $("#sign_in_form_submit_btn").click(function() {
-//            var user_email = $("#user_email").val();
-//            var user_password = $("#user_password").val();
-////            var dataString = 'password='+ user_password + '&username=' + user_email;
-//            //var dataString = [{"username":"nilesh"}]
+        function check_unauthorized_req(){
+            console.log("check_unauthorized_req() called");
+            $.ajax({
+                //url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d26?callback=?",
+                url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d13?callback=?",
+                type: 'getJSON',  /* Dont use post it JSONP doesnt support */
+                dataType: 'jsonp',
+//                jsonpCallback: 'myfunc', // the function to call
+//                jsonp: 'callback', // name of the var specifying the callback in the request
+                success: function(res) {
+                    console.log("success res :- ");
+                    console.log(res);
+                    //console.log(JSON.parse(res));
+                    $("#user_name").text(res.userdata.personalInfo.name);
+                    $("#user_quote").text(res.userdata.personalInfo.quote);
+                    $("#user_designation").text(res.userdata.organizationalInfo.designation);
+                    $("#user_team").text(res.userdata.organizationalInfo.teamName);
+                    $("#profile_percentage").text(res.userdata.organizationalInfo.profileCompleteness);
+                    $("#profile_percentage_progress_bar").attr('data-percentage', res.userdata.organizationalInfo.profileCompleteness);
+                    $("#profile_percentage_progress_bar").css('width', res.userdata.organizationalInfo.profileCompleteness+"%");
+
+                    //processResponse(res);
+                }
+                ,
+                error: function(e , msg){
+                    //alert(msg);
+                    processError(e,msg);
+                }
+            });
+        }
+
+        $("#sign_in_form_submit_btn").click(function() {
+            var user_email = $("#user_email").val();
+            var user_password = $("#user_password").val();
+//            var dataString = 'password='+ user_password + '&username=' + user_email;
 //            var dataString = {
 //                username: user_email,
 //                password: user_password
 //            };
-//            //console.log(dataString);
-//
-//            $.post(remote_host+"login?username="+user_email+'&password='+user_password);
-//            /*$.ajax({
-//                type: "POST",
-//                url: remote_host+"login?",
-//                data: dataString,
-//                dataType: 'json',
-//                success: function(){
-//                    console.log("success")
-//                },
-//                error: function (error) {
-//                    console.log(error)
-//                },
-//                xhrFields: {
-//                    withCredentials: true
-//                },
-//                crossDomain: true
-//            });*/
-//            return false;
-//        });
+            //console.log(dataString);
+            var jqxhr = $.post(remote_host+"login?username="+user_email+'&password='+user_password, function() {
+                //alert( "success" );
+            })
+                .done(function(data) {
+                    //alert( "second success" );
+                    console.log("data");
+                    console.log(data);
+                    var my_id = data._id;
+                    var my_org_id = data.orgId;
+                    console.log("my_id :- " + my_id + ", my_org_id :- " + my_org_id);
+                    //document.location.href='dashboard.html?org='+my_org_id+'&users/'+my_id;
+                })
+                .fail(function() {
+                    alert( "error" );
+                    //TODO :display invalid email or password
+                })
+                .always(function() {
+                    //alert( "finished" );
+                });
+
+            //$.post(remote_host+"login?username="+user_email+'&password='+user_password);
+
+            return false;
+        });
 
 //        $( "#sign_in_form_submit_btn" ).click(function() {
 //            var email, password, combined;

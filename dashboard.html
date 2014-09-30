@@ -333,7 +333,7 @@
         <div class="my-profile semi-block" id="profile_meter">
             <strong>Profile Complete</strong><strong class="pull-right"> <span id="profile_percentage" style="float: left">89</span>%</strong>
             <div class="progress progress-danger slim">
-                <div class="bar" id="profile_percentage_progress_bar" data-percentage="89"></div>
+                <div class="bar" id="profile_percentage_progress_bar" data-percentage="89" style="width: 89%;"></div>
             </div>
         </div>
     </div>
@@ -1753,7 +1753,7 @@
 <script type="text/javascript">
 //    var g1, g2, g3, g4, g5, g6;
     var shooting_g6, quarter_g6, shooting_team_g6, quarter_team_g6;
-    var remote_host = "http://192.168.2.11:3004/";
+    var remote_host = "http://192.168.2.16:3004/";
 
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
@@ -1785,28 +1785,33 @@
             //$("#profile_percentage").text(myJSON.user_data.organizational_info.profile_complete_percent);
             //$("#profile_percentage_progress_bar").attr('data-percentage', myJSON.user_data.organizational_info.profile_complete_percent);
 
-//            $.ajax({
-//                url: remote_host+"org/54181686aa57cbbe938e52b4/users/5418175604c38ac094ed0fbe?callback=?",
-//                type: 'getJSON',  /* Dont use post it JSONP doesnt support */
-//                dataType: 'jsonp',
-////                jsonpCallback: 'myfunc', // the function to call
-////                jsonp: 'callback', // name of the var specifying the callback in the request
-//                success: function(res) {
-//                    console.log(res);
-//                    $("#user_name").text(res.name);
-//                    $("#user_designation").text(res.designation);
-//                    $("#profile_percentage").text(res.profileCompleteness);
-//                    $("#profile_percentage_progress_bar").attr('data-percentage', res.profileCompleteness);
-//                    $("#profile_percentage_progress_bar").css('width', res.profileCompleteness+"%");
-//
-////                    processResponse(res);
-//                }
-//                ,
-//                error: function(e , msg){
-//                    alert(msg);
-//                    processError(e,msg);
-//                }
-//            });
+            $.ajax({
+                //url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d26?callback=?",
+                url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d25?callback=?",
+                type: 'getJSON',  /* Dont use post it JSONP doesnt support */
+                dataType: 'jsonp',
+//                jsonpCallback: 'myfunc', // the function to call
+//                jsonp: 'callback', // name of the var specifying the callback in the request
+                success: function(res) {
+                    console.log("success res :- ");
+                    console.log(res);
+                    //console.log(JSON.parse(res));
+                    $("#user_name").text(res.userdata.personalInfo.name);
+                    $("#user_quote").text(res.userdata.personalInfo.quote);
+                    $("#user_designation").text(res.userdata.organizationalInfo.designation);
+                    $("#user_team").text(res.userdata.organizationalInfo.teamName);
+                    $("#profile_percentage").text(res.userdata.organizationalInfo.profileCompleteness);
+                    $("#profile_percentage_progress_bar").attr('data-percentage', res.userdata.organizationalInfo.profileCompleteness);
+                    $("#profile_percentage_progress_bar").css('width', res.userdata.organizationalInfo.profileCompleteness+"%");
+
+                    //processResponse(res);
+                }
+                ,
+                error: function(e , msg){
+                    //alert(msg);
+                    processError(e,msg);
+                }
+            });
 
 
             //$("#leader_board_table").find('tbody').empty();
@@ -1949,8 +1954,10 @@ function processError(e , msg){
 //be removed by Jquery isn that neat
 
 function processResponse(res){
-    alert('totalInterestPmtAmt='+ res.totalInterestPmtAmt);
-    alert('totalPmtAmt='+ res.totalPmtAmt);
+    console.log("res :-");
+    console.log(res);
+    //alert('totalInterestPmtAmt='+ res.totalInterestPmtAmt);
+    //alert('totalPmtAmt='+ res.totalPmtAmt);
 }
 </script>
 
