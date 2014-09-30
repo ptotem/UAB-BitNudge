@@ -10,10 +10,11 @@ var UsersController={
   createUser:function(req,res){
     UsersModel.createUser(req.params.orgId,req.body,function(err,user){
       EventsModel.createEvents(req.params.orgId,user._id,function(){});
-      SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
+      // SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
       NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
       NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
       NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
+      UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,req.params._id,{},function(){});
       res.send(user);
     });
   },
@@ -25,48 +26,15 @@ var UsersController={
     });
   },
   getUser:function(req,res){
-    UsersModel.getUser(req.params.userId,"","","",function(err,obj){
-<<<<<<< HEAD
-      if(req.user._id==req.params.userId)
-        res.send(obj);
-      else res.send(401,{status:{http:401,message:'Not Authorized'}});
-=======
-        if(!err){
-            var userData={};
-            userData.user=obj;
-//            var Data={};
-//            var personalInfo={};
-//            var organizationalInfo={};
-//            personalInfo.name = obj.name;
-//            personalInfo.quote=obj.quote;
-//            Data.personalInfo=personalInfo;
-//            organizationalInfo.designation=obj.designation;
-//            organizationalInfo.profileCompleteness=obj.profilecompleteness;
-            TeamsModel.getTeamOfUser(req.params.userId,"","","",function(err,data)
-            {
-                userData.teamName=data.name;
-//                Data.organizationalInfo=organizationalInfo;
-//                userData.userdata=Data;
-                res.header('Content-type','application/jsonp');
-                res.header('Charset','utf8');
-                res.send(req.query.callback + '('+ JSON.stringify(userData) + ');');
-
-            })
-//            organizationalInfo.teamName=
-//            Data.organizationalInfo=organizationalInfo;
-//            userData.userdata=Data;
-//            res.header('Content-type','application/jsonp');
-//            res.header('Charset','utf8');
-//            res.send(req.query.callback + '('+ JSON.stringify(userData) + ');');
-        }
-        else{
-            res.end('error');
-        }
->>>>>>> FETCH_HEAD
+    UsersModel.getUser(req.params.userId,"-_id name profileCompleteness","","teams",function(err,obj){
+      res.send(obj);
+      // if(req.user._id==req.params.userId)
+      //   res.send(obj);
+      // else res.send(401,{status:{http:401,message:'Not Authorized'}});
     });
   },
   getUsersOfOrganization:function(req,res){
-    UsersModel.getUsersOfOrganization(req.params.orgId,"","","",function(err,goals){
+    UsersModel.getUsersOfOrganization(req.params.orgId,"name ","","",function(err,goals){
       res.send(goals);
     });
   },

@@ -20,7 +20,7 @@ var RankController={
   // },
   calculateRankOfMonth:function(orgId,month,callback){
     //setting user global ranks.
-    UserPointsModel.getUserPointsOfPeriodOfOrganization(orgId,"month",month,function(err,userpoints){
+    UserPointsModel.getSortedUserPointsOfPeriod({orgId:orgId},"month",month,function(err,userpoints){
       userpoints.forEach(function(userpoint,index){
         LeaderboardModel.setRankOfUserInPeriod("month",month,index+1,userpoint.userId,function(err,obj){
           if(err) handleError(err);
@@ -32,37 +32,35 @@ var RankController={
     });
 
     //setting team ranks.
-    // TeamPointsModel.TeamMonthPoints.getSortedTeamPointsOfMonth(null,month,function(err,teampoints){
-    //   console.log(teampoints);
-    //   teampoints.forEach(function(teampoint,index){
-    //     LeaderboardModel.setRankOfTeamInPeriod("month",month,index+1,teampoint.teamId,function(err,obj){
-    //       if(err) handleError(err);
-    //       if(index==teampoints.length-1){
-    //         // callback(err);
-    //       }
-    //     });
-    //   });
-    // });
+    TeamPointsModel.getSortedTeamPointsOfPeriod({orgId:orgId},"month",month,function(err,teampoints){
+      console.log(teampoints);
+      teampoints.forEach(function(teampoint,index){
+        LeaderboardModel.setRankOfTeamInPeriod("month",month,index+1,teampoint.teamId,function(err,obj){
+          if(err) handleError(err);
+          if(index==teampoints.length-1){
+            // callback(err);
+          }
+        });
+      });
+    });
     //setting users ranks in teams
-    // TeamsModel.getTeamsOfOrganization(orgId,function(err,teams){
-    //   if(err) return handleError(err);
-    //   teams.forEach(function(team){
-    //     team.members.forEach(function(memberId,index){
-    //       UserPointsModel.UserMonthPoints.getSortedUserPointsOfMonth({userId:{$in:team.members}},month,function(err,userpoints){
-    //         if(err) return handleError(err);
-    //         userpoints.forEach(function(index,userpoint){
-    //           LeaderboardModel.setRankOfUserInTeamInPeriod("month",month,index+1,userpoint.userId,team._id,function(err,obj){
-    //             if(err) handleError(err);
-    //           });
-    //         });
-    //       });
-    //     });
-    //   });
-    // });
+    TeamsModel.getTeamsOfOrganization(orgId,function(err,teams){
+      if(err) return handleError(err);
+      teams.forEach(function(team){
+        UserPointsModel.getSortedUserPointsOfPeriodOfOrganization({userId:{$in:team.members}},"month",month,function(err,userpoints){
+          if(err) return handleError(err);
+          userpoints.forEach(function(userpoint,index){
+            LeaderboardModel.setRankOfUserInTeamInPeriod("month",month,index+1,userpoint.userId,team._id,function(err,obj){
+              if(err) handleError(err);
+            });
+          });
+        });
+      });
+    });
   },
   calculateRankOfQuarter:function(orgId,quarter,callback){
     //setting user global ranks.
-    UserPointsModel.getUserPointsOfPeriodOfOrganization(orgId,"quarter",quarter,function(err,userpoints){
+    UserPointsModel.getUserPointsOfPeriod({orgId:orgId},"quarter",quarter,function(err,userpoints){
       userpoints.forEach(function(userpoint,index){
         LeaderboardModel.setRankOfUserInPeriod("quarter",quarter,index+1,userpoint.userId,function(err,obj){
           if(err) handleError(err);
@@ -72,69 +70,63 @@ var RankController={
         });
       });
     });
-
     //setting team ranks.
-    // TeamPointsModel.TeamQuarterPoints.getSortedTeamPointsOfQuarter(null,quarter,function(err,teampoints){
-    //   teampoints.forEach(function(teampoint,index){
-    //     LeaderboardModel.setRankOfTeamInPeriod("quarter",quarter,index+1,teampoint.teamId,function(err,obj){
-    //       if(err) handleError(err);
-    //       if(index==teampoints.length-1){
-    //         // callback(err);
-    //       }
-    //     });
-    //   });
-    // });
+    TeamPointsModel.getSortedTeamPointsOfPeriod({orgId:orgId},"quarter",quarter,function(err,teampoints){
+      teampoints.forEach(function(teampoint,index){
+        LeaderboardModel.setRankOfTeamInPeriod("quarter",quarter,index+1,teampoint.teamId,function(err,obj){
+          if(err) return handleError(err);
+          if(index==teampoints.length-1){
+            // callback(err);
+          }
+        });
+      });
+    });
     //setting users ranks in teams
-    // TeamsModel.getTeamsInOrg(orgId,function(err,teams){
-    //   if(err) return handleError(err);
-    //   teams.forEach(function(team){
-    //     team.members.forEach(function(memberId,index){
-    //       UserPointsModel.UserQuarterPoints.getSortedUserPointsOfQuarter({userId:{$in:team.members}},quarter,function(err,userpoints){
-    //         if(err) return handleError(err);
-    //         userpoints.forEach(function(index,userpoint){
-    //           LeaderboardModel.setRankOfUserInTeamInPeriod("quarter",quarter,index+1,userpoint.userId,team._id,function(err,obj){
-    //             if(err) handleError(err);
-    //           });
-    //         });
-    //       });
-    //     });
-    //   });
-    // });
+    TeamsModel.getTeamsOfOrganization(orgId,function(err,teams){
+      if(err) return handleError(err);
+      teams.forEach(function(team){
+        UserPointsModel.getSortedUserPointsOfPeriod({userId:{$in:team.members}},"quarter",quarter,function(err,userpoints){
+          if(err) return handleError(err);
+          userpoints.forEach(function(userpoint,index){
+            LeaderboardModel.setRankOfUserInTeamInPeriod("quarter",quarter,index+1,userpoint.userId,team._id,function(err,obj){
+              if(err) handleError(err);
+            });
+          });
+        });
+      });
+    });
   },
   calculateRankOfYear:function(orgId,year){
     //setting user global ranks.
-    UserPointsModel.getUserPointsOfPeriodOfOrganization(orgId,"year",year,function(err,userpoints){
-      userpoints.forEach(function(index,userpoint){
-        LeaderboardModel.setRankOfUser("year",year,index,userpoint.userId,function(err,obj){
+    UserPointsModel.getUserPointsOfPeriod({orgId:orgId},"year",year,function(err,userpoints){
+      userpoints.forEach(function(userpoint,index){
+        LeaderboardModel.setRankOfUserInPeriod("year",year,index+1,userpoint.userId,function(err,obj){
           if(err) handleError(err);
         });
       });
     });
     //setting team ranks.
-    // TeamPointsModel.TeamYearPoints.getSortedTeamPointsOfYear(year,function(err,teampoints){
-    //   teampoints.forEach(function(index,teampoint){
-    //     LeaderboardModel.setRankOfTeam("year",year,index+1,teampoint.teamId,function(err,obj){
-    //       if(err) handleError(err);
-    //     });
-    //   });
-    // });
+    TeamPointsModel.getSortedTeamPointsOfPeriod({orgId:orgId},"year",year,function(err,teampoints){
+      teampoints.forEach(function(teampoint,index){
+        LeaderboardModel.setRankOfTeamInPeriod("year",year,index+1,teampoint.teamId,function(err,obj){
+          if(err) handleError(err);
+        });
+      });
+    });
     //setting users ranks in teams
-  //   TeamsModel.getTeamsInOrg(orgId,function(err,teams){
-  //     if(err) return handleError(err);
-  //     teams.forEach(function(team){
-  //       team.members.forEach(function(index,memberId){
-  //         // UsersModel.sortUsersByField({orgId:orgId},"totalPoints",function(err,users){
-  //         UserPointsModel.UserYearPoints.getSortedUserPointsOfYear({teams:{$elemMatch:team._id}},year,function(err,userpoints){
-  //           if(err) return handleError(err);
-  //           userpoints.forEach(function(index,userpoint){
-  //             LeaderboardModel.setRankOfUserInTeam("year",year,index+1,userpoint.userId,team._id,function(err,obj){
-  //               if(err) handleError(err);
-  //             });
-  //           });
-  //         });
-  //       });
-  //     });
-  //   });
+    TeamsModel.getTeamsOfOrganization(orgId,function(err,teams){
+      if(err) return handleError(err);
+      teams.forEach(function(team){
+        UserPointsModel.getSortedUserPointsOfPeriod({userId:{$in:team.members}},"year",year,function(err,userpoints){
+          if(err) return handleError(err);
+          userpoints.forEach(function(userpoint,index){
+            LeaderboardModel.setRankOfUserInTeamInPeriod("year",year,index+1,userpoint.userId,team._id,function(err,obj){
+              if(err) handleError(err);
+            });
+          });
+        });
+      });
+    });
   }
 };
 module.exports=RankController;

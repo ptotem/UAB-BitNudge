@@ -28,7 +28,7 @@ var Team= {
 //      }
         TeamsCollection.findOne({'_id': teamId},fields,options).populate(populationData).exec(callback);
     },
-    getTeamOfUser: function (id,fields,options,populationData,callback){
+    getTeamsOfUser: function (id,fields,options,populationData,callback){
         TeamsCollection.findOne({members: id},fields,options).populate(populationData).exec(callback);
     },
     getTeam: function (id,fields,options,populationData,callback){
@@ -84,7 +84,7 @@ var Team= {
         TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
     },
     findTeamOfUser:function(orgId,userId,callback){
-        TeamsCollection.findOne({orgId:orgId})
+        TeamsCollection.findOne({orgId:orgId});
 //        db.blogpost.find({ 'tags' : 'tag1'}); //1
     },
     // AddTeamInOrg: function (organizationId, data) {

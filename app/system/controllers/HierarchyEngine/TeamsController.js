@@ -24,6 +24,7 @@ var HierarchyEngine={
     TeamModel.createTeam(req.params.orgId,req.body,function(err,obj){
       if(err) res.send("fail");
       else res.send(obj);
+      TeamPeriodPointsModel.createTeamPeriodPoints(req.params.orgId,obj._id,function(){});
     });
   },
   updateTeam:function(req,res){

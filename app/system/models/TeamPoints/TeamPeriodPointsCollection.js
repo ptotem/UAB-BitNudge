@@ -1,7 +1,7 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
-var userPointsSchema=new Schema({
-  userId:{type:Schema.Types.ObjectId,ref:'users'},
+var teamPointsSchema=new Schema({
+  teamId:Schema.Types.ObjectId,
   periods:[{
     period:String,
     date:Date,
@@ -10,5 +10,5 @@ var userPointsSchema=new Schema({
   orgId:Schema.Types.ObjectId,
   createdAt:Date
 });
-var actionSchemas=mongoose.model('userPeriodPoints',userPointsSchema);
+var actionSchemas=mongoose.model('teamPeriodPoints',teamPointsSchema);
 module.exports=actionSchemas;

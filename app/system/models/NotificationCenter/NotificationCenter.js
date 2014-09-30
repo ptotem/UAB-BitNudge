@@ -22,6 +22,8 @@ var NotificationCenter={
     });
   },
   addNotification:function(userId,notificationData,callback){
+    if(!notificationData.time)
+      notificationData.time=new Date();
     NotificationCenterCollection.update({userId:userId},{$push:{notifications:notificationData}},callback);
   },
   getNotificationCenterSchema:function(){

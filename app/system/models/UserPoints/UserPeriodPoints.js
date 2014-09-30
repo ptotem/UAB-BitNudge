@@ -1,17 +1,16 @@
-var UserMonthPoints=require('./UserMonthPoints');
-var UserQuarterPoints=require('./UserQuarterPoints');
-var UserYearPoints=require('./UserYearPoints');
 var UserPeriodPointsCollection=require('./UserPeriodPointsCollection.js');
 
 var UserPoints={
   // UserMonthPoints:UserMonthPoints,
   // UserQuarterPoints:UserQuarterPoints,
   // UserYearPoints:UserYearPoints,
-  // addPointsEverywhere:function(userId,time,pointsObj,callback){
-  //   UserMonthPoints.addPointsObject(userId,time,pointsObj,function(){});
-  //   // UserQuarterPoints.addPoints(userId,time,pointsObj.pointsEarned,function(){});
-  //   // UserYearPoints.addPoints(userId,time,pointsObj.pointsEarned,function(){});
-  // }
+  addPointsEverywhere:function(userId,time,points,callback){
+    UserPoints.addToUserPointsOfPeriod(userId,"month",time,points,function(){
+      UserPoints.addToUserPointsOfPeriod(userId,"quarter",time,points,function(){
+        UserPoints.addToUserPointsOfPeriod(userId,"year",time,points,callback);
+      });
+    });
+  },
   getQueryFromDate:function(period,date){
     var currDate,start,end;
     if(period=="month"){
@@ -24,7 +23,7 @@ var UserPoints={
       start=moment().month(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
       end=moment().month(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
     }
-    else if (period=="year"){
+    else if(period=="year"){
       currDate=moment(date);
       start=moment().year(currDate.year()).month(0).date(1).hour(0).minute(0).second(0).toDate();
       end=moment().year(currDate.year()+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
@@ -37,26 +36,42 @@ var UserPoints={
   createUserPeriodPoints:function(orgId,userId, data,callback){
     data.userId=mongoose.Types.ObjectId(userId);
     data.orgId=mongoose.Types.ObjectId(orgId);
-    data.date=new Date();
+    data.createdAt=new Date();
     var user= new UserPeriodPointsCollection(data);
     user.save(callback);
   },
   setUserPointsOfPeriod:function(userId,period,date,points,callback){
     var temp={};
     temp['periods.$.totalPoints']=points;
-    var query=Leaderboard.getQueryFromDate(period,date);
+    temp.date=date;
+    temp.period=period;
+    var query=UserPoints.getQueryFromDate(period,date);
     query.userId=userId;
-    UserPeriodPointsCollection.update(query,temp,callback);
+    UserPeriodPointsCollection.update(query,{$set:temp},{upsert:true},callback);
   },
-  getUserPointsOfPeriod:function(userId,fields,options,populationData,callback){
-    var query=Leaderboard.getQueryFromDate(period,date);
+  addToUserPointsOfPeriod:function(userId,period,date,points,callback){
+    var temp={};
+    temp.date=date;
+    temp.period=period;
+    var incObj={};
+    incObj['periods.$.totalPoints']=points;
+    var query=UserPoints.getQueryFromDate(period,date);
     query.userId=userId;
-    UserPeriodPointsCollection.find(query,fields,options).populate(populationData).exec(callback);
+    UserPeriodPointsCollection.update(query,{$set:temp,$inc:incObj},{upsert:true},callback);
   },
-  getUserMonthPointsOfPeriodOfOrganization:function(orgId,period,date,fields,options,populationData,callback){
-    var query=Leaderboard.getQueryFromDate(period,date);
-    query.orgId=orgId;
-    UserPeriodPointsCollection.find(query,fields,options).populate(populationData).exec(callback);
-  }
+  getUserPointsOfPeriod:function(query,period,date,fields,options,populationData,callback){
+    var periodQuery=UserPoints.getQueryFromDate(period,date);
+    // var query={userId:userId};
+    UserPeriodPointsCollection.aggregate({$match:query}, {$unwind:'$periods'}, {$match:periodQuery}, {$group:{_id:'$_id',userId:{$last:'$userId'},periods:{$push:'$periods'}}},callback);
+  },
+  getSortedUserPointsOfPeriodOfOrganization:function(query,period,date,callback){
+    var periodQuery=UserPoints.getQueryFromDate(period,date);
+    UserPeriodPointsCollection.aggregate({$match:query}, {$unwind:'$periods'}, {$match:periodQuery}, {$group:{_id:'$_id',userId:{$last:'$userId'},periods:{$push:'$periods'}}},{$sort:{"periods.totalPoints":-1}},callback);
+  },
+  // getUserPointsOfPeriodOfOrganization:function(orgId,period,date,fields,options,populationData,callback){
+  //   var periodQuery=UserPoints.getQueryFromDate(period,date);
+  //   var query={orgId:orgId};
+  //   UserPeriodPointsCollection.aggregate({$match:query}, {$unwind:'$periods'}, {$match:periodQuery}, {$group:{_id:'$_id',userId:{$last:'$userId'},periods:{$push:'$periods'}}},callback);
+  // }
 };
 module.exports=UserPoints;

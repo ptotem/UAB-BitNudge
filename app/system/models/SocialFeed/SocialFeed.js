@@ -2,10 +2,9 @@ var SocialFeedCollection=require('./SocialFeedCollection.js');
 var mongoose=require('mongoose');
 
 var SocialFeed={
-  createSocialFeed:function(organizationId,userId,data,callback){
+  createSocialFeed:function(organizationId,data,callback){
     data.orgId=mongoose.Types.ObjectId(organizationId);
     data.createdAt=new Date();
-    data.userId=mongoose.Types.ObjectId(userId);
     var l=new SocialFeedCollection(data);
     l.save(callback);
   },

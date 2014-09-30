@@ -39,9 +39,9 @@ server.use(restify.acceptParser(server.acceptable));
 server.use(restify.authorizationParser());
 server.use(restify.dateParser());
 server.use(restify.queryParser({ mapParams : false }));
-// server.use(restify.urlEncodedBodyParser());
+server.use(restify.urlEncodedBodyParser());
 server.use(restify.bodyParser({ mapParams : false }));
-// server.use(restify.jsonp());
+server.use(restify.jsonp());
 server.use(restify.throttle({
     burst : 100 ,
     rate : 50 ,
@@ -105,31 +105,24 @@ server.post('/login',passport.authenticate('local'), function(req,res){
   res.send({_id:req.user._id,orgId:req.user.orgId});
 });
 
-//var rank = require("./system/models/Leaderboards");
-//rank.MonthLeaderboard.createLeaderboard("5412d2990eeb4a320ca12d9e", {});
-
-// var orgModel = require("./system/models/Organizations");
-// orgModel.createOrganization({name: "org1"});
-
-
-/* var userModel = require("./system/models/Users/UsersCollection.js");
- var points=require("./system/models/UserPoints");
-userModel.find({},function(err,objs){
-	objs.forEach(function(obj){
-		points.UserMonthPoints.createUserMonthPoints("5412d2990eeb4a320ca12d9e", {userId: obj._id, month: new Date(), totalPoints: Math.floor((Math.random()*9001)+1000)});
-	});
-});
-
-
-*/
-
-var leader=require('./system/controllers/PointsEngine');
-// console.log(new Date().getTime());
-// leader.calculateRankOfMonth("5417f10a195e61022fff91ee",new Date(),function(err){console.log(new Date().getTime());});
 
 //testing ranks
 
-server.get('/org/:orgId/calc',function(req,res){
+var RanksController=require('./system/controllers/PointsEngine/RankController.js');
+server.get('/org/:orgId/calc/month',function(req,res){
+  RanksController.calculateRankOfMonth(req.params.orgId,new Date(),function(){
+    res.send("done");
+  });
+});
+server.get('/org/:orgId/calc/quarter',function(req,res){
+  RanksController.calculateRankOfQuarter(req.params.orgId,new Date(),function(){
+    res.send("done");
+  });
+});
+server.get('/org/:orgId/calc/year',function(req,res){
+  RanksController.calculateRankOfYear(req.params.orgId,new Date(),function(){
+    res.send("done");
+  });
 });
 
 

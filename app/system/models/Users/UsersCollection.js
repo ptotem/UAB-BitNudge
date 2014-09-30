@@ -10,11 +10,24 @@ var userSchema=new Schema({
   passwordHash:String,
   medals:[{type:Schema.Types.ObjectId,rel:'medals'}],
   items:[{time:Date,item:{type:Schema.Types.ObjectId,rel:'storeItems'}}],
+  points:[{
+    pointsEarned:Number,
+    date:Date,
+    type:String,
+    from:Schema.Types.ObjectId
+  }],
+  teams:[{type:Schema.Types.ObjectId,rel:'teams'}],
   level:Number,
-  profilecompleteness:Number,
+  profileCompleteness:Number,
   designation:String,
   totalPoints:Number,
   totalCash:Number,
+  transactions:[{
+    transactionMaster:{type:Schema.Types.ObjectId,rel:'transactionMasters'},
+    date:Date,
+    target:Number,
+    tags:[{type:Schema.Types.ObjectId,ref:'tags'}]
+  }],
   goals:[{
     goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
     tags:[{type:Schema.Types.ObjectId,ref:'tags'}],

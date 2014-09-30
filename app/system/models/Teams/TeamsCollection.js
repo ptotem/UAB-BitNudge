@@ -8,7 +8,7 @@ var teamsSchema=new Schema({
     members :[{type:Schema.Types.ObjectId,ref:'users'}],
     parentTeamId :{type:Schema.Types.ObjectId,ref:'teams'},
     teams :[{type:Schema.Types.ObjectId,ref:'teams'}],
-    stores :[{type:Schema.Types.ObjectId,ref:'store'}],
+    stores :[{type:Schema.Types.ObjectId,ref:'stores'}],
     training :[{type:Schema.Types.ObjectId,ref:'training'}],
     clients :[{type:Schema.Types.ObjectId,ref:'clientType'}],
     revenue :[{type:Schema.Types.ObjectId,ref:'revenues'}],

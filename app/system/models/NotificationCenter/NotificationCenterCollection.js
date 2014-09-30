@@ -5,7 +5,8 @@ var NotificationCenterSchema=new Schema({
   orgId:Schema.Types.ObjectId,
   notifications:[{
     content:String,
-    entity:String,
+    url:String,  //url the notification refers to.
+    time:Date,
     read:Boolean
   }],
   createdAt:Date

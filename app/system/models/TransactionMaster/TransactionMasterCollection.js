@@ -4,6 +4,7 @@ var TransactionMasterSchema=new Schema({
     name:String,
     format:String,
     type:String,
+    tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
     noOfParams:Number,
     pointsFn:String, //function that will be called to get points
     createdAt:Date

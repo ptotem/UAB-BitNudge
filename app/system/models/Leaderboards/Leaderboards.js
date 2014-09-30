@@ -56,32 +56,36 @@ var Leaderboard={
     query.orgId=orgId;
     var temp={};
     temp["playerRanks."+rankNo]=rankObj;
-    RanksCollection.update(query,{$set:temp},callback);
+    temp.date=date;
+    temp.period=period;
+    RanksCollection.update(query,{$set:temp},{upsert:true},callback);
   },
   setRankOfUserInTeamInPeriod:function(period,date,rankNo,userId,teamId,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
     query['playerInTeamRanks.team']=teamId;
     var temp={};
     temp["playerInTeamRanks.$.playerRanks."+rankNo]=rankObj;
-    RanksCollection.update(query,{$set:temp},callback);
+    temp.date=date;
+    temp.period=period;
+    RanksCollection.update(query,{$set:temp},{upsert:true},callback);
   },
   setRankOfTeamInPeriod:function(period,date,rankNo,teamId,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
     var temp={};
     temp["teamRank."+rankNo]=rankObj;
-    RanksCollection.update({date:{$gte:start,$lt:end}},{$set:temp},callback);
+    temp.date=date;
+    temp.period=period;
+    RanksCollection.update(query,{$set:temp},{upsert:true},callback);
   },
   // getUserRank:function(userId,month,callback){
-  //   var start=moment().month(month.getMonth()).date(1).hour(0).minute(0).second(0).toDate();
-  //   var end=moment().month(month.getMonth()+1).date(1).hour(0).minute(0).second(0).toDate();
+    // var query=Leaderboard.getQueryFromDate(period,date);
   //   RanksCollection.find({month:{$gte:start,$lt:end},'playerRanks.player':userId},function(err,obj){
   //     // if(err) return callback(err);
   //     // else return callback(err,obj.playerRanks.)
   //   });
   // },
   // getTeamRank:function(teamId,month,callback){
-  //   var start=moment().month(month.getMonth()).date(1).hour(0).minute(0).second(0).toDate();
-  //   var end=moment().month(month.getMonth()+1).date(1).hour(0).minute(0).second(0).toDate();
+    // var query=Leaderboard.getQueryFromDate(period,date);
   //   RanksCollection.find({month:{$gte:start,$lt:end},'teamRanks.team':teamId},function(err,obj){
   //     if(err) return callback(err);
   //     else return callback(err,obj);
