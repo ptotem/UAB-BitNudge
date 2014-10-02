@@ -1,6 +1,5 @@
 var StoreItemsCollection=require('./StoreItemCollection.js');
 var Store=require('../Store');
-var UserModel=require('../Users');
 var mongoose=require('mongoose');
 var StoreItems={
   createStoreItem:function(organizationId,data,callback){

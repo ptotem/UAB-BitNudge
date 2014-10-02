@@ -1,5 +1,5 @@
 var MedalsModel=require('../models/Medals');
-var UsersModel=require('../models/Users');
+var UsersModel=require('../models/Users').Users;
 var MedalsController={
   createMedal:function(req,res){
     MedalsModel.createMedal(req.params.orgId,req.body,function(err,obj){

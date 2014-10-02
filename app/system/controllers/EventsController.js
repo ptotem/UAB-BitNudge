@@ -1,8 +1,9 @@
+var tempModel=require('../models/Users');
 var PointsEngine=require('./PointsEngine/RankController.js');
-var UserGoalsModel=require('../models/UserGoals/UserGoals.js');
+var UserGoalsModel=tempModel.Goals;
 var TransactionMasterModel=require('../models/TransactionMaster');
 var GoalMasterModel=require('../models/GoalMaster');
-var UserModel=require('../models/Users');
+var UserModel=tempModel.Users;
 var EventsController={
   onRegisterTransaction:function(){
   },

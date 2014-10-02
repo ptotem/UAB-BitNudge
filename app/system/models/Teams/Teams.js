@@ -39,13 +39,8 @@ var Team= {
     setTeamFieldById: function (id, fieldName, value, callback) {
         TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
     },
-    getTeamsOfOrganization: function (id, fields,options, populationData,callback) {
-      TeamsCollection.find({}).populate(populationData).exec(callback);
-//      if(populationData)
-//        TeamsCollection.find({orgId: id}).populate(populationData).exec(callback);
-//      else{
-//        TeamsCollection.find({orgId:mongoose.Types.ObjectId(id)},fields,options,callback);
-//      }
+    getTeamsOfOrganization:function(orgId, fields,options, populationData,callback) {
+      TeamsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
     },
     getTeamLeader: function (id,fields,options,populationData,callback){
         TeamsCollection.findOne(({'_id': id}),fields,options).populate(populationData).exec(callback);

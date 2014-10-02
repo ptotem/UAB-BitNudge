@@ -1,5 +1,5 @@
 var leaderboardController=require('../../system/controllers/LeaderboardController.js');
-var transactionController=require('../../system/controllers/TransactionController.js');
+var transactionController=require('../../system/controllers/TransactionsController.js');
 var storeItemController=require('../../system/controllers/eCommerceEngine').StoreItemController;
 var medalController=require('../../system/controllers/MedalsController.js');
 var goalController=require('../../system/controllers/GoalsController.js');

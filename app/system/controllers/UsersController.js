@@ -1,4 +1,4 @@
-var UsersModel=require('../models/Users');
+var UsersModel=require('../models/Users').Users;
 var TeamsModel=require('../models/Teams');
 var SocialFeedModel=require('../models/SocialFeed');
 var NudgeMailbox=require('../models/NudgeMailbox');

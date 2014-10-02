@@ -1,4 +1,6 @@
 var UserPeriodPointsCollection=require('./UserPeriodPointsCollection.js');
+var mongoose=require('mongoose');
+var moment=require('moment');
 
 var UserPoints={
   // UserMonthPoints:UserMonthPoints,
@@ -34,7 +36,7 @@ var UserPoints={
     return query;
   },
   createUserPeriodPoints:function(orgId,userId, data,callback){
-    data.userId=mongoose.Types.ObjectId(userId);
+    // data.userId=mongoose.Types.ObjectId(userId);
     data.orgId=mongoose.Types.ObjectId(orgId);
     data.createdAt=new Date();
     var user= new UserPeriodPointsCollection(data);
@@ -64,7 +66,7 @@ var UserPoints={
     // var query={userId:userId};
     UserPeriodPointsCollection.aggregate({$match:query}, {$unwind:'$periods'}, {$match:periodQuery}, {$group:{_id:'$_id',userId:{$last:'$userId'},periods:{$push:'$periods'}}},callback);
   },
-  getSortedUserPointsOfPeriodOfOrganization:function(query,period,date,callback){
+  getSortedUserPointsOfPeriod:function(query,period,date,callback){
     var periodQuery=UserPoints.getQueryFromDate(period,date);
     UserPeriodPointsCollection.aggregate({$match:query}, {$unwind:'$periods'}, {$match:periodQuery}, {$group:{_id:'$_id',userId:{$last:'$userId'},periods:{$push:'$periods'}}},{$sort:{"periods.totalPoints":-1}},callback);
   },

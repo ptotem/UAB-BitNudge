@@ -1,5 +1,5 @@
 var StatusMessagesModel=require('../../models/StatusMessages');
-var UsersModel=require('../../models/Users');
+var UsersModel=require('../../models/Users').Users;
 var SocialFeedModel=require('../../models/SocialFeed');
 var NotificationCenterModel=require('../../models/NotificationCenter');
 var StatusMessagesController={

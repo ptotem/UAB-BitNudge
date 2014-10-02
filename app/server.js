@@ -71,64 +71,65 @@ server.listen(3004, function () {
 
 
 
-var UserModel=require('./system/models/Users');
-server.use(sessions({
-  cookieName:"session",
-  secret:'ungessableString',
-  duration:24*60*60*1000
-}));
-server.use(passport.initialize());
-server.use(passport.session());
-  passport.use(new LocalStrategy(
-    function(username, password, done) {
-      console.log('trying to authenticate.');
-      console.log(username+" "+password);
-      UserModel.getUserByAuthentication(username,password,function(err, user) {
-        if (err) { return done(err); }
-          if (!user) {
-            return done(null, false, { message: 'Incorrect username or password.' });
-          }
-        return done(null, user);
-      });
-    }
-  ));
-passport.serializeUser(function(user, done) {
-  done(null, user._id);
-});
-
-passport.deserializeUser(function(id, done) {
-  UserModel.getUser(id,"","","",function(err,user){
-    done(err, user);
-  });
-});
-server.post('/login',passport.authenticate('local'), function(req,res){
-  res.send({_id:req.user._id,orgId:req.user.orgId});
-});
+// var UserModel=require('./system/models/Users').Users;
+// server.use(sessions({
+//   cookieName:"session",
+//   secret:'ungessableString',
+//   duration:24*60*60*1000
+// }));
+// server.use(passport.initialize());
+// server.use(passport.session());
+//   passport.use(new LocalStrategy(
+//     function(username, password, done) {
+//       console.log('trying to authenticate.');
+//       console.log(username+" "+password);
+//       UserModel.getUserByAuthentication(username,password,function(err, user) {
+//         if (err) { return done(err); }
+//           if (!user) {
+//             return done(null, false, { message: 'Incorrect username or password.' });
+//           }
+//         return done(null, user);
+//       });
+//     }
+//   ));
+// passport.serializeUser(function(user, done) {
+//   done(null, user._id);
+// });
+//
+// passport.deserializeUser(function(id, done) {
+//   UserModel.getUser(id,"","","",function(err,user){
+//     done(err, user);
+//   });
+// });
+// server.post('/login',passport.authenticate('local'), function(req,res){
+//   res.send({_id:req.user._id,orgId:req.user.orgId});
+// });
 
 
 //testing ranks
 
-var RanksController=require('./system/controllers/PointsEngine/RankController.js');
+var RanksController=require('./system/controllers/PointsEngine').RankController;
 server.get('/org/:orgId/calc/month',function(req,res){
-  RanksController.calculateRankOfMonth(req.params.orgId,new Date(),function(){
+  RanksController.calculateRankOfPeriod(req.params.orgId,"month",new Date(),function(err){
+    if(err) res.send(err);
     res.send("done");
   });
 });
 server.get('/org/:orgId/calc/quarter',function(req,res){
-  RanksController.calculateRankOfQuarter(req.params.orgId,new Date(),function(){
+  RanksController.calculateRankOfPeriod(req.params.orgId,"quarter",new Date(),function(){
     res.send("done");
   });
 });
 server.get('/org/:orgId/calc/year',function(req,res){
-  RanksController.calculateRankOfYear(req.params.orgId,new Date(),function(){
+  RanksController.calculateRankOfPeriod(req.params.orgId,"year",new Date(),function(){
     res.send("done");
   });
 });
 
 
 
-//init routes
-var routes=require('./RestApi/RestApi.js');
+// init routes
+var routes=require('./api');
 routes.initialize(server);
 
 // var test=restify.createJsonClient({url:'http://localhost:3004'});

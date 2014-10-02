@@ -1,9 +1,7 @@
-// var Leaderboards={
-// };
-// module.exports=Leaderboards;
-var RanksCollection=require('./LeaderboardCollection.js');
+var LeaderboardCollection=require('./LeaderboardCollection.js');
 var mongoose=require('mongoose');
 var moment=require('moment');
+var TeamsModel=require('../Teams');
 var Leaderboard={
   createLeaderboard:function(orgId,period,date,leaderboardData,callback){
     if(!period)
@@ -11,21 +9,21 @@ var Leaderboard={
     leaderboardData.period=period;
     leaderboardData.date=date;
     leaderboardData.orgId=mongoose.Types.ObjectId(orgId);
-    var leaderboard=new RanksCollection(leaderboardData,false);
+    var leaderboard=new LeaderboardCollection(leaderboardData);
     leaderboard.save(callback);
   },
   getLeaderboard:function(id,fields,options,populationData,callback){
     if(populationData)
-      RanksCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+      LeaderboardCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     else
-      RanksCollection.findOne({_id:id},fields,options).exec(callback);
+      LeaderboardCollection.findOne({_id:id},fields,options).exec(callback);
   },
   getQueryFromDate:function(period,date){
     var currDate,start,end;
     if(period=="month"){
       currDate=moment(date);
-      start=moment().month(month.getMonth()).date(1).hour(0).minute(0).second(0).toDate();
-      end=moment().month(month.getMonth()+1).date(1).hour(0).minute(0).second(0).toDate();
+      start=moment().month(currDate.month()).date(1).hour(0).minute(0).second(0).toDate();
+      end=moment().month(currDate.month()+1).date(1).hour(0).minute(0).second(0).toDate();
     }
     else if(period=="quarter"){
       currDate=moment(date);
@@ -43,56 +41,77 @@ var Leaderboard={
   getLeaderboardOfPeriod:function(orgId,period,date,fields,options,populationData,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
     query.orgId=orgId;
-    RanksCollection.find(query,fields,options).populate({path:'playerRanks.player'}).exec(callback);
+    LeaderboardCollection.find(query,fields,options).populate({path:'playerRanks.player'}).exec(callback);
   },
   getTeamLeaderboardOfPeriod:function(orgId,teamId,period,date,fields,options,populationData,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
     query.orgId=orgId;
     query['playerInTeamRanks.team']=teamId;
-    RanksCollection.find(query,fields,options).populate(populationData).exec(callback);
+    LeaderboardCollection.find(query,fields,options).populate(populationData).exec(callback);
   },
-  setRankOfUserInPeriod:function(period,date,rankNo,userId,callback){
+  initializeLeaderboardForPeriod:function(orgId,period,date,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
-    query.orgId=orgId;
+    query.orgId=mongoose.Types.ObjectId(orgId);
+    LeaderboardCollection.findOne(query,function(err,obj){
+      if(!err&&!obj){
+        Leaderboard.createLeaderboard(orgId,period,date,{},function(newErr,newLeaderboard){
+          TeamsModel.getTeamsOfOrganization(orgId,"","","",function(teamErr,teams){
+            teams.forEach(function(team){
+              var tempTeamUpsert={team:mongoose.Types.ObjectId(team._id),playerRanks:[]};
+              LeaderboardCollection.update({_id:newLeaderboard._id},{$push:{playerInTeamRanks:tempTeamUpsert}},callback);
+            });
+          });
+        });
+      }
+      else callback(err,obj);
+    });
+  },
+  setRankOfUserInPeriod:function(period,date,rankNo,orgId,userId,callback){
+    var query=Leaderboard.getQueryFromDate(period,date);
+    query.orgId=mongoose.Types.ObjectId(orgId);
     var temp={};
+    var rankObj={rankNo:rankNo,player:userId};
     temp["playerRanks."+rankNo]=rankObj;
-    temp.date=date;
-    temp.period=period;
-    RanksCollection.update(query,{$set:temp},{upsert:true},callback);
+    // temp.period=period;
+    LeaderboardCollection.update(query,{$set:temp},callback);
   },
-  setRankOfUserInTeamInPeriod:function(period,date,rankNo,userId,teamId,callback){
+  setRankOfUserInTeamInPeriod:function(period,date,rankNo,orgId,userId,teamId,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
+    query.orgId=mongoose.Types.ObjectId(orgId);
     query['playerInTeamRanks.team']=teamId;
     var temp={};
+    var rankObj={rankNo:rankNo,player:userId};
     temp["playerInTeamRanks.$.playerRanks."+rankNo]=rankObj;
-    temp.date=date;
-    temp.period=period;
-    RanksCollection.update(query,{$set:temp},{upsert:true},callback);
+    // temp.date=date;
+    // temp.period=period;
+    LeaderboardCollection.update(query,{$set:temp},callback);
   },
-  setRankOfTeamInPeriod:function(period,date,rankNo,teamId,callback){
+  setRankOfTeamInPeriod:function(period,date,rankNo,orgId,teamId,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
+    query.orgId=mongoose.Types.ObjectId(orgId);
     var temp={};
-    temp["teamRank."+rankNo]=rankObj;
-    temp.date=date;
-    temp.period=period;
-    RanksCollection.update(query,{$set:temp},{upsert:true},callback);
+    var rankObj={rankNo:rankNo,team:teamId};
+    temp["teamRanks."+rankNo]=rankObj;
+    // temp.date=date;
+    // temp.period=period;
+    LeaderboardCollection.update(query,{$set:temp},callback);
   },
   // getUserRank:function(userId,month,callback){
     // var query=Leaderboard.getQueryFromDate(period,date);
-  //   RanksCollection.find({month:{$gte:start,$lt:end},'playerRanks.player':userId},function(err,obj){
+  //   LeaderboardCollection.find({month:{$gte:start,$lt:end},'playerRanks.player':userId},function(err,obj){
   //     // if(err) return callback(err);
   //     // else return callback(err,obj.playerRanks.)
   //   });
   // },
   // getTeamRank:function(teamId,month,callback){
     // var query=Leaderboard.getQueryFromDate(period,date);
-  //   RanksCollection.find({month:{$gte:start,$lt:end},'teamRanks.team':teamId},function(err,obj){
+  //   LeaderboardCollection.find({month:{$gte:start,$lt:end},'teamRanks.team':teamId},function(err,obj){
   //     if(err) return callback(err);
   //     else return callback(err,obj);
   //   });
   // },
   getRankSchema:function(){
-    return RanksCollection.Schema;
+    return LeaderboardCollection.Schema;
   }
 };
 module.exports=Leaderboard;

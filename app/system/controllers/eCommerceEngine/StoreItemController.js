@@ -1,6 +1,6 @@
 var StoreItemModel=require('../../models/StoreItem');
 var StoreModel=require('../../models/Store');
-var UserModel=require('../../models/Users');
+var UserModel=require('../../models/Users').Users;
 var AuthorizationController=('../../controllers/AuthorizationController.js');
 
 var StoreItemController={
