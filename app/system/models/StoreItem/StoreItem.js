@@ -1,16 +1,15 @@
 var StoreItemsCollection=require('./StoreItemCollection.js');
 var Store=require('../Store');
-var UserModel=require('../Users');
+var mongoose=require('mongoose');
 var StoreItems={
-  createStoreItem:function(organizationId,data){
+  createStoreItem:function(organizationId,data,callback){
     data.createdAt=new Date();
-    data.organizationId=organizationId;
+    data.orgId=mongoose.Types.ObjectId(organizationId);
     var l=new StoreItemsCollection(data);
-    l.save();
-    return true;
+    l.save(callback);
   },
   getStoreItem:function(storeId,fields,options,populationData,callback){
-    StoreItemsCollection.find({storeId:storeId},fields,options,callback);
+    StoreItemsCollection.findOne({_id:storeId},fields,options).populate(populationData).exec(callback);
   },
   getStoreItemSchema:function(){
     return StoreItemsCollection.Schema;
@@ -25,23 +24,14 @@ var StoreItems={
       else callback(obj.quantity>0);
     });
   },
-  updateStoreItem:function(id,updateDate,callback){
+  updateStoreItem:function(id,updateData,callback){
     StoreItemsCollection.update({_id:id},{$set:updateData},callback);
   },
-  updateStoreItem:function(id,fieldName,value,callback){
-    var temp={};
-    temp[fieldName]=value;
-    StoreItemsCollection.update({_id:id},{$set:temp},callback);
+  getStoreItemCost:function(id,callback){
+    StoreItemsCollection.findOne(({_id:id}).cost,callback);
   },
-    getStoreItemCost:function(id,callback){
-        StoreItemsCollection.findOne(({_id:id}).cost,callback);
-
-  },
-  getStoresOfOrg:function(orgId,fields,options,callback){
-    StoresCollection.findOne({organizationId:orgId},fields,options,function(err,obj){
-      if(err) handleError(err);
-      return callback(err,obj.name);
-    });
+  getStoreItemsOfOrganization:function(orgId,fields,options,populationData,callback){
+    StoreItemsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   }
 };
 module.exports=StoreItems;

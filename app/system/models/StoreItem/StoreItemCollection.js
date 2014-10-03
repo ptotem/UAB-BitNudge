@@ -5,8 +5,8 @@ var storeItemSchema=new Schema({
   quantity:Number,
   cost:Number,
   desc:String,
-  organizationId:{type:Schema.Types.ObjectId,ref:'organization'},
+  orgId:{type:Schema.Types.ObjectId,ref:'organizations'},
   createdAt:Date
 });
-var storeItems=mongoose.model('storeItem',storeItemSchema);
+var storeItems=mongoose.model('storeItems',storeItemSchema);
 module.exports=storeItems;

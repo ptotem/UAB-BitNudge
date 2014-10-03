@@ -2,13 +2,16 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
 var statusMessageSchema=new Schema({
-    content: String,
-    userId: {type:Schema.Types.ObjectId,ref:'user'},
-    parentId: {type:Schema.Types.ObjectId,ref:'user'},
-    orgId : {type:Schema.Types.ObjectId,ref:'organization'},
-    messages : String,
-    likes : String,
-    createdAt :Date
+  content: String,
+  userId: {type:Schema.Types.ObjectId,ref:'users'},
+  type:String,
+  parentId: {type:Schema.Types.ObjectId,ref:'users'},
+  orgId : {type:Schema.Types.ObjectId,ref:'organizations'},
+  messages : [{type:Schema.Types.ObjectId,ref:'statusMessages'}],
+  likes : {type:Schema.Types.ObjectId,ref:'users'},
+  totalLikes:Number,
+  totalComments:Number,
+  createdAt :Date
 });
-var StatusMessage=mongoose.model('status_messages',statusMessageSchema);
+var StatusMessage=mongoose.model('statusMessages',statusMessageSchema);
 module.exports=StatusMessage;

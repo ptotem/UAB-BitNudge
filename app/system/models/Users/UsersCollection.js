@@ -1,28 +1,56 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var userSchema=new Schema({
-  // _id:String,
   name:String,
   address:String,
-    // orgId:String,
-  orgId:Schema.Types.ObjectId,
+  orgId:{type:Schema.Types.ObjectId,rel:'organizations'},
   roles:[{type:Schema.Types.ObjectId,rel:'roles'}],
   email:String,
   passwordSalt:String,
   passwordHash:String,
   medals:[{type:Schema.Types.ObjectId,rel:'medals'}],
-  items:[{type:Schema.Types.ObjectId,rel:'storeItems'}],
+  items:[{time:Date,item:{type:Schema.Types.ObjectId,rel:'storeItems'}}],
+  points:[{
+    pointsEarned:Number,
+    date:Date,
+    type:String,
+    from:Schema.Types.ObjectId
+  }],
+  teams:[{type:Schema.Types.ObjectId,rel:'teams'}],
   level:Number,
   profileCompleteness:Number,
   designation:String,
   totalPoints:Number,
   totalCash:Number,
-  // goals:[{type:Schema.Types.ObjectId,rel:'goals'}],
-  // clients:[{type:Schema.Types.ObjectId,rel:'clients'}],
-  revenue:Number,
+  transactions:[{
+    transactionMaster:{type:Schema.Types.ObjectId,rel:'transactionMasters'},
+    date:Date,
+    target:Number,
+    approved:Boolean,
+    tags:[{type:Schema.Types.ObjectId,ref:'tags'}]
+  }],
+  goals:[{
+    goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
+    tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
+    startDate:Date,
+    endDate:Date,
+    points:Number,
+    completed:Boolean,
+    transactionsDone:Number,
+    totalTransactions:Number,
+    createdAt:Date,
+    percentage:Number,
+    transactions:[{
+      transactionMaster:{type:Schema.Types.ObjectId,ref:'transactionMasters'},
+      target:Number,
+      currentValue:Number,
+      done:Boolean
+    }]
+  }],
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],
   createdAt:Date,
-    rank:Number
+    rank:Number,
+    quote:String
 });
-var User=mongoose.model('user',userSchema);
+var User=mongoose.model('users',userSchema);
 module.exports=User;

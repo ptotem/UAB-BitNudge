@@ -12,23 +12,23 @@ var Organization= {
         var org=new OrganizationsCollection(data);
         org.createdAt=new Date();
         org.save(callback);
-        return true;
     },
     deleteOrganization:function(id,callback){
         OrganizationsCollection.remove({'_id':id},callback);
     },
     getOrganization:function(id,fields,options,populationData,callback){
-        OrganizationsCollection.findOne({_id:mongoose.Types.ObjectId(id)},fields,options).exec(callback);
+        OrganizationsCollection.findOne({_id:id},fields,options,callback);
     },
     setOrganizationFieldById:function(id,fieldName,value,callback){
-        OrganizationsCollection.update({_id:mongoose.Types.ObjectId(id)},{$set:{fieldName:value}},callback);
+        OrganizationsCollection.update({_id:id},{$set:{fieldName:value}},callback);
     },
-    updateOrg:function(id,updateData,callback){
+    updateOrganization:function(id,updateData,callback){
+      console.log(updateData);
         OrganizationsCollection.update({_id:id},{$set:updateData},callback);
     },
     findRevenueDetailsOfOrg:function(id,fieldname,calback)
     {
-        var field=fieldname;
+      var field=fieldname;
       OrganizationsCollection.findOne({ '_id': id })
           .populate('revenue').exec(function (err, revenues) {
               if (err) return handleError(err);

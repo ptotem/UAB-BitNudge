@@ -4,10 +4,10 @@ var storeSchema=new Schema({
     // _id:String,
   name:String,
   // Url:String,
-  organizationId:{type:Schema.Types.ObjectId,ref:'organization'},
+  orgId:{type:Schema.Types.ObjectId,ref:'organizations'},
   items:[{type:Schema.Types.ObjectId,ref:'storeItems'}],
-  storeDesc:String,
+  description:String,
   createdAt:Date
 });
-var stores=mongoose.model('store',storeSchema);
+var stores=mongoose.model('stores',storeSchema);
 module.exports=stores;

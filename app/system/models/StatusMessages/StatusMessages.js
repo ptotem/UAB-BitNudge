@@ -1,11 +1,8 @@
 var StatusMessageCollection=require('./StatusMessagesCollection.js');
-
+var mongoose=require('mongoose');
 var StatusMessage= {
-    getStatusMessageDetail:function(id,fieldName,callback){
-        StatusMessageCollection.find(({'_id' :id}).fieldName,callback);
-    },
     getStatusMessageSchema:function(){
-        return StatusMessageCollection.Schema;
+      return StatusMessageCollection.Schema;
     },
     createStatusMessage:function(orgId,userId,data,callback){
       data.orgId=mongoose.Types.ObjectId(orgId);
@@ -15,26 +12,22 @@ var StatusMessage= {
       message.save(callback);
     },
     deleteStatusMessage:function(id,callback){
-        StatusMessageCollection.remove({'_id':id},callback);
+      StatusMessageCollection.remove({'_id':id},callback);
     },
-    getStatusMessage:function(id,callback){
-        StatusMessageCollection.findOne({_id:id},callback);
+    getStatusMessage:function(id,fields,options,populationData,callback){
+      StatusMessageCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     },
-    getStatusMessagesOfUser:function(userId,callback){
-        StatusMessageCollection.findOne({userId:userId},callback);
+    getStatusMessagesOfUser:function(userId,fields,options,populationData,callback){
+      StatusMessageCollection.findOne({userId:userId},fields,options).populate(populationData).exec(callback);
     },
-    updateStatusMessage:function(id,updateDate,callback){
-        StatusMessageCollection.update({_id:id},{$set:updateData},callback);
+    updateStatusMessage:function(id,updateData,callback){
+      StatusMessageCollection.update({_id:id},{$set:updateData},callback);
     },
-    addActionIntoStatusMessage:function(id,action_id,callback)
-    {
-        StatusMessageCollection.update({_id:id},{$push:{action:action_id}},callback);
+    likeStatusMessage:function(id,likerId,callback){
+      StatusMessageCollection.update({_id:id},{$push:{likes:likerId},$inc:{totalLikes:1}},callback);
     },
-    removeActionFromStatusMessage:function(id,action_id,callback)
-    {
-        StatusMessageCollection.update({_id:id},{$pull:{action:action_id}},callback);
+    commentOnStatusMessage:function(id,commentId,callback){
+      StatusMessageCollection.update({_id:id},{$push:{messages:commentId},$inc:{totalComments:1}},callback);
     }
-//    AddRoles_toUser:function
 };
-//if()
 module.exports=StatusMessage;

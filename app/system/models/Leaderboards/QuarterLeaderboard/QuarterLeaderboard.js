@@ -4,7 +4,7 @@ var moment=require('moment');
 var Leaderboard={
   createLeaderboard:function(orgId,leaderboardData,callback){
     leaderboardData.orgId=mongoose.Schema.Types.ObjectId(orgId);
-    leaderboardData.date=new Date();
+    leaderboardData.quarter=new Date();
     var leaderboard=new RanksCollection(leaderboardData);
   },
   getLeaderboard:function(id,fields,options,populationData,callback){
@@ -29,7 +29,7 @@ var Leaderboard={
     var currDate=moment(quarter);
     var start=moment().month(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
     var end=moment().month(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
-    RanksCollection.find({quarter:{$gte:start,$lt:end}},fields,options).populate(populationData).exec(function(err,docs){
+    RanksCollection.find({quarter:{$gte:start,$lt:end}}).populate(populationData).exec(function(err,docs){
       docs.forEach(function(doc){
         var date=moment(doc.date);
         if(currDate.quarter()==date.quarter()){

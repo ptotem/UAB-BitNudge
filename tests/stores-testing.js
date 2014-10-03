@@ -9,37 +9,37 @@ mongoose.connect('mongodb://localhost/uabTest');
 describe("test nudge-mail",function(){
     describe("static tests",function(){
         it("should create store",function(done){
-            SocialFeedsModel.createSocialFeed("org1",{_id:"social1",user:"user1",messages:"msg1"});
+            StoreModel.createSocialFeed("org1",{_id:"social1",user:"user1",messages:"msg1"});
             done();
         });
 
         it("should get store schema",function(done){
-            SocialFeedsModel.getSocialFeedSchema();
+            StoreModel.getSocialFeedSchema();
             done();
         });
 
         it("should get store",function(done){
-            SocialFeedsModel.getSocialFeed("social1","","","");
+            StoreModel.getSocialFeed("social1","","","");
             done();
         });
 
         it("should get store of userId",function(done){
-            SocialFeedsModel.getSocialFeedOfUser("user1","","","");
+            StoreModel.getSocialFeedOfUser("user1","","","");
             done();
         });
 
         it("should add msg to store",function(done){
-            SocialFeedsModel.addMessageToFeed("user1","msg2");
+            StoreModel.addMessageToFeed("user1","msg2");
             done();
         });
 
         it("should update store",function(done){
-            SocialFeedsModel.updateSocialFeed("social1", "product", "Product2");
+            StoreModel.updateSocialFeed("social1", "product", "Product2");
             done();
         });
 
         it("should delete store",function(done){
-            SocialFeedsModel.deleteSocialFeed("social1");
+            StoreModel.deleteSocialFeed("social1");
             done();
         });
 

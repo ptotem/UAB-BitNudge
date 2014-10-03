@@ -1,18 +1,18 @@
 var LevelsCollection=require('./LevelsCollection.js');
+var mongoose = require('mongoose');
 var Levels={
-  createLevel:function(organizationId,data){
-//    if(!Levels.validateRanges(data.rangeMin,data.rangeMax))
-//      return false;
-    data.organizationId=organizationId;
-    var l=new LevelsCollection(data);
-    l.save();
-    return true;
+  createLevel:function(orgId,data){
+      data.createdAt=new Date();
+      data.orgId=mongoose.Types.ObjectId(orgId);
+      var l=new LevelsCollection(data);
+      l.save();
+      return true;
   },
-  getLevel:function(id,callback){
-    LevelsCollection.findOne({_id:id},callback);
+  getLevel:function(id,fields,options,populationData,callback){
+    LevelsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getLevelsOfOrganization:function(orgId,callback){
-    LevelsCollection.find({organizationId:orgId},callback);
+  getLevelsOfOrganization:function(orgId,fields,options,populationData,callback){
+    LevelsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   },
   getLevelSchema:function(){
     return LevelsCollection.Schema;

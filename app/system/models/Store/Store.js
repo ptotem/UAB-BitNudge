@@ -9,7 +9,7 @@ var Stores={
     return true;
   },
   getStore:function(id,fields,options,populationData,callback){
-    StoresCollection.findOne({_id:id},fields,options,populationData,callback);
+    StoresCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   getStoresOfOrganization:function(orgId,fields,options,populationData,callback){
     if(populationData)
@@ -18,13 +18,10 @@ var Stores={
       StoresCollection.find({orgId:orgId},fields,options).exec(callback);
   },
   getStoresOfTeam:function(teamId,fields,options,populationData,callback){
-    if(populationData)
-      StoresCollection.find({teamId:teamId},fields,options).populate(populationData).exec(callback);
-    else
-      StoresCollection.find({teamId:teamId},fields,options).exec(callback);
+    StoresCollection.find({teamId:teamId},fields,options).populate(populationData).exec(callback);
   },
-  addItemToStore:function(storeId,itemData,callback){
-    StoresCollection.update({_id:storeId},{$set:itemData},callback);
+  removeStoreItemFromAllStores:function(storeItemId,callback){
+    StoresCollection.update({},{$pull:{items:storeItemId}},callback);
   },
   getStoreSchema:function(){
     return StoresCollection.Schema;
@@ -32,7 +29,11 @@ var Stores={
   deleteStore:function(id,callback){
     StoresCollection.remove({_id:id},callback);
   },
-  updateStore:function(id,updateDate,callback){
+    addItemToStore:function(storeItemId,storeId,callback){
+     StoresCollection.update({_id:storeId},{$push:{items:storeItemId}},callback);
+
+},
+  updateStore:function(id,updateData,callback){
     StoresCollection.update({_id:id},{$set:updateData},callback);
   }
 };

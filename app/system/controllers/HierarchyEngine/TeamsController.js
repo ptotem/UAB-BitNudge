@@ -11,23 +11,8 @@ var HierarchyEngine={
       res.send(obj);
     });
   },
-  getTeamsInOrg:function(req,res){
-    TeamModel.getTeamsInOrg(req.params.orgId,{_id:0},{},null,function(err,objs){
-      if(err){
-        res.send("fail");
-        return handleError(err);
-      }
-      res.send({teams:objs});
-    });
-  },
-  createTeam:function(req,res){
-    TeamModel.createTeam(req.params.orgId,req.query,function(err,obj){
-      if(err) res.send("fail");
-      else res.send(obj);
-    });
-  },
-  updateTeam:function(req,res){
-    TeamModel.updateTeam(req.params.teamId,req.query,function(err,obj){
+  getTeamsOfOrganization:function(req,res){
+    TeamModel.getTeamsOfOrganization(req.params.orgId,{_id:0},{},{path:'teams'},function(err,objs){
       if(err){
         res.send("fail");
         return handleError(err);
@@ -35,14 +20,41 @@ var HierarchyEngine={
       res.send(objs);
     });
   },
+  createTeam:function(req,res){
+    TeamModel.createTeam(req.params.orgId,req.body,function(err,obj){
+      if(err) res.send("fail");
+      else res.send(obj);
+      TeamPeriodPointsModel.createTeamPeriodPoints(req.params.orgId,obj._id,function(){});
+    });
+  },
+  updateTeam:function(req,res){
+    TeamModel.updateTeam(req.params.teamId,req.body,function(err,obj){
+      if(err){
+        res.send("fail");
+        return handleError(err);
+      }
+      res.send("success");
+    });
+  },
   addMemberToTeam:function(req,res){
-      TeamModel.addMembersToTeam(req.id,req.data,function(err,obj){
+      TeamModel.addMembersToTeam(req.id,req.body,function(err,obj){
           if(err){
             res.send("fail");
             return handleError(err);
           }
           else{
             res.send("success");
+          }
+      });
+  },
+  getMembersOfTeam:function(req,res){
+      TeamModel.getTeam(req.params.teamId,"members","","members",function(err,obj){
+          if(err){
+            res.send("fail");
+            return handleError(err);
+          }
+          else{
+            res.send(obj);
           }
       });
   },
@@ -80,17 +92,37 @@ var HierarchyEngine={
       }
     });
   },
-  // deleteTeamFromOrg:function(res,req){
-  //     TeamModel.deleteTeam(res.teamId);
-  // },
-  addSubteam:function(req,res){
-    TeamModel.addSubteams(req.params.teamId,req.query.subteam,function(err,obj){
+  deleteTeam:function(req,res){
+       TeamModel.deleteTeam(req.params.teamId);
+  },
+//    getStoresOfTeam:function(req,res){
+//        // if(AuthorizationController.IsAuthorized(req.userId,Store,read)) {
+//        TeamModel.getStoresOfTeam(req.params.teamId,function(err,obj){
+//            if(err) res.send(err);
+//            else res.send(obj);
+//        });
+//        // }
+//    },
+    getStoresOfTeam:function(req,res){
+        TeamModel.getStoresOfTeam(req.params.teamId,"stores","","stores",function(err,obj){
+            if(err){
+                res.send("fail");
+                return handleError(err);
+            }
+            else{
+                res.send(obj);
+            }
+        });
+    },
+
+    addSubteam:function(req,res){
+    TeamModel.addSubteams(req.params.teamId,req.body.subteam,function(err,obj){
       if(err){
         res.send("fail");
         return handleError(err);
       }
       else{
-        res.send("success");
+        res.send(obj);
       }
     });
   }
