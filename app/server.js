@@ -8,6 +8,8 @@ var mongoose=require('mongoose');
 var passport=require('passport');
 var sessions=require('client-sessions');
 var LocalStrategy = require('passport-local').Strategy;
+var restify = require('restify');
+var jwt = require('jwt-simple');
 // var cors=require('cors');
 // var corsMiddleware = require('restify-cors-middleware');
 //
@@ -30,6 +32,44 @@ db.once('open', function callback () {
 });
 // db.close();
 //
+// Zoho authentication Api call
+
+server.get('/login', function (reqdata, resdata) {
+  var  user_email = reqdata.query.username;
+    var user_password = reqdata.query.password;
+    var username = { username: user_email };
+    var secret = '123';
+    var token = jwt.encode(username, secret);
+// decode
+    var decoded = jwt.decode(token, secret);
+    var http = require('https');
+    var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID='+user_email+'&PASSWORD='+user_password;
+//    console.log(pathOfLogin);
+    var data = '';
+    var options = {
+        hostname: 'accounts.zoho.com',
+        method: "POST",
+        path:pathOfLogin,
+        headers: {
+            Accept:"application/json"
+        }
+    };
+    var request = http.request(options, function(res) {
+        res.on('data', function(chunk) {
+            data += chunk;
+        });
+        res.on('end', function(chunk) {
+//         resdata.send(token);
+            resdata.send(data);
+        });
+    });
+
+    request.end();
+    request.on('error', function(e) {
+        console.error(e);
+    });
+
+});
 
 
 
@@ -129,8 +169,13 @@ server.get('/org/:orgId/calc/year',function(req,res){
 
 
 // init routes
-var routes=require('./api');
+var routes=require('./api/RestApi.js');
 routes.initialize(server);
+
+//init routes
+//var routes=require('./RestApi/RestApi.js');
+//routes.initialize(server);
+
 
 // var test=restify.createJsonClient({url:'http://localhost:3004'});
 // test.post('/login',{test:"try"},function(err,req,res,obj){

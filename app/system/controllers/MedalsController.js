@@ -20,13 +20,13 @@ var MedalsController={
     });
   },
   getMedalsOfUser:function(req,res){
-    UsersModel.getMedals(req.params.userId,function(err,goals){
+    UsersModel.getMedals(req.params.userId,"","",req.query.limits,req.query.offset,function(err,goals){
       if(err) res.send(err);
       else res.send(goals);
     });
   },
   getMedalsOfOrganization:function(req,res){
-    MedalsModel.getMedalsOfOrganization(req.params.orgId,function(err,objs){
+    MedalsModel.getMedalsOfOrganization(req.params.orgId,"","",req.query.limits,req.query.limits,req.query.offset,function(err,objs){
       if(err) res.send(err);
       else res.send(objs);
     });

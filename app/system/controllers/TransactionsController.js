@@ -22,7 +22,7 @@ var TransactionController={
     });
   },
   getTransactionsOfUser:function(req,res){
-    TransactionModel.getTransactionsOfUser(req.params.userId,"","","",function(err,obj){
+    TransactionModel.getTransactionsOfUser(req.params.userId,"",req.query.limits,"",req.query.limits,req.query.offset,function(err,obj){
       if(err) return handleError(err);
       else res.send(obj);
     });

@@ -5,7 +5,7 @@ var TeamModel=require('../../models/Teams');
 var StoreController={
     getStoresOfOrganization:function(req,res){
         // if(AuthorizationController.IsAuthorized(req.userId,Store,read)) {
-            StoreModel.getStoresOfOrganization(req.params.orgId,"","","",function(err,obj){
+            StoreModel.getStoresOfOrganization(req.params.orgId,"","",req.query.limits,req.query.limits,req.query.offset,function(err,obj){
               if(err) res.send(err);
               else res.send(obj);
             });

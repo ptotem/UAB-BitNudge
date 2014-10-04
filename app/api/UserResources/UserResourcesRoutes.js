@@ -9,7 +9,7 @@ var userRoutes={
   'get /org/:orgId/users/:userId':function(req,res){
     userController.getUser(req,res);
   },
-  'get /org/:orgId/users':function(req,res){
+  'get /org/:orgId/users/:limits/:offset':function(req,res){
     userController.getUsersOfOrganization(req,res);
   },
   'post /org/:orgId/users':function(req,res){
@@ -36,13 +36,14 @@ var transactionRoutes={
       transactionController.createTransaction(req,res);
     },
     'del org/:orgId/users/:userId/transaction/:transactionId':function(req,res){
-      transctionController.deleteTransactionOfUser(req,res);
+        transactionController.deleteTransactionOfUser(req,res);
     }
 };
 
 //End Points for StoreItems in UserResourcesRoutes:
 var storeItemRoutes={
   'get org/:orgId/users/:userId/items':function(req,res) {
+//      res.send(req.query.limits);
     storeItemController.getStoreItemsOfUser(req,res);
   },
   'post /org/:orgId/users/:userId/items/':function(req,res){
@@ -79,7 +80,7 @@ var goalRoutes={
       goalController.getLiveUserGoals(req,res);
     },
     'post /org/:orgId/users/:userId/goals':function(req,res){
-      console.log("test");
+//      console.log("test");
       goalController.createGoal(req,res);
     }
 };
@@ -138,7 +139,7 @@ var nudgeChatRoutes={
 //End Points For NudgeMailbox:
 var nudgeMailBoxRoutes={
     'get org/:orgId/users/:userId/mails':function(req,res){
-        socialEngine.NudgeMailboxController.getMailboxOfUser(req,res);
+        socialEngine.NudgeMailboxController.getNudgeMailboxOfUser(req,res);
     }
 };
 

@@ -42,8 +42,16 @@ var UserManagement={
       else return callback(err,null);
     });
   },
-  getStoreItemsOfUser:function(id,fields,options,callback){
-    UserCollection.findOne({_id:id},fields,options).populate('items').exec(callback);
+  getStoreItemsOfUser:function(id,fields,options,limit,offset,callback){
+      if(options)
+          UserCollection.findOne( {'_id':id},{ items:{ $slice: [ parseInt(offset),parseInt(limit) ] } },fields,options).populate('items').exec(callback);
+      else
+      {
+          UserCollection.findOne({'_id':id},fields,options).populate('items').exec(callback);
+
+      }
+//      UserCollection.findOne({'_id':id}).exec(callback);
+
   },
   addRole:function(userId,role,callback){
     UserCollection.update({_id:userId},{$push:{roles:role}},callback);
@@ -51,6 +59,7 @@ var UserManagement={
   addPoints:function(userId,points,callback){
     UserCollection.update({_id:userId},{$push:{points:points}},callback);
   },
+
   addTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$push:{teams:teamId}},callback);
   },
@@ -75,9 +84,21 @@ var UserManagement={
   getUser:function(id,fields,options,populationData,callback){
     UserCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getUsersOfOrganization:function(orgId,fields,options,populationData,callback){
-    UserCollection.find({orgId:orgId},fields,options).exec(callback);
-  },
+
+//  getUsersOfOrganization:function(orgId,fields,options,populationData,callback){
+//    UserCollection.find({orgId:orgId},fields,options).exec(callback);
+//  },
+    getUsersOfOrganization: function (id, fields,options,populationData,limit,offset,callback) {
+//        TeamsCollection.find({}).limit(limit).populate(populationData).exec(callback);
+        var p=parseInt(limit);
+        if(populationData)
+            UserCollection.find({orgId: id},fields,options).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
+//        TeamsCollection.find({orgId: id}).populate(populationData).limit(limit).exec(callback);
+        else{
+            UserCollection.find({orgId:mongoose.Types.ObjectId(id)},fields,options,callback);
+        }
+
+    },
   addPointsObject:function(userId,pointsObj,callback){
     if(!pointsObj.date)
       pointsObj.date=new Date();
@@ -96,7 +117,7 @@ var UserManagement={
   },
   getTransactionHistoryOfUser:function(userId,callback){
     UserCollection.findOne({_id:userId},"items",{sort:"items.time"}).populate("items.item").exec(callback);
-  },
+  }
   // getLiveGoalsOfUser:function(userId,currDate,tags,callback){
   //   var goalQuery={};
   //   goalQuery['goals.startDate']={$lte:currDate};

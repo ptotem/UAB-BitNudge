@@ -14,9 +14,10 @@ var Medals={
           MedalsCollection.find({_id:id},fields,options).exec(callback);
 //    MedalsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getMedalsOfOrganization:function(orgId,fields,options,populationData,callback){
+  getMedalsOfOrganization:function(orgId,fields,options,populationData,limit,offset,callback){
       if(populationData)
-          MedalsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
+          MedalsCollection.find({orgId: orgId}).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
+//          MedalsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
       else
           MedalsCollection.find({orgId:orgId},fields,options).exec(callback);
 //    MedalsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
