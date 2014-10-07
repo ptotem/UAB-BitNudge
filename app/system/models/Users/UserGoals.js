@@ -12,6 +12,11 @@ var UserGoals={
   getLiveGoalsOfUser:function(userId,currDate,callback){
     UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate}}}, {$group:{_id:'$_id',goals:{$push:'$goals'}}},callback);
   },
+  getLiveGoalsOfUserWithQuery:function(userId,query,currDate,callback){
+    query['goals.startDate']={$lte:currDate};
+    query['goals.endDate']={$gte:currDate};
+    UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:query}, {$group:{_id:'$_id',goals:{$push:'$goals'}}},callback);
+  },
   //the callback takes arg err and return value.
   // getUserGoalProgress:function(userId,goalId,callback){
   //   UserGoals.getUserGoal(userId,goalId,"",{},{path:'goalId'},function(err,obj){

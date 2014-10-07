@@ -12,11 +12,11 @@ var EventsController={
   triggerSystemActivity:function(){
   },
   processTransactionForUser:function(userId,transactionData,callback){
-    UserGoalsModel.getLiveGoalsOfUser(userId,new Date(),function(err,goals){
+    UserGoalsModel.getLiveGoalsOfUserWithQuery(userId,{'goals.tags':transactionData.tags},new Date(),function(err,goals){
       var allGoals=goals[0].goals;
       allGoals.forEach(function(goalObj){
         goalObj.transactions.forEach(function(transactionObj){
-          if(transactionObj.transactionMaster.toString()==transactionData.transactionMaster.toString()&&EventsController.tagsMatch(transactionData,goalObj)){
+          if(transactionObj.transactionMaster.toString()==transactionData.transactionMaster.toString()){
             TransactionMasterModel.getTransactionMaster(transactionObj.transactionMaster,"","","",function(err,transactionMasterObj){
               if(!transactionObj.currentValue)
                 transactionObj.currentValue=0;

@@ -58,7 +58,7 @@ var UserManagement={
     UserCollection.update({_id:userId},{$pull:{teams:teamId}},callback);
   },
   addFollower:function(userId,followerId,callback){
-    UserCollection.update({userId:userId},{$push:{followers:followerId}},callback);
+    UserCollection.update({userId:userId},{$push:{followers:followerId},$inc:{followerCount:1}},callback);
   },
   giveMedalToUser:function(userId,medalId,callback){
     UserCollection.update({_id:userId},{$push:{medals:medalId}},callback);

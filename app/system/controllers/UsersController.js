@@ -26,7 +26,7 @@ var UsersController={
     });
   },
   getUser:function(req,res){
-    UsersModel.getUser(req.params.userId,"-_id name profileCompleteness","","teams",function(err,obj){
+    UsersModel.getUser(req.params.userId,"","",{path:'teams',select:'name',model:'teams'},function(err,obj){
       res.send(obj);
       // if(req.user._id==req.params.userId)
       //   res.send(obj);

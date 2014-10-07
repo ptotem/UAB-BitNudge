@@ -21,10 +21,13 @@ var HierarchyEngine={
     });
   },
   createTeam:function(req,res){
-    TeamModel.createTeam(req.params.orgId,req.body,function(err,obj){
+    TeamModel.createTeam(req.params.orgId,req.body,function(err,team){
       if(err) res.send("fail");
-      else res.send(obj);
-      TeamPeriodPointsModel.createTeamPeriodPoints(req.params.orgId,obj._id,function(){});
+      else res.send(team);
+      TeamPeriodPointsModel.createTeamPeriodPoints(req.params.orgId,team._id,function(){});
+      req.body.members.forEach(function(userId){
+        UserModel.Users.addTeam(userId,team._id,function(){});
+      });
     });
   },
   updateTeam:function(req,res){

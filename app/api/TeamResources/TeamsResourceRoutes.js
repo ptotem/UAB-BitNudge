@@ -60,26 +60,20 @@ var storesRoutes={
     }
 };
 
-// End Points For Rank in team resources:(not Completed)
-
-// var pointsEngine=require('../../system/controllers/PointsEngine');
-// var rankRoutes={
-//     'post /org/:orgId/teams/:teamId/rank':function(req,res){
-//         pointsEngine.RankController.getTeamRank(req,res);
-//     }
-// };
-
-
-
 //End Points for LeaderBoard:
 var leaderboardRoutes={
     'get org/:orgId/teams/:teamId/leaderboard':function(req,res) {
         leaderboardController.getTeamLeaderboard(req,res);
     }
 };
+var rankRoutes={
+    'get /org/:orgId/teams/:teamId/rank':function(req,res){
+        leaderboardController.getTeamRank(req,res);
+    }
+};
 
 
-var stuff=[leaderboardRoutes,storesRoutes,memberTeamsRoutes,subteamRoutes,teamRoutes];
+var stuff=[leaderboardRoutes,storesRoutes,memberTeamsRoutes,subteamRoutes,teamRoutes,rankRoutes];
 module.exports={
   initialize:function(server){
     stuff.forEach(function(routesObj){

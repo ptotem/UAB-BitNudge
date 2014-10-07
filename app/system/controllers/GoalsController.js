@@ -23,9 +23,9 @@ var GoalsController={
   //   });
   // },
   getLiveUserGoals:function(req,res){
-    UserGoalsModel.getLiveGoalsOfUser(req.params.userId,new Date(),null,function(err,objs){
+    UserGoalsModel.getLiveGoalsOfUser(req.params.userId,new Date(),function(err,objs){
       if(err) res.send(err);
-      res.send(objs);
+      res.send(objs[0]);
     });
   }
   // assignGoalToUser:function(req,res){

@@ -96,20 +96,18 @@ var Leaderboard={
     // temp.period=period;
     LeaderboardCollection.update(query,{$set:temp},callback);
   },
-  // getUserRank:function(userId,month,callback){
-    // var query=Leaderboard.getQueryFromDate(period,date);
-  //   LeaderboardCollection.find({month:{$gte:start,$lt:end},'playerRanks.player':userId},function(err,obj){
-  //     // if(err) return callback(err);
-  //     // else return callback(err,obj.playerRanks.)
-  //   });
-  // },
-  // getTeamRank:function(teamId,month,callback){
-    // var query=Leaderboard.getQueryFromDate(period,date);
-  //   LeaderboardCollection.find({month:{$gte:start,$lt:end},'teamRanks.team':teamId},function(err,obj){
-  //     if(err) return callback(err);
-  //     else return callback(err,obj);
-  //   });
-  // },
+  getUserRank:function(orgId,userId,period,date,callback){
+    var query=Leaderboard.getQueryFromDate(period,date);
+    query['playerRanks.player']=userId;
+    query.orgId=orgId;
+    LeaderboardCollection.findOne(query,"playerRanks.$",callback);
+  },
+  getTeamRank:function(orgId,teamId,period,date,callback){
+    var query=Leaderboard.getQueryFromDate(period,date);
+    query['teamRanks.team']=teamId;
+    query.orgId=orgId;
+    LeaderboardCollection.findOne(query,"teamRanks.$",callback);
+  },
   getRankSchema:function(){
     return LeaderboardCollection.Schema;
   }

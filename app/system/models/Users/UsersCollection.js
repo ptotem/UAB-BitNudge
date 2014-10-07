@@ -48,6 +48,7 @@ var userSchema=new Schema({
     }]
   }],
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],
+  followerCount:Number,
   createdAt:Date,
     rank:Number,
     quote:String

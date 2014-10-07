@@ -56,13 +56,6 @@ var transactionHistoryRoutes={
 };
 
 
-// var rankController=require('../../system/controllers/PointsEngine/RankController.js');
-// //End Points for Rank:
-// var rankRoutes={
-//     'get org/:orgId/users/:userId/rank':function(req,res) {
-//         rankController.getUserRank(req,res);
-//     }
-// };
 
 var medalRoutes={
     'get org/:orgId/users/:userId/medals':function(req,res) {
@@ -88,6 +81,13 @@ var leaderboardRoutes={
   'get org/:orgId/leaderboard/users':function(req,res){
     leaderboardController.getUserLeaderboard(req,res);
   }
+};
+
+//End Points for Rank:
+var rankRoutes={
+    'get org/:orgId/users/:userId/rank':function(req,res) {
+        leaderboardController.getUserRank(req,res);
+    }
 };
 
 //End Points For SocialFeed:
@@ -157,7 +157,7 @@ var nudgeMailRoutes={
         socialEngine.NudgeMailsController.deleteMail(req,res);
     }
 };
-var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,socialFeedRoutes,medalRoutes];
+var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,socialFeedRoutes,medalRoutes,rankRoutes];
 module.exports={
   initialize:function(server){
     stuff.forEach(function(routesObj){
