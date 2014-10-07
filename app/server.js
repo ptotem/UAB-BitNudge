@@ -10,6 +10,8 @@ var sessions=require('client-sessions');
 var LocalStrategy = require('passport-local').Strategy;
 var restify = require('restify');
 var jwt = require('jwt-simple');
+//var authentication=require('../system/controllers/UserController.js')
+
 // var cors=require('cors');
 // var corsMiddleware = require('restify-cors-middleware');
 //
@@ -35,7 +37,13 @@ db.once('open', function callback () {
 // Zoho authentication Api call
 
 server.get('/login', function (reqdata, resdata) {
-  var  user_email = reqdata.query.username;
+   if(authentication.IsAuthenticated(reqdata,resdata)==true)
+    {
+        resdata.send('user Authentication');
+
+    }
+
+    var  user_email = reqdata.query.username;
     var user_password = reqdata.query.password;
     var username = { username: user_email };
     var secret = '123';

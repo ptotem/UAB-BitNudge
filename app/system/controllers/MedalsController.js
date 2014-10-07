@@ -20,7 +20,8 @@ var MedalsController={
     });
   },
   getMedalsOfUser:function(req,res){
-    UsersModel.getMedals(req.params.userId,"","",req.query.limits,req.query.offset,function(err,goals){
+    UsersModel.getMedals(req.params.userId,"","",req.query.limits,req.query.limits,req.query.offset,function(err,goals){
+//        console.log('hiii');
       if(err) res.send(err);
       else res.send(goals);
     });

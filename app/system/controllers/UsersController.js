@@ -18,7 +18,18 @@ var UsersController={
       res.send(user);
     });
   },
-  updateUser:function(req,res){
+    IsAuthenticated:function(req,res) {
+        UsersModel.IsAuthenticated(req.query.username,req.query.password,function(err,obj)
+        {
+//            console.log('hkll');
+            if(err) res.send("fail");
+            else
+            res.send(obj);
+        })
+
+
+    },
+    updateUser:function(req,res){
     UsersModel.updateUser(req.params.userId,req.body,function(err,obj){
       if(err) res.send("fail");
       else
@@ -39,11 +50,11 @@ var UsersController={
 //    });
 //  },
     getUsersOfOrganization:function(req,res){
-        var r=req.params.limits;
-        var last=req.params.offset;
+        var r=req.query.limits;
+        var last=req.query.offset;
 //        console.log(r);
-        UsersModel.getUsersOfOrganization(req.params.orgId,"name",{},{path:'users'},r,last,function(err,objs){
-            console.log(last);
+        UsersModel.getUsersOfOrganization(req.params.orgId,"name",req.query.limits,{path:'users'},r,last,function(err,objs){
+//            console.log(last);
             if(err){
                 res.send("fail");
                 return handleError(err);

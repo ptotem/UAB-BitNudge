@@ -8,8 +8,10 @@ var userController=require('../../system/controllers/UsersController.js');
 var userRoutes={
   'get /org/:orgId/users/:userId':function(req,res){
     userController.getUser(req,res);
+//      console.log('hello');
   },
-  'get /org/:orgId/users/:limits/:offset':function(req,res){
+  'get /org/:orgId/users':function(req,res){
+//      console.log('klll');
     userController.getUsersOfOrganization(req,res);
   },
   'post /org/:orgId/users':function(req,res){
@@ -43,6 +45,7 @@ var transactionRoutes={
 //End Points for StoreItems in UserResourcesRoutes:
 var storeItemRoutes={
   'get org/:orgId/users/:userId/items':function(req,res) {
+//      console.log('herro');
 //      res.send(req.query.limits);
     storeItemController.getStoreItemsOfUser(req,res);
   },
@@ -54,6 +57,11 @@ var transactionHistoryRoutes={
   'get /org/:orgId/users/:userId/transactionHistory':function(req,res){
     userController.getTransactionHistoryOfUser(req,res);
   }
+//
+//    'get /login':function(req,res){
+////        res.send('kll');
+//        userController.IsAuthenticated(req,res);
+//    }
 };
 
 

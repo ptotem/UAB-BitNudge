@@ -37,7 +37,7 @@ var teamRoutes={
     'get /org/:orgId/teams/:teamId':function(req,res){
       hierarchyController.TeamsController.getTeam(req,res);
     },
-    'get /org/:orgId/:teams':function(req,res){
+    'get /org/:orgId/teams':function(req,res){
 //        res.send(req.params.teamLimits);
         hierarchyController.TeamsController.getTeamsOfOrganization(req,res);
 

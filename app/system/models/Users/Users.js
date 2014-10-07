@@ -2,6 +2,8 @@ var UserCollection=require('./UsersCollection.js');
 var mongoose=require('mongoose');
 var UserGoals=require('./UserGoals.js');
 var UserTransactions=require('./Transactions.js');
+var jwt = require('jwt-simple');
+
 var UserManagement={
   getUserSchema:function(){
     return UserCollection.Schema;
@@ -35,19 +37,28 @@ var UserManagement={
   getTotalCash: function (id,fields,options,populationData,callback){
       UserCollection.findOne({_id: id},fields,options).populate(populationData).exec(callback);
   },
-  getMedals:function(id,fields,options,callback){
-    UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
-      if(objs)
-        return callback(err,objs.medals);
-      else return callback(err,null);
-    });
+  getMedals:function(id,fields,options,populationdata,limit,offset,callback){
+      if(populationdata)
+          UserCollection.findOne( {'_id':id},{ items:{ $slice: [ parseInt(offset),parseInt(limit) ] } },fields,options).populate('medals').exec(callback);
+      else
+      {
+          UserCollection.findOne({'_id':id},fields,options).populate('medals').exec(callback);
+
+      }
+//    UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
+//      if(objs)
+//        return callback(err,objs.medals);
+//      else return callback(err,null);
+//    });
   },
   getStoreItemsOfUser:function(id,fields,options,limit,offset,callback){
       if(options)
-          UserCollection.findOne( {'_id':id},{ items:{ $slice: [ parseInt(offset),parseInt(limit) ] } },fields,options).populate('items').exec(callback);
+          UserCollection.findOne( {'_id':id},{ items:{ $slice: [ parseInt(offset),parseInt(limit) ] } }).populate('items').exec(callback);
       else
       {
-          UserCollection.findOne({'_id':id},fields,options).populate('items').exec(callback);
+          UserCollection.findOne({'_id':id}).exec(callback);
+
+//          UserCollection.findOne({'_id':id},fields,options).populate('items').exec(callback);
 
       }
 //      UserCollection.findOne({'_id':id}).exec(callback);
@@ -88,15 +99,11 @@ var UserManagement={
 //  getUsersOfOrganization:function(orgId,fields,options,populationData,callback){
 //    UserCollection.find({orgId:orgId},fields,options).exec(callback);
 //  },
-    getUsersOfOrganization: function (id, fields,options,populationData,limit,offset,callback) {
-//        TeamsCollection.find({}).limit(limit).populate(populationData).exec(callback);
-        var p=parseInt(limit);
-        if(populationData)
-            UserCollection.find({orgId: id},fields,options).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
-//        TeamsCollection.find({orgId: id}).populate(populationData).limit(limit).exec(callback);
-        else{
-            UserCollection.find({orgId:mongoose.Types.ObjectId(id)},fields,options,callback);
-        }
+    getUsersOfOrganization: function (orgId, fields,options,populationData,limit,offset,callback) {
+        if(options)
+            UserCollection.find({orgId: orgId},fields).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
+        else
+            UserCollection.find({orgId:orgId},fields,options).exec(callback);
 
     },
   addPointsObject:function(userId,pointsObj,callback){
@@ -115,6 +122,47 @@ var UserManagement={
     };
     UserCollection.update({_id:userId},{$push:{items:temp},$inc:{totalCash:-cost}},callback);
   },
+    IsAuthenticated:function(username,password,callback)
+{
+//    console.log('koop');
+
+    var  user_email =username;
+    var user_password =password;
+    var username = { username: user_email };
+    var secret = '123';
+    var token = jwt.encode(username, secret);
+// decode
+        var decoded = jwt.decode(token, secret);
+        var http = require('https');
+        var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID='+user_email+'&PASSWORD='+user_password;
+//    console.log(pathOfLogin);
+        var data = '';
+        var options = {
+            hostname: 'accounts.zoho.com',
+            method: "POST",
+            path:pathOfLogin,
+            headers: {
+                Accept:"application/json"
+            }
+        };
+        var request = http.request(options, function(res) {
+            res.on('data', function(chunk) {
+                data += chunk;
+            });
+            res.on('end', function(chunk) {
+//         resdata.send(token);
+                console.log(data);
+                return data;
+//                resdata.send(data);
+            });
+        });
+
+        request.end();
+        request.on('error', function(e) {
+            console.error(e);
+        });
+
+    },
   getTransactionHistoryOfUser:function(userId,callback){
     UserCollection.findOne({_id:userId},"items",{sort:"items.time"}).populate("items.item").exec(callback);
   }
