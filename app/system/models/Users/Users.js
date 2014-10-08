@@ -2,7 +2,6 @@ var UserCollection=require('./UsersCollection.js');
 var mongoose=require('mongoose');
 var UserGoals=require('./UserGoals.js');
 var UserTransactions=require('./Transactions.js');
-var jwt = require('jwt-simple');
 
 var UserManagement={
   getUserSchema:function(){
@@ -146,47 +145,7 @@ var UserManagement={
     };
     UserCollection.update({_id:userId},{$push:{items:temp},$inc:{totalCash:-cost}},callback);
   },
-    IsAuthenticated:function(username,password,callback)
-{
-//    console.log('koop');
 
-    var  user_email =username;
-    var user_password =password;
-    var username = { username: user_email };
-    var secret = '123';
-    var token = jwt.encode(username, secret);
-// decode
-        var decoded = jwt.decode(token, secret);
-        var http = require('https');
-        var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID='+user_email+'&PASSWORD='+user_password;
-//    console.log(pathOfLogin);
-        var data = '';
-        var options = {
-            hostname: 'accounts.zoho.com',
-            method: "POST",
-            path:pathOfLogin,
-            headers: {
-                Accept:"application/json"
-            }
-        };
-        var request = http.request(options, function(res) {
-            res.on('data', function(chunk) {
-                data += chunk;
-            });
-            res.on('end', function(chunk) {
-//         resdata.send(token);
-                console.log(data);
-                return data;
-//                resdata.send(data);
-            });
-        });
-
-        request.end();
-        request.on('error', function(e) {
-            console.error(e);
-        });
-
-    },
   getTransactionHistoryOfUser:function(userId,callback){
     UserCollection.findOne({_id:userId},"items",{sort:"items.time"}).populate("items.item").exec(callback);
   }

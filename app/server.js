@@ -10,7 +10,7 @@ var sessions=require('client-sessions');
 var LocalStrategy = require('passport-local').Strategy;
 var restify = require('restify');
 var jwt = require('jwt-simple');
-//var authentication=require('../system/controllers/UserController.js')
+
 
 // var cors=require('cors');
 // var corsMiddleware = require('restify-cors-middleware');
@@ -24,6 +24,47 @@ var jwt = require('jwt-simple');
 // server.pre(cors.preflight);
 // server.use(cors.actual);
 
+//IsAuthenticated:function(username,password,callback)
+//{
+////    console.log('koop');
+//
+//    var  user_email =username;
+//    var user_password =password;
+//    var username = { username: user_email };
+//    var secret = '123';
+//    var token = jwt.encode(username, secret);
+//// decode
+//    var decoded = jwt.decode(token, secret);
+//    var http = require('https');
+//    var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID='+user_email+'&PASSWORD='+user_password;
+////    console.log(pathOfLogin);
+//    var data = '';
+//    var options = {
+//        hostname: 'accounts.zoho.com',
+//        method: "POST",
+//        path:pathOfLogin,
+//        headers: {
+//            Accept:"application/json"
+//        }
+//    };
+//    var request = http.request(options, function(res) {
+//        res.on('data', function(chunk) {
+//            data += chunk;
+//        });
+//        res.on('end', function(chunk) {
+////         resdata.send(token);
+//            console.log(data);
+//            return data;
+////                resdata.send(data);
+//        });
+//    });
+//
+//    request.end();
+//    request.on('error', function(e) {
+//        console.error(e);
+//    });
+//
+//}
 mongoose.connect('mongodb://localhost/uabTest');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -35,51 +76,6 @@ db.once('open', function callback () {
 // db.close();
 //
 // Zoho authentication Api call
-
-server.get('/login', function (reqdata, resdata) {
-//   if(authentication.IsAuthenticated(reqdata,resdata)==true)
-//    {
-//        resdata.send('user Authentication');
-//
-//    }
-    var  user_email = reqdata.params.username;
-    var user_password = reqdata.query.password;
-    console.log(user_email);
-    var username = { username: user_email };
-    var secret = '123';
-    var token = jwt.encode(username, secret);
-// decode
-    var decoded = jwt.decode(token, secret);
-    var http = require('https');
-//   var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID=vikram@ptotem.com&PASSWORD=viksdegod';
-    var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID='+user_email+'&PASSWORD='+user_password;
-    console.log(pathOfLogin);
-    var data = '';
-    var options = {
-        hostname: 'accounts.zoho.com',
-        method: "POST",
-        path:pathOfLogin,
-        headers: {
-            Accept:"application/json"
-        }
-    };
-    var request = http.request(options, function(res) {
-        res.on('data', function(chunk) {
-            data += chunk;
-        });
-        res.on('end', function(chunk) {
-//         resdata.send(token);
-            resdata.send(data);
-        });
-    });
-
-    request.end();
-    request.on('error', function(e) {
-        console.error(e);
-    });
-
-});
-
 
 
 
@@ -116,6 +112,53 @@ server.use(restify.fullResponse());
 // );
 server.listen(3004, function () {
     console.log('%s listening at %s', server.name, server.url);
+});
+// ZOHO Authentication:
+
+server.get('/login', function (reqdata, resdata) {
+
+    var  user_email = reqdata.query.username;
+    var user_password = reqdata.query.password;
+     var http = require('https');
+     //   var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID=vikram@ptotem.com&PASSWORD=viksdegod';
+     var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID='+user_email+'&PASSWORD='+user_password;
+     var data = '';
+     var options = {
+     hostname: 'accounts.zoho.com',
+     method: "POST",
+     path:pathOfLogin,
+     headers: {
+     Accept:"application/json"
+     }
+     };
+     var request = http.request(options, function(res,err) {
+             res.on('data', function(chunk) {
+                 data += chunk;
+             });
+                      res.on('end', function(chunk) {
+                     var d=data;
+                      var n = d.search("TRUE");
+                  if(n>0)
+                     {
+                     var username = { username: user_email };
+                     var secret = '123';
+                     var token = jwt.encode(username, secret);
+                     resdata.send(token);
+                 }
+                 else
+                 {
+                     resdata.send(data);
+
+                 }
+//                 console.log(data)
+             });
+
+     });
+     request.end();
+     request.on('error', function(e) {
+     console.error(e);
+     });
+
 });
 
 
@@ -157,6 +200,19 @@ server.listen(3004, function () {
 
 //testing ranks
 
+//var ClientJWTBearerStrategy = require('passport-oauth2-jwt-bearer').Strategy;
+
+//passport.use(new ClientJWTBearerStrategy(
+//    function(claimSetIss, done) {
+//        Clients.findOne({ clientId: claimSetIss }, function (err, client) {
+//            if (err) { return done(err); }
+//            if (!client) { return done(null, false); }
+//            return done(null, client);
+//        });
+//    }
+//));
+
+//    oauth2orize.token());
 var RanksController=require('./system/controllers/PointsEngine').RankController;
 server.get('/org/:orgId/calc/month',function(req,res){
   RanksController.calculateRankOfPeriod(req.params.orgId,"month",new Date(),function(err){
