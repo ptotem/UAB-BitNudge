@@ -20,8 +20,9 @@ var MedalsController={
     });
   },
   getMedalsOfUser:function(req,res){
-    UsersModel.getMedals(req.params.userId,"","",req.query.limits,req.query.limits,req.query.offset,function(err,goals){
-//        console.log('hiii');
+//      UserModel.getStoreItemsOfUser(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},"",function(err,obj){
+
+              UsersModel.getMedals(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},"",function(err,goals){
       if(err) res.send(err);
       else res.send(goals);
     });

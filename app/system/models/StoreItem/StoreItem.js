@@ -30,13 +30,15 @@ var StoreItems={
   getStoreItemCost:function(id,callback){
     StoreItemsCollection.findOne(({_id:id}).cost,callback);
   },
-  getStoreItemsOfOrganization:function(orgId,fields,options,populationData,limit,offset,callback){
+  getStoreItemsOfOrganization:function(orgId,fields,options,populationData,callback){
+//      StoreItemsCollection.find({orgId:orgId},fields,options).exec(callback);
+
 
 //    StoreItemsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
-      if(options)
-          StoreItemsCollection.find({orgId: orgId}).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
+//      if(options)
+//          StoreItemsCollection.find({orgId: orgId}).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
 //      StoresCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
-      else
+//      else
           StoreItemsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   }
 };

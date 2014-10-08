@@ -22,7 +22,9 @@ var TransactionController={
     });
   },
   getTransactionsOfUser:function(req,res){
-    TransactionModel.getTransactionsOfUser(req.params.userId,"",req.query.limits,"",req.query.limits,req.query.offset,function(err,obj){
+//      TeamModel.getStoresOfTeam(req.params.teamId,"stores",  {  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }
+//          } ,"stores",function(err,obj){
+    TransactionModel.getTransactionsOfUser(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},"",function(err,obj){
       if(err) return handleError(err);
       else res.send(obj);
     });

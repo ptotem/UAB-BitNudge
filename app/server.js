@@ -37,22 +37,23 @@ db.once('open', function callback () {
 // Zoho authentication Api call
 
 server.get('/login', function (reqdata, resdata) {
-   if(authentication.IsAuthenticated(reqdata,resdata)==true)
-    {
-        resdata.send('user Authentication');
-
-    }
-
-    var  user_email = reqdata.query.username;
+//   if(authentication.IsAuthenticated(reqdata,resdata)==true)
+//    {
+//        resdata.send('user Authentication');
+//
+//    }
+    var  user_email = reqdata.params.username;
     var user_password = reqdata.query.password;
+    console.log(user_email);
     var username = { username: user_email };
     var secret = '123';
     var token = jwt.encode(username, secret);
 // decode
     var decoded = jwt.decode(token, secret);
     var http = require('https');
+//   var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID=vikram@ptotem.com&PASSWORD=viksdegod';
     var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID='+user_email+'&PASSWORD='+user_password;
-//    console.log(pathOfLogin);
+    console.log(pathOfLogin);
     var data = '';
     var options = {
         hostname: 'accounts.zoho.com',

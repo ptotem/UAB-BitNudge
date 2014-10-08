@@ -15,7 +15,7 @@ var HierarchyEngine={
       var r=req.query.limits;
         var last=req.query.offset;
 //        console.log(r);
-        TeamModel.getTeamsOfOrganization(req.params.orgId,req.query.limits,{},{path:'teams'},r,last,function(err,objs){
+        TeamModel.getTeamsOfOrganization(req.params.orgId,"",{ limit : req.query.limits ,skip :req.query.offset},"",function(err,objs){
             console.log(last);
             if(err){
                 res.send("fail");
@@ -61,7 +61,8 @@ var HierarchyEngine={
       });
   },
     getMembersOfTeam:function(req,res){
-        TeamModel.getMembersOfTeam(req.params.teamId,"members",req.query.limits,"members",req.query.limits,req.query.offset,function(err,obj){
+        TeamModel.getMembersOfTeam(req.params.teamId,"members",  {  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }
+ } ,"members",function(err,obj){
 //          console.log(req.params.teamId,"members","","members",req.params.limits);
             if(err){
                 res.send("fail");
@@ -129,7 +130,9 @@ var HierarchyEngine={
 //        // }
 //    },
     getStoresOfTeam:function(req,res){
-        TeamModel.getStoresOfTeam(req.params.teamId,"stores",req.query.limits,"stores",req.query.limits,req.query.offset,function(err,obj){
+        TeamModel.getStoresOfTeam(req.params.teamId,"stores",  {  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }
+            } ,"stores",function(err,obj){
+//        TeamModel.getStoresOfTeam(req.params.teamId,"stores",{ limit : req.query.limits ,skip :req.query.offset},"stores",function(err,obj){
             if(err){
                 res.send("fail");
                 return handleError(err);

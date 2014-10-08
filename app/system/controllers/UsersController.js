@@ -53,7 +53,9 @@ var UsersController={
         var r=req.query.limits;
         var last=req.query.offset;
 //        console.log(r);
-        UsersModel.getUsersOfOrganization(req.params.orgId,"name",req.query.limits,{path:'users'},r,last,function(err,objs){
+//        StoreModel.getStoresOfOrganization(req.params.orgId,"",{ limit : req.query.limits ,skip :req.query.offset},"",function(err,obj){
+
+                UsersModel.getUsersOfOrganization(req.params.orgId,"name",{ limit : req.query.limits ,skip :req.query.offset},{path:'users'},function(err,objs){
 //            console.log(last);
             if(err){
                 res.send("fail");

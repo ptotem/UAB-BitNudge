@@ -11,11 +11,11 @@ var Stores={
   getStore:function(id,fields,options,populationData,callback){
     StoresCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getStoresOfOrganization:function(orgId,fields,options,populationData,limit,offset,callback){
-    if(populationData)
-        StoresCollection.find({orgId: orgId}).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
+  getStoresOfOrganization:function(orgId,fields,options,populationData,callback){
+//    if(populationData)
+//        StoresCollection.find({orgId: orgId}).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
 //      StoresCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
-    else
+//    else
       StoresCollection.find({orgId:orgId},fields,options).exec(callback);
 //          StoresCollection.find({orgId: orgId}).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
   },

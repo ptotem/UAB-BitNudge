@@ -37,14 +37,28 @@ var UserManagement={
   getTotalCash: function (id,fields,options,populationData,callback){
       UserCollection.findOne({_id: id},fields,options).populate(populationData).exec(callback);
   },
-  getMedals:function(id,fields,options,populationdata,limit,offset,callback){
-      if(populationdata)
-          UserCollection.findOne( {'_id':id},{ items:{ $slice: [ parseInt(offset),parseInt(limit) ] } },fields,options).populate('medals').exec(callback);
-      else
+  getMedals:function(id,fields,options,populationdata,callback){
+      if(options.slice.limits)
       {
-          UserCollection.findOne({'_id':id},fields,options).populate('medals').exec(callback);
-
+          UserCollection.findOne({'_id': id},fields,{ medals:{ $slice:[parseInt(options.slice.offset),parseInt(options.slice.limits)] } }).populate('medals').exec(callback);
       }
+
+      else{
+//          UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
+//              if(objs)
+//                  return callback(err,objs.medals);
+//              else return callback(err,null);
+//          });
+          UserCollection.findOne({'_id':id},fields).populate('medals').exec(callback);
+//          TeamsCollection.findOne({'_id':teamId},fields).populate(populationData).exec(callback);
+      }
+//      if(populationdata)
+//          UserCollection.findOne( {'_id':id},{ medals:{ $slice: [ parseInt(offset),parseInt(limit) ] } },fields,options).populate('medals').exec(callback);
+//      else
+//      {
+//          UserCollection.findOne({'_id':id},fields,options).populate('medals').exec(callback);
+//
+//      }
 //    UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
 //      if(objs)
 //        return callback(err,objs.medals);
@@ -52,15 +66,23 @@ var UserManagement={
 //    });
   },
   getStoreItemsOfUser:function(id,fields,options,limit,offset,callback){
-      if(options)
-          UserCollection.findOne( {'_id':id},{ items:{ $slice: [ parseInt(offset),parseInt(limit) ] } }).populate('items').exec(callback);
-      else
+      if(options.slice.limits)
       {
-          UserCollection.findOne({'_id':id}).exec(callback);
-
-//          UserCollection.findOne({'_id':id},fields,options).populate('items').exec(callback);
-
+          UserCollection.findOne({'_id': id},fields,{ items:{ $slice:[parseInt(options.slice.offset),parseInt(options.slice.limits)] } }).populate('items').exec(callback);
       }
+
+      else{
+          UserCollection.findOne({'_id':id}).populate('items').exec(callback);
+      }
+//      if(options)
+//          UserCollection.findOne( {'_id':id},{ items:{ $slice: [ parseInt(offset),parseInt(limit) ] } }).populate('items').exec(callback);
+//      else
+//      {
+//          UserCollection.findOne({'_id':id}).exec(callback);
+//
+////          UserCollection.findOne({'_id':id},fields,options).populate('items').exec(callback);
+//
+//      }
 //      UserCollection.findOne({'_id':id}).exec(callback);
 
   },
@@ -99,11 +121,13 @@ var UserManagement={
 //  getUsersOfOrganization:function(orgId,fields,options,populationData,callback){
 //    UserCollection.find({orgId:orgId},fields,options).exec(callback);
 //  },
-    getUsersOfOrganization: function (orgId, fields,options,populationData,limit,offset,callback) {
-        if(options)
-            UserCollection.find({orgId: orgId},fields).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
-        else
-            UserCollection.find({orgId:orgId},fields,options).exec(callback);
+    getUsersOfOrganization: function (orgId, fields,options,populationData,callback) {
+        UserCollection.find({orgId:orgId},fields,options).exec(callback);
+
+//        if(options)
+//            UserCollection.find({orgId: orgId},fields).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
+//        else
+//            UserCollection.find({orgId:orgId},fields,options).exec(callback);
 
     },
   addPointsObject:function(userId,pointsObj,callback){

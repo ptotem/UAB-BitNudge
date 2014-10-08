@@ -9,17 +9,26 @@ var Transactions={
   getTransaction:function(userId,transactionId,fields,options,populationData,callback){
     UsersCollection.findOne({userId:userId,'transactions._id':transactionId},{'transactions.$':1},options).populate(populationData).exec(callback);
   },
-  getTransactionsOfUser:function(userId,fields,options,populationData,limit,offset,callback){
-    if(fields)
+  getTransactionsOfUser:function(userId,fields,options,populationData,callback){
       fields+=" transactions";
-//    UsersCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
-      if(options)
-       UsersCollection.findOne( {'_id':userId},{ transactions:{ $slice: [ parseInt(offset),parseInt(limit) ] } },fields,options).populate(populationData).exec(callback);
-      else
+      if(options.slice.limits)
       {
-          UsersCollection.find({'_id':userId},fields,options).populate(populationData).exec(callback);
-
+          UsersCollection.findOne({'_id': userId},fields,{ transactions:{ $slice:[parseInt(options.slice.offset),parseInt(options.slice.limits)] } }).populate(populationData).exec(callback);
       }
+
+      else{
+          UsersCollection.findOne({'_id':userId},fields).populate(populationData).exec(callback);
+      }
+//    if(fields)
+//      fields+=" transactions";
+////    UsersCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
+//      if(options)
+//       UsersCollection.findOne( {'_id':userId},{ transactions:{ $slice: [ parseInt(offset),parseInt(limit) ] } },fields,options).populate(populationData).exec(callback);
+//      else
+//      {
+//          UsersCollection.find({'_id':userId},fields,options).populate(populationData).exec(callback);
+//
+//      }
   },
   getTransactionSchema:function(){
     return UsersCollection.Schema;
