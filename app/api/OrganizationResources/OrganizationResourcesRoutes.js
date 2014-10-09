@@ -4,6 +4,7 @@ var eCommerceEngine=require('../../system/controllers/eCommerceEngine');
 var storeItemController=eCommerceEngine.StoreItemController;
 var goalMasterController=require('../../system/models/GoalMaster');
 var hierarchyController=require('../../system/controllers/HierarchyEngine');
+var socialEngine=require('../../system/controllers/SocialEngine');
 
 var organizationRoutes={
   'post /org':function(req,res){
@@ -82,6 +83,12 @@ var medalRoutes={
     }
 };
 
+var socialFeedRoutes={
+  'get /org/:orgId/socialfeed':function(req,res){
+    socialEngine.SocialFeedController.getSocialFeedOfOrganization(req,res);
+  }
+};
+
 //End Points For LeaderBoard:
 var leaderboardRoutes={
     'get org/:orgId/leaderboard':function(req,res) {
@@ -92,7 +99,7 @@ var leaderboardRoutes={
     // },
 };
 
-var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes];
+var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes];
 module.exports={
   initialize:function(server){
     stuff.forEach(function(routesObj){

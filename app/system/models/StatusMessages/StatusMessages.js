@@ -18,7 +18,7 @@ var StatusMessage= {
       StatusMessageCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     },
     getStatusMessagesOfUser:function(userId,fields,options,populationData,callback){
-      StatusMessageCollection.findOne({userId:userId},fields,options).populate(populationData).exec(callback);
+      StatusMessageCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
     },
     updateStatusMessage:function(id,updateData,callback){
       StatusMessageCollection.update({_id:id},{$set:updateData},callback);
@@ -26,8 +26,11 @@ var StatusMessage= {
     likeStatusMessage:function(id,likerId,callback){
       StatusMessageCollection.update({_id:id},{$push:{likes:likerId},$inc:{totalLikes:1}},callback);
     },
-    commentOnStatusMessage:function(id,commentId,callback){
-      StatusMessageCollection.update({_id:id},{$push:{messages:commentId},$inc:{totalComments:1}},callback);
+    commentOnStatusMessage:function(id,commentObj,callback){
+      console.log(commentObj);
+      if(!commentObj.createdAt)
+        commentObj.createdAt=new Date();
+      StatusMessageCollection.update({_id:id},{$push:{messages:commentObj},$inc:{totalComments:1}},callback);
     }
 };
 module.exports=StatusMessage;
