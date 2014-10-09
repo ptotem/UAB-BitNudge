@@ -20,13 +20,15 @@ var MedalsController={
     });
   },
   getMedalsOfUser:function(req,res){
-    UsersModel.getMedals(req.params.userId,function(err,goals){
+//      UserModel.getStoreItemsOfUser(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},"",function(err,obj){
+
+              UsersModel.getMedals(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},"",function(err,goals){
       if(err) res.send(err);
       else res.send(goals);
     });
   },
   getMedalsOfOrganization:function(req,res){
-    MedalsModel.getMedalsOfOrganization(req.params.orgId,function(err,objs){
+    MedalsModel.getMedalsOfOrganization(req.params.orgId,"","",req.query.limits,req.query.limits,req.query.offset,function(err,objs){
       if(err) res.send(err);
       else res.send(objs);
     });

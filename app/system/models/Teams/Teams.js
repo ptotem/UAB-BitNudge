@@ -21,12 +21,27 @@ var Team= {
         TeamsCollection.remove({_id: id}, callback);
     },
     getStoresOfTeam:function(teamId,fields,options,populationData,callback){
+
+        if(options.slice.limits)
+        {
+            TeamsCollection.findOne({'_id': teamId},fields,{ stores:{ $slice:[parseInt(options.slice.offset),parseInt(options.slice.limits)] } }).populate(populationData).exec(callback);
+        }
+
+        else{
+            TeamsCollection.findOne({'_id':teamId},fields).populate(populationData).exec(callback);
+        }
 //        if(populationData)
-//        TeamsCollection.find({_id: teamId}).populate(populationData).exec(callback);
+//        if(options)
+//            TeamsCollection.findOne( {'_id':teamId},{ stores:{ $slice: [ parseInt(offset),parseInt(limit) ] } }).populate(populationData).exec(callback);
+//            else{
+//            TeamsCollection.find({_id: teamId}).populate(populationData).exec(callback);
+//
+//        }
 //      else{
 //        TeamsCollection.find({_id:mongoose.Types.ObjectId(teamId)},fields,options,callback);
 //      }
-        TeamsCollection.findOne({'_id': teamId},fields,options).populate(populationData).exec(callback);
+//        TeamsCollection.findOne( {'_id':teamId},{ stores:{ $slice: [ parseInt(offset),parseInt(limit) ] } }).populate(populationData).exec(callback);
+//        TeamsCollection.findOne({'_id': teamId},fields,options).populate(populationData).exec(callback);
     },
     getTeamsOfUser: function (id,fields,options,populationData,callback){
         TeamsCollection.findOne({members: id},fields,options).populate(populationData).exec(callback);
@@ -36,11 +51,58 @@ var Team= {
 
 //        TeamsCollection.findOne({members:id},fields,options).populate(populationData).exec(callback));
     },
+    getSubTeam: function (id,fields,options,populationData,callback){
+//        TeamsCollection.findOne({'_id': id},fields,options).populate(populationData).exec(callback);
+        if(options.slice.limits)
+        {
+            TeamsCollection.findOne({'_id': id},fields,{ teams:{ $slice:[parseInt(options.slice.offset),parseInt(options.slice.limits)] } }).populate(populationData).exec(callback);
+        }
+
+        else{
+            TeamsCollection.findOne({'_id':id},fields).populate(populationData).exec(callback);
+        }
+//        if(options){
+//            TeamsCollection.findOne( {'_id':id} ,fields,{ teams:{ $slice: [ parseInt(offset),parseInt(limit) ] } }).populate(populationData).exec(callback);
+//
+//        }
+//        else{
+//            TeamsCollection.findOne({'_id':id},fields).populate(populationData).exec(callback);
+//        }
+
+//        TeamsCollection.findOne({members:id},fields,options).populate(populationData).exec(callback));
+    },
+    getMembersOfTeam: function (id,fields,options,populationData,callback){
+        if(options.slice.limits)
+        {
+        TeamsCollection.findOne({'_id': id},{ members:{ $slice:[parseInt(options.slice.offset),parseInt(options.slice.limits)] } }).populate(populationData).exec(callback);
+        }
+
+        else{
+            TeamsCollection.findOne({'_id':id},fields).populate(populationData).exec(callback);
+        }
+
+//        TeamsCollection.findOne({members:id},fields,options).populate(populationData).exec(callback));
+
+    },
     setTeamFieldById: function (id, fieldName, value, callback) {
         TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
     },
-    getTeamsOfOrganization:function(orgId, fields,options, populationData,callback) {
-      TeamsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
+//    getTeamsOfOrganization:function(orgId, fields,options, populationData,callback) {
+//      TeamsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
+//    },
+    getTeamsOfOrganization: function (id, fields,options,populationData,callback) {
+//        console.log(options);
+//        TeamsCollection.find({}).limit(limit).populate(populationData).exec(callback);
+        TeamsCollection.find({orgId:id},fields,options).populate(populationData).exec(callback);
+
+//        var p=parseInt(limit);
+//        if(populationData)
+//            TeamsCollection.find({orgId: id}).skip(parseInt(offset)).populate(populationData).limit(limit).exec(callback);
+////        TeamsCollection.find({orgId: id}).populate(populationData).limit(limit).exec(callback);
+//        else{
+//            TeamsCollection.find({orgId:mongoose.Types.ObjectId(id)},fields,options,callback);
+//        }
+
     },
     getTeamLeader: function (id,fields,options,populationData,callback){
         TeamsCollection.findOne(({'_id': id}),fields,options).populate(populationData).exec(callback);

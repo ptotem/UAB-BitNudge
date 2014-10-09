@@ -33,11 +33,26 @@ var UsersController={
       // else res.send(401,{status:{http:401,message:'Not Authorized'}});
     });
   },
-  getUsersOfOrganization:function(req,res){
-    UsersModel.getUsersOfOrganization(req.params.orgId,"name ","","",function(err,goals){
-      res.send(goals);
-    });
-  },
+//  getUsersOfOrganization:function(req,res){
+//    UsersModel.getUsersOfOrganization(req.params.orgId,"name ","","",function(err,goals){
+//      res.send(goals);
+//    });
+//  },
+    getUsersOfOrganization:function(req,res){
+        var r=req.query.limits;
+        var last=req.query.offset;
+//        console.log(r);
+//        StoreModel.getStoresOfOrganization(req.params.orgId,"",{ limit : req.query.limits ,skip :req.query.offset},"",function(err,obj){
+
+                UsersModel.getUsersOfOrganization(req.params.orgId,"name",{ limit : req.query.limits ,skip :req.query.offset},{path:'users'},function(err,objs){
+//            console.log(last);
+            if(err){
+                res.send("fail");
+                return handleError(err);
+            }
+            res.send(objs);
+        });
+    },
   getTransactionHistoryOfUser:function(req,res){
     UsersModel.getTransactionHistoryOfUser(req.params.userId,function(err,objs){
       if(err) res.send(err);

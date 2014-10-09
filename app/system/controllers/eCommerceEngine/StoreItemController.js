@@ -5,13 +5,17 @@ var AuthorizationController=('../../controllers/AuthorizationController.js');
 
 var StoreItemController={
     getStoreItemsOfOrganization:function(req,res){
-      StoreItemModel.getStoreItemsOfOrganization(req.params.orgId,"",{},"",function(err,obj){
+      StoreItemModel.getStoreItemsOfOrganization(req.params.orgId,"",{ limit : req.query.limits ,skip :req.query.offset},"",function(err,obj){
         if(err) res.send(err);
         else res.send(obj);
       });
     },
     getStoreItemsOfUser:function(req,res){
-      UserModel.getStoreItemsOfUser(req.params.userId,"",{},function(err,obj){
+//        TransactionModel.getTransactionsOfUser(req.params.userId,"","","",req.params.limits,req.params.offset,function(err,obj){
+//        TransactionModel.getTransactionsOfUser(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},"",function(err,obj){
+
+                UserModel.getStoreItemsOfUser(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},"",function(err,obj){
+//          console.log('hiii');
         if(err) res.send(err);
         else res.send(obj);
       });
