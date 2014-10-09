@@ -1,4 +1,5 @@
 var SocialFeedCollection=require('./SocialFeedCollection.js');
+var StatusMessageCollection=require('../StatusMessages/StatusMessagesCollection.js');
 var mongoose=require('mongoose');
 
 var SocialFeed={

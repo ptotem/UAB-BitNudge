@@ -21,7 +21,6 @@ var userRoutes={
   'post /org/:orgId/teams/:teamId/members':function(req,res){
     userController.addUserToTeam(req,res);
   }
-  // 'del /org/:u'
 };
 
 // End Points for Transactions in UserResourcesRoutes:
@@ -36,7 +35,7 @@ var transactionRoutes={
       transactionController.createTransaction(req,res);
     },
     'del org/:orgId/users/:userId/transaction/:transactionId':function(req,res){
-      transctionController.deleteTransactionOfUser(req,res);
+        transactionController.deleteTransactionOfUser(req,res);
     }
 };
 
@@ -72,7 +71,6 @@ var goalRoutes={
       goalController.getLiveUserGoals(req,res);
     },
     'post /org/:orgId/users/:userId/goals':function(req,res){
-      console.log("test");
       goalController.createGoal(req,res);
     }
 };
@@ -135,7 +133,7 @@ var nudgeChatRoutes={
 //End Points For NudgeMailbox:
 var nudgeMailBoxRoutes={
     'get org/:orgId/users/:userId/mails':function(req,res){
-        socialEngine.NudgeMailboxController.getMailboxOfUser(req,res);
+        socialEngine.NudgeMailboxController.getNudgeMailboxOfUser(req,res);
     }
 };
 

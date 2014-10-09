@@ -2,6 +2,7 @@ var UserCollection=require('./UsersCollection.js');
 var mongoose=require('mongoose');
 var UserGoals=require('./UserGoals.js');
 var UserTransactions=require('./Transactions.js');
+
 var UserManagement={
   getUserSchema:function(){
     return UserCollection.Schema;
@@ -35,15 +36,28 @@ var UserManagement={
   getTotalCash: function (id,fields,options,populationData,callback){
       UserCollection.findOne({_id: id},fields,options).populate(populationData).exec(callback);
   },
-  getMedals:function(id,fields,options,callback){
-    UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
-      if(objs)
-        return callback(err,objs.medals);
-      else return callback(err,null);
-    });
+  getMedals:function(id,fields,options,populationdata,callback){
+      if(options.slice.limits)
+      {
+          UserCollection.findOne({'_id': id},fields,{ medals:{ $slice:[parseInt(options.slice.offset),parseInt(options.slice.limits)] } }).populate('medals').exec(callback);
+      }
+
+      else{
+         UserCollection.findOne({_id:id},fields,options).populate('medals').exec(function(err,objs){
+             if(objs)
+                 return callback(err,objs.medals);
+             else return callback(err,null);
+         });
+      }
   },
-  getStoreItemsOfUser:function(id,fields,options,callback){
-    UserCollection.findOne({_id:id},fields,options).populate('items').exec(callback);
+  getStoreItemsOfUser:function(id,fields,options,limit,offset,callback){
+      if(options.slice.limits)
+      {
+          UserCollection.findOne({'_id': id},fields,{ items:{ $slice:[parseInt(options.slice.offset),parseInt(options.slice.limits)] } }).populate('items').exec(callback);
+      }
+      else{
+          UserCollection.findOne({'_id':id},fields,options).populate('items').exec(callback);
+      }
   },
   addRole:function(userId,role,callback){
     UserCollection.update({_id:userId},{$push:{roles:role}},callback);
@@ -51,6 +65,7 @@ var UserManagement={
   addPoints:function(userId,points,callback){
     UserCollection.update({_id:userId},{$push:{points:points}},callback);
   },
+
   addTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$push:{teams:teamId}},callback);
   },
@@ -75,8 +90,8 @@ var UserManagement={
   getUser:function(id,fields,options,populationData,callback){
     UserCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getUsersOfOrganization:function(orgId,fields,options,populationData,callback){
-    UserCollection.find({orgId:orgId},fields,options).exec(callback);
+  getUsersOfOrganization: function (orgId, fields,options,populationData,callback) {
+      UserCollection.find({orgId:orgId},fields,options).exec(callback);
   },
   addPointsObject:function(userId,pointsObj,callback){
     if(!pointsObj.date)
@@ -96,21 +111,7 @@ var UserManagement={
   },
   getTransactionHistoryOfUser:function(userId,callback){
     UserCollection.findOne({_id:userId},"items",{sort:"items.time"}).populate("items.item").exec(callback);
-  },
-  // getLiveGoalsOfUser:function(userId,currDate,tags,callback){
-  //   var goalQuery={};
-  //   goalQuery['goals.startDate']={$lte:currDate};
-  //   goalQuery['goals.endDate']={$gte:currDate};
-  //   if(tags)
-  //     goalQuery.tags=tags;
-  //   UserCollection.aggregate({$match:{_id:userId}}, {$unwind:'$goals'}, {$match:goalQuery}, {$group:{_id:'$_id',goals:{$push:'$goals'}}});
-  // },
-  // getUserRole:function(userId,callback){
-  //     UserCollection.findOne({_id:userId}).roles
-  // },
-  // getGoalOfUser:function(userId,callback){ //fetch goal of user
-  //     UserCollection.findOne({_id:userId}).goals
-  // },
+  }
 };
 module.exports={
   Users:UserManagement,

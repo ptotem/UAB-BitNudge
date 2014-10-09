@@ -44,11 +44,6 @@ var UsersController={
       else res.send(objs);
     });
   },
-  // assignUserToUser:function(req,res){
-  //   UsersModel.giveUserToUser(userId,medalId,function(err,obj){
-  //     res.send("success");
-  //   });
-  // },
   deleteUser:function(req,res){
     UsersModel.deleteUser(req.params.userId,function(err,obj){
       SocialFeedModel.deleteSocialFeed(req.params.userId);
@@ -64,7 +59,6 @@ var UsersController={
       }
     });
   },
-//    findTeamOfUser
   addUserToTeam:function(req,res){
     TeamsModel.addMembersToTeam(req.params.teamId,req.body.userId,function(err,obj){
       if(err){

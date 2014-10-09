@@ -8,6 +8,10 @@ var mongoose=require('mongoose');
 var passport=require('passport');
 var sessions=require('client-sessions');
 var LocalStrategy = require('passport-local').Strategy;
+var restify = require('restify');
+var jwt = require('jwt-simple');
+
+
 // var cors=require('cors');
 // var corsMiddleware = require('restify-cors-middleware');
 //
@@ -28,18 +32,12 @@ db.once('open', function callback () {
   
   console.log("db working");
 });
-// db.close();
-//
-
-
-
 
 // Middlewares
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.authorizationParser());
 server.use(restify.dateParser());
 server.use(restify.queryParser({ mapParams : false }));
-server.use(restify.urlEncodedBodyParser());
 server.use(restify.bodyParser({ mapParams : false }));
 server.use(restify.jsonp());
 server.use(restify.throttle({
@@ -67,6 +65,53 @@ server.use(restify.fullResponse());
 // );
 server.listen(3004, function () {
     console.log('%s listening at %s', server.name, server.url);
+});
+// ZOHO Authentication:
+
+server.get('/login', function (reqdata, resdata) {
+
+    var  user_email = reqdata.query.username;
+    var user_password = reqdata.query.password;
+     var http = require('https');
+     //   var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID=vikram@ptotem.com&PASSWORD=viksdegod';
+     var pathOfLogin='/apiauthtoken/nb/create?SCOPE=Zohopeople/peopleapi&EMAIL_ID='+user_email+'&PASSWORD='+user_password;
+     var data = '';
+     var options = {
+       hostname: 'accounts.zoho.com',
+       method: "POST",
+       path:pathOfLogin,
+       headers: {
+         Accept:"application/json"
+       }
+     };
+     var request = http.request(options, function(res,err) {
+             res.on('data', function(chunk) {
+                 data += chunk;
+             });
+                  res.on('end', function(chunk) {
+                 var d=data;
+                  var n = d.search("TRUE");
+              if(n>0)
+             {
+                 var username = { username: user_email };
+                 var secret = '123';
+                 var token = jwt.encode(username, secret);
+                 resdata.send(token);
+             }
+             else
+             {
+                 resdata.send(data);
+
+             }
+//                 console.log(data)
+             });
+
+     });
+     request.end();
+     request.on('error', function(e) {
+     console.error(e);
+     });
+
 });
 
 
@@ -108,6 +153,19 @@ server.listen(3004, function () {
 
 //testing ranks
 
+//var ClientJWTBearerStrategy = require('passport-oauth2-jwt-bearer').Strategy;
+
+//passport.use(new ClientJWTBearerStrategy(
+//    function(claimSetIss, done) {
+//        Clients.findOne({ clientId: claimSetIss }, function (err, client) {
+//            if (err) { return done(err); }
+//            if (!client) { return done(null, false); }
+//            return done(null, client);
+//        });
+//    }
+//));
+
+//    oauth2orize.token());
 var RanksController=require('./system/controllers/PointsEngine').RankController;
 server.get('/org/:orgId/calc/month',function(req,res){
   RanksController.calculateRankOfPeriod(req.params.orgId,"month",new Date(),function(err){
@@ -126,24 +184,6 @@ server.get('/org/:orgId/calc/year',function(req,res){
   });
 });
 
-
-
 // init routes
-var routes=require('./api');
+var routes=require('./api/RestApi.js');
 routes.initialize(server);
-
-// var test=restify.createJsonClient({url:'http://localhost:3004'});
-// test.post('/login',{test:"try"},function(err,req,res,obj){
-//   console.log(obj);
-// });
-//loading models
-
-//var Organization=require('./system/models/Organizations');
-//Organization.createOrganization({name:"Amit"});
-//Organization.initialize(server);
-//var teams=require('./system/models/Teams');
-//teams.initialize(server);
-
-//server.on('connection', function (stream) {
-//    console.log('someone connected!');
-//});

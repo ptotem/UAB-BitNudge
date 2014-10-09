@@ -6,7 +6,7 @@ var hierarchyController=require('../../system/controllers/HierarchyEngine');
 // End Points for User in Team Resources:
 var memberTeamsRoutes={
     'get org/:orgId/teams/:teamId/members':function(req,res) {
-      hierarchyController.TeamsController.getMembersOfTeam(req,res);
+        hierarchyController.TeamsController.getMembersOfTeam(req,res);
     },
     'post /org/:orgId/teams/:teamId/members':function(req,res){
       hierarchyController.TeamsController.addMembersToTeam(req,res);
@@ -34,7 +34,7 @@ var teamRoutes={
       hierarchyController.TeamsController.getTeam(req,res);
     },
     'get /org/:orgId/teams':function(req,res){
-      hierarchyController.TeamsController.getTeamsOfOrganization(req,res);
+        hierarchyController.TeamsController.getTeamsOfOrganization(req,res);
     },
     'post /org/:orgId/teams':function(req,res){
       hierarchyController.TeamsController.createTeam(req,res);
@@ -55,6 +55,7 @@ var storesRoutes={
     'post /org/:orgId/teams/:teamId/stores':function(req,res){
       eCommerceEngine.StoreController.addStoreInTeam(req,res);
     },
+
     'del /org/:orgId/teams/:teamId/stores/:storeId':function(req,res){
       eCommerceEngine.StoreController.removeStoresFromTeam(req,res);
     }
