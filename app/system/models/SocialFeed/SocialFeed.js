@@ -11,8 +11,8 @@ var SocialFeed={
   getSocialFeed:function(id,fields,options,populationData,callback){
     SocialFeedCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
-  getSocialFeedOfUser:function(userId,fields,options,populationParams,callback){
-    SocialFeedCollection.find({userId:userId},fields,options).populate(populationParams).exec(callback);
+  getSocialFeedOfOrganization:function(orgId,fields,options,populationParams,callback){
+    SocialFeedCollection.findOne({orgId:orgId},fields,options).populate(populationParams).exec(callback);
   },
   addMessageToFeed:function(orgId,messageId,callback){
     SocialFeedCollection.update({orgId:orgId},{$push:{messages:messageId}},callback);
