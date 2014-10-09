@@ -12,12 +12,12 @@ var Leaderboard={
     var leaderboard=new LeaderboardCollection(leaderboardData);
     leaderboard.save(callback);
   },
-  getLeaderboard:function(id,fields,options,populationData,callback){
-    if(populationData)
-      LeaderboardCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
-    else
-      LeaderboardCollection.findOne({_id:id},fields,options).exec(callback);
-  },
+  // getLeaderboard:function(id,fields,options,populationData,callback){
+  //   if(populationData)
+  //     LeaderboardCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
+  //   else
+  //     LeaderboardCollection.findOne({_id:id},fields,options).exec(callback);
+  // },
   getQueryFromDate:function(period,date){
     var currDate,start,end;
     if(period=="month"){
@@ -41,7 +41,7 @@ var Leaderboard={
   getLeaderboardOfPeriod:function(orgId,period,date,fields,options,populationData,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
     query.orgId=orgId;
-    LeaderboardCollection.find(query,fields,options).populate({path:'playerRanks.player'}).exec(callback);
+    LeaderboardCollection.find(query,fields,options).populate(populationData).exec(callback);
   },
   getTeamLeaderboardOfPeriod:function(orgId,teamId,period,date,fields,options,populationData,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
@@ -96,17 +96,31 @@ var Leaderboard={
     // temp.period=period;
     LeaderboardCollection.update(query,{$set:temp},callback);
   },
-  getUserRank:function(orgId,userId,period,date,callback){
+  getUserRankOfPeriod:function(orgId,userId,period,date,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
     query['playerRanks.player']=userId;
     query.orgId=orgId;
-    LeaderboardCollection.findOne(query,"playerRanks.$",callback);
+    LeaderboardCollection.findOne(query,"playerRanks.$",function(err,obj){
+      if(err) res.send(err);
+      else callback(err,obj.playerRanks[0]);
+    });
   },
-  getTeamRank:function(orgId,teamId,period,date,callback){
+  getUserRankOfTeamOfPeriod:function(orgId,teamId,userId,period,date,callback){
+    var query=Leaderboard.getQueryFromDate(period,date);
+    query.orgId=orgId;
+    LeaderboardCollection.aggregate({$match:{}},{$project:{playerInTeamRanks:1}},{$unwind:"$playerInTeamRanks"},{$match:{'playerInTeamRanks.team':mongoose.Types.ObjectId(teamId)}},{$unwind:"$playerInTeamRanks.playerRanks"},{$match:{'playerInTeamRanks.playerRanks.player':mongoose.Types.ObjectId(userId)}},{$group:{_id:"$_id",rankNo:{$last:'$playerInTeamRanks.playerRanks.rankNo'}}},function(err,obj){
+      if(err) callback(err,obj);
+      else callback(err,obj[0]);
+    });
+  },
+  getTeamRankOfPeriod:function(orgId,teamId,period,date,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
     query['teamRanks.team']=teamId;
     query.orgId=orgId;
-    LeaderboardCollection.findOne(query,"teamRanks.$",callback);
+    LeaderboardCollection.findOne(query,"teamRanks.$",function(err,obj){
+      if(err) res.send(err);
+      else callback(err,obj.teamRanks[0]);
+    });
   },
   getRankSchema:function(){
     return LeaderboardCollection.Schema;

@@ -78,24 +78,21 @@ var goalRoutes={
 };
 
 var leaderboardRoutes={
-  'get org/:orgId/leaderboard/users':function(req,res){
+  'get /org/:orgId/leaderboard/users':function(req,res){
     leaderboardController.getUserLeaderboard(req,res);
   }
 };
 
 //End Points for Rank:
 var rankRoutes={
-    'get org/:orgId/users/:userId/rank':function(req,res) {
-        leaderboardController.getUserRank(req,res);
+    'get /org/:orgId/users/:userId/rank':function(req,res) {
+        leaderboardController.getUserRankOfPeriod(req,res);
+    },
+    'get /org/:orgId/teams/:teamId/users/:userId/rank':function(req,res){
+      leaderboardController.getUserRankOfTeamOfPeriod(req,res);
     }
 };
 
-//End Points For SocialFeed:
-var socialFeedRoutes={
-  'get /org/:orgId/users/:userId/socialfeed':function(req,res){
-    socialEngine.SocialFeedController.getSocialFeedOfUser(req,res);
-  }
-};
 
 var statusMessagesRoutes={
   'post /org/:orgId/users/:userId/statuses/:statusId':function(req,res){
@@ -110,13 +107,13 @@ var statusMessagesRoutes={
   'get /org/:orgId/users/:userId/statuses/:statusId':function(req,res){
     socialEngine.StatusMessagesController.getStatusMessage(req,res);
   },
-  // 'get /org/:org:id/users/:userId/statuses/:statusId/comments':function(req,res){
-  //   socialEngine.StatusMessagesController.getCommentsOfStatus(req,res);
-  // },
-  'post /org/:org:id/users/:userId/statuses/:statusId/comments':function(req,res){
+  'get /org/:orgId/users/:userId/statuses/:statusId/comments':function(req,res){
+    socialEngine.StatusMessagesController.getCommentsOfStatus(req,res);
+  },
+  'post /org/:orgId/users/:userId/statuses/:statusId/comments':function(req,res){
     socialEngine.StatusMessagesController.commentOnStatusMessage(req,res);
   },
-  'post /org/:org:id/users/:userId/statuses/:statusId/like':function(req,res){
+  'post /org/:orgId/users/:userId/statuses/:statusId/like':function(req,res){
     socialEngine.StatusMessagesController.likeStatusMessage(req,res);
   },
   'del /org/:orgId/users/:userId/statuses/:statusId':function(req,res){
@@ -157,7 +154,7 @@ var nudgeMailRoutes={
         socialEngine.NudgeMailsController.deleteMail(req,res);
     }
 };
-var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,socialFeedRoutes,medalRoutes,rankRoutes];
+var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,medalRoutes,rankRoutes];
 module.exports={
   initialize:function(server){
     stuff.forEach(function(routesObj){

@@ -68,7 +68,7 @@ var leaderboardRoutes={
 };
 var rankRoutes={
     'get /org/:orgId/teams/:teamId/rank':function(req,res){
-        leaderboardController.getTeamRank(req,res);
+        leaderboardController.getTeamRankOfPeriod(req,res);
     }
 };
 

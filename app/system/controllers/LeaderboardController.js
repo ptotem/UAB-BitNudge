@@ -30,14 +30,14 @@ var LeaderboardsController={
   },
   getUserRankOfPeriod:function(req,res){
     if(req.query.month)
-      LeaderboardsModel.getUserRank(req.params.orgId,req.params.userId,"month",new Date(req.params.month),function(err,obj){
+      LeaderboardsModel.getUserRankOfPeriod(req.params.orgId,req.params.userId,"month",new Date(req.query.month),function(err,obj){
         if(err) res.send(err);
         else res.send(obj);
       });
   },
   getTeamRankOfPeriod:function(req,res){
     if(req.query.month)
-      LeaderboardsModel.getTeamRank(req.params.orgId,req.params.teamId,"month",new Date(req.params.month),function(err,obj){
+      LeaderboardsModel.getTeamRankOfPeriod(req.params.orgId,req.params.teamId,"month",new Date(req.query.month),function(err,obj){
         if(err) res.send(err);
         else res.send(obj);
       });
