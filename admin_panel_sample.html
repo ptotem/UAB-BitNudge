@@ -72,9 +72,6 @@
     <![endif]-->
 
 
-
-
-
     <!-- For Modern Browsers -->
     <link rel="shortcut icon" href="img/favicons/favicon.png">
     <!-- For everything else -->
@@ -102,10 +99,10 @@
 
     <style>
         /*#g1, #g2, #g3, #g4, #g5, #g6*/
-        #shooting_g6, #quarter_g6, #shooting_team_g6, #quarter_team_g6{
+        #shooting_g6, #quarter_g6, #shooting_team_g6, #quarter_team_g6 {
             /*width: 200px; */
             width: 160px;
-            height:120px;
+            height: 120px;
             display: inline-block;
             /*margin: 1em;*/
             text-align: center;
@@ -331,7 +328,9 @@
         <br>
 
         <div class="my-profile semi-block" id="profile_meter">
-            <strong>Profile Complete</strong><strong class="pull-right"> <span id="profile_percentage" style="float: left">89</span>%</strong>
+            <strong>Profile Complete</strong><strong class="pull-right"> <span id="profile_percentage"
+                                                                               style="float: left">89</span>%</strong>
+
             <div class="progress progress-danger slim">
                 <div class="bar" id="profile_percentage_progress_bar" data-percentage="89" style="width: 89%;"></div>
             </div>
@@ -401,129 +400,194 @@
 
 <!-- main content -->
 <div id="page-content">
-<!-- page header -->
-<h1 id="page-header">Admin Panel</h1>
+    <!-- page header -->
+    <h1 id="page-header">Admin Panel</h1>
 
-<div class="fluid-container">
+    <div class="fluid-container">
 
-<!-- widget grid -->
-<section id="widget-grid" class="">
-    <!-- Row 1 Starts -->
-    <div class="row">
-        <article class="col-md-12">
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+            <!-- Row 1 Starts -->
+            <div class="row">
+                <article class="col-md-12">
 
-            <!-- new widget -->
-            <div class="jarviswidget" id="uab-submissions-widget">
-                <header>
-                    <h2>Submission</h2>
-                </header>
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="uab-submissions-widget">
+                        <header>
+                            <h2>Submission</h2>
+                        </header>
 
-                <!-- widget div-->
-                <div>
-                    <!-- widget edit box -->
-                    <div class="jarviswidget-editbox">
+                        <!-- widget div-->
                         <div>
-                            <label>Title:</label>
-                            <input type="text"/>
-                        </div>
-                        <div>
-                            <label>Styles:</label>
-                            <span data-widget-setstyle="purple" class="purple-btn"></span>
-                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                            <span data-widget-setstyle="green" class="green-btn"></span>
-                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                            <span data-widget-setstyle="orange" class="orange-btn"></span>
-                            <span data-widget-setstyle="pink" class="pink-btn"></span>
-                            <span data-widget-setstyle="red" class="red-btn"></span>
-                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                            <span data-widget-setstyle="black" class="black-btn"></span>
-                        </div>
-                    </div>
-                    <!-- end widget edit box -->
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <div>
+                                    <label>Title:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div>
+                                    <label>Styles:</label>
+                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                    <span data-widget-setstyle="green" class="green-btn"></span>
+                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                    <span data-widget-setstyle="red" class="red-btn"></span>
+                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                    <span data-widget-setstyle="black" class="black-btn"></span>
+                                </div>
+                            </div>
+                            <!-- end widget edit box -->
 
-                    <!-- content -->
-                    <div class="inner-spacer widget-content-padding">
-                        <!-- content goes here -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form class="form-horizontal themed" id="select-demo-js">
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label class="control-label" for="users-list-Select">Users</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="controls">
-                                                        <select id="users-list-Select" class="with-search"></select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label class="control-label" for="goals-list-Select">Goals</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="controls">
-                                                        <select id="goals-list-Select" class="with-search"></select>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div id="goal_fields"></div>
+                            <!-- content -->
+                            <div class="inner-spacer widget-content-padding">
+                                <!-- content goes here -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form class="form-horizontal themed" id="select-demo-js">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label"
+                                                                   for="users-list-Select">Users</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select id="users-list-Select"
+                                                                        class="with-search"></select>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div id="transactions_block">
-                                                                    <h3>Transactions</h3>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label"
+                                                                   for="users-points-text">Points</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <input type="text" id="users-points-text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label"
+                                                                   for="goals-list-Select">Goals</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select id="goals-list-Select"
+                                                                        class="with-search"></select>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div id="goal_fields"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <label class="control-label"
+                                                                               for="transactions-list-Select">Transactions</label>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <div class="controls">
+                                                                            <select id="transactions-list-Select"
+                                                                                    class="with-search"></select>
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div id="transactions_fields"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<div class="row">-->
+                                                                            <!--<div class="col-md-12">-->
+                                                                            <!--<div id="transactions_block">-->
+                                                                            <!--<h3>Transactions</h3>-->
+                                                                            <!--</div>-->
+                                                                            <!--</div>-->
+                                                                            <!--</div>-->
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
+
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <label class="control-label">Start Date</label>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <div class="input-append date"
+                                                                             id="datepickerstart-js"
+                                                                             data-date="12-02-2012"
+                                                                             data-date-format="dd-mm-yyyy">
+                                                                            <input class="datepickerstart-input"
+                                                                                   size="16" type="text"
+                                                                                   value="12-02-2012"
+                                                                                   placeholder="Select a date"/>
+                                                                            <span class="add-on"><i
+                                                                                    class="cus-calendar-2"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <label class="control-label">Completion
+                                                                            Date</label>
+                                                                    </div>
+                                                                    <div class="col-md-9">
+                                                                        <div class="input-append date"
+                                                                             id="datepicker-js" data-date="12-02-2012"
+                                                                             data-date-format="dd-mm-yyyy">
+                                                                            <input class="datepicker-input" id="current_date" size="16"
+                                                                                   type="text" value="12-02-2012"
+                                                                                   placeholder="Select a date"/>
+                                                                            <span class="add-on"><i
+                                                                                    class="cus-calendar-2"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-actions"
+                                                                 style="background: none repeat scroll 0 0 #fdfdfd">
+                                                                <button type="reset" class="btn medium btn-danger">
+                                                                    Cancel
+                                                                </button>
+                                                                <button type="submit" id="submit_btn"
+                                                                        class="btn medium btn-primary">Submit
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </fieldset>
 
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label class="control-label">Completion Date</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="input-append date" id="datepicker-js" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                                        <input class="datepicker-input" size="16" type="text" value="12-02-2012" placeholder="Select a date" />
-                                                        <span class="add-on"><i class="cus-calendar-2"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
 
-                                        <div class="form-actions" style="background: none repeat scroll 0 0 #fdfdfd">
-                                            <button type="reset" class="btn medium btn-danger">Cancel</button>
-                                            <button type="submit" id="submit_btn" class="btn medium btn-primary">Submit</button>
-                                        </div>
-                                    </fieldset>
-                                </form>
+
                             </div>
+                            <!-- end content -->
+
                         </div>
-
-
+                        <!-- end widget div -->
                     </div>
-                    <!-- end content -->
+                    <!-- end widget -->
 
-                </div>
-                <!-- end widget div -->
+                </article>
             </div>
-            <!-- end widget -->
-
-        </article>
+            <!-- Row 1 Ends -->
+        </section>
+        <!-- end widget grid -->
     </div>
-    <!-- Row 1 Ends -->
-</section>
-<!-- end widget grid -->
-</div>
 </div>
 <!-- end main content -->
 <!-- aside right on high res -->
@@ -532,6 +596,7 @@
     <div class="mystats indented" style="text-align: center">
         <div class="inner-spacer">
             <h4>Rank</h4>
+
             <div class="rank-circle">
                 <div class="rank-value">
                     34
@@ -713,7 +778,7 @@
 
 <script type="text/javascript">
 
-var remote_host = "http://192.168.2.17:3004/";
+var remote_host = "http://192.168.2.14:3004/";
 var goals_object;
 
 var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
@@ -740,47 +805,47 @@ if (!ismobile) {
 
         $.ajax({
             //url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d26?callback=?",
-            url: remote_host+"org/5417f10a195e61022fff91ee/users?callback=?",
-            type: 'getJSON',  /* Dont use post it JSONP doesnt support */
+            url: remote_host + "org/5417f10a195e61022fff91ee/users?callback=?",
+            type: 'getJSON', /* Dont use post it JSONP doesnt support */
             dataType: 'jsonp',
 //                jsonpCallback: 'myfunc', // the function to call
 //                jsonp: 'callback', // name of the var specifying the callback in the request
-            success: function(res) {
+            success: function (res) {
                 //console.log("success res :- ");
                 //console.log(res);
-                $.each(res, function( key, value ) {
-                    $("#users-list-Select").append('<option value='+value._id+'>'+value.name+'</option>')
+                $.each(res, function (key, value) {
+                    $("#users-list-Select").append('<option value=' + value._id + '>' + value.name + '</option>')
                 });
                 //
             },
-            error: function(e , msg){
+            error: function (e, msg) {
                 //alert(msg);
-                console.log(e,msg);
+                console.log(e, msg);
             }
         });
 
         //list of all goals
         $.ajax({
-            url: remote_host+"org/5417f10a195e61022fff91ee/goals?callback=?",
-            type: 'getJSON',  /* Dont use post it JSONP doesnt support */
+            url: remote_host + "org/5417f10a195e61022fff91ee/goals?callback=?",
+            type: 'getJSON', /* Dont use post it JSONP doesnt support */
             dataType: 'jsonp',
-            success: function(res) {
+            success: function (res) {
                 goals_object = res;
-                $.each(res, function( key, value ) {
-                    $("#goals-list-Select").append('<option value='+value._id+'>'+value.name+'</option>')
+                $.each(res, function (key, value) {
+                    $("#goals-list-Select").append('<option value=' + value._id + '>' + value.name + '</option>')
                 });
             },
-            error: function(e , msg){
-                console.log(e,msg);
+            error: function (e, msg) {
+                console.log(e, msg);
             }
         });
-
-        $('#goals-list-Select').on('change', function() {
-            //console.log("goals_object");
-            //console.log(goals_object);
+        var this_goal_obj;
+        $('#goals-list-Select').on('change', function () {
+//            console.log("goals_object");
+//            console.log(goals_object);
             var this_goal_id = $(this).val();
             //console.log("this_goal_id :- " + this_goal_id);
-            var hasTag = function(goal_id) {
+            var hasTag = function (goal_id) {
                 var i = null;
                 for (i = 0; goals_object.length > i; i += 1) {
                     if (goals_object[i]._id === goal_id) {
@@ -789,55 +854,132 @@ if (!ismobile) {
                 }
                 return false;
             };
-            var this_goal_obj = hasTag(this_goal_id);
-            //console.log("this_goal_obj");
-            //console.log(this_goal_obj);
+            this_goal_obj = hasTag(this_goal_id);
+            console.log("this_goal_obj");
+            console.log(this_goal_obj);
+            console.log("this_goal_obj.transactions");
             console.log(this_goal_obj.transactions);
             var this_goal_name = $("#goals-list-Select :selected").text();
             var fields = this_goal_name.match(/%{([^}]*)}/g);
             var fields_array = [];
             //console.log("fields :- " + fields);
             $("#goal_fields").empty();
-            if (fields!=null) {
+            if (fields != null) {
                 //console.log("fields.length :- " + fields.length);
-                $.each(fields, function( key, value ) {
-                    fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g,'');
+                $.each(fields, function (key, value) {
+                    fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
                 });
                 //console.log(fields_array);
                 var titlized_field_name;
-                $.each(fields_array, function( key, value ) {
-                    fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g,'');
-                    titlized_field_name = fields_array[key].charAt(0).toUpperCase()+fields_array[key].slice(1);
-                    $("#goal_fields").append('<label for=goal_'+this_goal_id+"_"+fields_array[key]+'>'+titlized_field_name+'</label>' + '<input type="text" id=goal_'+this_goal_id+"_"+fields_array[key]+' class="form-control">');
+                $.each(fields_array, function (key, value) {
+                    fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+                    titlized_field_name = fields_array[key].charAt(0).toUpperCase() + fields_array[key].slice(1);
+                    $("#goal_fields").append('<label for=goal_' + this_goal_id + "_" + fields_array[key] + '>' + titlized_field_name + '</label>' + '<input type="text" id=goal_' + this_goal_id + "_" + fields_array[key] + ' class="form-control">');
                 });
             }
-            $.each(this_goal_obj.transactions, function( key, value ) {
-                $("#transactions_block").append(value.name);
-                console.log(value.name)
+            $.each(this_goal_obj.transactions, function (key, value) {
+                $("#transactions-list-Select").append('<option value=' + value._id + '>' + value.format + '</option>')
             });
         });
 
-        $("#submit_btn").click(function() {
-            alert("hello");
+
+        $('#transactions-list-Select').on('change', function () {
+            console.log("goals_object1");
+            console.log(this_goal_obj.transactions)
+            var this_transaction_id = $(this).val();
+            var hasTag = function (transaction_id) {
+                var i = null;
+                for (i = 0; this_goal_obj.transactions.length > i; i += 1) {
+                    if (this_goal_obj.transactions[i]._id === transaction_id) {
+
+                        return this_goal_obj.transactions[i];
+                    }
+
+                }
+                return false;
+            };
+            var this_transaction_obj = hasTag(this_transaction_id);
+            var this_transaction_format = $("#transactions-list-Select :selected").text();
+            var fields = this_transaction_format.match(/%{([^}]*)}/g);
+            var fields_array = [];
+//            console.log("fields :- " + fields);
+            $("#transactions_fields").empty();
+            if (fields != null) {
+                //console.log("fields.length :- " + fields.length);
+                $.each(fields, function (key, value) {
+                    fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+                });
+                var titlized_field_name;
+                $.each(fields_array, function (key, value) {
+                    fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+                    titlized_field_name = fields_array[key].charAt(0).toUpperCase() + fields_array[key].slice(1);
+                    $("#transactions_fields").append('<label for=transaction_' + this_transaction_id + "_" + fields_array[key] + '>' + titlized_field_name + '</label>' + '<input type="text" id=transaction_' + this_transaction_id + "_" + fields_array[key] + ' class="form-control">');
+                });
+            }
+        });
+
+
+        $("#submit_btn").click(function () {
+            var username = $('select#users-list-Select option:selected').val();
+            var goals_id = $("select#goals-list-Select option:selected").val();
+            var transaction_id = $("select#transactions-list-Select option:selected").val();
+            var start_date;
+
+            var end_date = $('#current_date').datepicker('getDate');
+            console.log(end_date);
+            var points=$("#users-points-text").val();
+            var Contain = "";
+            $("#goal_fields :text").each(function () {
+                Contain += $(this).val() + ",";
+            });
+            var transaction = "";
+            $("#transactions_fields :text").each(function () {
+                transaction += $(this).val() + ",";
+            });
+            var goals_data = Contain;
+            var transaction_data = transaction;
+            var dataString = {
+                goalMaster:goals_id,
+                startDate:start_date,
+                endDate:end_date,
+                points:points,
+                goals: goals_data,
+                transactions: [
+                    {transactionMaster: transaction_id, target: transaction_data}
+                ]
+            };
+//            console.log(dataString);
+//
+            $.ajax({
+                type: "POST",
+                url: remote_host + "org/5417f10a195e61022fff91ee/users/" + username + "/goals",
+                data: dataString,
+                dataType: "json",
+                success: function (res) {
+                    console.log('successfully');
+                },
+                error: function (e, msg) {
+                    console.log('error');
+                }
+
+            });
+//            goal_'+this_goal_id
 //            var user_email = $("#user_email").val();
 //            var user_password = $("#user_password").val();
 ////            var dataString = 'password='+ user_password + '&username=' + user_email;
-////            var dataString = {
-////                username: user_email,
-////                password: user_password
-////            };
+
 //            //console.log(dataString);
-//            var jqxhr = $.post(remote_host+"login?username="+user_email+'&password='+user_password, function() {
-//                //alert( "success" );
+//            var jqxhr = $.post(remote_host+"user_goal_data?username="+username+'&goals='+goals_data+'&transaction='+transaction_data, function() {
 //            })
 //                    .done(function(data) {
+//                        console.log('successfully');
 //                        //alert( "second success" );
-//                        console.log("data");
-//                        console.log(data);
-//                        var my_id = data._id;
-//                        var my_org_id = data.orgId;
-//                        console.log("my_id :- " + my_id + ", my_org_id :- " + my_org_id);
-//                        //document.location.href='dashboard.html?org='+my_org_id+'&users/'+my_id;
+////                        console.log("data");
+////                        console.log(data);
+////                        var my_id = data._id;
+////                        var my_org_id = data.orgId;
+////                        console.log("my_id :- " + my_id + ", my_org_id :- " + my_org_id);
+////                        //document.location.href='dashboard.html?org='+my_org_id+'&users/'+my_id;
 //                    })
 //                    .fail(function() {
 //                        alert( "error" );
@@ -849,7 +991,7 @@ if (!ismobile) {
 
             //$.post(remote_host+"login?username="+user_email+'&password='+user_password);
 
-            return false;
+//            return false;
         });
 
     });
@@ -861,6 +1003,14 @@ if (!ismobile) {
 
     document.write('<script src="js/include/selectnav.min.js"><\/script>');
 }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("button").click(function (event) {
+            event.preventDefault();
+        });
+    });
 </script>
 
 <!-- REQUIRED: iButton -->
