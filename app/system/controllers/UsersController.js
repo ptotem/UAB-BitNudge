@@ -34,7 +34,7 @@ var UsersController={
     });
   },
   getUsersOfOrganization:function(req,res){
-    UsersModel.getUsersOfOrganization(req.params.orgId,"name ","","",function(err,goals){
+    UsersModel.getUsersOfOrganization(req.params.orgId,"","","",function(err,goals){
       res.send(goals);
     });
   },

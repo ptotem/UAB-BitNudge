@@ -26,7 +26,7 @@ var UserManagement={
   updateUser:function(id,updateData,callback){
     UserCollection.update({_id:id},{$set:updateData},callback);
   },
-  getRoles:function(id,fields,options,callback){
+  getRoleOfUser:function(id,fields,options,callback){
     UserCollection.findOne({_id:id},fields,options).populate('roles').exec(function(err,objs){
       if(objs)
         return callback(err,objs.roles);

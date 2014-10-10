@@ -1,7 +1,7 @@
 var UsersCollection=require('../Users/UsersCollection.js');
 var mongoose=require('mongoose');
 var UserGoals={
-  addGoal:function(userId,goalObj,callback){
+  createGoal:function(userId,goalObj,callback){
     if(!goalObj.createdAt)
       goalObj.createdAt=new Date();
     UsersCollection.update({_id:userId},{$push:{goals:goalObj}},callback);

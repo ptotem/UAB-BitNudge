@@ -6,10 +6,13 @@ var server = module.exports = restify.createServer({
 var escape=require('escape-html');
 var mongoose=require('mongoose');
 var passport=require('passport');
-var sessions=require('client-sessions');
+// var sessions=require('client-sessions');
 var LocalStrategy = require('passport-local').Strategy;
+var BearerStrategy=require('passport-http-bearer').Strategy;
 var restify = require('restify');
 var jwt = require('jwt-simple');
+var secret="ungessableSecret";
+var UserModel=require('./system/models/Users').Users;
 
 
 // var cors=require('cors');
@@ -28,8 +31,6 @@ mongoose.connect('mongodb://localhost/uabTest');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-  // yay!
-  
   console.log("db working");
 });
 
@@ -68,8 +69,7 @@ server.listen(3004, function () {
 });
 // ZOHO Authentication:
 
-server.get('/login', function (reqdata, resdata) {
-
+server.get('/login/zoho', function (reqdata, resdata) {
     var  user_email = reqdata.query.username;
     var user_password = reqdata.query.password;
      var http = require('https');
@@ -85,27 +85,23 @@ server.get('/login', function (reqdata, resdata) {
        }
      };
      var request = http.request(options, function(res,err) {
-             res.on('data', function(chunk) {
-                 data += chunk;
-             });
-                  res.on('end', function(chunk) {
-                 var d=data;
-                  var n = d.search("TRUE");
-              if(n>0)
-             {
-                 var username = { username: user_email };
-                 var secret = '123';
-                 var token = jwt.encode(username, secret);
-                 resdata.send(token);
-             }
-             else
-             {
-                 resdata.send(data);
-
-             }
-//                 console.log(data)
-             });
-
+       res.on('data', function(chunk) {
+           data += chunk;
+       });
+       res.on('end', function(chunk) {
+         var d=data;
+         var n = d.search("TRUE");
+         if(n>0)
+         {
+           var username = { username: user_email };
+           var token = jwt.encode(username, secret);
+           resdata.send(token);
+         }
+         else
+         {
+           resdata.send(data);
+         }
+       });
      });
      request.end();
      request.on('error', function(e) {
@@ -122,21 +118,33 @@ server.get('/login', function (reqdata, resdata) {
 //   secret:'ungessableString',
 //   duration:24*60*60*1000
 // }));
-// server.use(passport.initialize());
+server.use(passport.initialize());
 // server.use(passport.session());
-//   passport.use(new LocalStrategy(
-//     function(username, password, done) {
-//       console.log('trying to authenticate.');
-//       console.log(username+" "+password);
-//       UserModel.getUserByAuthentication(username,password,function(err, user) {
-//         if (err) { return done(err); }
-//           if (!user) {
-//             return done(null, false, { message: 'Incorrect username or password.' });
-//           }
-//         return done(null, user);
-//       });
-//     }
-//   ));
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    console.log('trying to authenticate.');
+    console.log(username+" "+password);
+    UserModel.Users.getUserByAuthentication(username,password,function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username or password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+passport.use(new BearerStrategy(
+  function(token, done) {
+    var decoded=jwt.decode(token,secret);
+    if(decoded.expires<new Date().getTime())
+      return done(null,false,{message:"Expired Token."});
+    UserModel.getUser(decoded.userId , "","","",function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      return done(null, user, { scope: 'all' });
+    });
+  }
+));
 // passport.serializeUser(function(user, done) {
 //   done(null, user._id);
 // });
@@ -146,9 +154,25 @@ server.get('/login', function (reqdata, resdata) {
 //     done(err, user);
 //   });
 // });
-// server.post('/login',passport.authenticate('local'), function(req,res){
-//   res.send({_id:req.user._id,orgId:req.user.orgId});
-// });
+server.post('/login/bitnudge',passport.authenticate('local',{session:false}), function(req,res){
+  var ele={userId:req.user._id,expires:moment().add(1,'day').valueOf()};
+  res.send({token:jwt.encode(ele,secret),expires:ele.expires,userId:req.user._id,orgId:req.user.orgId});
+});
+var moment=require('moment');
+server.get('/login/test',function(req,res){
+  var tes=jwt.decode(req.query.token,secret);
+  res.send(tes.userId);
+});
+server.get('/org/',function(req,res,next){
+  console.log("sdfs");
+  if(!req.query.token)
+    res.send(401,{status:"You must enter a valid Auth Token. Obtain one after signing in."});
+  return next(false);
+});
+server.get('/org/k',function(req,res,next){
+  res.send('k');
+  return next();
+});
 
 
 //testing ranks

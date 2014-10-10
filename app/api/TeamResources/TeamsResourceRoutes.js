@@ -1,19 +1,19 @@
 var leaderboardController=require('../../system/controllers/LeaderboardController.js');
 var eCommerceEngine=require('../../system/controllers/eCommerceEngine');
 var hierarchyController=require('../../system/controllers/HierarchyEngine');
-
+var passport=require('passport');
 
 // End Points for User in Team Resources:
 var memberTeamsRoutes={
-    'get org/:orgId/teams/:teamId/members':function(req,res) {
-        hierarchyController.TeamsController.getMembersOfTeam(req,res);
-    },
-    'post /org/:orgId/teams/:teamId/members':function(req,res){
-      hierarchyController.TeamsController.addMembersToTeam(req,res);
-    },
-    'del /org/:orgId/teams/:teamId/members/:userId':function(req,res){
-      hierarchyController.TeamsController.removeMemberFromTeam(req,res);
-    }
+  'get org/:orgId/teams/:teamId/members':[function(req,res,next){AuthorizationController.isAuthorized('Users','get',req,res,next);},function(req,res) {
+    hierarchyController.TeamsController.getMembersOfTeam(req,res);
+  }],
+  'post /org/:orgId/teams/:teamId/members':[function(req,res,next){AuthorizationController.isAuthorized('Users','get',req,res,next);},function(req,res){
+    hierarchyController.TeamsController.addMembersToTeam(req,res);
+  }],
+  'del /org/:orgId/teams/:teamId/members/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','get',req,res,next);},function(req,res){
+    hierarchyController.TeamsController.removeMemberFromTeam(req,res);
+  }]
 };
 
 var subteamRoutes={
@@ -76,12 +76,15 @@ var rankRoutes={
 
 var stuff=[leaderboardRoutes,storesRoutes,memberTeamsRoutes,subteamRoutes,teamRoutes,rankRoutes];
 module.exports={
-  initialize:function(server){
+  initialize:function(server,handlers){
     stuff.forEach(function(routesObj){
       for(var property in routesObj)
       {
         methods=property.split(" ");
-        eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
+        if(handlers)
+          eval("server."+methods[0]+"('"+methods[1]+"',"+handlers+","+routesObj[property]+');');
+        else
+          eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
       }
     });
     console.log("Team Routes initialized");

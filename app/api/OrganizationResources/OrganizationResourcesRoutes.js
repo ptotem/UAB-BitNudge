@@ -2,9 +2,11 @@ var leaderboardController=require('../../system/controllers/LeaderboardControlle
 var medalController=require('../../system/controllers/MedalsController.js');
 var eCommerceEngine=require('../../system/controllers/eCommerceEngine');
 var storeItemController=eCommerceEngine.StoreItemController;
-var goalMasterController=require('../../system/models/GoalMaster');
+var goalMasterController=require('../../system/controllers/GoalMasterController.js');
 var hierarchyController=require('../../system/controllers/HierarchyEngine');
 var socialEngine=require('../../system/controllers/SocialEngine');
+var tagController=require('../../system/controllers/TagsController.js');
+var passport=require('passport');
 
 var organizationRoutes={
   'post /org':function(req,res){
@@ -20,9 +22,7 @@ var organizationRoutes={
 
 var goalMasterRoutes={
   'get /org/:orgId/goals':function(req,res){
-    goalMasterController.getAllGoalMasters("","","transactions",function(err,goals){
-      res.send(goals);
-    });
+    goalMasterController.getAllGoalMasters(req,res);
   }
 };
 
@@ -40,9 +40,6 @@ var storeRoutes={
   'post /org/:orgId/stores/:storeId':function(req,res){
     eCommerceEngine.StoreController.updateStore(req,res);
   },
-  'post /org/:orgId/stores/:storeId/items':function(req,res){
-    eCommerceEngine.StoreController.assignStoreItemToStore(req,res);
-  },
   'del org/:orgId/stores/:storeId':function(req,res){
     eCommerceEngine.StoreController.deleteStore(req,res);
   }
@@ -50,21 +47,24 @@ var storeRoutes={
 
 //End Points for StoreItems
 var storeItemRoutes={
-    'get org/:orgId/storeitems/:storeItemId':function(req,res) {
-      storeItemController.getStoreItem(req,res);
-    },
-    'get /org/:orgId/storeitems':function(req,res){
-        storeItemController.getStoreItemsOfOrganization(req,res);
-    },
-    'post /org/:orgId/storeitems':function(req,res){
-        storeItemController.createStoreItem(req,res);
-    },
-    'post /org/:orgId/storeitems/:storeItemId':function(req,res){
-        storeItemController.updateStoreItem(req,res);
-    },
-    'del org/:orgId/storeitems/:storeItemId':function(req,res){
-        storeItemController.deleteStoreItem(req,res);
-    }
+  'get org/:orgId/storeitems/:storeItemId':function(req,res) {
+    storeItemController.getStoreItem(req,res);
+  },
+  'get /org/:orgId/storeitems':function(req,res){
+      storeItemController.getStoreItemsOfOrganization(req,res);
+  },
+  'post /org/:orgId/storeitems':function(req,res){
+      storeItemController.createStoreItem(req,res);
+  },
+  'post /org/:orgId/storeitems/:storeItemId':function(req,res){
+      storeItemController.updateStoreItem(req,res);
+  },
+  'post /org/:orgId/stores/:storeId/items':function(req,res){
+    eCommerceEngine.StoreController.assignStoreItemToStore(req,res);
+  },
+  'del org/:orgId/storeitems/:storeItemId':function(req,res){
+      storeItemController.deleteStoreItem(req,res);
+  }
 };
 
 //End Points for Medals:
@@ -99,13 +99,31 @@ var leaderboardRoutes={
     // },
 };
 
-var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes];
+var tagRoutes={
+  'post org/:orgId/tags':function(req,res){
+    tagsController.createTag(req,res);
+  },
+  'get org/:orgId/tags/:tagName':function(req,res){
+    tagsController.getTagsOfTypeOfOrganization(req,res);
+  },
+  'post org/:orgId/tags/:tagId':function(req,res){
+    tagsController.updateTag(req,res);
+  },
+  'del org/:orgId/tags/:tagId':function(req,res){
+    tagsController.deleteTag(req,res);
+  },
+};
+
+var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes];
 module.exports={
-  initialize:function(server){
+  initialize:function(server,handlers){
     stuff.forEach(function(routesObj){
       for(var property in routesObj) {
         methods=property.split(" ");
-        eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
+        if(handlers)
+          eval("server."+methods[0]+"('"+methods[1]+"',"+handlers+","+routesObj[property]+');');
+        else
+          eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
       }
     });
     console.log("Organization Routes initialized");
