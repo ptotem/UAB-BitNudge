@@ -469,13 +469,37 @@
                                                 <div class="col-md-9">
                                                     <div class="controls">
                                                         <select id="goals-list-Select" class="with-search"></select>
-                                                        <div class="transactions_block">
-
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div id="goal_fields"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div id="transactions_block">
+                                                                    <h3>Transactions</h3>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="control-label">Completion Date</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="input-append date" id="datepicker-js" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                                        <input class="datepicker-input" size="16" type="text" value="12-02-2012" placeholder="Select a date" />
+                                                        <span class="add-on"><i class="cus-calendar-2"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="form-actions" style="background: none repeat scroll 0 0 #fdfdfd">
                                             <button type="reset" class="btn medium btn-danger">Cancel</button>
                                             <button type="submit" id="submit_btn" class="btn medium btn-primary">Submit</button>
@@ -688,10 +712,9 @@
 <script src="js/dummy_data.js"></script>
 
 <script type="text/javascript">
-//    var g1, g2, g3, g4, g5, g6;
 
-var remote_host = "http://192.168.2.16:3004/";
-var ;
+var remote_host = "http://192.168.2.17:3004/";
+var goals_object;
 
 var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
 if (!ismobile) {
@@ -712,6 +735,8 @@ if (!ismobile) {
         $('#main').css('opacity', 1);
         $('header').fadeIn();
 
+        //$('#datepicker-js').datepicker();
+
 
         $.ajax({
             //url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d26?callback=?",
@@ -724,13 +749,10 @@ if (!ismobile) {
                 //console.log("success res :- ");
                 //console.log(res);
                 $.each(res, function( key, value ) {
-                    //console.log(value.name);
-                    //console.log(value._id);
                     $("#users-list-Select").append('<option value='+value._id+'>'+value.name+'</option>')
                 });
                 //
-            }
-            ,
+            },
             error: function(e , msg){
                 //alert(msg);
                 console.log(e,msg);
@@ -742,13 +764,11 @@ if (!ismobile) {
             url: remote_host+"org/5417f10a195e61022fff91ee/goals?callback=?",
             type: 'getJSON',  /* Dont use post it JSONP doesnt support */
             dataType: 'jsonp',
-//                jsonpCallback: 'myfunc', // the function to call
-//                jsonp: 'callback', // name of the var specifying the callback in the request
             success: function(res) {
+                goals_object = res;
                 $.each(res, function( key, value ) {
                     $("#goals-list-Select").append('<option value='+value._id+'>'+value.name+'</option>')
                 });
-                //
             },
             error: function(e , msg){
                 console.log(e,msg);
@@ -756,7 +776,45 @@ if (!ismobile) {
         });
 
         $('#goals-list-Select').on('change', function() {
-            console.log($(this).val()); // or $(this).val()
+            //console.log("goals_object");
+            //console.log(goals_object);
+            var this_goal_id = $(this).val();
+            //console.log("this_goal_id :- " + this_goal_id);
+            var hasTag = function(goal_id) {
+                var i = null;
+                for (i = 0; goals_object.length > i; i += 1) {
+                    if (goals_object[i]._id === goal_id) {
+                        return goals_object[i];
+                    }
+                }
+                return false;
+            };
+            var this_goal_obj = hasTag(this_goal_id);
+            //console.log("this_goal_obj");
+            //console.log(this_goal_obj);
+            console.log(this_goal_obj.transactions);
+            var this_goal_name = $("#goals-list-Select :selected").text();
+            var fields = this_goal_name.match(/%{([^}]*)}/g);
+            var fields_array = [];
+            //console.log("fields :- " + fields);
+            $("#goal_fields").empty();
+            if (fields!=null) {
+                //console.log("fields.length :- " + fields.length);
+                $.each(fields, function( key, value ) {
+                    fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g,'');
+                });
+                //console.log(fields_array);
+                var titlized_field_name;
+                $.each(fields_array, function( key, value ) {
+                    fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g,'');
+                    titlized_field_name = fields_array[key].charAt(0).toUpperCase()+fields_array[key].slice(1);
+                    $("#goal_fields").append('<label for=goal_'+this_goal_id+"_"+fields_array[key]+'>'+titlized_field_name+'</label>' + '<input type="text" id=goal_'+this_goal_id+"_"+fields_array[key]+' class="form-control">');
+                });
+            }
+            $.each(this_goal_obj.transactions, function( key, value ) {
+                $("#transactions_block").append(value.name);
+                console.log(value.name)
+            });
         });
 
         $("#submit_btn").click(function() {
