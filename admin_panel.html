@@ -457,20 +457,20 @@
                         </div>
                         <div class="col-md-4 col-lg-4 text-center">
                             <!-- Button trigger modal -->
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_delete_team">
                                 Delete
                             </button>
 
                             <!-- Modal -->
                             <div class="modal fade"  tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                 aria-labelledby="myModalLabel" aria-hidden="true" id="myModal_delete_team">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span
                                                     aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                             </button>
-                                            <h4 class="modal-title" ></h4>
+                                            <h4 class="modal-title" >Team</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
@@ -570,12 +570,10 @@
                             <div class="controls">
                                 <select multiple="multiple" id="multiSelect_items" class="col-md-12"
                                         style="height:120px">
-                                    <option value="AK">Alaska</option>
-                                    <option value="HI">Hawaii</option>
-                                    <option value="CA">California</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
+                                    <option value="AK">Books</option>
+                                    <option value="HI">Hardware</option>
+                                    <option value="CA">Computer</option>
+                                    <option value="NV">A/C</option>
                                 </select>
                             </div>
                         </div>
@@ -587,30 +585,79 @@
                         <div class="col-md-3 col-lg-3">
                             <a class="btn btn-primary" href="javascript:void(0);">Edit</a>
                         </div>
-                        <div class="col-md-3 col-lg-3">
-                            <a class="btn btn-primary" href="javascript:void(0);">Assign</a>
-                        </div>
                         <div class="col-md-3 col-lg-3 text-center">
                             <!-- Button trigger modal -->
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                Delete
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_store_assign">
+                                Assign
                             </button>
 
                             <!-- Modal -->
                             <div class="modal fade" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                 aria-labelledby="myModalLabel" aria-hidden="true" id="myModal_store_assign">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span
                                                     aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                             </button>
-                                            <h4 class="modal-title"></h4>
+                                            <h4 class="modal-title">Stores</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 ">
-                                                    <h5>Team</h5>
+                                                    <h5>Store</h5>
+                                                </div>
+                                            <div class="col-md-2 col-lg-2">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-default dropdown-toggle" type="button"
+                                                                id="assign_store_modal" data-toggle="dropdown">
+                                                            Store
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu"
+                                                            aria-labelledby="assign_store_modal">
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Red</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Green</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Blue</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Yellow</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 text-center">
+                            <!-- Button trigger modal -->
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_store_delete">
+                                Delete
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true" id="myModal_store_delete">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <h4 class="modal-title">Stores</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 ">
+                                                    <h5>Store</h5>
 
                                                 </div>
 
@@ -710,17 +757,69 @@
                         <div class="col-md-3 col-lg-3">
                             <a class="btn btn-primary" href="javascript:void(0);">Edit</a>
                         </div>
-                        <div class="col-md-3 col-lg-3">
-                            <a class="btn btn-primary" href="javascript:void(0);">Assign</a>
+                        <div class="col-md-3 col-lg-3 text-center">
+                            <!-- Button trigger modal -->
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_store_items_assign">
+                                Assign
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true" id="myModal_store_items_assign">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <h4 class="modal-title">Store Items</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-3 ">
+                                                    <h5>Store Items</h5>
+
+                                                </div>
+
+                                                <div class="col-md-2 col-lg-2">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-default dropdown-toggle" type="button"
+                                                                id="assign_store_item_modal" data-toggle="dropdown">
+                                                            Store
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu"
+                                                            aria-labelledby="assign_store_item_modal">
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">A/c</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Hardware</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">TV</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Camera</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-3 col-lg-3 text-center">
                             <!-- Button trigger modal -->
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_store_items_delete">
                                 Delete
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade"  tabindex="-1" role="dialog"
+                            <div class="modal fade"  tabindex="-1" id="myModal_store_items_delete" role="dialog"
                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -728,12 +827,12 @@
                                             <button type="button" class="close" data-dismiss="modal"><span
                                                     aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                             </button>
-                                            <h4 class="modal-title" ></h4>
+                                            <h4 class="modal-title">Store Items</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-lg-2 col-md-2 ">
-                                                    <h5>Team</h5>
+                                                <div class="col-lg-3 col-md-3">
+                                                    <h5>Store Items</h5>
 
                                                 </div>
 
@@ -741,19 +840,19 @@
                                                     <div class="dropdown">
                                                         <button class="btn btn-default dropdown-toggle" type="button"
                                                                 id="store_item_modal" data-toggle="dropdown">
-                                                            Team
+                                                            Store Items
                                                             <span class="caret"></span>
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu"
-                                                            aria-labelledby="store_item_modal">
+                                                            aria-labelledby="assign_store_item_modal">
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Red</a></li>
+                                                                                       href="#">A/c</a></li>
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Green</a></li>
+                                                                                       href="#">Hardware</a></li>
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Blue</a></li>
+                                                                                       href="#">TV</a></li>
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Yellow</a></li>
+                                                                                       href="#">Camera</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -885,30 +984,78 @@
                         <div class="col-md-3 col-lg-3">
                             <a class="btn btn-primary" href="javascript:void(0);">Edit</a>
                         </div>
-                        <div class="col-md-3 col-lg-3">
-                            <a class="btn btn-primary" href="javascript:void(0);">Assign</a>
-                        </div>
                         <div class="col-md-3 col-lg-3 text-center">
                             <!-- Button trigger modal -->
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                Delete
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_assign_user">
+                                Assign
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade"  tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" tabindex="-1" role="dialog" id="myModal_assign_user" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span
                                                     aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                             </button>
-                                            <h4 class="modal-title" ></h4>
+                                            <h4 class="modal-title">User</h4>
+                                        </div>
+                                             <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 ">
+                                                    <h5>User</h5>
+
+                                                </div>
+
+                                                <div class="col-md-2 col-lg-2">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-default dropdown-toggle" type="button"
+                                                                id="assign_user_modal" data-toggle="dropdown">
+                                                            Store
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="assign_user_modal">
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Levis</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Ele</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Barbie</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                 </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3 text-center">
+                            <!-- Button trigger modal -->
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_delete_user">
+                                Delete
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade"  tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true" id="myModal_delete_user">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <h4 class="modal-title">Delete</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 ">
-                                                    <h5>Team</h5>
+                                                    <h5>User</h5>
 
                                                 </div>
 
@@ -916,19 +1063,17 @@
                                                     <div class="dropdown">
                                                         <button class="btn btn-default dropdown-toggle" type="button"
                                                                 id="user_modal" data-toggle="dropdown">
-                                                            Team
+                                                            User
                                                             <span class="caret"></span>
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu"
                                                             aria-labelledby="user_modal">
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Red</a></li>
+                                                                                       href="#">Levis</a></li>
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Green</a></li>
+                                                                                       href="#">Ele</a></li>
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Blue</a></li>
-                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Yellow</a></li>
+                                                                                       href="#">Barbie</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -978,17 +1123,13 @@
                     <span data-widget-setstyle="black" class="black-btn"></span>
                 </div>
             </div>
-
-
             <div class="inner-spacer">
                 <div class="widget-content-padding">
                     <!-- content goes here -->
-
                     <div class="row form-group">
                         <div class="col-md-3"><label for="input01">Name</label></div>
                         <div class="col-md-9"><input class="form-control" id="name_medal" type="text"></div>
                     </div>
-
                     <div class="row form-group">
                         <div class="col-md-3"><label for="input01">Image</label></div>
                         <div class="col-md-9">
@@ -1003,17 +1144,67 @@
                         <div class="col-md-3 col-lg-3">
                             <a class="btn btn-primary" href="javascript:void(0);">Edit</a>
                         </div>
-                        <div class="col-md-3 col-lg-3">
-                            <a class="btn btn-primary" href="javascript:void(0);">Assign</a>
+                        <div class="col-md-3 col-lg-3 text-center">
+                            <!-- Button trigger modal -->
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_assign_medal">
+                                Assign
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true" id="myModal_assign_medal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <h4 class="modal-title">Medal</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 ">
+                                                    <h5>Medal</h5>
+
+                                                </div>
+
+                                                <div class="col-md-2 col-lg-2">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-default dropdown-toggle" type="button"
+                                                                id="assign_medal_modal" data-toggle="dropdown">
+                                                            Gold
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu"
+                                                            aria-labelledby="assign_medal_modal">
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Gold</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Silver</a></li>
+                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                                       href="#">Bronze</a></li>
+                                                            </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-3 col-lg-3 text-center">
                             <!-- Button trigger modal -->
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_delete_medal">
                                 Delete
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="myModal_delete_medal" tabindex="-1" role="dialog"
                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -1021,12 +1212,12 @@
                                             <button type="button" class="close" data-dismiss="modal"><span
                                                     aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                             </button>
-                                            <h4 class="modal-title" id="myModalLabel"></h4>
+                                            <h4 class="modal-title" id="myModalLabel">Medal</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 ">
-                                                    <h5>Team</h5>
+                                                    <h5>Medal</h5>
 
                                                 </div>
 
@@ -1034,19 +1225,17 @@
                                                     <div class="dropdown">
                                                         <button class="btn btn-default dropdown-toggle" type="button"
                                                                 id="medal_modal" data-toggle="dropdown">
-                                                            Team
+                                                            Medal
                                                             <span class="caret"></span>
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu"
                                                             aria-labelledby="medal_modal">
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Red</a></li>
+                                                                                       href="#">Gold</a></li>
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Green</a></li>
+                                                                                       href="#">Silver</a></li>
                                                             <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Blue</a></li>
-                                                            <li role="presentation"><a role="menuitem" tabindex="-1"
-                                                                                       href="#">Yellow</a></li>
+                                                                                       href="#">Bronze</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1106,18 +1295,14 @@
                     <div class="row form-group">
                         <div class="col-md-6 col-lg-6">
                             <!--<a class="btn btn-primary pull-right" href="javascript:void(0);">Add Product</a>-->
-
-                            <button class="btn btn-primary pull-right" data-toggle="modal" data-target=".bs-example-modal-lg">Add Client</button>
-
-                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <button class="btn btn-primary pull-right" data-toggle="modal" data-target=".add_client_modal">Add Client</button>
+                            <div class="modal fade bs-example-modal-lg add_client_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Modal title</h4>
+                                            <h4 class="modal-title">Tag</h4>
                                         </div>
-
-
                                         <div class="modal-body">
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2">Name</div>
@@ -1127,20 +1312,18 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="col-md-6 col-lg-6">
                             <!--<a class="btn btn-primary pull-right" href="javascript:void(0);">Add Product</a>-->
 
-                            <button class="btn btn-primary pull-left" data-toggle="modal" data-target=".bs-example-modal-lg">Add Product</button>
+                            <button class="btn btn-primary pull-left" data-toggle="modal" data-target=".add_product_modal">Add Product</button>
 
-                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal fade bs-example-modal-lg add_product_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Modal title</h4>
+                                            <h4 class="modal-title">Tag</h4>
                                         </div>
 
 
