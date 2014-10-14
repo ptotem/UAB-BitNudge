@@ -197,35 +197,7 @@
 
                         <div class="dropdown-menu toolbar pull-right">
                             <h3>Showing Critical Goals</h3>
-                            <ul class="progressbox">
-                                <li>
-                                    <strong><i class="online pull-left"></i>Net Interest Income</strong><b>Complete</b>
-
-                                    <div class="progress progress-success slim">
-                                        <div class="bar" style="width: 100%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>Net Fee Income</strong><b>70%</b>
-
-                                    <div class="progress progress-info slim">
-                                        <div class="bar" style="width: 70%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>Deposit Base</strong><b>50%</b>
-
-                                    <div class="progress progress-danger slim">
-                                        <div class="bar" style="width: 50%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>New to Bank Clients</strong><b>22%</b>
-
-                                    <div class="progress progress-danger slim">
-                                        <div class="bar" style="width: 22%;"></div>
-                                    </div>
-                                </li>
+                            <ul id="goal_dropdown" class="progressbox">
                             </ul>
                             <a href="javascript:void(0);" id="go-to-goals">Go to All Goals <i
                                     class="icon-double-angle-right"></i></a>
@@ -298,18 +270,18 @@
             <a href="javascript:void(0)" class="my-profile-pic my-profile-pic-lrg">
                 <img src="img/avatar/avatar_8.jpg" alt="" class="profile-img-lrg"/>
             </a>
-            <span class="first-child"><strong>Shoaib Akhtar</strong></span>
-            <span class="nullify-bold">HR Head</span>
-            <span class="nullify-bold">Walves</span>
+            <span id="user_name" class="first-child"><strong>Shoaib Akhtar</strong></span>
+            <span id="user_designation" class="nullify-bold">HR Head</span>
+            <span id="user_teams" class="nullify-bold">Walves</span>
             <span><a href="javascript:void(0);">Edit Profile </a></span>
         </div>
         <br>
 
         <div class="my-profile semi-block">
-            <strong>Profile Complete</strong><strong class="pull-right">89%</strong>
+            <strong>Profile Complete</strong><strong id="user_percentage" class="pull-right">89%</strong>
 
             <div class="progress progress-danger slim">
-                <div class="bar" data-percentage="89"></div>
+                <div id="profile_percentage_progress_bar" class="bar" data-percentage="89"></div>
             </div>
         </div>
     </div>
@@ -323,40 +295,40 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li class="">
-                <a href="dashboard.html"><i class="icon-home"></i>Home</a>
+                <a id="dashboard_page" href="dashboard.html"><i class="icon-home"></i>Home</a>
             </li>
             <li class="">
-                <a href="profile.html"><i class="icon-user"></i>Profile</a>
+                <a id="profile_page" href="profile.html"><i class="icon-user"></i>Profile</a>
             </li>
             <li class="current">
-                <a href="leaderboard.html"><i class="icon-dashboard"></i>Leaderboard</a>
+                <a id="leaderboard_page" href="leaderboard.html"><i class="icon-dashboard"></i>Leaderboard</a>
             </li>
             <li class="">
-                <a href="challenges.html"><i class="icon-dashboard"></i>Challenges</a>
+                <a id="challenges_page" href="challenges.html"><i class="icon-dashboard"></i>Challenges</a>
             </li>
             <li class="">
-                <a href="wall.html"><i class="icon-inbox"></i>Wall</a>
+                <a id="wall_page" href="wall.html"><i class="icon-inbox"></i>Wall</a>
             </li>
             <li class="">
-                <a href="messages.html"><i class="icon-inbox"></i>Messages</a>
+                <a id="messages_page" href="messages.html"><i class="icon-inbox"></i>Messages</a>
             </li>
             <li class="">
-                <a href="redeem_points.html"><i class="icon-certificate"></i>Redeem Points</a>
+                <a id="redeem_points_page" href="redeem_points.html"><i class="icon-certificate"></i>Redeem Points</a>
             </li>
             <li class="">
-                <a href="result_analysis.html"><i class="icon-signal"></i>Result Analysis</a>
+                <a id="result_analysis_page" href="result_analysis.html"><i class="icon-signal"></i>Result Analysis</a>
             </li>
             <li class="">
-                <a href="submissions.html"><i class="icon-signal"></i>Submissions</a>
+                <a id="submissions_page" href="submissions.html"><i class="icon-signal"></i>Submissions</a>
             </li>
             <li class="">
-                <a href="games.html"><i class="icon-certificate"></i>Games</a>
+                <a id="games_page" href="games.html"><i class="icon-certificate"></i>Games</a>
             </li>
             <li class="">
-                <a href="faq.html"><i class="icon-signal"></i>FAQs</a>
+                <a id="faq_page" href="faq.html"><i class="icon-signal"></i>FAQs</a>
             </li>
             <li class="visible-xs">
-                <a href="index.html"><i class="icon-signal"></i>Logout</a>
+                <a id="index_page" href="index.html"><i class="icon-signal"></i>Logout</a>
             </li>
         </ul>
 
@@ -364,9 +336,9 @@
     <div class="divider"></div>
     <div class="number-stats">
         <ul>
-            <li>4579<span>My <br>Points</span></li>
-            <li>571<span>Total <br>Points</span></li>
-            <li>879<span>Team <br>Points</span></li>
+            <li><div id="user_points">4579</div><span>My <br>Points</span></li>
+            <li>NA<span>Total <br>Points</span></li>
+            <li>NA<span>Team <br>Points</span></li>
         </ul>
     </div>
     <div class="divider"></div>
@@ -432,7 +404,7 @@
     </ul>
     <div id="rankingContent" class="tab-content">
         <div class="tab-pane fade in active" id="my_ranking_global_item">
-            <table class="table table-striped table-bordered ranking-table" id="my_ranking_global_table_top_3">
+            <table id="trial" class="table table-striped table-bordered ranking-table" id="my_ranking_global_table_top_3">
                 <caption>Top 3 Rankers</caption>
                 <thead>
                 <tr>
@@ -440,19 +412,19 @@
                     <th>Name</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="odd">
-                    <td class="text-center">1</td>
-                    <td class="text-center">John</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">2</td>
-                    <td class="text-center">Andrew</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">3</td>
-                    <td class="text-center">Michael</td>
-                </tr>
+                <tbody id="org_user_top3">
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">1</td> -->
+                <!--     <td class="text&#45;center">John</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">2</td> -->
+                <!--     <td class="text&#45;center">Andrew</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">3</td> -->
+                <!--     <td class="text&#45;center">Michael</td> -->
+                <!-- </tr> -->
                 </tbody>
             </table>
             <br>
@@ -463,27 +435,27 @@
                     <th>Name</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="odd">
-                    <td class="text-center">8</td>
-                    <td class="text-center">Emily</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">9</td>
-                    <td class="text-center">Isabella</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">10</td>
-                    <td class="text-center">Shoaib Akhtar</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">11</td>
-                    <td class="text-center">Ella</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">12</td>
-                    <td class="text-center">Addison</td>
-                </tr>
+                <tbody id="org_user_my_rank">
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">8</td> -->
+                <!--     <td class="text&#45;center">Emily</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">9</td> -->
+                <!--     <td class="text&#45;center">Isabella</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">10</td> -->
+                <!--     <td class="text&#45;center">Shoaib Akhtar</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">11</td> -->
+                <!--     <td class="text&#45;center">Ella</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">12</td> -->
+                <!--     <td class="text&#45;center">Addison</td> -->
+                <!-- </tr> -->
                 </tbody>
             </table>
         </div>
@@ -496,19 +468,19 @@
                     <th>Name</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="odd">
-                    <td class="text-center">1</td>
-                    <td class="text-center">Mark</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">2</td>
-                    <td class="text-center">Loren</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">3</td>
-                    <td class="text-center">Joy</td>
-                </tr>
+                <tbody id="org_team_user_top3">
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">1</td> -->
+                <!--     <td class="text&#45;center">Mark</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">2</td> -->
+                <!--     <td class="text&#45;center">Loren</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">3</td> -->
+                <!--     <td class="text&#45;center">Joy</td> -->
+                <!-- </tr> -->
                 </tbody>
             </table>
             <br>
@@ -519,27 +491,27 @@
                     <th>Name</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="odd">
-                    <td class="text-center">13</td>
-                    <td class="text-center">Carol</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">14</td>
-                    <td class="text-center">Julia</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">15</td>
-                    <td class="text-center">Shoaib Akhtar</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">16</td>
-                    <td class="text-center">Brad</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">17</td>
-                    <td class="text-center">David</td>
-                </tr>
+                <tbody id="org_team_user_my_rank">
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">13</td> -->
+                <!--     <td class="text&#45;center">Carol</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">14</td> -->
+                <!--     <td class="text&#45;center">Julia</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">15</td> -->
+                <!--     <td class="text&#45;center">Shoaib Akhtar</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">16</td> -->
+                <!--     <td class="text&#45;center">Brad</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">17</td> -->
+                <!--     <td class="text&#45;center">David</td> -->
+                <!-- </tr> -->
                 </tbody>
             </table>
         </div>
@@ -552,19 +524,19 @@
                     <th>Name</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="odd">
-                    <td class="text-center">1</td>
-                    <td class="text-center">Natalie</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">2</td>
-                    <td class="text-center">Zoey</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">3</td>
-                    <td class="text-center">Victoria</td>
-                </tr>
+                <tbody id="org_team_top3">
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">1</td> -->
+                <!--     <td class="text&#45;center">Natalie</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">2</td> -->
+                <!--     <td class="text&#45;center">Zoey</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">3</td> -->
+                <!--     <td class="text&#45;center">Victoria</td> -->
+                <!-- </tr> -->
                 </tbody>
             </table>
             <br>
@@ -575,27 +547,27 @@
                     <th>Name</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="odd">
-                    <td class="text-center">23</td>
-                    <td class="text-center">Brooklyn</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">24</td>
-                    <td class="text-center">Lucy</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">25</td>
-                    <td class="text-center">Shoaib Akhtar</td>
-                </tr>
-                <tr class="even">
-                    <td class="text-center">26</td>
-                    <td class="text-center">Jasmine</td>
-                </tr>
-                <tr class="odd">
-                    <td class="text-center">27</td>
-                    <td class="text-center">Vivian</td>
-                </tr>
+                <tbody id="org_team_my_rank">
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">23</td> -->
+                <!--     <td class="text&#45;center">Brooklyn</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">24</td> -->
+                <!--     <td class="text&#45;center">Lucy</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">25</td> -->
+                <!--     <td class="text&#45;center">Shoaib Akhtar</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="even"> -->
+                <!--     <td class="text&#45;center">26</td> -->
+                <!--     <td class="text&#45;center">Jasmine</td> -->
+                <!-- </tr> -->
+                <!-- <tr class="odd"> -->
+                <!--     <td class="text&#45;center">27</td> -->
+                <!--     <td class="text&#45;center">Vivian</td> -->
+                <!-- </tr> -->
                 </tbody>
             </table>
         </div>
@@ -685,119 +657,103 @@
             <th>Last 3 Periods</th>
         </tr>
         </thead>
-        <tbody>
-        <tr class="even">
-            <td class="text-center">1</td>
-            <td class="text-center">Loren</td>
-            <td class="text-center">
-                <img src="img/avatar/avatar_0.jpg" alt="" style="border-radius: 4px" height="22px"
-                     width="22px"/>
-            </td>
-            <td class="text-center">Red</td>
-            <td class="text-center">50</td>
-            <td class="text-center">100</td>
-            <td class="text-center">
-                <button type="button" class="btn btn-success btn-xs">2</button>
-                <button type="button" class="btn btn-warning btn-xs">5</i></button>
-                <button type="button" class="btn btn-danger btn-xs">7</button>
-            </td>
-        </tr>
-        <tr class="odd">
-            <td class="text-center">2</td>
-            <td class="text-center">Mike</td>
-            <td class="text-center">
-                <img src="img/avatar/avatar_1.jpg" alt="" style="border-radius: 4px" height="22px"
-                     width="22px"/>
-            </td>
-            <td class="text-center">Blue</td>
-            <td class="text-center">50</td>
-            <td class="text-center">100</td>
-            <td class="text-center">
-                <button type="button" class="btn btn-success btn-xs">3</button>
-                <button type="button" class="btn btn-warning btn-xs">5</button>
-                <button type="button" class="btn btn-danger btn-xs">7</button>
-            </td>
-        </tr>
-        <tr class="even">
-            <td class="text-center">3</td>
-            <td class="text-center">Billy</td>
-            <td class="text-center">
-                <img src="img/avatar/avatar_2.jpg" alt="" style="border-radius: 4px" height="22px"
-                     width="22px"/>
-            </td>
-            <td class="text-center">Green</td>
-            <td class="text-center">50</td>
-            <td class="text-center">100</td>
-            <td class="text-center">
-                <button type="button" class="btn btn-success btn-xs">8</button>
-                <button type="button" class="btn btn-warning btn-xs">3</button>
-                <button type="button" class="btn btn-danger btn-xs">9</button>
-            </td>
-        </tr>
-        <tr class="odd">
-            <td class="text-center">4</td>
-            <td class="text-center">Carol</td>
-            <td class="text-center">
-                <img src="img/avatar/avatar_5.jpg" alt="" style="border-radius: 4px" height="22px"
-                     width="22px"/>
-            </td>
-            <td class="text-center">Green</td>
-            <td class="text-center">50</td>
-            <td class="text-center">100</td>
-            <td class="text-center">
-                <button type="button" class="btn btn-success btn-xs">1</button>
-                <button type="button" class="btn btn-warning btn-xs">6</button>
-                <button type="button" class="btn btn-danger btn-xs">1</button>
-            </td>
-        </tr>
-        <tr class="even">
-            <td class="text-center">5</td>
-            <td class="text-center">Julia</td>
-            <td class="text-center">
-                <img src="img/avatar/avatar_6.jpg" alt="" style="border-radius: 4px" height="22px"
-                     width="22px"/>
-            </td>
-            <td class="text-center">Red</td>
-            <td class="text-center">50</td>
-            <td class="text-center">100</td>
-            <td class="text-center">
-                <button type="button" class="btn btn-success btn-xs">3</button>
-                <button type="button" class="btn btn-warning btn-xs">5</button>
-                <button type="button" class="btn btn-danger btn-xs">12</button>
-            </td>
-        </tr>
-        <tr class="odd">
-            <td class="text-center">6</td>
-            <td class="text-center">Brad</td>
-            <td class="text-center">
-                <img src="img/avatar/avatar_7.jpg" alt="" style="border-radius: 4px" height="22px"
-                     width="22px"/>
-            </td>
-            <td class="text-center">Red</td>
-            <td class="text-center">50</td>
-            <td class="text-center">100</td>
-            <td class="text-center">
-                <button type="button" class="btn btn-success btn-xs">1</button>
-                <button type="button" class="btn btn-warning btn-xs">4</button>
-                <button type="button" class="btn btn-danger btn-xs">2</button>
-            </td>
-        </tr>
-        <tr class="even">
-            <td class="text-center">7</td>
-            <td class="text-center">David</td>
-            <td class="text-center">
-                <img src="img/avatar/avatar_8.jpg" alt="" style="border-radius: 4px" height="22px"
-                     width="22px"/>
-            </td>
-            <td class="text-center">Yellow</td>
-            <td class="text-center">50</td>
-            <td class="text-center">100</td>
-            <td class="text-center">
-                <button type="button" class="btn btn-success btn-xs">7</button>
-                <button type="button" class="btn btn-warning btn-xs">7</button>
-                <button type="button" class="btn btn-danger btn-xs">7</button>
-            </td>
-        </tr>
+        <tbody id="org_leaderboard_data">
+        <!-- <tr class="odd"> -->
+        <!--     <td class="text&#45;center">2</td> -->
+        <!--     <td class="text&#45;center">Mike</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <img src="img/avatar/avatar_1.jpg" alt="" style="border&#45;radius: 4px" height="22px" -->
+        <!--              width="22px"/> -->
+        <!--     </td> -->
+        <!--     <td class="text&#45;center">Blue</td> -->
+        <!--     <td class="text&#45;center">50</td> -->
+        <!--     <td class="text&#45;center">100</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <button type="button" class="btn btn&#45;success btn&#45;xs">3</button> -->
+        <!--         <button type="button" class="btn btn&#45;warning btn&#45;xs">5</button> -->
+        <!--         <button type="button" class="btn btn&#45;danger btn&#45;xs">7</button> -->
+        <!--     </td> -->
+        <!-- </tr> -->
+        <!-- <tr class="even"> -->
+        <!--     <td class="text&#45;center">3</td> -->
+        <!--     <td class="text&#45;center">Billy</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <img src="img/avatar/avatar_2.jpg" alt="" style="border&#45;radius: 4px" height="22px" -->
+        <!--              width="22px"/> -->
+        <!--     </td> -->
+        <!--     <td class="text&#45;center">Green</td> -->
+        <!--     <td class="text&#45;center">50</td> -->
+        <!--     <td class="text&#45;center">100</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <button type="button" class="btn btn&#45;success btn&#45;xs">8</button> -->
+        <!--         <button type="button" class="btn btn&#45;warning btn&#45;xs">3</button> -->
+        <!--         <button type="button" class="btn btn&#45;danger btn&#45;xs">9</button> -->
+        <!--     </td> -->
+        <!-- </tr> -->
+        <!-- <tr class="odd"> -->
+        <!--     <td class="text&#45;center">4</td> -->
+        <!--     <td class="text&#45;center">Carol</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <img src="img/avatar/avatar_5.jpg" alt="" style="border&#45;radius: 4px" height="22px" -->
+        <!--              width="22px"/> -->
+        <!--     </td> -->
+        <!--     <td class="text&#45;center">Green</td> -->
+        <!--     <td class="text&#45;center">50</td> -->
+        <!--     <td class="text&#45;center">100</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <button type="button" class="btn btn&#45;success btn&#45;xs">1</button> -->
+        <!--         <button type="button" class="btn btn&#45;warning btn&#45;xs">6</button> -->
+        <!--         <button type="button" class="btn btn&#45;danger btn&#45;xs">1</button> -->
+        <!--     </td> -->
+        <!-- </tr> -->
+        <!-- <tr class="even"> -->
+        <!--     <td class="text&#45;center">5</td> -->
+        <!--     <td class="text&#45;center">Julia</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <img src="img/avatar/avatar_6.jpg" alt="" style="border&#45;radius: 4px" height="22px" -->
+        <!--              width="22px"/> -->
+        <!--     </td> -->
+        <!--     <td class="text&#45;center">Red</td> -->
+        <!--     <td class="text&#45;center">50</td> -->
+        <!--     <td class="text&#45;center">100</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <button type="button" class="btn btn&#45;success btn&#45;xs">3</button> -->
+        <!--         <button type="button" class="btn btn&#45;warning btn&#45;xs">5</button> -->
+        <!--         <button type="button" class="btn btn&#45;danger btn&#45;xs">12</button> -->
+        <!--     </td> -->
+        <!-- </tr> -->
+        <!-- <tr class="odd"> -->
+        <!--     <td class="text&#45;center">6</td> -->
+        <!--     <td class="text&#45;center">Brad</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <img src="img/avatar/avatar_7.jpg" alt="" style="border&#45;radius: 4px" height="22px" -->
+        <!--              width="22px"/> -->
+        <!--     </td> -->
+        <!--     <td class="text&#45;center">Red</td> -->
+        <!--     <td class="text&#45;center">50</td> -->
+        <!--     <td class="text&#45;center">100</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <button type="button" class="btn btn&#45;success btn&#45;xs">1</button> -->
+        <!--         <button type="button" class="btn btn&#45;warning btn&#45;xs">4</button> -->
+        <!--         <button type="button" class="btn btn&#45;danger btn&#45;xs">2</button> -->
+        <!--     </td> -->
+        <!-- </tr> -->
+        <!-- <tr class="even"> -->
+        <!--     <td class="text&#45;center">7</td> -->
+        <!--     <td class="text&#45;center">David</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <img src="img/avatar/avatar_8.jpg" alt="" style="border&#45;radius: 4px" height="22px" -->
+        <!--              width="22px"/> -->
+        <!--     </td> -->
+        <!--     <td class="text&#45;center">Yellow</td> -->
+        <!--     <td class="text&#45;center">50</td> -->
+        <!--     <td class="text&#45;center">100</td> -->
+        <!--     <td class="text&#45;center"> -->
+        <!--         <button type="button" class="btn btn&#45;success btn&#45;xs">7</button> -->
+        <!--         <button type="button" class="btn btn&#45;warning btn&#45;xs">7</button> -->
+        <!--         <button type="button" class="btn btn&#45;danger btn&#45;xs">7</button> -->
+        <!--     </td> -->
+        <!-- </tr> -->
         </tbody>
     </table>
     <br>
@@ -1307,6 +1263,35 @@
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
 <script type="text/javascript">
+    var remote_host="http://localhost:3004/";
+    var local_host ="file:///Users/vikram/programmingstuff/meteorstuff/UABwebpages-nilesh/";
+    var urlParams={};
+    (function(){
+     var allParamsObj=window.location.search.replace("?","").split("&");
+     allParamsObj.forEach(function(paramsObj){
+       var splits=paramsObj.split("=");
+       urlParams[splits[0]]=splits[1];
+       });
+    })();
+    var tokenObj=JSON.parse(localStorage.getItem("user_access_token"));
+    var token=tokenObj.token;
+    if(tokenObj.expires<new Date()){
+      window.location.replace(local_host+"index.html");
+    }
+    function settingUrls(){
+      $("#dashboard_page").attr("href",local_host+"Dashboard.html"+window.location.search);
+      $("#profile_page").attr("href",local_host+"profile.html"+window.location.search);
+      $("#leaderboard_page").attr("href",local_host+"leaderboard.html"+window.location.search);
+      $("#challenges_page").attr("href",local_host+"challenges.html"+window.location.search);
+      $("#wall_page").attr("href",local_host+"wall.html"+window.location.search);
+      $("#messages_page").attr("href",local_host+"messages.html"+window.location.search);
+      $("#redeem_points_page").attr("href",local_host+"redeem_points.html"+window.location.search);
+      $("#result_analysis_page").attr("href",local_host+"result_analysis.html"+window.location.search);
+      $("#submissions_page").attr("href",local_host+"submissions.html"+window.location.search);
+      $("#games_page").attr("href",local_host+"games.html"+window.location.search);
+      $("#faq_page").attr("href",local_host+"faq.html"+window.location.search);
+    };
+    settingUrls();
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -1385,6 +1370,141 @@
 
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"?access_token="+token,
+        type: 'GET',  
+        dataType: 'json',
+        success: function(res) {
+            $("#user_name").text(res.name);
+            $("#user_designation").text(res.designation);
+            $("#user_percentage").text(res.profileCompleteness);
+            $("#user_points").text(res.totalPoints);
+            $("#profile_percentage_progress_bar").attr('data-percentage',res.profileCompleteness);
+            $("#profile_percentage_progress_bar").css('width', res.profileCompleteness+"%");
+            var teams="";
+            res.teams.forEach(function(teamObj,index){
+              if(index==0)
+                teams+=teamObj.name;
+              else
+                teams+=teamObj.name+",";
+              $.ajax({
+                url:remote_host+"org/"+urlParams.orgId+"/teams/"+teamObj._id+"/rank?month="+new Date()+"&access_token="+token,
+                type: 'GET',  
+                dataType: 'json',
+                success: function(teamRankRes){
+                  $.ajax({
+                    url:remote_host+"org/"+urlParams.orgId+"/leaderboard?month="+new Date()+"&access_token="+token,
+                    type: 'GET',  
+                    dataType: 'json',
+                    success: function(orgLeaderboardRes){
+                      var from=teamRankRes.rankNo-2;
+                      var to=teamRankRes.rankNo+2;
+                      for(var i=from;i<=to;i++){
+                        var teamRankObj=orgLeaderboardRes.teamRanks[i];
+                        if(teamRankObj&&teamRankObj.team)
+                          $("#org_team_my_rank").append(makeSmallLeaderboardElement(teamRankObj.rankNo,teamRankObj.team.name));
+                      }
+                    }
+                  });
+                }
+              });
+            });
+            $("#user_teams").text(teams);
+
+        }
+        ,
+        error: function(e , msg){
+            processError(e,msg);
+        }
+    });
+    var makeGoalElement=function(name,percentage){
+      return "<li><strong><i class='online pull-left'></i>"+name+"</strong><b>"+percentage+"%</b>"+
+      " <div class='progress progress-success slim'> <div class='bar' style='width: "+percentage+"%;'></div>"+
+      " </div> </li>";
+    };
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/goals?access_token="+token,
+        type: 'GET',  /* Dont use post it JSONP doesnt support */
+        dataType: 'json',
+        success: function(res) {
+          res.goals.forEach(function(goalObj){
+            $("#goal_dropdown").append(makeGoalElement(goalObj.name,10));
+          });
+        }
+        ,
+        error: function(e , msg){
+            processError(e,msg);
+        }
+    });
+    var makeLeaderboardElement=function(srno,name,teams){
+      return "<tr class='odd'> <td class='text-center'>"+srno+"</td> <td class='text-center'>"+name+"</td>"+
+      " <td class='text-center'> <img src='img/avatar/avatar_5.jpg' alt='' style='border-radius: 4px' height='22px'"+
+      " width='22px'/> </td> <td class='text-center'>"+teams+"</td> </tr>";
+    };
+    var makeSmallLeaderboardElement=function(srno,name){
+      return " <tr class='odd'> <td class='text-center'>"+srno+"</td> <td class='text-center'>"+name+"</td> </tr>";
+    };
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/leaderboard/users?month="+new Date()+"&access_token="+token,
+        type: 'GET',  
+        dataType: 'json',
+        success: function(res) {
+          res.playerRanks.forEach(function(playerRankObj){
+            if(playerRankObj!=null&&playerRankObj.rankNo<9){
+              var player=playerRankObj.player;
+              var teams="";
+              if(player.teams){
+                player.teams.forEach(function(team,index){
+                  if(index==0)
+                    teams+=team.name;
+                  else teams+=team.name+",";
+                });
+              }
+              $("#org_leaderboard_data").append(makeLeaderboardElement(playerRankObj.rankNo,player.name,teams));
+              if(playerRankObj.rankNo<4)
+                $("#org_user_top3").append(makeSmallLeaderboardElement(playerRankObj.rankNo,player.name));
+            }
+          });
+        }
+        ,
+        error: function(e , msg){
+            processError(e,msg);
+        }
+    });
+    $.ajax({
+      url:remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/rank?month="+new Date()+"&access_token="+token,
+        type: 'GET',  
+        dataType: 'json',
+        success: function(res) {
+          $.ajax({
+            url:remote_host+"org/"+urlParams.orgId+"/leaderboard/users?month="+new Date()+"&access_token="+token,
+            success:function(leaderboardRes){
+              var from=res.rankNo-2;
+              var to=res.rankNo+2;
+              for(var i=from;i<=to;i++){
+                var playerRankObj=leaderboardRes.playerRanks[i];
+                $("#org_user_my_rank").append(makeSmallLeaderboardElement(playerRankObj.rankNo,playerRankObj.player.name));
+              }
+            }
+          });
+        }
+      })
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/leaderboard?month="+new Date()+"&access_token="+token,
+        type: 'GET',  
+        dataType: 'json',
+        success: function(res) {
+          res.teamRanks.forEach(function(teamRankObj){
+            if(teamRankObj!=null&&teamRankObj.rankNo<=3){
+              var team=teamRankObj.team;
+              $("#org_team_top3").append(makeSmallLeaderboardElement(teamRankObj.rankNo,team.name));
+            }
+          });
+        },
+        error: function(e , msg){
+            processError(e,msg);
+        }
+    });
 </script>
 
 <!-- REQUIRED: iButton -->

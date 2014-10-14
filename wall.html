@@ -201,35 +201,35 @@
 
                         <div class="dropdown-menu toolbar pull-right">
                             <h3>Showing Critical Goals</h3>
-                            <ul class="progressbox">
-                                <li>
-                                    <strong><i class="online pull-left"></i>Net Interest Income</strong><b>Complete</b>
-
-                                    <div class="progress progress-success slim">
-                                        <div class="bar" style="width: 100%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>Net Fee Income</strong><b>70%</b>
-
-                                    <div class="progress progress-info slim">
-                                        <div class="bar" style="width: 70%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>Deposit Base</strong><b>50%</b>
-
-                                    <div class="progress progress-danger slim">
-                                        <div class="bar" style="width: 50%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>New to Bank Clients</strong><b>22%</b>
-
-                                    <div class="progress progress-danger slim">
-                                        <div class="bar" style="width: 22%;"></div>
-                                    </div>
-                                </li>
+                            <ul id="goal_dropdown" class="progressbox">
+                                <!-- <li> -->
+                                <!--     <strong><i class="online pull&#45;left"></i>Net Interest Income</strong><b>Complete</b> -->
+                                <!--  -->
+                                <!--     <div class="progress progress&#45;success slim"> -->
+                                <!--         <div class="bar" style="width: 100%;"></div> -->
+                                <!--     </div> -->
+                                <!-- </li> -->
+                                <!-- <li> -->
+                                <!--     <strong>Net Fee Income</strong><b>70%</b> -->
+                                <!--  -->
+                                <!--     <div class="progress progress&#45;info slim"> -->
+                                <!--         <div class="bar" style="width: 70%;"></div> -->
+                                <!--     </div> -->
+                                <!-- </li> -->
+                                <!-- <li> -->
+                                <!--     <strong>Deposit Base</strong><b>50%</b> -->
+                                <!--  -->
+                                <!--     <div class="progress progress&#45;danger slim"> -->
+                                <!--         <div class="bar" style="width: 50%;"></div> -->
+                                <!--     </div> -->
+                                <!-- </li> -->
+                                <!-- <li> -->
+                                <!--     <strong>New to Bank Clients</strong><b>22%</b> -->
+                                <!--  -->
+                                <!--     <div class="progress progress&#45;danger slim"> -->
+                                <!--         <div class="bar" style="width: 22%;"></div> -->
+                                <!--     </div> -->
+                                <!-- </li> -->
                             </ul>
                             <a href="javascript:void(0);" id="go-to-goals">Go to All Goals <i
                                     class="icon-double-angle-right"></i></a>
@@ -302,18 +302,18 @@
             <a href="javascript:void(0)" class="my-profile-pic my-profile-pic-lrg">
                 <img src="img/avatar/avatar_8.jpg" alt="" class="profile-img-lrg"/>
             </a>
-            <span class="first-child"><strong>Shoaib Akhtar</strong></span>
-            <span class="nullify-bold">HR Head</span>
-            <span class="nullify-bold">Walves</span>
+            <strong> <span id="user_name" class="first-child">Shoaib Akhtar</span> </strong>
+            <span id="user_designation" class="nullify-bold">HR Head</span>
+            <span id="user_teams" class="nullify-bold">Walves</span>
             <span><a href="javascript:void(0);">Edit Profile </a></span>
         </div>
         <br>
 
         <div class="my-profile semi-block">
-            <strong>Profile Complete</strong><strong class="pull-right">89%</strong>
+          <strong>Profile Complete</strong><strong class="pull-right"><span id="user_percentage" style="float: left"> 89</span>%</strong>
 
             <div class="progress progress-danger slim">
-                <div class="bar" data-percentage="89"></div>
+                <div id="profile_percentage_progress_bar" class="bar" ></div>
             </div>
         </div>
     </div>
@@ -327,40 +327,40 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li class="">
-                <a href="dashboard.html"><i class="icon-home"></i>Home</a>
+                <a id="dashboard_page" href="dashboard.html"><i class="icon-home"></i>Home</a>
             </li>
             <li class="">
-                <a href="profile.html"><i class="icon-user"></i>Profile</a>
+                <a id="profile_page" href="profile.html"><i class="icon-user"></i>Profile</a>
             </li>
             <li class="">
-                <a href="leaderboard.html"><i class="icon-dashboard"></i>Leaderboard</a>
+                <a id="leaderboard_page" href="leaderboard.html"><i class="icon-dashboard"></i>Leaderboard</a>
             </li>
             <li class="">
-                <a href="challenges.html"><i class="icon-dashboard"></i>Challenges</a>
+                <a id="challenges_page" href="challenges.html"><i class="icon-dashboard"></i>Challenges</a>
             </li>
             <li class="current">
-                <a href="wall.html"><i class="icon-inbox"></i>Wall</a>
+                <a id="wall_page" href="wall.html"><i class="icon-inbox"></i>Wall</a>
             </li>
             <li class="">
-                <a href="messages.html"><i class="icon-inbox"></i>Messages</a>
+                <a id="messages_page" href="messages.html"><i class="icon-inbox"></i>Messages</a>
             </li>
             <li class="">
-                <a href="redeem_points.html"><i class="icon-certificate"></i>Redeem Points</a>
+                <a id="redeem_points_page" href="redeem_points.html"><i class="icon-certificate"></i>Redeem Points</a>
             </li>
             <li class="">
-                <a href="result_analysis.html"><i class="icon-signal"></i>Result Analysis</a>
+                <a id="result_analysis_page" href="result_analysis.html"><i class="icon-signal"></i>Result Analysis</a>
             </li>
             <li class="">
-                <a href="submissions.html"><i class="icon-signal"></i>Submissions</a>
+                <a id="submissions_page" href="submissions.html"><i class="icon-signal"></i>Submissions</a>
             </li>
             <li class="">
-                <a href="games.html"><i class="icon-certificate"></i>Games</a>
+                <a id="games_page" href="games.html"><i class="icon-certificate"></i>Games</a>
             </li>
             <li class="">
-                <a href="faq.html"><i class="icon-signal"></i>FAQs</a>
+                <a id="faq_page" href="faq.html"><i class="icon-signal"></i>FAQs</a>
             </li>
             <li class="visible-xs">
-                <a href="index.html"><i class="icon-signal"></i>Logout</a>
+                <a id="index_page" href="index.html"><i class="icon-signal"></i>Logout</a>
             </li>
         </ul>
 
@@ -368,9 +368,9 @@
     <div class="divider"></div>
     <div class="number-stats">
         <ul>
-            <li>4579<span>My <br>Points</span></li>
-            <li>571<span>Total <br>Points</span></li>
-            <li>879<span>Team <br>Points</span></li>
+            <li><div id="user_points">0</div><span>My <br>Points</span></li>
+            <li>NA<span>Total <br>Points</span></li>
+            <li>NA<span>Team <br>Points</span></li>
         </ul>
     </div>
     <div class="divider"></div>
@@ -423,358 +423,358 @@
             <!-- end widget edit box -->
 
             <!-- content -->
-            <div class="inner-spacer widget-content-padding">
-            <div class="media block-update-card" style="padding-bottom: 15px;">
-                <a class="pull-left" href="#">
-                    <img class="media-object update-card-MDimentions" src="img/avatar/avatar_3.jpg" alt="...">
-                </a>
-                <div class="media-body update-card-body">
-                    <h4 class="media-heading">Manning Hilton</h4>
-                    <p>This is the body content of this media.This can be used as an update panel</p>
-                    <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
-                        <h4 style="margin:0;padding:0">
-                            <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
-                            <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
-                        </h4>
-                    </div>
-                    <div class="show-comments-block hidden-xs">
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_5.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left ">
-                                <span class="uab-user-name"><strong>Angie</strong></span>
-                                <span class="uab-user-comment">Hello how are you ?</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_7.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left ">
-                                <span class="uab-user-name"><strong>Julia</strong></span>
-                                <span class="uab-user-comment">I am fine. How are you ?</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_5.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left">
-                                <span class="uab-user-name"><strong>Angie</strong></span>
-                                <span class="uab-user-comment">Great!</span>
-                            </div>
-                        </div>
-                    </div>
+            <div id="social_feed" class="inner-spacer widget-content-padding">
+            <!-- <div class="media block&#45;update&#45;card" style="padding&#45;bottom: 15px;"> -->
+            <!--     <a class="pull&#45;left" href="#"> -->
+            <!--         <img class="media&#45;object update&#45;card&#45;MDimentions" src="img/avatar/avatar_3.jpg" alt="..."> -->
+            <!--     </a> -->
+            <!--     <div class="media&#45;body update&#45;card&#45;body"> -->
+            <!--         <h4 class="media&#45;heading">Manning Hilton</h4> -->
+            <!--         <p>This is the body content of this media.This can be used as an update panel</p> -->
+            <!--         <div class="wall&#45;post&#45;icons" style="padding: 0 0 5px 5px; color:#aaa"> -->
+            <!--             <h4 style="margin:0;padding:0"> -->
+            <!--                 <i class="icon&#45;thumbs&#45;up uab&#45;fa&#45;icon uab&#45;like&#45;icon"></i> -->
+            <!--                 <i class="icon&#45;comments uab&#45;fa&#45;icon uab&#45;comment&#45;icon"></i> -->
+            <!--             </h4> -->
+            <!--         </div> -->
+            <!--         <div class="show&#45;comments&#45;block hidden&#45;xs"> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_5.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left "> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Angie</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Hello how are you ?</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_7.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left "> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Julia</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">I am fine. How are you ?</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_5.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left"> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Angie</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Great!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--  -->
+            <!--         <div class="write&#45;comment&#45;block hidden&#45;xs"> -->
+            <!--             <div class="row"> -->
+            <!--                 <div class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;1"> -->
+            <!--                     <!&#45;&#45;<input type="text" class="form&#45;control comment&#45;box&#45;text&#45;field">&#45;&#45;> -->
+            <!--                     <textarea class="form&#45;control comment&#45;box&#45;text&#45;field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max&#45;height:36px; min&#45;height:36px;"></textarea> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;2"> -->
+            <!--                     <button type="button" class="btn btn&#45;success uab&#45;post&#45;comment&#45;btn" >Post Comment</button> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--  -->
+            <!--     </div> -->
+                <!-- <div class="show&#45;comments&#45;block visible&#45;xs"> -->
+                <!--     <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+                <!--         <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+                <!--             <img src="img/avatar/avatar_0.jpg" class=""> -->
+                <!--         </div> -->
+                <!--         <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+                <!--             <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+                <!--             <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+                <!--         </div> -->
+                <!--     </div> -->
+                <!--     <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+                <!--         <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+                <!--             <img src="img/avatar/avatar_0.jpg" class=""> -->
+                <!--         </div> -->
+                <!--         <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+                <!--             <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+                <!--             <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+                <!--         </div> -->
+                <!--     </div> -->
+                <!--     <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+                <!--         <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+                <!--             <img src="img/avatar/avatar_0.jpg" class=""> -->
+                <!--         </div> -->
+                <!--         <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+                <!--             <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+                <!--             <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+                <!--         </div> -->
+                <!--     </div> -->
+                <!-- </div> -->
+                <!-- <div class="write&#45;comment&#45;block visible&#45;xs"> -->
+                <!--     <div class="row"> -->
+                <!--         <div class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;1"> -->
+                <!--             <!&#45;&#45;<input type="text" class="form&#45;control comment&#45;box&#45;text&#45;field">&#45;&#45;> -->
+                <!--             <textarea class="form&#45;control comment&#45;box&#45;text&#45;field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max&#45;height:36px; min&#45;height:36px;"></textarea> -->
+                <!--         </div> -->
+                <!--         <div class="col&#45;md&#45;2"> -->
+                <!--             <button type="button" class="btn btn&#45;success uab&#45;post&#45;comment&#45;btn" >Post Comment</button> -->
+                <!--         </div> -->
+                <!--     </div> -->
+                <!-- </div> -->
 
-                    <div class="write-comment-block hidden-xs">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-1">
-                                <!--<input type="text" class="form-control comment-box-text-field">-->
-                                <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-success uab-post-comment-btn" >Post Comment</button>
-                            </div>
-                        </div>
-                    </div>
+            <!-- </div> -->
 
-                </div>
-                <div class="show-comments-block visible-xs">
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="write-comment-block visible-xs">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-1">
-                            <!--<input type="text" class="form-control comment-box-text-field">-->
-                            <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-success uab-post-comment-btn" >Post Comment</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="media block-update-card" style="padding-bottom: 15px;">
-                <a class="pull-left" href="#">
-                    <img class="media-object update-card-MDimentions" src="img/avatar/avatar_5.jpg" alt="...">
-                </a>
-                <div class="media-body update-card-body">
-                    <h4 class="media-heading">Angie</h4>
-                    <p>This is the body content of this media.This can be used as an update panel</p>
-                    <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
-                        <h4 style="margin:0;padding:0">
-                            <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
-                            <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
-                        </h4>
-                    </div>
-                    <div class="show-comments-block hidden-xs">
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_5.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left ">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_7.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left ">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_5.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="write-comment-block hidden-xs">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-1">
-                                <!--<input type="text" class="form-control comment-box-text-field">-->
-                                <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-success uab-post-comment-btn" >Post Comment</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="show-comments-block visible-xs">
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="write-comment-block visible-xs">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-1">
-                            <!--<input type="text" class="form-control comment-box-text-field">-->
-                            <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-success uab-post-comment-btn" >Post Comment</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="media block-update-card" style="padding-bottom: 15px;">
-                <a class="pull-left" href="#">
-                    <img class="media-object update-card-MDimentions" src="img/avatar/avatar_7.jpg" alt="...">
-                </a>
-                <div class="media-body update-card-body">
-                    <h4 class="media-heading">Julia Berry</h4>
-                    <p>This is the body content of this media.This can be used as an update panel</p>
-                    <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
-                        <h4 style="margin:0;padding:0">
-                            <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
-                            <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
-                        </h4>
-                    </div>
-                    <div class="show-comments-block hidden-xs">
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_7.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left ">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_0.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left ">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_7.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="write-comment-block hidden-xs">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-1">
-                                <!--<input type="text" class="form-control comment-box-text-field">-->
-                                <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-success uab-post-comment-btn" >Post Comment</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="show-comments-block visible-xs">
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                        <div class="col-md-1 col-xs-1">
-                            <img src="img/avatar/avatar_0.jpg" class="">
-                        </div>
-                        <div class="col-md-9 col-xs-9 col-xs-offset-1 ">
-                            <span class="uab-user-name"><strong>Veronica</strong></span>
-                            <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="write-comment-block visible-xs">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-1">
-                            <!--<input type="text" class="form-control comment-box-text-field">-->
-                            <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-success uab-post-comment-btn" >Post Comment</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="media block-update-card" style="padding-bottom: 15px;">
-                <a class="pull-left" href="#">
-                    <img class="media-object update-card-MDimentions" src="img/avatar/avatar_2.jpg" alt="...">
-                </a>
-                <div class="media-body update-card-body">
-                    <h4 class="media-heading">David</h4>
-                    <p>This is the body content of this media.This can be used as an update panel</p>
-                    <div class="wall-post-icons" style="padding: 0 0 5px 5px; color:#aaa">
-                        <h4 style="margin:0;padding:0">
-                            <i class="icon-thumbs-up uab-fa-icon uab-like-icon"></i>
-                            <i class="icon-comments uab-fa-icon uab-comment-icon"></i>
-                        </h4>
-                    </div>
-                    <div class="show-comments-block hidden-xs">
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_0.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left ">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_5.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left ">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
-                            <div class="col-md-1 col-xs-1">
-                                <img src="img/avatar/avatar_7.jpg" class="">
-                            </div>
-                            <div class="col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left">
-                                <span class="uab-user-name"><strong>Veronica</strong></span>
-                                <span class="uab-user-comment">Congratulations...!!! Keep rocking...!!!</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="write-comment-block hidden-xs">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-1">
-                                <!--<input type="text" class="form-control comment-box-text-field">-->
-                                <textarea class="form-control comment-box-text-field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max-height:36px; min-height:36px;"></textarea>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-success uab-post-comment-btn" >Post Comment</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+            <!-- <div class="media block&#45;update&#45;card" style="padding&#45;bottom: 15px;"> -->
+            <!--     <a class="pull&#45;left" href="#"> -->
+            <!--         <img class="media&#45;object update&#45;card&#45;MDimentions" src="img/avatar/avatar_5.jpg" alt="..."> -->
+            <!--     </a> -->
+            <!--     <div class="media&#45;body update&#45;card&#45;body"> -->
+            <!--         <h4 class="media&#45;heading">Angie</h4> -->
+            <!--         <p>This is the body content of this media.This can be used as an update panel</p> -->
+            <!--         <div class="wall&#45;post&#45;icons" style="padding: 0 0 5px 5px; color:#aaa"> -->
+            <!--             <h4 style="margin:0;padding:0"> -->
+            <!--                 <i class="icon&#45;thumbs&#45;up uab&#45;fa&#45;icon uab&#45;like&#45;icon"></i> -->
+            <!--                 <i class="icon&#45;comments uab&#45;fa&#45;icon uab&#45;comment&#45;icon"></i> -->
+            <!--             </h4> -->
+            <!--         </div> -->
+            <!--         <div class="show&#45;comments&#45;block hidden&#45;xs"> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_5.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left "> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_7.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left "> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_5.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left"> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--  -->
+            <!--         <div class="write&#45;comment&#45;block hidden&#45;xs"> -->
+            <!--             <div class="row"> -->
+            <!--                 <div class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;1"> -->
+            <!--                     <!&#45;&#45;<input type="text" class="form&#45;control comment&#45;box&#45;text&#45;field">&#45;&#45;> -->
+            <!--                     <textarea class="form&#45;control comment&#45;box&#45;text&#45;field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max&#45;height:36px; min&#45;height:36px;"></textarea> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;2"> -->
+            <!--                     <button type="button" class="btn btn&#45;success uab&#45;post&#45;comment&#45;btn" >Post Comment</button> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--  -->
+            <!--     </div> -->
+            <!--     <div class="show&#45;comments&#45;block visible&#45;xs"> -->
+            <!--         <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--             <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                 <img src="img/avatar/avatar_0.jpg" class=""> -->
+            <!--             </div> -->
+            <!--             <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+            <!--                 <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                 <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--         <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--             <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                 <img src="img/avatar/avatar_0.jpg" class=""> -->
+            <!--             </div> -->
+            <!--             <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+            <!--                 <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                 <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--         <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--             <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                 <img src="img/avatar/avatar_0.jpg" class=""> -->
+            <!--             </div> -->
+            <!--             <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+            <!--                 <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                 <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!--     <div class="write&#45;comment&#45;block visible&#45;xs"> -->
+            <!--         <div class="row"> -->
+            <!--             <div class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;1"> -->
+            <!--                 <!&#45;&#45;<input type="text" class="form&#45;control comment&#45;box&#45;text&#45;field">&#45;&#45;> -->
+            <!--                 <textarea class="form&#45;control comment&#45;box&#45;text&#45;field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max&#45;height:36px; min&#45;height:36px;"></textarea> -->
+            <!--             </div> -->
+            <!--             <div class="col&#45;md&#45;2"> -->
+            <!--                 <button type="button" class="btn btn&#45;success uab&#45;post&#45;comment&#45;btn" >Post Comment</button> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!-- </div> -->
+            <!--  -->
+            <!-- <div class="media block&#45;update&#45;card" style="padding&#45;bottom: 15px;"> -->
+            <!--     <a class="pull&#45;left" href="#"> -->
+            <!--         <img class="media&#45;object update&#45;card&#45;MDimentions" src="img/avatar/avatar_7.jpg" alt="..."> -->
+            <!--     </a> -->
+            <!--     <div class="media&#45;body update&#45;card&#45;body"> -->
+            <!--         <h4 class="media&#45;heading">Julia Berry</h4> -->
+            <!--         <p>This is the body content of this media.This can be used as an update panel</p> -->
+            <!--         <div class="wall&#45;post&#45;icons" style="padding: 0 0 5px 5px; color:#aaa"> -->
+            <!--             <h4 style="margin:0;padding:0"> -->
+            <!--                 <i class="icon&#45;thumbs&#45;up uab&#45;fa&#45;icon uab&#45;like&#45;icon"></i> -->
+            <!--                 <i class="icon&#45;comments uab&#45;fa&#45;icon uab&#45;comment&#45;icon"></i> -->
+            <!--             </h4> -->
+            <!--         </div> -->
+            <!--         <div class="show&#45;comments&#45;block hidden&#45;xs"> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_7.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left "> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_0.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left "> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_7.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left"> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--  -->
+            <!--         <div class="write&#45;comment&#45;block hidden&#45;xs"> -->
+            <!--             <div class="row"> -->
+            <!--                 <div class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;1"> -->
+            <!--                     <!&#45;&#45;<input type="text" class="form&#45;control comment&#45;box&#45;text&#45;field">&#45;&#45;> -->
+            <!--                     <textarea class="form&#45;control comment&#45;box&#45;text&#45;field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max&#45;height:36px; min&#45;height:36px;"></textarea> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;2"> -->
+            <!--                     <button type="button" class="btn btn&#45;success uab&#45;post&#45;comment&#45;btn" >Post Comment</button> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--  -->
+            <!--     </div> -->
+            <!--     <div class="show&#45;comments&#45;block visible&#45;xs"> -->
+            <!--         <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--             <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                 <img src="img/avatar/avatar_0.jpg" class=""> -->
+            <!--             </div> -->
+            <!--             <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+            <!--                 <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                 <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--         <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--             <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                 <img src="img/avatar/avatar_0.jpg" class=""> -->
+            <!--             </div> -->
+            <!--             <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+            <!--                 <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                 <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--         <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--             <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                 <img src="img/avatar/avatar_0.jpg" class=""> -->
+            <!--             </div> -->
+            <!--             <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 "> -->
+            <!--                 <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                 <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!--     <div class="write&#45;comment&#45;block visible&#45;xs"> -->
+            <!--         <div class="row"> -->
+            <!--             <div class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;1"> -->
+            <!--                 <!&#45;&#45;<input type="text" class="form&#45;control comment&#45;box&#45;text&#45;field">&#45;&#45;> -->
+            <!--                 <textarea class="form&#45;control comment&#45;box&#45;text&#45;field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max&#45;height:36px; min&#45;height:36px;"></textarea> -->
+            <!--             </div> -->
+            <!--             <div class="col&#45;md&#45;2"> -->
+            <!--                 <button type="button" class="btn btn&#45;success uab&#45;post&#45;comment&#45;btn" >Post Comment</button> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--     </div> -->
+            <!-- </div> -->
+            <!--  -->
+            <!-- <div class="media block&#45;update&#45;card" style="padding&#45;bottom: 15px;"> -->
+            <!--     <a class="pull&#45;left" href="#"> -->
+            <!--         <img class="media&#45;object update&#45;card&#45;MDimentions" src="img/avatar/avatar_2.jpg" alt="..."> -->
+            <!--     </a> -->
+            <!--     <div class="media&#45;body update&#45;card&#45;body"> -->
+            <!--         <h4 class="media&#45;heading">David</h4> -->
+            <!--         <p>This is the body content of this media.This can be used as an update panel</p> -->
+            <!--         <div class="wall&#45;post&#45;icons" style="padding: 0 0 5px 5px; color:#aaa"> -->
+            <!--             <h4 style="margin:0;padding:0"> -->
+            <!--                 <i class="icon&#45;thumbs&#45;up uab&#45;fa&#45;icon uab&#45;like&#45;icon"></i> -->
+            <!--                 <i class="icon&#45;comments uab&#45;fa&#45;icon uab&#45;comment&#45;icon"></i> -->
+            <!--             </h4> -->
+            <!--         </div> -->
+            <!--         <div class="show&#45;comments&#45;block hidden&#45;xs"> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_0.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left "> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_5.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left "> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--             <div class="row" style="margin&#45;top: 1%; margin&#45;bottom: 1%;"> -->
+            <!--                 <div class="col&#45;md&#45;1 col&#45;xs&#45;1"> -->
+            <!--                     <img src="img/avatar/avatar_7.jpg" class=""> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;9 col&#45;xs&#45;9 col&#45;xs&#45;offset&#45;1 nullify&#45;margin&#45;left"> -->
+            <!--                     <span class="uab&#45;user&#45;name"><strong>Veronica</strong></span> -->
+            <!--                     <span class="uab&#45;user&#45;comment">Congratulations...!!! Keep rocking...!!!</span> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--  -->
+            <!--         <div class="write&#45;comment&#45;block hidden&#45;xs"> -->
+            <!--             <div class="row"> -->
+            <!--                 <div class="col&#45;md&#45;8 col&#45;md&#45;offset&#45;1"> -->
+            <!--                     <!&#45;&#45;<input type="text" class="form&#45;control comment&#45;box&#45;text&#45;field">&#45;&#45;> -->
+            <!--                     <textarea class="form&#45;control comment&#45;box&#45;text&#45;field" placeholder="Enter a comment..." cols="1" rows="1" style="resize: none; max&#45;height:36px; min&#45;height:36px;"></textarea> -->
+            <!--                 </div> -->
+            <!--                 <div class="col&#45;md&#45;2"> -->
+            <!--                     <button type="button" class="btn btn&#45;success uab&#45;post&#45;comment&#45;btn" >Post Comment</button> -->
+            <!--                 </div> -->
+            <!--             </div> -->
+            <!--         </div> -->
+            <!--  -->
+            <!--     </div> -->
                 <div class="show-comments-block visible-xs">
                     <div class="row" style="margin-top: 1%; margin-bottom: 1%;">
                         <div class="col-md-1 col-xs-1">
@@ -841,7 +841,7 @@
         <div class="inner-spacer">
             <h4>Rank</h4>
             <div class="rank-circle">
-                <div class="rank-value">
+                <div id="user_rank" class="rank-value">
                     34
                 </div>
             </div>
@@ -850,11 +850,11 @@
                 <tbody>
                     <tr>
                         <td>My Global Rank</td>
-                        <td>230</td>
+                        <td>NA</td>
                     </tr>
                     <tr>
                         <td>My Team Rank</td>
-                        <td>23</td>
+                        <td id="team_rank">23</td>
                     </tr>
                 </tbody>
             </table>
@@ -1020,6 +1020,37 @@
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
 <script type="text/javascript">
+    var remote_host="http://localhost:3004/";
+    var local_host ="file:///Users/vikram/programmingstuff/meteorstuff/UABwebpages-nilesh/";
+    var urlParams={};
+    (function(){
+     var allParamsObj=window.location.search.replace("?","").split("&");
+     allParamsObj.forEach(function(paramsObj){
+       var splits=paramsObj.split("=");
+       urlParams[splits[0]]=splits[1];
+       });
+    })();
+    // console.log(urlParams);
+    var tokenObj=JSON.parse(localStorage.getItem("user_access_token"));
+    var token=tokenObj.token;
+    if(tokenObj.expires<new Date()){
+      //redirect him to the login screen
+      window.location.replace(local_host+"index.html");
+    }
+    function settingUrls(){
+      $("#dashboard_page").attr("href",local_host+"Dashboard.html"+window.location.search);
+      $("#profile_page").attr("href",local_host+"profile.html"+window.location.search);
+      $("#leaderboard_page").attr("href",local_host+"leaderboard.html"+window.location.search);
+      $("#challenges_page").attr("href",local_host+"challenges.html"+window.location.search);
+      $("#wall_page").attr("href",local_host+"wall.html"+window.location.search);
+      $("#messages_page").attr("href",local_host+"messages.html"+window.location.search);
+      $("#redeem_points_page").attr("href",local_host+"redeem_points.html"+window.location.search);
+      $("#result_analysis_page").attr("href",local_host+"result_analysis.html"+window.location.search);
+      $("#submissions_page").attr("href",local_host+"submissions.html"+window.location.search);
+      $("#games_page").attr("href",local_host+"games.html"+window.location.search);
+      $("#faq_page").attr("href",local_host+"faq.html"+window.location.search);
+    };
+    settingUrls();
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -1071,6 +1102,104 @@
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"?access_token="+token,
+        type: 'GET',  
+        dataType: 'json',
+        success: function(res) {
+            $("#user_name").text(res.name);
+            $("#user_designation").text(res.designation);
+            $("#user_percentage").text(res.profileCompleteness);
+            $("#user_points").text(res.totalPoints);
+            $("#profile_percentage_progress_bar").attr('data-percentage',res.profileCompleteness);
+            $("#profile_percentage_progress_bar").css('width', res.profileCompleteness+"%");
+            var teams="";
+            res.teams.forEach(function(teamObj,index){
+              if(index==0)
+                teams+=teamObj.name;
+              else
+                teams+=teamObj.name+",";
+              $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/teams/"+teamObj._id+"/rank?month="+new Date()+"&access_token="+token,
+                type: 'GET',  
+                dataType: 'json',
+                success: function(res) {
+                    $("#team_rank").text(res.rankNo);
+                }
+              });
+            });
+            $("#user_teams").text(teams);
+
+        }
+        ,
+        error: function(e , msg){
+            processError(e,msg);
+        }
+    });
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/rank?month="+new Date()+"&access_token="+token,
+        type: 'GET',  
+        dataType: 'json',
+        success: function(res) {
+            $("#user_rank").text(res.rankNo);
+        }
+    });
+    var makeGoalElement=function(name,percentage){
+      return "<li><strong><i class='online pull-left'></i>"+name+"</strong><b>"+percentage+"%</b>"+
+      " <div class='progress progress-success slim'> <div class='bar' style='width: "+percentage+"%;'></div>"+
+      " </div> </li>";
+    };
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/goals?access_token="+token,
+        type: 'GET',  /* Dont use post it JSONP doesnt support */
+        dataType: 'json',
+        success: function(res) {
+          res.goals.forEach(function(goalObj){
+            $("#goal_dropdown").append(makeGoalElement(goalObj.name,10));
+          });
+        }
+        ,
+        error: function(e , msg){
+            processError(e,msg);
+        }
+    });
+    var createStatusElement=function(statusObj){
+      var userId=statusObj.userId;
+      var content=statusObj.content;
+      var comments=statusObj.messages;
+      var statusElementObj=" <div class='media block-update-card' style='padding-bottom: 15px;'> <a class='pull-left' href='#'>"+
+      " <img class='media-object update-card-MDimentions' src='img/avatar/avatar_3.jpg' alt='...'> </a>"+
+      " <div class='media-body update-card-body'> <h4 class='media-heading'>"+userId.name+"</h4>"+
+      " <p>"+content+"</p> <div class='wall-post-icons' style='padding: 0 0 5px 5px; color:#aaa'> <h4 style='margin:0;padding:0'>"+
+      " <i class='icon-thumbs-up uab-fa-icon uab-like-icon'></i> <i class='icon-comments uab-fa-icon uab-comment-icon'></i>"+
+      " </h4> </div> <div class='show-comments-block hidden-xs'> ";
+      comments.forEach(function(commentObj){
+        var commentor=commentObj.userId;
+        statusElementObj+="<div class='row' style='margin-top: 1%; margin-bottom: 1%;'>+"+
+        " <div class='col-md-1 col-xs-1'> <img src='img/avatar/avatar_5.jpg' class=''> </div>"+
+        " <div class='col-md-9 col-xs-9 col-xs-offset-1 nullify-margin-left '> <span class='uab-user-name'><strong>"+commentor.name+"</strong></span>"+
+        " <span class='uab-user-comment'>"+commentObj.content+"</span> </div> </div> ";
+      });
+        statusElementObj+="</div> </div> </div>";
+        statusElementObj+=" <div class='write-comment-block hidden-xs'> <div class='row'> <div class='col-md-8 col-md-offset-1'>"+
+        " <textarea class='form-control comment-box-text-field' placeholder='Enter a comment...' cols='1' rows='1' style='resize: none; max-height:36px; min-height:36px;'></textarea>"+
+        " </div> <div class='col-md-2'> <button type='button' class='btn btn-success uab-post-comment-btn' >Post Comment</button>"+
+        " </div> </div> </div>";
+        return statusElementObj;
+    }
+    $.ajax({
+      url: remote_host+"org/"+urlParams.orgId+"/socialfeed?access_token="+token,
+      type: 'GET',  
+      dataType: 'json',
+      success: function(res) {
+        res.messages.forEach(function(messageObj){
+          $("#social_feed").append(createStatusElement(messageObj));
+        });
+      },
+      error: function(e , msg){
+          processError(e,msg);
+      }
+    });
 </script>
 <!-- REQUIRED: iButton -->
 <script src="js/include/jquery.ibutton.min.js"></script>

@@ -245,7 +245,8 @@
 	    
 	<script type="text/javascript">
 		var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
-        var remote_host = "http://192.168.2.18:3004/";
+        var remote_host = "http://localhost:3004/";
+        var local_host ="file:///Users/vikram/programmingstuff/meteorstuff/UABwebpages-nilesh/";
 	    if(!ismobile){
 	    	
 	    	/** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
@@ -289,7 +290,6 @@
         function check_unauthorized_req(){
             console.log("check_unauthorized_req() called");
             $.ajax({
-                //url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d26?callback=?",
                 url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d13?callback=?",
                 type: 'getJSON',  /* Dont use post it JSONP doesnt support */
                 dataType: 'jsonp',
@@ -326,17 +326,13 @@
 //                password: user_password
 //            };
             //console.log(dataString);
-            var jqxhr = $.post(remote_host+"login?username="+user_email+'&password='+user_password, function() {
+            var jqxhr = $.post(remote_host+"login/bitnudge?username="+user_email+'&password='+user_password, function() {
                 //alert( "success" );
             })
                 .done(function(data) {
-                    //alert( "second success" );
-                    console.log("data");
-                    console.log(data);
-                    var my_id = data._id;
-                    var my_org_id = data.orgId;
-                    console.log("my_id :- " + my_id + ", my_org_id :- " + my_org_id);
-                    //document.location.href='dashboard.html?org='+my_org_id+'&users/'+my_id;
+                    var storageData={token:data.token,expires:data.expires};
+                    localStorage.setItem("user_access_token",JSON.stringify(storageData));
+                    window.location.href=local_host+"dashboard.html?userId="+data.user._id+"&orgId="+data.user.orgId;
                 })
                 .fail(function() {
                     alert( "error" );
@@ -443,7 +439,7 @@
     
     <!-- DO NOT REMOVE: Theme Config file -->
     <script src="js/config.js"></script>
-    
+
     <!-- d3 library placed at the bottom for better performance -->
     <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
     <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->
