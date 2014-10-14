@@ -8,37 +8,37 @@ var userController=require('../../system/controllers/UsersController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var passport=require('passport');
 var userRoutes={
-  'get /org/:orgId/users/:userId':[function(req,res){
+  'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
     userController.getUser(req,res);
   }],
-  'get /org/:orgId/users':function(req,res){
+  'get /org/:orgId/users':[function(req,res,next){AuthorizationController.isAuthorized('Users','list',req,res,next);},function(req,res){
     userController.getUsersOfOrganization(req,res);
-  },
-  'post /org/:orgId/users':function(req,res){
+  }],
+  'post /org/:orgId/users':[function(req,res,next){AuthorizationController.isAuthorized('Users','create',req,res,next);},function(req,res){
     userController.createUser(req,res);
-  },
-  'post /org/:orgId/users/:userId':function(req,res){
+  }],
+  'post /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','update',req,res,next);},function(req,res){
     userController.updateUser(req,res);
-  },
-  'post /org/:orgId/teams/:teamId/members':function(req,res){
+  }],
+  'post /org/:orgId/teams/:teamId/members':[function(req,res,next){AuthorizationController.isAuthorized('Users','assign',req,res,next);},function(req,res){
     userController.addUserToTeam(req,res);
-  }
+  }]
 };
 
 // End Points for Transactions in UserResourcesRoutes:
 var transactionRoutes={
-    'get org/:orgId/users/:userId/transactions':function(req,res) {
-        transactionController.getTransactionsOfUser(req,res);
-    },
-    'get org/:orgId/users/:userId/transactions/:transactionId/approve':function(req,res){
-      transactionController.approveTransaction(req,res);
-    },
-    'post /org/:orgId/users/:userId/transactions/':function(req,res){
-      transactionController.createTransaction(req,res);
-    },
-    'del org/:orgId/users/:userId/transaction/:transactionId':function(req,res){
-        transactionController.deleteTransactionOfUser(req,res);
-    }
+  'get org/:orgId/users/:userId/transactions':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','list',req,res,next);},function(req,res) {
+    transactionController.getTransactionsOfUser(req,res);
+  }],
+  'get org/:orgId/users/:userId/transactions/:transactionId/approve':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','approve',req,res,next);},function(req,res){
+    transactionController.approveTransaction(req,res);
+  }],
+  'post /org/:orgId/users/:userId/transactions/':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','create',req,res,next);},function(req,res){
+    transactionController.createTransaction(req,res);
+  }],
+  'del org/:orgId/users/:userId/transaction/:transactionId':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','delete',req,res,next);},function(req,res){
+    transactionController.deleteTransactionOfUser(req,res);
+  }]
 };
 
 //End Points for StoreItems in UserResourcesRoutes:
@@ -51,7 +51,7 @@ var storeItemRoutes={
   }]
 };
 var transactionHistoryRoutes={
-  'get /org/:orgId/users/:userId/transactionHistory':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
+  'get /org/:orgId/users/:userId/transactionHistory':[function(req,res,next){AuthorizationController.isAuthorized('BuyHistory','read',req,res,next);},function(req,res){
     userController.getTransactionHistoryOfUser(req,res);
   }]
 };
@@ -59,7 +59,7 @@ var transactionHistoryRoutes={
 
 
 var medalRoutes={
-  'get org/:orgId/users/:userId/medals':[function(req,res,next){AuthorizationController.isAuthorized('Medals','read',req,res,next);},function(req,res) {
+  'get org/:orgId/users/:userId/medals':[function(req,res,next){AuthorizationController.isAuthorized('Medals','list',req,res,next);},function(req,res) {
     medalController.getMedalsOfUser(req,res);
   }],
   'post /org/:orgId/users/:userId/medals':[function(req,res,next){AuthorizationController.isAuthorized('Medals','assign',req,res,next);},function(req,res){
@@ -69,14 +69,12 @@ var medalRoutes={
 
 //End Points For Goals:
 var goalRoutes={
-    'get org/:orgId/users/:userId/goals':function(req,res){
-      goalController.getLiveUserGoals(req,res);
-    },
-    'post /org/:orgId/users/:userId/goals':function(req,res){
-      console.log(req.params.userId);
-      console.log(req.body);
-      goalController.createGoal(req,res);
-    }
+  'get org/:orgId/users/:userId/goals':[function(req,res,next){AuthorizationController.isAuthorized('Goals','list',req,res,next);},function(req,res){
+    goalController.getLiveUserGoals(req,res);
+  }],
+  'post /org/:orgId/users/:userId/goals':[function(req,res,next){AuthorizationController.isAuthorized('Goals','create',req,res,next);},function(req,res){
+    goalController.createGoal(req,res);
+  }]
 };
 
 var leaderboardRoutes={
@@ -106,19 +104,19 @@ var statusMessagesRoutes={
   'get /org/:orgId/users/:userId/statuses':[function(req,res,next){AuthorizationController.isAuthorized('StatusMessages','list',req,res,next);},function(req,res){
     socialEngine.StatusMessagesController.getStatusMessagesOfUser(req,res);
   }],
-  'get /org/:orgId/users/:userId/statuses/:statusId':[function(req,res,next){AuthorizationController.isAuthorized('StatusMessages','get',req,res,next);},function(req,res){
+  'get /org/:orgId/users/:userId/statuses/:statusId':[function(req,res,next){AuthorizationController.isAuthorized('StatusMessages','read',req,res,next);},function(req,res){
     socialEngine.StatusMessagesController.getStatusMessage(req,res);
   }],
-  'get /org/:orgId/users/:userId/statuses/:statusId/comments':[function(req,res,next){AuthorizationController.isAuthorized('Comments','list',req,res,next);},function(req,res){
+  'get /org/:orgId/users/:userId/statuses/:statusId/comments':[function(req,res,next){AuthorizationController.isAuthorized('StatusComments','list',req,res,next);},function(req,res){
     socialEngine.StatusMessagesController.getCommentsOfStatus(req,res);
   }],
-  'post /org/:orgId/users/:userId/statuses/:statusId/comments':[function(req,res,next){AuthorizationController.isAuthorized('Comments','create',req,res,next);},function(req,res){
+  'post /org/:orgId/users/:userId/statuses/:statusId/comments':[function(req,res,next){AuthorizationController.isAuthorized('StatusComments','create',req,res,next);},function(req,res){
     socialEngine.StatusMessagesController.commentOnStatusMessage(req,res);
   }],
-  'post /org/:orgId/users/:userId/statuses/:statusId/like':[function(req,res,next){AuthorizationController.isAuthorized('Comments','create',req,res,next);},function(req,res){
+  'post /org/:orgId/users/:userId/statuses/:statusId/like':[function(req,res,next){AuthorizationController.isAuthorized('StatusLikes','create',req,res,next);},function(req,res){
     socialEngine.StatusMessagesController.likeStatusMessage(req,res);
   }],
-  'del /org/:orgId/users/:userId/statuses/:statusId':[function(req,res,next){AuthorizationController.isAuthorized('Comments','delete',req,res,next);},function(req,res){
+  'del /org/:orgId/users/:userId/statuses/:statusId':[function(req,res,next){AuthorizationController.isAuthorized('StatusMessages','delete',req,res,next);},function(req,res){
     socialEngine.StatusMessagesController.deleteStatusMessage(req,res);
   }]
 };
@@ -143,18 +141,18 @@ var nudgeMailBoxRoutes={
 
 //End Points For NudgeMails
 var nudgeMailRoutes={
-  'get org/:orgId/users/:userId/mails/:mailId':[function(req,res,next){AuthorizationController.isAuthorized('Users','get',req,res,next);},function(req,res){
+  'get org/:orgId/users/:userId/mails/:mailId':[function(req,res,next){AuthorizationController.isAuthorized('NudgeMails','read',req,res,next);},function(req,res){
     socialEngine.NudgeMailsController.getMail(req,res);
   }],
-  'post /org/:orgId/users/:userId/mails/:mailId':[function(req,res,next){AuthorizationController.isAuthorized('Users','get',req,res,next);},function(req,res) {
+  'post /org/:orgId/users/:userId/mails/:mailId':[function(req,res,next){AuthorizationController.isAuthorized('NudgeMails','update',req,res,next);},function(req,res) {
     socialEngine.NudgeMailsController.updateMail(req,res);
   }],
-  'post /org/:orgId/users/:userId/mails':[function(req,res,next){AuthorizationController.isAuthorized('Users','get',req,res,next);},function(req,res) {
+  'post /org/:orgId/users/:userId/mails':[function(req,res,next){AuthorizationController.isAuthorized('NudgeMails','create',req,res,next);},function(req,res) {
     socialEngine.NudgeMailsController.sendMail(req,res);
-  }],
-  'del org/:orgId/users/:userId/mails/:mailId':[function(req,res,next){AuthorizationController.isAuthorized('Users','get',req,res,next);},function(req,res){
-    socialEngine.NudgeMailsController.deleteMail(req,res);
   }]
+  // 'del org/:orgId/users/:userId/mails/:mailId':[function(req,res,next){AuthorizationController.isAuthorized('Users','delete',req,res,next);},function(req,res){
+  //   socialEngine.NudgeMailsController.deleteMail(req,res);
+  // }]
 };
 var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,medalRoutes,rankRoutes];
 module.exports={

@@ -1,4 +1,5 @@
 var UserGoalsModel=require('../models/Users').Goals;
+var TransactionMasterCollection=require('../models/TransactionMaster/TransactionMasterCollection.js');
 var GoalsController={
   createGoal:function(req,res){
     UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
@@ -24,8 +25,10 @@ var GoalsController={
   // },
   getLiveUserGoals:function(req,res){
     UserGoalsModel.getLiveGoalsOfUser(req.params.userId,new Date(),function(err,objs){
-      if(err) res.send(err);
-      res.send(objs[0]);
+      TransactionMasterCollection.populate(objs,{path:"goals.transactions.transactionMaster",model:'transactionMasters',select:'name'},function(err1,objs1){
+        if(err) res.send(err);
+        res.send(objs1[0]);
+      });
     });
   }
   // assignGoalToUser:function(req,res){

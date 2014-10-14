@@ -12,13 +12,13 @@ var RestApi={
     //   }
     //   return next();
     // };
-    // var handlers="passport.authenticate('bearer',{session:false})";
-    // OrganizationResources.initialize(server,handlers.toString());
-    // TeamResources.initialize(server,handlers.toString());
-    // UserResources.initialize(server,handlers.toString());
-    OrganizationResources.initialize(server);
-    TeamResources.initialize(server);
-    UserResources.initialize(server);
+    var handlers="passport.authenticate('bearer',{session:false})";
+    OrganizationResources.initialize(server,handlers.toString());
+    TeamResources.initialize(server,handlers.toString());
+    UserResources.initialize(server,handlers.toString());
+    // OrganizationResources.initialize(server);
+    // TeamResources.initialize(server);
+    // UserResources.initialize(server);
   }
 };
 module.exports=RestApi;

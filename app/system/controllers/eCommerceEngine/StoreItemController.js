@@ -10,6 +10,9 @@ var StoreItemController={
         else res.send(obj);
       });
     },
+    getStoreItemsOfStore:function(req,res){
+      // StoreModel.getStore
+    },
     getStoreItemsOfUser:function(req,res){
 //        TransactionModel.getTransactionsOfUser(req.params.userId,"","","",req.params.limits,req.params.offset,function(err,obj){
 //        TransactionModel.getTransactionsOfUser(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},"",function(err,obj){

@@ -124,7 +124,7 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
     console.log('trying to authenticate.');
     console.log(username+" "+password);
-    UserModel.Users.getUserByAuthentication(username,password,function(err, user) {
+    UserModel.getUserByAuthentication(username,password,function(err, user) {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username or password.' });
@@ -156,7 +156,7 @@ passport.use(new BearerStrategy(
 // });
 server.post('/login/bitnudge',passport.authenticate('local',{session:false}), function(req,res){
   var ele={userId:req.user._id,expires:moment().add(1,'day').valueOf()};
-  res.send({token:jwt.encode(ele,secret),expires:ele.expires,userId:req.user._id,orgId:req.user.orgId});
+  res.send({token:jwt.encode(ele,secret),expires:ele.expires,user:req.user});
 });
 var moment=require('moment');
 server.get('/login/test',function(req,res){
@@ -164,13 +164,13 @@ server.get('/login/test',function(req,res){
   res.send(tes.userId);
 });
 server.get('/org/',function(req,res,next){
-  console.log("sdfs");
   if(!req.query.token)
     res.send(401,{status:"You must enter a valid Auth Token. Obtain one after signing in."});
   return next(false);
 });
-server.get('/org/k',function(req,res,next){
+server.get('/test/files',function(req,res,next){
   res.send('k');
+  console.log(req.files);
   return next();
 });
 
