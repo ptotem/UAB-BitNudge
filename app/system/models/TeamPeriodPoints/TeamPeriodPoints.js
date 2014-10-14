@@ -1,5 +1,6 @@
 var TeamPeriodPointsCollection=require('./TeamPeriodPointsCollection.js');
 var moment=require('moment');
+var mongoose=require('mongoose');
 
 var TeamPoints={
   addPointsEverywhere:function(teamId,time,points,callback){
@@ -39,7 +40,7 @@ var TeamPoints={
     data.orgId=mongoose.Schema.Types.ObjectId(orgId);
     data.teamId=mongoose.Schema.Types.ObjectId(orgId);
     data.createdAt=new Date();
-    var temp=TeamPeriodPointsCollection(data);
+    var temp=new TeamPeriodPointsCollection(data);
     temp.save(callback);
   },
   setTeamPointsOfPeriod:function(teamId,period,date,points,callback){

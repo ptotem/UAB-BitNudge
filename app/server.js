@@ -174,22 +174,11 @@ server.get('/test/files',function(req,res,next){
   return next();
 });
 
+var restifyValidator = require('restify-validator2');
+server.use(restifyValidator.validatorPlugin);
 
-//testing ranks
 
-//var ClientJWTBearerStrategy = require('passport-oauth2-jwt-bearer').Strategy;
 
-//passport.use(new ClientJWTBearerStrategy(
-//    function(claimSetIss, done) {
-//        Clients.findOne({ clientId: claimSetIss }, function (err, client) {
-//            if (err) { return done(err); }
-//            if (!client) { return done(null, false); }
-//            return done(null, client);
-//        });
-//    }
-//));
-
-//    oauth2orize.token());
 var RanksController=require('./system/controllers/PointsEngine').RankController;
 server.get('/org/:orgId/calc/month',function(req,res){
   RanksController.calculateRankOfPeriod(req.params.orgId,"month",new Date(),function(err){
@@ -209,5 +198,5 @@ server.get('/org/:orgId/calc/year',function(req,res){
 });
 
 // init routes
-var routes=require('./api/RestApi.js');
+var routes=require('./api');
 routes.initialize(server);

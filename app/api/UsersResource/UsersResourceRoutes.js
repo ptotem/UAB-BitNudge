@@ -163,7 +163,7 @@ module.exports={
       if(handlers)
         eval("server."+methods[0]+"('"+methods[1]+"',"+handlers+","+routesObj[property]+');');
       else
-        eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
+        eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property][1]+');');
     }
     });
     console.log("User Routes initialized");
