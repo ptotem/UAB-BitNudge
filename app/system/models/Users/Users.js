@@ -36,6 +36,9 @@ var UserManagement={
   getTotalCash: function (id,fields,options,populationData,callback){
       UserCollection.findOne({_id: id},fields,options).populate(populationData).exec(callback);
   },
+  setLevelOfUser:function(userId,levelNo,callback){
+    UserCollection.update({_id:userId},{$set:{level:levelNo}},callback);
+  },
   getMedals:function(id,fields,options,populationdata,callback){
       if(options.slice.limits)
       {
@@ -62,10 +65,9 @@ var UserManagement={
   addRole:function(userId,role,callback){
     UserCollection.update({_id:userId},{$push:{roles:role}},callback);
   },
-  addPoints:function(userId,points,callback){
-    UserCollection.update({_id:userId},{$push:{points:points}},callback);
+  setLastLogin:function(userId,date,callback){
+    UserCollection.update({_id:userId},{$set:{lastLogin:date}},callback);
   },
-
   addTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$push:{teams:teamId}},callback);
   },
@@ -96,7 +98,7 @@ var UserManagement={
   addPointsObject:function(userId,pointsObj,callback){
     if(!pointsObj.date)
       pointsObj.date=new Date();
-    UserCollection.update({userId:userId},{$push:{points:pointsObj},$inc:{totalCash:pointsEarned,totalPoints:pointsObj.pointsEarned}},callback);
+    UserCollection.update({userId:userId},{$push:{points:pointsObj},$inc:{totalCash:pointsObj.pointsEarned,totalPoints:pointsObj.pointsEarned}},callback);
   },
   getUserByAuthentication:function(username,password,callback){
     passwordSalt=password+"salt!";

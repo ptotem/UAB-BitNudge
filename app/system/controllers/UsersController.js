@@ -5,11 +5,10 @@ var NudgeMailbox=require('../models/NudgeMailbox');
 var NudgeChat=require('../models/NudgeChat');
 var NotificationCenterModel=require('../models/NotificationCenter');
 var OrganizationalModel=require('../models/Organizations');
-
+var UserPeriodPointsModel=require('../models/UserPeriodPoints');
 var UsersController={
   createUser:function(req,res){
     UsersModel.createUser(req.params.orgId,req.body,function(err,user){
-      EventsModel.createEvents(req.params.orgId,user._id,function(){});
       // SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
       NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
       NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});

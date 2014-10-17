@@ -19,6 +19,9 @@ var Organization= {
     getOrganization:function(id,fields,options,populationData,callback){
         OrganizationsCollection.findOne({_id:id},fields,options,callback);
     },
+    getAllOrganizations:function(fields,options,populationData,callback){
+      OrganizationsCollection.find({},fields,options).populate(populationData).exec(callback);
+    },
     setOrganizationFieldById:function(id,fieldName,value,callback){
         OrganizationsCollection.update({_id:id},{$set:{fieldName:value}},callback);
     },

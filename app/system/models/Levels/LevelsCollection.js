@@ -2,7 +2,7 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var levelsSchema=new Schema({
   name:String,
-  organizationId:{type:Schema.Types.ObjectId,ref:'organizations'},
+  orgId:{type:Schema.Types.ObjectId,ref:'organizations'},
   calculationFn:String,
   createdAt :Date
 });

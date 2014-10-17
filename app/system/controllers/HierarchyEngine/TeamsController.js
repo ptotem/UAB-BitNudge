@@ -2,6 +2,7 @@ var OrganizationsModel=require('../../models/Organizations');
 var TeamModel=require('../../models/Teams');
 var TeamPeriodPointsModel=require('../../models/TeamPeriodPoints');
 var AuthorizationController=('../../controllers/AuthorizationController.js');
+var UserModel=require('../../models/Users').Users;
 var HierarchyEngine={
   getTeam:function(req,res){
     TeamModel.getTeam(req.params.teamId,{_id:0},{},{path:'teams'},function(err,obj){
@@ -52,19 +53,20 @@ var HierarchyEngine={
       res.send("success");
     });
   },
-  addMemberToTeam:function(req,res){
-      TeamModel.addMembersToTeam(req.params.teamId,req.body.members,function(err,obj){
-          if(err){
-            res.send("fail");
-            return handleError(err);
-          }
-          else{
-            if(req.body.members)
-              req.body.members.forEach(function(userId){
-                UserModel.addTeam(userId,req.params.teamId,function(){});
-              });
-            res.send("success");
-          }
+  addMembersToTeam:function(req,res){
+    if(!req.body.members)
+      return res.send(404,{status:"You must set members in the requset body. Eg: {members:['dfke22384','23t4f5hsd']}"});
+    TeamModel.addMembersToTeam(req.params.teamId,req.body.members,function(err,obj){
+      if(err){
+        res.send("fail");
+        return handleError(err);
+      }
+      else{
+        req.body.members.forEach(function(userId){
+          UserModel.addTeam(userId,req.params.teamId,function(){});
+        });
+        res.send("success");
+      }
       });
   },
 //     getMembersOfTeam:function(req,res){
@@ -147,16 +149,12 @@ var HierarchyEngine={
             }
         });
     },
-
     addSubteam:function(req,res){
+    if(!req.body.subteam)
+      return res.send(404,"You must send subteams in the request body. eg: {subteam:'asv234vfve234'}");
     TeamModel.addSubteams(req.params.teamId,req.body.subteam,function(err,obj){
-      if(err){
-        res.send("fail");
-        return handleError(err);
-      }
-      else{
-        res.send(obj);
-      }
+      if(err) res.send("fail");
+      else res.send(obj);
     });
   }
 };

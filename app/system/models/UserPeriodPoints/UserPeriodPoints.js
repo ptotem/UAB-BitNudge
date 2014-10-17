@@ -38,6 +38,7 @@ var UserPoints={
   createUserPeriodPoints:function(orgId,userId, data,callback){
     // data.userId=mongoose.Types.ObjectId(userId);
     data.orgId=mongoose.Types.ObjectId(orgId);
+    data.userId=mongoose.Types.ObjectId(userId);
     data.createdAt=new Date();
     var user= new UserPeriodPointsCollection(data);
     user.save(callback);
