@@ -5,6 +5,7 @@ var TransactionModel=tempModel.Transactions;
 var UserPointsModel=require('../models/UserPeriodPoints');
 var TeamPointsModel=require('../models/TeamPeriodPoints');
 var EventsController=require('./EventsController.js');
+var TransactionMasterModel=require('../models/TransactionMaster');
 
 //The architecture of transactions has changed. Now the admin enters transactions, and they are pre-approved.
 var TransactionController={
@@ -84,6 +85,12 @@ var TransactionController={
     TransactionModel.deleteTransaction(req.params.userId,req.params.transactionId,function(err,obj){
       if(err) handleError(err);
       res.send(obj);
+    });
+  },
+  getAllTransactionMasters:function(req,res){
+    TransactionMasterModel.getAllTransactionMasters("","","",function(err,obj){
+      if(err) res.send(err);
+      else res.send(obj);
     });
   }
   // updateTransaction:function(id,fieldName,value,callback){

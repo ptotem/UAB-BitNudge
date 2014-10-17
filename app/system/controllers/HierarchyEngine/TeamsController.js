@@ -39,7 +39,7 @@ var HierarchyEngine={
       TeamPeriodPointsModel.createTeamPeriodPoints(req.params.orgId,team._id,{},function(err1){res.send(err1);});
       if(req.body.members)
         req.body.members.forEach(function(userId){
-          UserModel.Users.addTeam(userId,team._id,function(){});
+          UserModel.addTeam(userId,team._id,function(){});
         });
       res.send(team);
     });

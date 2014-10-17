@@ -13,8 +13,8 @@ var Role= {
     getRole:function(id,fields,options,populationData,callback){
         RolesCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
     },
-    getRoleFromQuery:function(query,fields,options,populationData,callback){
-      RolesCollection.findOne(query,fields,options).populate(populationData).exec(callback);
+    getRolesFromQuery:function(query,fields,options,populationData,callback){
+      RolesCollection.find(query,fields,options).populate(populationData).exec(callback);
     },
     setRoleFieldById:function(id,fieldName,value,callback){
         RolesCollection.update({_id:id},{$set:{fieldName:value}},callback);

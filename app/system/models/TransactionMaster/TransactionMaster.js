@@ -7,6 +7,9 @@ var TransactionMaster={
     var l=new TransactionMasterCollection(data);
     l.save();
   },
+  getAllTransactionMasters:function(fields,options,populationData,callback){
+    TransactionMasterCollection.find({},fields,options).populate(populationData).exec(callback);
+  },
   getTransactionMaster:function(id,fields,options,populationData,callback){
     TransactionMasterCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   }

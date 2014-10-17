@@ -8,6 +8,8 @@ var socialEngine=require('../../system/controllers/SocialEngine');
 var tagController=require('../../system/controllers/TagsController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var levelsController=require('../../system/controllers/LevelsController.js');
+var rolesController=require('../../system/controllers/RolesController.js');
+var transactionController=require('../../system/controllers/TransactionsController.js');
 var passport=require('passport');
 
 var organizationRoutes={
@@ -25,6 +27,11 @@ var organizationRoutes={
 var goalMasterRoutes={
   'get /org/:orgId/goals':[function(req,res,next){AuthorizationController.isAuthorized('GoalMasters','list',req,res,next);},function(req,res){
     goalMasterController.getAllGoalMasters(req,res);
+  }]
+};
+var transactionMasterRoutes={
+  'get /org/:orgId/transactions':[function(req,res,next){AuthorizationController.isAuthorized('TransactionMasters','list',req,res,next);},function(req,res){
+    transactionController.getAllTransactionMasters(req,res);
   }]
 };
 
@@ -126,7 +133,13 @@ var levelRoutes={
   }]
 };
 
-var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes,levelRoutes];
+var roleRoutes={
+  'get org/:orgId/roles':[function(req,res,next){AuthorizationController.isAuthorized('Roles','list',req,res,next);},function(req,res){
+    rolesController.getRolesOfOrganization(req,res);
+  }]
+};
+
+var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes,levelRoutes,roleRoutes,transactionMasterRoutes];
 module.exports={
   initialize:function(server,handlers){
     stuff.forEach(function(routesObj){

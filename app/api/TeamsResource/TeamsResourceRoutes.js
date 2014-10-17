@@ -34,7 +34,7 @@ var teamRoutes={
   'get /org/:orgId/teams/:teamId':[function(req,res,next){AuthorizationController.isAuthorized('Teams','read',req,res,next);},function(req,res){
     hierarchyController.TeamsController.getTeam(req,res);
   }],
-  'get /org/:orgId/teams':[function(req,res,next){AuthorizationController.isAuthorized('Teams','list',req,res,next);},function(req,res){
+  'get /org/:orgId/teams':[function(req,res,next){AuthorizationController.isAuthorized('Teams','listOrg',req,res,next);},function(req,res){
     hierarchyController.TeamsController.getTeamsOfOrganization(req,res);
   }],
   'post /org/:orgId/teams':[function(req,res,next){AuthorizationController.isAuthorized('Teams','create',req,res,next);},function(req,res){
