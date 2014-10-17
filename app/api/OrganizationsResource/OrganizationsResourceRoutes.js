@@ -7,6 +7,7 @@ var hierarchyController=require('../../system/controllers/HierarchyEngine');
 var socialEngine=require('../../system/controllers/SocialEngine');
 var tagController=require('../../system/controllers/TagsController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
+var levelsController=require('../../system/controllers/LevelsController.js');
 var passport=require('passport');
 
 var organizationRoutes={
@@ -116,7 +117,16 @@ var tagRoutes={
   }],
 };
 
-var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes];
+var levelRoutes={
+  'post org/:orgId/level':[function(req,res,next){AuthorizationController.isAuthorized('Organizations','update',req,res,next);},function(req,res){
+    levelsController.createLevelForOrganization(req,res);
+  }],
+  'get org/:orgId/level':[function(req,res,next){AuthorizationController.isAuthorized('Organizations','update',req,res,next);},function(req,res){
+    levelsController.getLevelOfOrganization(req,res);
+  }]
+};
+
+var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes,levelRoutes];
 module.exports={
   initialize:function(server,handlers){
     stuff.forEach(function(routesObj){
@@ -125,7 +135,7 @@ module.exports={
         if(handlers)
           eval("server."+methods[0]+"('"+methods[1]+"',"+handlers+","+routesObj[property]+');');
         else
-          eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property][1]+');');
+          eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
       }
     });
     console.log("Organization Routes initialized");

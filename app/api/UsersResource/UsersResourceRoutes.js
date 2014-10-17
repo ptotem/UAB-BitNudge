@@ -6,12 +6,13 @@ var goalController=require('../../system/controllers/GoalsController.js');
 var socialEngine=require('../../system/controllers/SocialEngine');
 var userController=require('../../system/controllers/UsersController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
+var UsersDescription=require('./UsersResourceDescription.js');
 var passport=require('passport');
 var userRoutes={
   'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
     userController.getUser(req,res);
   }],
-  'get /org/:orgId/users':[function(req,res,next){AuthorizationController.isAuthorized('Users','list',req,res,next);},function(req,res){
+  'get /org/:orgId/users':[function(req,res,next){AuthorizationController.isAuthorized('Users','listOrg',req,res,next);},function(req,res){
     userController.getUsersOfOrganization(req,res);
   }],
   'post /org/:orgId/users':[function(req,res,next){AuthorizationController.isAuthorized('Users','create',req,res,next);},function(req,res){
@@ -163,7 +164,7 @@ module.exports={
       if(handlers)
         eval("server."+methods[0]+"('"+methods[1]+"',"+handlers+","+routesObj[property]+');');
       else
-        eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property][1]+');');
+        eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
     }
     });
     console.log("User Routes initialized");

@@ -10,8 +10,8 @@ var Stuff={
       },
       validation:function(req,res,next){
         console.log("here");
-        req.check(req.query,"test").notEmpty();
-        return next();
+        req.check(req.query,"test");
+        // return next();
       }
     }
   }
@@ -19,7 +19,9 @@ var Stuff={
 module.exports={
   authorizeAndValidate:function(model,method,req,res,next){
     // return [AuthorizationController.isAuthorized(model,method,req,res,next),Stuff[model][method].swagger,Stuff[model][method].validation];
-    console.log(Stuff[model][method]);
-    // return [AuthorizationController.isAuthorized(model,method,req,res,next),Stuff[model][method].validation];
+    // AuthorizationController.isAuthorized(model,method,req,res,function(){
+    console.log("sdf");
+      Stuff[model][method].validation(req,res,next);
+    // });// ,Stuff[model][method].validation;
   }
 };

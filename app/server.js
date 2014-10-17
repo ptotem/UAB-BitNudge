@@ -13,6 +13,7 @@ var restify = require('restify');
 var jwt = require('jwt-simple');
 var secret="ungessableSecret";
 var UserModel=require('./system/models/Users').Users;
+var EventsController=require('./system/controllers/EventsController.js');
 
 
 // var cors=require('cors');
@@ -41,6 +42,10 @@ server.use(restify.dateParser());
 server.use(restify.queryParser({ mapParams : false }));
 server.use(restify.bodyParser({ mapParams : false }));
 server.use(restify.jsonp());
+// var bunyan=require('bunyan');
+// server.use(restify.requestLogger({
+//   serializers:bunyan.stdSerializers
+// }));
 server.use(restify.throttle({
     burst : 100 ,
     rate : 50 ,
@@ -136,6 +141,7 @@ passport.use(new LocalStrategy(
 passport.use(new BearerStrategy(
   function(token, done) {
     var decoded=jwt.decode(token,secret);
+    console.log(decoded);
     if(decoded.expires<new Date().getTime())
       return done(null,false,{message:"Expired Token."});
     UserModel.getUser(decoded.userId , "","","",function (err, user) {
@@ -145,6 +151,11 @@ passport.use(new BearerStrategy(
     });
   }
 ));
+
+
+
+var restifyValidator = require('restify-validator2');
+server.use(restifyValidator.validatorPlugin);
 // passport.serializeUser(function(user, done) {
 //   done(null, user._id);
 // });
@@ -155,28 +166,48 @@ passport.use(new BearerStrategy(
 //   });
 // });
 server.post('/login/bitnudge',passport.authenticate('local',{session:false}), function(req,res){
-  var ele={userId:req.user._id,expires:moment().add(1,'day').valueOf()};
-  res.send({token:jwt.encode(ele,secret),expires:ele.expires,user:req.user});
+  if(req.user){
+    UserModel.getUser(req.user._id,"lastLogin","",[{path:"roles",select:"name"}],function(err1,obj1){
+      if(obj1.lastLogin>moment().subtract(1,'day').valueOf()){
+        //hardcoding the system activity for performance.
+        var loggingInSystemActivityId="543b7a15f392420615a1f34d";
+        EventsController.triggerSystemActivity(req.user._id,loggingInSystemActivityId,function(){});
+      }
+      UserModel.setLastLogin(req.user._id,new Date(),function(err,obj){
+        var ele={userId:req.user._id,expires:moment().add(1,'day').valueOf()};
+        res.send({token:jwt.encode(ele,secret),expires:ele.expires,user:req.user});
+      });
+    });
+  }
 });
 var moment=require('moment');
-server.get('/login/test',function(req,res){
-  var tes=jwt.decode(req.query.token,secret);
-  res.send(tes.userId);
+// server.get('/login/test',function(req,res){
+//   var tes=jwt.decode(req.query.token,secret);
+//   res.send(tes.userId);
+// });
+// server.get('/org/',function(req,res,next){
+//   if(!req.query.token)
+//     res.send(401,{status:"You must enter a valid Auth Token. Obtain one after signing in."});
+//   return next(false);
+// });
+// server.get('/test/files',function(req,res,next){
+//   res.send('k');
+//   console.log(req.files);
+//   return next();
+// });
+// server.get('/test/valid',function(req,res,next){
+//   // req.check(req.query,"test").notEmpty();
+//   console.log(req.check(req.query,'test'));
+//   res.send('k');
+//   return next();
+// });
+server.get('/',function(req,res){
+  res.send(404,"Please go to /public");
 });
-server.get('/org/',function(req,res,next){
-  if(!req.query.token)
-    res.send(401,{status:"You must enter a valid Auth Token. Obtain one after signing in."});
-  return next(false);
-});
-server.get('/test/files',function(req,res,next){
-  res.send('k');
-  console.log(req.files);
-  return next();
-});
-
-var restifyValidator = require('restify-validator2');
-server.use(restifyValidator.validatorPlugin);
-
+server.get(/\/public\/?.*/,restify.serveStatic({
+  directory:'./app/UABwebpages',
+  default:'index.html'
+}));
 
 
 var RanksController=require('./system/controllers/PointsEngine').RankController;
@@ -196,6 +227,18 @@ server.get('/org/:orgId/calc/year',function(req,res){
     res.send("done");
   });
 });
+// For being awesomesauce. Uncomment while in production or deployment.
+// setInterval(function(){
+//   OrganizationsModel.getAllOrganizations("","","",function(err,objs){
+//     objs.forEach(function(org){
+//       RanksController.calculateRankOfPeriod(org._id,"month",new Date(),function(err){
+//         RanksController.calculateRankOfPeriod(org._id,"quarter",new Date(),function(err1){
+//           RanksController.calculateRankOfPeriod(org._id,"year",new Date(),function(){});
+//         });
+//       });
+//     });
+//   });
+// },10*60*1000);
 
 // init routes
 var routes=require('./api');
