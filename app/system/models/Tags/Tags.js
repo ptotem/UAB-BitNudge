@@ -1,4 +1,5 @@
 var TagsCollection=require('./TagsCollection.js');
+var mongoose=require('mongoose');
 var Tag= {
   createTag:function(organizationId,data,callback){
       data.organizationId=organizationId;
@@ -10,7 +11,8 @@ var Tag= {
       TagsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   getTagsOfTypeOfOrganization:function(orgId,type,fields,options,populationData,callback){
-      TagsCollection.find({orgId:orgId,type:type},fields,options).populate(populationData).exec(callback);
+    console.log(orgId);
+      TagsCollection.find({orgId:mongoose.Types.ObjectId(orgId),type:type},fields,options).populate(populationData).exec(callback);
   },
   updateTag:function(id,updateData,callback){
     TagsCollection.update({_id:id},updateData,callback);

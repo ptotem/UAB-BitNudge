@@ -4,7 +4,7 @@ var tagSchema=new Schema({
     name:String,
     type:String,
     value:String,
-    organizationId :{type:Schema.Types.ObjectId,ref:'organization'},
+    orgId :{type:Schema.Types.ObjectId,ref:'organization'},
     createdAt :Date
 });
 var Tag=mongoose.model('tags',tagSchema);

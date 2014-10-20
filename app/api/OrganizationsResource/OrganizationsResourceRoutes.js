@@ -5,7 +5,7 @@ var storeItemController=eCommerceEngine.StoreItemController;
 var goalMasterController=require('../../system/controllers/GoalMasterController.js');
 var hierarchyController=require('../../system/controllers/HierarchyEngine');
 var socialEngine=require('../../system/controllers/SocialEngine');
-var tagController=require('../../system/controllers/TagsController.js');
+var tagsController=require('../../system/controllers/TagsController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var levelsController=require('../../system/controllers/LevelsController.js');
 var rolesController=require('../../system/controllers/RolesController.js');
@@ -114,6 +114,7 @@ var tagRoutes={
     tagsController.createTag(req,res);
   }],
   'get org/:orgId/tags/:tagName':[function(req,res,next){AuthorizationController.isAuthorized('Tags','list',req,res,next);},function(req,res){
+    // res.send([{_id:"alsf32fc",type:"company",value:"Ptotem"}]);
     tagsController.getTagsOfTypeOfOrganization(req,res);
   }],
   'post org/:orgId/tags/:tagId':[function(req,res,next){AuthorizationController.isAuthorized('Tags','update',req,res,next);},function(req,res){

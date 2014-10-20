@@ -288,35 +288,35 @@
 	    	document.write('<script src="js/include/responsive-tables.min.js"><\/script>');
 	    }
 
-        function check_unauthorized_req(){
-            console.log("check_unauthorized_req() called");
-            $.ajax({
-                url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d13?callback=?",
-                type: 'getJSON',  /* Dont use post it JSONP doesnt support */
-                dataType: 'jsonp',
-//                jsonpCallback: 'myfunc', // the function to call
-//                jsonp: 'callback', // name of the var specifying the callback in the request
-                success: function(res) {
-                    console.log("success res :- ");
-                    console.log(res);
-                    //console.log(JSON.parse(res));
-                    $("#user_name").text(res.userdata.personalInfo.name);
-                    $("#user_quote").text(res.userdata.personalInfo.quote);
-                    $("#user_designation").text(res.userdata.organizationalInfo.designation);
-                    $("#user_team").text(res.userdata.organizationalInfo.teamName);
-                    $("#profile_percentage").text(res.userdata.organizationalInfo.profileCompleteness);
-                    $("#profile_percentage_progress_bar").attr('data-percentage', res.userdata.organizationalInfo.profileCompleteness);
-                    $("#profile_percentage_progress_bar").css('width', res.userdata.organizationalInfo.profileCompleteness+"%");
-
-                    //processResponse(res);
-                }
-                ,
-                error: function(e , msg){
-                    //alert(msg);
-                    processError(e,msg);
-                }
-            });
-        }
+//         function check_unauthorized_req(){
+//             console.log("check_unauthorized_req() called");
+//             $.ajax({
+//                 url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d13?callback=?",
+//                 type: 'getJSON',  /* Dont use post it JSONP doesnt support */
+//                 dataType: 'jsonp',
+// //                jsonpCallback: 'myfunc', // the function to call
+// //                jsonp: 'callback', // name of the var specifying the callback in the request
+//                 success: function(res) {
+//                     console.log("success res :- ");
+//                     console.log(res);
+//                     //console.log(JSON.parse(res));
+//                     $("#user_name").text(res.userdata.personalInfo.name);
+//                     $("#user_quote").text(res.userdata.personalInfo.quote);
+//                     $("#user_designation").text(res.userdata.organizationalInfo.designation);
+//                     $("#user_team").text(res.userdata.organizationalInfo.teamName);
+//                     $("#profile_percentage").text(res.userdata.organizationalInfo.profileCompleteness);
+//                     $("#profile_percentage_progress_bar").attr('data-percentage', res.userdata.organizationalInfo.profileCompleteness);
+//                     $("#profile_percentage_progress_bar").css('width', res.userdata.organizationalInfo.profileCompleteness+"%");
+//
+//                     //processResponse(res);
+//                 }
+//                 ,
+//                 error: function(e , msg){
+//                     //alert(msg);
+//                     processError(e,msg);
+//                 }
+//             });
+//         }
 
         $("#sign_in_form_submit_btn").click(function() {
             var user_email = $("#user_email").val();
