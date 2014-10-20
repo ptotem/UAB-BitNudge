@@ -54,6 +54,7 @@
 		- Setup ios button demo
 		- Window.resize functions
 		- Window.load functions
+    - Bitnudge specific functions(remote host and local host)
 	   
 	*/
 
@@ -2306,3 +2307,11 @@
 	});
 	
 	/* end window.load functions */
+
+  /* Remote host etc*/
+  remote_host="http://chrumble.com:3004/";
+  local_host="http://chrumble.com:3004/public/";
+  admin_pages_host="http://chrumble.com:3004/public/admin_pages/";
+// remote_host="http://localhost:3004/";
+// local_host="http://localhost:3004/public/";
+// admin_pages_host="http://localhost:3004/public/admin_pages";
