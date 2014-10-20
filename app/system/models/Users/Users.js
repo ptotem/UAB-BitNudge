@@ -100,9 +100,9 @@ var UserManagement={
       pointsObj.date=new Date();
     UserCollection.update({userId:userId},{$push:{points:pointsObj},$inc:{totalCash:pointsObj.pointsEarned,totalPoints:pointsObj.pointsEarned}},callback);
   },
-  getUserByAuthentication:function(username,password,callback){
+  getUserByAuthentication:function(username,password,fields,options,populationData,callback){
     passwordSalt=password+"salt!";
-    UserCollection.findOne({email:username,passwordSalt:passwordSalt},callback);
+    UserCollection.findOne({email:username,passwordSalt:passwordSalt},fields,options).populate(populationData).exec(callback);
   },
   buyItemForUser:function(userId,itemId,time,cost,callback){
     var temp={

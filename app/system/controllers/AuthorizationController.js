@@ -18,7 +18,6 @@ var AuthorizationController={
       else{
         CapabilitiesModel.getCapability(capabilityObj[0].capability,"","","",function(err,capability){
           eval('var isAuthorized='+capability.isAuthorized);
-          console.log(isAuthorized);
           //temporary for checking. But otherwise req.user must be passed, from bearer strategy.
           // var temp={_id:req.params.userId,orgId:req.params.orgId};
           isAuthorized(req.user,req.params,function(result){

@@ -25,7 +25,7 @@ var HierarchyEngine={
     //   });
     // },
  getTeamsOfOrganization:function(req,res){
-   TeamModel.getTeamsOfOrganization(req.params.orgId,{_id:0},{},{path:'teams'},function(err,objs){
+   TeamModel.getTeamsOfOrganization(req.params.orgId,{},{},{path:'teams'},function(err,objs){
      if(err){
        res.send("fail");
        return handleError(err);

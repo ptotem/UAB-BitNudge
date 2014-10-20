@@ -129,7 +129,7 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
     console.log('trying to authenticate.');
     console.log(username+" "+password);
-    UserModel.getUserByAuthentication(username,password,function(err, user) {
+    UserModel.getUserByAuthentication(username,password,"","",{path:'roles',model:'roles',select:'name'},function(err, user) {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username or password.' });
@@ -141,7 +141,6 @@ passport.use(new LocalStrategy(
 passport.use(new BearerStrategy(
   function(token, done) {
     var decoded=jwt.decode(token,secret);
-    console.log(decoded);
     if(decoded.expires<new Date().getTime())
       return done(null,false,{message:"Expired Token."});
     UserModel.getUser(decoded.userId , "","","",function (err, user) {

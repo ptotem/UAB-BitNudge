@@ -327,7 +327,7 @@
                 .done(function(data) {
                     var storageData={token:data.token,expires:data.expires};
                     localStorage.setItem("user_access_token",JSON.stringify(storageData));
-                    if(data.user.roles.name="Admin")
+                    if(data.user.roles[0].name=="Admin")
                       window.location.href=local_host+"admin_pages/admin_user_page.html?userId="+data.user._id+"&orgId="+data.user.orgId;
                     else
                       window.location.href=local_host+"dashboard.html?userId="+data.user._id+"&orgId="+data.user.orgId;

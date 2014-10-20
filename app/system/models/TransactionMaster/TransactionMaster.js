@@ -8,7 +8,7 @@ var TransactionMaster={
     l.save();
   },
   getAllTransactionMasters:function(fields,options,populationData,callback){
-    TransactionMasterCollection.find({},fields,options).populate(populationData).exec(callback);
+    TransactionMasterCollection.find({type:{$ne:"System Activity"}},fields,options).populate(populationData).exec(callback);
   },
   getTransactionMaster:function(id,fields,options,populationData,callback){
     TransactionMasterCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);

@@ -137,9 +137,9 @@ var Team= {
     removeStoresFromAllTeams:function(storeData, callback) {
         TeamsCollection.update({}, {$pull: storeData}, callback);
     },
-    assignTrainingToTeam: function (teamId, training_id, callback) {
-        TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
-    },
+    // assignTrainingToTeam: function (teamId, training_id, callback) {
+    //     TeamsCollection.update({_id: teamId}, {$push: {training: training_id}}, callback);
+    // },
     findTeamOfUser:function(orgId,userId,callback){
         TeamsCollection.findOne({orgId:orgId},callback);
     }
