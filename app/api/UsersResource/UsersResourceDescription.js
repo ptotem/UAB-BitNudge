@@ -21,7 +21,8 @@ module.exports={
     // return [AuthorizationController.isAuthorized(model,method,req,res,next),Stuff[model][method].swagger,Stuff[model][method].validation];
     // AuthorizationController.isAuthorized(model,method,req,res,function(){
     console.log("sdf");
-      Stuff[model][method].validation(req,res,next);
+    // console.log(Stuff[model][method].validation);
+    Stuff[model][method].validation(req,res,next);
     // });// ,Stuff[model][method].validation;
   }
 };

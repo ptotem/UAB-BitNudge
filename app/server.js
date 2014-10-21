@@ -153,8 +153,9 @@ passport.use(new BearerStrategy(
 
 
 
-var restifyValidator = require('restify-validator2');
-server.use(restifyValidator.validatorPlugin);
+// var restifyValidator = require('restify-validator2');
+//
+// server.use(restifyValidator.validatorPlugin);
 // passport.serializeUser(function(user, done) {
 //   done(null, user._id);
 // });
@@ -162,6 +163,14 @@ server.use(restifyValidator.validatorPlugin);
 // passport.deserializeUser(function(id, done) {
 //   UserModel.getUser(id,"","","",function(err,user){
 //     done(err, user);
+//   });
+// });
+// var UserCollection=require('./system/models/Users/UsersCollection.js');
+// UserCollection.find({},function(err,objs){
+//   objs.forEach(function(user){
+//     UserModel.setPasswordForUser(user._id,"test",function(err,obj){
+//       console.log("done user "+user._id);
+//     });
 //   });
 // });
 server.post('/login/bitnudge',passport.authenticate('local',{session:false}), function(req,res){
@@ -207,6 +216,15 @@ server.get(/\/public\/?.*/,restify.serveStatic({
   directory:'./app/UABwebpages',
   default:'index.html'
 }));
+server.get('/test/awesome',function(req,res){
+  // console.log(req.check);
+  // console.log(req.check(req.query,"test").notEmpty());
+  var sch=require('./system/models/Users/UsersCollection.js');
+  // console.log(sch.schema);
+  console.log(sch.schema.path);
+  console.log(UserModel.getUserSchema());
+  res.send(sch.schema);
+});
 
 
 var RanksController=require('./system/controllers/PointsEngine').RankController;

@@ -1,13 +1,15 @@
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
+// var SALT_WORK_FACTOR=10;
 var userSchema=new Schema({
   name:String,
   address:String,
   orgId:{type:Schema.Types.ObjectId,rel:'organizations'},
   roles:[{type:Schema.Types.ObjectId,rel:'roles'}],
   email:String,
-  passwordSalt:String,
-  passwordHash:String,
+  password:String,  
+  // passwordSalt:String,
+  // passwordHash:String,
   medals:[{type:Schema.Types.ObjectId,rel:'medals'}],
   items:[{time:Date,item:{type:Schema.Types.ObjectId,rel:'storeItems'}}],
   points:[{
@@ -50,7 +52,7 @@ var userSchema=new Schema({
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],
   followerCount:Number,
   createdAt:Date,
-  rank:Number,
+  // rank:Number,
   quote:String,
   lastLogin:Date
 });

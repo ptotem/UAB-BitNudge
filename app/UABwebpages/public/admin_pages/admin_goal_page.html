@@ -815,7 +815,7 @@ if (!ismobile) {
 
         $.ajax({
             //url: remote_host+"org/5417f10a195e61022fff91ee/users/54181598d465d283167f8d26?callback=?",
-            url: remote_host + "org/5417f10a195e61022fff91ee/users?callback=?",
+            url: remote_host + "org/"+urlParams.orgId+"/users?callback=?",
             type: 'getJSON', /* Dont use post it JSONP doesnt support */
             dataType: 'jsonp',
 //                jsonpCallback: 'myfunc', // the function to call
@@ -836,7 +836,7 @@ if (!ismobile) {
 
         //list of all goals
         $.ajax({
-            url: remote_host + "org/5417f10a195e61022fff91ee/goals?callback=?",
+            url: remote_host + "org/"+urlParams.orgId+"/goals?callback=?",
             type: 'getJSON', /* Dont use post it JSONP doesnt support */
             dataType: 'jsonp',
             success: function (res) {
@@ -959,7 +959,7 @@ if (!ismobile) {
 //
             $.ajax({
                 type: "POST",
-                url: remote_host + "org/5417f10a195e61022fff91ee/users/" + username + "/goals",
+                url: remote_host + "org/"+urlParams.orgId+"/users/" + username + "/goals",
                 data: dataString,
                 dataType: "json",
                 success: function (res) {

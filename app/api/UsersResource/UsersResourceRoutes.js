@@ -9,7 +9,10 @@ var AuthorizationController=require('../../system/controllers/AuthorizationContr
 var UsersDescription=require('./UsersResourceDescription.js');
 var passport=require('passport');
 var userRoutes={
-  'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
+  // 'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
+  //   userController.getUser(req,res);
+  // }],
+  'get /org/:orgId/users/:userId':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
     userController.getUser(req,res);
   }],
   'get /org/:orgId/users':[function(req,res,next){AuthorizationController.isAuthorized('Users','listOrg',req,res,next);},function(req,res){

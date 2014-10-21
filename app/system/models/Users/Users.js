@@ -2,10 +2,11 @@ var UserCollection=require('./UsersCollection.js');
 var mongoose=require('mongoose');
 var UserGoals=require('./UserGoals.js');
 var UserTransactions=require('./Transactions.js');
+var bcrypt=require('bcryptjs');
 
 var UserManagement={
   getUserSchema:function(){
-    return UserCollection.Schema;
+    return UserCollection.schema;
   },
   //the attribute data is an object which contains key value pairs of the fields and values.
   createUser:function(organizationId,data,callback){
@@ -14,11 +15,15 @@ var UserManagement={
     data.createdAt=new Date();
     data.orgId=mongoose.Types.ObjectId(organizationId);
     if(data.password){
-      data.passwordSalt=data.password+"salt!";
-      data.passwordHash=data.password+"hash!";
+      bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(data.password, salt, function(err, hash) {
+          data.password=hash;
+        });
+      });
+      // data.passwordSalt=data.password+"salt!";
+      // data.passwordHash=data.password+"hash!";
     }
-    else return false;
-    delete data.password;
+    else return callback("please give a password");
     var newUser=new UserCollection(data);
     newUser.save(callback);
   },
@@ -101,8 +106,20 @@ var UserManagement={
     UserCollection.update({userId:userId},{$push:{points:pointsObj},$inc:{totalCash:pointsObj.pointsEarned,totalPoints:pointsObj.pointsEarned}},callback);
   },
   getUserByAuthentication:function(username,password,fields,options,populationData,callback){
-    passwordSalt=password+"salt!";
-    UserCollection.findOne({email:username,passwordSalt:passwordSalt},fields,options).populate(populationData).exec(callback);
+    UserCollection.findOne({email:username},fields,options).populate(populationData).exec(function(err,user){
+      bcrypt.compare(password, user.password, function(err, res){
+        if(res===true)
+          return callback(err,user);
+        else return callback(err);
+      });
+    });
+  },
+  setPasswordForUser:function(userId,password,callback){
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(password,salt,function(err,hash){
+        UserCollection.update({_id:userId},{$set:{password:hash}},callback);
+      });
+    });
   },
   buyItemForUser:function(userId,itemId,time,cost,callback){
     var temp={
