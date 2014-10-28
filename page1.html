@@ -52,7 +52,7 @@
     <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">
 
     <!-- BitNudge CSS -->
-    <link rel="stylesheet" href="css/bitnudge.css">
+    <!--<link rel="stylesheet" href="css/bitnudge.css">-->
 
     <!-- To switch to full width -->
     <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
@@ -286,16 +286,7 @@
         <!-- aside -->
         <aside>
 
-            <!-- aside item: Mini profile -->
-            <div class="my-profile">
-                <a href="javascript:void(0)" class="my-profile-pic">
-                    <img src="img/avatar/avatar_8.jpg" alt=""/>
-                </a>
-                <span class="first-child"><strong>Admin</strong></span>
-                <span><a href="javascript:void(0);">Edit Profile </a></span>
-            </div>
             <div class="divider"></div>
-            <!-- end aside item: Mini profile -->
 
             <!-- aside item: Menu -->
             <div class="sidebar-nav-fixed">
@@ -327,6 +318,85 @@
                     <div class="row">
 
                         <article class="col-md-12">
+                            <!-- new widget -->
+                            <div class="jarviswidget" id="widget-org-dept-form">
+                                <header>
+                                    <h2>Add New Department</h2>
+                                </header>
+                                <!-- wrap div -->
+                                <div>
+
+                                    <div class="jarviswidget-editbox">
+                                        <div>
+                                            <label>Title:</label>
+                                            <input type="text" />
+                                        </div>
+                                        <div>
+                                            <label>Styles:</label>
+                                            <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                            <span data-widget-setstyle="green" class="green-btn"></span>
+                                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                            <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                            <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                            <span data-widget-setstyle="red" class="red-btn"></span>
+                                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                            <span data-widget-setstyle="black" class="black-btn"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="inner-spacer">
+                                        <!-- content goes here -->
+                                        <form class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="dept_name">Name</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="dept_name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="multiSelect">Multi Select With Search</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select multiple="multiple" id="multiSelect" class="with-search">
+                                                                    <option value="AK">Alaska</option>
+                                                                    <option value="HI">Hawaii</option>
+                                                                    <option value="CA">California</option>
+                                                                    <option value="NV">Nevada</option>
+                                                                    <option value="OR">Oregon</option>
+                                                                    <option value="WA">Washington</option>
+                                                                    <option value="AZ">Arizona</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" class="btn medium btn-primary">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                    <!-- end content-->
+                                </div>
+                                <!-- end wrap div -->
+                            </div>
+                            <!-- end widget -->
                         </article>
 
                     </div>
@@ -402,6 +472,7 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+
 <script type="text/javascript">
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -419,32 +490,11 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            $('#main').css('opacity', 1);
-            $('header').fadeIn();
-
-            /* show tooltips */
-//            $.jGrowl("You are falling behind NTB targets. Time to focus on getting some new clients into the bank.", {
-//                header: 'Target Alert',
-//                sticky: false,
-//                life: 5000,
-//                speed: 500,
-//                theme: 'without-icon',
-//                position: 'bottom-right', //this is default position
-//                easing: 'easeOutBack',
-//                animateOpen: {
-//                    height: "show"
-//                },
-//                animateClose: {
-//                    opacity: 'hide'
-//                }
-//            });
         });
         /** end DEMO SCRIPTS **/
 
     } else {
-
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
-
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
 </script>
