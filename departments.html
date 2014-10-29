@@ -52,7 +52,7 @@
     <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">
 
     <!-- BitNudge CSS -->
-    <link rel="stylesheet" href="css/bitnudge.css">
+    <!--<link rel="stylesheet" href="css/bitnudge.css">-->
 
     <!-- To switch to full width -->
     <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
@@ -91,6 +91,13 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
     <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .aligned{
+            width: 20%;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -295,13 +302,6 @@
 <aside>
 
     <!-- aside item: Mini profile -->
-    <div class="my-profile">
-        <a href="javascript:void(0)" class="my-profile-pic">
-            <img src="img/avatar/avatar_8.jpg" alt=""/>
-        </a>
-        <span class="first-child"><strong>Admin</strong></span>
-        <span><a href="javascript:void(0);">Edit Profile </a></span>
-    </div>
     <div class="divider"></div>
     <!-- end aside item: Mini profile -->
 
@@ -310,13 +310,13 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li class="current">
-                <a href="department.html"><i class="icon-home"></i>Department List</a>
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
             </li>
             <li>
                 <a href="role.html"><i class="icon-off"></i>Roles</a>
             </li>
             <li>
-                <a href="employee.html"><i class="icon-envelope"></i>Employee</a>
+                <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
             </li>
             <li>
                 <a href="goals.html"><i class="icon-check"></i>Goals</a>
@@ -342,7 +342,7 @@
 <!-- main content -->
 <div id="page-content">
 <!-- page header -->
-<h1 id="page-header">Employee List</h1>
+<h1 id="page-header">Department List</h1>
 
 <div class="fluid-container">
 
@@ -352,9 +352,9 @@
 <div class="row">
     <article class="col-md-12">
         <!-- new widget -->
-        <div class="jarviswidget" id="widget-id-0">
+        <div class="jarviswidget" id="dept-list-widget">
             <header>
-                <h2>Employee List</h2>
+                <h2>Department List</h2>
             </header>
             <!-- wrap div -->
             <div>
@@ -380,27 +380,17 @@
 
                 <div class="inner-spacer widget-content-padding">
                     <!-- content goes here -->
-                    <table class="table table-striped table-bordered responsive" id="employee_list">
+                    <table class="table table-bordered table-hover responsive" id="department_list">
                         <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Roles</th>
-                            <th>Reporting office</th>
-                            <th>Tags</th>
-                            <th>Groups/Department</th>
-                            <th></th>
-
-                        </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Parent Group</th>
+                                <th>Children Group</th>
+                                <th>Tags</th>
+                                <th></th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                         </tbody>
                     </table>
 
@@ -503,37 +493,35 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            $('#main').css('opacity', 1);
-            $('header').fadeIn();
-
-            $('#employee_list').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": false,
-                "aaSorting": [
-                    [ 0, "asc" ]
-                ]
-            });
+            //$('#main').css('opacity', 1);
+            //$('header').fadeIn();
 
             var row_html;
 
-            row_html ='<tr class="odd gradeX">'+
-                    '<td class="text-center">Priya</td>'+
-            '<td class="text-center">Admin</td>'+
-            '<td class="text-center">10:30am</td>'+
-            '<td class="text-center">gold</td>'+
-            '<td class="text-center">red</td>'+
-            '<td class="text-center">'+
-                    '<a class="btn-xs btn-info" type="button" href="employee_show.html">'+
-                    '<i class="icon-exclamation-sign" ></i>'+
-            '</a>'+
-            '</td>'+
-            '</tr>'
+            for(var l=0; l<15; l++){
+                row_html = '<tr>'+
+                                '<td class="text-center aligned">Dept '+(l+1)+'</td>'+
+                                '<td class="text-center aligned">Dept 1</td>'+
+                                '<td class="text-center aligned">Dept 2 <br> Dept 3</td>'+
+                                '<td class="text-center aligned">Dept Tag</td>'+
+                                '<td class="text-center aligned">'+
+                                    '<a href="department_show.html">'+
+                                        '<i class="cus-exclamation"></i>'+
+                                    '</a>'+
+                                '</td>'+
+                            '</tr>';
 
-                console.log(row_html);
+                $("#department_list").find('tbody').append(row_html);
+            }
 
-                $("#employee_list").find('tbody').append(row_html);
+            $('#department_list').dataTable({
+                "bPaginate": true,
+                "bFilter": true,
+                "bLengthChange": true,
+                "bSort": false
             });
+
+        });
 
         /** end DEMO SCRIPTS **/
 

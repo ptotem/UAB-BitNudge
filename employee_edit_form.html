@@ -91,6 +91,13 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
     <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .aligned{
+            width: 20%;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -290,169 +297,216 @@
 
 <div id="main" role="main" class="container-fluid">
 
-<div class="contained">
-<!-- aside -->
-<aside>
+    <div class="contained">
+        <!-- aside -->
+        <aside>
 
-    <!-- aside item: Mini profile -->
-    <div class="divider"></div>
-    <!-- end aside item: Mini profile -->
+            <!-- aside item: Mini profile -->
+            <div class="divider"></div>
+            <!-- end aside item: Mini profile -->
 
-    <!-- aside item: Menu -->
-    <div class="sidebar-nav-fixed">
+            <!-- aside item: Menu -->
+            <div class="sidebar-nav-fixed">
 
-        <ul class="menu" id="accordion-menu-js">
-            <li class="current">
-                <a href="departments.html"><i class="icon-home"></i>Department List</a>
-            </li>
-            <li>
-                <a href="role.html"><i class="icon-off"></i>Roles</a>
-            </li>
-            <li>
-                <a href="employee.html"><i class="icon-envelope"></i>Employee</a>
-            </li>
-            <li>
-                <a href="goals.html"><i class="icon-check"></i>Goals</a>
-            </li>
-            <li>
-                <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
-            </li>
-            <li>
-                <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
-            </li>
-            <li>
-                <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
-            </li>
-        </ul>
+                <ul class="menu" id="accordion-menu-js">
+                    <li class="current">
+                        <a href="departments.html"><i class="icon-home"></i>Department List</a>
+                    </li>
+                    <li>
+                        <a href="role.html"><i class="icon-off"></i>Roles</a>
+                    </li>
+                    <li>
+                        <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
+                    </li>
+                    <li>
+                        <a href="goals.html"><i class="icon-check"></i>Goals</a>
+                    </li>
+                    <li>
+                        <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
+                    </li>
+                    <li>
+                        <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
+                    </li>
+                    <li>
+                        <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
+                    </li>
+                </ul>
 
-    </div>
-    <div class="divider"></div>
-    <!-- end aside item: Menu -->
+            </div>
+            <div class="divider"></div>
+            <!-- end aside item: Menu -->
 
-</aside>
-<!-- aside end -->
+        </aside>
+        <!-- aside end -->
 
-<!-- main content -->
-<div id="page-content">
-    <!-- page header -->
-    <h1 id="page-header">Department</h1>
+        <!-- main content -->
+        <div id="page-content">
+            <!-- page header -->
+            <h1 id="page-header">Edit Employee</h1>
 
-    <div class="fluid-container">
+            <div class="fluid-container">
 
-        <!-- widget grid -->
-        <section id="widget-grid" class="">
-            <!--------row 2---------->
-            <div class="row">
-                <article class="col-md-12">
-                    <!-- new widget -->
-                    <div class="jarviswidget" id="dept-show-widget">
-                        <header>
-                            <h2>Department</h2>
-                        </header>
-                        <!-- wrap div -->
-                        <div>
-
-                            <div class="jarviswidget-editbox">
+                <!-- widget grid -->
+                <section id="widget-grid" class="">
+                    <!--------row 2---------->
+                    <div class="row">
+                        <article class="col-md-12">
+                            <!-- new widget -->
+                            <div class="jarviswidget" id="new-employee-widget">
+                                <header>
+                                    <h2>Edit Employee</h2>
+                                </header>
+                                <!-- wrap div -->
                                 <div>
-                                    <label>Title:</label>
-                                    <input type="text"/>
+
+                                    <div class="jarviswidget-editbox">
+                                        <div>
+                                            <label>Title:</label>
+                                            <input type="text"/>
+                                        </div>
+                                        <div>
+                                            <label>Styles:</label>
+                                            <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                            <span data-widget-setstyle="green" class="green-btn"></span>
+                                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                            <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                            <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                            <span data-widget-setstyle="red" class="red-btn"></span>
+                                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                            <span data-widget-setstyle="black" class="black-btn"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="inner-spacer widget-content-padding">
+                                        <!-- content goes here -->
+                                        <form id="edit_employee_form" class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="emp_name">Name</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="emp_name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="emp_email">E-mail</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="email" class="form-control"  id="emp_email" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="emp_password">Password</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="password" class="form-control"  id="emp_password" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="emp_password_confirm">Password confirmation</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="password" class="form-control"  id="emp_password_confirm" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="emp_designation">Designation</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="emp_designation" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="emp_role">Role</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select multiple="multiple" id="emp_role" class="with-search">
+                                                                    <option value="AD">Admin</option>
+                                                                    <option value="SA">System Analyst</option>
+                                                                    <option value="MG">Manager</option>
+                                                                    <option value="EM">Employee</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="emp_addr">Address</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="emp_addr" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" class="btn medium btn-primary">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+
+                                    </div>
+                                    <!-- end content-->
                                 </div>
-                                <div>
-                                    <label>Styles:</label>
-                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                    <span data-widget-setstyle="green" class="green-btn"></span>
-                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                    <span data-widget-setstyle="red" class="red-btn"></span>
-                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                    <span data-widget-setstyle="black" class="black-btn"></span>
-                                </div>
+                                <!-- end wrap div -->
                             </div>
-
-                            <div class="inner-spacer widget-content-padding">
-                                <!-- content goes here -->
-                                <fieldset>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                Prakash Mehra
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Parent group</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                Red
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Children Group</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                Blue
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Tags</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                Gold
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </fieldset>
-
-                            </div>
-                            <!-- end content-->
-                        </div>
-                        <!-- end wrap div -->
+                            <!-- end widget -->
+                        </article>
                     </div>
-                    <!-- end widget -->
-                </article>
+                    <!------------row 2 end----------------->
+
+                </section>
+                <!-- end widget grid -->
+
             </div>
 
+        </div>
+        <!-- end main content -->
 
+        <!-- aside right on high res -->
+        <aside class="right">
 
-            <!------------row 2 end----------------->
+            <!-- date picker -->
+            <div id="datepicker"></div>
+            <div class="divider"></div>
+            <!-- end date picker -->
 
-        </section>
-        <!-- end widget grid -->
+        </aside>
 
+        <!-- end aside right -->
     </div>
-
-</div>
-<!-- end main content -->
-
-<!-- aside right on high res -->
-<aside class="right">
-
-    <!-- date picker -->
-    <div id="datepicker"></div>
-    <div class="divider"></div>
-    <!-- end date picker -->
-
-</aside>
-
-<!-- end aside right -->
-</div>
 
 </div>
 <!--end fluid-container-->
@@ -522,15 +576,36 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            $('#top_five_table').dataTable({
+            //$('#main').css('opacity', 1);
+            //$('header').fadeIn();
+
+            var row_html;
+
+            for(var l=0; l<15; l++){
+                row_html = '<tr>'+
+                                '<td class="text-center">Emp '+(l+1)+'</td>'+
+                                '<td class="text-center">Role</td>'+
+                                '<td class="text-center">Reporting Officer</td>'+
+                                '<td class="text-center">Tags</td>'+
+                                '<td class="text-center">Department</td>'+
+                                '<td class="text-center">'+
+                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
+                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-pencil"></i>'+'</a>'+
+                                '</td>'+
+                            '</tr>';
+
+                $("#employees_list").find('tbody').append(row_html);
+            }
+
+            $('#employees_list').dataTable({
                 "bPaginate": true,
                 "bFilter": true,
-                "bLengthChange": false,
-                "aaSorting": [
-                    [ 0, "asc" ]
-                ]
+                "bLengthChange": true,
+                "bSort": false
             });
+
         });
+
         /** end DEMO SCRIPTS **/
 
     } else {
