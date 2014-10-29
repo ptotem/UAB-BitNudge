@@ -1,6 +1,7 @@
 var OrganizationResources=require('./OrganizationsResource');
 var TeamResources=require('./TeamsResource');
 var UserResources=require('./UsersResource');
+var testResource=require('./Test/Test.js');
 var RestApi={
   initialize:function(server){
     // var handlers=function(req,res,next){
@@ -12,13 +13,14 @@ var RestApi={
     //   }
     //   return next();
     // };
-    var handlers="passport.authenticate('bearer',{session:false})";
-    OrganizationResources.initialize(server,handlers.toString());
-    TeamResources.initialize(server,handlers.toString());
-    UserResources.initialize(server,handlers.toString());
-    // OrganizationResources.initialize(server);
-    // TeamResources.initialize(server);
-    // UserResources.initialize(server);
+    // var handlers="passport.authenticate('bearer',{session:false})";
+    // OrganizationResources.initialize(server,handlers.toString());
+    // TeamResources.initialize(server,handlers.toString());
+    // UserResources.initialize(server,handlers.toString());
+    testResource.initialize(server);
+    OrganizationResources.initialize(server);
+    TeamResources.initialize(server);
+    UserResources.initialize(server);
   }
 };
 module.exports=RestApi;

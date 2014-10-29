@@ -83,9 +83,9 @@ module.exports={
       {
         methods=property.split(" ");
         if(handlers)
-          eval("server."+methods[0]+"('"+methods[1]+"',"+handlers+","+routesObj[property]+');');
+          eval("server."+methods[0]+"('"+methods[1]+"',"+handlers+","+routesObj[property][1]+');');
         else
-          eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property]+');');
+          eval("server."+methods[0]+"('"+methods[1]+"',"+routesObj[property][1]+');');
       }
     });
     console.log("Team Routes initialized");

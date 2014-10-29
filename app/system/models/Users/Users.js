@@ -107,11 +107,14 @@ var UserManagement={
   },
   getUserByAuthentication:function(username,password,fields,options,populationData,callback){
     UserCollection.findOne({email:username},fields,options).populate(populationData).exec(function(err,user){
-      bcrypt.compare(password, user.password, function(err, res){
-        if(res===true)
+      if(user.password) {
+        bcrypt.compare(password, user.password, function(err, res){
+          if(res===true)
           return callback(err,user);
-        else return callback(err);
-      });
+          else return callback(err);
+        });
+      }
+      else return callback("Incorrect email");
     });
   },
   setPasswordForUser:function(userId,password,callback){

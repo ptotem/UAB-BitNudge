@@ -54,7 +54,10 @@ var userSchema=new Schema({
   createdAt:Date,
   // rank:Number,
   quote:String,
-  lastLogin:Date
+  lastLogin:Date,
+      //this stuff is for testing shit.
+  reportsTo:{type:Schema.Types.ObjectId,ref:'users'},
+  orgtags:[{type:Schema.Types.ObjectId,ref:'orgTags'}]
 });
 var User=mongoose.model('users',userSchema);
 module.exports=User;
