@@ -76,7 +76,7 @@ var UserManagement={
   addTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$push:{teams:teamId}},callback);
   },
-  removeTeam:function(userId,role,callback){
+  removeTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$pull:{teams:teamId}},callback);
   },
   addFollower:function(userId,followerId,callback){
