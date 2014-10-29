@@ -342,8 +342,8 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Roles</h1>
-            <a href="role_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Role</a><br><br>
+            <h1 id="page-header">Edit Roles</h1>
+
             <div class="fluid-container">
 
                 <!-- widget grid -->
@@ -352,9 +352,9 @@
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="roles-list-widget">
+                            <div class="jarviswidget" id="new-role-widget">
                                 <header>
-                                    <h2>Roles</h2>
+                                    <h2>Edit Roles</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -380,17 +380,88 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <table class="table table-bordered table-hover responsive" id="role_list">
-                                            <thead>
-                                            <tr>
-                                                <th>Roles</th>
-                                                <th>Abilities</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
+                                        <form id="edit_role_form" class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="emp_name">Role</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="emp_name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label>Ability</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <table class="table table-bordered" id="s-table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Column name</th>
+                                                                    <th>Column name</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td  class="text-center">a1</td>
+                                                                    <td  class="text-center"><input type="checkbox"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td  class="text-center">a2</td>
+                                                                    <td  class="text-center"><input type="checkbox"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td  class="text-center">a3</td>
+                                                                    <td  class="text-center"><input type="checkbox"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td  class="text-center">a4</td>
+                                                                    <td  class="text-center"><input type="checkbox"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td  class="text-center">a5</td>
+                                                                    <td  class="text-center"><input type="checkbox"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td  class="text-center">a6</td>
+                                                                    <td  class="text-center"><input type="checkbox"></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" style="display:none">
+                                                    <div class="row"><div class="col-md-3"><label class="control-label" for="multiSelect">Abilities</label></div>
+                                                        <div class="col-md-9"><div class="controls">
+                                                            <select multiple="multiple" id="multiSelect" class="with-search">
+                                                                <option value="A1">A1</option>
+                                                                <option value="A2">A2</option>
+                                                                <option value="A3">A3</option>
+                                                                <option value="A4">A4</option>
+                                                                <option value="A5">A5</option>
+                                                                <option value="A6">A6</option>
+                                                                <option value="A7">A7</option>
+                                                            </select>
+                                                        </div></div></div>
+                                                </div>
+
+
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" class="btn medium btn-primary">
+                                                        Save changes
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
 
                                     </div>
                                     <!-- end content-->
@@ -498,18 +569,21 @@
 
             for(var l=0; l<15; l++){
                 row_html = '<tr>'+
-                                '<td class="text-center">Admin</td>'+
-                                '<td class="text-center">A1</td>'+
+                                '<td class="text-center">Emp '+(l+1)+'</td>'+
+                                '<td class="text-center">Role</td>'+
+                                '<td class="text-center">Reporting Officer</td>'+
+                                '<td class="text-center">Tags</td>'+
+                                '<td class="text-center">Department</td>'+
                                 '<td class="text-center">'+
-                                    '<a style="padding: 5px;" href="role_edit_form.html">'+'<i class="cus-pencil"></i>'+'</a>'+
-                                    '<a style="padding: 5px;" href="role_form_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
+                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
+                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-pencil"></i>'+'</a>'+
                                 '</td>'+
                             '</tr>';
 
-                $("#role_list").find('tbody').append(row_html);
+                $("#employees_list").find('tbody').append(row_html);
             }
 
-            $('#role_list').dataTable({
+            $('#employees_list').dataTable({
                 "bPaginate": true,
                 "bFilter": true,
                 "bLengthChange": true,
