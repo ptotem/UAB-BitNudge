@@ -18,14 +18,14 @@ var UserManagement={
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(data.password, salt, function(err, hash) {
           data.password=hash;
+          var newUser=new UserCollection(data);
+          newUser.save(callback);
         });
       });
       // data.passwordSalt=data.password+"salt!";
       // data.passwordHash=data.password+"hash!";
     }
     else return callback("please give a password");
-    var newUser=new UserCollection(data);
-    newUser.save(callback);
   },
   //this sets the field of a user given the user object
   updateUser:function(id,updateData,callback){
@@ -98,7 +98,7 @@ var UserManagement={
     UserCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);
   },
   getUsersOfOrganization: function (orgId, fields,options,populationData,callback) {
-      UserCollection.find({orgId:orgId},fields,options).exec(callback);
+      UserCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   },
   addPointsObject:function(userId,pointsObj,callback){
     if(!pointsObj.date)

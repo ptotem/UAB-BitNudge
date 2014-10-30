@@ -402,7 +402,7 @@
                                                     <button type="reset" class="btn medium btn-danger">
                                                         Cancel
                                                     </button>
-                                                    <button type="submit" class="btn medium btn-primary">
+                                                    <button id="upload_btn" type="submit" class="btn medium btn-primary">
                                                         Upload
                                                     </button>
                                                 </div>
@@ -492,6 +492,7 @@
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
 <script type="text/javascript">
+    var urlParams=JSON.parse(localStorage.getItem("user_data"));
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -537,6 +538,43 @@
             });
 
         });
+
+        // $("#upload_btn").click(function(){
+        //   $.ajax({
+        //     url: remote_host+'org/'+urlParams.orgId+'/excel/user/new',
+        //     data: $("#bulk_employees_excel_2")[0].files[0],
+        //     contentType: 'multipart/form-data',
+        //     // processData: false,
+        //     type: 'POST',
+        //     success: function(data){
+        //       console.log(data);
+        //     },
+        //     error:function(err){
+        //       console.log(err);
+        //     }
+        //   });
+        //   return false;
+        // });
+        $("#employees_bulk_upload_form").submit(function(event){
+          event.preventDefault();
+          var data=new FormData();
+          data.append("users",$("#bulk_employees_excel_2")[0].files[0]);
+          $.ajax({
+            url: remote_host+'org/'+urlParams.orgId+'/excel/user/new',
+            data: data,
+            // contentType: 'multipart/form-data',
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(data){
+              console.log(data);
+            },
+            error:function(err){
+              console.log(err);
+            }
+          });
+          return false;
+        });employees_bulk_upload_form
 
         /** end DEMO SCRIPTS **/
 
@@ -617,6 +655,7 @@
 
 <!-- DO NOT REMOVE: Theme Config file -->
 <script src="js/config.js"></script>
+<script src="js/app/app_config.js"></script>
 <!-- d3 library placed at the bottom for better performance -->
 <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
 <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->
