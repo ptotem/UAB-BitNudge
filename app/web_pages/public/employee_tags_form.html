@@ -342,7 +342,7 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Employee - Reporting Line Test</h1>
+            <h1 id="page-header">Assign Tags to Employee</h1>
 
             <div class="fluid-container">
 
@@ -352,9 +352,9 @@
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="employee-reporting-line-test-widget">
+                            <div class="jarviswidget" id="assign-tags-to-employee-widget">
                                 <header>
-                                    <h2>Role - Abilities Test</h2>
+                                    <h2>Assign Tags to Employee</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -380,19 +380,21 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <form id="employee-reporting-line-test-form" class="form-horizontal themed">
+                                        <form id="employee-tags-form" class="form-horizontal themed">
                                             <fieldset>
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5>Show single select user upline levels</h5>
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="users_select">Users</label>
+                                                            <div class="controls">
+                                                                <select id="users_select" class="with-search">
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <label class="control-label" for="users_select_1">Users</label>
+                                                            <label class="control-label" for="tags_select">Tags</label>
                                                             <div class="controls">
-                                                                <select id="users_select_1" class="with-search">
+                                                                <select multiple="multiple" id="tags_select" class="with-search">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -400,44 +402,19 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="result-block" id="result_1">
-                                                                <ul id="uplink_list"></ul>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5>Show single select user downline levels</h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="users_select_2">Users</label>
-                                                            <div class="controls">
-                                                                <select id="users_select_2" class="with-search">
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="result-block" id="result_2">
-                                                                <ul id="downlink_list"></ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button id="employee-tags-form-submit-btn" type="submit" class="btn medium btn-primary">
+                                                        Submit
+                                                    </button>
                                                 </div>
-
-                                                <!--<div class="form-actions">-->
-                                                    <!--<button type="reset" class="btn medium btn-danger">-->
-                                                        <!--Cancel-->
-                                                    <!--</button>-->
-                                                    <!--<button type="submit" class="btn medium btn-primary">-->
-                                                        <!--Save changes-->
-                                                    <!--</button>-->
-                                                <!--</div>-->
                                             </fieldset>
                                         </form>
 
@@ -526,7 +503,24 @@
 <script src="js/app/app_config.js"></script>
 
 <script type="text/javascript">
-    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    var urlParams=JSON.parse(localStorage.getItem("user_data"));
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right', //this is default position
+            easing: 'easeOutBack',
+            animateOpen: {
+                height: "show"
+            },
+            animateClose: {
+                opacity: 'hide'
+            }
+        });
+    };
 
     function get_employees(){
         $.ajax({
@@ -538,13 +532,30 @@
                     var option_html;
                     res.forEach(function(user){
                         option_html = "<option value="+user._id+">"+user.name+"</option>";
-                        $('#users_select_1').append(option_html);
-                        $('#users_select_2').append(option_html);
+                        $('#users_select').append(option_html);
                     });
-
                 }
+            },
+            error: function(e , msg){
+                //processError(e,msg);
             }
-            ,
+        });
+    }
+
+    function get_tags(){
+        $.ajax({
+            url: remote_host+"orgtags",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    res.forEach(function(tag){
+                        option_html = "<option value="+tag._id+">"+tag.name+"</option>";
+                        $('#tags_select').append(option_html);
+                    });
+                }
+            },
             error: function(e , msg){
                 //processError(e,msg);
             }
@@ -568,34 +579,35 @@
         $(function () {
 
             get_employees();
+            get_tags();
 
-            $("#users_select_1").change(function(){
-                var userElement = $("#users_select_1 :selected").val();
-                $("#uplink_list").empty();
-                $.ajax({
-                    url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement+'/uplink',
-                    type: 'GET',
-                    success: function(data){
-                        data.forEach(function(uplink){
-                            $("#uplink_list").append("<li>"+uplink.name+"</li>");
-                        });
-                    }
-                });
-            });
+        });
 
-            $("#users_select_2").change(function(){
-                var userElement = $("#users_select_2 :selected").val();
-                $("#downlink_list").empty();
-                $.ajax({
-                    url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement+'/downlink',
-                    type: 'GET',
-                    success: function(data){
-                        data.forEach(function(downlink){
-                            $("#downlink_list").append("<li>"+downlink.name+"</li>");
-                        });
-                    }
-                });
+
+        $("#employee-tags-form-submit-btn").click(function(event){
+          event.preventDefault();
+
+          var userElement = $("#users_select :selected").val();
+          var assignedTags = [];
+
+            $("#tags_select option:selected").each(function() {
+                assignedTags.push($(this).val())
             });
+            console.log("assignedTags");
+            console.log(assignedTags);
+
+          $.ajax({
+                            // /org/:orgId/users/:userId/orgtags
+            url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement+'/orgtags',
+            type: 'POST',
+            data:{orgtags:assignedTags},
+            success: function(data){
+              show_notification("Tags assigned to user.");
+            },
+            error:function(err){
+              console.log(err);
+            }
+          });
 
         });
 
