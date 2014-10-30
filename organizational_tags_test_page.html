@@ -342,79 +342,19 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Employees</h1>
+            <h1 id="page-header">Organizational Tags Test</h1>
 
             <div class="fluid-container">
 
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
-
-                <div class="row">
-
-                    <article class="col-md-12">
-
-                        <!-- new widget -->
-                        <div class="jarviswidget" id="employees-creation-widget">
-                            <header>
-                                <h2>Add Employees</h2>
-                            </header>
-
-                            <!-- widget div-->
-                            <div>
-                                <!-- widget edit box -->
-                                <div class="jarviswidget-editbox">
-                                    <div>
-                                        <label>Title:</label>
-                                        <input type="text"/>
-                                    </div>
-                                    <div>
-                                        <label>Styles:</label>
-                                        <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                        <span data-widget-setstyle="green" class="green-btn"></span>
-                                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                        <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                        <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                        <span data-widget-setstyle="red" class="red-btn"></span>
-                                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                        <span data-widget-setstyle="black" class="black-btn"></span>
-                                    </div>
-                                </div>
-                                <!-- end widget edit box -->
-
-                                <!-- content -->
-                                <div class="inner-spacer widget-content-padding">
-                                    <!-- content goes here -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="employee_new_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Employee</a><br><br>
-                                            <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Reporting Manager to Employee</a><br><br>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="employees_new_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Add Bulk Employees</a><br><br>
-                                            <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Employee Reporting Line Test Page</a><br><br>
-                                            <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Organizational Tags Test Page</a><br><br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end content -->
-
-                            </div>
-                            <!-- end widget div -->
-                        </div>
-                        <!-- end widget -->
-
-                    </article>
-
-                </div>
-
                     <!--------row 2---------->
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="employees-list-widget">
+                            <div class="jarviswidget" id="organizational-tags-test-widget">
                                 <header>
-                                    <h2>Employees List</h2>
+                                    <h2>Organizational Tags Test</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -440,20 +380,99 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <table class="table table-bordered table-hover responsive" id="employees_list">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Roles</th>
-                                                <th>Reporting Officer</th>
-                                                <th>Tags</th>
-                                                <th>Groups/Department</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
+                                        <form id="organizational-tags-test-form" class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5>Show users with multi select tags</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="tags_multiselect_1-nostyle">Tags</label>
+                                                            <div class="controls">
+                                                                <select multiple="multiple" id="tags_multiselect_1-nostyle" class="col-md-12" style="height:140px">
+                                                                    <option value="AK">Alaska</option>
+                                                                    <option value="HI">Hawaii</option>
+                                                                    <option value="CA">California</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="result-block" id="result_1">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5>Show downline of users with single select tag</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="tags_select_2">Tags</label>
+                                                            <div class="controls">
+                                                                <select id="tags_select_2" class="with-search">
+                                                                    <option value="AK">Alaska</option>
+                                                                    <option value="HI">Hawaii</option>
+                                                                    <option value="CA">California</option>
+                                                                    <option value="NV">Nevada</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="result-block" id="result_2">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5>Show upline of users with single select tag</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="tags_select_3">Tags</label>
+                                                            <div class="controls">
+                                                                <select id="tags_select_3" class="with-search">
+                                                                    <option value="AK">Alaska</option>
+                                                                    <option value="HI">Hawaii</option>
+                                                                    <option value="CA">California</option>
+                                                                    <option value="NV">Nevada</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="result-block" id="result_3">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--<div class="form-actions">-->
+                                                    <!--<button type="reset" class="btn medium btn-danger">-->
+                                                        <!--Cancel-->
+                                                    <!--</button>-->
+                                                    <!--<button type="submit" class="btn medium btn-primary">-->
+                                                        <!--Save changes-->
+                                                    <!--</button>-->
+                                                <!--</div>-->
+                                            </fieldset>
+                                        </form>
 
                                     </div>
                                     <!-- end content-->
@@ -567,8 +586,8 @@
                                 '<td class="text-center">Tags</td>'+
                                 '<td class="text-center">Department</td>'+
                                 '<td class="text-center">'+
-                                    '<a style="padding: 5px;" href="employee_edit_form.html">'+'<i class="cus-pencil"></i>'+'</a>'+
-                                    '<a style="padding: 5px;" href="employee_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
+                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
+                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-pencil"></i>'+'</a>'+
                                 '</td>'+
                             '</tr>';
 
