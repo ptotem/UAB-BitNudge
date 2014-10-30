@@ -28,7 +28,7 @@ var EventsController=require('./system/controllers/EventsController.js');
 // server.pre(cors.preflight);
 // server.use(cors.actual);
 
-mongoose.connect('mongodb://localhost/uabTest');
+mongoose.connect('mongodb://localhost/uabTest-SysConfig');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -69,7 +69,7 @@ server.use(restify.fullResponse());
 //     return next();
 //   }
 // );
-server.listen(3004, function () {
+server.listen(3019, function () {
     console.log('%s listening at %s', server.name, server.url);
 });
 // ZOHO Authentication:
