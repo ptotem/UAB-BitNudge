@@ -594,7 +594,7 @@
           var userElement=$("#users_select :selected")[0];
           var reportedElement=$('#reporting_manager :selected')[0];
           $.ajax({
-            url: remote_host+'/org/'+urlParams.orgId+'/users/'+userElement.getAttribute("data-id")+"/reportsto",
+            url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement.getAttribute("data-id")+"/reportsto",
             type: 'POST',
             data:{reportsTo:reportedElement.getAttribute("data-id")},
             success: function(data){

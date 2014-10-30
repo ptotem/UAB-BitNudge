@@ -393,10 +393,15 @@
                                                             <label class="control-label" for="tags_multiselect_1-nostyle">Tags</label>
                                                             <div class="controls">
                                                                 <select multiple="multiple" id="tags_multiselect_1-nostyle" class="col-md-12" style="height:140px">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                    <option value="CA">California</option>
+                                                                    <!-- <option value="AK">Alaska</option> -->
+                                                                    <!-- <option value="HI">Hawaii</option> -->
+                                                                    <!-- <option value="CA">California</option> -->
                                                                 </select>
+                                                            </div>
+                                                            <div class="form-actions">
+                                                              <button id="set_reporting_manager" type="submit" class="btn medium btn-primary">
+                                                                  Show
+                                                              </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -420,10 +425,10 @@
                                                             <label class="control-label" for="tags_select_2">Tags</label>
                                                             <div class="controls">
                                                                 <select id="tags_select_2" class="with-search">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                    <option value="CA">California</option>
-                                                                    <option value="NV">Nevada</option>
+                                                                    <!-- <option value="AK">Alaska</option> -->
+                                                                    <!-- <option value="HI">Hawaii</option> -->
+                                                                    <!-- <option value="CA">California</option> -->
+                                                                    <!-- <option value="NV">Nevada</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -447,10 +452,10 @@
                                                             <label class="control-label" for="tags_select_3">Tags</label>
                                                             <div class="controls">
                                                                 <select id="tags_select_3" class="with-search">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                    <option value="CA">California</option>
-                                                                    <option value="NV">Nevada</option>
+                                                                    <!-- <option value="AK">Alaska</option> -->
+                                                                    <!-- <option value="HI">Hawaii</option> -->
+                                                                    <!-- <option value="CA">California</option> -->
+                                                                    <!-- <option value="NV">Nevada</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -556,7 +561,10 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+<script src="js/app/app_config.js"></script>
+
 <script type="text/javascript">
+    var urlParams=JSON.parse(localStorage.getItem("user_data"));
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -602,7 +610,45 @@
             });
 
         });
-
+        $.ajax({
+          url:remote_host+"orgtags",
+          type: 'GET',
+          success: function(data){
+            data.forEach(function(tag){
+              $("#tags_select_2").append("<option data-id='"+tag._id+"' value='"+tag.name+"'>"+tag.name+"</option>");
+              $("#tags_select_3").append("<option data-id='"+tag._id+"' value='"+tag.name+"'>"+tag.name+"</option>");
+              $('#tags_multiselect_1-nostyle').append("<option data-id='"+tag._id+"' value='"+tag.name+"'>"+tag.name+"</option>");
+            });
+          },
+          error:function(err){
+            console.log(err);
+          }
+        });
+        $("#set_reporting_manager").click(function(event){
+          event.preventDefault();
+          var tagElements=$("#tags_multiselect_1-nostyle :selected");
+          var tagArr=[];
+          $.each(tagElements,function(index,tag){
+            tagArr.push(tag.getAttribute("data-id"));
+          });
+          var tagData={orgtags:tagArr}
+          $.ajax({
+          url:remote_host+"org/"+urlParams.orgId+"/tags/users",
+          type: 'GET',
+          data:tagData,
+          success: function(data){
+            $("#result_1").text("");
+            $("#result_1").append("<ul>");
+            data.forEach(function(user){
+              $("#result_1").append("<li data-id='"+user._id+"' value='"+user.name+"'>"+user.name+"</li>");
+            });
+            $("#result_1").append("</ul>");
+          },
+          error:function(err){
+            console.log(err);
+          }
+          });
+        });
         /** end DEMO SCRIPTS **/
 
     } else {
