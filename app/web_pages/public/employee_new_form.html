@@ -561,8 +561,6 @@
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
     function get_roles(){
-        var user = JSON.parse(localStorage.getItem('user'));
-
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/roles",
             type: 'GET',

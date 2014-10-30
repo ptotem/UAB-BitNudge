@@ -52,7 +52,7 @@
     <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">
 
     <!-- BitNudge CSS -->
-    <link rel="stylesheet" href="css/bitnudge.css">
+    <!--<link rel="stylesheet" href="css/bitnudge.css">-->
 
     <!-- To switch to full width -->
     <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
@@ -295,13 +295,6 @@
 <aside>
 
     <!-- aside item: Mini profile -->
-    <div class="my-profile">
-        <a href="javascript:void(0)" class="my-profile-pic">
-            <img src="img/avatar/avatar_8.jpg" alt=""/>
-        </a>
-        <span class="first-child"><strong>Admin</strong></span>
-        <span><a href="javascript:void(0);">Edit Profile </a></span>
-    </div>
     <div class="divider"></div>
     <!-- end aside item: Mini profile -->
 
@@ -310,13 +303,13 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li>
-                <a href="department.html"><i class="icon-home"></i>Department List</a>
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
             </li>
             <li>
                 <a href="role.html"><i class="icon-off"></i>Roles</a>
             </li>
             <li class="current">
-                <a href="employee.html"><i class="icon-envelope"></i>Employee</a>
+                <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
             </li>
             <li>
                 <a href="goals.html"><i class="icon-check"></i>Goals</a>
@@ -387,7 +380,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-9">
-                                               Priya
+                                               <div class="emp-details" id="emp_name"></div>
                                             </div>
                                         </div>
 
@@ -398,7 +391,7 @@
                                                 <label>Roles</label>
                                             </div>
                                             <div class="col-md-9">
-                                                admin
+                                                <div class="emp-details" id="emp_role"></div>
                                             </div>
                                         </div>
 
@@ -409,7 +402,7 @@
                                                 <label>Reporting office</label>
                                             </div>
                                             <div class="col-md-9">
-                                                10:30
+                                                <div class="emp-details" id="emp_reporting_officer"></div>
                                             </div>
                                         </div>
 
@@ -420,7 +413,7 @@
                                                 <label>Tags</label>
                                             </div>
                                             <div class="col-md-9">
-                                                Gold
+                                                <div class="emp-details" id="emp_tags"></div>
                                             </div>
                                         </div>
 
@@ -431,7 +424,7 @@
                                                 <label>Group/Department</label>
                                             </div>
                                             <div class="col-md-9">
-                                                Red
+                                                <div class="emp-details" id="emp_dept"></div>
                                             </div>
                                         </div>
 
@@ -523,7 +516,35 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+<script src="js/app/app_config.js"></script>
+
 <script type="text/javascript">
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function get_employee(){
+        var emp_id = window.location.search.replace("?","").split("=")[1];
+        $.ajax({
+            ///org/:orgId/users/:userId
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    $("#emp_name").text(res.name);
+                    $("#emp_role").text(res.name);
+                    $("#emp_reporting_officer").text(res.roles[0]);
+                    $("#emp_tags").text(res.orgtags[0]);
+                    if (res.teams[0])
+                        $("#emp_dept").text(res.teams[0].name);
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -540,9 +561,7 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            $('#main').css('opacity', 1);
-            $('header').fadeIn();
-
+            get_employee();
 
         });
         /** end DEMO SCRIPTS **/
