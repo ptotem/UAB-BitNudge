@@ -1,3 +1,3 @@
 remote_host = "http://localhost:3004/";
-local_host = "file:///home/nilesh/Projects/UAB-BitNudge-All/UAB-BitNudge-SysConfig-html/";
+local_host = "http://localhost:3004/public/";
 admin_pages_host = "http://localhost:3004/public/admin_pages/";

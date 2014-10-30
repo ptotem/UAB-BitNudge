@@ -213,7 +213,7 @@ server.get('/',function(req,res){
   res.send(404,"Please go to /public");
 });
 server.get(/\/public\/?.*/,restify.serveStatic({
-  directory:'./app/UABwebpages',
+  directory:'./app/web_pages',
   default:'index.html'
 }));
 server.get('/test/awesome',function(req,res){
