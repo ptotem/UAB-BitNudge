@@ -501,15 +501,9 @@
             $('#main').css('opacity', 1);
             $('header').fadeIn();
 
-            $('#reward_center_list').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": false,
-                "aaSorting": [
-                    [ 0, "asc" ]
-                ]
-            });
 
+            for(var i=0;i<10;i++)
+            {
             var row_html;
             row_html ='<tr class="odd gradeX">'+
                     '<td class="text-center">Rupee</td>'+
@@ -525,7 +519,19 @@
                 console.log(row_html);
 
                 $("#reward_center_list").find('tbody').append(row_html);
+            }
+
+            $('#reward_center_list').dataTable({
+                "bPaginate": true,
+                "bFilter": true,
+                "bLengthChange": false,
+                "iListLength":5,
+                "aaSorting": [
+                    [ 0, "asc" ]
+                ]
             });
+
+        });
 
         /** end DEMO SCRIPTS **/
 

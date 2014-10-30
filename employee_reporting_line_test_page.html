@@ -379,36 +379,51 @@
                                     </div>
 
                                     <div class="inner-spacer widget-content-padding">
-                                        <!-- content goes here -->
-                                        <form id="employee-reporting-line-test-form" class="form-horizontal themed">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5>Show single select user upline levels</h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="users_select_1">Users</label>
-                                                            <div class="controls">
-                                                                <select id="users_select_1" class="with-search">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                    <option value="CA">California</option>
-                                                                    <option value="NV">Nevada</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="result-block" id="result_1">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
+                                        <ul id="myTab" class="nav nav-tabs default-tabs">
+                                            <li class="active">
+                                                <a href="#s1" data-toggle="tab">Tab1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#s2" data-toggle="tab">Tab2</a>
+                                            </li>
+                                        </ul>
+                                        <div id="myTabContent" class="tab-content">
+                                            <div class="tab-pane fade in active" id="s1">
+                                                <form id="employee-reporting-line-test-form1-tab1" class="form-horizontal themed">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <h5>Show single select user upline levels</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="users_select_1">Users</label>
+                                                                    <div class="controls">
+                                                                        <select id="users_select_1" class="with-search">
+                                                                            <option value="AK">Alaska</option>
+                                                                            <option value="HI">Hawaii</option>
+                                                                            <option value="CA">California</option>
+                                                                            <option value="NV">Nevada</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="result-block" id="result_1">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </fieldset>
+                                                    </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="s2">
+                                                <form id="employee-reporting-line-test-form1-tab2" class="form-horizontal themed">
+                                                    <fieldset>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="row">
@@ -435,17 +450,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
 
-                                                <!--<div class="form-actions">-->
-                                                    <!--<button type="reset" class="btn medium btn-danger">-->
-                                                        <!--Cancel-->
-                                                    <!--</button>-->
-                                                    <!--<button type="submit" class="btn medium btn-primary">-->
-                                                        <!--Save changes-->
-                                                    <!--</button>-->
-                                                <!--</div>-->
-                                            </fieldset>
-                                        </form>
+
 
                                     </div>
                                     <!-- end content-->

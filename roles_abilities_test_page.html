@@ -380,47 +380,59 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <form id="new_employee_form" class="form-horizontal themed">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5>Can single select user do single select task?</h5>
+                                        <ul id="myTab2" class="nav nav-tabs default-tabs">
+                                            <li class="active">
+                                                <a href="#s1-1" data-toggle="tab">Tab1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#s2-1" data-toggle="tab">Tab2</a>
+                                            </li>
+                                            <li>
+                                                <a href="#s3-1" data-toggle="tab">Tab3</a>
+                                            </li>
+                                        </ul>
+                                        <div id="myTabContent2" class="tab-content">
+                                            <div class="tab-pane fade in active" id="s1-1">
+                                                <form id="new_employee_form_tab1" class="form-horizontal themed">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <h5>Can single select user do single select task?</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="users_select_1">Users</label>
+                                                                    <div class="controls">
+                                                                        <select id="users_select_1" class="with-search">
+                                                                            <option value="AK">Alaska</option>
+                                                                            <option value="HI">Hawaii</option>
+                                                                            <option value="CA">California</option>
+                                                                            <option value="NV">Nevada</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="abilities_select_1">Abilities</label>
+                                                                    <div class="controls">
+                                                                        <select id="abilities_select_1" class="with-search">
+                                                                            <option value="A1">A1</option>
+                                                                            <option value="A2">A2</option>
+                                                                            <option value="A3">A3</option>
+                                                                            <option value="A4">A4</option>
+                                                                            <option value="A5">A5</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="users_select_1">Users</label>
-                                                            <div class="controls">
-                                                                <select id="users_select_1" class="with-search">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                    <option value="CA">California</option>
-                                                                    <option value="NV">Nevada</option>
-                                                                </select>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="abilities_select_1">Abilities</label>
-                                                            <div class="controls">
-                                                                <select id="abilities_select_1" class="with-search">
-                                                                    <option value="A1">A1</option>
-                                                                    <option value="A2">A2</option>
-                                                                    <option value="A3">A3</option>
-                                                                    <option value="A4">A4</option>
-                                                                    <option value="A5">A5</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="result-block" id="result_1">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
+                                                            </fieldset>
+                                                            </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="s2-1">
+                                                <form id="new_employee_form_tab2" class="form-horizontal themed">
+                                                    <fieldset>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="row">
@@ -447,6 +459,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                        </fieldset>
+                                                    </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="s3-1">
+                                                <form id="new_employee_form_tab3" class="form-horizontal themed">
+                                                    <fieldset>
 
                                                 <div class="form-group">
                                                     <div class="row">
@@ -475,7 +493,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
+                                                        </fieldset>
+                                                    </form>
+                                            </div>
+                                        </div>
                                                 <!--<div class="form-actions">-->
                                                     <!--<button type="reset" class="btn medium btn-danger">-->
                                                         <!--Cancel-->
