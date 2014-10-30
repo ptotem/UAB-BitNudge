@@ -393,10 +393,10 @@
                                                             <label class="control-label" for="users_select_1">Users</label>
                                                             <div class="controls">
                                                                 <select id="users_select_1" class="with-search">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                    <option value="CA">California</option>
-                                                                    <option value="NV">Nevada</option>
+                                                                    <!-- <option value="AK">Alaska</option> -->
+                                                                    <!-- <option value="HI">Hawaii</option> -->
+                                                                    <!-- <option value="CA">California</option> -->
+                                                                    <!-- <option value="NV">Nevada</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -404,11 +404,11 @@
                                                             <label class="control-label" for="abilities_select_1">Abilities</label>
                                                             <div class="controls">
                                                                 <select id="abilities_select_1" class="with-search">
-                                                                    <option value="A1">A1</option>
-                                                                    <option value="A2">A2</option>
-                                                                    <option value="A3">A3</option>
-                                                                    <option value="A4">A4</option>
-                                                                    <option value="A5">A5</option>
+                                                                    <!-- <option value="A1">A1</option> -->
+                                                                    <!-- <option value="A2">A2</option> -->
+                                                                    <!-- <option value="A3">A3</option> -->
+                                                                    <!-- <option value="A4">A4</option> -->
+                                                                    <!-- <option value="A5">A5</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -432,10 +432,10 @@
                                                             <label class="control-label" for="users_select_2">Users</label>
                                                             <div class="controls">
                                                                 <select id="users_select_2" class="with-search">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                    <option value="CA">California</option>
-                                                                    <option value="NV">Nevada</option>
+                                                                    <!-- <option value="AK">Alaska</option> -->
+                                                                    <!-- <option value="HI">Hawaii</option> -->
+                                                                    <!-- <option value="CA">California</option> -->
+                                                                    <!-- <option value="NV">Nevada</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -459,11 +459,11 @@
                                                             <label class="control-label" for="abilities_select_2">Abilities</label>
                                                             <div class="controls">
                                                                 <select id="abilities_select_2" class="with-search">
-                                                                    <option value="A1">A1</option>
-                                                                    <option value="A2">A2</option>
-                                                                    <option value="A3">A3</option>
-                                                                    <option value="A4">A4</option>
-                                                                    <option value="A5">A5</option>
+                                                                    <!-- <option value="A1">A1</option> -->
+                                                                    <!-- <option value="A2">A2</option> -->
+                                                                    <!-- <option value="A3">A3</option> -->
+                                                                    <!-- <option value="A4">A4</option> -->
+                                                                    <!-- <option value="A5">A5</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -568,8 +568,10 @@
 <!-- REQUIRED: AmCharts  -->
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
+<script src="js/app/app_config.js"></script>
 
 <script type="text/javascript">
+    var urlParams=JSON.parse(localStorage.getItem("user_data"));
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -614,6 +616,73 @@
                 "bSort": false
             });
 
+        });
+        $.ajax({
+          url: remote_host+'org/'+urlParams.orgId+'/users',
+          type: 'GET',
+          success: function(data){
+            data.forEach(function(user){
+              $("#users_select_1").append("<option data-id='"+user._id+"' value='"+user.name+"'>"+user.name+"</option>");
+              $("#users_select_2").append("<option data-id='"+user._id+"' value='"+user.name+"'>"+user.name+"</option>");
+            });
+          },
+          error:function(err){
+            console.log(err);
+          }
+        });
+        $.ajax({
+          url: remote_host+'abilities',
+          type: 'GET',
+          success: function(data){
+            data.forEach(function(ability){
+              $("#abilities_select_1").append("<option data-id='"+ability._id+"' value='"+ability.name+"'>"+ability.name+"</option>");
+              $("#abilities_select_2").append("<option data-id='"+ability._id+"' value='"+ability.name+"'>"+ability.name+"</option>");
+            });
+          },
+          error:function(err){
+            console.log(err);
+          }
+        });
+        $("#abilities_select_1").change(function(){
+          var userElement=$("#users_select_1 :selected")[0];
+          var abilityElement=$("#abilities_select_1 :selected")[0];
+          $.ajax({
+            url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement.getAttribute("data-id")+'/abilities/'+abilityElement.getAttribute("data-id"),
+            type: 'GET',
+            success: function(data){
+              $("#result_1").text(data);
+            }
+          });
+        });
+        $("#users_select_2").change(function(){
+          var userElement=$("#users_select_2 :selected")[0];
+          $.ajax({
+            url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement.getAttribute("data-id")+'/abilities',
+            type: 'GET',
+            success: function(data){
+              $("#result_2").text("");
+              $("#result_2").append("<ul>");
+              data.forEach(function(abil){
+                $("#result_2").append("<li>"+abil.name+"</li>");
+              });
+              $("#result_2").append("</ul>");
+            }
+          });
+        });
+        $("#abilities_select_2").change(function(){
+          var abilityElement=$("#abilities_select_2 :selected")[0];
+          $.ajax({
+            url: remote_host+'org/'+urlParams.orgId+'/abilities/'+abilityElement.getAttribute("data-id")+'/users',
+            type: 'GET',
+            success: function(data){
+              $("#result_3").text("");
+              $("#result_3").append("<ul>");
+              data.forEach(function(user){
+                $("#result_3").append("<li>"+user.name+"</li>");
+              });
+              $("#result_3").append("</ul>");
+            }
+          });
         });
 
         /** end DEMO SCRIPTS **/

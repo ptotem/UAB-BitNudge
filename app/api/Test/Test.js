@@ -126,7 +126,10 @@ var userAuthorization={
         UserModel.getUser(req.params.userId,"","","",function(err,user){
             RoleAbilitiesCollection.find({role:user.roles[0]}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
                 if(err) res.send(err);
-                else res.send(result[0].abilities);
+                else{
+                    if(result[0])
+                        res.send(result[0].abilities);
+                } 
             });
         });
     },

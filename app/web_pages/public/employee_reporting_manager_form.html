@@ -388,10 +388,10 @@
                                                             <label class="control-label" for="users_select">Users</label>
                                                             <div class="controls">
                                                                 <select id="users_select" class="with-search">
-                                                                    <option value="AK">Alaska</option>
-                                                                    <option value="HI">Hawaii</option>
-                                                                    <option value="CA">California</option>
-                                                                    <option value="NV">Nevada</option>
+                                                                    <!-- <option value="AK">Alaska</option> -->
+                                                                    <!-- <option value="HI">Hawaii</option> -->
+                                                                    <!-- <option value="CA">California</option> -->
+                                                                    <!-- <option value="NV">Nevada</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -399,11 +399,11 @@
                                                             <label class="control-label" for="reporting_manager">Reporting Manager</label>
                                                             <div class="controls">
                                                                 <select id="reporting_manager" class="with-search">
-                                                                    <option value="A1">A1</option>
-                                                                    <option value="A2">A2</option>
-                                                                    <option value="A3">A3</option>
-                                                                    <option value="A4">A4</option>
-                                                                    <option value="A5">A5</option>
+                                                                    <!-- <option value="A1">A1</option> -->
+                                                                    <!-- <option value="A2">A2</option> -->
+                                                                    <!-- <option value="A3">A3</option> -->
+                                                                    <!-- <option value="A4">A4</option> -->
+                                                                    <!-- <option value="A5">A5</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -420,7 +420,7 @@
                                                     <button type="reset" class="btn medium btn-danger">
                                                         Cancel
                                                     </button>
-                                                    <button type="submit" class="btn medium btn-primary">
+                                                    <button id="set_reporting_manager" type="submit" class="btn medium btn-primary">
                                                         Save changes
                                                     </button>
                                                 </div>
@@ -509,7 +509,27 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+<script src="js/app/app_config.js"></script>
+
 <script type="text/javascript">
+    var urlParams=JSON.parse(localStorage.getItem("user_data"));
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right', //this is default position
+            easing: 'easeOutBack',
+            animateOpen: {
+                height: "show"
+            },
+            animateClose: {
+                opacity: 'hide'
+            }
+        });
+    };
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -554,6 +574,36 @@
                 "bSort": false
             });
 
+        });
+
+        $.ajax({
+          url: remote_host+'org/'+urlParams.orgId+'/users',
+          type: 'GET',
+          success: function(data){
+            data.forEach(function(user){
+              $("#users_select").append("<option data-id='"+user._id+"' value='"+user.name+"'>"+user.name+"</option>");
+              $("#reporting_manager").append("<option data-id='"+user._id+"' value='"+user.name+"'>"+user.name+"</option>");
+            });
+          },
+          error:function(err){
+            console.log(err);
+          }
+        });
+        $("#set_reporting_manager").click(function(event){
+          event.preventDefault();
+          var userElement=$("#users_select :selected")[0];
+          var reportedElement=$('#reporting_manager :selected')[0];
+          $.ajax({
+            url: remote_host+'/org/'+urlParams.orgId+'/users/'+userElement.getAttribute("data-id")+"/reportsto",
+            type: 'POST',
+            data:{reportsTo:reportedElement.getAttribute("data-id")},
+            success: function(data){
+              show_notification("Assigned user to report to manager");
+            },
+            error:function(err){
+              console.log(err);
+            }
+          });
         });
 
         /** end DEMO SCRIPTS **/
