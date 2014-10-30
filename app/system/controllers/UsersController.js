@@ -25,7 +25,7 @@ var UsersController={
     });
   },
   getUser:function(req,res){
-    UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'roles',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'}],function(err,obj){
+    UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'roles',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,obj){
       res.send(obj);
       // if(req.user._id==req.params.userId)
       //   res.send(obj);

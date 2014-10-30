@@ -385,6 +385,31 @@
                                         </div>
 
                                     </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>E-mail</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_email"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Designation</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_designation"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
@@ -399,7 +424,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Reporting office</label>
+                                                <label>Reporting Officer</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="emp-details" id="emp_reporting_officer"></div>
@@ -530,12 +555,41 @@
             dataType: 'json',
             success: function(res) {
                 if(res){
+                    //console.log(res);
+                    var reportsTo, orgTags = [], teams = [];
+                    if (res.reportsTo)
+                        reportsTo = res.reportsTo.name;
+                    else
+                        reportsTo = "";
+
+                    if (res.orgtags) {
+                        orgTags = [];
+                        $.each(res.orgtags, function(index, value) {
+                            orgTags.push(value.name)
+                        });
+                    }
+                    else{
+                        orgTags = "";
+                    }
+
+                    if (res.teams) {
+                        teams = [];
+                        $.each(res.teams, function(index, value) {
+                            teams.push(value.name)
+                        });
+                    }
+                    else{
+                        teams = "";
+                    }
+
                     $("#emp_name").text(res.name);
-                    $("#emp_role").text(res.name);
-                    $("#emp_reporting_officer").text(res.roles[0]);
-                    $("#emp_tags").text(res.orgtags[0]);
-                    if (res.teams[0])
-                        $("#emp_dept").text(res.teams[0].name);
+                    $("#emp_email").text(res.email);
+                    $("#emp_role").text(res.roles[0].name);
+                    $("#emp_reporting_officer").text(reportsTo);
+                    $("#emp_tags").text(orgTags);
+                    $("#emp_dept").text(teams);
+                    $("#emp_designation").text(res.designation);
+                    $("#emp_addr").text(res.address);
                 }
             }
             ,

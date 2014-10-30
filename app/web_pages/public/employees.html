@@ -389,9 +389,11 @@
                                         <div class="col-md-6">
                                             <a href="employee_new_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Employee</a><br><br>
                                             <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Reporting Manager to Employee</a><br><br>
+                                            <a href="employee_tags_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Tags to Employee</a><br><br>
                                         </div>
                                         <div class="col-md-6">
                                             <a href="employees_new_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Add Bulk Employees</a><br><br>
+                                            <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Edit Bulk Employees</a><br><br>
                                             <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Employee Reporting Line Test Page</a><br><br>
                                             <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Organizational Tags Test Page</a><br><br>
                                         </div>
@@ -549,20 +551,54 @@
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    var row_html;
+                    var row_html, role, reportsTo, orgTags = [], teams = [];
                     res.forEach(function(user){
                         //console.log(user);
+
+                        if (user.roles[0])
+                            role = user.roles[0].name;
+                        else
+                            role = "";
+
+                        if (user.reportsTo)
+                            reportsTo = user.reportsTo.name;
+                        else
+                            reportsTo = "";
+
+                        if (user.orgtags) {
+                            orgTags = [];
+                            $.each(user.orgtags, function(index, value) {
+                                orgTags.push(value.name)
+                            });
+                        }
+                        else{
+                            orgTags = "";
+                        }
+
+                        if (user.teams) {
+                            teams = [];
+                            $.each(user.teams, function(index, value) {
+                                teams.push(value.name)
+                            });
+                        }
+                        else{
+                            teams = "";
+                        }
+
+
                         row_html = '<tr>'+
-                                '<td class="text-center">'+user.name+'</td>'+
-                                '<td class="text-center">'+user.roles[0].name+'</td>'+
-                                '<td class="text-center"></td>'+
-                                '<td class="text-center"></td>'+
-                                '<td class="text-center"></td>'+
-                                '<td class="text-center">'+
-                                '<a style="padding: 5px;" href="employee_edit_form.html?userId='+user._id+'"><i class="cus-pencil"></i></a>'+
-                                '<a style="padding: 5px;" href="employee_show.html?userId='+user._id+'"><i class="cus-exclamation"></i></a>'+
-                                '</td>'+
-                                '</tr>';
+                                        '<td class="text-center aligned">'+user.name+'</td>'+
+                                        '<td class="text-center aligned">'+role+'</td>'+
+                                        '<td class="text-center aligned">'+reportsTo+'</td>'+
+                                        '<td class="text-center aligned">'+orgTags+'</td>'+
+                                        '<td class="text-center aligned">'+teams+'</td>'+
+                                        '<td class="text-center aligned">'+
+                                            '<div class="block" style="width: 50px;">' +
+                                                '<a href="employee_edit_form.html?userId='+user._id+'"><i class="cus-pencil"></i></a>'+
+                                                '<a href="employee_show.html?userId='+user._id+'"><i class="cus-exclamation"></i></a>'+
+                                            '</div>' +
+                                        '</td>'+
+                                    '</tr>';
 
                         $("#employees_list").find('tbody').append(row_html);
 

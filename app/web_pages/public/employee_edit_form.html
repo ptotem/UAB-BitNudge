@@ -404,16 +404,16 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div  class="col-md-3">
-                                                            <label for="emp_password">Password</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <input type="password" class="form-control"  id="emp_password" />
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <!--<div class="form-group">-->
+                                                    <!--<div class="row">-->
+                                                        <!--<div  class="col-md-3">-->
+                                                            <!--<label for="emp_password">Password</label>-->
+                                                        <!--</div>-->
+                                                        <!--<div class="col-md-9">-->
+                                                            <!--<input type="password" class="form-control"  id="emp_password" />-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
 
                                                 <!--<div class="form-group">-->
                                                     <!--<div class="row">-->
@@ -444,11 +444,7 @@
                                                         </div>
                                                         <div class="col-md-9">
                                                             <div class="controls">
-                                                                <select multiple="multiple" id="emp_role" class="with-search">
-                                                                    <option value="AD">Admin</option>
-                                                                    <option value="SA">System Analyst</option>
-                                                                    <option value="MG">Manager</option>
-                                                                    <option value="EM">Employee</option>
+                                                                <select id="emp_role" class="with-search">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -476,6 +472,12 @@
                                                 </div>
                                             </fieldset>
                                         </form>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a href="employees.html">View All Employees</a>
+                                            </div>
+                                        </div>
 
                                     </div>
                                     <!-- end content-->
@@ -573,14 +575,31 @@
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    console.log(res);
+                    //console.log(res);
                     $("#emp_name").val(res.name);
                     $("#emp_email").val(res.email);
-                    //$("#emp_role").val(res.name);
-                    $("#emp_reporting_officer").val();
-                    $("#emp_tags").val();
-                    if (res.teams[0])
-                        $("#emp_dept").val(res.teams[0].name);
+                    $("#emp_designation").val(res.designation);
+                    $("#emp_role").val(res.roles[0].name);
+                    $("#emp_addr").val(res.address);
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+    function get_roles(){
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/roles",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    res.forEach(function(role){
+                        $('#emp_role').append("<option data-id="+role._id+" value="+role.name+">"+role.name+"</option>");
+                    });
                 }
             }
             ,
@@ -628,6 +647,7 @@
             //$('header').fadeIn();
 
             get_employee();
+            get_roles();
 
             $("#update_emp_btn").click(function() {
                 var emp_id = window.location.search.replace("?","").split("=")[1];
@@ -636,7 +656,7 @@
                 var userData={
                     name: $("#emp_name")[0].value,
                     email: $("#emp_email")[0].value,
-                    password: $("#emp_password")[0].value,
+                    //password: $("#emp_password")[0].value,
                     address: $("#emp_addr")[0].value,
                     designation: $("#emp_designation")[0].value,
                     roles:[selected[selected.selectedIndex].getAttribute("data-id")]
