@@ -25,7 +25,7 @@ var UsersController={
     });
   },
   getUser:function(req,res){
-    UsersModel.getUser(req.params.userId,"","",{path:'teams',select:'name',model:'teams'},function(err,obj){
+    UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'roles',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'}],function(err,obj){
       res.send(obj);
       // if(req.user._id==req.params.userId)
       //   res.send(obj);
@@ -33,7 +33,7 @@ var UsersController={
     });
   },
   getUsersOfOrganization:function(req,res){
-    UsersModel.getUsersOfOrganization(req.params.orgId,"","","",function(err,goals){
+    UsersModel.getUsersOfOrganization(req.params.orgId,"","",[{path:'teams',select:'name',model:'teams'},{path:'roles',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'}],function(err,goals){
       res.send(goals);
     });
   },
