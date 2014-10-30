@@ -4,13 +4,13 @@ var RolesModel=require('../../system/models/Roles');
 var userFn=function(orgId,obj){
     var allData=obj[0].data;
     var headers=allData[0];
-    if(!headers[5])return;
+    if(!headers[4])return;
     var users=[];
     allData.forEach(function(data,index){
         if(index!==0){
             var userObj={};
             data.forEach(function(fieldData,indexNew){
-                if(indexNew==5)
+                if(indexNew==4)
                     RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
                         // userObj[headers[indexNew]]=[role._id];
                         if(err) console.log(err);
@@ -33,13 +33,13 @@ var userFn=function(orgId,obj){
 var userEditFn=function(orgId,obj){
     var allData=obj[0].data;
     var headers=allData[0];
-    if(!headers[5])return;
+    if(!headers[4])return;
     var users=[];
     allData.forEach(function(data,index){
         if(index!==0){
             var userObj={};
             data.forEach(function(fieldData,indexNew){
-                if(indexNew==5)
+                if(indexNew==4)
                     RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
                         if(err) console.log(err);
                         UserCollection.update({email:userObj.email,name:userObj.name},{$set:{roles:[role[0]._id]}},function(err,ans){
@@ -51,11 +51,13 @@ var userEditFn=function(orgId,obj){
                 else userObj[headers[indexNew]]=fieldData;
             });
             // users.push(userObj);
-            UserCollection.find({name:userObj.name},function(err,userQuery){
+            console.log(userObj);
+            UserCollection.findOne({email:userObj.email},function(err,userQuery){
+                console.log(userQuery._id);
                 UserModel.updateUser(userQuery._id,userObj,function(err){
                     if(err)
-                        console.log("err creating user from excel"+err);
-                    else console.log("created User from excel"+index);
+                        console.log("err editing user from excel"+err);
+                    else console.log("editing User from excel"+index);
                 });
             });
         }
