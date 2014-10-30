@@ -96,6 +96,11 @@
         .aligned{
             width: 20%;
         }
+
+        .result-block{
+            height: 140px;
+            overflow: auto;
+        }
     </style>
 
 </head>
@@ -436,6 +441,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="result-block" id="result_2">
+                                                                <ul id="result_2_list"></ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -463,6 +469,7 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="result-block" id="result_3">
+                                                                <ul id="result_3_list"></ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -581,35 +588,9 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
-
-            var row_html;
-
-            for(var l=0; l<15; l++){
-                row_html = '<tr>'+
-                                '<td class="text-center">Emp '+(l+1)+'</td>'+
-                                '<td class="text-center">Role</td>'+
-                                '<td class="text-center">Reporting Officer</td>'+
-                                '<td class="text-center">Tags</td>'+
-                                '<td class="text-center">Department</td>'+
-                                '<td class="text-center">'+
-                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
-                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-pencil"></i>'+'</a>'+
-                                '</td>'+
-                            '</tr>';
-
-                $("#employees_list").find('tbody').append(row_html);
-            }
-
-            $('#employees_list').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": true,
-                "bSort": false
-            });
 
         });
+
         $.ajax({
           url:remote_host+"orgtags",
           type: 'GET',
@@ -624,6 +605,7 @@
             console.log(err);
           }
         });
+
         $("#set_reporting_manager").click(function(event){
           event.preventDefault();
           var tagElements=$("#tags_multiselect_1-nostyle :selected");
@@ -649,6 +631,92 @@
           }
           });
         });
+
+        $("#tags_select_2").change(function(){
+            var tagElement = $("#tags_select_2 :selected")[0];
+            $.ajax({
+                url: remote_host+'org/'+urlParams.orgId+'/tags/users',
+                type: 'GET',
+                data: {orgtags: [tagElement.getAttribute("data-id")]},
+                success: function(data){
+                    //console.log(data);
+                    $("#result_2_list").empty();
+                    //$("#result_1").text(data);
+                    var downlink_name = [];
+                    data.forEach(function(user){
+
+                        $.ajax({
+                            url: remote_host+'org/'+urlParams.orgId+'/users/'+user._id+"/downlink",
+                            type: 'GET',
+                            success: function(ddata){
+                                //$("#result_1").text(data);
+                                downlink_name = [];
+                                ddata.forEach(function(downlink){
+                                    console.log("downlink_name");
+                                    console.log(downlink_name);
+                                    downlink_name.push(downlink.name)
+                                });
+
+                                $("#result_2_list").append("<li class='user_downline' id='"+user._id+"'>"+
+                                        user.name+"" +
+                                        '<ul>' +
+                                        '<li>' + downlink_name + '</li>' +
+                                        '</ul>' +
+                                        "</li>");
+                            }
+                        });
+
+
+                    });
+                }
+            });
+        });
+
+        $("#tags_select_3").change(function(){
+            var tagElement = $("#tags_select_3 :selected")[0];
+            $.ajax({
+                url: remote_host+'org/'+urlParams.orgId+'/tags/users',
+                type: 'GET',
+                data: {orgtags: [tagElement.getAttribute("data-id")]},
+                success: function(data){
+                    //console.log(data);
+                    $("#result_3_list").empty();
+                    //$("#result_1").text(data);
+                    var uplink_name = [];
+                    data.forEach(function(user){
+
+                        $.ajax({
+                            url: remote_host+'org/'+urlParams.orgId+'/users/'+user._id+"/uplink",
+                            type: 'GET',
+                            success: function(ddata){
+                                //$("#result_1").text(data);
+                                uplink_name = [];
+                                ddata.forEach(function(uplink){
+                                    console.log("uplink_name");
+                                    console.log(uplink);
+                                    uplink_name.push(uplink.name)
+                                });
+
+                                $("#result_3_list").append("<li class='user_uplink' id='"+user._id+"'>"+
+                                        user.name+"" +
+                                        '<ul>' +
+                                        '<li>' + uplink_name + '</li>' +
+                                        '</ul>' +
+                                        "</li>");
+                            }
+                        });
+
+
+                    });
+                }
+            });
+        });
+
+//        $(".user_downline").click(function(event){
+//           console.log("sdd");
+//           console.log($(this).attr("id"));
+//        });
+
         /** end DEMO SCRIPTS **/
 
     } else {

@@ -136,18 +136,20 @@ var userAuthorization={
         });
     },
     'get /org/:orgId/abilities/:abilityId/users':function(req,res){
+        var roles=[];
         RoleAbilitiesCollection.find({abilities:req.params.abilityId},function(err,roleAbilites){
-            var roles=[];
             roleAbilites.forEach(function(raObj){
                 roles.push(raObj.role);
-                UserCollection.find({roles:{$in:roleAbilites}},function(err1,user){
-                    if(err1) res.send(err1);
-                    else res.send(user);
-                });
                 // UserCollection.find({roles:{$in:roleAbilites},function(err1,user){
                 //     if(err1) res.send(err1);
                 //     else res.send(user);
                 // });
+            });
+            UserCollection.find({roles:{$in:roles}},function(err1,user){
+                console.log(user);
+                if(err1) res.send(err1);
+
+                else res.send(user);
             });
         });
     }
@@ -216,7 +218,7 @@ var organizationTags={
     'get /org/:orgId/tags/users':function(req,res){
         if(!req.query.orgtags)
             res.send("Please set orgtags in query as an Array of tags you are searching");
-        UserCollection.find({orgtags:req.query.orgtags},function(err,tags){
+        UserCollection.find({orgtags:{$in:req.query.orgtags}},function(err,tags){
             if(err) res.send(err);
             else res.send(tags);
         });
