@@ -310,7 +310,7 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li>
-                <a href="department.html"><i class="icon-home"></i>Department List</a>
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
             </li>
             <li>
                 <a href="role.html"><i class="icon-off"></i>Roles</a>
@@ -511,33 +511,37 @@
             $('#main').css('opacity', 1);
             $('header').fadeIn();
 
+
+            for(var i=0;i<10;i++)
+            {
+            var row_html;
+            row_html ='<tr class="odd gradeX">'+
+                    '<td class="text-center col-md-2">Amita</td>'+
+            '<td class="text-center col-md-1">'+'<img src="img/avatar/avatar_1.jpg">'+'</td>'+
+            '<td class="text-center col-md-3">She is the head of department of sales.Very hard working and dedicated toward work.</td>'+
+            '<td class="text-center col-md-2">10,000</td>'+
+            '<td class="text-center col-md-2">Admin</td>'+
+            '<td class="text-center col-md-2">'+
+                    '<a style="padding: 5px;" href="reward_master_show.html">'+'<i class="cus-exclamation"></i>'+'</a>' +
+            '</td>'+
+            '</tr>';
+
+                console.log(row_html);
+                $("#reward_master_list").find('tbody').append(row_html);
+            }
             $('#reward_master_list').dataTable({
                 "bPaginate": true,
                 "bFilter": true,
                 "bLengthChange": false,
+                "iDisplayLength":10,
+                "iListLength":10,
                 "aaSorting": [
                     [ 0, "asc" ]
                 ]
             });
 
-            var row_html;
-            row_html ='<tr class="odd gradeX">'+
-                    '<td class="text-center">Amita</td>'+
-            '<td class="text-center">'+'<img src="img/avatar/avatar_1.jpg">'+'</td>'+
-            '<td class="text-center">She is the head of department of sales.<br>Very hard working and dedicated toward work.</td>'+
-            '<td class="text-center">10,000</td>'+
-            '<td class="text-center">Admin</td>'+
-            '<td class="text-center">'+
-                    '<a class="btn-xs btn-info" type="button" href="reward_master_show.html">'+
-                    '<i class="icon-exclamation-sign" ></i>'+
-            '</a>'+
-            '</td>'+
-            '</tr>'
 
-                console.log(row_html);
-
-                $("#reward_master_list").find('tbody').append(row_html);
-            });
+        });
 
         /** end DEMO SCRIPTS **/
 

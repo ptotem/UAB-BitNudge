@@ -310,7 +310,7 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li>
-                <a href="department.html"><i class="icon-home"></i>Department List</a>
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
             </li>
             <li>
                 <a href="role.html"><i class="icon-off"></i>Roles</a>
@@ -506,15 +506,13 @@
             {
             var row_html;
             row_html ='<tr class="odd gradeX">'+
-                    '<td class="text-center">Rupee</td>'+
-            '<td class="text-center">65</td>'+
-            '<td class="text-center">1000</td>'+
-            '<td class="text-center">'+
-                    '<a class="btn-xs btn-info" type="button" href="reward_center_show.html">'+
-                    '<i class="icon-exclamation-sign" ></i>'+
-            '</a>'+
+                    '<td class="text-center col-md-3">Rupee</td>'+
+            '<td class="text-center col-md-3">65</td>'+
+            '<td class="text-center col-md-3">1000</td>'+
+            '<td class="text-center col-md-3">'+
+                    '<a style="padding:5px;" href="reward_center_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
             '</td>'+
-            '</tr>'
+            '</tr>';
 
                 console.log(row_html);
 

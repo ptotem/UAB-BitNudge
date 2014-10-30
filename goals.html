@@ -310,7 +310,7 @@
 
         <ul class="menu" id="accordion-menu-js">
             <li>
-                <a href="department.html"><i class="icon-home"></i>Department List</a>
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
             </li>
             <li>
                 <a href="role.html"><i class="icon-off"></i>Roles</a>
@@ -506,6 +506,21 @@
             $('#main').css('opacity', 1);
             $('header').fadeIn();
 
+
+            for(var i=0;i<10;i++)
+            {
+            var row_html;
+            row_html ='<tr class="odd gradeX">'+
+                    '<td class="text-center">Amit</td>'+
+            '<td class="text-center">1200</td>'+
+            '<td class="text-center">3000</td>'+
+            '<td class="text-center">'+'<a style="padding:5px;" href="goals_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
+            '</a>'+
+            '</td>'+
+            '</tr>';
+               console.log(row_html);
+               $("#goal_list").find('tbody').append(row_html);
+            }
             $('#goal_list').dataTable({
                 "bPaginate": true,
                 "bFilter": true,
@@ -514,27 +529,8 @@
                     [ 0, "asc" ]
                 ]
             });
-
-            var row_html;
-
-            row_html ='<tr class="odd gradeX">'+
-                    '<td class="text-center">Amit</td>'+
-            '<td class="text-center">1200</td>'+
-            '<td class="text-center">3000</td>'+
-            '<td class="text-center">'+
-                    '<a class="btn-xs btn-info" type="button" href="goals_show.html">'+
-                    '<i class="icon-exclamation-sign" ></i>'+
-            '</a>'+
-            '</td>'+
-            '</tr>'
-
-                console.log(row_html);
-
-                $("#goal_list").find('tbody').append(row_html);
             });
-
         /** end DEMO SCRIPTS **/
-
     } else {
 
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
