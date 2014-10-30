@@ -137,12 +137,17 @@ var userAuthorization={
     },
     'get /org/:orgId/abilities/:abilityId/users':function(req,res){
         RoleAbilitiesCollection.find({abilities:req.params.abilityId},function(err,roleAbilites){
+            var roles=[];
             roleAbilites.forEach(function(raObj){
-                var role=raObj.role;
-                UserCollection.find({roles:role},function(err1,user){
+                roles.push(raObj.role);
+                UserCollection.find({roles:{$in:roleAbilites}},function(err1,user){
                     if(err1) res.send(err1);
                     else res.send(user);
                 });
+                // UserCollection.find({roles:{$in:roleAbilites},function(err1,user){
+                //     if(err1) res.send(err1);
+                //     else res.send(user);
+                // });
             });
         });
     }
