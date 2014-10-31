@@ -14,19 +14,7 @@ var jwt = require('jwt-simple');
 var secret="ungessableSecret";
 var UserModel=require('./system/models/Users').Users;
 var EventsController=require('./system/controllers/EventsController.js');
-
-
-// var cors=require('cors');
-// var corsMiddleware = require('restify-cors-middleware');
-//
-// var cors = corsMiddleware({
-//   origins: ['http://192.168.2.23'],//http://web.myapp.com'],
-//   // allowHeaders: ['API-Token'],
-//   // exposeHeaders: ['API-Token-Expiry']
-// });
-//
-// server.pre(cors.preflight);
-// server.use(cors.actual);
+var bunyan = require('bunyan');
 
 mongoose.connect('mongodb://localhost/uabTest');
 var db = mongoose.connection;
@@ -54,6 +42,12 @@ server.use(restify.throttle({
 
     }
 }));
+var log = bunyan.createLogger({
+  name: 'my_restify_application',
+  level: process.env.LOG_LEVEL || 'info',
+  stream: process.stdout,
+  serializers: bunyan.stdSerializers
+});
 // restify.CORS.ALLOW_HEADERS.push('accept');
 // restify.CORS.ALLOW_HEADERS.push('sid');
 // restify.CORS.ALLOW_HEADERS.push('lang');

@@ -111,6 +111,17 @@ var userAuthorization={
             else res.send("success");
         });
     },
+    'get /org/:orgId/roles/:roleId/abilities':function(req,res){
+        // UserModel.getUser(req.params.userId,"","","",function(err,user){
+            RoleAbilitiesCollection.findOne({role:req.params.roleId}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
+                if(err) res.send(err);
+                else{
+                    if(result[0])
+                        res.send(result[0].abilities);
+                } 
+            });
+        // });
+    },
     'get /org/:orgId/users/:userId/abilities/:abilityId':function(req,res){
         UserModel.getUser(req.params.userId,"","","",function(err,user){
             RoleAbilitiesCollection.find({role:user.roles[0],abilities:req.params.abilityId}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
