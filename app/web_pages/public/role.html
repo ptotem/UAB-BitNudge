@@ -476,7 +476,66 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+<script src="js/app/app_config.js"></script>
+
 <script type="text/javascript">
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function get_roles(){
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/roles",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+
+                    res.forEach(function(role){
+                        console.log(role._id);
+                        $.ajax({
+                                           // /org/:orgId/roles/:roleId/abilities
+                            url: remote_host+"org/"+urlParams.orgId+"/roles/"+role._id+"/abilities",
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(abilitiesData) {
+                                if(abilitiesData){
+                                    var abilititesArray = [];
+                                    abilitiesData.forEach(function(ability){
+                                        console.log(ability);
+                                    });
+                                }
+                            },error: function(e , msg){
+                                //processError(e,msg);
+                            }
+                        });
+                        var row_html;
+                        row_html = '<tr>'+
+                                        '<td class="text-center">'+role.name+'</td>'+
+                                        '<td class="text-center">A1</td>'+
+                                        '<td class="text-center">'+
+                                            '<a style="padding: 5px;" href="role_edit_form.html?roleId='+role._id+'"><i class="cus-pencil"></i></a>'+
+                                            '<a style="padding: 5px;" href="role_form_show.html?roleId='+role._id+'"><i class="cus-exclamation"></i></a>'+
+                                        '</td>'+
+                                    '</tr>';
+
+                        $("#role_list").find('tbody').append(row_html);
+                    });
+                }
+
+                $('#role_list').dataTable({
+                    "bPaginate": true,
+                    "bFilter": true,
+                    "bLengthChange": true,
+                    "bSort": false
+                });
+
+
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -493,30 +552,7 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
-
-            var row_html;
-
-            for(var l=0; l<15; l++){
-                row_html = '<tr>'+
-                                '<td class="text-center">Admin</td>'+
-                                '<td class="text-center">A1</td>'+
-                                '<td class="text-center">'+
-                                    '<a style="padding: 5px;" href="role_edit_form.html">'+'<i class="cus-pencil"></i>'+'</a>'+
-                                    '<a style="padding: 5px;" href="role_form_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
-                                '</td>'+
-                            '</tr>';
-
-                $("#role_list").find('tbody').append(row_html);
-            }
-
-            $('#role_list').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": true,
-                "bSort": false
-            });
+            get_roles();
 
         });
 
