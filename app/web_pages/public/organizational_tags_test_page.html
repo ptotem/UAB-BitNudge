@@ -615,9 +615,9 @@
           });
           var tagData={orgtags:tagArr}
           $.ajax({
-          url:remote_host+"org/"+urlParams.orgId+"/tags/users",
+          url:remote_host+"org/"+urlParams.orgId+"/tags/users?orgtags="+JSON.stringify(tagArr),
           type: 'GET',
-          data:tagData,
+          // data:tagData,
           success: function(data){
             $("#result_1").text("");
             $("#result_1").append("<ul>");
@@ -635,9 +635,9 @@
         $("#tags_select_2").change(function(){
             var tagElement = $("#tags_select_2 :selected")[0];
             $.ajax({
-                url: remote_host+'org/'+urlParams.orgId+'/tags/users',
+                url: remote_host+'org/'+urlParams.orgId+'/tags/users?orgtags='+JSON.stringify([tagElement.getAttribute("data-id")]),
                 type: 'GET',
-                data: {orgtags: [tagElement.getAttribute("data-id")]},
+                // data: {orgtags: [tagElement.getAttribute("data-id")]},
                 success: function(data){
                     //console.log(data);
                     $("#result_2_list").empty();
@@ -675,9 +675,9 @@
         $("#tags_select_3").change(function(){
             var tagElement = $("#tags_select_3 :selected")[0];
             $.ajax({
-                url: remote_host+'org/'+urlParams.orgId+'/tags/users',
+                url: remote_host+'org/'+urlParams.orgId+'/tags/users?orgtags='+JSON.stringify([tagElement.getAttribute("data-id")]),
                 type: 'GET',
-                data: {orgtags: [tagElement.getAttribute("data-id")]},
+                // data: {orgtags: [tagElement.getAttribute("data-id")]},
                 success: function(data){
                     //console.log(data);
                     $("#result_3_list").empty();
@@ -718,7 +718,7 @@
 //        });
 
         /** end DEMO SCRIPTS **/
-
+        
     } else {
 
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
