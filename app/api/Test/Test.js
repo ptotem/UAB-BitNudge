@@ -111,6 +111,17 @@ var userAuthorization={
             else res.send("success");
         });
     },
+    'get /org/:orgId/roles/:roleId/abilities':function(req,res){
+        // UserModel.getUser(req.params.userId,"","","",function(err,user){
+            RoleAbilitiesCollection.findOne({role:mongoose.Types.ObjectId(req.params.roleId)}).populate({path:'abilities',model:'abilities'}).exec(function(err,result){
+                if(err) res.send(err);
+                else{
+                    if(result)
+                        res.send(result.abilities);
+                } 
+            });
+        // });
+    },
     'get /org/:orgId/users/:userId/abilities/:abilityId':function(req,res){
         UserModel.getUser(req.params.userId,"","","",function(err,user){
             RoleAbilitiesCollection.find({role:user.roles[0],abilities:req.params.abilityId}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
@@ -171,7 +182,7 @@ var organizationStructure={
             UserModel.getUser(userId,"","","",function(err,user){
                 if(err) res.send(err);
                 users.push(user);
-                if(user.reportsTo){
+                if(user&&user.reportsTo){
                     recur(user.reportsTo);
                 }
                 else res.send(users);
@@ -189,7 +200,7 @@ var organizationStructure={
                 if(err) res.send(err);
                 if(!user) res.send(users);
                 users.push(user);
-                if(user.reportsTo){
+                if(user&&user.reportsTo){
                     recur(user._id);
                 }
                 else res.send(users);
