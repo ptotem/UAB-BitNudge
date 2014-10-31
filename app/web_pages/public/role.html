@@ -482,57 +482,59 @@
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
     function get_roles(){
+
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/roles",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
-
+                    var abilititesArray;
                     res.forEach(function(role){
-                        console.log(role._id);
+                        //console.log(role._id);
                         $.ajax({
-                                           // /org/:orgId/roles/:roleId/abilities
                             url: remote_host+"org/"+urlParams.orgId+"/roles/"+role._id+"/abilities",
                             type: 'GET',
                             dataType: 'json',
                             success: function(abilitiesData) {
                                 if(abilitiesData){
-                                    var abilititesArray = [];
+                                    abilititesArray = "";
                                     abilitiesData.forEach(function(ability){
-                                        console.log(ability);
+                                        //console.log(ability.name);
+                                        abilititesArray = abilititesArray + ability.name + ", ";
                                     });
                                 }
+
+                                var row_html;
+                                row_html = '<tr>'+
+                                                '<td class="text-center">'+role.name+'</td>'+
+                                                '<td class="text-center">'+abilititesArray.replace(/,/g, '<br>')+'</td>'+
+                                                '<td class="text-center">'+
+                                                    '<a style="padding: 5px;" href="role_edit_form.html?roleId='+role._id+'"><i class="cus-pencil"></i></a>'+
+                                                    '<a style="padding: 5px;" href="role_form_show.html?roleId='+role._id+'"><i class="cus-exclamation"></i></a>'+
+                                                '</td>'+
+                                            '</tr>';
+
+                                $("#role_list").find('tbody').append(row_html);
+
                             },error: function(e , msg){
                                 //processError(e,msg);
                             }
                         });
-                        var row_html;
-                        row_html = '<tr>'+
-                                        '<td class="text-center">'+role.name+'</td>'+
-                                        '<td class="text-center">A1</td>'+
-                                        '<td class="text-center">'+
-                                            '<a style="padding: 5px;" href="role_edit_form.html?roleId='+role._id+'"><i class="cus-pencil"></i></a>'+
-                                            '<a style="padding: 5px;" href="role_form_show.html?roleId='+role._id+'"><i class="cus-exclamation"></i></a>'+
-                                        '</td>'+
-                                    '</tr>';
-
-                        $("#role_list").find('tbody').append(row_html);
                     });
                 }
-
-                $('#role_list').dataTable({
-                    "bPaginate": true,
-                    "bFilter": true,
-                    "bLengthChange": true,
-                    "bSort": false
-                });
-
-
-            },
-            error: function(e , msg){
+            },error: function(e , msg){
                 //processError(e,msg);
             }
+        });
+    }
+
+    function apply_dataTable_to_role_list(){
+        $('#role_list').dataTable({
+            "bPaginate": true,
+            "bFilter": true,
+            "bLengthChange": true,
+            "bSort": false
         });
     }
 
@@ -553,6 +555,10 @@
         $(function () {
 
             get_roles();
+
+            setTimeout(function() {
+                apply_dataTable_to_role_list();
+            }, 2000);
 
         });
 
