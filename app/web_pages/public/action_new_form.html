@@ -516,11 +516,14 @@
                 console.log(res);
                 if(res){
                     res.forEach(function(transactionMaster){
-                        console.log(transactionMaster);
-                        console.log("transactionMaster.format");
-                        var action_format_data=transactionMaster.format;
-                        console.log(action_format_data);
-
+//                        console.log(transactionMaster);
+//                        console.log("transactionMaster.format");
+//                        var action_format_data=transactionMaster.format;
+//                        console.log(action_format_data);
+//                        var fields = action_format_data.match(/%{([^}]*)}/g);
+//                        var fields1 = action_format_data.match(/{([^}]*)/g);
+//                        console.log("fields :- " + fields);
+//                        console.log("fields :- " + fields1);
                         $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
                     });
                 }
@@ -530,8 +533,6 @@
             }
         });
     }
-
-
     function show_notification(text){
         $.jGrowl(text, {
             header: 'Notification',
@@ -549,34 +550,27 @@
             }
         });
     }
-
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
-
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
-
         /* REQUIRED: Datatable PDF/Excel output componant */
-
         document.write('<script src="js/include/ZeroClipboard.min.js"><\/script>');
         document.write('<script src="js/include/TableTools.min.js"><\/script>');
         document.write('<script src="js/include/select2.min.js"><\/script>');
         document.write('<script src="js/include/jquery.excanvas.min.js"><\/script>');
         document.write('<script src="js/include/jquery.placeholder.min.js"><\/script>');
-
         /** DEMO SCRIPTS **/
         $(function () {
-
             //$('#main').css('opacity', 1);
             //$('header').fadeIn();
             get_actions();
-
-            var action;
-            $('#actions_select').on('change',function(){
-                var this_goal_id = transactionMaster.format;
-                console.log("this_goal_id");
-                console.log(this_goal_id);
-
-            });
+//            var action;
+//            $('#actions_select').on('change',function(){
+//                var this_goal_id = transactionMaster.format;
+//                console.log("this_goal_id");
+//                console.log(this_goal_id);
+//
+//            });
 
 
 //            var this_goal_obj;
