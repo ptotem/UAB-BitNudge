@@ -12,10 +12,12 @@ var Schema=mongoose.Schema;
 var TransactionMasterSchema=new Schema({
     name:String,
     format:String,
-    type:String,
+    keyParam:String,
+    paramCategory:String,
+    pointType:String,
     tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
-    noOfParams:Number,
-    pointsFn:String, //function that will be called to get points
+    // noOfParams:Number,
+    pointsFn:String, 
     createdAt:Date
 });
 var TransactionMasterCollection=mongoose.model('transactionMasters',TransactionMasterSchema);
