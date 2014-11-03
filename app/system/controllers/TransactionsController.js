@@ -31,56 +31,42 @@ var TransactionController={
       else res.send(obj);
     });
   },
-  // approveTransaction:function(req,res){
-  //   TransactionModel.approveTransaction(req.params.userId,req.params.transactionId,null,function(err,obj){
-  //     TransactionModel.getTransaction(req.params.transactionId,"","","",function(err1,transObj){
-  //       TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
-  //         eval("var pointsFunction=("+points.pointsFn+");");
-  //         var pointsEarned=pointsFunction(transObj.target);
-  //         UserModel.addPointsObject(req.params.userId,{pointsEarned:pointsEarned,type:"transactions",from:transObj._id},function(){});
-  //         UserPointsModel.addPointsEverywhere(req.params.userId,new Date(),pointsEarned,function(){});
-  //         UserModel.getUser(userId,"teams","","",function(err,user){
-  //           user.teams.forEach(function(teamId){
-  //             TeamPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,function(){});
-  //           });
-  //         });
-  //         UserModel.incrementUserCashAndPointsBy(obj.userId,pointsEarned,function(){});
-  //         EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
-  //           if(err) res.send("fail");
-  //           else res.send("success");
-  //         });
-  //       });
-  //     });
-  //   });
-  // },
   approveTransaction:function(req,res){
-    if(!req.body.date)
-      req.body.date=new Date();
-    TransactionModel.addTransaction(req.params.userId,req.body,function(err,transaction){
-      if(err) return res.send(err);
-      TransactionModel.approveTransaction(req.params.userId,transaction._id,null,function(err,obj){
-        // TransactionModel.getTransaction(transaction._id,"","","",function(err1,transObj){
-          transObj=transaction;
-          TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
-            eval("var pointsFunction=("+points.pointsFn+");");
-            var pointsEarned=pointsFunction(transObj.target);
-            EventsController.triggerUserPointsAddition(req.params.userId,pointsEarned,"transactions",transObj._id,function(){});
-            // UserModel.addPointsObject(req.params.userId,{pointsEarned:pointsEarned,type:"transactions",from:transObj._id},function(){});
-            // UserPointsModel.addPointsEverywhere(req.params.userId,new Date(),pointsEarned,function(){});
-            // UserModel.getUser(userId,"teams","","",function(err,user){
-            //   user.teams.forEach(function(teamId){
-            //     TeamPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,function(){});
-            //   });
-            // });
-            EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
-              if(err) res.send("fail");
-              else res.send("success");
-            });
+    TransactionModel.approveTransaction(req.params.userId,req.params.transactionId,null,function(err,obj){
+      TransactionModel.getTransaction(req.params.transactionId,"","","",function(err1,transObj){
+        TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
+          eval("var pointsFunction=("+points.pointsFn+");");
+          var pointsEarned=pointsFunction(transObj.target);
+          EventsController.triggerUserPointsAddition(req.params.userId,pointsEarned,"transactions",transObj._id,function(){});
+          EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
+            if(err) res.send("fail");
+            else res.send("success");
           });
-        // });
+        });
       });
     });
   },
+  // approveTransaction:function(req,res){
+  //   if(!req.body.date)
+  //     req.body.date=new Date();
+  //   TransactionModel.addTransaction(req.params.userId,req.body,function(err,transaction){
+  //     if(err) return res.send(err);
+  //     TransactionModel.approveTransaction(req.params.userId,transaction._id,null,function(err,obj){
+  //       // TransactionModel.getTransaction(transaction._id,"","","",function(err1,transObj){
+  //         transObj=transaction;
+  //         TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
+  //           eval("var pointsFunction=("+points.pointsFn+");");
+  //           var pointsEarned=pointsFunction(transObj.target);
+  //           EventsController.triggerUserPointsAddition(req.params.userId,pointsEarned,"transactions",transObj._id,function(){});
+  //           EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
+  //             if(err) res.send("fail");
+  //             else res.send("success");
+  //           });
+  //         });
+  //       // });
+  //     });
+  //   });
+  // },
   deleteTransaction:function(req,res){
     TransactionModel.deleteTransaction(req.params.userId,req.params.transactionId,function(err,obj){
       if(err) handleError(err);

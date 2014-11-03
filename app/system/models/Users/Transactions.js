@@ -34,7 +34,7 @@ var Transactions={
     return UsersCollection.Schema;
   },
   approveTransaction:function(userId,transactionId,approver,callback){
-    UsersCollection.update({userId:userId,'transaction._id':transactionId},{$set:{'transactions.$.approved':true}},callback);
+    UsersCollection.update({userId:userId,'transactions._id':transactionId},{$set:{'transactions.$.approved':true}},callback);
   },
   deleteTransaction:function(userId,transactionId,callback){
       UsersCollection.update({_id:userId},{$pull:{transactions:{_id:transactionId}}},callback);
