@@ -11,7 +11,7 @@ var goalMasterSchema=new Schema({
       targetValue:Number,
     },
     // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
-    transactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+    // transactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
     orgId:{type:Schema.Types.ObjectId,ref:'organizations'},
     createdAt :Date
 });
