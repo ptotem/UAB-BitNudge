@@ -52,7 +52,7 @@
     <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">
 
     <!-- BitNudge CSS -->
-    <link rel="stylesheet" href="css/bitnudge.css">
+    <!--<link rel="stylesheet" href="css/bitnudge.css">-->
 
     <!-- To switch to full width -->
     <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
@@ -91,6 +91,13 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
     <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .aligned{
+            width: 20%;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -290,151 +297,157 @@
 
 <div id="main" role="main" class="container-fluid">
 
-<div class="contained">
-<!-- aside -->
-<aside>
+    <div class="contained">
+        <!-- aside -->
+        <aside>
 
-    <!-- aside item: Mini profile -->
-    <div class="my-profile">
-        <a href="javascript:void(0)" class="my-profile-pic">
-            <img src="img/avatar/avatar_8.jpg" alt=""/>
-        </a>
-        <span class="first-child"><strong>Admin</strong></span>
-        <span><a href="javascript:void(0);">Edit Profile </a></span>
-    </div>
-    <div class="divider"></div>
-    <!-- end aside item: Mini profile -->
+            <!-- aside item: Mini profile -->
+            <div class="divider"></div>
+            <!-- end aside item: Mini profile -->
 
-    <!-- aside item: Menu -->
-    <div class="sidebar-nav-fixed">
+            <!-- aside item: Menu -->
+            <div class="sidebar-nav-fixed">
 
-        <ul class="menu" id="accordion-menu-js">
-            <li >
-                <a href="departments.html"><i class="icon-home"></i>Department List</a>
-            </li>
-            <li class="current">
-                <a href="role.html"><i class="icon-off"></i>Roles</a>
-            </li>
-            <li >
-                <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
-            </li>
-            <li>
-                <a href="goals.html"><i class="icon-check"></i>Goals</a>
-            </li>
-            <li>
-                <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
-            </li>
-            <li>
-                <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
-            </li>
-            <li>
-                <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
-            </li>
-            <li>
-                <a href="action.html"><i class="icon-home"></i>Actions</a>
-            </li>
+                <ul class="menu" id="accordion-menu-js">
+                    <li>
+                        <a href="departments.html"><i class="icon-home"></i>Department List</a>
+                    </li>
+                    <li>
+                        <a href="role.html"><i class="icon-off"></i>Roles</a>
+                    </li>
+                    <li>
+                        <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
+                    </li>
+                    <li>
+                        <a href="goals.html"><i class="icon-check"></i>Goals</a>
+                    </li>
+                    <li>
+                        <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
+                    </li>
+                    <li>
+                        <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
+                    </li>
+                    <li>
+                        <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
+                    </li>
+                    <li class="current">
+                        <a href="action.html"><i class="icon-home"></i>Action</a>
+                    </li>
+                </ul>
 
-        </ul>
-
-    </div>
-    <div class="divider"></div>
-    <!-- end aside item: Menu -->
-
-</aside>
-<!-- aside end -->
-
-<!-- main content -->
-<div id="page-content">
-<!-- page header -->
-<h1 id="page-header">Roles</h1>
-
-<div class="fluid-container">
-
-<!-- widget grid -->
-<section id="widget-grid" class="">
-<!--------row 2---------->
-<div class="row">
-    <article class="col-md-12">
-        <!-- new widget -->
-        <div class="jarviswidget" id="widget-id-0">
-            <header>
-                <h2>Roles</h2>
-            </header>
-            <!-- wrap div -->
-            <div>
-
-                <div class="jarviswidget-editbox">
-                    <div>
-                        <label>Title:</label>
-                        <input type="text"/>
-                    </div>
-                    <div>
-                        <label>Styles:</label>
-                        <span data-widget-setstyle="purple" class="purple-btn"></span>
-                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                        <span data-widget-setstyle="green" class="green-btn"></span>
-                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                        <span data-widget-setstyle="orange" class="orange-btn"></span>
-                        <span data-widget-setstyle="pink" class="pink-btn"></span>
-                        <span data-widget-setstyle="red" class="red-btn"></span>
-                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                        <span data-widget-setstyle="black" class="black-btn"></span>
-                    </div>
-                </div>
-
-                <div class="inner-spacer widget-content-padding">
-                    <!-- content goes here -->
-                    <table class="table table-striped table-bordered responsive" id="role_list">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Tags</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                      <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                      </tr>
-
-
-
-
-                        </tbody>
-                    </table>
-
-                </div>
-                <!-- end content-->
             </div>
-            <!-- end wrap div -->
+            <div class="divider"></div>
+            <!-- end aside item: Menu -->
+
+        </aside>
+        <!-- aside end -->
+
+        <!-- main content -->
+        <div id="page-content">
+            <!-- page header -->
+            <h1 id="page-header">Add New Action</h1>
+
+            <div class="fluid-container">
+
+                <!-- widget grid -->
+                <section id="widget-grid" class="">
+                    <!--------row 2---------->
+                    <div class="row">
+                        <article class="col-md-12">
+                            <!-- new widget -->
+                            <div class="jarviswidget" id="new-action-widget">
+                                <header>
+                                    <h2>Add New Action</h2>
+                                </header>
+                                <!-- wrap div -->
+                                <div>
+
+                                    <div class="jarviswidget-editbox">
+                                        <div>
+                                            <label>Title:</label>
+                                            <input type="text"/>
+                                        </div>
+                                        <div>
+                                            <label>Styles:</label>
+                                            <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                            <span data-widget-setstyle="green" class="green-btn"></span>
+                                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                            <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                            <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                            <span data-widget-setstyle="red" class="red-btn"></span>
+                                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                            <span data-widget-setstyle="black" class="black-btn"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="inner-spacer widget-content-padding">
+                                        <!-- content goes here -->
+                                        <form id="new_action_form" class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-12">
+                                                            <label class="control-label" for="actions_select">Actions</label>
+                                                            <div class="controls">
+                                                                <select id="actions_select" class="with-search">
+
+                                                                </select>
+                                                                 <div class="action_fields">
+
+
+                                                                 </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button id="user_add_btn" type="submit" class="btn medium btn-primary">
+                                                        Create
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a href="action.html">View All Actions</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end content-->
+                                </div>
+                                <!-- end wrap div -->
+                            </div>
+                            <!-- end widget -->
+                        </article>
+                    </div>
+                    <!------------row 2 end----------------->
+
+                </section>
+                <!-- end widget grid -->
+
+            </div>
+
         </div>
-        <!-- end widget -->
-    </article>
-</div>
-<!------------row 2 end----------------->
+        <!-- end main content -->
 
-</section>
-<!-- end widget grid -->
+        <!-- aside right on high res -->
+        <aside class="right">
 
-</div>
+            <!-- date picker -->
+            <div id="datepicker"></div>
+            <div class="divider"></div>
+            <!-- end date picker -->
 
-</div>
-<!-- end main content -->
+        </aside>
 
-<!-- aside right on high res -->
-<aside class="right">
-
-    <!-- date picker -->
-    <div id="datepicker"></div>
-    <div class="divider"></div>
-    <!-- end date picker -->
-
-</aside>
-
-<!-- end aside right -->
-</div>
+        <!-- end aside right -->
+    </div>
 
 </div>
 <!--end fluid-container-->
@@ -487,7 +500,56 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+<script src="js/app/app_config.js"></script>
+
 <script type="text/javascript">
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function get_actions(){
+        $.ajax({
+            // /org/:orgId/transactions
+            url: remote_host+"org/"+urlParams.orgId+"/transactions",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                console.log("res");
+                console.log(res);
+                if(res){
+                    res.forEach(function(transactionMaster){
+                        console.log(transactionMaster);
+                        console.log("transactionMaster.format");
+                        var action_format_data=transactionMaster.format;
+                        console.log(action_format_data);
+
+                        $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
+                    });
+                }
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right', //this is default position
+            easing: 'easeOutBack',
+            animateOpen: {
+                height: "show"
+            },
+            animateClose: {
+                opacity: 'hide'
+            }
+        });
+    }
+
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -504,51 +566,63 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            $('#main').css('opacity', 1);
-            $('header').fadeIn();
+            //$('#main').css('opacity', 1);
+            //$('header').fadeIn();
+            get_actions();
 
-            $('#role_list').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": false,
-                "aaSorting": [
-                    [ 0, "asc" ]
-                ]
+            var action;
+            $('#actions_select').on('change',function(){
+                var this_goal_id = transactionMaster.format;
+                console.log("this_goal_id");
+                console.log(this_goal_id);
+
             });
 
-            var row_html;
 
-            row_html ='<tr class="odd gradeX">'+
-                    '<td class="text-center">Priya</td>'+
-                    '<td class="text-center">gold</td>'+
-                    '<td class="text-center">'+
-                    '<a class="btn-xs btn-info" type="button" href="role_show.html">'+
-                    '<i class="icon-exclamation-sign" ></i>'+
-                    '</a>'+
-                    '</td>'+
-                    '</tr>'
-
-            console.log(row_html);
-
-            $("#role_list").find('tbody').append(row_html);
-
-
-//            var row_html;
-//            $.each(function() {
-//                row_html = '<tr>'+
-//                        '<td class="text-center"> + 100 +</td>'+
-//                        '<td class="text-center">+1000+</td>'+
-//                        '<td class="text-center">+lucy+</td>'+
-//                        '<td class="text-center">+80+</td>'+
-//                        '<td class="text-center">+80+</td>'+
-//
-//
-//                        '</tr>';
-//                console.log(row_html);
-//
-//                $("#department_list").find('tbody').append(row_html);
+//            var this_goal_obj;
+//            $('#actions_select').on('change', function () {
+//                // console.log("goals_object");
+//                // console.log(goals_object);
+//                var this_goal_id = $(this).val();
+//                //console.log("this_goal_id :- " + this_goal_id);
+//                var hasTag = function (goal_id) {
+//                    var i = null;
+//                    for (i = 0; goals_object.length > i; i += 1) {
+//                        if (goals_object[i]._id === goal_id) {
+//                            return goals_object[i];
+//                        }
+//                    }
+//                    return false;
+//                };
+//                this_goal_obj = hasTag(this_goal_id);
+//                console.log("this_goal_obj");
+//                console.log(this_goal_obj);
+//                console.log("this_goal_obj.transactions");
+//                console.log(this_goal_obj.transactions);
+//                var this_goal_name = $("#actions_select :selected").text();
+//                var fields = this_goal_name.match(/%{([^}]*)}/g);
+//                var fields_array = [];
+//                    //console.log("fields :- " + fields);
+//                $("#action_fields").empty();
+//                if (fields != null) {
+//                    //console.log("fields.length :- " + fields.length);
+//                    $.each(fields, function (key, value) {
+//                        fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+//                    });
+//                    //console.log(fields_array);
+//                    var titlized_field_name;
+//                    $.each(fields_array, function (key, value) {
+//                        fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+//                        titlized_field_name = fields_array[key].charAt(0).toUpperCase() + fields_array[key].slice(1);
+//                        $("#action_fields").append('<label for=goal_' + this_goal_id + "_" + fields_array[key] + '>' + titlized_field_name + '</label>' + '<input type="text" id=goal_' + this_goal_id + "_" + fields_array[key] + ' class="form-control">');
+//                    });
+//                }
+//                $.each(this_goal_obj.transactions, function (key, value) {
+//                    $("#actions_select").append('<option value=' + value._id + '>' + value.format + '</option>')
+//                });
 //            });
-          });
+        });
+
         /** end DEMO SCRIPTS **/
 
     } else {

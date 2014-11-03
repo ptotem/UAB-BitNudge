@@ -66,7 +66,6 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script src="js/include/respond.min.js"></script>
     <![endif]-->
-
     <!-- For Modern Browsers -->
     <link rel="shortcut icon" href="img/favicons/favicon.png">
     <!-- For everything else -->
@@ -77,13 +76,11 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png">
     <!-- For iPhone 3G, iPod Touch and Android -->
     <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png">
-
     <!-- iOS web-app metas -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- Add your custom home screen title: -->
     <meta name="apple-mobile-web-app-title" content="Jarvis">
-
     <!-- Startup image for web apps -->
     <link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png"
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
@@ -91,15 +88,12 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
     <link href="css/customstyle.css" rel="stylesheet" type="text/css">
-
     <style>
         .aligned{
             width: 20%;
         }
     </style>
-
 </head>
-
 <body>
 <!-- .height-wrapper -->
 <div class="height-wrapper">
@@ -109,12 +103,10 @@
     <div id="header-toolbar" class="container-fluid">
         <!-- .contained -->
         <div class="contained">
-
             <!-- theme name -->
             <h1 style="font-size: 2em" class="appname"><img src="img/bitnudge/logo.png" style="height:28px"/> BitNudge
             </h1>
             <!-- end theme name -->
-
             <!-- span4 -->
             <div class="pull-right">
                 <!-- demo theme switcher-->
@@ -125,7 +117,6 @@
                         <a href="login.html" class="btn btn-inverse btn-sm"><i class="icon-off"></i></a>
                     </div>
                     <!-- end buttons for phone device -->
-
                     <!-- dropdown mini-inbox-->
                     <div class="btn-group">
                         <!-- new mail ticker -->
@@ -151,7 +142,6 @@
                                 </li>
                                 <li>
                                     <a href="javascript:void(0)" class="unread attachment">
-
                                         <img src="img/email-unread.png" alt="important mail">
                                         Transaction Uploaded
                                         <i class="icon-paper-clip"></i>
@@ -191,19 +181,15 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a href="javascript:void(0);" id="go-to-inbox">Go to Inbox <i
-                                    class="icon-double-angle-right"></i></a>
+                            <a href="javascript:void(0);" id="go-to-inbox">Go to Inbox <i class="icon-double-angle-right"></i></a>
                         </div>
                         <!-- end email lists -->
                     </div>
                     <!-- end dropdown mini-inbox-->
-
                     <!-- Goals -->
                     <div class="btn-group hidden-xs">
                         <a href="javascript:void(0)" class="btn btn-inverse btn-sm">Critical Goals</a>
-                        <a href="javascript:void(0)" class="btn btn-inverse dropdown-toggle btn-sm"
-                           data-toggle="dropdown"><span class="caret"></span></a>
-
+                        <a href="javascript:void(0)" class="btn btn-inverse dropdown-toggle btn-sm" data-toggle="dropdown"><span class="caret"></span></a>
                         <div class="dropdown-menu toolbar pull-right">
                             <h3>Showing Critical Goals</h3>
                             <ul class="progressbox">
@@ -216,21 +202,18 @@
                                 </li>
                                 <li>
                                     <strong>Net Fee Income</strong><b>70%</b>
-
                                     <div class="progress progress-info slim">
                                         <div class="bar" style="width: 70%;"></div>
                                     </div>
                                 </li>
                                 <li>
                                     <strong>Deposit Base</strong><b>50%</b>
-
                                     <div class="progress progress-danger slim">
                                         <div class="bar" style="width: 50%;"></div>
                                     </div>
                                 </li>
                                 <li>
                                     <strong>New to Bank Clients</strong><b>22%</b>
-
                                     <div class="progress progress-danger slim">
                                         <div class="bar" style="width: 22%;"></div>
                                     </div>
@@ -272,11 +255,9 @@
                         </ul>
                     </div>
                     <!-- end theme dropdown-->
-
                     <div class="btn-group hidden-xs">
                         <a href="index.html" class="btn btn-sm btn-inverse">Logout</a>
                     </div>
-
                 </div>
                 <!-- end demo theme switcher-->
             </div>
@@ -285,7 +266,6 @@
         <!-- end .contained -->
     </div>
     <!-- end tool bar -->
-
 </header>
 <!-- end header -->
 
@@ -316,7 +296,7 @@
                         <a href="role.html"><i class="icon-off"></i>Roles</a>
                     </li>
                     <li>
-                        <a href="employees.html"><i class="icons-envelope"></i>Employee</a>
+                        <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
                     </li>
                     <li>
                         <a href="goals.html"><i class="icon-check"></i>Goals</a>
@@ -329,6 +309,9 @@
                     </li>
                     <li>
                         <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
+                    </li>
+                    <li>
+                        <a href="action.html"><i class="icon-home"></i>Actions</a>
                     </li>
                 </ul>
 
@@ -510,22 +493,16 @@
 
                 $("#role_list").find('tbody').append(row_html);
             }
-
             $('#role_list').dataTable({
                 "bPaginate": true,
                 "bFilter": true,
                 "bLengthChange": true,
                 "bSort": false
             });
-
         });
-
         /** end DEMO SCRIPTS **/
-
     } else {
-
         /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
-
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
 </script>
