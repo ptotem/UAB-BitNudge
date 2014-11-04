@@ -10,8 +10,13 @@ var TransactionMasterModel=require('../models/TransactionMaster');
 //The architecture of transactions has changed. Now the admin enters transactions, and they are pre-approved.
 var TransactionController={
   createTransaction:function(req,res){
+<<<<<<< HEAD
     if(!req.body.date)
       req.body.date=new Date();
+=======
+    // if(!req.body.date)
+    req.body.date=new Date();
+>>>>>>> eaf3c3277e793f12e4116680da3ebe50ed3c788b
     TransactionModel.addTransaction(req.params.userId,req.body,function(err,obj){
       if(err) res.send(err);
       else res.send(obj);
@@ -31,6 +36,7 @@ var TransactionController={
       else res.send(obj);
     });
   },
+<<<<<<< HEAD
   // approveTransaction:function(req,res){
   //   TransactionModel.approveTransaction(req.params.userId,req.params.transactionId,null,function(err,obj){
   //     TransactionModel.getTransaction(req.params.transactionId,"","","",function(err1,transObj){
@@ -81,6 +87,44 @@ var TransactionController={
       });
     });
   },
+=======
+  approveTransaction:function(req,res){
+    TransactionModel.approveTransaction(req.params.userId,req.params.transactionId,null,function(err,obj){
+      TransactionModel.getTransaction(req.params.transactionId,"","","",function(err1,transObj){
+        TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
+          eval("var pointsFunction=("+points.pointsFn+");");
+          var pointsEarned=pointsFunction(transObj.target);
+          EventsController.triggerUserPointsAddition(req.params.userId,pointsEarned,"transactions",transObj._id,function(){});
+          EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
+            if(err) res.send("fail");
+            else res.send("success");
+          });
+        });
+      });
+    });
+  },
+  // approveTransaction:function(req,res){
+  //   if(!req.body.date)
+  //     req.body.date=new Date();
+  //   TransactionModel.addTransaction(req.params.userId,req.body,function(err,transaction){
+  //     if(err) return res.send(err);
+  //     TransactionModel.approveTransaction(req.params.userId,transaction._id,null,function(err,obj){
+  //       // TransactionModel.getTransaction(transaction._id,"","","",function(err1,transObj){
+  //         transObj=transaction;
+  //         TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
+  //           eval("var pointsFunction=("+points.pointsFn+");");
+  //           var pointsEarned=pointsFunction(transObj.target);
+  //           EventsController.triggerUserPointsAddition(req.params.userId,pointsEarned,"transactions",transObj._id,function(){});
+  //           EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
+  //             if(err) res.send("fail");
+  //             else res.send("success");
+  //           });
+  //         });
+  //       // });
+  //     });
+  //   });
+  // },
+>>>>>>> eaf3c3277e793f12e4116680da3ebe50ed3c788b
   deleteTransaction:function(req,res){
     TransactionModel.deleteTransaction(req.params.userId,req.params.transactionId,function(err,obj){
       if(err) handleError(err);

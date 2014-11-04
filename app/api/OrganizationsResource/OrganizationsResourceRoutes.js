@@ -5,7 +5,11 @@ var storeItemController=eCommerceEngine.StoreItemController;
 var goalMasterController=require('../../system/controllers/GoalMasterController.js');
 var hierarchyController=require('../../system/controllers/HierarchyEngine');
 var socialEngine=require('../../system/controllers/SocialEngine');
+<<<<<<< HEAD
 var tagsrontroller=require('../../system/controllers/TagsController.js');
+=======
+var tagsController=require('../../system/controllers/TagsController.js');
+>>>>>>> eaf3c3277e793f12e4116680da3ebe50ed3c788b
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var levelsController=require('../../system/controllers/LevelsController.js');
 var rolesController=require('../../system/controllers/RolesController.js');

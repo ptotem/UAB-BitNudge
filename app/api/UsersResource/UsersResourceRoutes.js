@@ -8,6 +8,7 @@ var userController=require('../../system/controllers/UsersController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var UsersDescription=require('./UsersResourceDescription.js');
 var passport=require('passport');
+
 var http = require('http'),
     util = require('util'),
     formidable = require('formidable'),
@@ -18,10 +19,12 @@ formidable = require('formidable'),
 fs   = require('fs')
 //    qt   = require('quickthumb');
 
+
 var userRoutes={
   // 'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
   //   userController.getUser(req,res);
   // }],
+
 
     'post /org/:orgId/users/:userId/upload':[function(req,res,next){AuthorizationController.isAuthorized('Users','update',req,res,next);},function(req,res){
              fs.readFile(req.files.image.path, function (err, data) {
@@ -124,50 +127,6 @@ var userRoutes={
         res.end(img, 'binary');
 
     }],
-// Use quickthumb
-//    'get /upload_image':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
-////       res.send("./web_pages/uploadimage.html");
-//        if (req.url == '/upload_image') {
-//            res.writeHead(200, {'content-type': 'text/html'});
-//            res.end(
-//                    '<form action="/upload" enctype="multipart/form-data" method="post">'+
-//                    '<input type="text" name="title"><br>'+
-//                    '<input type="file" name="upload" multiple="multiple"><br>'+
-//                    '<input type="submit" value="Upload">'+
-//                    '</form>'
-//            );}
-////        var form = '<form action="/upload" enctype="multipart/form-data" method="post"><input name="title" type="text" /><input multiple="multiple" name="upload" type="file" /><input type="submit" value="Upload" /></form>';
-//        res.end(form);
-//        else if (req.url == '/upload') {
-//            var form = new formidable.IncomingForm(),
-//                files = [],
-//                fields = [];
-//
-//            form.uploadDir = TEST_TMP;
-//
-//            form
-//                .on('field', function(field, value) {
-//                    console.log(field, value);
-//                    fields.push([field, value]);
-//                })
-//                .on('file', function(field, file) {
-//                    console.log(field, file);
-//                    files.push([field, file]);
-//                })
-//                .on('end', function() {
-//                    console.log('-> upload done');
-//                    res.writeHead(200, {'content-type': 'text/plain'});
-//                    res.write('received fields:\n\n '+util.inspect(fields));
-//                    res.write('\n\n');
-//                    res.end('received files:\n\n '+util.inspect(files));
-//                });
-//            form.parse(req);
-//        } else {
-//            res.writeHead(404, {'content-type': 'text/plain'});
-//            res.end('404');
-//        }
-//    });
-//    }],
 
 
     'get /org/:orgId/users/:userId':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
@@ -175,15 +134,14 @@ var userRoutes={
         userController.getUser(req,res);
     }],
   'get /org/:orgId/users/:userId':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
-
     userController.getUser(req,res);
   }],
   'get /org/:orgId/users':[function(req,res,next){AuthorizationController.isAuthorized('Users','listOrg',req,res,next);},function(req,res){
     userController.getUsersOfOrganization(req,res);
   }],
   'post /org/:orgId/users':[function(req,res,next){AuthorizationController.isAuthorized('Users','create',req,res,next);},function(req,res){
-
       userController.createUser(req,res);
+
   }],
   'post /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','update',req,res,next);},function(req,res){
     userController.updateUser(req,res);
