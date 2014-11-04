@@ -4,6 +4,7 @@ var Schema=mongoose.Schema;
 var userSchema=new Schema({
   name:String,
   address:String,
+    image:String,
   orgId:{type:Schema.Types.ObjectId,rel:'organizations'},
   role:{type:Schema.Types.ObjectId,rel:'roles'},
   email:String,

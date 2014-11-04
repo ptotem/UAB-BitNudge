@@ -6,6 +6,8 @@ var NudgeChat=require('../models/NudgeChat');
 var NotificationCenterModel=require('../models/NotificationCenter');
 var OrganizationalModel=require('../models/Organizations');
 var UserPeriodPointsModel=require('../models/UserPeriodPoints');
+fs   = require('fs');
+
 var UsersController={
   createUser:function(req,res){
     UsersModel.createUser(req.params.orgId,req.body,function(err,user){
@@ -24,6 +26,45 @@ var UsersController={
         res.send("success");
     });
   },
+    updateUserImage:function(req,res){
+        fs.readFile(req.files.image.path, function (err, data) {
+            var imageName = req.files.image.name+req.params.userId;
+            if(!imageName){
+                console.log("There was an error");
+                res.end();
+
+            } else {
+//                var image=req.params.userId+"_img";
+                var newPath = __dirname + "../uploads/" + imageName;
+                var image_path={
+                    image:newPath
+                }
+                fs.writeFile(newPath, data, function (err) {
+                    UsersModel.updateUser(req.params.userId,image_path,function(err,obj){
+                        if(err) res.send("fail");
+                        else
+                            res.send("success");
+                    });
+
+                });
+            }
+        });
+
+        UsersModel.updateUser(userId,image_path,function(err,obj){
+            if(err) res.send("fail");
+            else
+                res.send("success");
+        });
+    },
+    getUserImage:function(req,res){
+        UsersModel.getUser(req.params.userId,"image","","",function(err,obj){
+            var image_path=obj.image;
+            var img = fs.readFileSync(image_path);
+            res.writeHead(200, {'Content-Type': 'image/jpg' });
+            res.end(img, 'binary');
+//        res.send(img);
+        });
+    },
   getUser:function(req,res){
     UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'role',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,obj){
       res.send(obj);
