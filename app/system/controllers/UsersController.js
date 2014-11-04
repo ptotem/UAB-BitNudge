@@ -34,17 +34,20 @@ var UsersController={
         res.send("success");
     });
   },
-  getUser:function(req,res){
-    UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'roles',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,obj){
-
-//    UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'role',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,obj){
-
-      res.send(obj);
-      // if(req.user._id==req.params.userId)
-      //   res.send(obj);
-      // else res.send(401,{status:{http:401,message:'Not Authorized'}});
+  getUserImage:function(req,res){
+    UsersModel.getUser(req.params.userId,"image","","",function(err,obj){
+        var image_path=obj.image;
+        var img = fs.readFileSync(image_path);
+        res.writeHead(200, {'Content-Type': 'image/jpg' });
+        res.end(img, 'binary');
+//        res.send(img);
     });
   },
+    getUser:function(req,res){
+        UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'roles',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,obj){
+            res.send(obj);
+        });
+    },
   getUsersOfOrganization:function(req,res){
 
       console.log("working");

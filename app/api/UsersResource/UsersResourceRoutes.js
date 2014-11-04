@@ -8,130 +8,33 @@ var userController=require('../../system/controllers/UsersController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var UsersDescription=require('./UsersResourceDescription.js');
 var passport=require('passport');
-
-var http = require('http'),
-    util = require('util'),
-    formidable = require('formidable'),
-    server;
-var TEST_TMP="/home/vandana/Images"
-formidable = require('formidable'),
-    util = require('util')
-fs   = require('fs')
-//    qt   = require('quickthumb');
-
+fs   = require('fs');
 
 var userRoutes={
-  // 'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
-  //   userController.getUser(req,res);
-  // }],
-
-
     'post /org/:orgId/users/:userId/upload':[function(req,res,next){AuthorizationController.isAuthorized('Users','update',req,res,next);},function(req,res){
              fs.readFile(req.files.image.path, function (err, data) {
-            var imageName = req.files.image.name
-//             console.log(imageName)
-            /// If there's an error
+            var imageName = req.files.image.name+req.params.userId;
             if(!imageName){
-                console.log("There was an error")
-//                res.redirect("/");
+                console.log("There was an error");
                 res.end();
 
             } else {
-                var newPath = __dirname + "/uploads/" + imageName;
+//                var image=req.params.userId+"_img";
+                var newPath = __dirname + "../uploads/" + imageName;
                 var image_path={
-                    images:newPath
+                    image:newPath
                 }
                 fs.writeFile(newPath, data, function (err) {
 //                    res.send(newPath);
-                    userController.updateUser(req.params.userId,image_path);
+                    userController.updateUserImage(req.params.userId,image_path);
                 });
             }
         });
-
-//        fs.writeFile('/images', req.files, function (err) {
-//            if (err) throw err;
-//            console.log('It\'s saved!');
-//        });
-//        fs.readFile('/images', function (err, data) {
-//            if (err) throw err;
-//            console.log(data);
-//        });
-//        var filename = "./uploadimage.html";
-//        function start (resp) {
-////            resp.writeHead(200, {"Content-Type":"text/html"});
-//            fs.readFile(req.file, "utf8", function (err, data) {
-//                if (err) throw err;
-//                console.log(data)
-//                resp.write(data);
-//                resp.end();
-//            });
-//        }
-
-//        var path=fs.readFile;
-//        console.log(path)
-//        form
-//            .on('field', function(field, value) {
-////                console.log('hiii')
-//                console.log(field, value);
-//                fields.push([field, value]);
-//            })
-//            .on('file', function(field, file) {
-//                console.log(field, file);
-//                files.push([field, file]);
-//            })
-//            .on('end', function() {
-//                console.log('-> upload done');
-//                res.writeHead(200, {'content-type': 'text/plain'});
-//                res.write('received fields:\n\n '+util.inspect(fields));
-//                res.write('\n\n');
-//                res.end('received files:\n\n '+util.inspect(files));
-//            });
-//        form.parse(req);
-////        app.use(qt.static(__dirname + '/'));
-////            console.log('hii')
-//            var form = new formidable.IncomingForm();
-////        console.log(form);
-//            form.parse(req, function(err, fields, files) {
-//                res.writeHead(200, {'content-type': 'text/plain'});
-//                console.log(fields);
-//                console.log(files);
-//                res.write('received upload:\n\n');
-//                res.end(util.inspect({fields: fields, files: files}));
-//            });
-//
-//            form.on('end', function(fields, files) {
-//                /* Temporary location of our uploaded file */
-//                var temp_path = this.openedFiles[0].path;
-//                console.log(temp_path)
-//                /* The file name of the uploaded file */
-//                var file_name = this.openedFiles[0].name;
-//                /* Location where we want to copy the uploaded file */
-//                var new_location = 'uploads/';
-//
-//                fs.copy(temp_path, new_location + file_name, function(err) {
-//                    if (err) {
-//                        console.error(err);
-//                    } else {
-//                        console.log("success!")
-//                    }
-//                });
-//            });
-//
-//
     }],
     'get /org/:orgId/users/:userId/user_image':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
-        userController.getUser(req,res);
-         var image_path=req.images;
-        var img = fs.readFileSync(image_path);
-        res.writeHead(200, {'Content-Type': 'image/jpg' });
-        res.end(img, 'binary');
-
-    }],
+        userController.getUserImage(req,res);
 
 
-    'get /org/:orgId/users/:userId':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
-
-        userController.getUser(req,res);
     }],
   'get /org/:orgId/users/:userId':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
     userController.getUser(req,res);

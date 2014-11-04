@@ -9,7 +9,7 @@ var userSchema=new Schema({
   roles:[{type:Schema.Types.ObjectId,rel:'roles'}],
   email:String,
   password:String,
-    images:String,
+    image:String,
   role:{type:Schema.Types.ObjectId,rel:'roles'},
   email:String,
   password:String,  
