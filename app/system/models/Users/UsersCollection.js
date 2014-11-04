@@ -30,29 +30,29 @@ var userSchema=new Schema({
     // target:Number,
     approved:Boolean,
     keyParamValue:Number,
-    tags:[{tag:{type:Schema.Types.ObjectId,ref:'tags'},value:Number}]
+    tags:[{tag:{type:Schema.Types.ObjectId,ref:'tags'},tagName:String}]
   }],
   goals:[{
-    goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
+    // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
     // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
     criteria:String,
     startDate:Date,
     endDate:Date,
-    // points:Number,
     completed:Boolean,
-    // transactionsDone:Number,
-    // totalTransactions:Number,
     createdAt:Date,
     percentage:Number,
+    pointsFn:String,
     subgoals:[{
-      subgoal:{type:Schema.Types.ObjectId,rel:'subgoals'},
+      subgoal:{type:Schema.Types.ObjectId,rel:'goalMasters'},
+      allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+      currentValue:Number,
+      targetValue:Number,
       done:Boolean
     }],
     action:{
-      // transactionMaster:{type:Schema.Types.ObjectId,ref:'transactionMasters'},
-      target:Number,
+      allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+      targetValue:Number,
       currentValue:Number,
-      // done:Boolean
     }
   }],
   followers:[{type:Schema.Types.ObjectId,rel:'users'}],

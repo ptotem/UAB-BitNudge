@@ -1,11 +1,32 @@
 var UserGoalsModel=require('../models/Users').Goals;
+var GoalMasterModel=require('../models/GoalMaster');
 var TransactionMasterCollection=require('../models/TransactionMaster/TransactionMasterCollection.js');
 var GoalsController={
   createGoal:function(req,res){
-    UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
-      if(err)res.send(err);
-      else res.send("success");
-    });
+    //if the criteria is Action, then it must be stored in the goalMaster so that user can reuse it later.
+    if(req.body.criteria=="Action"){
+      // var newGoalMaster=JSON.parse(JSON.stringify(req.body));
+      // newGoalMaster.
+      GoalMasterModel.createGoalMaster(req.params.orgId,req.body,function(err,goalMasterObj){
+        UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
+          if(err)res.send(err);
+          else res.send("success");
+        });
+      });
+    }
+    else{
+      req.body.subgoals.forEach(function(subgoalObj,index){
+        GoalMasterModel.getGoalMaster(subgoalObj.subgoal,"","","",function(err,subgoalMasterObj){
+          subgoalObj.allowedTransactions=subgoalMasterObj.allowedTransactions;
+          if(index==subgoals.length-1){
+            UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
+              if(err)res.send(err);
+              else res.send("success");
+            });
+          }
+        });
+      });
+    } 
   },
   updateGoal:function(req,res){
     UserGoalsModel.updateGoalOfUser(req.params.userId,req.body,function(err,obj){
@@ -30,7 +51,14 @@ var GoalsController={
         res.send(objs1[0]);
       });
     });
-  }
+  },
+  getCreatedGoalsOfUser:function(req,res){
+    GoalMasterModel.getGoalMastersOfUser(req.params.userId,"","","",function(err,goalMasters){
+      if(err)
+        res.send(err);
+      else res.send(goalMasters);
+    });
+  },
   // assignGoalToUser:function(req,res){
   //   data.userId=userId;
   //   data.goalId=goalId;
