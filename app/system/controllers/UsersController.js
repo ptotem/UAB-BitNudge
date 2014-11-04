@@ -35,7 +35,7 @@ var UsersController={
 
             } else {
 //                var image=req.params.userId+"_img";
-                var newPath = __dirname + "../uploads/" + imageName;
+                var newPath = __dirname + "/../../uploads/" + imageName;
                 var image_path={
                     image:newPath
                 }
@@ -47,14 +47,16 @@ var UsersController={
                     });
 
                 });
+
+                UsersModel.updateUser(req.params.userId, image_path,function(err,obj){
+                    if(err) res.send("fail");
+                    else
+                        res.send("success");
+                });
             }
         });
 
-        UsersModel.updateUser(userId,image_path,function(err,obj){
-            if(err) res.send("fail");
-            else
-                res.send("success");
-        });
+
     },
     getUserImage:function(req,res){
         UsersModel.getUser(req.params.userId,"image","","",function(err,obj){
