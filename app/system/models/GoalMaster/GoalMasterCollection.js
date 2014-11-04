@@ -2,6 +2,11 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var goalMasterSchema=new Schema({
     name:String,
+<<<<<<< HEAD
+    noOfTransactions:Number,
+    tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
+    transactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+=======
     criteria:String,
     noOfSubgoals:Number,
     subgoals:[{type:Schema.Types.ObjectId,ref:'goalMasters'}],
@@ -12,6 +17,7 @@ var goalMasterSchema=new Schema({
     },
     // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
     // transactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+>>>>>>> eaf3c3277e793f12e4116680da3ebe50ed3c788b
     orgId:{type:Schema.Types.ObjectId,ref:'organizations'},
     createdAt :Date
 });

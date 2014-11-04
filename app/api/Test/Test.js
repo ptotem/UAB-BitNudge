@@ -229,7 +229,11 @@ var organizationTags={
     'get /org/:orgId/tags/users':function(req,res){
         if(!req.query.orgtags)
             res.send("Please set orgtags in query as an Array of tags you are searching");
+<<<<<<< HEAD
+        UserCollection.find({orgtags:{$in:req.query.orgtags}},function(err,tags){
+=======
         UserCollection.find({orgtags:{$in:JSON.parse(req.query.orgtags)}},function(err,tags){
+>>>>>>> eaf3c3277e793f12e4116680da3ebe50ed3c788b
             if(err) res.send(err);
             else res.send(tags);
         });

@@ -5,9 +5,15 @@ var userSchema=new Schema({
   name:String,
   address:String,
   orgId:{type:Schema.Types.ObjectId,rel:'organizations'},
+
+  roles:[{type:Schema.Types.ObjectId,rel:'roles'}],
+  email:String,
+  password:String,
+    image:String,
   role:{type:Schema.Types.ObjectId,rel:'roles'},
   email:String,
   password:String,  
+
   // passwordSalt:String,
   // passwordHash:String,
   medals:[{type:Schema.Types.ObjectId,rel:'medals'}],
@@ -27,6 +33,29 @@ var userSchema=new Schema({
   transactions:[{
     transactionMaster:{type:Schema.Types.ObjectId,rel:'transactionMasters'},
     date:Date,
+
+    target:Number,
+    approved:Boolean,
+    tags:[{type:Schema.Types.ObjectId,ref:'tags'}]
+  }],
+  goals:[{
+    goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
+    tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
+    startDate:Date,
+    endDate:Date,
+    points:Number,
+    completed:Boolean,
+    transactionsDone:Number,
+    totalTransactions:Number,
+    createdAt:Date,
+    percentage:Number,
+    transactions:[{
+      transactionMaster:{type:Schema.Types.ObjectId,ref:'transactionMasters'},
+      target:Number,
+      currentValue:Number,
+      done:Boolean
+    }],
+
     // target:Number,
     approved:Boolean,
     keyParamValue:Number,
@@ -51,7 +80,7 @@ var userSchema=new Schema({
     action:{
       // transactionMaster:{type:Schema.Types.ObjectId,ref:'transactionMasters'},
       target:Number,
-      currentValue:Number,
+      currentValue:Number
       // done:Boolean
     }
   }],

@@ -557,8 +557,13 @@
                     res.forEach(function(user){
                         //console.log(user);
 
+<<<<<<< HEAD
+                        if (user.roles[0])
+                            role = user.roles[0].name;
+=======
                         if (user.role)
                             role = user.role.name;
+>>>>>>> eaf3c3277e793f12e4116680da3ebe50ed3c788b
                         else
                             role = "";
 

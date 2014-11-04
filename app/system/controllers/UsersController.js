@@ -6,6 +6,8 @@ var NudgeChat=require('../models/NudgeChat');
 var NotificationCenterModel=require('../models/NotificationCenter');
 var OrganizationalModel=require('../models/Organizations');
 var UserPeriodPointsModel=require('../models/UserPeriodPoints');
+
+var fs = require('fs');
 var UsersController={
   createUser:function(req,res){
     UsersModel.createUser(req.params.orgId,req.body,function(err,user){
@@ -17,6 +19,14 @@ var UsersController={
       res.send(user);
     });
   },
+
+    updateUserImage:function(userId,image_path){
+        UsersModel.updateUser(userId,image_path,function(err,obj){
+            if(err) res.send("fail");
+            else
+                res.send("success");
+        });
+    },
   updateUser:function(req,res){
     UsersModel.updateUser(req.params.userId,req.body,function(err,obj){
       if(err) res.send("fail");
@@ -24,18 +34,34 @@ var UsersController={
         res.send("success");
     });
   },
-  getUser:function(req,res){
-    UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'role',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,obj){
-      res.send(obj);
-      // if(req.user._id==req.params.userId)
-      //   res.send(obj);
-      // else res.send(401,{status:{http:401,message:'Not Authorized'}});
+  getUserImage:function(req,res){
+    UsersModel.getUser(req.params.userId,"image","","",function(err,obj){
+        var image_path=obj.image;
+        var img = fs.readFileSync(image_path);
+        res.writeHead(200, {'Content-Type': 'image/jpg' });
+        res.end(img, 'binary');
+//        res.send(img);
     });
   },
+    getUser:function(req,res){
+        UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'roles',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,obj){
+            res.send(obj);
+        });
+    },
   getUsersOfOrganization:function(req,res){
+
+      console.log("working");
+//    UsersModel.getUsersOfOrganization(req.params.orgId,"","",[{path:'teams',select:'name',model:'teams'},{path:'roles',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,goals){
+//      res.send(goals);
+//    });
+      UsersModel.getUsersOfOrganization(req.params.orgId,"","",[{path:'teams',select:'name',model:'teams'}],function(err,goals){
+          res.send(goals);
+      });
+
     UsersModel.getUsersOfOrganization(req.params.orgId,"","",[{path:'teams',select:'name',model:'teams'},{path:'role',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,goals){
       res.send(goals);
     });
+
   },
   getTransactionHistoryOfUser:function(req,res){
     UsersModel.getTransactionHistoryOfUser(req.params.userId,function(err,objs){

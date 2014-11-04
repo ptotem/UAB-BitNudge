@@ -34,7 +34,11 @@ var Transactions={
     return UsersCollection.Schema;
   },
   approveTransaction:function(userId,transactionId,approver,callback){
+<<<<<<< HEAD
+    UsersCollection.update({userId:userId,'transaction._id':transactionId},{$set:{'transactions.$.approved':true}},callback);
+=======
     UsersCollection.update({userId:userId,'transactions._id':transactionId},{$set:{'transactions.$.approved':true}},callback);
+>>>>>>> eaf3c3277e793f12e4116680da3ebe50ed3c788b
   },
   deleteTransaction:function(userId,transactionId,callback){
       UsersCollection.update({_id:userId},{$pull:{transactions:{_id:transactionId}}},callback);
