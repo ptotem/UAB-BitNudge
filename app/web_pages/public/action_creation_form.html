@@ -539,6 +539,14 @@
         });
     }
 
+    var ary = [];
+
+    function pushToAry(name, val) {
+        var obj = {};
+        obj[name] = val;
+        ary.push(obj);
+    }
+
     var hasTag = function(this_transaction_id) {
         var i = null;
         for (i = 0; transactionMaster.length > i; i += 1) {
@@ -595,70 +603,68 @@
                         else{
                             selectfields_array.push(fields_array[key]);
                         }
-                        //$("#result_1").append('<label for=transaction_' + this_transaction_id + "_" + fields_array[key] + '>' + titlized_field_name + '</label>' + '<input type="text" id=transaction_' + this_transaction_id + "_" + fields_array[key] + ' class="form-control">');
                     });
+
                     $.each(selectfields_array, function (key, value) {
-                        if (selectfields_array[key]=="role"){
-                            field_html = '<select id=select_'+value+' class="with-search col-md-12">'+'</select>';
-                            $.ajax({
-                                url: remote_host+"org/"+urlParams.orgId+"/roles",
-                                type: 'GET',
-                                dataType: 'json',
-                                success: function(res) {
-                                    if(res){
-                                        //console.log(res);
-                                        res.forEach(function(role){
-                                            $('#select_'+value).append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
-                                        });
-                                    }
-                                },
-                                error: function(e , msg){
-                                    //processError(e,msg);
+                        field_html = '<select id=select_'+value+' class="with-search col-md-12">'+'</select>';
+                        $.ajax({
+                            url: remote_host+"org/"+urlParams.orgId+"/tags/"+value,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(res) {
+                                if(res){
+                                    res.forEach(function(role){
+                                        $('#select_'+value).append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
+                                    });
                                 }
-                            });
-                            $("#result_1").append(field_html);
-                        }
+                            },
+                            error: function(e , msg){
+                                //processError(e,msg);
+                            }
+                        });
+                        $("#result_1").append(field_html);
                     });
 
                 }
             });
 
 
-            $("#submit_action_form_btn").click(function() {
+            $("#submit_action_form_btn").click(function(e) {
+                e.preventDefault();
                 var transaction_id = $("#actions_select option:selected").val();
                 var keyParamValue = $("#result_1").find('input[type=text]').val();
 
                 var select_id, selected_value;
-                $('#result_1').find('select').each(function() {
+                var tagJSON = [];
+                $('#result_1').find('select').each(function(i) {
                     select_id = $(this).attr("id");
-                    console.log("select_id :- ");
-                    console.log(select_id);
                     selected_value = $("#"+select_id).val();
-                    console.log(selected_value);
+                    //pushToAry(select_id.split("_")[1], selected_value);
+                    var tag = {
+                        "tag": { "tagName": select_id.split("_")[1], "id":selected_value }
+                    };
+                    tagJSON.push(tag);
                 });
-                //keyParamValue:Number,
-                //tags:[{tag:{type:Schema.Types.ObjectId,ref:'tags'},value:Number}]
-
-                // /org/:orgId/users/:userId/transactions/
 
                 var data = {
                     keyParamValue: keyParamValue,
-                    abilities: assigned_abilities
+                    tags: tagJSON
                 };
-//                $.ajax({
-//                    ///org/:orgId/roles/:roleId/abilities
-//                    url: remote_host+"org/"+urlParams.orgId+"/roles/"+role_id+"/abilities",
-//                    type: 'POST',
-//                    dataType: 'json',
-//                    data: roleAbilities,
-//                    success: function(res) {
-//                        var success_text = "Abilities assigned to role.";
-//                        show_notification(success_text);
-//                    } ,
-//                    error: function(e , msg){
-//                        //processError(e,msg);
-//                    }
-//                });
+
+                $.ajax({
+                                  // /org/:orgId/users/:userId/transactions/
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/transactions",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    success: function(res) {
+                        var success_text = "Action created.";
+                        show_notification(success_text);
+                    } ,
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
                 return false;
             });
 
