@@ -342,82 +342,19 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Employees</h1>
+            <h1 id="page-header">Add New Action</h1>
 
             <div class="fluid-container">
 
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
-
-                <div class="row">
-
-                    <article class="col-md-12">
-
-                        <!-- new widget -->
-                        <div class="jarviswidget" id="employees-creation-widget">
-                            <header>
-                                <h2>Add Employees</h2>
-                            </header>
-
-                            <!-- widget div-->
-                            <div>
-                                <!-- widget edit box -->
-                                <div class="jarviswidget-editbox">
-                                    <div>
-                                        <label>Title:</label>
-                                        <input type="text"/>
-                                    </div>
-                                    <div>
-                                        <label>Styles:</label>
-                                        <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                        <span data-widget-setstyle="green" class="green-btn"></span>
-                                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                        <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                        <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                        <span data-widget-setstyle="red" class="red-btn"></span>
-                                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                        <span data-widget-setstyle="black" class="black-btn"></span>
-                                    </div>
-                                </div>
-                                <!-- end widget edit box -->
-
-                                <!-- content -->
-                                <div class="inner-spacer widget-content-padding">
-                                    <!-- content goes here -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="employee_new_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Employee</a><br><br>
-                                            <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Reporting Manager to Employee</a><br><br>
-                                            <a href="employee_tags_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Tags to Employee</a><br><br>
-                                            <a href="action_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Action Creation</a><br><br>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="employees_new_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Add Bulk Employees</a><br><br>
-                                            <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Edit Bulk Employees</a><br><br>
-                                            <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Employee Reporting Line Test Page</a><br><br>
-                                            <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Organizational Tags Test Page</a><br><br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end content -->
-
-                            </div>
-                            <!-- end widget div -->
-                        </div>
-                        <!-- end widget -->
-
-                    </article>
-
-                </div>
-
                     <!--------row 2---------->
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="employees-list-widget">
+                            <div class="jarviswidget" id="new-action-widget">
                                 <header>
-                                    <h2>Employees List</h2>
+                                    <h2>Add New Action</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -443,20 +380,35 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <table class="table table-bordered table-hover responsive" id="employees_list">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Roles</th>
-                                                <th>Reporting Officer</th>
-                                                <th>Tags</th>
-                                                <th>Groups/Department</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
+                                        <form id="new_action_form" class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="actions_select">Select Action</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select id="actions_select" class="with-search">
+                                                                </select>
+                                                            </div>
+                                                            <div id="result_1" class="result-block">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button id="submit_action_form_btn" type="submit" class="btn medium btn-primary">
+                                                        Create
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
 
                                     </div>
                                     <!-- end content-->
@@ -544,76 +496,22 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    var transactionMaster;
 
-
-
-    function get_employees(){
+    function get_actions(){
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users",
+                            // /org/:orgId/transactions
+            url: remote_host+"org/"+urlParams.orgId+"/transactions",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
+                //console.log(res);
+                transactionMaster = res;
                 if(res){
-                    var row_html, role, reportsTo, orgTags = [], teams = [];
-                    res.forEach(function(user){
-                        //console.log(user);
-
-                        if (user.roles[0])
-                            role = user.roles[0].name;
-                        else
-                            role = "";
-
-                        if (user.reportsTo)
-                            reportsTo = user.reportsTo.name;
-                        else
-                            reportsTo = "";
-
-                        if (user.orgtags) {
-                            orgTags = [];
-                            $.each(user.orgtags, function(index, value) {
-                                orgTags.push(value.name)
-                            });
-                        }
-                        else{
-                            orgTags = "";
-                        }
-
-                        if (user.teams) {
-                            teams = [];
-                            $.each(user.teams, function(index, value) {
-                                teams.push(value.name)
-                            });
-                        }
-                        else{
-                            teams = "";
-                        }
-
-
-                        row_html = '<tr>'+
-                                        '<td class="text-center aligned">'+user.name+'</td>'+
-                                        '<td class="text-center aligned">'+role+'</td>'+
-                                        '<td class="text-center aligned">'+reportsTo+'</td>'+
-                                        '<td class="text-center aligned">'+orgTags+'</td>'+
-                                        '<td class="text-center aligned">'+teams+'</td>'+
-                                        '<td class="text-center aligned">'+
-                                            '<div class="block" style="width: 50px;">' +
-                                                '<a href="employee_edit_form.html?userId='+user._id+'"><i class="cus-pencil"></i></a>'+
-                                                '<a href="employee_show.html?userId='+user._id+'"><i class="cus-exclamation"></i></a>'+
-                                            '</div>' +
-                                        '</td>'+
-                                    '</tr>';
-
-                        $("#employees_list").find('tbody').append(row_html);
-
+                    res.forEach(function(transactionMaster){
+                        //console.log(transactionMaster);
+                        $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
                     });
-
-                    $('#employees_list').dataTable({
-                        "bPaginate": true,
-                        "bFilter": true,
-                        "bLengthChange": true,
-                        "bSort": false
-                    });
-
                 }
             }
             ,
@@ -622,6 +520,34 @@
             }
         });
     }
+
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right', //this is default position
+            easing: 'easeOutBack',
+            animateOpen: {
+                height: "show"
+            },
+            animateClose: {
+                opacity: 'hide'
+            }
+        });
+    }
+
+    var hasTag = function(this_transaction_id) {
+        var i = null;
+        for (i = 0; transactionMaster.length > i; i += 1) {
+            if (transactionMaster[i]._id === this_transaction_id) {
+                return transactionMaster[i];
+            }
+        }
+        return false;
+    };
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -639,15 +565,102 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
+            get_actions();
 
-            var row_html;
+            $('#actions_select').on('change', function () {
+                var this_transaction_id = $(this).val();
+                var this_transaction_obj = hasTag(this_transaction_id);
+                var transaction_format = this_transaction_obj.format;
 
-            get_employees();
+                var fields = transaction_format.match(/%{([^}]*)}/g);
+
+                $("#result_1").empty();
+
+                var fields_array = [];
+                var selectfields_array = [];
+                if (fields != null) {
+                    $.each(fields, function (key, value) {
+                        fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+                    });
+                    var titlized_field_name, keyParam_html, field_html;
+                    //console.clear();
+                    $.each(fields_array, function (key, value) {
+                        fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+                        titlized_field_name = fields_array[key].charAt(0).toUpperCase() + fields_array[key].slice(1);
+                        if (fields_array[key] == this_transaction_obj.keyParam) {
+                            keyParam_html = '<label for=transaction_' + this_transaction_id + "_" + fields_array[key] + '>' + titlized_field_name + '</label>' +
+                                         '<input type="text" id=transaction_' + this_transaction_id + "_" + fields_array[key] + ' class="form-control">'
+                            $("#result_1").append(keyParam_html);
+                        }
+                        else{
+                            selectfields_array.push(fields_array[key]);
+                        }
+                        //$("#result_1").append('<label for=transaction_' + this_transaction_id + "_" + fields_array[key] + '>' + titlized_field_name + '</label>' + '<input type="text" id=transaction_' + this_transaction_id + "_" + fields_array[key] + ' class="form-control">');
+                    });
+                    $.each(selectfields_array, function (key, value) {
+                        if (selectfields_array[key]=="role"){
+                            field_html = '<select id=select_'+value+' class="with-search col-md-12">'+'</select>';
+                            $.ajax({
+                                url: remote_host+"org/"+urlParams.orgId+"/roles",
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function(res) {
+                                    if(res){
+                                        //console.log(res);
+                                        res.forEach(function(role){
+                                            $('#select_'+value).append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
+                                        });
+                                    }
+                                },
+                                error: function(e , msg){
+                                    //processError(e,msg);
+                                }
+                            });
+                            $("#result_1").append(field_html);
+                        }
+                    });
+
+                }
+            });
 
 
+            $("#submit_action_form_btn").click(function() {
+                var transaction_id = $("#actions_select option:selected").val();
+                var keyParamValue = $("#result_1").find('input[type=text]').val();
 
+                var select_id, selected_value;
+                $('#result_1').find('select').each(function() {
+                    select_id = $(this).attr("id");
+                    console.log("select_id :- ");
+                    console.log(select_id);
+                    selected_value = $("#"+select_id).val();
+                    console.log(selected_value);
+                });
+                //keyParamValue:Number,
+                //tags:[{tag:{type:Schema.Types.ObjectId,ref:'tags'},value:Number}]
+
+                // /org/:orgId/users/:userId/transactions/
+
+                var data = {
+                    keyParamValue: keyParamValue,
+                    abilities: assigned_abilities
+                };
+//                $.ajax({
+//                    ///org/:orgId/roles/:roleId/abilities
+//                    url: remote_host+"org/"+urlParams.orgId+"/roles/"+role_id+"/abilities",
+//                    type: 'POST',
+//                    dataType: 'json',
+//                    data: roleAbilities,
+//                    success: function(res) {
+//                        var success_text = "Abilities assigned to role.";
+//                        show_notification(success_text);
+//                    } ,
+//                    error: function(e , msg){
+//                        //processError(e,msg);
+//                    }
+//                });
+                return false;
+            });
 
         });
 
