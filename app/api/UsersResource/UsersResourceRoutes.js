@@ -8,7 +8,35 @@ var userController=require('../../system/controllers/UsersController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var UsersDescription=require('./UsersResourceDescription.js');
 var passport=require('passport');
+fs   = require('fs');
 var userRoutes={
+
+
+    'post /org/:orgId/users/:userId/upload':[function(req,res,next){AuthorizationController.isAuthorized('Users','update',req,res,next);},function(req,res){
+        fs.readFile(req.files.image.path, function (err, data) {
+            var imageName = req.files.image.name+req.params.userId;
+            if(!imageName){
+                console.log("There was an error");
+                res.end();
+
+            } else {
+//                var image=req.params.userId+"_img";
+                var newPath = __dirname + "../uploads/" + imageName;
+                var image_path={
+                    image:newPath
+                }
+                fs.writeFile(newPath, data, function (err) {
+//                    res.send(newPath);
+                    userController.updateUserImage(req.params.userId,image_path);
+                });
+            }
+        });
+    }],
+    'get /org/:orgId/users/:userId/user_image':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
+        userController.getUserImage(req,res);
+
+
+    }],
   // 'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
   //   userController.getUser(req,res);
   // }],

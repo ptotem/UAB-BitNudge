@@ -24,6 +24,22 @@ var UsersController={
         res.send("success");
     });
   },
+    updateUserImage:function(userId,image_path){
+        UsersModel.updateUser(userId,image_path,function(err,obj){
+            if(err) res.send("fail");
+            else
+                res.send("success");
+        });
+    },
+    getUserImage:function(req,res){
+        UsersModel.getUser(req.params.userId,"image","","",function(err,obj){
+            var image_path=obj.image;
+            var img = fs.readFileSync(image_path);
+            res.writeHead(200, {'Content-Type': 'image/jpg' });
+            res.end(img, 'binary');
+//        res.send(img);
+        });
+    },
   getUser:function(req,res){
     UsersModel.getUser(req.params.userId,"","",[{path:'teams',select:'name',model:'teams'},{path:'role',model:'roles',select:'name'},{path:'orgtags',model:'orgTags',select:'name'},{path:'reportsTo',model:"users",select:"name"}],function(err,obj){
       res.send(obj);
