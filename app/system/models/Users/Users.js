@@ -32,9 +32,9 @@ var UserManagement={
     UserCollection.update({_id:id},{$set:updateData},callback);
   },
   getRoleOfUser:function(id,fields,options,callback){
-    UserCollection.findOne({_id:id},fields,options).populate('roles').exec(function(err,objs){
+    UserCollection.findOne({_id:id},fields,options).populate('role').exec(function(err,objs){
       if(objs)
-        return callback(err,objs.roles);
+        return callback(err,objs.role);
       else return callback(err,null);
     });
   },
@@ -67,9 +67,12 @@ var UserManagement={
           UserCollection.findOne({'_id':id},fields,options).populate('items').exec(callback);
       }
   },
-  addRole:function(userId,role,callback){
-    UserCollection.update({_id:userId},{$push:{roles:role}},callback);
+  setRole:function(userId,role,callback){
+    UserCollection.update({_id:userId},{$set:{role:role}},callback);
   },
+  // addRole:function(userId,role,callback){
+  //   UserCollection.update({_id:userId},{$push:{roles:role}},callback);
+  // },
   setLastLogin:function(userId,date,callback){
     UserCollection.update({_id:userId},{$set:{lastLogin:date}},callback);
   },

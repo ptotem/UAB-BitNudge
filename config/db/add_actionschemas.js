@@ -19,6 +19,7 @@ fs.readFile(test[0], {encoding:"UTF-8"},function (err, data) {
   if(objects instanceof Array){
     objects.forEach(function(object){
         console.log(object);
+        object.createdAt=new Date();
         var hal=new TransactionMasterCollection(object);
         hal.save(function(err){if(err)console.log(err); else console.log("done");});
     });

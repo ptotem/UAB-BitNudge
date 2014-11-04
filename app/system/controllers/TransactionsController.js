@@ -10,8 +10,8 @@ var TransactionMasterModel=require('../models/TransactionMaster');
 //The architecture of transactions has changed. Now the admin enters transactions, and they are pre-approved.
 var TransactionController={
   createTransaction:function(req,res){
-    if(!req.body.date)
-      req.body.date=new Date();
+    // if(!req.body.date)
+    req.body.date=new Date();
     TransactionModel.addTransaction(req.params.userId,req.body,function(err,obj){
       if(err) res.send(err);
       else res.send(obj);

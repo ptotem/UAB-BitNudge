@@ -632,7 +632,7 @@
                     password: $("#emp_password")[0].value,
                     address: $("#emp_addr")[0].value,
                     designation: $("#emp_designation")[0].value,
-                    roles:[selected[selected.selectedIndex].getAttribute("data-id")]
+                    role:selected[selected.selectedIndex].getAttribute("data-id")
                 };
 
                 $.ajax({
