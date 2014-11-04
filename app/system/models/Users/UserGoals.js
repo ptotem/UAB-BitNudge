@@ -17,17 +17,6 @@ var UserGoals={
     query['goals.endDate']={$gte:currDate};
     UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:query}, {$group:{_id:'$_id',goals:{$push:'$goals'}}},callback);
   },
-  //the callback takes arg err and return value.
-  // getUserGoalProgress:function(userId,goalId,callback){
-  //   UserGoals.getUserGoal(userId,goalId,"",{},{path:'goalId'},function(err,obj){
-  //     if(err) return callback(err,null);
-  //     var total=obj.totalSteps;
-  //     var comp=obj.steps.length;
-  //     if(total&&comp)
-  //       return callback(err,(comp/total)*100);
-  //     else return callback(err,null);
-  //   });
-  // },
   getUserGoalSchema:function(){
     return UsersCollection.Schema;
   },

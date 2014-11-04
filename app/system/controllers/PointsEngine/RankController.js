@@ -19,6 +19,9 @@ var RankController={
   //     else res.send(obj);
   //   });
   // },
+  calculateRankOfUserOfPeriod:function(orgId,userId,date,callback){
+    UserPointsModel.getUserPointsOfPeriod({orgId:mongoose.Types.ObjectId(orgId)},period,date,"","","",function(err,userpoints){)
+  },
   calculateRankOfPeriod:function(orgId,period,date,callback){
     LeaderboardModel.initializeLeaderboardForPeriod(orgId,period,date,function(errAll,objAll){
       // setting user global ranks.
