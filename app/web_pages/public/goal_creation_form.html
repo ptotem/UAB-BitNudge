@@ -90,7 +90,8 @@
     <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png"
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-    <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+
+    <!--<link href="css/customstyle.css" rel="stylesheet" type="text/css">-->
 
     <style>
         .aligned{
@@ -342,84 +343,19 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Employees</h1>
+            <h1 id="page-header">Goal Creation</h1>
 
             <div class="fluid-container">
 
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
-
-                <div class="row">
-
-                    <article class="col-md-12">
-
-                        <!-- new widget -->
-                        <div class="jarviswidget" id="employees-creation-widget">
-                            <header>
-                                <h2>Add Employees</h2>
-                            </header>
-
-                            <!-- widget div-->
-                            <div>
-                                <!-- widget edit box -->
-                                <div class="jarviswidget-editbox">
-                                    <div>
-                                        <label>Title:</label>
-                                        <input type="text"/>
-                                    </div>
-                                    <div>
-                                        <label>Styles:</label>
-                                        <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                        <span data-widget-setstyle="green" class="green-btn"></span>
-                                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                        <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                        <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                        <span data-widget-setstyle="red" class="red-btn"></span>
-                                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                        <span data-widget-setstyle="black" class="black-btn"></span>
-                                    </div>
-                                </div>
-                                <!-- end widget edit box -->
-
-                                <!-- content -->
-                                <div class="inner-spacer widget-content-padding">
-                                    <!-- content goes here -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="employee_new_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Employee</a><br><br>
-                                            <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Reporting Manager to Employee</a><br><br>
-                                            <a href="employee_tags_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Tags to Employee</a><br><br>
-                                            <a href="action_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Action Creation</a><br><br>
-                                            <a href="action_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Action Test Page</a><br><br>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="employees_new_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Add Bulk Employees</a><br><br>
-                                            <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Edit Bulk Employees</a><br><br>
-                                            <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Employee Reporting Line Test Page</a><br><br>
-                                            <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Organizational Tags Test Page</a><br><br>
-                                            <a href="goal_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Goal Creation</a><br><br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end content -->
-
-                            </div>
-                            <!-- end widget div -->
-                        </div>
-                        <!-- end widget -->
-
-                    </article>
-
-                </div>
-
                     <!--------row 2---------->
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="employees-list-widget">
+                            <div class="jarviswidget" id="goal-creation-widget">
                                 <header>
-                                    <h2>Employees List</h2>
+                                    <h2>Goal Creation</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -445,20 +381,124 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <table class="table table-bordered table-hover responsive" id="employees_list">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Roles</th>
-                                                <th>Reporting Officer</th>
-                                                <th>Tags</th>
-                                                <th>Groups/Department</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
+                                        <form id="goal_creation_form" class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="goal_name">Name</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="goal_name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="criteria_select">Criteria</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select id="criteria_select" class="with-search">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label">Start Date</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="input-append date" id="goal-start-date-js" data-date="" data-date-format="dd-mm-yyyy">
+                                                                <input class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
+                                                                <span class="add-on"><i class="cus-calendar-2"></i></span>
+                                                            </div>
+                                                            <p class="help-block">Default datepicker</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label">End Date</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="input-append date" id="goal-end-date-js" data-date="" data-date-format="dd-mm-yyyy">
+                                                                <input class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
+                                                                <span class="add-on"><i class="cus-calendar-2"></i></span>
+                                                            </div>
+                                                            <p class="help-block">Default datepicker</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label for="goal_points">Points</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" id="goal_points"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="target_value">Target Value</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="target_value" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="subgoal_select">Subgoal</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select id="subgoal_select" class="with-search">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="users_select">Assign To</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select id="users_select" class="with-search">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button id="goal_submit_btn" type="submit" class="btn medium btn-primary">
+                                                        Create
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
 
                                     </div>
                                     <!-- end content-->
@@ -547,7 +587,48 @@
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right', //this is default position
+            easing: 'easeOutBack',
+            animateOpen: {
+                height: "show"
+            },
+            animateClose: {
+                opacity: 'hide'
+            }
+        });
+    }
 
+    function get_current_date(){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+
+        if(dd < 10){
+            dd = '0'+dd;
+        }
+        if(mm < 10){
+            mm = '0'+mm;
+        }
+
+        var current_date = dd+'-'+mm+'-'+yyyy;
+        return current_date;
+    }
+
+    function set_datepicker_date(date){
+        var date_field = $(".date");
+        date_field.each(function() {
+            $(this).attr("data-date", date);
+            $(this).find(".datepicker-input").val(date);
+        });
+    }
 
     function get_employees(){
         $.ajax({
@@ -556,66 +637,33 @@
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    var row_html, role, reportsTo, orgTags = [], teams = [];
+                    var option_html;
                     res.forEach(function(user){
-                        //console.log(user);
-
-                        if (user.role)
-                            role = user.role.name;
-                        else
-                            role = "";
-
-                        if (user.reportsTo)
-                            reportsTo = user.reportsTo.name;
-                        else
-                            reportsTo = "";
-
-                        if (user.orgtags) {
-                            orgTags = [];
-                            $.each(user.orgtags, function(index, value) {
-                                orgTags.push(value.name)
-                            });
-                        }
-                        else{
-                            orgTags = "";
-                        }
-
-                        if (user.teams) {
-                            teams = [];
-                            $.each(user.teams, function(index, value) {
-                                teams.push(value.name)
-                            });
-                        }
-                        else{
-                            teams = "";
-                        }
-
-
-                        row_html = '<tr>'+
-                                        '<td class="text-center aligned">'+user.name+'</td>'+
-                                        '<td class="text-center aligned">'+role+'</td>'+
-                                        '<td class="text-center aligned">'+reportsTo+'</td>'+
-                                        '<td class="text-center aligned">'+orgTags+'</td>'+
-                                        '<td class="text-center aligned">'+teams+'</td>'+
-                                        '<td class="text-center aligned">'+
-                                            '<div class="block" style="width: 50px;">' +
-                                                '<a href="employee_edit_form.html?userId='+user._id+'"><i class="cus-pencil"></i></a>'+
-                                                '<a href="employee_show.html?userId='+user._id+'"><i class="cus-exclamation"></i></a>'+
-                                            '</div>' +
-                                        '</td>'+
-                                    '</tr>';
-
-                        $("#employees_list").find('tbody').append(row_html);
-
+                        option_html = "<option value="+user._id+">"+user.name+"</option>";
+                        $('#users_select').append(option_html);
                     });
 
-                    $('#employees_list').dataTable({
-                        "bPaginate": true,
-                        "bFilter": true,
-                        "bLengthChange": true,
-                        "bSort": false
-                    });
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
 
+    function get_actions(){
+        $.ajax({
+                           // /org/:orgId/transactions
+            url: remote_host+"org/"+urlParams.orgId+"/transactions",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    res.forEach(function(transactionMaster){
+                        //console.log(transactionMaster);
+                        $('#criteria_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
+                    });
                 }
             }
             ,
@@ -641,15 +689,79 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
-
-            var row_html;
+            if ($('#goal-start-date-js').length){
+                $('#goal-start-date-js, #goal-end-date-js').datepicker()
+            }
 
             get_employees();
+            get_actions();
+
+            var today_date = get_current_date();
+            set_datepicker_date(today_date);
+
+            $("#goal_submit_btn").click(function(e) {
+                //post url -> /org/:orgId/users/:userId/goals
+                //e.preventDefault();
+                var goal_name = $("#goal_name").val();
+                var criteria_id = $("#criteria_select :selected").val();
+                var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
+                var goal_end_date = $("#goal-end-date-js").find(".datepicker-input").val();
+                var goal_points = $("#goal_points").val();
+                var target_value = $("#target_value").val();
+                var assign_to = $("#users_select :selected").val();
 
 
+//                goals:[{
+//                    // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
+//                    // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
+//                    criteria:String,
+//                    startDate:Date,
+//                    endDate:Date,
+//                    completed:Boolean,
+//                    createdAt:Date,
+//                    percentage:Number,
+//                    pointsFn:String,
+//                    subgoals:[{
+//                        subgoal:{type:Schema.Types.ObjectId,rel:'goalMasters'},
+//                        allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+//                        currentValue:Number,
+//                        targetValue:Number,
+//                        done:Boolean
+//                    }],
+//                    action:{
+//                        allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+//                        targetValue:Number,
+//                        currentValue:Number,
+//                    }
+//                }],
 
+                var data = {
+                    assign_to: assign_to,
+                    criteria: "",
+                    startDate: goal_start_date,
+                    endDate: goal_end_date,
+                    targetValue: target_value
+                };
+                console.log("data");
+                console.log(data);
+
+//                $.ajax({
+//                                  // /org/:orgId/users/:userId/goals
+//                    url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/goals",
+//                    type: 'POST',
+//                    dataType: 'json',
+//                    data: data,
+//                    success: function(res) {
+//                        var success_text = "Goal assigned to user.";
+//                        show_notification(success_text);
+//                    } ,
+//                    error: function(e , msg){
+//                        //processError(e,msg);
+//                    }
+//                });
+
+                return false;
+            });
 
         });
 
