@@ -49,12 +49,6 @@ var UsersController={
                 });
             }
         });
-
-        UsersModel.updateUser(userId,image_path,function(err,obj){
-            if(err) res.send("fail");
-            else
-                res.send("success");
-        });
     },
     getUserImage:function(req,res){
         UsersModel.getUser(req.params.userId,"image","","",function(err,obj){

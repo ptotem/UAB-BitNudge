@@ -52,7 +52,7 @@ var userSchema=new Schema({
     action:{
       // transactionMaster:{type:Schema.Types.ObjectId,ref:'transactionMasters'},
       target:Number,
-      currentValue:Number,
+      currentValue:Number
       // done:Boolean
     }
   }],
