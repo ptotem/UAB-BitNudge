@@ -640,13 +640,12 @@
                     select_id = $(this).attr("id");
                     selected_value = $("#"+select_id).val();
                     //pushToAry(select_id.split("_")[1], selected_value);
-                    var tag = {
-                        "tag": { "tagName": select_id.split("_")[1], "id":selected_value }
-                    };
+                    var tag = { "tagName": select_id.split("_")[1], "tag":selected_value };
                     tagJSON.push(tag);
                 });
 
                 var data = {
+                    actionId: transaction_id,
                     keyParamValue: keyParamValue,
                     tags: tagJSON
                 };

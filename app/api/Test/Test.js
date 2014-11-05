@@ -70,7 +70,7 @@ var Schema=mongoose.Schema;
 var roleSchema=new Schema({
     name:String,
     role:{type:Schema.Types.ObjectId,ref:'roles'},
-    abilities:[{type:Schema.Types.ObjectId,ref:'abilities'}],
+    abilities:[{type:Schema.Types.ObjectId,ref:'abilities'}]
     // createdAt:Date
 });
 var RoleAbilitiesCollection=mongoose.model('roleAbilities',roleSchema);

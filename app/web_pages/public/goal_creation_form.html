@@ -402,6 +402,8 @@
                                                         <div class="col-md-9">
                                                             <div class="controls">
                                                                 <select id="criteria_select" class="with-search">
+                                                                    <option value="action">Action</option>
+                                                                    <option value="subgoal">Sub-Goal</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -662,7 +664,7 @@
                 if(res){
                     res.forEach(function(transactionMaster){
                         //console.log(transactionMaster);
-                        $('#criteria_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
+                        //$('#criteria_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
                     });
                 }
             }
@@ -694,7 +696,7 @@
             }
 
             get_employees();
-            get_actions();
+            //get_actions();
 
             var today_date = get_current_date();
             set_datepicker_date(today_date);
@@ -704,8 +706,14 @@
                 //e.preventDefault();
                 var goal_name = $("#goal_name").val();
                 var criteria_id = $("#criteria_select :selected").val();
+
                 var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
+                //new Date(year, month, day, hours, minutes, seconds, milliseconds)
+                var formatted_start_date = new Date(goal_start_date.split("-")[2], goal_start_date.split("-")[1]+1, goal_start_date.split("-")[0]);
+
                 var goal_end_date = $("#goal-end-date-js").find(".datepicker-input").val();
+                var formatted_end_date = new Date(goal_end_date.split("-")[2], goal_end_date.split("-")[1]+1, goal_end_date.split("-")[0]);
+
                 var goal_points = $("#goal_points").val();
                 var target_value = $("#target_value").val();
                 var assign_to = $("#users_select :selected").val();

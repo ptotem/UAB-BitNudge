@@ -2,6 +2,7 @@ var OrganizationResources=require('./OrganizationsResource');
 var TeamResources=require('./TeamsResource');
 var UserResources=require('./UsersResource');
 var testResource=require('./Test/Test.js');
+var testResource1=require('./Test1/Test1.js');
 var RestApi={
   initialize:function(server){
     // var handlers=function(req,res,next){
@@ -18,6 +19,7 @@ var RestApi={
     // TeamResources.initialize(server,handlers.toString());
     // UserResources.initialize(server,handlers.toString());
     testResource.initialize(server);
+    testResource1.initialize(server);
     OrganizationResources.initialize(server);
     TeamResources.initialize(server);
     UserResources.initialize(server);
