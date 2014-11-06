@@ -20,6 +20,11 @@ var userRoutes={
 
 
     }],
+    'get /sendmail':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
+        userController.sendMailToUser(req,res);
+
+
+    }],
   // 'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
   //   userController.getUser(req,res);
   // }],
