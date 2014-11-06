@@ -7,6 +7,7 @@ var LevelsModel=require('../models/Levels');
 var UserModel=tempModel.Users;
 var UserPointsModel=require('../models/UserPeriodPoints');
 var RankController=require('../controllers/PointsEngine/RankController.js');
+var async=require('async');
 var EventsController={
   onRegisterTransaction:function(){
   },
@@ -77,7 +78,7 @@ var EventsController={
     //   });
     // });
     var asyncify=function(){
-      UserGoalsModel.getLiveGoalsOfUserWithQuery(userId,{'goals.action.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
+      UserGoalsModel.getLiveGoalsAndChallengesOfUserWithQuery(userId,{'goals.action.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
         var allGoals=goals[0].goals;
         allGoals.forEach(function(goalObj){
           goalObj.action.allowedTransactions.forEach(function(allowedTransaction){
@@ -106,7 +107,7 @@ var EventsController={
         });
       });
     };
-    UserGoalsModel.getLiveGoalsOfUserWithQuery(userId,{'goals.subgoals.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
+    UserGoalsModel.getLiveGoalsAndChallengesOfUserWithQuery(userId,{'goals.subgoals.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
       var allGoals=goals[0].goals;
       allGoals.forEach(function(goalObj){
         goalObj.subgoals.forEach(function(subgoal){
