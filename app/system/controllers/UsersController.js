@@ -6,6 +6,8 @@ var NudgeChat=require('../models/NudgeChat');
 var NotificationCenterModel=require('../models/NotificationCenter');
 var OrganizationalModel=require('../models/Organizations');
 var UserPeriodPointsModel=require('../models/UserPeriodPoints');
+var nodemailer = require("nodemailer");
+var smtpTransport = require('nodemailer-smtp-transport');
 fs   = require('fs');
 
 var UsersController={
@@ -19,13 +21,35 @@ var UsersController={
       res.send(user);
     });
   },
-  updateUser:function(req,res){
-    UsersModel.updateUser(req.params.userId,req.body,function(err,obj){
-      if(err) res.send("fail");
-      else
-        res.send("success");
-    });
+  sendMailToUser:function(req,res){
+      var transporter = nodemailer.createTransport({
+           service: 'gmail',
+           auth: {
+              user: "vandana.coc@gmail.com",
+              pass: "9234725176"
+           }
+       });
+      var from=req.query.from;
+      transporter.sendMail({
+          from: from, // sender address
+          to: req.query.to, // comma separated list of receivers
+          subject: req.query.subject, // Subject line
+          text: req.query.body // plaintext body
+      }, function(error, response){
+          if(error){
+              res.send("error");
+          }else{
+              res.send("successfully send");
+          }
+      });
   },
+    updateUser:function(req,res){
+        UsersModel.updateUser(req.params.userId,req.body,function(err,obj){
+            if(err) res.send("fail");
+            else
+                res.send("success");
+        });
+    },
     updateUserImage:function(req,res){
         fs.readFile(req.files.image.path, function (err, data) {
             var imageName = req.files.image.name+req.params.userId;

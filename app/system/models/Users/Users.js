@@ -3,6 +3,8 @@ var mongoose=require('mongoose');
 var UserGoals=require('./UserGoals.js');
 var UserTransactions=require('./Transactions.js');
 var bcrypt=require('bcryptjs');
+var nodemailer = require("nodemailer");
+var smtpTransport = require('nodemailer-smtp-transport');
 
 var UserManagement={
   getUserSchema:function(){
