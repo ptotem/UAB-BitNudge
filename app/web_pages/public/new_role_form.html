@@ -342,10 +342,8 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Roles</h1>
-            <a href="new_role_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Role</a><br><br>
-            <a href="role_ability_form.html" style="padding: 5px;"><i class="cus-add"></i>Add Role Ability</a><br><br>
-            <a href="roles_abilities_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Role - Abilities Test Page</a>
+            <h1 id="page-header">Assign Role Ability</h1>
+
             <div class="fluid-container">
 
                 <!-- widget grid -->
@@ -354,9 +352,9 @@
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="roles-list-widget">
+                            <div class="jarviswidget" id="new-role-widget">
                                 <header>
-                                    <h2>Roles</h2>
+                                    <h2>Assign Role Ability</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -382,17 +380,30 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <table class="table table-bordered table-hover responsive" id="role_list">
-                                            <thead>
-                                            <tr>
-                                                <th>Roles</th>
-                                                <th>Abilities</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
+                                        <form id="new_role_form" class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="role_name">Role</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="role_name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button id="submit-form-btn" type="submit" class="btn medium btn-primary">
+                                                        Submit
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
 
                                     </div>
                                     <!-- end content-->
@@ -481,62 +492,24 @@
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-    function get_roles(){
-
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/roles",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var abilititesArray;
-                    res.forEach(function(role){
-                        //console.log(role._id);
-                        $.ajax({
-                            url: remote_host+"org/"+urlParams.orgId+"/roles/"+role._id+"/abilities",
-                            type: 'GET',
-                            dataType: 'json',
-                            success: function(abilitiesData) {
-                                if(abilitiesData){
-                                    abilititesArray = "";
-                                    abilitiesData.forEach(function(ability){
-                                        //console.log(ability.name);
-                                        abilititesArray = abilititesArray + ability.name + ", ";
-                                    });
-                                }
-
-                                var row_html;
-                                row_html = '<tr>'+
-                                                '<td class="text-center">'+role.name+'</td>'+
-                                                '<td class="text-center">'+abilititesArray.replace(/,/g, '<br>')+'</td>'+
-                                                '<td class="text-center">'+
-                                                    '<a style="padding: 5px;" href="role_edit_form.html?roleId='+role._id+'"><i class="cus-pencil"></i></a>'+
-                                                    '<a style="padding: 5px;" href="role_form_show.html?roleId='+role._id+'"><i class="cus-exclamation"></i></a>'+
-                                                '</td>'+
-                                            '</tr>';
-
-                                $("#role_list").find('tbody').append(row_html);
-
-                            },error: function(e , msg){
-                                //processError(e,msg);
-                            }
-                        });
-                    });
-                }
-            },error: function(e , msg){
-                //processError(e,msg);
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right', //this is default position
+            easing: 'easeOutBack',
+            animateOpen: {
+                height: "show"
+            },
+            animateClose: {
+                opacity: 'hide'
             }
         });
     }
 
-    function apply_dataTable_to_role_list(){
-        $('#role_list').dataTable({
-            "bPaginate": true,
-            "bFilter": true,
-            "bLengthChange": true,
-            "bSort": false
-        });
-    }
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -554,11 +527,29 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            get_roles();
+            $("#submit-form-btn").click(function() {
+                var role_name = $("#role_name").val();
 
-            setTimeout(function() {
-                apply_dataTable_to_role_list();
-            }, 2000);
+                var data = {
+                    role_name: role_name
+                };
+
+                $.ajax({
+                                    ///org/:orgId/roles/:roleId/abilities
+                    url: remote_host+"org/"+urlParams.orgId+"/roles",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    success: function(res) {
+                        var success_text = "Role Created.";
+                        show_notification(success_text);
+                    } ,
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+                return false;
+            });
 
         });
 
