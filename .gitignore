@@ -47,3 +47,4 @@ Thumbs.db
 
 #npm related unimportant stuff
 .idea/
+node_modules/
