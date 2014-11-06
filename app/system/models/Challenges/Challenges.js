@@ -1,28 +1,27 @@
-var JobRolesCollection=require('./JobRolesCollection.js');
+var ChallengesCollection=require('./ChallengesCollection.js');
 var mongoose=require('mongoose');
-var JobRoles= {
-  createJobRole:function(organizationId,data,callback){
+var Challenges= {
+  createChallengeOfOrganization:function(organizationId,data,callback){
       data.orgId=organizationId;
       data.createdAt=new Date();
-      var l=new JobRolesCollection(data);
+      var l=new ChallengesCollection(data);
       l.save(callback);
   },
-  getJobRoleOfOrganization:function(orgId,id,fields,options,populationData,callback){
-    JobRolesCollection.findOne({orgId:orgId,'jobRoles._id':id},fields,options).populate(populationData).exec(function(err,obj){
-      callback(err,obj.jobRoles[0]);
+  getChallengeOfOrganization:function(orgId,id,fields,options,populationData,callback){
+    ChallengesCollection.findOne({orgId:orgId,'challenges._id':id},{'challenges.$':1},options).populate(populationData).exec(function(err,obj){
+      callback(err,obj.challenges[0]);
     });
   },
-  getJobRolesOfOrganization:function(orgId,fields,options,populationData,callback){
-    console.log(orgId);
-      JobRolesCollection.find({orgId:mongoose.Types.ObjectId(orgId)},fields,options).populate(populationData).exec(callback);
+  getChallengesOfOrganization:function(orgId,fields,options,populationData,callback){
+    ChallengesCollection.find({orgId:mongoose.Types.ObjectId(orgId)},fields,options).populate(populationData).exec(callback);
   },
   updateJobRoleOfOrganization:function(orgId,id,updateData,callback){
     var temp={};
-    temp["jobRoles.$"]=updateData;
-    JobRolesCollection.update({orgId:orgId},{$set:temp},{multi:true},callback);
+    temp["challenges.$"]=updateData;
+    ChallengesCollection.update({orgId:orgId},{$set:temp},{multi:true},callback);
   },
   deleteJobRoleOfOrganization:function(orgId,id,callback){
-    JobRolesCollection.update({orgId:orgId},{pull:{jobRoles:{_id:id}}},{multi:true},callback);
+    ChallengesCollection.update({orgId:orgId},{pull:{challenges:{_id:id}}},{multi:true},callback);
   }
 };
-module.exports=JobRoles;
+module.exports=Challenges;

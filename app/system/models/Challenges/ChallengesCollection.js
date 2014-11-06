@@ -3,9 +3,7 @@ var Schema=mongoose.Schema;
 // var SALT_WORK_FACTOR=10;
 var challengesSchema=new Schema({
   orgId:{type:Schema.Types.ObjectId,ref:'organizations'},
-  goals:[{
-    // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
-    // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
+  challenges:[{
     creator:{type:Schema.Types.ObjectId,ref:'users'},
     criteria:String,
     startDate:Date,
