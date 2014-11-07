@@ -48,4 +48,3 @@ Thumbs.db
 #npm related unimportant stuff
 .idea/
 app/uploads/
-node_modules/
