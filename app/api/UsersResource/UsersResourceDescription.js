@@ -1,5 +1,5 @@
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
-var restifyValidator = require('restify-validator2');
+// var restifyValidator = require('restify-validator2');
 var Stuff={
   Users:{
     read:{

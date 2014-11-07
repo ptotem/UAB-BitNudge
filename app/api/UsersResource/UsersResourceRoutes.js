@@ -99,7 +99,7 @@ var subGoalRoutes={
   }]
 };
 
-var challengeRoutes={
+var challengesRoutes={
   'get /org/:orgId/users/:userId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','list',req,res,next);},function(req,res){
     challengesController.getLiveUserChallenges(req,res);
   }],
