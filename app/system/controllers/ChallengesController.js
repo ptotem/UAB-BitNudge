@@ -1,6 +1,6 @@
 var UserChallengesModel=require('../models/Users').Goals;
 var ChallengesModel=require('../models/Challenges');
-var TransactionCollection=require('../models/Transaction/TransactionCollection.js');
+var TransactionCollection=require('../models/TransactionMaster/TransactionMasterCollection.js');
 var GoalMasterModel=require('../models/GoalMaster');
 var ChallengesController={
   assignChallengeToUser:function(req,res){
@@ -48,7 +48,7 @@ var ChallengesController={
   // },
   getLiveUserChallenges:function(req,res){
     UserChallengesModel.getLiveChallengesOfUser(req.params.userId,new Date(),function(err,objs){
-      TransactionCollection.populate(objs,{path:"goals.transactions.transaction",model:'transaction',select:'name'},function(err1,objs1){
+      TransactionMasterCollection.populate(objs,{path:"goals.transactions.transactionMaster",model:'TransactionMasters',select:'name'},function(err1,objs1){
         if(err) res.send(err);
         res.send(objs1[0]);
       });

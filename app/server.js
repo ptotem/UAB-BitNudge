@@ -3,7 +3,6 @@ var server = module.exports = restify.createServer({
     name : 'BitNudge' ,
     version : '0.0.1-dev'
 });
-var escape=require('escape-html');
 var mongoose=require('mongoose');
 var passport=require('passport');
 var LocalStrategy = require('passport-local').Strategy;
