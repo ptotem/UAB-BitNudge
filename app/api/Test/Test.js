@@ -247,7 +247,7 @@ var organizationStructure={
         recur(req.params.userId);
     }
 };
-var OrgTagsCollection=require('../../system/models/OrgTags/OrgTags.js');
+var OrgTagsCollection=require('../../system/models/OrgTags/OrgTagsCollection.js');
 var organizationTags={
     'get /orgtags':function(req,res){
         OrgTagsCollection.find({},function(err,tags){
