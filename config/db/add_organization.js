@@ -10,6 +10,7 @@ if(!test[0]){
   console.log("Please enter the json file as a command line argument");
   process.exit();
 }
+later();
 function later(){
   mongoose.connect('mongodb://localhost/uabTest');
   var db = mongoose.connection;
@@ -21,8 +22,10 @@ function later(){
     if (err) throw err;
     var objects=JSON.parse(data);
     if(objects instanceof Object){
-      TagsModel.createOrganization(object,function(err,obj){
-        console.log("done writing "+object+" to database");
+      OrganiztionsModel.createOrganization(objects,function(err,obj){
+        console.log("done writing to database");
+        console.log(obj);
+        process.exit();
       });
     }
   });

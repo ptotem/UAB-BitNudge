@@ -15,6 +15,7 @@ var TransactionMasterSchema=new Schema({
     keyParam:String,
     paramCategory:String,
     pointType:String,
+    orgId:{type:Schema.Types.ObjectId,ref:'organizations'},
     // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
     // noOfParams:Number,
     pointsFn:String, 

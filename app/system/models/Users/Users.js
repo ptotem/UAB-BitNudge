@@ -15,7 +15,7 @@ var UserManagement={
     //password is in plain text, they must be salted and shed
     //obviously, salt and hash it properly.
     data.createdAt=new Date();
-    data.orgId=mongoose.Types.ObjectId(organizationId);
+    data.orgId=organizationId;
     if(data.password){
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(data.password, salt, function(err, hash) {
