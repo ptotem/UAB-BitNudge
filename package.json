@@ -1,9 +1,32 @@
 {
-    "name": "application-name"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "2.5.8"
-    , "jade": ">= 0.0.1"
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "async": "^0.9.0",
+    "bcryptjs": "^2.1.0",
+    "bunyan": "^1.0.0",
+    "chai": "^1.9.1",
+    "crypto-js": "^3.1.2-5",
+    "escape-html": "^1.0.1",
+    "express": "^2.5.8",
+    "jade": ">= 0.0.1",
+    "jwt-simple": "^0.2.0",
+    "moment": "^2.8.3",
+    "mongodb": "^1.4.9",
+    "mongoose": "^3.8.16",
+    "node-restify-validation": "^0.1.0",
+    "node-xlsx": "^0.5.1",
+    "nodemailer": "^0.7.1",
+    "nodemailer-smtp-transport": "^0.1.13",
+    "passport": "^0.2.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^0.3.0",
+    "restify": "^2.8.2",
+    "restify-routes": "^0.1.2",
+    "restify-validator2": "0.0.3",
+    "save": "0.0.20",
+    "should": "^4.0.4"
   }
 }

@@ -55,7 +55,7 @@ var userSchema=new Schema({
         action:{
             allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
             targetValue:Number,
-            currentValue:Number,
+            currentValue:Number
         }
     }],
     followers:[{type:Schema.Types.ObjectId,rel:'users'}],

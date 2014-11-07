@@ -11,16 +11,38 @@ var smtpTransport = require('nodemailer-smtp-transport');
 fs   = require('fs');
 
 var UsersController={
-    createUser:function(req,res){
-        UsersModel.createUser(req.params.orgId,req.body,function(err,user){
-            // SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
-            NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
-            NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
-            NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
-            UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,req.params._id,{},function(){});
-            res.send(user);
-        });
-    },
+  createUser:function(req,res){
+    UsersModel.createUser(req.params.orgId,req.body,function(err,user){
+      // SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
+      NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
+      NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
+      NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
+      UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,req.params._id,{},function(){});
+      res.send(user);
+    });
+  },
+  sendMailToUser:function(req,res){
+      var transporter = nodemailer.createTransport({
+           service: 'gmail',
+           auth: {
+              user: "vandana.coc@gmail.com",
+              pass: "9234725176"
+           }
+       });
+      var from=req.query.from;
+      transporter.sendMail({
+          from: from, // sender address
+          to: req.query.to, // comma separated list of receivers
+          subject: req.query.subject, // Subject line
+          text: req.query.body // plaintext body
+      }, function(error, response){
+          if(error){
+              res.send("error");
+          }else{
+              res.send("successfully send");
+          }
+      });
+  },
     updateUser:function(req,res){
         UsersModel.updateUser(req.params.userId,req.body,function(err,obj){
             if(err) res.send("fail");
