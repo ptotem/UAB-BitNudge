@@ -192,13 +192,14 @@ var EventsController={
   triggerUserPointsAddition:function(orgId,userId,pointsEarned,pointsType,pointsFrom,date,finalCallback){
     async.series([
       function(callback){
-        UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,type:pointsType,from:pointsFrom},callback);
+        UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,source:pointsType,from:pointsFrom},callback);
       },
       function(callback){
         UserPointsModel.addPointsEverywhere(userId,new Date(),pointsEarned,callback);
       },
       function(callback){
         UserModel.getUser(userId,"teams orgId totalPoints","","",function(err,user){
+          EventsController.triggerLevelCalculation(orgId,userId,user.totalPoints,callback);
           async.each(user.teams,
             function(teamId,eachCallback){
               TeamPeriodPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,eachCallback);
@@ -208,13 +209,12 @@ var EventsController={
             });
         });
       },
-      function(callback){
-        EventsController.triggerLevelCalculation(orgId,userId,user.totalPoints,callback);
-      },
-      function(callback){
-        RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",new Date(),callback);
-      }],
+      // function(callback){
+      //   RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",new Date(),callback);
+      // }
+    ],
       function(err,results){
+        finalCallback(err);
     });
   },
   // triggerRankCalculation:function(orgId){
@@ -223,10 +223,11 @@ var EventsController={
   triggerLevelCalculation:function(orgId,userId,totalPoints,callback){
     LevelsModel.getLevelOfOrganization(orgId,"","","",function(err,obj){
       eval("var levelFn=("+obj.calculationFn+");");
-      var levelNo=levelFn(points);
-      UserModel.setLevelOfUser(userId,level,callback);
+      console.log("question"+totalPoints);
+      var levelNo=levelFn(totalPoints);
+      console.log("answer"+levelNo);
+      UserModel.setLevelOfUser(userId,levelNo,callback);
     });
-    // PointsEngine.calculateLevel(orgId);
   },
   triggerRevenueCalculation:function(orgId){
     RevenuesController.calculateRevenues(orgId);

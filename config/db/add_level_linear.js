@@ -48,7 +48,7 @@ function later(){
       var limits=objects;
       var currLimits=JSON.stringify(objects);
       currLimits=currLimits.replace(/\"([a-z0-9]+)\"/g,"$1");
-      var calculationFn="function(points){var limits="+currLimits+";limits.forEach(function(limit){if(points<limit.max){return limit.level;}});return 0;}";
+      var calculationFn="function(points){var limits="+currLimits+";for(var i=0;i<limits.length;i++){if(points<limits[i].max){return limits[i].level;}};return 0;}";
       LevelsModel.createLevel(orgObjId,{calculationFn:calculationFn},function(err,object){
         console.log("done writing to database");
         console.log(object);

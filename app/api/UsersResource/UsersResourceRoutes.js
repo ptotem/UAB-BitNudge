@@ -51,7 +51,7 @@ var transactionRoutes={
   'get org/:orgId/users/:userId/transactions':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','list',req,res,next);},function(req,res) {
     transactionController.getTransactionsOfUser(req,res);
   }],
-  'get org/:orgId/users/:userId/transactions/:transactionId/approve':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','approve',req,res,next);},function(req,res){
+  'post org/:orgId/users/:userId/transactions/:transactionId/approve':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','approve',req,res,next);},function(req,res){
     transactionController.approveTransaction(req,res);
   }],
   'post /org/:orgId/users/:userId/transactions/':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','create',req,res,next);},function(req,res){

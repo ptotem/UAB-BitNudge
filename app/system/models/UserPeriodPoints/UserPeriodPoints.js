@@ -35,6 +35,27 @@ var UserPoints={
     query['periods.period']=period;
     return query;
   },
+  getPositionalQueryFromDate:function(period,date){
+    var currDate,start,end;
+    if(period=="month"){
+      currDate=moment(date);
+      start=moment().month(currDate.month()).date(1).hour(0).minute(0).second(0).toDate();
+      end=moment().month(currDate.month()+1).date(1).hour(0).minute(0).second(0).toDate();
+    }
+    else if(period=="quarter"){
+      currDate=moment(date);
+      start=moment().month(0).quarter(currDate.quarter()).date(1).hour(0).minute(0).second(0).toDate();
+      end=moment().month(0).quarter(currDate.quarter()+1).date(1).hour(0).minute(0).second(0).toDate();
+    }
+    else if(period=="year"){
+      currDate=moment(date);
+      start=moment().year(currDate.year()).month(0).date(1).hour(0).minute(0).second(0).toDate();
+      end=moment().year(currDate.year()+1).month(0).date(1).hour(0).minute(0).second(0).toDate();
+    }
+    var query={};
+    query.periods={$elemMatch:{date:{$gte:start,$lt:end},period:period}};
+    return query;
+  },
   createUserPeriodPoints:function(orgId,userId, data,callback){
     // data.userId=mongoose.Types.ObjectId(userId);
     data.orgId=mongoose.Types.ObjectId(orgId);
@@ -53,14 +74,17 @@ var UserPoints={
     UserPeriodPointsCollection.update(query,{$set:temp},{upsert:true},callback);
   },
   addToUserPointsOfPeriod:function(userId,period,date,points,callback){
-    var temp={};
-    temp.date=date;
-    temp.period=period;
     var incObj={};
     incObj['periods.$.totalPoints']=points;
-    var query=UserPoints.getQueryFromDate(period,date);
+    var query=UserPoints.getPositionalQueryFromDate(period,date);
     query.userId=userId;
-    UserPeriodPointsCollection.update(query,{$set:temp,$inc:incObj},{upsert:true},callback);
+    UserPeriodPointsCollection.update(query,{$inc:incObj},{upsert:true},function(err,numAffected){
+      if(err||numAffected===0){
+        newSubDoc={date:date,period:period,totalPoints:points};
+        UserPeriodPointsCollection.update({userId:userId},{$push:{periods:newSubDoc}},callback);
+      }
+      else callback(err,numAffected);
+    });
   },
   getUserPointsOfPeriod:function(query,period,date,fields,options,populationData,callback){
     var periodQuery=UserPoints.getQueryFromDate(period,date);

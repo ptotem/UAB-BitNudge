@@ -16,7 +16,8 @@ var userSchema=new Schema({
     points:[{
         pointsEarned:Number,
         date:Date,
-        type:String,
+        pointType:String,
+        source:String,
         from:Schema.Types.ObjectId
     }],
     teams:[{type:Schema.Types.ObjectId,rel:'teams'}],
@@ -41,6 +42,7 @@ var userSchema=new Schema({
         criteria:String,
         startDate:Date,
         endDate:Date,
+        creator:{type:Schema.Types.ObjectId,ref:'users'},
         completed:Boolean,
         createdAt:Date,
         percentage:Number,

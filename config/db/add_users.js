@@ -64,7 +64,7 @@ function later(){
                 NotificationCenterModel.createNotificationCenter(orgObjId,user._id,{},callback);
               },
               function(callback){
-                UserPeriodPointsModel.createUserPeriodPoints(orgObjId,orgObjId,{},callback);
+                UserPeriodPointsModel.createUserPeriodPoints(orgObjId,user._id,{},callback);
               }],
               function(err,results){
                 if(err) console.log(err);

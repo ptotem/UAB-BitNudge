@@ -83,7 +83,7 @@ var UserManagement={
     UserCollection.update({_id:userId},{$pull:{teams:teamId}},callback);
   },
   addFollower:function(userId,followerId,callback){
-    UserCollection.update({userId:userId},{$push:{followers:followerId},$inc:{followerCount:1}},callback);
+    UserCollection.update({_id:userId},{$push:{followers:followerId},$inc:{followerCount:1}},callback);
   },
   giveMedalToUser:function(userId,medalId,callback){
     UserCollection.update({_id:userId},{$push:{medals:medalId}},callback);
@@ -104,9 +104,10 @@ var UserManagement={
       UserCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   },
   addPointsObject:function(userId,pointsObj,callback){
+    console.log(pointsObj);
     if(!pointsObj.date)
       pointsObj.date=new Date();
-    UserCollection.update({userId:userId},{$push:{points:pointsObj},$inc:{totalCash:pointsObj.pointsEarned,totalPoints:pointsObj.pointsEarned}},callback);
+    UserCollection.update({_id:userId},{$push:{points:pointsObj},$inc:{totalCash:pointsObj.pointsEarned,totalPoints:pointsObj.pointsEarned}},callback);
   },
   getUserByAuthentication:function(username,password,fields,options,populationData,callback){
     UserCollection.findOne({email:username},fields,options).populate(populationData).exec(function(err,user){
