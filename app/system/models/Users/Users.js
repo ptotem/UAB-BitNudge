@@ -2,7 +2,6 @@ var UserCollection=require('./UsersCollection.js');
 var mongoose=require('mongoose');
 var UserGoals=require('./UserGoals.js');
 var UserTransactions=require('./Transactions.js');
-var UserChallengesModel=require('./UserChallenges.js');
 var bcrypt=require('bcryptjs');
 
 var UserManagement={
@@ -141,7 +140,6 @@ var UserManagement={
 };
 module.exports={
   Users:UserManagement,
-  Challenges:UserChallengesModel,
   Goals:UserGoals,
   Transactions:UserTransactions
 };

@@ -16,16 +16,13 @@ var Role= {
     getRolesFromQuery:function(query,fields,options,populationData,callback){
       RolesCollection.find(query,fields,options).populate(populationData).exec(callback);
     },
-    setRoleFieldById:function(id,fieldName,value,callback){
-        RolesCollection.update({_id:id},{$set:{fieldName:value}},callback);
-    },
     updateRole:function(id,updateData,callback){
         RolesCollection.update({_id:id},{$set:updateData},callback);
     },
-    add_actionIntoRole:function(id,action_id,callback) {
+    addActionIntoRole:function(id,action_id,callback) {
         RolesCollection.update({_id:id},{$push:{action:action_id}},callback);
     },
-    remove_actionIntoRole:function(id,action_id,callback) {
+    removeActionIntoRole:function(id,action_id,callback) {
         RolesCollection.update({_id:id},{$pull:{action:action_id}},callback);
     }
 };

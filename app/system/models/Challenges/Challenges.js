@@ -15,12 +15,12 @@ var Challenges= {
   getChallengesOfOrganization:function(orgId,fields,options,populationData,callback){
     ChallengesCollection.find({orgId:mongoose.Types.ObjectId(orgId)},fields,options).populate(populationData).exec(callback);
   },
-  updateJobRoleOfOrganization:function(orgId,id,updateData,callback){
+  updateChallengeOfOrganization:function(orgId,id,updateData,callback){
     var temp={};
     temp["challenges.$"]=updateData;
     ChallengesCollection.update({orgId:orgId},{$set:temp},{multi:true},callback);
   },
-  deleteJobRoleOfOrganization:function(orgId,id,callback){
+  deleteChallengeOfOrganization:function(orgId,id,callback){
     ChallengesCollection.update({orgId:orgId},{pull:{challenges:{_id:id}}},{multi:true},callback);
   }
 };

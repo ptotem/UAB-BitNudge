@@ -2,10 +2,16 @@ var JobRolesCollection=require('./JobRolesCollection.js');
 var mongoose=require('mongoose');
 var JobRoles= {
   createJobRole:function(organizationId,data,callback){
-      data.orgId=organizationId;
-      data.createdAt=new Date();
-      var l=new JobRolesCollection(data);
-      l.save(callback);
+    data.createdAt=new Date();
+    JobRoles.getJobRolesOfOrganization(organizationId,"","","",function(err,docExists){
+      if(err) callback(err);
+      if(docExists)
+        JobRolesCollection.update({orgId:organizationId},{$addToSet:{jobRoles:data}},callback);
+      else{
+        var l=new JobRolesCollection({orgId:organizationI,jobRoles:[data]});
+        l.save(callback);
+      }
+    });
   },
   getJobRoleOfOrganization:function(orgId,id,fields,options,populationData,callback){
     JobRolesCollection.findOne({orgId:orgId,'jobRoles._id':id},fields,options).populate(populationData).exec(function(err,obj){
