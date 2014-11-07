@@ -635,7 +635,7 @@
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Add Bulk Employees</h5>
+                                <h5 class="widget-title">Organizational Tags Test</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -677,34 +677,111 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <form id="employees_bulk_upload_form" class="form-horizontal themed">
+
+                                    <form id="organizational-tags-test-form" class="form-horizontal themed ">
                                         <fieldset>
                                             <div class="form-group">
 
-                                                    <div class="col-md-3">
-                                                        <label class="control-label" for="bulk_employees_excel_2">File input</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="controls">
-                                                            <!--<input class="file" id="bulk_employees_excel" type="file" />-->
 
-                                                            <input class="file-no-style" id="bulk_employees_excel_2" type="file" />
+                                                        <div class="col-md-12">
+                                                            <h5>Show users with multi select tags</h5>
+                                                        </div>
+
+                                                    <div class="col-md-5">
+                                                        <label class="control-label" for="tags_multiselect_1-nostyle">Tags</label>
+                                                        <div class="form-group">
+                                                        <div class="controls">
+                                                            <select multiple="multiple" id="tags_multiselect_1-nostyle" class="col-md-12" style="height:140px">
+                                                                <!-- <option value="AK">Alaska</option> -->
+                                                                <!-- <option value="HI">Hawaii</option> -->
+                                                                <!-- <option value="CA">California</option> -->
+                                                            </select>
+                                                        </div>
+                                                            </div>
+                                                        <div class="form-actions">
+                                                            <button id="set_reporting_manager" type="submit" class="btn medium btn-primary">
+                                                                Show
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+                                                        <div class="result-block" id="result_1">
                                                         </div>
                                                     </div>
 
                                             </div>
 
 
-                                            <div class="form-actions">
-                                                <button type="reset" class="btn medium btn-danger">
-                                                    Cancel
-                                                </button>
-                                                <button id="upload_btn" type="submit" class="btn medium btn-primary">
-                                                    Upload
-                                                </button>
+                                            <div class="form-group">
+
+
+                                                        <div class="col-md-12">
+                                                            <h5>Show downline of users with single select tag</h5>
+                                                        </div>
+
+                                                    <div class="col-md-5">
+                                                        <label class="control-label" for="tags_select_2">Tags</label>
+                                                        <div class="controls">
+                                                            <select id="tags_select_2" class="with-search">
+                                                                <!-- <option value="AK">Alaska</option> -->
+                                                                <!-- <option value="HI">Hawaii</option> -->
+                                                                <!-- <option value="CA">California</option> -->
+                                                                <!-- <option value="NV">Nevada</option> -->
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="result-block" id="result_2">
+                                                            <ul id="result_2_list"></ul>
+                                                        </div>
+                                                    </div>
+
+
+
+                                            <div class="form-group">
+
+
+                                                        <div class="col-md-12">
+                                                            <h5>Show upline of users with single select tag</h5>
+                                                        </div>
+
+                                                    <div class="col-md-5">
+                                                        <label class="control-label" for="tags_select_3">Tags</label>
+                                                        <div class="controls">
+                                                            <select id="tags_select_3" class="with-search">
+                                                                <!-- <option value="AK">Alaska</option> -->
+                                                                <!-- <option value="HI">Hawaii</option> -->
+                                                                <!-- <option value="CA">California</option> -->
+                                                                <!-- <option value="NV">Nevada</option> -->
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+                                                        <div class="result-block" id="result_3">
+                                                            <ul id="result_3_list"></ul>
+                                                        </div>
+                                                    </div>
+
                                             </div>
+
+                                            <!--<div class="form-actions">-->
+                                            <!--<button type="reset" class="btn medium btn-danger">-->
+                                            <!--Cancel-->
+                                            <!--</button>-->
+                                            <!--<button type="submit" class="btn medium btn-primary">-->
+                                            <!--Save changes-->
+                                            <!--</button>-->
+                                            <!--</div>-->
                                         </fieldset>
                                     </form>
+
+
                                 </div>
                             </div>
                         </div>
@@ -790,42 +867,127 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-$(function () {
-    var row_html;
-    $('#bulk_employees_excel_2').ace_file_input({
-        no_file:'No File ...',
-        btn_choose:'Choose',
-        btn_change:'Change',
-        droppable:false,
-        onchange:null,
-        thumbnail:false //| true | large
-        //whitelist:'gif|png|jpg|jpeg'
-        //blacklist:'exe|php'
-        //onchange:''
-        //
+
+    $.ajax({
+        url:remote_host+"orgtags",
+        type: 'GET',
+        success: function(data){
+            data.forEach(function(tag){
+                $("#tags_select_2").append("<option data-id='"+tag._id+"' value='"+tag.name+"'>"+tag.name+"</option>");
+                $("#tags_select_3").append("<option data-id='"+tag._id+"' value='"+tag.name+"'>"+tag.name+"</option>");
+                $('#tags_multiselect_1-nostyle').append("<option data-id='"+tag._id+"' value='"+tag.name+"'>"+tag.name+"</option>");
+            });
+        },
+        error:function(err){
+            console.log(err);
+        }
     });
-    $("#employees_bulk_upload_form").submit(function(event){
+
+    $("#set_reporting_manager").click(function(event){
         event.preventDefault();
-        var data=new FormData();
-        data.append("users",$("#bulk_employees_excel_2")[0].files[0]);
+        var tagElements=$("#tags_multiselect_1-nostyle :selected");
+        var tagArr=[];
+        $.each(tagElements,function(index,tag){
+            tagArr.push(tag.getAttribute("data-id"));
+        });
+        var tagData={orgtags:tagArr}
         $.ajax({
-            url: remote_host+'org/'+urlParams.orgId+'/excel/user/new',
-            data: data,
-            // contentType: 'multipart/form-data',
-            contentType: false,
-            processData: false,
-            type: 'POST',
+            url:remote_host+"org/"+urlParams.orgId+"/tags/users?orgtags="+JSON.stringify(tagArr),
+            type: 'GET',
+            // data:tagData,
             success: function(data){
-                console.log(data);
+                $("#result_1").text("");
+                $("#result_1").append("<ul>");
+                data.forEach(function(user){
+                    $("#result_1").append("<li data-id='"+user._id+"' value='"+user.name+"'>"+user.name+"</li>");
+                });
+                $("#result_1").append("</ul>");
             },
             error:function(err){
                 console.log(err);
             }
         });
-        return false;
     });
-});
 
+    $("#tags_select_2").change(function(){
+        var tagElement = $("#tags_select_2 :selected")[0];
+        $.ajax({
+            url: remote_host+'org/'+urlParams.orgId+'/tags/users?orgtags='+JSON.stringify([tagElement.getAttribute("data-id")]),
+            type: 'GET',
+            // data: {orgtags: [tagElement.getAttribute("data-id")]},
+            success: function(data){
+                //console.log(data);
+                $("#result_2_list").empty();
+                //$("#result_1").text(data);
+                var downlink_name = [];
+                data.forEach(function(user){
+
+                    $.ajax({
+                        url: remote_host+'org/'+urlParams.orgId+'/users/'+user._id+"/downlink",
+                        type: 'GET',
+                        success: function(ddata){
+                            //$("#result_1").text(data);
+                            downlink_name = [];
+                            ddata.forEach(function(downlink){
+                                console.log("downlink_name");
+                                console.log(downlink_name);
+                                downlink_name.push(downlink.name)
+                            });
+
+                            $("#result_2_list").append("<li class='user_downline' id='"+user._id+"'>"+
+                                    user.name+"" +
+                                    '<ul>' +
+                                    '<li>' + downlink_name + '</li>' +
+                                    '</ul>' +
+                                    "</li>");
+                        }
+                    });
+
+
+                });
+            }
+        });
+    });
+
+    $("#tags_select_3").change(function(){
+        var tagElement = $("#tags_select_3 :selected")[0];
+        $.ajax({
+            url: remote_host+'org/'+urlParams.orgId+'/tags/users?orgtags='+JSON.stringify([tagElement.getAttribute("data-id")]),
+            type: 'GET',
+            // data: {orgtags: [tagElement.getAttribute("data-id")]},
+            success: function(data){
+                //console.log(data);
+                $("#result_3_list").empty();
+                //$("#result_1").text(data);
+                var uplink_name = [];
+                data.forEach(function(user){
+
+                    $.ajax({
+                        url: remote_host+'org/'+urlParams.orgId+'/users/'+user._id+"/uplink",
+                        type: 'GET',
+                        success: function(ddata){
+                            //$("#result_1").text(data);
+                            uplink_name = [];
+                            ddata.forEach(function(uplink){
+                                console.log("uplink_name");
+                                console.log(uplink);
+                                uplink_name.push(uplink.name)
+                            });
+
+                            $("#result_3_list").append("<li class='user_uplink' id='"+user._id+"'>"+
+                                    user.name+"" +
+                                    '<ul>' +
+                                    '<li>' + uplink_name + '</li>' +
+                                    '</ul>' +
+                                    "</li>");
+                        }
+                    });
+
+
+                });
+            }
+        });
+    });
 
 
 

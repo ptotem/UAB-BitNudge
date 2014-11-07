@@ -930,14 +930,17 @@ function get_employees(){
                     $("#employees_list").find('tbody').append(row_html);
 
                 });
+                var oTable1 =
+                        $('#employees_list')
+                            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                                .dataTable( {
+                                    "bPaginate": true,
+                                    "bFilter": true,
+                                    "bLengthChange": true,
+                                    "bSort": false,
+                                    "iDisplayLength": 10
+                                } );
 
-                $('#employees_list').dataTable({
-                    "bPaginate": true,
-                    "bFilter": true,
-                    "bLengthChange": true,
-                    "bSort": false,
-                    "iDisplayLength": 3
-                });
 
             }
         }
@@ -952,6 +955,8 @@ function get_employees(){
 $(function () {
     var row_html;
     get_employees();
+
+
 });
 
 
@@ -1049,6 +1054,54 @@ jQuery(function($) {
     });
 
 });
+</script>
+<script type="text/javascript">
+    var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
+    ace.load_ajax_scripts(scripts, function() {
+        //inline scripts related to this page
+        jQuery(function($) {
+
+            /**
+             var tableTools = new $.fn.dataTable.TableTools( oTable1, {
+			"sSwfPath": "../../copy_csv_xls_pdf.swf",
+	        "buttons": [
+	            "copy",
+	            "csv",
+	            "xls",
+				"pdf",
+	            "print"
+	        ]
+	    } );
+             $( tableTools.fnContainer() ).insertBefore('#sample-table-2');
+             */
+
+
+            $(document).on('click', 'th input:checkbox' , function(){
+                var that = this;
+                $(this).closest('table').find('tr > td:first-child input:checkbox')
+                        .each(function(){
+                            this.checked = that.checked;
+                            $(this).closest('tr').toggleClass('selected');
+                        });
+            });
+
+
+            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+            function tooltip_placement(context, source) {
+                var $source = $(source);
+                var $parent = $source.closest('table')
+                var off1 = $parent.offset();
+                var w1 = $parent.width();
+
+                var off2 = $source.offset();
+                //var w2 = $source.width();
+
+                if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+                return 'left';
+            }
+
+        })
+    });
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->

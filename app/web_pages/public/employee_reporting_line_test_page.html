@@ -635,7 +635,7 @@
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Add Bulk Employees</h5>
+                                <h5 class="widget-title">Employee - Reporting Line Test</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -677,34 +677,67 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <form id="employees_bulk_upload_form" class="form-horizontal themed">
+
+                                    <form id="employee-reporting-line-test-form" class="form-horizontal themed">
                                         <fieldset>
                                             <div class="form-group">
 
-                                                    <div class="col-md-3">
-                                                        <label class="control-label" for="bulk_employees_excel_2">File input</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="controls">
-                                                            <!--<input class="file" id="bulk_employees_excel" type="file" />-->
 
-                                                            <input class="file-no-style" id="bulk_employees_excel_2" type="file" />
+                                                        <div class="col-md-12">
+                                                            <h5>Show single select user upline levels</h5>
+                                                        </div>
+
+                                                        <div class="col-md-5">
+                                                        <label class="control-label" for="users_select_1">Users</label>
+                                                        <div class="controls">
+                                                            <select id="users_select_1" class="with-search col-md-6">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+                                                        <div class="result-block" id="result_1">
+                                                            <ul id="uplink_list"></ul>
                                                         </div>
                                                     </div>
 
                                             </div>
 
+                                            <div class="form-group">
+                                                        <div class="col-md-12">
+                                                            <h5>Show single select user downline levels</h5>
+                                                        </div>
 
-                                            <div class="form-actions">
-                                                <button type="reset" class="btn medium btn-danger">
-                                                    Cancel
-                                                </button>
-                                                <button id="upload_btn" type="submit" class="btn medium btn-primary">
-                                                    Upload
-                                                </button>
+                                                    <div class="col-md-5">
+                                                        <label class="control-label" for="users_select_2">Users</label>
+                                                        <div class="controls">
+                                                            <select id="users_select_2" class="with-search col-md-6">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-12">
+                                                        <div class="result-block" id="result_2">
+                                                            <ul id="downlink_list"></ul>
+                                                        </div>
+                                                    </div>
+
                                             </div>
+
+                                            <!--<div class="form-actions">-->
+                                            <!--<button type="reset" class="btn medium btn-danger">-->
+                                            <!--Cancel-->
+                                            <!--</button>-->
+                                            <!--<button type="submit" class="btn medium btn-primary">-->
+                                            <!--Save changes-->
+                                            <!--</button>-->
+                                            <!--</div>-->
                                         </fieldset>
                                     </form>
+
+
                                 </div>
                             </div>
                         </div>
@@ -790,41 +823,63 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-$(function () {
-    var row_html;
-    $('#bulk_employees_excel_2').ace_file_input({
-        no_file:'No File ...',
-        btn_choose:'Choose',
-        btn_change:'Change',
-        droppable:false,
-        onchange:null,
-        thumbnail:false //| true | large
-        //whitelist:'gif|png|jpg|jpeg'
-        //blacklist:'exe|php'
-        //onchange:''
-        //
-    });
-    $("#employees_bulk_upload_form").submit(function(event){
-        event.preventDefault();
-        var data=new FormData();
-        data.append("users",$("#bulk_employees_excel_2")[0].files[0]);
+
+    function get_employees(){
         $.ajax({
-            url: remote_host+'org/'+urlParams.orgId+'/excel/user/new',
-            data: data,
-            // contentType: 'multipart/form-data',
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(data){
-                console.log(data);
-            },
-            error:function(err){
-                console.log(err);
+            url: remote_host+"org/"+urlParams.orgId+"/users",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    res.forEach(function(user){
+                        option_html = "<option value="+user._id+">"+user.name+"</option>";
+                        $('#users_select_1').append(option_html);
+                        $('#users_select_2').append(option_html);
+                    });
+
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
             }
         });
-        return false;
+    }
+
+    $(function () {
+
+        get_employees();
+
+        $("#users_select_1").change(function(){
+            var userElement = $("#users_select_1 :selected").val();
+            $("#uplink_list").empty();
+            $.ajax({
+                url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement+'/uplink',
+                type: 'GET',
+                success: function(data){
+                    data.forEach(function(uplink){
+                        $("#uplink_list").append("<li>"+uplink.name+"</li>");
+                    });
+                }
+            });
+        });
+
+        $("#users_select_2").change(function(){
+            var userElement = $("#users_select_2 :selected").val();
+            $("#downlink_list").empty();
+            $.ajax({
+                url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement+'/downlink',
+                type: 'GET',
+                success: function(data){
+                    data.forEach(function(downlink){
+                        $("#downlink_list").append("<li>"+downlink.name+"</li>");
+                    });
+                }
+            });
+        });
+
     });
-});
 
 
 
