@@ -2,6 +2,7 @@ var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
 var TransactionModel=require('../../system/models/TransactionMaster');
 var TransactionCollection=require('../../system/models/TransactionMaster/TransactionMasterCollection.js');
+
 var useractions=[];
 var userObj={};
 var actionFn=function(orgId,obj){
@@ -10,22 +11,32 @@ var actionFn=function(orgId,obj){
     var headers=allData[0];
     if(!headers[4])return;
     var actions=[];
+
     allData.forEach(function(data,index){
-        if(index!==0){
-            var actionObj={};
-            data.forEach(function(fieldData,indexNew){
-            });
-            actions.push(actionObj);
-            TransactionModel.createTransactionMaster(orgId,actionObj,function(err){
-                if(err)
-                    console.log("err creating user from excel"+err);
-                else console.log("created Actions from excel"+index);
-            });
+//        console.log(data[6]);
+        if(index!==0) {
+            var actionObj = {};
+
         }
+//        if(indexNew==4)
+        UserCollection.findOne({email:data[6]},function(err, user) {
+//            console.log(user._id);
+            data.forEach(function(fieldData,indexNew) {
+
+                actions.push(actionObj[headers[indexNew]]=fieldData);
+                console.log("actions"+actions);
+                UserCollection.update({_id: user._id}, {$push: {trialTransaction:actions}}, function (err, ans) {
+//
+                });
+            });
+
+        });
+
     });
 };
 var userTags={
     'get /org/:orgId/users/:userId/actions':function(req,res){
+
         UserCollection.findOne({_id: req.params.userId },function(err, action) {
                 console.log(action.transactions);
 //            console.log(action.transactions.length)
@@ -49,6 +60,14 @@ var userTags={
             }
             res.send(action.transactions);
             });
+
+        UserCollection
+            .findOne({_id: req.params.userId })
+            .populate('transactions') .exec(function (err, actions) {
+                if (err) return handleError(err);
+                console.log( actions.transactions.name);
+                // prints "The creator is Aaron"
+            })
     },
     'get /org/:orgId/transactions':function(req,res){
         TransactionCollection.find({}, function(err, data) {
@@ -62,10 +81,20 @@ var userTags={
             res.send(data);
         });
     },
-
+    'get /org/:orgId/user/:userId/goals':function(req,res){
+        UserCollection.findOne({_id: req.params.userId },function(err, data) {
+//            if(data){
+//                data.forEach(function(users){
+//                    console.log("User Name :"+users.name+"Points :"+users.totalPoints)
+//                });
+//            }
+            res.send(data);
+        });
+    },
 
     'get /org/:orgId/users/:userId/downlineactions':function(req,res){
         UserCollection.findOne({reportsTo: req.params.userId }) .populate('reportsTo') .exec(function (err, downlineactions) {
+
                 if (err) return handleError(err);
                 var actions=downlineactions.reportsTo;
                 console.log(actions.name);
@@ -122,6 +151,13 @@ var userTags={
     }
 
 };
+//updateUser:function(req,res){
+//    UsersModel.updateUser(req.params.userId,req.body,function(err,obj){
+//        if(err) res.send("fail");
+//        else
+//            res.send("success");
+//    });
+//},
 var uploadAction={
     'post /org/:orgId/excel/action/new':function(req,res,next){
         var xlsx = require('node-xlsx');

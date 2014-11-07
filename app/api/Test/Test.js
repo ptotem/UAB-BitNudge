@@ -1,6 +1,8 @@
 var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
 var RolesModel=require('../../system/models/Roles');
+var GoalMasterModel=require('../models/GoalMaster');
+var UserGoalsModel=require('../models/Users').Goals;
 var userFn=function(orgId,obj){
     var allData=obj[0].data;
     var headers=allData[0];
@@ -63,6 +65,61 @@ var userEditFn=function(orgId,obj){
         }
     });
 };
+var userGoalFn=function(orgId,obj){
+    var allData=obj[0].data;
+    var headers=allData[0];
+    var goal=[];
+    allData.forEach(function(data,index){
+        var goalMatchData=data[1];
+        var email=data[7];
+//        if(index!==0) {
+////            var goalObj = {};
+//
+//        }
+        if(index!==0){
+            var userGoalObj={};
+            data.forEach(function(fieldData,indexNew){
+                UserCollection.findOne({email:data[7]},function(err, user) {
+                    console.log(user._id);
+                    if(goalMatchData=="Action"){
+                        GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj){
+                            UserGoalsModel.createGoal(user._id,userGoalObj,function(err,obj){
+                                if(err)res.send(err);
+                                else res.send("success");
+                            });
+                        });
+                    }
+//                    else{
+//                        req.body.subgoals.forEach(function(subgoalObj,index){
+//                            GoalMasterModel.getGoalMaster(subgoalObj.subgoal,"","","",function(err,subgoalMasterObj){
+//                                subgoalObj.allowedTransactions=subgoalMasterObj.allowedTransactions;
+//                                if(index==subgoals.length-1){
+//                                    UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
+//                                        if(err)res.send(err);
+//                                        else res.send("success");
+//                                    });
+//                                }
+//                            });
+//                        });
+//                    }
+                    data.forEach(function(fieldData,indexNew) {
+
+                    });
+
+                });
+
+            });
+
+        }
+
+    console.log("goalMatchData");
+    console.log(goalMatchData);
+
+
+
+    });
+};
+
 //this is a temp model cuz this is dummy data. Ideally, this should be the capability model,
 //but that is not being used this test cuz shit can go down.
 var mongoose=require('mongoose');
@@ -235,7 +292,27 @@ var organizationTags={
         });
     }
 };
-var stuff=[userAuthentication,userAuthorization,organizationStructure,organizationTags];
+
+//bulk goal creation
+var usersGoals={
+//    'post /org/:orgId/excel/action/new':function(req,res,next){
+//        var xlsx = require('node-xlsx');
+//        var obj = xlsx.parse(req.files.actions.path); // parses a file
+//        actionFn(req.params.orgId,obj);
+//        res.send(obj);
+//    },
+    'post /org/:orgId/excel/users_goals/new':function(req,res,next){
+        var xlsx = require('node-xlsx');
+        //var obj = xlsx.parse(req.files.users.path); // parses a file
+        var obj = xlsx.parse(req.files.users_goals.path); // parses a file
+        //console.log("----------------------------------- obj -----------------------------------");
+        //console.log(obj);
+        userGoalFn(req.params.orgId,obj);
+        res.send(obj);
+    }
+};
+
+var stuff=[userAuthentication,userAuthorization,organizationStructure,organizationTags, usersGoals];
 module.exports={
   initialize:function(server,handlers){
     stuff.forEach(function(routesObj){

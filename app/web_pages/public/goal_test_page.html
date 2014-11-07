@@ -96,6 +96,11 @@
         .aligned{
             width: 20%;
         }
+
+        .result-block{
+            height: 140px;
+            overflow: auto;
+        }
     </style>
 
 </head>
@@ -309,7 +314,7 @@
             <div class="sidebar-nav-fixed">
 
                 <ul class="menu" id="accordion-menu-js">
-                    <li class="current">
+                    <li>
                         <a href="departments.html"><i class="icon-home"></i>Department List</a>
                     </li>
                     <li>
@@ -330,101 +335,32 @@
                     <li>
                         <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
                     </li>
+                    <li class="current">
+                        <a href="action.html"><i class="icon-home"></i>Actions</a>
+                    </li>
                 </ul>
-
             </div>
             <div class="divider"></div>
             <!-- end aside item: Menu -->
-
         </aside>
         <!-- aside end -->
-
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Employees</h1>
-
+            <h1 id="page-header">Goal Test Page</h1>
             <div class="fluid-container">
-
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
-
-                <div class="row">
-
-                    <article class="col-md-12">
-
-                        <!-- new widget -->
-                        <div class="jarviswidget" id="employees-creation-widget">
-                            <header>
-                                <h2>Add Employees</h2>
-                            </header>
-
-                            <!-- widget div-->
-                            <div>
-                                <!-- widget edit box -->
-                                <div class="jarviswidget-editbox">
-                                    <div>
-                                        <label>Title:</label>
-                                        <input type="text"/>
-                                    </div>
-                                    <div>
-                                        <label>Styles:</label>
-                                        <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                        <span data-widget-setstyle="green" class="green-btn"></span>
-                                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                        <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                        <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                        <span data-widget-setstyle="red" class="red-btn"></span>
-                                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                        <span data-widget-setstyle="black" class="black-btn"></span>
-                                    </div>
-                                </div>
-                                <!-- end widget edit box -->
-
-                                <!-- content -->
-                                <div class="inner-spacer widget-content-padding">
-                                    <!-- content goes here -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="employee_new_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Employee</a><br><br>
-                                            <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Reporting Manager to Employee</a><br><br>
-                                            <a href="employee_tags_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Tags to Employee</a><br><br>
-                                            <a href="action_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Action Creation</a><br><br>
-                                            <a href="action_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Action Test Page</a><br><br>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="employees_new_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Add Bulk Employees</a><br><br>
-                                            <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Edit Bulk Employees</a><br><br>
-                                            <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Employee Reporting Line Test Page</a><br><br>
-                                            <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Organizational Tags Test Page</a><br><br>
-                                            <a href="goal_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Goal Creation</a><br><br>
-                                            <a href="bulk_goal_creation.html" style="padding: 5px;"><i class="cus-add"></i>Bulk Goal Creation</a><br><br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end content -->
-
-                            </div>
-                            <!-- end widget div -->
-                        </div>
-                        <!-- end widget -->
-
-                    </article>
-
-                </div>
-
                     <!--------row 2---------->
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="employees-list-widget">
+                            <div class="jarviswidget" id="action-tags-test-widget">
                                 <header>
-                                    <h2>Employees List</h2>
+                                    <h2>Goal Test</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
-
                                     <div class="jarviswidget-editbox">
                                         <div>
                                             <label>Title:</label>
@@ -443,24 +379,167 @@
                                             <span data-widget-setstyle="black" class="black-btn"></span>
                                         </div>
                                     </div>
-
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <table class="table table-bordered table-hover responsive" id="employees_list">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Roles</th>
-                                                <th>Reporting Officer</th>
-                                                <th>Tags</th>
-                                                <th>Groups/Department</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
+                                        <ul id="queries_tab" class="nav nav-tabs default-tabs">
+                                            <li class="active">
+                                                <a href="#s1" data-toggle="tab">Goal done <br> by selected user</a>
+                                            </li>
+                                            <!--<li>-->
+                                                <!--<a href="#s2" data-toggle="tab" id="actions">Users who have done <br> selected action</a>-->
+                                            <!--</li>-->
+                                            <li>
+                                                <a href="#s3" data-toggle="tab" id="users">Goal done by <br> selected user's downline</a>
+                                            </li>
+                                            <!--<li>-->
+                                                <!--<a href="#s4" data-toggle="tab" id="s4_user">Points earned by <br> selected user's downline</a>-->
+                                            <!--</li>-->
+                                        </ul>
+                                        <div id="queries_tabContent" class="tab-content">
+                                            <div class="tab-pane fade in active" id="s1">
+                                                <form id="test_1" class="form-horizontal themed">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label class="control-label" for="users_select">User</label>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="controls">
+                                                                        <select id="users_select" class="with-search">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="action_result_block1" id="result_1_action">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
 
+                                            <div class="tab-pane fade" id="s2">
+                                                <form id="action-tags-test-form-tab2" class="form-horizontal themed">
+                                                    <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5>Show users who have done action single select tag</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="action_select_2">Actions</label>
+                                                            <div class="controls">
+                                                                <select id="action_select_2" class="with-search">
+                                                                     <!--<option value="AK">Alaska</option>-->
+                                                                     <!--<option value="HI">Hawaii</option>-->
+                                                                     <!--<option value="CA">California</option>-->
+                                                                     <!--<option value="NV">Nevada</option>-->
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="action_result_block2" id="result_2_action">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                        </fieldset>
+                                                    </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="s3">
+                                                <form id="action-tags-test-form-tab3" class="form-horizontal themed">
+                                                    <fieldset>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5>Show action done by downline with single select tag</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="action_select_user">User</label>
+                                                            <div class="controls">
+                                                                <select id="action_select_user" class="with-search">
+                                                                    <!--<option>System Analysts</option>-->
+                                                                    <!--<option>Administrator</option>-->
+                                                                    <!--<option>Manager</option>-->
+                                                                    <!--<option>Employee</option>-->
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="action_select_action">Action</label>
+                                                            <div class="controls">
+                                                                <select id="action_select_action" class="with-search">
+                                                                    <!-- <option value="AK">Alaska</option> -->
+                                                                    <!-- <option value="HI">Hawaii</option> -->
+                                                                    <!-- <option value="CA">California</option> -->
+                                                                    <!-- <option value="NV">Nevada</option> -->
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="action_result_block3" id="result_3_action">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                        </fieldset>
+                                                    </form>
+
+                                            </div>
+                                            <div class="tab-pane fade" id="s4">
+                                                <form id="action-tags-test-form-tab4" class="form-horizontal themed">
+                                                    <fieldset>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <h5>Show points earn by downline with single select tag</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="action_select_4">User</label>
+                                                                    <div class="controls">
+                                                                        <select id="action_select_4" class="with-search">
+                                                                            <!--<option>System Analysts</option>-->
+                                                                            <!--<option>Administrator</option>-->
+                                                                            <!--<option>Manager</option>-->
+                                                                            <!--<option>Employee</option>-->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="action_result_block4" id="result_4_action"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- end content-->
                                 </div>
@@ -547,83 +626,90 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-
-
-
+    var orgId="5417f10a195e61022fff91ee"
     function get_employees(){
+
+        $.ajax({
+            url: remote_host+"org/"+orgId+"/users",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    res.forEach(function(user){
+                        option_html = "<option value="+user._id+">"+user.name+"</option>";
+                        $('#users_select').append(option_html);
+                    });
+                }
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+    function get_user(){
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    var row_html, role, reportsTo, orgTags = [], teams = [];
+                    var option_html;
+//                    console.log(res);
                     res.forEach(function(user){
-                        //console.log(user);
-
-                        if (user.role)
-                            role = user.role.name;
-                        else
-                            role = "";
-
-                        if (user.reportsTo)
-                            reportsTo = user.reportsTo.name;
-                        else
-                            reportsTo = "";
-
-                        if (user.orgtags) {
-                            orgTags = [];
-                            $.each(user.orgtags, function(index, value) {
-                                orgTags.push(value.name)
-                            });
-                        }
-                        else{
-                            orgTags = "";
-                        }
-
-                        if (user.teams) {
-                            teams = [];
-                            $.each(user.teams, function(index, value) {
-                                teams.push(value.name)
-                            });
-                        }
-                        else{
-                            teams = "";
-                        }
-
-
-                        row_html = '<tr>'+
-                                        '<td class="text-center aligned">'+user.name+'</td>'+
-                                        '<td class="text-center aligned">'+role+'</td>'+
-                                        '<td class="text-center aligned">'+reportsTo+'</td>'+
-                                        '<td class="text-center aligned">'+orgTags+'</td>'+
-                                        '<td class="text-center aligned">'+teams+'</td>'+
-                                        '<td class="text-center aligned">'+
-                                            '<div class="block" style="width: 50px;">' +
-                                                '<a href="employee_edit_form.html?userId='+user._id+'"><i class="cus-pencil"></i></a>'+
-                                                '<a href="employee_show.html?userId='+user._id+'"><i class="cus-exclamation"></i></a>'+
-                                            '</div>' +
-                                        '</td>'+
-                                    '</tr>';
-
-                        $("#employees_list").find('tbody').append(row_html);
-
+                        option_html = "<option value="+user._id+">"+user.name+"</option>";
+                        $('#action_select_4').append(option_html);
                     });
-
-                    $('#employees_list').dataTable({
-                        "bPaginate": true,
-                        "bFilter": true,
-                        "bLengthChange": true,
-                        "bSort": false
-                    });
-
                 }
-            }
-            ,
+            },
             error: function(e , msg){
                 //processError(e,msg);
             }
         });
+    }
+    function get_userdata(){
+        var orgId="5417f10a195e61022fff91ee";
+        $.ajax({
+
+                    url: remote_host+"org/"+orgId+"/users",
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+            if(res){
+                var option_html;
+                res.forEach(function(user){
+                    option_html = "<option value="+user._id+">"+user.name+"</option>";
+                    $('#action_select_user').append(option_html);
+                });
+            }
+        },
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+    }
+
+//    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    var orgId="5417f10a195e61022fff91ee"
+    function get_transactions(){
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/transactions",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    res.forEach(function(transaction){
+                        option_html = "<option value="+transaction._id+">"+transaction.name+"</option>";
+                        $('#action_select_2').append(option_html);
+                    });
+                }
+            },
+            error: function(e , msg){
+
+            }
+        });
+
     }
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
@@ -642,18 +728,159 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
-
-            var row_html;
-
             get_employees();
 
+            $("#users_select").change(function(){
+                var orgId="5417f10a195e61022fff91ee"
+                var selected_user = $("#users_select :selected").val();
+                console.log("selected_user");
+//                console.log(selected_user);
+                console.log(selected_user);
 
+                $.ajax({
+                    url: remote_host+"org/"+orgId+"/user/"+selected_user+"/goals",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(res) {
+                        if(res){
+                            res.trailGoal.forEach(function(goal){
+                                console.log(goal);
+                            })
+                            var option_html;
+                                console.log(res);
+                        }
+                    },
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+            });
+        });
+        $(function () {
+            $("#action_select_4").change(function(){
+                var orgId="5417f10a195e61022fff91ee"
+                var selected_user = $("#action_select_4 :selected").val();
+//                console.log(selected_user);
 
-
+                $.ajax({
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(res) {
+                        if(res){
+                            var option_html;
+                            res.forEach(function(users){
+                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
+                            });
+                        }
+                    },
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+            });
         });
 
+        $(function () {
+
+
+            $("#action_select_2").click(function(){
+                get_transactions();
+//                console.log('hello');
+                var orgId="5417f10a195e61022fff91ee"
+                var selected_transactions = $("#action_select_2 :selected").val();
+//                console.log(selected_transactions);
+
+                $.ajax({
+                    // /org/:orgId/users/:userId/actions
+                    url: remote_host+"org/"+urlParams.orgId+"/transactions"+selected_transactions+"users",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(res) {
+//                        console.log(res);
+                    },
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+            });
+        });
+
+        $(function () {
+            $("#s4_user").click(function(){
+                get_user();
+
+            });
+        });
+        // function for points:(last Tab)
+        $(function () {
+            $("#action_select_4").change(function(){
+                var orgId="5417f10a195e61022fff91ee"
+                var selected_user = $("#action_select_4 :selected").val();
+//                console.log(selected_user);
+
+                $.ajax({
+                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(res) {
+                        if(res){
+                            var option_html;
+                            res.forEach(function(users){
+                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
+                            });
+                        }
+                    },
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+            });
+        });
+        // function for actions:(third Tab)
+        $(function () {
+            $("#action_select_user").change(function(){
+                var orgId="5417f10a195e61022fff91ee";
+                var user = $("#action_select_user :selected").val();
+//                var tr="5421698c67481ed26eab3e3d";
+                $.ajax({
+                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
+                    type: 'GET',
+                    dataType: 'json',
+                            success: function(res) {
+                                if(res){
+                                    var option_html;
+                                    res.forEach(function(users){
+                                        console.log(users.trialGoal);
+//                                        users.trialGoal.forEach(function(goal) {
+//                                            console.log(goal)
+////                                            option_html = "<option value=" + user._id + ">" + user.trialGoal + "</option>";
+////                                            $('#action_select_user').append(option_html);
+//                                        });
+                                    });
+                                }
+                            },
+
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+
+            });
+        });
+
+        $(function () {
+            $("#actions").click(function(){
+                get_transactions();
+
+            });
+        });
+        $(function () {
+            $("#users").click(function(){
+                get_userdata();
+
+            });
+        });
         /** end DEMO SCRIPTS **/
 
     } else {
@@ -663,6 +890,7 @@
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
 </script>
+
 
 <!-- REQUIRED: iButton -->
 <script src="js/include/jquery.ibutton.min.js"></script>

@@ -342,85 +342,19 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Employees</h1>
+            <h1 id="page-header">Bulk Goal Upload</h1>
 
             <div class="fluid-container">
 
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
-
-                <div class="row">
-
-                    <article class="col-md-12">
-
-                        <!-- new widget -->
-                        <div class="jarviswidget" id="employees-creation-widget">
-                            <header>
-                                <h2>Add Employees</h2>
-                            </header>
-
-                            <!-- widget div-->
-                            <div>
-                                <!-- widget edit box -->
-                                <div class="jarviswidget-editbox">
-                                    <div>
-                                        <label>Title:</label>
-                                        <input type="text"/>
-                                    </div>
-                                    <div>
-                                        <label>Styles:</label>
-                                        <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                        <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                        <span data-widget-setstyle="green" class="green-btn"></span>
-                                        <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                        <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                        <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                        <span data-widget-setstyle="red" class="red-btn"></span>
-                                        <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                        <span data-widget-setstyle="black" class="black-btn"></span>
-                                    </div>
-                                </div>
-                                <!-- end widget edit box -->
-
-                                <!-- content -->
-                                <div class="inner-spacer widget-content-padding">
-                                    <!-- content goes here -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="employee_new_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Employee</a><br><br>
-                                            <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Reporting Manager to Employee</a><br><br>
-                                            <a href="employee_tags_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Tags to Employee</a><br><br>
-                                            <a href="action_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Action Creation</a><br><br>
-                                            <a href="action_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Action Test Page</a><br><br>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="employees_new_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Add Bulk Employees</a><br><br>
-                                            <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Edit Bulk Employees</a><br><br>
-                                            <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Employee Reporting Line Test Page</a><br><br>
-                                            <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Organizational Tags Test Page</a><br><br>
-                                            <a href="goal_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Goal Creation</a><br><br>
-                                            <a href="bulk_goal_creation.html" style="padding: 5px;"><i class="cus-add"></i>Bulk Goal Creation</a><br><br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end content -->
-
-                            </div>
-                            <!-- end widget div -->
-                        </div>
-                        <!-- end widget -->
-
-                    </article>
-
-                </div>
-
                     <!--------row 2---------->
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="employees-list-widget">
+                            <div class="jarviswidget" id="create-bulk-goals-widget">
                                 <header>
-                                    <h2>Employees List</h2>
+                                    <h2>Bulk Goal Upload</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -446,20 +380,34 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <table class="table table-bordered table-hover responsive" id="employees_list">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Roles</th>
-                                                <th>Reporting Officer</th>
-                                                <th>Tags</th>
-                                                <th>Groups/Department</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
+                                        <form id="employees_bulk_upload_form" class="form-horizontal themed">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="bulk_goals_excel_2">File input</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <!--<input class="file" id="bulk_goals_excel" type="file" />-->
+                                                                <div class="space"></div>
+                                                                <input class="file-no-style" id="bulk_goals_excel_2" type="file" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-actions">
+                                                    <button type="reset" class="btn medium btn-danger">
+                                                        Cancel
+                                                    </button>
+                                                    <button id="upload_btn" type="submit" class="btn medium btn-primary">
+                                                        Upload
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
 
                                     </div>
                                     <!-- end content-->
@@ -543,89 +491,8 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
-<script src="js/app/app_config.js"></script>
-
 <script type="text/javascript">
-    var urlParams = JSON.parse(localStorage.getItem('user_data'));
-
-
-
-    function get_employees(){
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var row_html, role, reportsTo, orgTags = [], teams = [];
-                    res.forEach(function(user){
-                        //console.log(user);
-
-                        if (user.role)
-                            role = user.role.name;
-                        else
-                            role = "";
-
-                        if (user.reportsTo)
-                            reportsTo = user.reportsTo.name;
-                        else
-                            reportsTo = "";
-
-                        if (user.orgtags) {
-                            orgTags = [];
-                            $.each(user.orgtags, function(index, value) {
-                                orgTags.push(value.name)
-                            });
-                        }
-                        else{
-                            orgTags = "";
-                        }
-
-                        if (user.teams) {
-                            teams = [];
-                            $.each(user.teams, function(index, value) {
-                                teams.push(value.name)
-                            });
-                        }
-                        else{
-                            teams = "";
-                        }
-
-
-                        row_html = '<tr>'+
-                                        '<td class="text-center aligned">'+user.name+'</td>'+
-                                        '<td class="text-center aligned">'+role+'</td>'+
-                                        '<td class="text-center aligned">'+reportsTo+'</td>'+
-                                        '<td class="text-center aligned">'+orgTags+'</td>'+
-                                        '<td class="text-center aligned">'+teams+'</td>'+
-                                        '<td class="text-center aligned">'+
-                                            '<div class="block" style="width: 50px;">' +
-                                                '<a href="employee_edit_form.html?userId='+user._id+'"><i class="cus-pencil"></i></a>'+
-                                                '<a href="employee_show.html?userId='+user._id+'"><i class="cus-exclamation"></i></a>'+
-                                            '</div>' +
-                                        '</td>'+
-                                    '</tr>';
-
-                        $("#employees_list").find('tbody').append(row_html);
-
-                    });
-
-                    $('#employees_list').dataTable({
-                        "bPaginate": true,
-                        "bFilter": true,
-                        "bLengthChange": true,
-                        "bSort": false
-                    });
-
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
+    var urlParams=JSON.parse(localStorage.getItem("user_data"));
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -642,15 +509,27 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
+            $("#employees_bulk_upload_form").submit(function(event){
+                event.preventDefault();
+                var data=new FormData();
+                data.append("users_goals",$("#bulk_goals_excel_2")[0].files[0]);
 
-            var row_html;
-
-            get_employees();
-
-
-
+                $.ajax({
+                    url: remote_host+'org/'+urlParams.orgId+'/excel/users_goals/new',
+                    data: data,
+                    // contentType: 'multipart/form-data',
+                    contentType: false,
+                    processData: false,
+                    type: 'POST',
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                });
+                return false;
+            });
 
         });
 
@@ -733,6 +612,7 @@
 
 <!-- DO NOT REMOVE: Theme Config file -->
 <script src="js/config.js"></script>
+<script src="js/app/app_config.js"></script>
 <!-- d3 library placed at the bottom for better performance -->
 <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
 <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->

@@ -18,6 +18,9 @@ var Leaderboard={
   //   else
   //     LeaderboardCollection.findOne({_id:id},fields,options).exec(callback);
   // },
+  makePlayerRankObject:function(rank,playerId){
+    return {rankNo:rank,player:player};
+  },
   getQueryFromDate:function(period,date){
     var currDate,start,end;
     if(period=="month"){

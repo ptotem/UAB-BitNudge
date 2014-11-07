@@ -12,6 +12,7 @@ fs   = require('fs');
 
 var UsersController={
 
+
   createUser:function(req,res){
     UsersModel.createUser(req.params.orgId,req.body,function(err,user){
       // SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
@@ -43,9 +44,8 @@ var UsersController={
               res.send("successfully send");
           }
       });
-  },
 
-    createUser:function(req,res){
+
         UsersModel.createUser(req.params.orgId,req.body,function(err,user){
             // SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
             NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
@@ -62,6 +62,28 @@ var UsersController={
             else
                 res.send("success");
         });
+    },
+    sendMailToUser:function(req,res){
+          var transporter = nodemailer.createTransport({
+               service: 'gmail',
+               auth: {
+                  user: "vandana.coc@gmail.com",
+                  pass: "9234725176"
+               }
+           });
+          var from=req.query.from;
+          transporter.sendMail({
+              from: from, // sender address
+              to: req.query.to, // comma separated list of receivers
+              subject: req.query.subject, // Subject line
+              text: req.query.body // plaintext body
+          }, function(error, response){
+              if(error){
+                  res.send("error");
+              }else{
+                  res.send("successfully send");
+              }
+          });
     },
     updateUserImage:function(req,res){
         fs.readFile(req.files.image.path, function (err, data) {

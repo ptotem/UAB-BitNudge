@@ -25,7 +25,7 @@ var userSchema=new Schema({
     designation:String,
     totalPoints:Number,
     totalCash:Number,
-    transactions:[{
+    trialTransaction:[{
         transactionMaster:{type:Schema.Types.ObjectId,rel:'transactionMasters'},
         date:Date,
         // target:Number,
@@ -33,7 +33,7 @@ var userSchema=new Schema({
         keyParamValue:Number,
         tags:[{tag:{type:Schema.Types.ObjectId,ref:'tags'},tagName:String}]
     }],
-    goals:[{
+    trailGoal:[{
         // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
         // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
         criteria:String,
