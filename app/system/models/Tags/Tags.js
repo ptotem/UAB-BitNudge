@@ -2,7 +2,7 @@ var TagsCollection=require('./TagsCollection.js');
 var mongoose=require('mongoose');
 var Tag= {
   createTag:function(organizationId,data,callback){
-      data.organizationId=organizationId;
+      data.orgId=organizationId;
       data.createdAt=new Date();
       var l=new TagsCollection(data);
       l.save(callback);
@@ -15,7 +15,7 @@ var Tag= {
       TagsCollection.find({orgId:mongoose.Types.ObjectId(orgId),type:type},fields,options).populate(populationData).exec(callback);
   },
   updateTag:function(id,updateData,callback){
-    TagsCollection.update({_id:id},updateData,callback);
+    TagsCollection.update({_id:id},{$set:updateData},callback);
   },
   deleteTag:function(id,callback){
     TagsCollection.remove({_id:id},callback);

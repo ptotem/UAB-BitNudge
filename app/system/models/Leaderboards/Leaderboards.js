@@ -21,6 +21,12 @@ var Leaderboard={
   makePlayerRankObject:function(rank,playerId){
     return {rankNo:rank,player:player};
   },
+  makeTeamRankObject:function(rank,playerId){
+    return {rankNo:rank,team:player};
+  },
+  makePlayerInTeamRankObject:function(rank,playerId){
+    return {rankNo:rank,player:player};
+  },
   getQueryFromDate:function(period,date){
     var currDate,start,end;
     if(period=="month"){

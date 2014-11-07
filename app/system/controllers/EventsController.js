@@ -6,16 +6,18 @@ var GoalMasterModel=require('../models/GoalMaster');
 var LevelsModel=require('../models/Levels');
 var UserModel=tempModel.Users;
 var UserPointsModel=require('../models/UserPeriodPoints');
+var RankController=require('../controllers/PointsEngine/RankController.js');
+var async=require('async');
 var EventsController={
   onRegisterTransaction:function(){
   },
   onApproveTransaction:function(){
   },
-  triggerSystemActivity:function(userId,systemActivityId,callback){
+  triggerSystemActivity:function(orgId,userId,systemActivityId,callback){
     TransactionMasterModel.getTransactionMaster(systemActivityId,"","","",function(err,obj){
       eval("var pointsFn=("+obj.pointsFn+");");
       var pointsEarned=pointsFn();
-      EventsController.triggerUserPointsAddition(userId,pointsEarned,"systemActivity",obj._id,callback);
+      EventsController.triggerUserPointsAddition(orgId,userId,pointsEarned,"systemActivity",obj._id,callback);
     });
   },
   processTransactionForUser:function(userId,transactionData,callback){
@@ -76,7 +78,7 @@ var EventsController={
     //   });
     // });
     var asyncify=function(){
-      UserGoalsModel.getLiveGoalsOfUserWithQuery(userId,{'goals.action.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
+      UserGoalsModel.getLiveGoalsAndChallengesOfUserWithQuery(userId,{'goals.action.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
         var allGoals=goals[0].goals;
         allGoals.forEach(function(goalObj){
           goalObj.action.allowedTransactions.forEach(function(allowedTransaction){
@@ -105,7 +107,7 @@ var EventsController={
         });
       });
     };
-    UserGoalsModel.getLiveGoalsOfUserWithQuery(userId,{'goals.subgoals.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
+    UserGoalsModel.getLiveGoalsAndChallengesOfUserWithQuery(userId,{'goals.subgoals.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
       var allGoals=goals[0].goals;
       allGoals.forEach(function(goalObj){
         goalObj.subgoals.forEach(function(subgoal){
@@ -129,7 +131,7 @@ var EventsController={
                   if(subgoal.targetValue<=subgoal.currentValue)
                     subgoal.done=true;
                 }
-                EventsController.checkGoalStatus(userId,goalObj);
+                EventsController.checkGoalStatus(orgId,userId,goalObj);
                 UserGoalsModel.updateGoalOfUser(userId,goalObj._id,goalObj,callback);
               });
             }
@@ -139,11 +141,11 @@ var EventsController={
       asyncify();
     });
   },
-  onGoalFinished:function(userId,goalObj,callback){
+  onGoalFinished:function(orgId,userId,goalObj,callback){
     var pointsEarned=goalObj.points;
-    EventsController.triggerUserPointsAddition(userId,goalObj.points,'goals',goalObj._id,function(){});
+    EventsController.triggerUserPointsAddition(orgId,userId,goalObj.points,'goals',goalObj._id,function(){});
   },
-  checkGoalStatus:function(userId,goalObj){
+  checkGoalStatus:function(orgId,userId,goalObj){
     if(goalObj.completed)
       return;
     var completed=true;
@@ -156,7 +158,7 @@ var EventsController={
     if(completed){
       goalObj.completed=true;
       console.log(userId+" completed the goal "+goalObj._id);
-      EventsController.onGoalFinished(userId,goalObj,function(){});
+      EventsController.onGoalFinished(orgId,userId,goalObj,function(){});
     }
   },
   // calculateGoalPercentage:function(userId,goalObj){
@@ -187,14 +189,32 @@ var EventsController={
   //   }
   //   return true;
   // },
-  triggerUserPointsAddition:function(userId,pointsEarned,pointsType,pointsFrom,date,callback){
-    UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,type:pointsType,from:pointsFrom},callback);
-    UserPointsModel.addPointsEverywhere(userId,new Date(),pointsEarned,function(){});
-    UserModel.getUser(userId,"teams orgId totalPoints","","",function(err,user){
-      user.teams.forEach(function(teamId){
-        TeamPeriodPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,function(){});
-      });
-      EventsController.triggerLevelCalculation(user.orgId,userId,user.totalPoints,function(){});
+  triggerUserPointsAddition:function(orgId,userId,pointsEarned,pointsType,pointsFrom,date,finalCallback){
+    async.series([
+      function(callback){
+        UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,type:pointsType,from:pointsFrom},callback);
+      },
+      function(callback){
+        UserPointsModel.addPointsEverywhere(userId,new Date(),pointsEarned,callback);
+      },
+      function(callback){
+        UserModel.getUser(userId,"teams orgId totalPoints","","",function(err,user){
+          async.each(user.teams,
+            function(teamId,eachCallback){
+              TeamPeriodPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,eachCallback);
+            },
+            function(err){
+              callback(err);
+            });
+        });
+      },
+      function(callback){
+        EventsController.triggerLevelCalculation(orgId,userId,user.totalPoints,callback);
+      },
+      function(callback){
+        RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",new Date(),callback);
+      }],
+      function(err,results){
     });
   },
   // triggerRankCalculation:function(orgId){

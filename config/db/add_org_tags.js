@@ -1,10 +1,11 @@
 var fs=require('fs');
-var TransactionMasterModel=require('../../app/system/models/TransactionMaster/TransactionMaster.js');
+var TagsModel=require('../../app/system/models/OrgTags/OrgTags.js');
 var test=process.argv;
 var mongoose=require('mongoose');
 var readline=require('readline');
 test.shift();
 test.shift();
+var orgObjId;
 if(!test[0]){
   console.log("Please enter the json file as a command line argument");
   process.exit();
@@ -43,11 +44,12 @@ function later(){
     if (err) throw err;
     var objects=JSON.parse(data);
     if(objects instanceof Array){
-      objects.forEach(function(object){
-          TransactionMasterModel.createTransactionMaster(orgObjId,object,function(err,obj){
-            console.log("done writing "+object+" to database");
-          });
-      });
+        objects.forEach(function(object){
+            console.log(object);
+            TagsModel.createTag(orgObjId,object,function(err,obj){
+              console.log("done writing "+object+" to database");
+            });
+        });
     }
   });
 }
