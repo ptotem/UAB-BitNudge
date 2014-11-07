@@ -63,6 +63,44 @@ var userEditFn=function(orgId,obj){
         }
     });
 };
+
+var userGoalFn=function(orgId,obj){
+    var allData=obj[0].data;
+    var headers=allData[0];
+
+    console.log("allData");
+    console.log(allData);
+
+    console.log("headers");
+    console.log(headers);
+
+//    if(!headers[4])return;
+//    var users=[];
+//    allData.forEach(function(data,index){
+//        if(index!==0){
+//            var userObj={};
+//            data.forEach(function(fieldData,indexNew){
+//                if(indexNew==4)
+//                    RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
+//                        // userObj[headers[indexNew]]=[role._id];
+//                        if(err) console.log(err);
+//                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{roles:[role[0]._id]}},function(err,ans){
+//                            if(err) console.log(err);
+//                            else console.log("setted roles");
+//                        });
+//                    });
+//                else userObj[headers[indexNew]]=fieldData;
+//            });
+//            // users.push(userObj);
+//            UserModel.createUser(orgId,userObj,function(err){
+//                if(err)
+//                    console.log("err creating user from excel"+err);
+//                else console.log("created User from excel"+index);
+//            });
+//        }
+//    });
+};
+
 //this is a temp model cuz this is dummy data. Ideally, this should be the capability model,
 //but that is not being used this test cuz shit can go down.
 var mongoose=require('mongoose');
@@ -235,7 +273,21 @@ var organizationTags={
         });
     }
 };
-var stuff=[userAuthentication,userAuthorization,organizationStructure,organizationTags];
+
+//bulk goal creation
+var usersGoals={
+    'post /org/:orgId/excel/users_goals/new':function(req,res,next){
+        var xlsx = require('node-xlsx');
+        //var obj = xlsx.parse(req.files.users.path); // parses a file
+        var obj = xlsx.parse(req.files.users_goals.path); // parses a file
+        //console.log("----------------------------------- obj -----------------------------------");
+        //console.log(obj);
+        userGoalFn(req.params.orgId,obj);
+        res.send(obj);
+    }
+};
+
+var stuff=[userAuthentication,userAuthorization,organizationStructure,organizationTags, usersGoals];
 module.exports={
   initialize:function(server,handlers){
     stuff.forEach(function(routesObj){

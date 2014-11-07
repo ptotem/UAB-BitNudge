@@ -539,22 +539,6 @@
 
         });
 
-        // $("#upload_btn").click(function(){
-        //   $.ajax({
-        //     url: remote_host+'org/'+urlParams.orgId+'/excel/user/new',
-        //     data: $("#bulk_employees_excel_2")[0].files[0],
-        //     contentType: 'multipart/form-data',
-        //     // processData: false,
-        //     type: 'POST',
-        //     success: function(data){
-        //       console.log(data);
-        //     },
-        //     error:function(err){
-        //       console.log(err);
-        //     }
-        //   });
-        //   return false;
-        // });
         $("#employees_bulk_upload_form").submit(function(event){
           event.preventDefault();
           var data=new FormData();

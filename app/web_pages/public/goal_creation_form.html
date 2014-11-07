@@ -797,10 +797,10 @@
 
                 var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
                 //new Date(year, month, day, hours, minutes, seconds, milliseconds)
-                var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1]), parseInt(goal_start_date.split("-")[0]));
+                var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1])-1, parseInt(goal_start_date.split("-")[0]));
 
                 var goal_end_date = $("#goal-end-date-js").find(".datepicker-input").val();
-                var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1]), parseInt(goal_end_date.split("-")[0]));
+                var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1])-1, parseInt(goal_end_date.split("-")[0]));
 
                 var goal_points = $("#goal_points").val();
 
