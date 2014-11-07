@@ -6,7 +6,7 @@ var jobRolesSchema=new Schema({
   jobRoles:[{
     name:String
   }],
-  createdAt:Date,
+  createdAt:Date
 });
 var JobRoles=mongoose.model('jobRoles',jobRolesSchema);
 module.exports=JobRoles;

@@ -84,9 +84,6 @@ var Team= {
 //        TeamsCollection.findOne({members:id},fields,options).populate(populationData).exec(callback));
 
     },
-    setTeamFieldById: function (id, fieldName, value, callback) {
-        TeamsCollection.update({_id: id}, {$set: {fieldName: value}}, callback);
-    },
 //    getTeamsOfOrganization:function(orgId, fields,options, populationData,callback) {
 //      TeamsCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
 //    },

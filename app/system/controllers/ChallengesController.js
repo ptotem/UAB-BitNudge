@@ -29,6 +29,13 @@ var ChallengesController={
       });
     }
   },
+  createChallenge:function(req,res){
+    ChallengesModel.createChallenge(req.params.orgId,req.body,function(err,obj){
+      if(err)
+        res.send(err);
+      else res.send("success");
+    });
+  },
   getChallenge:function(req,res){
     ChallengesModel.getChallenge(req.params.id,function(err,obj){
       res.send(obj);
