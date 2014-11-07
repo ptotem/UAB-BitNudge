@@ -90,7 +90,8 @@
     <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png"
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-    <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+
+    <!--<link href="css/customstyle.css" rel="stylesheet" type="text/css">-->
 
     <style>
         .aligned{
@@ -342,7 +343,7 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Assign Role Ability</h1>
+            <h1 id="page-header">Goal Creation</h1>
 
             <div class="fluid-container">
 
@@ -352,9 +353,9 @@
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="new-role-widget">
+                            <div class="jarviswidget" id="goal-creation-widget">
                                 <header>
-                                    <h2>Assign Role Ability</h2>
+                                    <h2>Goal Creation</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -380,27 +381,96 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <form id="role_ability_form" class="form-horizontal themed">
+                                        <form id="goal_creation_form" class="form-horizontal themed">
                                             <fieldset>
-                                                <!--<div class="form-group">-->
-                                                    <!--<div class="row">-->
-                                                        <!--<div  class="col-md-3">-->
-                                                            <!--<label for="role_name">Role</label>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="col-md-9">-->
-                                                            <!--<input type="text" class="form-control"  id="role_name" />-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="goal_name">Name</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="goal_name" />
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <label class="control-label" for="org_role">Role</label>
+                                                            <label class="control-label" for="criteria_select">Criteria</label>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <div class="controls">
-                                                                <select id="org_role" class="with-search">
+                                                                <select id="criteria_select" class="with-search">
+                                                                    <option value="action">Action</option>
+                                                                    <option value="subgoal">Sub-Goal</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label">Start Date</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="input-append date" id="goal-start-date-js" data-date="" data-date-format="dd-mm-yyyy">
+                                                                <input class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
+                                                                <span class="add-on"><i class="cus-calendar-2"></i></span>
+                                                            </div>
+                                                            <p class="help-block">Default datepicker</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label">End Date</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="input-append date" id="goal-end-date-js" data-date="" data-date-format="dd-mm-yyyy">
+                                                                <input class="datepicker-input" size="16" type="text" value="" placeholder="Select a date" />
+                                                                <span class="add-on"><i class="cus-calendar-2"></i></span>
+                                                            </div>
+                                                            <p class="help-block">Default datepicker</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label for="goal_points">Points</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" id="goal_points"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div  class="col-md-3">
+                                                            <label for="target_value">Target Value</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"  id="target_value" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="subgoal_select">Subgoal</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="controls">
+                                                                <select id="subgoal_select" class="with-search">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -409,46 +479,24 @@
 
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div  class="col-md-3">
-                                                            <label>Ability</label>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" for="users_select">Assign To</label>
                                                         </div>
                                                         <div class="col-md-9">
-                                                            <table class="table table-bordered" id="abilities_list">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Name</th>
-                                                                    <th>Check/Uncheck</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                </tbody>
-                                                            </table>
+                                                            <div class="controls">
+                                                                <select id="users_select" class="with-search">
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <!--<div class="form-group" style="display:none">-->
-                                                    <!--<div class="row"><div class="col-md-3"><label class="control-label" for="multiSelect">Abilities</label></div>-->
-                                                        <!--<div class="col-md-9"><div class="controls">-->
-                                                            <!--<select multiple="multiple" id="multiSelect" class="with-search">-->
-                                                                <!--<option value="AK">A1</option>-->
-                                                                <!--<option value="HI">A2</option>-->
-                                                                <!--<option value="CA">A3</option>-->
-                                                                <!--<option value="NV">A4</option>-->
-                                                                <!--<option value="OR">A5</option>-->
-                                                                <!--<option value="WA">A6</option>-->
-                                                                <!--<option value="AZ">A7</option>-->
-                                                            <!--</select>-->
-                                                        <!--</div></div></div>-->
-                                                <!--</div>-->
-
 
                                                 <div class="form-actions">
                                                     <button type="reset" class="btn medium btn-danger">
                                                         Cancel
                                                     </button>
-                                                    <button id="submit-form-btn" type="submit" class="btn medium btn-primary">
-                                                        Submit
+                                                    <button id="goal_submit_btn" type="submit" class="btn medium btn-primary">
+                                                        Create
                                                     </button>
                                                 </div>
                                             </fieldset>
@@ -541,50 +589,6 @@
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-    function get_roles(){
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/roles",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    res.forEach(function(role){
-                        $('#org_role').append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
-                    });
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
-    function get_abilities(){
-        $.ajax({
-            url: remote_host+"abilities",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var row_html;
-                    res.forEach(function(role){
-                        row_html = '<tr>'+
-                                    '<td class="text-center">'+role.name+'</td>'+
-                                    '<td class="text-center"> <input type="checkbox" name="ability" value="'+role._id+'"> </td>'+
-                                   '</tr>';
-
-                        $("#abilities_list").find('tbody').append(row_html);
-                    });
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
     function show_notification(text){
         $.jGrowl(text, {
             header: 'Notification',
@@ -603,6 +607,73 @@
         });
     }
 
+    function get_current_date(){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+
+        if(dd < 10){
+            dd = '0'+dd;
+        }
+        if(mm < 10){
+            mm = '0'+mm;
+        }
+
+        var current_date = dd+'-'+mm+'-'+yyyy;
+        return current_date;
+    }
+
+    function set_datepicker_date(date){
+        var date_field = $(".date");
+        date_field.each(function() {
+            $(this).attr("data-date", date);
+            $(this).find(".datepicker-input").val(date);
+        });
+    }
+
+    function get_employees(){
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    res.forEach(function(user){
+                        option_html = "<option value="+user._id+">"+user.name+"</option>";
+                        $('#users_select').append(option_html);
+                    });
+
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+    function get_actions(){
+        $.ajax({
+                           // /org/:orgId/transactions
+            url: remote_host+"org/"+urlParams.orgId+"/transactions",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    res.forEach(function(transactionMaster){
+                        //console.log(transactionMaster);
+                        //$('#criteria_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
+                    });
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -620,36 +691,83 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            get_roles();
-            get_abilities();
+            if ($('#goal-start-date-js').length){
+                $('#goal-start-date-js, #goal-end-date-js').datepicker()
+            }
 
-            $("#submit-form-btn").click(function() {
-                var role_id = $("#org_role option:selected").val();
-                var assigned_abilities = [];
-                $('#abilities_list input:checked').each(function() {
-                    assigned_abilities.push($(this).val());
-                });
+            get_employees();
+            //get_actions();
 
-                //var selected = $("#emp_role")[0];
-                var roleAbilities = {
-                    //role: role_id,
-                    abilities: assigned_abilities
+            var today_date = get_current_date();
+            set_datepicker_date(today_date);
+
+            $("#goal_submit_btn").click(function(e) {
+                //post url -> /org/:orgId/users/:userId/goals
+                //e.preventDefault();
+                var goal_name = $("#goal_name").val();
+                var criteria_id = $("#criteria_select :selected").val();
+
+                var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
+                //new Date(year, month, day, hours, minutes, seconds, milliseconds)
+                var formatted_start_date = new Date(goal_start_date.split("-")[2], goal_start_date.split("-")[1]+1, goal_start_date.split("-")[0]);
+
+                var goal_end_date = $("#goal-end-date-js").find(".datepicker-input").val();
+                var formatted_end_date = new Date(goal_end_date.split("-")[2], goal_end_date.split("-")[1]+1, goal_end_date.split("-")[0]);
+
+                var goal_points = $("#goal_points").val();
+                var target_value = $("#target_value").val();
+                var assign_to = $("#users_select :selected").val();
+
+
+//                goals:[{
+//                    // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
+//                    // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
+//                    criteria:String,
+//                    startDate:Date,
+//                    endDate:Date,
+//                    completed:Boolean,
+//                    createdAt:Date,
+//                    percentage:Number,
+//                    pointsFn:String,
+//                    subgoals:[{
+//                        subgoal:{type:Schema.Types.ObjectId,rel:'goalMasters'},
+//                        allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+//                        currentValue:Number,
+//                        targetValue:Number,
+//                        done:Boolean
+//                    }],
+//                    action:{
+//                        allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
+//                        targetValue:Number,
+//                        currentValue:Number,
+//                    }
+//                }],
+
+                var data = {
+                    assign_to: assign_to,
+                    criteria: "",
+                    startDate: goal_start_date,
+                    endDate: goal_end_date,
+                    targetValue: target_value
                 };
+                console.log("data");
+                console.log(data);
 
-                $.ajax({
-                    ///org/:orgId/roles/:roleId/abilities
-                    url: remote_host+"org/"+urlParams.orgId+"/roles/"+role_id+"/abilities",
-                    type: 'POST',
-                    dataType: 'json',
-                    data: roleAbilities,
-                    success: function(res) {
-                        var success_text = "Abilities assigned to role.";
-                        show_notification(success_text);
-                    } ,
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
+//                $.ajax({
+//                                  // /org/:orgId/users/:userId/goals
+//                    url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/goals",
+//                    type: 'POST',
+//                    dataType: 'json',
+//                    data: data,
+//                    success: function(res) {
+//                        var success_text = "Goal assigned to user.";
+//                        show_notification(success_text);
+//                    } ,
+//                    error: function(e , msg){
+//                        //processError(e,msg);
+//                    }
+//                });
+
                 return false;
             });
 

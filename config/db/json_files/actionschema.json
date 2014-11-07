@@ -1,12 +1,26 @@
-[{ "_id" : "5421698c67481ed26eab3e3d", "name" : "sales calls", "format" : "made %{number} of sales calls", "pointsFn" : "function(t){return t+1;}", "noOfParams" : 1, "type" : "state" },
-{ "_id" : "542504dd0cd725291249eb6d", "name" : "Acquired Clients", "format" : "Acquired %{target} of clients of %{company}", "pointsFn" : "function(num){return num*100;}", "noOfParams" : 2, "type" : "additive" },
-{ "_id" : "54299d25d67c3b9ddf70f5f6", "name" : "Meeting Call Report Submission", "format" : "Submitted report of %{company} on %{product}", "noOfParams" : 2, "type" : "sales", "pointsFn" : "function(t){return 10;}" },
-{ "_id" : "54299d82d67c3b9ddf70f5f7", "name" : "Income Booking", "format" : "Booked income of %{target} with %{company}", "noOfParams" : 2, "type" : "additive", "pointsFn" : "function(t){return t*10;}" },
-{ "_id" : "54299eb7d67c3b9ddf70f5f8", "name" : "Team Work Commendation", "format" : "Received teamwork commendation from %{user}", "noOfParams" : 1, "type" : "sales", "pointsFn" : "function(t){return 25;}" },
-{ "_id" : "543b7a15f392420615a1f34d", "name" : "Logging In", "type" : "System Activity", "pointsFn" : "function(t){return 1;}" },
-{ "_id" : "543b7a3ef392420615a1f34e", "name" : "Generic Post", "type" : "System Activity", "pointsFn" : "function(t){return 2;}" },
-{ "_id" : "543b7a5ef392420615a1f34f", "name" : "Liking a Post", "type" : "System Activity", "pointsFn" : "function(t){return 1;}" },
-{ "_id" : "543b7a72f392420615a1f350", "name" : "Commenting on a Post", "type" : "System Activity", "pointsFn" : "function(t){return 1;}" },
-{ "_id" : "543b7aaaf392420615a1f351", "name" : "Peer Like Receipt on Post", "type" : "System Activity", "pointsFn" : "function(t){return 5;}" },
-{ "_id" : "543b7ac6f392420615a1f352", "name" : "Manager Like Receipt on Post", "type" : "System Activity", "pointsFn" : "function(t){return 10;}" },
-{ "_id" : "543b7ae8f392420615a1f353", "name" : "Like Receipt on Comment", "type" : "System Activity", "pointsFn" : "function(t){return 20;}" }]
+[
+    {
+        "name": "Client Acquisition",
+        "format": "Acquired %{number} clients of %{company}'s %{role}",
+        "keyParam": "number",
+        "paramCategory": "additive",
+        "pointType": "impact",
+        "pointsFn": "function(t){return 5*t;}"
+    },
+    {
+        "name": "Income Booking",
+        "format": "Booked %{income} of %{company}",
+        "keyParam": "income",
+        "paramCategory": "additive",
+        "pointType": "impact",
+        "pointsFn": "function(t){return 5*t;}"
+    },
+    {
+        "name": "Team Work Commendation",
+        "format": "Received %{number} of compliments on %{project}",
+        "keyParam": "number",
+        "paramCategory": "additive",
+        "pointType": "activity",
+        "pointsFn": "function(t){return 5*t;}"
+    }
+]

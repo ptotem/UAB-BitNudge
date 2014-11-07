@@ -342,7 +342,7 @@
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Assign Role Ability</h1>
+            <h1 id="page-header">Add New Action</h1>
 
             <div class="fluid-container">
 
@@ -352,9 +352,9 @@
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="new-role-widget">
+                            <div class="jarviswidget" id="new-action-widget">
                                 <header>
-                                    <h2>Assign Role Ability</h2>
+                                    <h2>Add New Action</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
@@ -380,75 +380,31 @@
 
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <form id="role_ability_form" class="form-horizontal themed">
+                                        <form id="new_action_form" class="form-horizontal themed">
                                             <fieldset>
-                                                <!--<div class="form-group">-->
-                                                    <!--<div class="row">-->
-                                                        <!--<div  class="col-md-3">-->
-                                                            <!--<label for="role_name">Role</label>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="col-md-9">-->
-                                                            <!--<input type="text" class="form-control"  id="role_name" />-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <label class="control-label" for="org_role">Role</label>
+                                                            <label class="control-label" for="actions_select">Select Action</label>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <div class="controls">
-                                                                <select id="org_role" class="with-search">
+                                                                <select id="actions_select" class="with-search">
                                                                 </select>
+                                                            </div>
+                                                            <div id="result_1" class="result-block">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div  class="col-md-3">
-                                                            <label>Ability</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <table class="table table-bordered" id="abilities_list">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Name</th>
-                                                                    <th>Check/Uncheck</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--<div class="form-group" style="display:none">-->
-                                                    <!--<div class="row"><div class="col-md-3"><label class="control-label" for="multiSelect">Abilities</label></div>-->
-                                                        <!--<div class="col-md-9"><div class="controls">-->
-                                                            <!--<select multiple="multiple" id="multiSelect" class="with-search">-->
-                                                                <!--<option value="AK">A1</option>-->
-                                                                <!--<option value="HI">A2</option>-->
-                                                                <!--<option value="CA">A3</option>-->
-                                                                <!--<option value="NV">A4</option>-->
-                                                                <!--<option value="OR">A5</option>-->
-                                                                <!--<option value="WA">A6</option>-->
-                                                                <!--<option value="AZ">A7</option>-->
-                                                            <!--</select>-->
-                                                        <!--</div></div></div>-->
-                                                <!--</div>-->
 
 
                                                 <div class="form-actions">
                                                     <button type="reset" class="btn medium btn-danger">
                                                         Cancel
                                                     </button>
-                                                    <button id="submit-form-btn" type="submit" class="btn medium btn-primary">
-                                                        Submit
+                                                    <button id="submit_action_form_btn" type="submit" class="btn medium btn-primary">
+                                                        Create
                                                     </button>
                                                 </div>
                                             </fieldset>
@@ -540,41 +496,21 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    var transactionMaster;
 
-    function get_roles(){
+    function get_actions(){
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/roles",
+                            // /org/:orgId/transactions
+            url: remote_host+"org/"+urlParams.orgId+"/transactions",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
+                //console.log(res);
+                transactionMaster = res;
                 if(res){
-                    res.forEach(function(role){
-                        $('#org_role').append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
-                    });
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
-    function get_abilities(){
-        $.ajax({
-            url: remote_host+"abilities",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var row_html;
-                    res.forEach(function(role){
-                        row_html = '<tr>'+
-                                    '<td class="text-center">'+role.name+'</td>'+
-                                    '<td class="text-center"> <input type="checkbox" name="ability" value="'+role._id+'"> </td>'+
-                                   '</tr>';
-
-                        $("#abilities_list").find('tbody').append(row_html);
+                    res.forEach(function(transactionMaster){
+                        //console.log(transactionMaster);
+                        $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
                     });
                 }
             }
@@ -603,6 +539,23 @@
         });
     }
 
+    var ary = [];
+
+    function pushToAry(name, val) {
+        var obj = {};
+        obj[name] = val;
+        ary.push(obj);
+    }
+
+    var hasTag = function(this_transaction_id) {
+        var i = null;
+        for (i = 0; transactionMaster.length > i; i += 1) {
+            if (transactionMaster[i]._id === this_transaction_id) {
+                return transactionMaster[i];
+            }
+        }
+        return false;
+    };
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -620,30 +573,91 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            get_roles();
-            get_abilities();
+            get_actions();
 
-            $("#submit-form-btn").click(function() {
-                var role_id = $("#org_role option:selected").val();
-                var assigned_abilities = [];
-                $('#abilities_list input:checked').each(function() {
-                    assigned_abilities.push($(this).val());
+            $('#actions_select').on('change', function () {
+                var this_transaction_id = $(this).val();
+                var this_transaction_obj = hasTag(this_transaction_id);
+                var transaction_format = this_transaction_obj.format;
+
+                var fields = transaction_format.match(/%{([^}]*)}/g);
+
+                $("#result_1").empty();
+
+                var fields_array = [];
+                var selectfields_array = [];
+                if (fields != null) {
+                    $.each(fields, function (key, value) {
+                        fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+                    });
+                    var titlized_field_name, keyParam_html, field_html;
+                    //console.clear();
+                    $.each(fields_array, function (key, value) {
+                        fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
+                        titlized_field_name = fields_array[key].charAt(0).toUpperCase() + fields_array[key].slice(1);
+                        if (fields_array[key] == this_transaction_obj.keyParam) {
+                            keyParam_html = '<label for=transaction_' + this_transaction_id + "_" + fields_array[key] + '>' + titlized_field_name + '</label>' +
+                                         '<input type="text" id=transaction_' + this_transaction_id + "_" + fields_array[key] + ' class="form-control">'
+                            $("#result_1").append(keyParam_html);
+                        }
+                        else{
+                            selectfields_array.push(fields_array[key]);
+                        }
+                    });
+
+                    $.each(selectfields_array, function (key, value) {
+                        field_html = '<select id=select_'+value+' class="with-search col-md-12">'+'</select>';
+                        $.ajax({
+                            url: remote_host+"org/"+urlParams.orgId+"/tags/"+value,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(res) {
+                                if(res){
+                                    res.forEach(function(role){
+                                        $('#select_'+value).append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
+                                    });
+                                }
+                            },
+                            error: function(e , msg){
+                                //processError(e,msg);
+                            }
+                        });
+                        $("#result_1").append(field_html);
+                    });
+
+                }
+            });
+
+
+            $("#submit_action_form_btn").click(function(e) {
+                e.preventDefault();
+                var transaction_id = $("#actions_select option:selected").val();
+                var keyParamValue = $("#result_1").find('input[type=text]').val();
+
+                var select_id, selected_value;
+                var tagJSON = [];
+                $('#result_1').find('select').each(function(i) {
+                    select_id = $(this).attr("id");
+                    selected_value = $("#"+select_id).val();
+                    //pushToAry(select_id.split("_")[1], selected_value);
+                    var tag = { "tagName": select_id.split("_")[1], "tag":selected_value };
+                    tagJSON.push(tag);
                 });
 
-                //var selected = $("#emp_role")[0];
-                var roleAbilities = {
-                    //role: role_id,
-                    abilities: assigned_abilities
+                var data = {
+                    actionId: transaction_id,
+                    keyParamValue: keyParamValue,
+                    tags: tagJSON
                 };
 
                 $.ajax({
-                    ///org/:orgId/roles/:roleId/abilities
-                    url: remote_host+"org/"+urlParams.orgId+"/roles/"+role_id+"/abilities",
+                                  // /org/:orgId/users/:userId/transactions/
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/transactions",
                     type: 'POST',
                     dataType: 'json',
-                    data: roleAbilities,
+                    data: data,
                     success: function(res) {
-                        var success_text = "Abilities assigned to role.";
+                        var success_text = "Action created.";
                         show_notification(success_text);
                     } ,
                     error: function(e , msg){

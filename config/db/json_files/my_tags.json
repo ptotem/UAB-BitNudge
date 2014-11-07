@@ -1,0 +1,6 @@
+[
+    { "name" : "Ptotem", "type" : "company" },
+    { "name" : "BitNudge", "type" : "project" },
+    { "name" : "User", "type" : "role" },
+    { "name" : "Admin", "type" : "role" }
+]

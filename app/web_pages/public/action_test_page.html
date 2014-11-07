@@ -96,6 +96,11 @@
         .aligned{
             width: 20%;
         }
+
+        .result-block{
+            height: 140px;
+            overflow: auto;
+        }
     </style>
 
 </head>
@@ -309,7 +314,7 @@
             <div class="sidebar-nav-fixed">
 
                 <ul class="menu" id="accordion-menu-js">
-                    <li class="current">
+                    <li>
                         <a href="departments.html"><i class="icon-home"></i>Department List</a>
                     </li>
                     <li>
@@ -330,35 +335,32 @@
                     <li>
                         <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
                     </li>
+                    <li class="current">
+                        <a href="action.html"><i class="icon-home"></i>Actions</a>
+                    </li>
                 </ul>
-
             </div>
             <div class="divider"></div>
             <!-- end aside item: Menu -->
-
         </aside>
         <!-- aside end -->
-
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Assign Role Ability</h1>
-
+            <h1 id="page-header">Action Test Page</h1>
             <div class="fluid-container">
-
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
                     <!--------row 2---------->
                     <div class="row">
                         <article class="col-md-12">
                             <!-- new widget -->
-                            <div class="jarviswidget" id="new-role-widget">
+                            <div class="jarviswidget" id="action-tags-test-widget">
                                 <header>
-                                    <h2>Assign Role Ability</h2>
+                                    <h2>Action Test</h2>
                                 </header>
                                 <!-- wrap div -->
                                 <div>
-
                                     <div class="jarviswidget-editbox">
                                         <div>
                                             <label>Title:</label>
@@ -377,83 +379,167 @@
                                             <span data-widget-setstyle="black" class="black-btn"></span>
                                         </div>
                                     </div>
-
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <form id="role_ability_form" class="form-horizontal themed">
-                                            <fieldset>
-                                                <!--<div class="form-group">-->
-                                                    <!--<div class="row">-->
-                                                        <!--<div  class="col-md-3">-->
-                                                            <!--<label for="role_name">Role</label>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="col-md-9">-->
-                                                            <!--<input type="text" class="form-control"  id="role_name" />-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
+                                        <ul id="queries_tab" class="nav nav-tabs default-tabs">
+                                            <li class="active">
+                                                <a href="#s1" data-toggle="tab">Actions done <br> by selected user</a>
+                                            </li>
+                                            <li>
+                                                <a href="#s2" data-toggle="tab" id="actions">Users who have done <br> selected action</a>
+                                            </li>
+                                            <li>
+                                                <a href="#s3" data-toggle="tab" id="users">Actions done by <br> selected user's downline</a>
+                                            </li>
+                                            <li>
+                                                <a href="#s4" data-toggle="tab" id="s4_user">Points earned by <br> selected user's downline</a>
+                                            </li>
+                                        </ul>
+                                        <div id="queries_tabContent" class="tab-content">
+                                            <div class="tab-pane fade in active" id="s1">
+                                                <form id="test_1" class="form-horizontal themed">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label class="control-label" for="users_select">User</label>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="controls">
+                                                                        <select id="users_select" class="with-search">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="action_result_block1" id="result_1_action">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
 
+                                            <div class="tab-pane fade" id="s2">
+                                                <form id="action-tags-test-form-tab2" class="form-horizontal themed">
+                                                    <fieldset>
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label class="control-label" for="org_role">Role</label>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5>Show users who have done action single select tag</h5>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="action_select_2">Actions</label>
                                                             <div class="controls">
-                                                                <select id="org_role" class="with-search">
+                                                                <select id="action_select_2" class="with-search">
+                                                                     <!--<option value="AK">Alaska</option>-->
+                                                                     <!--<option value="HI">Hawaii</option>-->
+                                                                     <!--<option value="CA">California</option>-->
+                                                                     <!--<option value="NV">Nevada</option>-->
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="form-group">
                                                     <div class="row">
-                                                        <div  class="col-md-3">
-                                                            <label>Ability</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <table class="table table-bordered" id="abilities_list">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Name</th>
-                                                                    <th>Check/Uncheck</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                </tbody>
-                                                            </table>
+                                                        <div class="col-md-12">
+                                                            <div class="action_result_block2" id="result_2_action">
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                        </fieldset>
+                                                    </form>
+                                            </div>
+                                            <div class="tab-pane fade" id="s3">
+                                                <form id="action-tags-test-form-tab3" class="form-horizontal themed">
+                                                    <fieldset>
 
-                                                <!--<div class="form-group" style="display:none">-->
-                                                    <!--<div class="row"><div class="col-md-3"><label class="control-label" for="multiSelect">Abilities</label></div>-->
-                                                        <!--<div class="col-md-9"><div class="controls">-->
-                                                            <!--<select multiple="multiple" id="multiSelect" class="with-search">-->
-                                                                <!--<option value="AK">A1</option>-->
-                                                                <!--<option value="HI">A2</option>-->
-                                                                <!--<option value="CA">A3</option>-->
-                                                                <!--<option value="NV">A4</option>-->
-                                                                <!--<option value="OR">A5</option>-->
-                                                                <!--<option value="WA">A6</option>-->
-                                                                <!--<option value="AZ">A7</option>-->
-                                                            <!--</select>-->
-                                                        <!--</div></div></div>-->
-                                                <!--</div>-->
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h5>Show action done by downline with single select tag</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="action_select_user">User</label>
+                                                            <div class="controls">
+                                                                <select id="action_select_user" class="with-search">
+                                                                    <!--<option>System Analysts</option>-->
+                                                                    <!--<option>Administrator</option>-->
+                                                                    <!--<option>Manager</option>-->
+                                                                    <!--<option>Employee</option>-->
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label" for="action_select_action">Action</label>
+                                                            <div class="controls">
+                                                                <select id="action_select_action" class="with-search">
+                                                                    <!-- <option value="AK">Alaska</option> -->
+                                                                    <!-- <option value="HI">Hawaii</option> -->
+                                                                    <!-- <option value="CA">California</option> -->
+                                                                    <!-- <option value="NV">Nevada</option> -->
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
 
-                                                <div class="form-actions">
-                                                    <button type="reset" class="btn medium btn-danger">
-                                                        Cancel
-                                                    </button>
-                                                    <button id="submit-form-btn" type="submit" class="btn medium btn-primary">
-                                                        Submit
-                                                    </button>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="action_result_block3" id="result_3_action">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </fieldset>
-                                        </form>
+                                                        </fieldset>
+                                                    </form>
 
+                                            </div>
+                                            <div class="tab-pane fade" id="s4">
+                                                <form id="action-tags-test-form-tab4" class="form-horizontal themed">
+                                                    <fieldset>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <h5>Show points earn by downline with single select tag</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="action_select_4">User</label>
+                                                                    <div class="controls">
+                                                                        <select id="action_select_4" class="with-search">
+                                                                            <!--<option>System Analysts</option>-->
+                                                                            <!--<option>Administrator</option>-->
+                                                                            <!--<option>Manager</option>-->
+                                                                            <!--<option>Employee</option>-->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="action_result_block4" id="result_4_action"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- end content-->
                                 </div>
@@ -540,69 +626,89 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-
-    function get_roles(){
+    var orgId="5417f10a195e61022fff91ee"
+    function get_employees(){
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/roles",
+            url: remote_host+"org/"+orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    res.forEach(function(role){
-                        $('#org_role').append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
+                    var option_html;
+                    res.forEach(function(user){
+                        option_html = "<option value="+user._id+">"+user.name+"</option>";
+                        $('#users_select').append(option_html);
                     });
                 }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
-    function get_abilities(){
-        $.ajax({
-            url: remote_host+"abilities",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var row_html;
-                    res.forEach(function(role){
-                        row_html = '<tr>'+
-                                    '<td class="text-center">'+role.name+'</td>'+
-                                    '<td class="text-center"> <input type="checkbox" name="ability" value="'+role._id+'"> </td>'+
-                                   '</tr>';
-
-                        $("#abilities_list").find('tbody').append(row_html);
-                    });
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
-    function show_notification(text){
-        $.jGrowl(text, {
-            header: 'Notification',
-            sticky: false,
-            life: 3000,
-            speed: 500,
-            theme: 'with-icon',
-            position: 'top-right', //this is default position
-            easing: 'easeOutBack',
-            animateOpen: {
-                height: "show"
             },
-            animateClose: {
-                opacity: 'hide'
+            error: function(e , msg){
+                //processError(e,msg);
             }
         });
     }
+    function get_user(){
+        $.ajax({
+            url: remote_host+"org/"+orgId+"/users",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+//                    console.log(res);
+                    res.forEach(function(user){
+                        option_html = "<option value="+user._id+">"+user.name+"</option>";
+                        $('#action_select_4').append(option_html);
+                    });
+                }
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+    function get_userdata(){
+        $.ajax({
 
+                    url: remote_host+"org/"+orgId+"/users",
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+            if(res){
+                var option_html;
+                res.forEach(function(user){
+                    option_html = "<option value="+user._id+">"+user.name+"</option>";
+                    $('#action_select_user').append(option_html);
+                });
+            }
+        },
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+    }
+
+//    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    var orgId="5417f10a195e61022fff91ee"
+    function get_transactions(){
+        $.ajax({
+            url: remote_host+"org/"+orgId+"/transactions",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    res.forEach(function(transaction){
+                        option_html = "<option value="+transaction._id+">"+transaction.name+"</option>";
+                        $('#action_select_2').append(option_html);
+                    });
+                }
+            },
+            error: function(e , msg){
+
+            }
+        });
+
+    }
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -620,41 +726,172 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            get_roles();
-            get_abilities();
+            get_employees();
 
-            $("#submit-form-btn").click(function() {
-                var role_id = $("#org_role option:selected").val();
-                var assigned_abilities = [];
-                $('#abilities_list input:checked').each(function() {
-                    assigned_abilities.push($(this).val());
-                });
-
-                //var selected = $("#emp_role")[0];
-                var roleAbilities = {
-                    //role: role_id,
-                    abilities: assigned_abilities
-                };
+            $("#users_select").change(function(){
+                var orgId="5417f10a195e61022fff91ee"
+                var selected_user = $("#users_select :selected").val();
+//                console.log(selected_user);
 
                 $.ajax({
-                    ///org/:orgId/roles/:roleId/abilities
-                    url: remote_host+"org/"+urlParams.orgId+"/roles/"+role_id+"/abilities",
-                    type: 'POST',
+                                  // /org/:orgId/users/:userId/actions
+                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/actions",
+                    type: 'GET',
                     dataType: 'json',
-                    data: roleAbilities,
                     success: function(res) {
-                        var success_text = "Abilities assigned to role.";
-                        show_notification(success_text);
-                    } ,
+//                        console.log(res);
+                    },
                     error: function(e , msg){
                         //processError(e,msg);
                     }
                 });
-                return false;
             });
+        });
+        $(function () {
+            $("#action_select_4").change(function(){
+                var orgId="5417f10a195e61022fff91ee"
+                var selected_user = $("#action_select_4 :selected").val();
+//                console.log(selected_user);
 
+                $.ajax({
+                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(res) {
+                        if(res){
+                            var option_html;
+                            res.forEach(function(users){
+                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
+                            });
+                        }
+                    },
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+            });
         });
 
+        $(function () {
+
+
+            $("#action_select_2").click(function(){
+                get_transactions();
+//                console.log('hello');
+                var orgId="5417f10a195e61022fff91ee"
+                var selected_transactions = $("#action_select_2 :selected").val();
+//                console.log(selected_transactions);
+
+                $.ajax({
+                    // /org/:orgId/users/:userId/actions
+                    url: remote_host+"org/"+orgId+"/transactions"+selected_transactions+"users",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(res) {
+//                        console.log(res);
+                    },
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+            });
+        });
+
+        $(function () {
+            $("#s4_user").click(function(){
+                get_user();
+
+            });
+        });
+        // function for points:(last Tab)
+        $(function () {
+            $("#action_select_4").change(function(){
+                var orgId="5417f10a195e61022fff91ee"
+                var selected_user = $("#action_select_4 :selected").val();
+//                console.log(selected_user);
+
+                $.ajax({
+                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(res) {
+                        if(res){
+                            var option_html;
+                            res.forEach(function(users){
+                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
+                            });
+                        }
+                    },
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+            });
+        });
+        // function for actions:(third Tab)
+        $(function () {
+            $("#action_select_user").change(function(){
+                var orgId="5417f10a195e61022fff91ee"
+                var user = $("#action_select_user :selected").val();
+//                var tr="5421698c67481ed26eab3e3d";
+                $.ajax({
+                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
+                    type: 'GET',
+                    dataType: 'json',
+                            success: function(res) {
+                                if(res){
+                                    var option_html;
+                                    $('#action_select_action').empty();
+                                    res.forEach(function(users){
+
+                                        users.transactions.forEach(function(transactionsId)
+                                        {
+                                            console.log(transactionsId.transactionMaster);
+                                            option_html = "<option value="+user._id+">"+transactionsId.transactionMaster+"</option>";
+                                            $('#action_select_action').append(option_html);
+//                                            $.ajax({
+//
+//                                                url: remote_host+"orgId/"+orgId+"/transactions/"+tr,
+//                                                type: 'GET',
+//                                                dataType: 'json',
+//                                                success: function(res) {
+//                                                    if(res){
+//                                                        var option_html;
+//                                                        res.forEach(function(transactionname){
+//                                                            console.log("Transaction Name :"+transactionname)
+//                                                        });
+//                                                    }
+//                                                },
+//                                                error: function(e , msg){
+//                                                    //processError(e,msg);
+//                                                }
+//                                            });
+
+                                        })
+                                    });
+                                }
+                            },
+
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
+
+            });
+        });
+
+        $(function () {
+            $("#actions").click(function(){
+                get_transactions();
+
+            });
+        });
+        $(function () {
+            $("#users").click(function(){
+                get_userdata();
+
+            });
+        });
         /** end DEMO SCRIPTS **/
 
     } else {
@@ -664,6 +901,7 @@
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
 </script>
+
 
 <!-- REQUIRED: iButton -->
 <script src="js/include/jquery.ibutton.min.js"></script>
