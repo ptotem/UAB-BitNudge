@@ -14,16 +14,6 @@ var actionFn=function(orgId,obj){
         if(index!==0){
             var actionObj={};
             data.forEach(function(fieldData,indexNew){
-//                if(indexNew==4)
-//                    RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
-//                        // userObj[headers[indexNew]]=[role._id];
-//                        if(err) console.log(err);
-//                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{roles:[role[0]._id]}},function(err,ans){
-//                            if(err) console.log(err);
-//                            else console.log("setted roles");
-//                        });
-//                    });
-//                else userObj[headers[indexNew]]=fieldData;
             });
             actions.push(actionObj);
             TransactionModel.createTransactionMaster(orgId,actionObj,function(err){
@@ -41,38 +31,23 @@ var userTags={
 //            console.log(action.transactions.length)
 
                 var option_html;
-//                action.forEach(function(actiondata){
-//                    console.log("User Name :"+actiondata);
-////                    res.send(actiondata.transactions);
-//                });
-
             for (var i=0;i<=action.transactions.length;i++){
 
                 var array={};
-
                 var userObj={};
                 var transaction=action.transactions[i].transactionMaster;
                 TransactionCollection.findOne({_id: transaction },function(err, actions) {
                     userObj={name:actions.name};
                     useractions.push(userObj);
 //                    useractions[i]=actions.name;
-
-                    array=userObj;
-//                    console.log(array);
-//                    console.log(userObj);
-//                    res.send(useractions);
+                      array=userObj;
 
                 });
-                console.log(array);
-                console.log(userObj);
-//                console.log("Data"+userObj);
+//                console.log(array);
+//                console.log(userObj);
                 useractions.push(userObj);
-//                 console.log(useractions)
-//                 console.log(useractions)
-//                 console.log(userObj)
-//                res.send(useractions);
             }
-//            res.send(action.transactions);
+            res.send(action.transactions);
             });
     },
     'get /org/:orgId/transactions':function(req,res){

@@ -612,7 +612,7 @@
 <!-- REQUIRED: Datatable components -->
 <script src="js/include/jquery.dataTables.min.js"></script>
 <!--<script src="js/include/DT_bootstrap.min.js"></script>-->
-<script src="js/include/DT_bootstrap3.js"></script>
+<script src="js/include/DT_bootstrap3.js"></script>    url: remote_host+"org/"+urlParams.orgId+"/transactions",
 <!--<script src="js/include/dataTables.scroller.min.js"></script>-->
 
 <!-- REQUIRED: Form element skin  -->
@@ -629,7 +629,7 @@
     var orgId="5417f10a195e61022fff91ee"
     function get_employees(){
         $.ajax({
-            url: remote_host+"org/"+orgId+"/users",
+            url: remote_host+"org/"+urlParams.orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -648,7 +648,7 @@
     }
     function get_user(){
         $.ajax({
-            url: remote_host+"org/"+orgId+"/users",
+            url: remote_host+"org/"+urlParams.orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -669,7 +669,7 @@
     function get_userdata(){
         $.ajax({
 
-                    url: remote_host+"org/"+orgId+"/users",
+                    url: remote_host+"org/"+urlParams.orgId+"/users",
                 type: 'GET',
                 dataType: 'json',
                 success: function(res) {
@@ -691,7 +691,7 @@
     var orgId="5417f10a195e61022fff91ee"
     function get_transactions(){
         $.ajax({
-            url: remote_host+"org/"+orgId+"/transactions",
+            url: remote_host+"org/"+urlParams.orgId+"/transactions",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -735,7 +735,7 @@
 
                 $.ajax({
                                   // /org/:orgId/users/:userId/actions
-                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/actions",
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/actions",
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
@@ -754,7 +754,7 @@
 //                console.log(selected_user);
 
                 $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
@@ -784,7 +784,7 @@
 
                 $.ajax({
                     // /org/:orgId/users/:userId/actions
-                    url: remote_host+"org/"+orgId+"/transactions"+selected_transactions+"users",
+                    url: remote_host+"org/"+urlParams.orgId+"/transactions"+selected_transactions+"users",
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
@@ -811,7 +811,7 @@
 //                console.log(selected_user);
 
                 $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
@@ -835,7 +835,7 @@
                 var user = $("#action_select_user :selected").val();
 //                var tr="5421698c67481ed26eab3e3d";
                 $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
                             success: function(res) {
@@ -851,7 +851,7 @@
                                             $('#action_select_action').append(option_html);
 //                                            $.ajax({
 //
-//                                                url: remote_host+"orgId/"+orgId+"/transactions/"+tr,
+//                                                url: remote_host+"orgId/"+urlParams.orgId+"/transactions/"+tr,
 //                                                type: 'GET',
 //                                                dataType: 'json',
 //                                                success: function(res) {

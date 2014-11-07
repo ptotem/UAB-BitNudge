@@ -544,7 +544,7 @@
           var data=new FormData();
           data.append("users",$("#bulk_employees_excel_2")[0].files[0]);
           $.ajax({
-            url: remote_host+'org/'+orgId+'/excel/action/new',
+            url: remote_host+'org/'+urlParams.orgId+'/excel/action/new',
             data: data,
             // contentType: 'multipart/form-data',
             contentType: false,
