@@ -37,7 +37,7 @@ var TransactionController={
         TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
           eval("var pointsFunction=("+points.pointsFn+");");
           var pointsEarned=pointsFunction(transObj.target);
-          EventsController.triggerUserPointsAddition(req.params.userId,pointsEarned,"transactions",transObj._id,function(){});
+          EventsController.triggerUserPointsAddition(req.params.orgId,req.params.userId,pointsEarned,"transactions",transObj._id,function(){});
           EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
             if(err) res.send("fail");
             else res.send("success");

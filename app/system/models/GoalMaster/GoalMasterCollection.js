@@ -3,7 +3,7 @@ var Schema=mongoose.Schema;
 //only goals of criteria "Action" are stored here. Only those types of goals are reusable.
 var goalMasterSchema=new Schema({
     name:String,
-    // criteria:String,
+    // criteria:String,     //criteria is always "Action"
     // noOfSubgoals:Number,
     // subgoals:[{type:Schema.Types.ObjectId,ref:'goalMasters'}],
     action:{

@@ -25,7 +25,7 @@ var userSchema=new Schema({
     designation:String,
     totalPoints:Number,
     totalCash:Number,
-    trialTransaction:[{
+    transactions:[{
         transactionMaster:{type:Schema.Types.ObjectId,rel:'transactionMasters'},
         date:Date,
         // target:Number,
@@ -33,9 +33,11 @@ var userSchema=new Schema({
         keyParamValue:Number,
         tags:[{tag:{type:Schema.Types.ObjectId,ref:'tags'},tagName:String}]
     }],
-    trailGoal:[{
+    goal:[{
         // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
         // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
+        type:String,      //can be challenge or goal
+        challenge:{type:Schema.Types.ObjectId,ref:'challenges'},
         criteria:String,
         startDate:Date,
         endDate:Date,
@@ -58,6 +60,7 @@ var userSchema=new Schema({
     }],
     followers:[{type:Schema.Types.ObjectId,rel:'users'}],
     followerCount:Number,
+    jobRoles:[{type:Schema.Types.Object,rel:'jobRoles'}],
     createdAt:Date,
     // rank:Number,
     quote:String,

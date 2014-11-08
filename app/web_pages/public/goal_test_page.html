@@ -628,9 +628,8 @@
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
     var orgId="5417f10a195e61022fff91ee"
     function get_employees(){
-
         $.ajax({
-            url: remote_host+"org/"+orgId+"/users",
+            url: remote_host+"org/"+url.Params.orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -647,31 +646,54 @@
             }
         });
     }
-    function get_user(){
+    function user_goal(goalId){
+        $('#result_1_action').empty();
+        var urlParams = JSON.parse(localStorage.getItem('user_data'));
+        var orgId="5417f10a195e61022fff91ee"
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users",
+
+            url: remote_host+"org/"+url.Params.orgId+"/goals/"+goalId,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    var option_html;
-//                    console.log(res);
-                    res.forEach(function(user){
-                        option_html = "<option value="+user._id+">"+user.name+"</option>";
-                        $('#action_select_4').append(option_html);
-                    });
+                    $('#result_1_action').append('<h4> Goals Of Selected User <b>'+ res +'</b></h4>');
                 }
             },
             error: function(e , msg){
                 //processError(e,msg);
             }
         });
+
+    }
+    function user_downline_goal(goalId){
+        $('#action_select_action').empty();
+        var urlParams = JSON.parse(localStorage.getItem('user_data'));
+//        var orgId="5417f10a195e61022fff91ee"
+        $.ajax({
+            url: remote_host+"org/"+url.Params.orgId+"/goals/"+goalId,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    option_html = "<option value="+goalId+">"+res+"</option>";
+                    $('#action_select_action').append(option_html);
+
+
+                }
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+
     }
     function get_userdata(){
         var orgId="5417f10a195e61022fff91ee";
         $.ajax({
 
-                    url: remote_host+"org/"+orgId+"/users",
+                    url: remote_host+"org/"+url.Params.orgId+"/users",
                 type: 'GET',
                 dataType: 'json',
                 success: function(res) {
@@ -690,27 +712,7 @@
     }
 
 //    var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var orgId="5417f10a195e61022fff91ee"
-    function get_transactions(){
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/transactions",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-                    res.forEach(function(transaction){
-                        option_html = "<option value="+transaction._id+">"+transaction.name+"</option>";
-                        $('#action_select_2').append(option_html);
-                    });
-                }
-            },
-            error: function(e , msg){
 
-            }
-        });
-
-    }
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -727,27 +729,23 @@
 
         /** DEMO SCRIPTS **/
         $(function () {
-
             get_employees();
-
             $("#users_select").change(function(){
+                $('#result_1_action').empty();
                 var orgId="5417f10a195e61022fff91ee"
                 var selected_user = $("#users_select :selected").val();
-                console.log("selected_user");
-//                console.log(selected_user);
-                console.log(selected_user);
-
                 $.ajax({
-                    url: remote_host+"org/"+orgId+"/user/"+selected_user+"/goals",
+                    url: remote_host+"org/"+url.Params.orgId+"/users/"+selected_user,
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
                         if(res){
-                            res.trailGoal.forEach(function(goal){
-                                console.log(goal);
+                            res.goals.forEach(function(goal){
+                                goal.subgoal.forEach(function(subgoal){
+                                    user_goal(subgoal.subgoal);
+                                 })
                             })
-                            var option_html;
-                                console.log(res);
+
                         }
                     },
                     error: function(e , msg){
@@ -756,107 +754,28 @@
                 });
             });
         });
-        $(function () {
-            $("#action_select_4").change(function(){
-                var orgId="5417f10a195e61022fff91ee"
-                var selected_user = $("#action_select_4 :selected").val();
-//                console.log(selected_user);
+         // Down line Goal call
 
-                $.ajax({
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-                        if(res){
-                            var option_html;
-                            res.forEach(function(users){
-                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
-                            });
-                        }
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-            });
-        });
-
-        $(function () {
-
-
-            $("#action_select_2").click(function(){
-                get_transactions();
-//                console.log('hello');
-                var orgId="5417f10a195e61022fff91ee"
-                var selected_transactions = $("#action_select_2 :selected").val();
-//                console.log(selected_transactions);
-
-                $.ajax({
-                    // /org/:orgId/users/:userId/actions
-                    url: remote_host+"org/"+urlParams.orgId+"/transactions"+selected_transactions+"users",
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-//                        console.log(res);
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-            });
-        });
-
-        $(function () {
-            $("#s4_user").click(function(){
-                get_user();
-
-            });
-        });
-        // function for points:(last Tab)
-        $(function () {
-            $("#action_select_4").change(function(){
-                var orgId="5417f10a195e61022fff91ee"
-                var selected_user = $("#action_select_4 :selected").val();
-//                console.log(selected_user);
-
-                $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-                        if(res){
-                            var option_html;
-                            res.forEach(function(users){
-                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
-                            });
-                        }
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-            });
-        });
-        // function for actions:(third Tab)
         $(function () {
             $("#action_select_user").change(function(){
+                $('#action_select_action').empty();
                 var orgId="5417f10a195e61022fff91ee";
                 var user = $("#action_select_user :selected").val();
 //                var tr="5421698c67481ed26eab3e3d";
                 $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
+                    url: remote_host+"org/"+url.Params.orgId+"/users/"+user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
                             success: function(res) {
                                 if(res){
                                     var option_html;
                                     res.forEach(function(users){
-                                        console.log(users.trialGoal);
-//                                        users.trialGoal.forEach(function(goal) {
-//                                            console.log(goal)
-////                                            option_html = "<option value=" + user._id + ">" + user.trialGoal + "</option>";
-////                                            $('#action_select_user').append(option_html);
-//                                        });
+                                         users.goals.forEach(function(goal) {
+                                             goal.subgoal.forEach(function(subgoal) {
+                                                 user_downline_goal(subgoal.subgoal);
+
+                                             });
+                                        });
                                     });
                                 }
                             },
@@ -869,12 +788,6 @@
             });
         });
 
-        $(function () {
-            $("#actions").click(function(){
-                get_transactions();
-
-            });
-        });
         $(function () {
             $("#users").click(function(){
                 get_userdata();

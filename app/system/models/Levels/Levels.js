@@ -2,10 +2,17 @@ var LevelsCollection=require('./LevelsCollection.js');
 var mongoose = require('mongoose');
 var Levels={
   createLevel:function(orgId,data,callback){
-      data.createdAt=new Date();
-      data.orgId=mongoose.Types.ObjectId(orgId);
-      var l=new LevelsCollection(data);
-      l.save(callback);
+    Levels.getLevelOfOrganization(orgId,"","","",function(err,lev){
+      if(lev){
+        Levels.updateLevel(lev._id,data,callback);
+      }
+      else{
+        data.createdAt=new Date();
+        data.orgId=mongoose.Types.ObjectId(orgId);
+        var l=new LevelsCollection(data);
+        l.save(callback);
+      }
+    });
   },
   // getLevel:function(id,fields,options,populationData,callback){
   //   LevelsCollection.findOne({_id:id},fields,options).populate(populationData).exec(callback);

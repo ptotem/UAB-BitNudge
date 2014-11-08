@@ -7,6 +7,7 @@ var socialEngine=require('../../system/controllers/SocialEngine');
 var userController=require('../../system/controllers/UsersController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var UsersDescription=require('./UsersResourceDescription.js');
+var challengesController=require('../../system/controllers/ChallengesController.js');
 var passport=require('passport');
 fs   = require('fs');
 var userRoutes={
@@ -97,6 +98,21 @@ var goalRoutes={
   }]
 };
 
+var subGoalRoutes={
+  'get /org/:orgId/users/:userId/subgoals':[function(req,res,next){AuthorizationController.isAuthorized('Subgoals','list',req,res,next);},function(req,res){
+    goalController.getCreatedGoalsOfUser(req,res);
+  }]
+};
+
+var challengesRoutes={
+  'get /org/:orgId/users/:userId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','list',req,res,next);},function(req,res){
+    challengesController.getLiveUserChallenges(req,res);
+  }],
+  'post /org/:orgId/users/:userId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','assign',req,res,next);},function(req,res){
+    challengesController.assignChallengeToUser(req,res);
+  }]
+};
+
 var leaderboardRoutes={
   'get /org/:orgId/leaderboard/users':[function(req,res,next){AuthorizationController.isAuthorized('Organizations','read',req,res,next);},function(req,res){
     leaderboardController.getUserLeaderboard(req,res);
@@ -174,7 +190,7 @@ var nudgeMailRoutes={
   //   socialEngine.NudgeMailsController.deleteMail(req,res);
   // }]
 };
-var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,medalRoutes,rankRoutes];
+var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,medalRoutes,rankRoutes,subGoalRoutes,challengesRoutes];
 module.exports={
   initialize:function(server,handlers){
     stuff.forEach(function(routesObj){

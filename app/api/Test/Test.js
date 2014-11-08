@@ -1,8 +1,8 @@
 var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
 var RolesModel=require('../../system/models/Roles');
-var GoalMasterModel=require('../models/GoalMaster');
-var UserGoalsModel=require('../models/Users').Goals;
+var GoalMasterModel=require('../../system/models/GoalMaster');
+var UserGoalsModel=require('../../system/models/Users').Goals;
 var userFn=function(orgId,obj){
     var allData=obj[0].data;
     var headers=allData[0];
@@ -68,54 +68,52 @@ var userEditFn=function(orgId,obj){
 var userGoalFn=function(orgId,obj){
     var allData=obj[0].data;
     var headers=allData[0];
+    if(!headers[4])return;
     var goal=[];
+//    var goal_data={};
+//    console.log(allData.length);
+
     allData.forEach(function(data,index){
-        var goalMatchData=data[1];
+        var criteria=data[1];
         var email=data[7];
-//        if(index!==0) {
-////            var goalObj = {};
-//
-//        }
-        if(index!==0){
-            var userGoalObj={};
-            data.forEach(function(fieldData,indexNew){
-                UserCollection.findOne({email:data[7]},function(err, user) {
-                    console.log(user._id);
-                    if(goalMatchData=="Action"){
-                        GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj){
-                            UserGoalsModel.createGoal(user._id,userGoalObj,function(err,obj){
-                                if(err)res.send(err);
-                                else res.send("success");
-                            });
+        if(index!==0) {
+            var userGoalObj = {};
+            if(criteria=="Action"){
+                var goalObj={};
+                goalObj[headers[1]]=data[1];
+                goalObj[headers[5]]=data[5];
+                goalObj[headers[6]]=data[6];
+//                console.log(goalObj);
+                var action={};
+                var creator={};
+                action[headers[3]]=data[3];
+                action[headers[4]]=data[4];
+                userGoalObj[headers[0]]=data[0];
+                userGoalObj["action"]=action;
+                UserCollection.findOne({email: data[7]}, function (err, user) {
+//                  var r=  "ObjectId("+"'" +user._id+"'" +")"
+                    creator["type"]=mongoose.Types.ObjectId(user._id);
+//                    userGoalObj["creator"]=creator;
+                    console.log(goalObj);
+                    GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
+                        UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
+                            console.log(user._id);
+                            if(err)console.log("error"+err)
+                            else console.log("success");
                         });
-                    }
-//                    else{
-//                        req.body.subgoals.forEach(function(subgoalObj,index){
-//                            GoalMasterModel.getGoalMaster(subgoalObj.subgoal,"","","",function(err,subgoalMasterObj){
-//                                subgoalObj.allowedTransactions=subgoalMasterObj.allowedTransactions;
-//                                if(index==subgoals.length-1){
-//                                    UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
-//                                        if(err)res.send(err);
-//                                        else res.send("success");
-//                                    });
-//                                }
-//                            });
-//                        });
-//                    }
+//                        if(err)console.log("error"+err)
+//                        else console.log("success");
+//                         console.log(userGoalObj);
+                    });
+                });
+            }
+            else{
+
+            }
                     data.forEach(function(fieldData,indexNew) {
 
                     });
-
-                });
-
-            });
-
         }
-
-    console.log("goalMatchData");
-    console.log(goalMatchData);
-
-
 
     });
 };

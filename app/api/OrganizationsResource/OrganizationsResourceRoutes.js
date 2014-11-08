@@ -10,6 +10,7 @@ var AuthorizationController=require('../../system/controllers/AuthorizationContr
 var levelsController=require('../../system/controllers/LevelsController.js');
 var rolesController=require('../../system/controllers/RolesController.js');
 var transactionController=require('../../system/controllers/TransactionsController.js');
+var challengesController=require('../../system/controllers/ChallengesController.js');
 var passport=require('passport');
 
 var organizationRoutes={
@@ -29,6 +30,13 @@ var goalMasterRoutes={
     goalMasterController.getAllGoalMasters(req,res);
   }]
 };
+
+var challengesRoutes={
+  'get /org/:orgId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','create',req,res,next);},function(req,res){
+    challengesController.createChallenge(req,res);
+  }]
+};
+
 var transactionMasterRoutes={
   'get /org/:orgId/transactions':[function(req,res,next){AuthorizationController.isAuthorized('TransactionMasters','list',req,res,next);},function(req,res){
     transactionController.getAllTransactionMasters(req,res);
