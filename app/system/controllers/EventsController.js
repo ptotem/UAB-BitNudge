@@ -191,27 +191,27 @@ var EventsController={
   // },
   triggerUserPointsAddition:function(orgId,userId,pointsEarned,pointsType,pointsFrom,date,finalCallback){
     async.series([
-      function(callback){
-        UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,source:pointsType,from:pointsFrom},callback);
-      },
-      function(callback){
-        UserPointsModel.addPointsEverywhere(userId,new Date(),pointsEarned,callback);
-      },
-      function(callback){
-        UserModel.getUser(userId,"teams orgId totalPoints","","",function(err,user){
-          EventsController.triggerLevelCalculation(orgId,userId,user.totalPoints,callback);
-          async.each(user.teams,
-            function(teamId,eachCallback){
-              TeamPeriodPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,eachCallback);
-            },
-            function(err){
-              callback(err);
-            });
-        });
-      },
       // function(callback){
-      //   RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",new Date(),callback);
-      // }
+      //   UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,source:pointsType,from:pointsFrom},callback);
+      // },
+      // function(callback){
+      //   UserPointsModel.addPointsEverywhere(userId,new Date(),pointsEarned,callback);
+      // },
+      // function(callback){
+      //   UserModel.getUser(userId,"teams orgId totalPoints","","",function(err,user){
+      //     EventsController.triggerLevelCalculation(orgId,userId,user.totalPoints,callback);
+      //     async.each(user.teams,
+      //       function(teamId,eachCallback){
+      //         TeamPeriodPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,eachCallback);
+      //       },
+      //       function(err){
+      //         callback(err);
+      //       });
+      //   });
+      // },
+      function(callback){
+        RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",new Date(),callback);
+      }
     ],
       function(err,results){
         finalCallback(err);

@@ -19,13 +19,13 @@ var Leaderboard={
   //     LeaderboardCollection.findOne({_id:id},fields,options).exec(callback);
   // },
   makePlayerRankObject:function(rank,playerId){
-    return {rankNo:rank,player:player};
+    return {rankNo:rank,player:playerId};
   },
   makeTeamRankObject:function(rank,playerId){
-    return {rankNo:rank,team:player};
+    return {rankNo:rank,team:playerId};
   },
   makePlayerInTeamRankObject:function(rank,playerId){
-    return {rankNo:rank,player:player};
+    return {rankNo:rank,player:playerId};
   },
   getQueryFromDate:function(period,date){
     var currDate,start,end;
@@ -110,8 +110,10 @@ var Leaderboard={
     query['playerRanks.player']=userId;
     query.orgId=orgId;
     LeaderboardCollection.findOne(query,"playerRanks.$",function(err,obj){
-      if(err) res.send(err);
-      else callback(err,obj.playerRanks[0]);
+      if(err) callback(err);
+      if(obj&&obj.playerRanks&&obj.playerRanks[0])
+        callback(err,obj.playerRanks[0]);
+      else callback(err);
     });
   },
   getUserRankOfTeamOfPeriod:function(orgId,teamId,userId,period,date,callback){

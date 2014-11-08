@@ -89,7 +89,11 @@ var UserPoints={
   getUserPointsOfPeriod:function(query,period,date,fields,options,populationData,callback){
     var periodQuery=UserPoints.getQueryFromDate(period,date);
     // var query={userId:userId};
-    UserPeriodPointsCollection.aggregate({$match:query}, {$unwind:'$periods'}, {$match:periodQuery}, {$group:{_id:'$_id',userId:{$last:'$userId'},periods:{$push:'$periods'}}},callback);
+    UserPeriodPointsCollection.aggregate({$match:query}, {$unwind:'$periods'}, {$match:periodQuery}, {$group:{_id:'$_id',userId:{$last:'$userId'},periods:{$push:'$periods'}}},function(err,result){
+      if(result[0]&&result[0].periods)
+        callback(err,result[0].periods[0]);
+      else callback(err,result[0]);
+    });
   },
   getSortedUserPointsOfPeriod:function(query,period,date,callback){
     var periodQuery=UserPoints.getQueryFromDate(period,date);
