@@ -1,6 +1,7 @@
 var fs=require('fs');
 var TeamsModel=require('../../app/system/models/Teams');
 var UsersCollection=require('../../app/system/models/Users/UsersCollection.js');
+var UsersModel=require('../../app/system/models/Users');
 var test=process.argv;
 var mongoose=require('mongoose');
 var readline=require('readline');
@@ -61,9 +62,18 @@ function later(){
             object.members=object.membersTemp;
             delete object.membersTemp;
             TeamsModel.createTeam(orgObjId,object,function(err,team){
+              TeamPeriodPointsModel.createTeamPeriodPoints(orgObjId,team._id,{},function(err){
+                if(err) console.log("encountered error with team period points");
+                else console.log("made team period points");
+              });
+              async.each(team.members,function(memberId,eachCallback){
+                UsersModel.addTeam(memberId,team._id,eachCallback);
+              },
+              function(err,results){
                 if(err) console.log(err);
                 console.log("done writing to database");
                 console.log(team);
+              });
             });
         });
       });

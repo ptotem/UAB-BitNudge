@@ -77,16 +77,16 @@ var UserManagement={
     UserCollection.update({_id:userId},{$set:{lastLogin:date}},callback);
   },
   addTeam:function(userId,teamId,callback){
-    UserCollection.update({_id:userId},{$push:{teams:teamId}},callback);
+    UserCollection.update({_id:userId},{$addToSet:{teams:teamId}},callback);
   },
   removeTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$pull:{teams:teamId}},callback);
   },
   addFollower:function(userId,followerId,callback){
-    UserCollection.update({_id:userId},{$push:{followers:followerId},$inc:{followerCount:1}},callback);
+    UserCollection.update({_id:userId},{$addToSet:{followers:followerId},$inc:{followerCount:1}},callback);
   },
   giveMedalToUser:function(userId,medalId,callback){
-    UserCollection.update({_id:userId},{$push:{medals:medalId}},callback);
+    UserCollection.update({_id:userId},{$addToSet:{medals:medalId}},callback);
   },
   giveItemToUser:function(userId,itemId,callback){
     UserCollection.update({_id:userId},{$push:{items:itemId}},callback);
