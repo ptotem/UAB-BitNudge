@@ -78,7 +78,7 @@ var UserPoints={
     incObj['periods.$.totalPoints']=points;
     var query=UserPoints.getPositionalQueryFromDate(period,date);
     query.userId=userId;
-    UserPeriodPointsCollection.update(query,{$inc:incObj},{upsert:true},function(err,numAffected){
+    UserPeriodPointsCollection.update(query,{$inc:incObj},function(err,numAffected){
       if(err||numAffected===0){
         newSubDoc={date:date,period:period,totalPoints:points};
         UserPeriodPointsCollection.update({userId:userId},{$push:{periods:newSubDoc}},callback);
