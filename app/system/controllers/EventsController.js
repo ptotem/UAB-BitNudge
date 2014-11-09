@@ -6,6 +6,7 @@ var GoalMasterModel=require('../models/GoalMaster');
 var LevelsModel=require('../models/Levels');
 var UserModel=tempModel.Users;
 var UserPointsModel=require('../models/UserPeriodPoints');
+var TeamPeriodPointsModel=require('../models/TeamPeriodPoints');
 var RankController=require('../controllers/PointsEngine/RankController.js');
 var async=require('async');
 var EventsController={
@@ -191,26 +192,27 @@ var EventsController={
   // },
   triggerUserPointsAddition:function(orgId,userId,pointsEarned,pointsType,pointsFrom,date,finalCallback){
     async.series([
-      // function(callback){
-      //   UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,source:pointsType,from:pointsFrom},callback);
-      // },
-      // function(callback){
-      //   UserPointsModel.addPointsEverywhere(userId,new Date(),pointsEarned,callback);
-      // },
-      // function(callback){
-      //   UserModel.getUser(userId,"teams orgId totalPoints","","",function(err,user){
-      //     EventsController.triggerLevelCalculation(orgId,userId,user.totalPoints,callback);
-      //     async.each(user.teams,
-      //       function(teamId,eachCallback){
-      //         TeamPeriodPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,eachCallback);
-      //       },
-      //       function(err){
-      //         callback(err);
-      //       });
-      //   });
-      // },
       function(callback){
-        RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",new Date(),callback);
+        UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,source:pointsType,from:pointsFrom},callback);
+      },
+      function(callback){
+        UserPointsModel.addPointsEverywhere(userId,date,pointsEarned,callback);
+      },
+      function(callback){
+        UserModel.getUser(userId,"teams orgId totalPoints","","",function(err,user){
+          EventsController.triggerLevelCalculation(orgId,user._id,user.totalPoints,function(err,result){
+            async.each(user.teams,
+              function(teamId,eachCallback){
+                TeamPeriodPointsModel.addPointsEverywhere(teamId,date,pointsEarned,eachCallback);
+              },
+              function(err){
+                callback(err);
+            });
+          });
+        });
+      },
+      function(callback){
+        RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",date,callback);
       }
     ],
       function(err,results){
@@ -223,9 +225,7 @@ var EventsController={
   triggerLevelCalculation:function(orgId,userId,totalPoints,callback){
     LevelsModel.getLevelOfOrganization(orgId,"","","",function(err,obj){
       eval("var levelFn=("+obj.calculationFn+");");
-      console.log("question"+totalPoints);
       var levelNo=levelFn(totalPoints);
-      console.log("answer"+levelNo);
       UserModel.setLevelOfUser(userId,levelNo,callback);
     });
   },
