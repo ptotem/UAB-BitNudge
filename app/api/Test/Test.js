@@ -83,7 +83,7 @@ var userGoalFn=function(orgId,obj){
                 goalObj[headers[1]]=data[1];
                 goalObj[headers[5]]=data[5];
                 goalObj[headers[6]]=data[6];
-//                console.log(goalObj);
+                console.log(data[5]);
                 var action={};
                 var creator={};
                 action[headers[3]]=data[3];
@@ -92,22 +92,20 @@ var userGoalFn=function(orgId,obj){
                 userGoalObj["action"]=action;
                 UserCollection.findOne({email: data[7]}, function (err, user) {
 //                  var r=  "ObjectId("+"'" +user._id+"'" +")"
-                    creator["type"]=mongoose.Types.ObjectId(user._id);
+                    creator["type"]=user._id;
 //                    userGoalObj["creator"]=creator;
-                    console.log(goalObj);
+//                    console.log(goalObj);
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
                         UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
                             console.log(user._id);
                             if(err)console.log("error"+err)
                             else console.log("success");
                         });
-//                        if(err)console.log("error"+err)
-//                        else console.log("success");
-//                         console.log(userGoalObj);
                     });
                 });
             }
             else{
+
 
             }
                     data.forEach(function(fieldData,indexNew) {

@@ -4,6 +4,9 @@ var GoalCollection=require('../../system/models/GoalMaster/GoalMasterCollection.
 var TransactionModel=require('../../system/models/TransactionMaster');
 var TransactionCollection=require('../../system/models/TransactionMaster/TransactionMasterCollection.js');
 var userController=require('../../system/controllers/UsersController.js');
+var tempModel=require('../../system/models/Users');
+var UserModel=tempModel.Users;
+var TransactionsModel=tempModel.Transactions;
 var useractions=[];
 var userObj={};
 var actionFn=function(orgId,obj){
@@ -14,27 +17,25 @@ var actionFn=function(orgId,obj){
 //        console.log(data[6]);
         if(index!==0) {
             var actionObj = {};
+            var actionObj1 = {};
+            var transactionname=data[0];
             actionObj[headers[0]] = data[0];
             actionObj[headers[1]] = data[1];
             actionObj[headers[2]] = data[2];
             actionObj[headers[3]] = data[3];
             actionObj[headers[4]] = data[4];
             actionObj[headers[5]] = data[5];
-//        if(indexNew==4)
             UserCollection.findOne({email: data[6]}, function (err, user) {
-//            console.log(user._id);
-//            data.forEach(function(fieldData,indexNew) {
-
-//                actions.push(actionObj[headers[indexNew]]=fieldData);
-                console.log(actionObj);
-                UserCollection.update({_id: user._id}, {$push: {trialTransaction: actionObj}}, function (err, ans) {
-                if(err)console.log("error"+err)
-                    else console.log("success");
-                });
+                TransactionCollection.findOne({name: data[0]} , function(err,transaction)
+                {
+                    actionObj1["transactionMaster"] =transaction._id;
+                        TransactionsModel.addTransaction(user._id,actionObj1,function(err,obj){
+                        if(err)console.log("error"+err)
+                        else console.log("transaction._id");
+                    });
             });
-
-//        });
-        }
+         });
+       }
     });
 };
 var userTags={

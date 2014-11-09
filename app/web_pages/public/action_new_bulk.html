@@ -385,13 +385,13 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <label class="control-label" for="bulk_employees_excel_2">File input</label>
+                                                            <label class="control-label" for="bulk_actions_excel_2">File input</label>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <div class="controls">
                                                                 <!--<input class="file" id="bulk_employees_excel" type="file" />-->
                                                                 <div class="space"></div>
-                                                                <input class="file-no-style" id="bulk_employees_excel_2" type="file" />
+                                                                <input class="file-no-style" id="bulk_actions_excel_2" type="file" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -529,7 +529,7 @@
 
                 $("#employees_list").find('tbody').append(row_html);
             }
-
+//
             $('#employees_list').dataTable({
                 "bPaginate": true,
                 "bFilter": true,
@@ -538,26 +538,30 @@
             });
 
         });
-        $("#actions_bulk_upload_form").submit(function(event){
-          event.preventDefault();
-            var orgId="5417f10a195e61022fff91ee";
-          var data=new FormData();
-          data.append("users",$("#bulk_employees_excel_2")[0].files[0]);
-          $.ajax({
-            url: remote_host+'org/'+orgId+'/excel/action/new',
-            data: data,
-            // contentType: 'multipart/form-data',
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(data){
-              console.log(data);
-            },
-            error:function(err){
-              console.log(err);
-            }
-          });
-          return false;
+        $(function () {
+
+            $("#actions_bulk_upload_form").submit(function(event){
+                event.preventDefault();
+                var data=new FormData();
+                data.append("users",$("#bulk_actions_excel_2")[0].files[0]);
+
+                $.ajax({
+                    url: remote_host + 'org/' + urlParams.orgId + '/excel/action/new',
+                    data: data,
+                    // contentType: 'multipart/form-data',
+                    contentType: false,
+                    processData: false,
+                    type: 'POST',
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                });
+                return false;
+            });
+
         });
 
         /** end DEMO SCRIPTS **/
