@@ -551,8 +551,9 @@
 
 
     function get_employees(){
+        var orgId="5417f10a195e61022fff91ee"
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users",
+            url: remote_host+"org/"+orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {

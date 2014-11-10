@@ -96,11 +96,6 @@
         .aligned{
             width: 20%;
         }
-
-        .result-block{
-            height: 140px;
-            overflow: auto;
-        }
     </style>
 
 </head>
@@ -314,7 +309,7 @@
             <div class="sidebar-nav-fixed">
 
                 <ul class="menu" id="accordion-menu-js">
-                    <li>
+                    <li class="current">
                         <a href="departments.html"><i class="icon-home"></i>Department List</a>
                     </li>
                     <li>
@@ -335,32 +330,38 @@
                     <li>
                         <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
                     </li>
-                    <li class="current">
-                        <a href="action.html"><i class="icon-home"></i>Actions</a>
-                    </li>
                 </ul>
+
             </div>
             <div class="divider"></div>
             <!-- end aside item: Menu -->
+
         </aside>
         <!-- aside end -->
+
         <!-- main content -->
         <div id="page-content">
             <!-- page header -->
-            <h1 id="page-header">Action Test Page</h1>
+            <h1 id="page-header">Employees</h1>
+
             <div class="fluid-container">
+
                 <!-- widget grid -->
                 <section id="widget-grid" class="">
-                    <!--------row 2---------->
+
                     <div class="row">
+
                         <article class="col-md-12">
+
                             <!-- new widget -->
-                            <div class="jarviswidget" id="action-tags-test-widget">
+                            <div class="jarviswidget" id="employees-creation-widget">
                                 <header>
-                                    <h2>Action Test</h2>
+                                    <h2>Add Employees</h2>
                                 </header>
-                                <!-- wrap div -->
+
+                                <!-- widget div-->
                                 <div>
+                                    <!-- widget edit box -->
                                     <div class="jarviswidget-editbox">
                                         <div>
                                             <label>Title:</label>
@@ -379,167 +380,90 @@
                                             <span data-widget-setstyle="black" class="black-btn"></span>
                                         </div>
                                     </div>
+                                    <!-- end widget edit box -->
+
+                                    <!-- content -->
                                     <div class="inner-spacer widget-content-padding">
                                         <!-- content goes here -->
-                                        <ul id="queries_tab" class="nav nav-tabs default-tabs">
-                                            <li class="active">
-                                                <a href="#s1" data-toggle="tab">Actions done <br> by selected user</a>
-                                            </li>
-                                            <li>
-                                                <a href="#s2" data-toggle="tab" id="actions">Users who have done <br> selected action</a>
-                                            </li>
-                                            <li>
-                                                <a href="#s3" data-toggle="tab" id="users">Actions done by <br> selected user's downline</a>
-                                            </li>
-                                            <li>
-                                                <a href="#s4" data-toggle="tab" id="s4_user">Points earned by <br> selected user's downline</a>
-                                            </li>
-                                        </ul>
-                                        <div id="queries_tabContent" class="tab-content">
-                                            <div class="tab-pane fade in active" id="s1">
-                                                <form id="test_1" class="form-horizontal themed">
-                                                    <fieldset>
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <label class="control-label" for="users_select">User</label>
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <div class="controls">
-                                                                        <select id="users_select" class="with-search">
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="action_result_block1" id="result_1_action">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a href="employee_new_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Employee</a><br><br>
+                                                <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Reporting Manager to Employee</a><br><br>
+                                                <a href="employee_tags_form.html" style="padding: 5px;"><i class="cus-add"></i>Assign Tags to Employee</a><br><br>
+                                                <a href="action_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Action Creation</a><br><br>
+                                                <a href="action_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Action Test Page</a><br><br>
                                             </div>
-
-                                            <div class="tab-pane fade" id="s2">
-                                                <form id="action-tags-test-form-tab2" class="form-horizontal themed">
-                                                    <fieldset>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5>Show users who have done action single select tag</h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="action_select_2">Actions</label>
-                                                            <div class="controls">
-                                                                <select id="action_select_2" class="with-search">
-                                                                     <!--<option value="AK">Alaska</option>-->
-                                                                     <!--<option value="HI">Hawaii</option>-->
-                                                                     <!--<option value="CA">California</option>-->
-                                                                     <!--<option value="NV">Nevada</option>-->
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="action_result_block2" id="result_2_action">
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                        </fieldset>
-                                                    </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="s3">
-                                                <form id="action-tags-test-form-tab3" class="form-horizontal themed">
-                                                    <fieldset>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5>Show action done by downline with single select tag</h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="action_select_user">User</label>
-                                                            <div class="controls">
-                                                                <select id="action_select_user" class="with-search">
-                                                                    <!--<option>System Analysts</option>-->
-                                                                    <!--<option>Administrator</option>-->
-                                                                    <!--<option>Manager</option>-->
-                                                                    <!--<option>Employee</option>-->
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="action_select_action">Action</label>
-                                                            <div class="controls">
-                                                                <select id="action_select_action" class="with-search">
-                                                                    <!-- <option value="AK">Alaska</option> -->
-                                                                    <!-- <option value="HI">Hawaii</option> -->
-                                                                    <!-- <option value="CA">California</option> -->
-                                                                    <!-- <option value="NV">Nevada</option> -->
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="action_result_block3" id="result_3_action">
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                        </fieldset>
-                                                    </form>
-
-                                            </div>
-                                            <div class="tab-pane fade" id="s4">
-                                                <form id="action-tags-test-form-tab4" class="form-horizontal themed">
-                                                    <fieldset>
-
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <h5>Show points earn by downline with single select tag</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    <label class="control-label" for="action_select_4">User</label>
-                                                                    <div class="controls">
-                                                                        <select id="action_select_4" class="with-search">
-                                                                            <!--<option>System Analysts</option>-->
-                                                                            <!--<option>Administrator</option>-->
-                                                                            <!--<option>Manager</option>-->
-                                                                            <!--<option>Employee</option>-->
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="action_result_block4" id="result_4_action"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
-
+                                            <div class="col-md-6">
+                                                <a href="employees_new_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Add Bulk Employees</a><br><br>
+                                                <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="cus-add"></i>Edit Bulk Employees</a><br><br>
+                                                <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Employee Reporting Line Test Page</a><br><br>
+                                                <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="cus-add"></i>Organizational Tags Test Page</a><br><br>
+                                                <a href="goal_creation_form.html" style="padding: 5px;"><i class="cus-add"></i>Goal Creation</a><br><br>
+                                                <a href="bulk_goal_creation.html" style="padding: 5px;"><i class="cus-add"></i>Bulk Goal Creation</a><br><br>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!-- end content -->
+
+                                </div>
+                                <!-- end widget div -->
+                            </div>
+                            <!-- end widget -->
+
+                        </article>
+
+                    </div>
+
+                    <!--------row 2---------->
+                    <div class="row">
+                        <article class="col-md-12">
+                            <!-- new widget -->
+                            <div class="jarviswidget" id="employees-list-widget">
+                                <header>
+                                    <h2>Transactions List</h2>
+                                </header>
+                                <!-- wrap div -->
+                                <div>
+
+                                    <div class="jarviswidget-editbox">
+                                        <div>
+                                            <label>Title:</label>
+                                            <input type="text"/>
+                                        </div>
+                                        <div>
+                                            <label>Styles:</label>
+                                            <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                            <span data-widget-setstyle="green" class="green-btn"></span>
+                                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                            <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                            <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                            <span data-widget-setstyle="red" class="red-btn"></span>
+                                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                            <span data-widget-setstyle="black" class="black-btn"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="inner-spacer widget-content-padding">
+                                        <div class="controls">
+                                            <select id="users_select" class="with-search">
+                                            </select>
+                                        <!-- content goes here -->
+                                        <table class="table table-bordered table-hover responsive" id="employees_list">
+                                            <thead>
+                                            <tr>
+                                                <th>KeyParamValue</th>
+                                                <th>Transaction Name</th>
+                                                <th></th>
+                                                <th>Tags Name</th>
+                                                <th>Groups/Department</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+
                                     </div>
                                     <!-- end content-->
                                 </div>
@@ -626,10 +550,35 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var orgId="5417f10a195e61022fff91ee"
+    var orgId="5417f10a195e61022fff91ee";
+
+    var name;
+    function get_transactionName(transactionId){
+        var orgId="5417f10a195e61022fff91ee";
+//   var name;
+//        $('#result_1_action').empty();
+        $.ajax({
+//            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
+            url: remote_host+"org/"+orgId+"/transactions/"+transactionId+"/name",
+//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                       name=res;
+                }
+            },
+            error: function(e , msg){
+
+            }
+        });
+        return name;
+
+    }
     function get_employees(){
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users",
+//            url: remote_host+"org/"+urlParams.orgId+"/users",
+            url: remote_host+"org/"+orgId+"/users",
 //            url: remote_host+"org/"+orgId+"/users",
             type: 'GET',
             dataType: 'json',
@@ -647,134 +596,216 @@
             }
         });
     }
-    function get_user(){
+    function get_transactions(userId){
+        var orgId="5417f10a195e61022fff91ee"
+//        var userId="54181598d465d283167f8d14"
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users",
 //            url: remote_host+"org/"+orgId+"/users",
+            url: remote_host+"org/"+orgId+"/users/"+userId+"/transactions",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    var option_html;
 //                    console.log(res);
-                    res.forEach(function(user){
-                        option_html = "<option value="+user._id+">"+user.name+"</option>";
-                        $('#action_select_4').append(option_html);
+                    var row_html, keyParamsValue, transactions, Tags = [], teams = [] , tagId;
+                    res.transactions.forEach(function(data){
+//                        //console.log(user);
+//
+                        if (data.keyParamValue)
+                            keyParamsValue = data.keyParamValue;
+                        else
+                            keyParamsValue = "";
+//
+                        if (data.transactionMaster)
+                        {
+                            transactions=  get_transactionName(data.transactionMaster);
+                            console.log(data.transactionMaster);
+//                            transactions = res;
+                        }
+
+                        else
+                            transactions = "";
+                         if (data.tag) {
+                             Tags = [];
+                             $.each(data.tags, function(index, value) {
+//                                 tagId=value.tag;
+                                 Tags.push(value.tag)
+                                 Tags.push(value.tagName)
+                             });
+                         }
+                         else{
+                             Tags = "";
+                         }
+//                     })
+
+//
+//                        if (user.t) {
+//                            teams = [];
+//                            $.each(user.teams, function(index, value) {
+//                                teams.push(value.name)
+//                            });
+//                        }
+//                        else{
+//                            teams = "";
+//                        }
+
+//
+                        row_html = '<tr>'+
+                                '<td class="text-center aligned">'+keyParamsValue+'</td>'+
+                                '<td class="text-center aligned">'+transactions+'</td>'+
+                                '<td class="text-center aligned">'+"reportsTo"+'</td>'+
+                                '<td class="text-center aligned">'+"orgTags"+'</td>'+
+                                '<td class="text-center aligned">'+Tags+'</td>'+
+                                '<td class="text-center aligned">'+
+                                '<div class="block" style="width: 50px;">' +
+                                '<a href="transaction_approve_edit.html?transactionId='+data.transactionMaster+'?userId='+userId+'"><i class="cus-pencil"></i></a>'+
+                                '<a href="transaction_show.html?transactionId='+data.transactionMaster+'?userId='+userId+'"><i class="cus-exclamation"></i></a>'+
+                                '</div>' +
+                                '</td>'+
+                                '</tr>';
+
+                        $("#employees_list").find('tbody').append(row_html);
+
                     });
+
+                    $('#employees_list').dataTable({
+                        "bPaginate": true,
+                        "bFilter": true,
+                        "bLengthChange": true,
+                        "bSort": false
+                    });
+//
                 }
-            },
+            }
+            ,
             error: function(e , msg){
                 //processError(e,msg);
             }
         });
     }
-    function get_userdata(){
+    function get_transactions1(){
+        var orgId="5417f10a195e61022fff91ee"
+//        var userId="54181598d465d283167f8d14"
         $.ajax({
-
-                    url: remote_host+"org/"+urlParams.orgId+"/users",
-//                    url: remote_host+"org/"+orgId+"/users",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-            if(res){
-                var option_html;
-                res.forEach(function(user){
-                    option_html = "<option value="+user._id+">"+user.name+"</option>";
-                    $('#action_select_user').append(option_html);
-                });
-            }
-        },
-        error: function(e , msg){
-            //processError(e,msg);
-        }
-    });
-    }
-    function get_username(user_id){
-        $('#result_2_action').empty();
-        $.ajax({
-
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+user_id,
-//            url: remote_host+"org/"+orgId+"/users/"+user_id,
+//            url: remote_host+"org/"+orgId+"/users",
+            url: remote_host+"org/"+orgId+"/users/"+userId+"/transactions",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
-//                    console.log(res.name)
-//                    result_2_action
-                    $('#result_2_action').append('<h4> User <b>'+ res.name +'</b></h4>');
+//                    console.log(res);
+                    var row_html, keyParamsValue, transactions, Tags = [], teams = [] , tagId;
+                    res.transactions.forEach(function(data){
+//                        //console.log(user);
+//
+                        if (data.keyParamValue)
+                            keyParamsValue = data.keyParamValue;
+                        else
+                            keyParamsValue = "";
+//
+                        if (data.transactionMaster)
+                        {
+                            transactions=  get_transactionName(data.transactionMaster);
+//                            transactions = res;
+                        }
+
+                        else
+                            transactions = "";
+                        if (data.tag) {
+                            Tags = [];
+                            $.each(data.tags, function(index, value) {
+//                                 tagId=value.tag;
+                                Tags.push(value.tag)
+                                Tags.push(value.tagName)
+                            });
+                        }
+                        else{
+                            Tags = "";
+                        }
+//                     })
+
+//
+//                        if (user.t) {
+//                            teams = [];
+//                            $.each(user.teams, function(index, value) {
+//                                teams.push(value.name)
+//                            });
+//                        }
+//                        else{
+//                            teams = "";
+//                        }
+
+//
+                        row_html = '<tr>'+
+                                '<td class="text-center aligned">'+keyParamsValue+'</td>'+
+                                '<td class="text-center aligned">'+transactions+'</td>'+
+                                '<td class="text-center aligned">'+"reportsTo"+'</td>'+
+                                '<td class="text-center aligned">'+"orgTags"+'</td>'+
+                                '<td class="text-center aligned">'+Tags+'</td>'+
+                                '<td class="text-center aligned">'+
+                                '<div class="block" style="width: 50px;">' +
+                                '<a href="employee_edit_form.html?userId='+data._id+'"><i class="cus-pencil"></i></a>'+
+                                '<a href="employee_show.html?userId='+data._id+'"><i class="cus-exclamation"></i></a>'+
+                                '</div>' +
+                                '</td>'+
+                                '</tr>';
+
+                        $("#employees_list").find('tbody').append(row_html);
+
+                    });
+
+                    $('#employees_list').dataTable({
+                        "bPaginate": true,
+                        "bFilter": true,
+                        "bLengthChange": true,
+                        "bSort": false
+                    });
+//
                 }
-            },
+            }
+            ,
             error: function(e , msg){
                 //processError(e,msg);
             }
         });
     }
 
-    //    var urlParams = JSON.parse(localStorage.getItem('user_data'));
-//    var orgId="5417f10a195e61022fff91ee"
-    function get_transactions(){
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/transactions",
-//            url: remote_host+"org/"+orgId+"/transactions",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-                    res.forEach(function(transaction){
-                        option_html = "<option value="+transaction._id+">"+transaction.name+"</option>";
-                        $('#action_select_2').append(option_html);
-                    });
-                }
-            },
-            error: function(e , msg){
+    $(function () {
 
-            }
+        get_employees();
+
+        $("#users_select").change(function(){
+            var selected_user = $("#users_select :selected").val();
+            get_transactions(selected_user);
+//            console.log('hello');
+//            var orgId="5417f10a195e61022fff91ee"
+
+////                console.log(selected_user);
+//            $('#result_1_action').empty();
+
+//            $.ajax({
+//                // /org/:orgId/users/:userId/actions
+//                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
+////                    url: remote_host+"org/"+orgId+"/users/"+selected_user,
+//                type: 'GET',
+//                dataType: 'json',
+//                success: function(res) {
+//                    if(res){
+//                        var option_html;
+//                        res.transactions.forEach(function(transactions){
+//                            get_transactionName(transactions.transactionMaster);
+//
+//                        });
+//                    }
+//
+//                },
+//                error: function(e , msg){
+//                    //processError(e,msg);
+//                }
+//            });
         });
+    }); // Actions of Users
 
-    }
-
-    function get_transactionName(transactionId){
-        $('#result_1_action').empty();
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
-//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-//                    console.log(res);
-                    $('#result_1_action').append('<h4> Actions Of Selected User <b>'+ res +'</b></h4>');
-                }
-            },
-            error: function(e , msg){
-
-            }
-        });
-
-    }
-    function get_downline_transactionName(transactionId){
-        $('#action_select_action').empty();
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
-//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-//                    console.log(res);
-                    option_html = "<option value="+transactionId+">"+res+"</option>";
-                    $('#action_select_action').append(option_html);
-                }
-            },
-            error: function(e , msg){
-
-            }
-        });
-
-    }
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -792,175 +823,19 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            get_employees();
+            //$('#main').css('opacity', 1);
+            //$('header').fadeIn();
 
-            $("#users_select").change(function(){
-                var orgId="5417f10a195e61022fff91ee"
-                var selected_user = $("#users_select :selected").val();
-//                console.log(selected_user);
-                $('#result_1_action').empty();
+            var row_html;
+            var userid;
 
-                $.ajax({
-                                  // /org/:orgId/users/:userId/actions
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
-//                    url: remote_host+"org/"+orgId+"/users/"+selected_user,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-                        if(res){
-                            var option_html;
-                            res.transactions.forEach(function(transactions){
-                                get_transactionName(transactions.transactionMaster);
+//            get_transactions1();
+//
 
-                            });
-                        }
 
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-            });
-        }); // Actions of Users
-        $(function () {
-            $("#action_select_4").change(function(){
-                var orgId="5417f10a195e61022fff91ee"
-                var selected_user = $("#action_select_4 :selected").val();
-//                console.log(selected_user);
-                $.ajax({
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
-//                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
-//                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-                        if(res){
-                            var option_html;
-                            res.forEach(function(users){
-//                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
-                            });
-                        }
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-            });
+
         });
 
-        $(function () {
-            $("#action_select_2").change(function(){
-                $('#result_2_action').empty();
-                get_transactions();
-//                var orgId="5417f10a195e61022fff91ee"
-                var selected_transactions = $("#action_select_2 :selected").val();
-//                console.log(selected_transactions);
-                $.ajax({
-//                    url: remote_host+"org/"+urlParams.orgId+"/transaction/"+selected_transactions+"/users",
-                    url: remote_host+"org/"+orgId+"/transaction/"+selected_transactions+"/users",
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-//                        get_username()
-                        if(res){
-                            var option_html;
-                            res.forEach(function(users){
-//                                console.log(users._id);
-                                get_username(users._id);
-//                                $('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
-                            });
-                        }
-
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-            });
-        });
-
-        $(function () {
-            $("#s4_user").click(function(){
-                get_user();
-
-            });
-        });
-        // function for points:(last Tab)
-        $(function () {
-            $("#action_select_4").change(function(){
-                $('#result_4_action').empty();
-                var orgId="5417f10a195e61022fff91ee"
-                var selected_user = $("#action_select_4 :selected").val();
-//                console.log(selected_user);
-
-                $.ajax({
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
-//                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-                        if(res){
-                            var option_html;
-                            res.forEach(function(users){
-                                $('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
-
-                            });
-                        }
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-            });
-        });
-        // function for actions:(third Tab)
-        $(function () {
-            $("#action_select_user").change(function(){
-                var orgId="5417f10a195e61022fff91ee"
-                var user = $("#action_select_user :selected").val();
-                $('#action_select_action').empty();
-                $.ajax({
-                    url: remote_host+"org/"+urlParams.orgId+"/user/"+user+"/downlink",
-//                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
-                    type: 'GET',
-                    dataType: 'json',
-                            success: function(res) {
-                                if(res){
-                                    var option_html;
-                                    $('#action_select_action').empty();
-                                    res.forEach(function(users){
-//                                        console.log(users);
-
-                                        users.transactions.forEach(function(transactions)
-                                        {
-//                                            console.log(transactions.transactionMaster);
-                                            get_downline_transactionName(transactions.transactionMaster);
-
-                                        })
-                                    });
-                                }
-                            },
-
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-
-            });
-        });
-
-        $(function () {
-            $("#actions").click(function(){
-                get_transactions();
-
-            });
-        });
-        $(function () {
-            $("#users").click(function(){
-                get_userdata();
-
-            });
-        });
         /** end DEMO SCRIPTS **/
 
     } else {
@@ -970,7 +845,6 @@
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
 </script>
-
 
 <!-- REQUIRED: iButton -->
 <script src="js/include/jquery.ibutton.min.js"></script>

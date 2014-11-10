@@ -69,7 +69,7 @@ var userTags={
             .findOne({_id: req.params.userId })
             .populate('transactions') .exec(function (err, actions) {
                 if (err) return handleError(err);
-                console.log( actions.transactions.name);
+                console.log( actions.transactions);
                 // prints "The creator is Aaron"
             })
 
@@ -80,10 +80,16 @@ var userTags={
             res.send(data);
         });
     },
-    'get /org/:orgId/transactions/:transactionId':function(req,res){
+    'get /org/:orgId/transactions/:transactionId/name':function(req,res){
         TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
             console.log(data);
             res.send(data.name);
+        });
+    },
+    'get /org/:orgId/transactions/:transactionId':function(req,res){
+        TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
+            console.log(data);
+            res.send(data);
         });
     },
 

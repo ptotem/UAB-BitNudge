@@ -91,18 +91,6 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
     <link href="css/customstyle.css" rel="stylesheet" type="text/css">
-
-    <style>
-        .aligned{
-            width: 20%;
-        }
-
-        .result-block{
-            height: 140px;
-            overflow: auto;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -302,274 +290,206 @@
 
 <div id="main" role="main" class="container-fluid">
 
-    <div class="contained">
-        <!-- aside -->
-        <aside>
+<div class="contained">
+<!-- aside -->
+<aside>
 
-            <!-- aside item: Mini profile -->
-            <div class="divider"></div>
-            <!-- end aside item: Mini profile -->
+    <!-- aside item: Mini profile -->
+    <div class="divider"></div>
+    <!-- end aside item: Mini profile -->
 
-            <!-- aside item: Menu -->
-            <div class="sidebar-nav-fixed">
+    <!-- aside item: Menu -->
+    <div class="sidebar-nav-fixed">
 
-                <ul class="menu" id="accordion-menu-js">
-                    <li>
-                        <a href="departments.html"><i class="icon-home"></i>Department List</a>
-                    </li>
-                    <li>
-                        <a href="role.html"><i class="icon-off"></i>Roles</a>
-                    </li>
-                    <li>
-                        <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="icon-check"></i>Goals</a>
-                    </li>
-                    <li>
-                        <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
-                    </li>
-                    <li>
-                        <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
-                    </li>
-                    <li>
-                        <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
-                    </li>
-                    <li class="current">
-                        <a href="action.html"><i class="icon-home"></i>Actions</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="divider"></div>
-            <!-- end aside item: Menu -->
-        </aside>
-        <!-- aside end -->
-        <!-- main content -->
-        <div id="page-content">
-            <!-- page header -->
-            <h1 id="page-header">Goal Test Page</h1>
-            <div class="fluid-container">
-                <!-- widget grid -->
-                <section id="widget-grid" class="">
-                    <!--------row 2---------->
-                    <div class="row">
-                        <article class="col-md-12">
-                            <!-- new widget -->
-                            <div class="jarviswidget" id="action-tags-test-widget">
-                                <header>
-                                    <h2>Goal Test</h2>
-                                </header>
-                                <!-- wrap div -->
-                                <div>
-                                    <div class="jarviswidget-editbox">
-                                        <div>
-                                            <label>Title:</label>
-                                            <input type="text"/>
-                                        </div>
-                                        <div>
-                                            <label>Styles:</label>
-                                            <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                            <span data-widget-setstyle="green" class="green-btn"></span>
-                                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                            <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                            <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                            <span data-widget-setstyle="red" class="red-btn"></span>
-                                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                            <span data-widget-setstyle="black" class="black-btn"></span>
-                                        </div>
-                                    </div>
-                                    <div class="inner-spacer widget-content-padding">
-                                        <!-- content goes here -->
-                                        <ul id="queries_tab" class="nav nav-tabs default-tabs">
-                                            <li class="active">
-                                                <a href="#s1" data-toggle="tab">Goal done <br> by selected user</a>
-                                            </li>
-                                            <!--<li>-->
-                                                <!--<a href="#s2" data-toggle="tab" id="actions">Users who have done <br> selected action</a>-->
-                                            <!--</li>-->
-                                            <li>
-                                                <a href="#s3" data-toggle="tab" id="users">Goal done by <br> selected user's downline</a>
-                                            </li>
-                                            <!--<li>-->
-                                                <!--<a href="#s4" data-toggle="tab" id="s4_user">Points earned by <br> selected user's downline</a>-->
-                                            <!--</li>-->
-                                        </ul>
-                                        <div id="queries_tabContent" class="tab-content">
-                                            <div class="tab-pane fade in active" id="s1">
-                                                <form id="test_1" class="form-horizontal themed">
-                                                    <fieldset>
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <label class="control-label" for="users_select">User</label>
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <div class="controls">
-                                                                        <select id="users_select" class="with-search">
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="action_result_block1" id="result_1_action">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
-                                            </div>
+        <ul class="menu" id="accordion-menu-js">
+            <li>
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
+            </li>
+            <li>
+                <a href="role.html"><i class="icon-off"></i>Roles</a>
+            </li>
+            <li class="current">
+                <a href="employees.html"><i class="icon-envelope"></i>Transaction</a>
+            </li>
+            <li>
+                <a href="#"><i class="icon-check"></i>Goals</a>
+            </li>
+            <li>
+                <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
+            </li>
+            <li>
+                <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
+            </li>
+            <li>
+                <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
+            </li>
+        </ul>
 
-                                            <div class="tab-pane fade" id="s2">
-                                                <form id="action-tags-test-form-tab2" class="form-horizontal themed">
-                                                    <fieldset>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5>Show users who have done action single select tag</h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="action_select_2">Actions</label>
-                                                            <div class="controls">
-                                                                <select id="action_select_2" class="with-search">
-                                                                     <!--<option value="AK">Alaska</option>-->
-                                                                     <!--<option value="HI">Hawaii</option>-->
-                                                                     <!--<option value="CA">California</option>-->
-                                                                     <!--<option value="NV">Nevada</option>-->
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="action_result_block2" id="result_2_action">
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                        </fieldset>
-                                                    </form>
-                                            </div>
-                                            <div class="tab-pane fade" id="s3">
-                                                <form id="action-tags-test-form-tab3" class="form-horizontal themed">
-                                                    <fieldset>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <h5>Show action done by downline with single select tag</h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="action_select_user">User</label>
-                                                            <div class="controls">
-                                                                <select id="action_select_user" class="with-search">
-                                                                    <!--<option>System Analysts</option>-->
-                                                                    <!--<option>Administrator</option>-->
-                                                                    <!--<option>Manager</option>-->
-                                                                    <!--<option>Employee</option>-->
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <label class="control-label" for="action_select_action">Action</label>
-                                                            <div class="controls">
-                                                                <select id="action_select_action" class="with-search">
-                                                                    <!-- <option value="AK">Alaska</option> -->
-                                                                    <!-- <option value="HI">Hawaii</option> -->
-                                                                    <!-- <option value="CA">California</option> -->
-                                                                    <!-- <option value="NV">Nevada</option> -->
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="action_result_block3" id="result_3_action">
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                        </fieldset>
-                                                    </form>
-
-                                            </div>
-                                            <div class="tab-pane fade" id="s4">
-                                                <form id="action-tags-test-form-tab4" class="form-horizontal themed">
-                                                    <fieldset>
-
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <h5>Show points earn by downline with single select tag</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    <label class="control-label" for="action_select_4">User</label>
-                                                                    <div class="controls">
-                                                                        <select id="action_select_4" class="with-search">
-                                                                            <!--<option>System Analysts</option>-->
-                                                                            <!--<option>Administrator</option>-->
-                                                                            <!--<option>Manager</option>-->
-                                                                            <!--<option>Employee</option>-->
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="action_result_block4" id="result_4_action"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end content-->
-                                </div>
-                                <!-- end wrap div -->
-                            </div>
-                            <!-- end widget -->
-                        </article>
-                    </div>
-                    <!------------row 2 end----------------->
-
-                </section>
-                <!-- end widget grid -->
-
-            </div>
-
-        </div>
-        <!-- end main content -->
-
-        <!-- aside right on high res -->
-        <aside class="right">
-
-            <!-- date picker -->
-            <div id="datepicker"></div>
-            <div class="divider"></div>
-            <!-- end date picker -->
-
-        </aside>
-
-        <!-- end aside right -->
     </div>
+    <div class="divider"></div>
+    <!-- end aside item: Menu -->
+
+</aside>
+<!-- aside end -->
+
+<!-- main content -->
+<div id="page-content">
+    <!-- page header -->
+    <h1 id="page-header">Transaction list</h1>
+
+    <div class="fluid-container">
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+            <!--------row 2---------->
+            <div class="row">
+                <article class="col-md-12">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="widget-id-0">
+                        <header>
+                            <h2>Transactions</h2>
+                        </header>
+                        <!-- wrap div -->
+                        <div>
+
+                            <div class="jarviswidget-editbox">
+                                <div>
+                                    <label>Title:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div>
+                                    <label>Styles:</label>
+                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                    <span data-widget-setstyle="green" class="green-btn"></span>
+                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                    <span data-widget-setstyle="red" class="red-btn"></span>
+                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                    <span data-widget-setstyle="black" class="black-btn"></span>
+                                </div>
+                            </div>
+
+                            <div class="inner-spacer widget-content-padding">
+                                <!-- content goes here -->
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                               <div class="emp-details" id="emp_name"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Format</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_email"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>No of Params</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_designation"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Point Function</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_role"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Type</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_reporting_officer"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_tags"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <button type="button" id="btn_approve">Approve</button>
+                                                <!--<label></label>-->
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_dept"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+
+                            </div>
+                            <!-- end content-->
+                        </div>
+                        <!-- end wrap div -->
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+
+
+
+            <!------------row 2 end----------------->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+
+</div>
+<!-- end main content -->
+
+<!-- aside right on high res -->
+<aside class="right">
+
+    <!-- date picker -->
+    <div id="datepicker"></div>
+    <div class="divider"></div>
+    <!-- end date picker -->
+
+</aside>
+
+<!-- end aside right -->
+</div>
 
 </div>
 <!--end fluid-container-->
@@ -626,97 +546,102 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var orgId="5417f10a195e61022fff91ee"
-//    var a = remote_host+"org/"+urlParams.orgId+"/users";
-//    console.log(urlParams);
-    function get_employees(){
-        $.ajax({
-//            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
-            url: remote_host+"org/"+orgId+"/users",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-                    res.forEach(function(user){
-                        option_html = "<option value="+user._id+">"+user.name+"</option>";
-                        $('#users_select').append(option_html);
-                    });
-                }
-            },
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-    function user_goal(goalId){
-        $('#result_1_action').empty();
-        var urlParams = JSON.parse(localStorage.getItem('user_data'));
-        var orgId="5417f10a195e61022fff91ee"
-        $.ajax({
-            url: remote_host+"org/"+orgId+"/goals/"+goalId,
 
-//            url: remote_host+"org/"+url.Params.orgId+"/goals/"+goalId,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    $('#result_1_action').append('<h4> Goals Of Selected User <b>'+ res +'</b></h4>');
-                }
-            },
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-
-    }
-    function user_downline_goal(goalId){
-        $('#action_select_action').empty();
-        var urlParams = JSON.parse(localStorage.getItem('user_data'));
-//        var orgId="5417f10a195e61022fff91ee"
-        $.ajax({
-            url: remote_host+"org/"+orgId+"/goals/"+goalId,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-                    option_html = "<option value="+goalId+">"+res+"</option>";
-                    $('#action_select_action').append(option_html);
-
-
-                }
-            },
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-
-    }
-    function get_userdata(){
+    function get_employee(){
         var orgId="5417f10a195e61022fff91ee";
+
+        var emp_id = window.location.search.replace("?","").split("=")[1];
+        var user_id = window.location.search.replace("?","").split("=")[2];
+        console.log(emp_id);
+        console.log(user_id);
         $.ajax({
+            ///org/:orgId/users/:userId
+//            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
+            url: remote_host+"org/"+orgId+"/transactions/"+emp_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+//                console.log(res);
+                if(res){
+                    //console.log(res);
+                    var reportsTo, orgTags = [], teams = [],format,name,pointFn,type,no_of_params;
+                    if (res.name)
+                        name = res.name;
+                    else
+                        name = "";
 
-                    url: remote_host+"org/"+orgId+"/users",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-            if(res){
-                var option_html;
-                res.forEach(function(user){
-                    option_html = "<option value="+user._id+">"+user.name+"</option>";
-                    $('#action_select_user').append(option_html);
-                });
+                    if (res.format) {
+                        format = res.format;
+                    }
+                    else{
+                        format = "";
+                    }
+                    if (res.noOfParams) {
+                        no_of_params=res.noOfParams;
+                    }
+                    else{
+                        no_of_params = "";
+                    }
+
+                    if (res.pointsFn) {
+                        pointFn=res.pointsFn;
+                    }
+                    else{
+                        pointFn = "";
+                    }
+                    if (res.type) {
+                        type=res.type;
+                    }
+                    else{
+                        type = "";
+                    }
+//
+                    $("#emp_name").text(res.name);
+                    $("#emp_email").text(res.format);
+                    $("#emp_role").text(res.pointsFn);
+                    $("#emp_reporting_officer").text(type);
+//                    $("#emp_tags").text(no_of_params);
+//                    $("#emp_dept").text(teams);
+//                    $("#emp_designation").text(res.designation);
+//                    $("#emp_addr").text(res.address);
+                }
             }
-        },
-        error: function(e , msg){
-            //processError(e,msg);
-        }
-    });
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
     }
+    $(function () {
+        $("#btn_approve").click(function(){
+            var orgId="5417f10a195e61022fff91ee";
 
-//    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+            var emp_id = window.location.search.replace("?","").split("=")[1];
+            var user_id = window.location.search.replace("?","").split("=")[2];
+            console.log(emp_id);
+            console.log(user_id);
+            $.ajax({
+//                url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
+                url: remote_host+'org/'+orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
+//                data: data,
+                // contentType: 'multipart/form-data',
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function(data){
+                    console.log("data");
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            });
 
+
+//            console.log('hello');
+//            get_user();
+
+        });
+    });
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
@@ -733,70 +658,9 @@
 
         /** DEMO SCRIPTS **/
         $(function () {
-            get_employees();
-            $("#users_select").change(function(){
-                $('#result_1_action').empty();
-                var orgId="5417f10a195e61022fff91ee"
-                var selected_user = $("#users_select :selected").val();
-                $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+selected_user,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-                        if(res){
-                            res.goals.forEach(function(goal){
-                                goal.subgoal.forEach(function(subgoal){
-                                    user_goal(subgoal.subgoal);
-                                 })
-                            })
 
-                        }
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-            });
-        });
-         // Down line Goal call
+            get_employee();
 
-        $(function () {
-            $("#action_select_user").change(function(){
-                $('#action_select_action').empty();
-                var orgId="5417f10a195e61022fff91ee";
-                var user = $("#action_select_user :selected").val();
-//                var tr="5421698c67481ed26eab3e3d";
-                $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
-                    type: 'GET',
-                    dataType: 'json',
-                            success: function(res) {
-                                if(res){
-                                    var option_html;
-                                    res.forEach(function(users){
-                                         users.goals.forEach(function(goal) {
-                                             goal.subgoal.forEach(function(subgoal) {
-                                                 user_downline_goal(subgoal.subgoal);
-
-                                             });
-                                        });
-                                    });
-                                }
-                            },
-
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-
-            });
-        });
-
-        $(function () {
-            $("#users").click(function(){
-                get_userdata();
-
-            });
         });
         /** end DEMO SCRIPTS **/
 
@@ -807,7 +671,6 @@
         document.write('<script src="js/include/selectnav.min.js"><\/script>');
     }
 </script>
-
 
 <!-- REQUIRED: iButton -->
 <script src="js/include/jquery.ibutton.min.js"></script>
