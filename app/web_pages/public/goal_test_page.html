@@ -628,8 +628,11 @@
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
     var orgId="5417f10a195e61022fff91ee"
     function get_employees(){
+        var a =  remote_host+"org/"+orgId+"/users"
+        console.log(a);
         $.ajax({
-            url: remote_host+"org/"+url.Params.orgId+"/users",
+//            url: remote_host+"org/"+urlParams.orgId+"/users",
+            url: a,
             type: 'GET',
             dataType: 'json',
             success: function(res) {

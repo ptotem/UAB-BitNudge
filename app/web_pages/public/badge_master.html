@@ -52,7 +52,7 @@
     <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">
 
     <!-- BitNudge CSS -->
-    <link rel="stylesheet" href="css/bitnudge.css">
+    <!--<link rel="stylesheet" href="css/bitnudge.css">-->
 
     <!-- To switch to full width -->
     <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
@@ -295,13 +295,6 @@
 <aside>
 
     <!-- aside item: Mini profile -->
-    <div class="my-profile">
-        <a href="javascript:void(0)" class="my-profile-pic">
-            <img src="img/avatar/avatar_8.jpg" alt=""/>
-        </a>
-        <span class="first-child"><strong>Admin</strong></span>
-        <span><a href="javascript:void(0);">Edit Profile </a></span>
-    </div>
     <div class="divider"></div>
     <!-- end aside item: Mini profile -->
 
@@ -384,21 +377,9 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Image</th>
-                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-
-
-
-
                         </tbody>
                     </table>
 
@@ -484,7 +465,46 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+<script src="js/app/app_config.js"></script>
+
 <script type="text/javascript">
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function get_badges(){
+        $.ajax({
+                          // /org/orgId/medals
+            url: remote_host+"org/"+urlParams.orgId+"/medals",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var row_html;
+                    res.forEach(function(badge){
+
+                        row_html = '<tr>'+
+                                        '<td class="text-center aligned">'+badge.name+'</td>'+
+                                    '</tr>';
+
+                        $("#badge_master_list").find('tbody').append(row_html);
+
+                    });
+
+                    $('#badge_master_list').dataTable({
+                        "bPaginate": true,
+                        "bFilter": true,
+                        "bLengthChange": true,
+                        "bSort": false
+                    });
+
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -501,31 +521,9 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            $('#main').css('opacity', 1);
-            $('header').fadeIn();
+            get_badges()
 
-            $('#badge_master_list').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": false,
-                "aaSorting": [
-                    [ 0, "asc" ]
-                ]
-            });
-
-            var row_html;
-
-            row_html ='<tr class="odd gradeX">'+
-            '<td class="text-center">Amit</td>'+
-            '<td class="text-center">'+'<img src="img/avatar/avatar_1.jpg">'+'</td>'+
-            '<td class="text-center">'+
-                    '<a class="btn-xs btn-info" type="button" href="badge_master_show.html">'+
-                    '<i class="icon-exclamation-sign" ></i>'+
-            '</a>'+
-            '</td>'+
-            '</tr>'
-                $("#badge_master_list").find('tbody').append(row_html);
-            });
+        });
 
         /** end DEMO SCRIPTS **/
 

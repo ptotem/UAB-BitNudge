@@ -412,8 +412,8 @@
                                                             <div class="controls">
                                                                 <select id="criteria_select" class="with-search">
                                                                     <option value="default" disabled="disabled" selected="selected">Select one--</option>
-                                                                    <option value="action">Action</option>
-                                                                    <option value="subgoal">Sub-Goal</option>
+                                                                    <option value="Action">Action</option>
+                                                                    <option value="Subgoal">Sub-Goal</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -723,6 +723,8 @@
                 //return actionsJSON[i];
             }
         }
+        console.log("filteredactionsJSON")
+        console.log(filteredactionsJSON)
         return filteredactionsJSON;
 //        return false;
     };
@@ -814,11 +816,11 @@
 
             $('#criteria_select').on('change', function () {
                 criteria_val = $("#criteria_select :selected").val();
-                if (criteria_val == "action") {
+                if (criteria_val == "Action") {
                     $("#subgoal_content_block").hide();
                     $("#transaction_content_block").show();
                 }
-                else if (criteria_val == "subgoal") {
+                else if (criteria_val == "Subgoal") {
                     $("#transaction_content_block").hide();
                     $("#subgoal_content_block").show();
                 }
@@ -849,57 +851,34 @@
 
                 var assign_to = $("#users_select :selected").val();
 
-
-//                goals:[{
-//                    // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
-//                    // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
-//                    criteria:String,
-//                    startDate:Date,
-//                    endDate:Date,
-//                    completed:Boolean,
-//                    createdAt:Date,
-//                    percentage:Number,
-//                    pointsFn:String,
-//                    subgoals:[{
-//                        subgoal:{type:Schema.Types.ObjectId,rel:'goalMasters'},
-//                        allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
-//                        currentValue:Number,
-//                        targetValue:Number,
-//                        done:Boolean
-//                    }],
-//                    action:{
-//                        allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
-//                        targetValue:Number,
-//                        currentValue:Number,
-//                    }
-//                }],
-
                 var data = {}, action_data = {}, subgoal_data = {};
-                if (criteria_val == "action") {
+                if (criteria_val == "Action") {
                     action_data = {
-                        goal_name: goal_name,
-                        assign_to: assign_to,
+                        name: goal_name,
                         criteria: criteria_val,
                         startDate: formatted_start_date,
                         endDate: formatted_end_date,
                         action:{
-                            allowedTransactions: selected_transaction,
+                            allowedTransactions: [selected_transaction],
                             targetValue: transaction_target_value
-                        }
+                        },
+                        pointsFn: "function(t){return "+goal_points+";}",
+                        creator: urlParams.userId
                     };
                     data = action_data;
                 }
-                else if (criteria_val == "subgoal") {
+                else if (criteria_val == "Subgoal") {
                     subgoal_data = {
-                        goal_name: goal_name,
-                        assign_to: assign_to,
+                        name: goal_name,
                         criteria: criteria_val,
                         startDate: formatted_start_date,
                         endDate: formatted_end_date,
                         subgoals:[{
                             subgoal: selected_subgoal,
                             targetValue: subgoal_target_value
-                        }]
+                        }],
+                        pointsFn: "function(t){return "+goal_points+";}",
+                        creator: urlParams.userId
                     };
                     data = subgoal_data;
                 }
@@ -907,20 +886,20 @@
                 console.log("data");
                 console.log(data);
 
-//                $.ajax({
-//                                  // /org/:orgId/users/:userId/goals
-//                    url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/goals",
-//                    type: 'POST',
-//                    dataType: 'json',
-//                    data: data,
-//                    success: function(res) {
-//                        var success_text = "Goal assigned to user.";
-//                        show_notification(success_text);
-//                    } ,
-//                    error: function(e , msg){
-//                        //processError(e,msg);
-//                    }
-//                });
+                $.ajax({
+                                  // /org/:orgId/users/:userId/goals
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+assign_to+"/goals",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    success: function(res) {
+                        var success_text = "Goal assigned to user.";
+                        show_notification(success_text);
+                    } ,
+                    error: function(e , msg){
+                        //processError(e,msg);
+                    }
+                });
 
                 return false;
             });
