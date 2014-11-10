@@ -421,7 +421,7 @@
     </div>
 </div><!-- /.sidebar-shortcuts -->
 
-    <ul class="nav nav-list">
+<ul class="nav nav-list">
         <li>
             <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
@@ -439,7 +439,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li>
+        <li class="active">
             <a href="employees.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Employees</span>
@@ -456,7 +456,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="active">
+        <li>
             <a href="badge_master.html">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text"> Badge Master </span>
@@ -554,6 +554,34 @@
 
 <!-- /section:basics/sidebar -->
 <div class="main-content">
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Widgets</li>
+    </ul><!-- /.breadcrumb -->
+
+    <!-- #section:basics/content.searchbox -->
+    <div class="nav-search" id="nav-search">
+        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="ace-icon fa fa-search nav-search-icon"></i>
+							</span>
+        </form>
+    </div><!-- /.nav-search -->
+
+    <!-- /section:basics/content.searchbox -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
     <!-- #section:settings.box -->
     <div class="ace-settings-container" id="ace-settings-container">
@@ -659,13 +687,13 @@
         <div class="row">
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
-               <!--row 1-->
+                <!--<row 1 >-->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 widget-container-col">
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Badge Master</h5>
+                                <h5 class="widget-title">Add New Employee</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -707,25 +735,88 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <table class="table table-striped table-bordered responsive" id="badge_master_list">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a href="employee_new_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Employee</a><br><br>
+                                            <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Assign Reporting Manager to Employee</a><br><br>
+                                            <a href="employee_tags_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Assign Tags to Employee</a><br><br>
+                                            <a href="action_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Action Creation</a><br><br>
+                                            <a href="action_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Action Test Page</a><br><br>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="employees_new_bulk.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add Bulk Employees</a><br><br>
+                                            <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Edit Bulk Employees</a><br><br>
+                                            <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Employee Reporting Line Test Page</a><br><br>
+                                            <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Organizational Tags Test Page</a><br><br>
+                                            <a href="goal_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Goal Creation</a><br><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- /section:custom/widget-box -->
+                    </div>
+
+
+                </div>
+                <!-- /.row 1 end -->
+                <!--<row 2 >-->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 widget-container-col">
+                        <!-- #section:custom/widget-box -->
+                        <div class="widget-box">
+                            <div class="widget-header">
+                                <h5 class="widget-title">Badges list</h5>
+
+                                <!-- #section:custom/widget-box.toolbar -->
+                                <div class="widget-toolbar">
+                                    <div class="widget-menu">
+                                        <a href="#" data-action="settings" data-toggle="dropdown">
+                                            <i class="ace-icon fa fa-bars"></i>
+                                        </a>
+
+                                        <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                            <li>
+                                                <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                            </li>
+
+                                            <li>
+                                                <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <a href="#" data-action="fullscreen" class="orange2">
+                                        <i class="ace-icon fa fa-expand"></i>
+                                    </a>
+
+                                    <a href="#" data-action="reload">
+                                        <i class="ace-icon fa fa-refresh"></i>
+                                    </a>
+
+                                    <a href="#" data-action="collapse">
+                                        <i class="ace-icon fa fa-chevron-up"></i>
+                                    </a>
+
+                                    <a href="#" data-action="close">
+                                        <i class="ace-icon fa fa-times"></i>
+                                    </a>
+                                </div>
+
+                                <!-- /section:custom/widget-box.toolbar -->
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <table class="table table-bordered table-hover responsive" id="badges_list">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Image</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-
-
-
-
-
                                         </tbody>
                                     </table>
 
@@ -738,8 +829,7 @@
 
 
                 </div>
-                <!--row 1 end-->
-
+                <!-- /.row 12 end -->
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
         </div>
@@ -791,38 +881,91 @@ var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
 
 
-$(function () {
+function get_employees(){
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var row_html, role, reportsTo, orgTags = [], teams = [];
+                res.forEach(function(user){
+                    //console.log(user);
 
-    //$('#main').css('opacity', 1);
-    //$('header').fadeIn();
+                    if (user.role)
+                        role = user.role.name;
+                    else
+                        role = "";
 
-    var row_html;
+                    if (user.reportsTo)
+                        reportsTo = user.reportsTo.name;
+                    else
+                        reportsTo = "";
 
-    var row_html;
-   for(i=0;i<15;i++)
-   {
+                    if (user.orgtags) {
+                        orgTags = [];
+                        $.each(user.orgtags, function(index, value) {
+                            orgTags.push(value.name)
+                        });
+                    }
+                    else{
+                        orgTags = "";
+                    }
 
-    row_html ='<tr class="odd gradeX">'+
-            '<td class="text-center">Grey</td>'+
-            '<td class="text-center">'+'<img src="img/avatar/avatar_1.jpg">'+'</td>'+
-            '<td class="text-center">' +
-            '<a style="padding: 5px;" href="#">' + '<i class="ace-icon glyphicon glyphicon-pencil"></i>' + '</a>' +
-            '<a style="padding: 5px;" href="#">' + '<i class="ace-icon glyphicon glyphicon-info-sign"></i>' + '</a>' +
-            '</td>' +
-            '</tr>'
-    $("#badge_master_list").find('tbody').append(row_html);
-   }
+                    if (user.teams) {
+                        teams = [];
+                        $.each(user.teams, function(index, value) {
+                            teams.push(value.name)
+                        });
+                    }
+                    else{
+                        teams = "";
+                    }
 
-    $('#badge_master_list').dataTable({
-        "bPaginate": true,
-        "bFilter": true,
-        "bLengthChange": false,
-        "aaSorting": [
-            [ 0, "asc" ]
-        ]
+
+                    row_html = '<tr>'+
+                            '<td class="text-center aligned">1</td>'+
+                            '<td class="text-center aligned">'+
+                            '<div class="block" style="width: 50px;">' +
+                            '<a style="padding:5px" href="employee_edit_form.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
+                            '<a style="padding:5px" href="employee_show.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+                            '</div>' +
+                            '</td>'+
+                            '</tr>';
+
+                    $("#badges_list").find('tbody').append(row_html);
+
+                });
+
+                $('#employees_list').dataTable({
+                    "bPaginate": true,
+                    "bFilter": true,
+                    "bLengthChange": true,
+                    "bSort": false
+                });
+
+
+            }
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
     });
+}
+
+
+$(function () {
+    var row_html;
+    get_employees();
+
 
 });
+
+
+
+
+
 jQuery(function($) {
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
