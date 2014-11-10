@@ -423,7 +423,7 @@
 
 <ul class="nav nav-list">
 <li>
-    <a href="index.html">
+    <a href="departments.html">
         <i class="menu-icon fa fa-tachometer"></i>
         <span class="menu-text">Department List</span>
     </a>
@@ -431,8 +431,8 @@
     <b class="arrow"></b>
 </li>
 
-<li class="">
-    <a href="#" class="dropdown-toggle">
+<li class="roles.html">
+    <a href="#">
         <i class="menu-icon fa fa-desktop"></i>
         <span class="menu-text"> Roles </span>
     </a>
@@ -440,7 +440,7 @@
 </li>
 
 <li class="active">
-    <a href="employees.html" class="dropdown-toggle">
+    <a href="employees.html">
         <i class="menu-icon fa fa-list"></i>
         <span class="menu-text">Employees</span>
     </a>
@@ -449,7 +449,7 @@
 </li>
 
 <li class="">
-    <a href="#" class="dropdown-toggle">
+    <a href="goals.html">
         <i class="menu-icon fa fa-pencil-square-o"></i>
         <span class="menu-text"> Goals </span>
     </a>
@@ -457,7 +457,7 @@
 </li>
 
 <li>
-    <a href="widgets.html">
+    <a href="badge_master.html">
         <i class="menu-icon fa fa-list-alt"></i>
         <span class="menu-text"> Badge Master </span>
     </a>
@@ -466,7 +466,7 @@
 </li>
 
 <li class="">
-    <a href="calendar.html">
+    <a href="reward_center.html">
         <i class="menu-icon fa fa-calendar"></i>
         <span class="menu-text"> Reward Center </span>
 	</a>
@@ -474,7 +474,7 @@
 </li>
 
 <li class="">
-    <a href="gallery.html">
+    <a href="reward_master.html">
         <i class="menu-icon fa fa-picture-o"></i>
         <span class="menu-text"> Reward Master </span>
     </a>
@@ -802,34 +802,7 @@
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
 
-<div class="footer">
-    <div class="footer-inner">
-        <!-- #section:basics/footer -->
-        <div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
-							Application &copy; 2013-2014
-						</span>
 
-            &nbsp; &nbsp;
-						<span class="action-buttons">
-							<a href="#">
-                                <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                            </a>
-
-							<a href="#">
-                                <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-                            </a>
-
-							<a href="#">
-                                <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-                            </a>
-						</span>
-        </div>
-
-        <!-- /section:basics/footer -->
-    </div>
-</div>
 
 <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
@@ -921,8 +894,8 @@ function get_employees(){
                             '<td class="text-center aligned">'+teams+'</td>'+
                             '<td class="text-center aligned">'+
                             '<div class="block" style="width: 50px;">' +
-                            '<a href="employee_edit_form.html?userId='+user._id+'"><i class="cus-pencil"></i></a>'+
-                            '<a href="employee_show.html?userId='+user._id+'"><i class="cus-exclamation"></i></a>'+
+                            '<a href="employee_edit_form.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
+                            '<a href="employee_show.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
                             '</div>' +
                             '</td>'+
                             '</tr>';

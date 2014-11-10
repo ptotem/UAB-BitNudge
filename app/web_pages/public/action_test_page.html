@@ -421,67 +421,67 @@
     </div>
 </div><!-- /.sidebar-shortcuts -->
 
-    <ul class="nav nav-list">
-        <li>
-            <a href="departments.html">
-                <i class="menu-icon fa fa-tachometer"></i>
-                <span class="menu-text">Department List</span>
-            </a>
+<ul class="nav nav-list">
+<li>
+    <a href="index.html">
+        <i class="menu-icon fa fa-tachometer"></i>
+        <span class="menu-text">Department List</span>
+    </a>
 
-            <b class="arrow"></b>
-        </li>
+    <b class="arrow"></b>
+</li>
 
-        <li class="roles.html">
-            <a href="#">
-                <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> Roles </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
+<li class="">
+    <a href="#" class="dropdown-toggle">
+        <i class="menu-icon fa fa-desktop"></i>
+        <span class="menu-text"> Roles </span>
+    </a>
+    <b class="arrow"></b>
+</li>
 
-        <li class="active">
-            <a href="employees.html">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">Employees</span>
-            </a>
+<li class="active">
+    <a href="employees.html">
+        <i class="menu-icon fa fa-list"></i>
+        <span class="menu-text">Employees</span>
+    </a>
 
-            <b class="arrow"></b>
-        </li>
+    <b class="arrow"></b>
+</li>
 
-        <li class="">
-            <a href="goals.html">
-                <i class="menu-icon fa fa-pencil-square-o"></i>
-                <span class="menu-text"> Goals </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
+<li class="">
+    <a href="#">
+        <i class="menu-icon fa fa-pencil-square-o"></i>
+        <span class="menu-text"> Goals </span>
+    </a>
+    <b class="arrow"></b>
+</li>
 
-        <li>
-            <a href="badge_master.html">
-                <i class="menu-icon fa fa-list-alt"></i>
-                <span class="menu-text"> Badge Master </span>
-            </a>
+<li>
+    <a href="widgets.html">
+        <i class="menu-icon fa fa-list-alt"></i>
+        <span class="menu-text"> Badge Master </span>
+    </a>
 
-            <b class="arrow"></b>
-        </li>
+    <b class="arrow"></b>
+</li>
 
-        <li class="">
-            <a href="reward_center.html">
-                <i class="menu-icon fa fa-calendar"></i>
-                <span class="menu-text"> Reward Center </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
+<li class="">
+    <a href="calendar.html">
+        <i class="menu-icon fa fa-calendar"></i>
+        <span class="menu-text"> Reward Center </span>
+	</a>
+    <b class="arrow"></b>
+</li>
 
-        <li class="">
-            <a href="reward_master.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Reward Master </span>
-            </a>
+<li class="">
+    <a href="gallery.html">
+        <i class="menu-icon fa fa-picture-o"></i>
+        <span class="menu-text"> Reward Master </span>
+    </a>
 
-            <b class="arrow"></b>
-        </li>
-    </ul><!-- /.nav-list -->
+    <b class="arrow"></b>
+</li>
+</ul><!-- /.nav-list -->
 
 <!-- #section:basics/sidebar.layout.minimize -->
 <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -536,7 +536,7 @@
                 <!-- #section:settings.skins -->
                 <div class="ace-settings-item">
                     <div class="pull-left">
-                        <select id="skin-colorpicker" class="hide col-md-10">
+                        <select id="skin-colorpicker" class="hide">
                             <option data-skin="no-skin" value="#438EB9">#438EB9</option>
                             <option data-skin="skin-1" value="#222A2D">#222A2D</option>
                             <option data-skin="skin-2" value="#C6487E">#C6487E</option>
@@ -631,11 +631,11 @@
                 <!-- PAGE CONTENT BEGINS -->
                 <!--<row 1 >-->
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 widget-container-col">
+                    <div class="col-xs-12 col-sm-12 widget-container-col">
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Goal Creation Form</h5>
+                                <h5 class="widget-title">Action test page</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -677,165 +677,181 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
+                                    <div class="tabbable">
+                                        <ul class="nav nav-tabs" id="myTab">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#tab1">
+                                                    Actions done <br> by selected user
+                                                </a>
+                                            </li>
 
-                                    <form id="goal_creation_form" class="form-horizontal themed">
-                                        <fieldset>
-                                            <div class="form-group">
-
-                                                    <div  class="col-md-3">
-                                                        <label for="goal_name">Name</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <input type="text" class="form-control"  id="goal_name" />
-                                                    </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-
-                                                    <div class="col-md-3">
-                                                        <label class="control-label" for="criteria_select">Criteria</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="controls">
-                                                            <select id="criteria_select" class="with-search col-md-10">
-                                                                <option value="default" disabled="disabled" selected="selected">Select one--</option>
-                                                                <option value="action">Action</option>
-                                                                <option value="subgoal">Sub-Goal</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                            </div>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab2">
+                                                    Users who have done <br> selected action
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab3">
+                                                    Actions done by <br> selected user's downline
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab4">
+                                                    Users who have done <br> selected action
+                                                </a>
+                                            </li>
 
 
-                                            <div id="criteria_content_block">
-                                                <!-- html for subgoal and its target value starts -->
-                                                <div class="criteria-content-blocks" id="subgoal_content_block">
-                                                    <div class="form-group">
+                                        </ul>
 
-                                                            <div class="col-md-3">
-                                                                <label class="control-label" for="subgoal_select">Subgoal</label>
+                                        <div class="tab-content">
+                                            <div id="tab1" class="tab-pane fade in active">
+                                                <form id="test_1" class="form-horizontal themed">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label class="control-label" for="users_select">User</label>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="controls">
+                                                                        <select id="users_select" class="with-search">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-md-9">
-                                                                <div class="controls">
-                                                                    <select id="subgoal_select" class="with-search col-md-10">
-                                                                    </select>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="action_result_block1" id="result_1_action">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+
+                                            <div id="tab2" class="tab-pane fade">
+                                                <form id="action-tags-test-form-tab2" class="form-horizontal themed">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="row">
+
+                                                                    <div class="col-md-12">
+                                                                        <h5>Show users who have done action single select tag</h5>
+                                                                    </div>
+
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="action_select_2">Actions</label>
+                                                                    <div class="controls">
+                                                                        <select id="action_select_2" class="with-search">
+                                                                            <!-- <option value="AK">Alaska</option> -->
+                                                                            <!-- <option value="HI">Hawaii</option> -->
+                                                                            <!-- <option value="CA">California</option> -->
+                                                                            <!-- <option value="NV">Nevada</option> -->
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="action_result_block2" id="result_2_action">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                            <div id="tab3" class="tab-pane fade">
+                                                <form id="action-tags-test-form-tab3" class="form-horizontal themed">
+                                                    <fieldset>
+
+                                                        <div class="form-group">
+                                                            <div class="row">
+
+                                                                    <div class="col-md-12">
+                                                                        <h5>Show action done by downline with single select tag</h5>
+                                                                    </div>
+
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="action_select_user">User</label>
+                                                                    <div class="controls">
+                                                                        <select id="action_select_user" class="with-search">
+                                                                            <option>System Analysts</option>
+                                                                            <option>Administrator</option>
+                                                                            <option>Manager</option>
+                                                                            <option>Employee</option>
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
-                                                    </div>
-                                                    <div class="form-group">
 
-                                                            <div  class="col-md-3">
-                                                                <label for="subgoal_target_value">Sub-Goal Target Value</label>
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="action_select_action">Action</label>
+                                                                    <div class="controls">
+                                                                        <select id="action_select_action" class="with-search">
+                                                                            <!-- <option value="AK">Alaska</option> -->
+                                                                            <!-- <option value="HI">Hawaii</option> -->
+                                                                            <!-- <option value="CA">California</option> -->
+                                                                            <!-- <option value="NV">Nevada</option> -->
+                                                                        </select>
+                                                                    </div>
+
                                                             </div>
-                                                            <div class="col-md-9">
-                                                                <input type="text" class="form-control"  id="subgoal_target_value" />
-                                                            </div>
 
-                                                    </div>
-                                                </div>
-                                                <!-- html for subgoal and its target value ends -->
 
-                                                <!-- html for allowed transactions and its target value starts -->
-                                                <div class="criteria-content-blocks" id="transaction_content_block">
-                                                    <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="action_result_block3" id="result_3_action">
 
-                                                            <div class="col-md-3">
-                                                                <label class="control-label" for="transaction_select">Allowed Transaction</label>
-                                                            </div>
-                                                            <div class="col-md-9">
-                                                                <div class="controls">
-                                                                    <select id="transaction_select" class="with-search col-md-10">
-                                                                    </select>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-
-                                                    </div>
-                                                    <div class="form-group">
-
-                                                            <div  class="col-md-3">
-                                                                <label for="transaction_target_value">Transaction Target Value</label>
-                                                            </div>
-                                                            <div class="col-md-9">
-                                                                <input type="text" class="form-control"  id="transaction_target_value" />
-                                                            </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- html for allowed transactions and its target value ends -->
-
-
-                                            <div class="form-group">
-
-                                                    <div class="col-md-3">
-                                                        <label class="control-label">Start Date</label>
-                                                    </div>
-                                                <div class="col-md-6">
-                                                <div class="input-group">
-                                                    <input class="form-control date-picker" id="sgoal-start-date-js" type="text" data-date-format="dd-mm-yyyy" />
-																	<span class="input-group-addon">
-																		<i class="fa fa-calendar bigger-110"></i>
-																	</span>
-                                                </div>
-                                                    </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-
-                                                    <div class="col-md-3">
-                                                        <label class="control-label" for="goal-start-date-js">End Date</label>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="input-group">
-                                                            <input class="form-control date-picker" id="goal-start-date-js" type="text" data-date-format="dd-mm-yyyy" />
-																	<span class="input-group-addon">
-																		<i class="fa fa-calendar bigger-110"></i>
-																	</span>
                                                         </div>
-                                                    </div>
-
+                                                    </fieldset>
+                                                </form>
                                             </div>
+                                            <div id="tab4" class="tab-pane fade">
+                                                <form id="action-tags-test-form-tab4" class="form-horizontal themed">
+                                                    <fieldset>
 
-                                            <div class="form-group">
+                                                        <div class="form-group">
+                                                            <div class="row">
 
-                                                    <div class="col-md-3">
-                                                        <label for="goal_points">Points</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <input type="text" class="form-control" id="goal_points"/>
-                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <h5>Show points earn by downline with single select tag</h5>
+                                                                    </div>
 
-                                            </div>
-
-                                            <div class="form-group">
-
-                                                    <div class="col-md-3">
-                                                        <label class="control-label" for="users_select">Assign To</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="controls">
-                                                            <select id="users_select" class="with-search col-md-10">
-                                                            </select>
+                                                                <div class="col-md-5">
+                                                                    <label class="control-label" for="action_select_4">User</label>
+                                                                    <div class="controls">
+                                                                        <select id="action_select_4" class="with-search">
+                                                                            <option>System Analysts</option>
+                                                                            <option>Administrator</option>
+                                                                            <option>Manager</option>
+                                                                            <option>Employee</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="action_result_block4" id="result_4_action"></div>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
+                                                    </fieldset>
+                                                </form>
                                             </div>
 
-                                            <div class="form-actions">
-                                                <button type="reset" class="btn medium btn-danger">
-                                                    Cancel
-                                                </button>
-                                                <button id="goal_submit_btn" type="submit" class="btn medium btn-primary">
-                                                    Create
-                                                </button>
-                                            </div>
-                                        </fieldset>
-                                    </form>
+                                        </div>
+                                    </div>
+
                                 </div>
+
                             </div>
                         </div>
 
@@ -844,6 +860,8 @@
 
 
                 </div>
+
+
                 <!-- /.row 1 end -->
 
                 <!-- PAGE CONTENT ENDS -->
@@ -893,50 +911,6 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var criteria_val = "";
-
-    function get_roles(){
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/roles",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    res.forEach(function(role){
-                        $('#emp_role').append("<option data-id="+role._id+" value="+role.name+">"+role.name+"</option>");
-                    });
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-    function get_current_date(){
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1;
-        var yyyy = today.getFullYear();
-
-        if(dd < 10){
-            dd = '0'+dd;
-        }
-        if(mm < 10){
-            mm = '0'+mm;
-        }
-
-        var current_date = dd+'-'+mm+'-'+yyyy;
-        return current_date;
-    }
-
-    function set_datepicker_date(date){
-        var date_field = $(".date");
-        date_field.each(function() {
-            $(this).attr("data-date", date);
-            $(this).find(".datepicker-input").val(date);
-        });
-    }
 
     function get_employees(){
         $.ajax({
@@ -950,194 +924,39 @@
                         option_html = "<option value="+user._id+">"+user.name+"</option>";
                         $('#users_select').append(option_html);
                     });
-
                 }
-            }
-            ,
+            },
             error: function(e , msg){
                 //processError(e,msg);
             }
         });
     }
-
-    function get_actions(){
-        $.ajax({
-            // /org/:orgId/transactions
-            url: remote_host+"org/"+urlParams.orgId+"/transactions",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    res.forEach(function(transactionMaster){
-                        //console.log(transactionMaster);
-                        $('#transaction_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
-                    });
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
-    function get_my_created_goals(){
-        console.log("get_my_created_goals() called, msg :- REST endpoint to be made for goals created by me");
-//        $.ajax({
-//            // /org/:orgId/transactions
-//            url: remote_host+"org/"+urlParams.orgId+"/transactions",
-//            type: 'GET',
-//            dataType: 'json',
-//            success: function(res) {
-//                if(res){
-//                    res.forEach(function(goal){
-//                        //console.log(transactionMaster);
-//                        $('#subgoal_select').append("<option value="+goal._id+">"+goal.name+"</option>");
-//                    });
-//                }
-//            }
-//            ,
-//            error: function(e , msg){
-//                //processError(e,msg);
-//            }
-//        });
-    }
-
     $(function () {
 
-        if ($('#goal-start-date-js').length){
-            $('#goal-start-date-js, #goal-end-date-js').datepicker()
-        }
-
         get_employees();
-        get_actions();
-        get_my_created_goals();
 
-        var today_date = get_current_date();
-        set_datepicker_date(today_date);
+        $("#users_select").change(function(){
+            var selected_user = $("#users_select :selected").val();
+            console.log(selected_user);
 
-        $('#criteria_select').on('change', function () {
-            criteria_val = $("#criteria_select :selected").val();
-            if (criteria_val == "action") {
-                $("#subgoal_content_block").hide();
-                $("#transaction_content_block").show();
-            }
-            else if (criteria_val == "subgoal") {
-                $("#transaction_content_block").hide();
-                $("#subgoal_content_block").show();
-            }
-            else{
-                $("#transaction_content_block").hide();
-                $("#subgoal_content_block").hide();
-            }
-        });
-
-        $("#goal_submit_btn").click(function(e) {
-
-            var goal_name = $("#goal_name").val();
-
-            var selected_transaction = $("#transaction_select :selected").val();
-            var transaction_target_value = $("#transaction_target_value").val();
-
-            var selected_subgoal = $("#subgoal_select :selected").val();
-            var subgoal_target_value = $("#subgoal_target_value").val();
-
-            var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
-            //new Date(year, month, day, hours, minutes, seconds, milliseconds)
-            var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1]), parseInt(goal_start_date.split("-")[0]));
-
-            var goal_end_date = $("#goal-end-date-js").find(".datepicker-input").val();
-            var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1]), parseInt(goal_end_date.split("-")[0]));
-
-            var goal_points = $("#goal_points").val();
-
-            var assign_to = $("#users_select :selected").val();
-
-
-//                goals:[{
-//                    // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
-//                    // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
-//                    criteria:String,
-//                    startDate:Date,
-//                    endDate:Date,
-//                    completed:Boolean,
-//                    createdAt:Date,
-//                    percentage:Number,
-//                    pointsFn:String,
-//                    subgoals:[{
-//                        subgoal:{type:Schema.Types.ObjectId,rel:'goalMasters'},
-//                        allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
-//                        currentValue:Number,
-//                        targetValue:Number,
-//                        done:Boolean
-//                    }],
-//                    action:{
-//                        allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
-//                        targetValue:Number,
-//                        currentValue:Number,
+//                $.ajax({
+//                                  // /org/:orgId/users/:userId/actions
+//                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/actions",
+//                    type: 'GET',
+//                    dataType: 'json',
+//                    success: function(res) {
+//                        console.log(res);
+//                        //if(res){
+//                        //}
+//                    },
+//                    error: function(e , msg){
+//                        //processError(e,msg);
 //                    }
-//                }],
-
-            var data = {}, action_data = {}, subgoal_data = {};
-            if (criteria_val == "action") {
-                action_data = {
-                    goal_name: goal_name,
-                    assign_to: assign_to,
-                    criteria: criteria_val,
-                    startDate: formatted_start_date,
-                    endDate: formatted_end_date,
-                    action:{
-                        allowedTransactions: selected_transaction,
-                        targetValue: transaction_target_value
-                    }
-                };
-                data = action_data;
-            }
-            else if (criteria_val == "subgoal") {
-                subgoal_data = {
-                    goal_name: goal_name,
-                    assign_to: assign_to,
-                    criteria: criteria_val,
-                    startDate: formatted_start_date,
-                    endDate: formatted_end_date,
-                    subgoals:[{
-                        subgoal: selected_subgoal,
-                        targetValue: subgoal_target_value
-                    }]
-                };
-                data = subgoal_data;
-            }
-
-            console.log("data");
-            console.log(data);
-
-            $.ajax({
-                // /org/:orgId/users/:userId/goals
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/goals",
-                type: 'POST',
-                dataType: 'json',
-                data: data,
-                success: function(res) {
-                    var success_text = "Goal assigned to user.";
-                    show_notification(success_text);
-                } ,
-                error: function(e , msg){
-                    //processError(e,msg);
-                }
-            });
-
-            return false;
+//                });
         });
-
     });
 
-
-
-
-
-
-
-    jQuery(function($) {
+jQuery(function($) {
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
         var color_class = $(this).find('option:selected').data('class');
@@ -1171,28 +990,8 @@
         $('.scrollable-horizontal').ace_scroll('reset');
     });
 
-        $('.date-picker').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        })
 
-
-        $('.date-picker').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        })
-            //show datepicker when clicking on the icon
-                .next().on(ace.click_event, function(){
-                    $(this).prev().focus();
-                });
-
-        //or change it into a date range picker
-        $('.input-daterange').datepicker({autoclose:true});
-
-
-
-
-        /**
+    /**
      //or use slimScroll plugin
      $('.slim-scrollable').each(function () {
 					var $this = $(this);
