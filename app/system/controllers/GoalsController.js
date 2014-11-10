@@ -10,7 +10,7 @@ var GoalsController={
     if(req.body.criteria=="Action"){
       // var newGoalMaster=JSON.parse(JSON.stringify(req.body));
       // newGoalMaster.
-      req.body.creator="54181598d465d283167f8d13";
+//      req.body.creator="54181598d465d283167f8d13";
       GoalMasterModel.createGoalMaster(req.params.orgId,req.body,function(err,goalMasterObj){
         UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
           if(err)res.send(err);
