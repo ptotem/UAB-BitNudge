@@ -34,7 +34,7 @@ var userSchema=new Schema({
         keyParamValue:Number,
         tags:[{tag:{type:Schema.Types.ObjectId,ref:'tags'},tagName:String}]
     }],
-    goals:[{
+    goal:[{
         // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
         // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
         type:String,      //can be challenge or goal

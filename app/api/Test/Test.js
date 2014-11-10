@@ -1,6 +1,8 @@
 var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
 var RolesModel=require('../../system/models/Roles');
+var GoalMasterModel=require('../../system/models/GoalMaster');
+var UserGoalsModel=require('../../system/models/Users').Goals;
 var userFn=function(orgId,obj){
     var allData=obj[0].data;
     var headers=allData[0];
@@ -63,44 +65,55 @@ var userEditFn=function(orgId,obj){
         }
     });
 };
-
 var userGoalFn=function(orgId,obj){
     var allData=obj[0].data;
     var headers=allData[0];
+    if(!headers[4])return;
+    var goal=[];
+//    var goal_data={};
+//    console.log(allData.length);
 
-    console.log("allData");
-    console.log(allData);
+    allData.forEach(function(data,index){
+        var criteria=data[1];
+        var email=data[7];
+        if(index!==0) {
+            var userGoalObj = {};
+            if(criteria=="Action"){
+                var goalObj={};
+                goalObj[headers[1]]=data[1];
+                goalObj[headers[5]]=data[5];
+                goalObj[headers[6]]=data[6];
+                console.log(data[5]);
+                var action={};
+                var creator={};
+                action[headers[3]]=data[3];
+                action[headers[4]]=data[4];
+                userGoalObj[headers[0]]=data[0];
+                userGoalObj["action"]=action;
+                UserCollection.findOne({email: data[7]}, function (err, user) {
+//                  var r=  "ObjectId("+"'" +user._id+"'" +")"
+                    creator["type"]=user._id;
+//                    userGoalObj["creator"]=creator;
+//                    console.log(goalObj);
+                    GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
+                        UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
+                            console.log(user._id);
+                            if(err)console.log("error"+err)
+                            else console.log("success");
+                        });
+                    });
+                });
+            }
+            else{
 
-    console.log("headers");
-    console.log(headers);
-    console.log(headers[4]);
 
+            }
+                    data.forEach(function(fieldData,indexNew) {
 
-//    if(!headers[4])return;
-//    var users=[];
-//    allData.forEach(function(data,index){
-//        if(index!==0){
-//            var userObj={};
-//            data.forEach(function(fieldData,indexNew){
-//                if(indexNew==4)
-//                    RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
-//                        // userObj[headers[indexNew]]=[role._id];
-//                        if(err) console.log(err);
-//                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{roles:[role[0]._id]}},function(err,ans){
-//                            if(err) console.log(err);
-//                            else console.log("setted roles");
-//                        });
-//                    });
-//                else userObj[headers[indexNew]]=fieldData;
-//            });
-//            // users.push(userObj);
-//            UserModel.createUser(orgId,userObj,function(err){
-//                if(err)
-//                    console.log("err creating user from excel"+err);
-//                else console.log("created User from excel"+index);
-//            });
-//        }
-//    });
+                    });
+        }
+
+    });
 };
 
 //this is a temp model cuz this is dummy data. Ideally, this should be the capability model,
@@ -278,6 +291,12 @@ var organizationTags={
 
 //bulk goal creation
 var usersGoals={
+//    'post /org/:orgId/excel/action/new':function(req,res,next){
+//        var xlsx = require('node-xlsx');
+//        var obj = xlsx.parse(req.files.actions.path); // parses a file
+//        actionFn(req.params.orgId,obj);
+//        res.send(obj);
+//    },
     'post /org/:orgId/excel/users_goals/new':function(req,res,next){
         var xlsx = require('node-xlsx');
         //var obj = xlsx.parse(req.files.users.path); // parses a file

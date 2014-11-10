@@ -1,27 +1,41 @@
 var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
+var GoalCollection=require('../../system/models/GoalMaster/GoalMasterCollection.js');
 var TransactionModel=require('../../system/models/TransactionMaster');
 var TransactionCollection=require('../../system/models/TransactionMaster/TransactionMasterCollection.js');
+var userController=require('../../system/controllers/UsersController.js');
+var tempModel=require('../../system/models/Users');
+var UserModel=tempModel.Users;
+var TransactionsModel=tempModel.Transactions;
 var useractions=[];
 var userObj={};
 var actionFn=function(orgId,obj){
-//    console.log('hello')
     var allData=obj[0].data;
     var headers=allData[0];
     if(!headers[4])return;
-    var actions=[];
     allData.forEach(function(data,index){
-        if(index!==0){
-            var actionObj={};
-            data.forEach(function(fieldData,indexNew){
+//        console.log(data[6]);
+        if(index!==0) {
+            var actionObj = {};
+            var actionObj1 = {};
+            var transactionname=data[0];
+            actionObj[headers[0]] = data[0];
+            actionObj[headers[1]] = data[1];
+            actionObj[headers[2]] = data[2];
+            actionObj[headers[3]] = data[3];
+            actionObj[headers[4]] = data[4];
+            actionObj[headers[5]] = data[5];
+            UserCollection.findOne({email: data[6]}, function (err, user) {
+                TransactionCollection.findOne({name: data[0]} , function(err,transaction)
+                {
+                    actionObj1["transactionMaster"] =transaction._id;
+                        TransactionsModel.addTransaction(user._id,actionObj1,function(err,obj){
+                        if(err)console.log("error"+err)
+                        else console.log("transaction._id");
+                    });
             });
-            actions.push(actionObj);
-            TransactionModel.createTransactionMaster(orgId,actionObj,function(err){
-                if(err)
-                    console.log("err creating user from excel"+err);
-                else console.log("created Actions from excel"+index);
-            });
-        }
+         });
+       }
     });
 };
 var userTags={
@@ -48,8 +62,19 @@ var userTags={
                 useractions.push(userObj);
             }
             res.send(action.transactions);
-        });
+
+            });
+
+        UserCollection
+            .findOne({_id: req.params.userId })
+            .populate('transactions') .exec(function (err, actions) {
+                if (err) return handleError(err);
+                console.log( actions.transactions.name);
+                // prints "The creator is Aaron"
+            })
+
     },
+
     // 'get /org/:orgId/transactions':function(req,res){
     //     TransactionCollection.find({}, function(err, data) {
     //         console.log(data);
@@ -66,11 +91,14 @@ var userTags={
 
     'get /org/:orgId/users/:userId/downlineactions':function(req,res){
         UserCollection.findOne({reportsTo: req.params.userId }) .populate('reportsTo') .exec(function (err, downlineactions) {
-            if (err) return handleError(err);
-            var actions=downlineactions.reportsTo;
-            console.log(actions.name);
-            res.send(actions);
-        })
+
+
+                if (err) return handleError(err);
+                var actions=downlineactions.reportsTo;
+                console.log(actions.name);
+                res.send(actions);
+            })
+
     },
     'get /org/:orgId/users/:userId/downlinepoints':function(req,res){
         UserCollection.findOne({reportsTo: req.params.userId }) .populate('reportsTo') .exec(function (err, downlinepoints) {
@@ -88,6 +116,21 @@ var userTags={
             res.send(actions.name);
         })
     },
+    'get /org/:orgId/goals/:goalId':function(req,res){
+        GoalCollection.findOne({_id:req.params.goalId},function(err, goal) {
+            console.log(goal);
+            res.send(goal.name);
+
+
+        });
+    },
+    'get /org/:orgId/transaction/:transactionId/users':function(req,res){
+        UserCollection.find({},{ transactions :{ $elemMatch: { transactionMaster: req.params.transactionId } } },function(err, data) {
+            console.log(data);
+            res.send(data);
+        });
+    },
+
     'get /org/:orgId/users/:userId/uplinkuser':function(req,res){
         var users=[];
         var recur=function(userId){
@@ -122,6 +165,8 @@ var userTags={
     }
 
 };
+
+
 var uploadAction={
     'post /org/:orgId/excel/action/new':function(req,res,next){
         var xlsx = require('node-xlsx');

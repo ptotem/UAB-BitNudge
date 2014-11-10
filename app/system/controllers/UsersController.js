@@ -42,7 +42,15 @@ var UsersController={
               res.send("successfully send");
           }
       });
-  },
+        UsersModel.createUser(req.params.orgId,req.body,function(err,user){
+            // SocialFeedModel.createSocialFeed(req.params.orgId,user._id,{},function(){});
+            NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
+            NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
+            NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
+            UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,req.params._id,{},function(){});
+            res.send(user);
+        });
+    },
     updateUser:function(req,res){
         UsersModel.updateUser(req.params.userId,req.body,function(err,obj){
             if(err) res.send("fail");

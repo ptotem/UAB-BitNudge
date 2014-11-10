@@ -612,7 +612,7 @@
 <!-- REQUIRED: Datatable components -->
 <script src="js/include/jquery.dataTables.min.js"></script>
 <!--<script src="js/include/DT_bootstrap.min.js"></script>-->
-<script src="js/include/DT_bootstrap3.js"></script>    url: remote_host+"org/"+urlParams.orgId+"/transactions",
+<script src="js/include/DT_bootstrap3.js"></script>
 <!--<script src="js/include/dataTables.scroller.min.js"></script>-->
 
 <!-- REQUIRED: Form element skin  -->
@@ -630,6 +630,7 @@
     function get_employees(){
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users",
+//            url: remote_host+"org/"+orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -649,6 +650,7 @@
     function get_user(){
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users",
+//            url: remote_host+"org/"+orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -670,6 +672,7 @@
         $.ajax({
 
                     url: remote_host+"org/"+urlParams.orgId+"/users",
+//                    url: remote_host+"org/"+orgId+"/users",
                 type: 'GET',
                 dataType: 'json',
                 success: function(res) {
@@ -686,12 +689,33 @@
         }
     });
     }
+    function get_username(user_id){
+        $('#result_2_action').empty();
+        $.ajax({
 
-//    var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var orgId="5417f10a195e61022fff91ee"
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+user_id,
+//            url: remote_host+"org/"+orgId+"/users/"+user_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+//                    console.log(res.name)
+//                    result_2_action
+                    $('#result_2_action').append('<h4> User <b>'+ res.name +'</b></h4>');
+                }
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+    //    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+//    var orgId="5417f10a195e61022fff91ee"
     function get_transactions(){
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/transactions",
+//            url: remote_host+"org/"+orgId+"/transactions",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -701,6 +725,48 @@
                         option_html = "<option value="+transaction._id+">"+transaction.name+"</option>";
                         $('#action_select_2').append(option_html);
                     });
+                }
+            },
+            error: function(e , msg){
+
+            }
+        });
+
+    }
+
+    function get_transactionName(transactionId){
+        $('#result_1_action').empty();
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
+//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+//                    console.log(res);
+                    $('#result_1_action').append('<h4> Actions Of Selected User <b>'+ res +'</b></h4>');
+                }
+            },
+            error: function(e , msg){
+
+            }
+        });
+
+    }
+    function get_downline_transactionName(transactionId){
+        $('#action_select_action').empty();
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
+//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+//                    console.log(res);
+                    option_html = "<option value="+transactionId+">"+res+"</option>";
+                    $('#action_select_action').append(option_html);
                 }
             },
             error: function(e , msg){
@@ -732,36 +798,46 @@
                 var orgId="5417f10a195e61022fff91ee"
                 var selected_user = $("#users_select :selected").val();
 //                console.log(selected_user);
+                $('#result_1_action').empty();
 
                 $.ajax({
                                   // /org/:orgId/users/:userId/actions
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/actions",
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
+//                    url: remote_host+"org/"+orgId+"/users/"+selected_user,
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
-//                        console.log(res);
+                        if(res){
+                            var option_html;
+                            res.transactions.forEach(function(transactions){
+                                get_transactionName(transactions.transactionMaster);
+
+                            });
+                        }
+
                     },
                     error: function(e , msg){
                         //processError(e,msg);
                     }
                 });
             });
-        });
+        }); // Actions of Users
         $(function () {
             $("#action_select_4").change(function(){
-                var orgId="5417f10a195e61022fff91ee"
+//                var orgId="5417f10a195e61022fff91ee"
                 var selected_user = $("#action_select_4 :selected").val();
 //                console.log(selected_user);
 
                 $.ajax({
                     url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
+//                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
                         if(res){
                             var option_html;
                             res.forEach(function(users){
-                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
+//                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
                             });
                         }
                     },
@@ -773,22 +849,28 @@
         });
 
         $(function () {
-
-
-            $("#action_select_2").click(function(){
+            $("#action_select_2").change(function(){
+                $('#result_2_action').empty();
                 get_transactions();
-//                console.log('hello');
-                var orgId="5417f10a195e61022fff91ee"
+//                var orgId="5417f10a195e61022fff91ee"
                 var selected_transactions = $("#action_select_2 :selected").val();
 //                console.log(selected_transactions);
-
                 $.ajax({
-                    // /org/:orgId/users/:userId/actions
-                    url: remote_host+"org/"+urlParams.orgId+"/transactions"+selected_transactions+"users",
+                    url: remote_host+"org/"+urlParams.orgId+"/transaction"+selected_transactions+"/users",
+//                    url: remote_host+"org/"+orgId+"/transaction/"+selected_transactions+"/users",
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
-//                        console.log(res);
+//                        get_username()
+                        if(res){
+                            var option_html;
+                            res.forEach(function(users){
+//                                console.log(users._id);
+                                get_username(users._id);
+//                                $('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
+                            });
+                        }
+
                     },
                     error: function(e , msg){
                         //processError(e,msg);
@@ -806,19 +888,21 @@
         // function for points:(last Tab)
         $(function () {
             $("#action_select_4").change(function(){
+                $('#result_4_action').empty();
                 var orgId="5417f10a195e61022fff91ee"
                 var selected_user = $("#action_select_4 :selected").val();
 //                console.log(selected_user);
 
                 $.ajax({
                     url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
+//                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
                         if(res){
                             var option_html;
                             res.forEach(function(users){
-                                console.log("User Name :"+users.name+"Points :"+users.totalPoints)
+                                $('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
                             });
                         }
                     },
@@ -833,9 +917,10 @@
             $("#action_select_user").change(function(){
                 var orgId="5417f10a195e61022fff91ee"
                 var user = $("#action_select_user :selected").val();
-//                var tr="5421698c67481ed26eab3e3d";
+                $('#action_select_action').empty();
                 $.ajax({
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+user+"/downlink",
+                    url: remote_host+"org/"+urlParams.orgId+"/user/"+user+"/downlink",
+//                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
                             success: function(res) {
@@ -843,29 +928,12 @@
                                     var option_html;
                                     $('#action_select_action').empty();
                                     res.forEach(function(users){
+//                                        console.log(users);
 
-                                        users.transactions.forEach(function(transactionsId)
+                                        users.transactions.forEach(function(transactions)
                                         {
-                                            console.log(transactionsId.transactionMaster);
-                                            option_html = "<option value="+user._id+">"+transactionsId.transactionMaster+"</option>";
-                                            $('#action_select_action').append(option_html);
-//                                            $.ajax({
-//
-//                                                url: remote_host+"orgId/"+urlParams.orgId+"/transactions/"+tr,
-//                                                type: 'GET',
-//                                                dataType: 'json',
-//                                                success: function(res) {
-//                                                    if(res){
-//                                                        var option_html;
-//                                                        res.forEach(function(transactionname){
-//                                                            console.log("Transaction Name :"+transactionname)
-//                                                        });
-//                                                    }
-//                                                },
-//                                                error: function(e , msg){
-//                                                    //processError(e,msg);
-//                                                }
-//                                            });
+//                                            console.log(transactions.transactionMaster);
+                                            get_downline_transactionName(transactions.transactionMaster);
 
                                         })
                                     });

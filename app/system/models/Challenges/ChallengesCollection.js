@@ -19,7 +19,7 @@ var challengesSchema=new Schema({
       targetValue:Number
     }
   }],
-  createdAt:Date,
+  createdAt:Date
 });
 var Challenges=mongoose.model('challenges',challengesSchema);
 module.exports=Challenges;

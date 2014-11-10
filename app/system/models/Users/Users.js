@@ -31,6 +31,9 @@ var UserManagement={
   updateUser:function(id,updateData,callback){
     UserCollection.update({_id:id},{$set:updateData},callback);
   },
+    updateUseractions:function(email,updateData,callback){
+        UserCollection.update({email:email},{$set:updateData},callback);
+    },
   getRoleOfUser:function(id,fields,options,callback){
     UserCollection.findOne({_id:id},fields,options).populate('role').exec(function(err,objs){
       if(objs)
@@ -79,6 +82,7 @@ var UserManagement={
   addTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$addToSet:{teams:teamId}},callback);
   },
+
   removeTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$pull:{teams:teamId}},callback);
   },

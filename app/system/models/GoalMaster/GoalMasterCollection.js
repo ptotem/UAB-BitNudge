@@ -10,7 +10,7 @@ var goalMasterSchema=new Schema({
       targetParam:String,
       allowedTransactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
       // this one is just a default targetValue. The real value is stored in the user collection along with the instance of the goal
-      targetValue:Number,
+      targetValue:Number
     },
     // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
     // transactions:[{type:Schema.Types.ObjectId,ref:'transactionMasters'}],
