@@ -456,7 +456,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="active">
+        <li >
             <a href="badge_master.html">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text"> Badge Master </span>
@@ -465,7 +465,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="">
+        <li class="active">
             <a href="reward_center.html">
                 <i class="menu-icon fa fa-calendar"></i>
                 <span class="menu-text"> Reward Center </span>
@@ -665,7 +665,7 @@
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Badge Master</h5>
+                                <h5 class="widget-title">Reward Center</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -707,11 +707,12 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <table class="table table-striped table-bordered responsive" id="badge_master_list">
+                                    <table class="table table-striped table-bordered responsive" id="reward_center_list">
                                         <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Image</th>
+                                            <th>Currency</th>
+                                            <th>Conversion Rate</th>
+                                            <th>Rewards</th>
                                             <th></th>
                                         </tr>
                                         </thead>
@@ -720,12 +721,8 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
                                         </tr>
-
-
-
-
-
                                         </tbody>
                                     </table>
 
@@ -802,18 +799,23 @@ $(function () {
    for(i=0;i<15;i++)
    {
 
-    row_html ='<tr class="odd gradeX">'+
-            '<td class="text-center">Grey</td>'+
-            '<td class="text-center">'+'<img src="img/avatar/avatar_1.jpg">'+'</td>'+
-            '<td class="text-center">' +
-            '<a style="padding: 5px;" href="#">' + '<i class="ace-icon glyphicon glyphicon-pencil"></i>' + '</a>' +
-            '<a style="padding: 5px;" href="#">' + '<i class="ace-icon glyphicon glyphicon-info-sign"></i>' + '</a>' +
-            '</td>' +
-            '</tr>'
-    $("#badge_master_list").find('tbody').append(row_html);
+       var row_html;
+       row_html ='<tr class="odd gradeX">'+
+               '<td class="text-center">Rupee</td>'+
+               '<td class="text-center">65</td>'+
+               '<td class="text-center">1000</td>'+
+               '<td class="text-center">' +
+               '<a style="padding: 5px;" href="#">' + '<i class="ace-icon glyphicon glyphicon-pencil"></i>' + '</a>' +
+               '<a style="padding: 5px;" href="#">' + '<i class="ace-icon glyphicon glyphicon-info-sign"></i>' + '</a>' +
+               '</td>' +
+               '</tr>'
+
+       console.log(row_html);
+
+       $("#reward_center_list").find('tbody').append(row_html);
    }
 
-    $('#badge_master_list').dataTable({
+    $('#reward_center_list').dataTable({
         "bPaginate": true,
         "bFilter": true,
         "bLengthChange": false,
