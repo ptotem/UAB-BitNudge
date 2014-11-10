@@ -37,12 +37,12 @@ var TransactionController={
           eval("var pointsFunction=("+points.pointsFn+");");
           var pointsEarned=pointsFunction(transObj.keyParamValue);
           EventsController.triggerUserPointsAddition(req.params.orgId,req.params.userId,pointsEarned,"transactions",transObj._id,new Date(),function(err3,ppp){
-            if(err3)res.send(err3); else res.send("success");
+            if(err3)res.send(err3);
+            EventsController.processTransactionForUser(req.params.userId,transObj,function(err,processObj){
+              if(err) res.send("fail");
+              else res.send("success");
+            });
           });
-          // EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
-          //   if(err) res.send("fail");
-          //   else res.send("success");
-          // });
         });
       });
     });
