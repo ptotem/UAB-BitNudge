@@ -431,7 +431,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="">
+        <li class="active">
             <a href="roles.html">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> Roles </span>
@@ -439,7 +439,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="active">
+        <li>
             <a href="employees.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Employees</span>
@@ -693,7 +693,7 @@
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Add New Employee</h5>
+                                <h5 class="widget-title">Roles</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -737,19 +737,16 @@
                                 <div class="widget-main">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <a href="employee_new_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Employee</a><br><br>
-                                            <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Assign Reporting Manager to Employee</a><br><br>
-                                            <a href="employee_tags_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Assign Tags to Employee</a><br><br>
-                                            <a href="action_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Action Creation</a><br><br>
-                                            <a href="action_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Action Test Page</a><br><br>
+                                            <a href="new_role_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Role</a>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="employees_new_bulk.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add Bulk Employees</a><br><br>
-                                            <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Edit Bulk Employees</a><br><br>
-                                            <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Employee Reporting Line Test Page</a><br><br>
-                                            <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Organizational Tags Test Page</a><br><br>
-                                            <a href="goal_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Goal Creation</a><br><br>
+                                            <a href="roles_abilities_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Role - Abilities Test Page</a>
                                         </div>
+                                        <div class="col-md-6">
+                                            <a href="role_ability_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add Role Ability</a>
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -767,7 +764,7 @@
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Employees list</h5>
+                                <h5 class="widget-title">Roles list</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -809,28 +806,18 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <table class="table table-bordered table-hover responsive" id="employees_list">
+                                    <table class="table table-bordered table-hover responsive" id="role_list">
                                         <thead>
                                         <tr>
-                                            <th>Name</th>
                                             <th>Roles</th>
-                                            <th>Reporting Officer</th>
-                                            <th>Tags</th>
-                                            <th>Groups/Department</th>
+                                            <th>Abilities</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
                                         </tbody>
                                     </table>
+
 
                                 </div>
                             </div>
@@ -846,7 +833,7 @@
             </div><!-- /.col -->
         </div>
         <!-- /1 row -->
-
+       
     </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
@@ -893,91 +880,69 @@ var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
 
 
-function get_employees(){
+function get_roles(){
+
     $.ajax({
-        url: remote_host+"org/"+urlParams.orgId+"/users",
+        url: remote_host+"org/"+urlParams.orgId+"/roles",
         type: 'GET',
         dataType: 'json',
         success: function(res) {
             if(res){
-                var row_html, role, reportsTo, orgTags = [], teams = [];
-                res.forEach(function(user){
-                    //console.log(user);
+                var abilititesArray;
+                res.forEach(function(role){
+                    //console.log(role._id);
+                    $.ajax({
+                        url: remote_host+"org/"+urlParams.orgId+"/roles/"+role._id+"/abilities",
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(abilitiesData) {
+                            if(abilitiesData){
+                                abilititesArray = "";
+                                abilitiesData.forEach(function(ability){
+                                    //console.log(ability.name);
+                                    abilititesArray = abilititesArray + ability.name + ", ";
+                                });
+                            }
 
-                    if (user.role)
-                        role = user.role.name;
-                    else
-                        role = "";
+                            var row_html;
+                            row_html = '<tr>'+
+                                    '<td class="text-center">'+role.name+'</td>'+
+                                    '<td class="text-center">'+abilititesArray.replace(/,/g, '<br>')+'</td>'+
+                                    '<td class="text-center">'+
+                                    '<a style="padding: 5px;" href="role_edit_form.html?roleId='+role._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
+                                    '<a style="padding: 5px;" href="role_form_show.html?roleId='+role._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+                                    '</td>'+
+                                    '</tr>';
 
-                    if (user.reportsTo)
-                        reportsTo = user.reportsTo.name;
-                    else
-                        reportsTo = "";
+                            $("#role_list").find('tbody').append(row_html);
 
-                    if (user.orgtags) {
-                        orgTags = [];
-                        $.each(user.orgtags, function(index, value) {
-                            orgTags.push(value.name)
-                        });
-                    }
-                    else{
-                        orgTags = "";
-                    }
-
-                    if (user.teams) {
-                        teams = [];
-                        $.each(user.teams, function(index, value) {
-                            teams.push(value.name)
-                        });
-                    }
-                    else{
-                        teams = "";
-                    }
-
-
-                    row_html = '<tr>'+
-                            '<td class="text-center aligned">'+user.name+'</td>'+
-                            '<td class="text-center aligned">'+role+'</td>'+
-                            '<td class="text-center aligned">'+reportsTo+'</td>'+
-                            '<td class="text-center aligned">'+orgTags+'</td>'+
-                            '<td class="text-center aligned">'+teams+'</td>'+
-                            '<td class="text-center aligned">'+
-                            '<div class="block" style="width: 50px;">' +
-                            '<a href="employee_edit_form.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
-                            '<a href="employee_show.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
-                            '</div>' +
-                            '</td>'+
-                            '</tr>';
-
-                    $("#employees_list").find('tbody').append(row_html);
-
+                        },error: function(e , msg){
+                            //processError(e,msg);
+                        }
+                    });
                 });
-                var oTable1 =
-                        $('#employees_list')
-                            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-                                .dataTable( {
-                                    "bPaginate": true,
-                                    "bFilter": true,
-                                    "bLengthChange": true,
-                                    "bSort": false,
-                                    "iDisplayLength": 10
-                                } );
-
-
             }
-        }
-        ,
-        error: function(e , msg){
+        },error: function(e , msg){
             //processError(e,msg);
         }
     });
 }
 
-
+function apply_dataTable_to_role_list(){
+    $('#role_list').dataTable({
+        "bPaginate": true,
+        "bFilter": true,
+        "bLengthChange": true,
+        "bSort": false
+    });
+}
 $(function () {
-    var row_html;
-    get_employees();
 
+    get_roles();
+
+    setTimeout(function() {
+        apply_dataTable_to_role_list();
+    }, 2000);
 
 });
 

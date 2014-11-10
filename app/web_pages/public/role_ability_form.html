@@ -421,7 +421,7 @@
     </div>
 </div><!-- /.sidebar-shortcuts -->
 
-<ul class="nav nav-list">
+    <ul class="nav nav-list">
         <li>
             <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
@@ -431,7 +431,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="">
+        <li class="active">
             <a href="roles.html">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> Roles </span>
@@ -439,7 +439,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="active">
+        <li>
             <a href="employees.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Employees</span>
@@ -557,7 +557,7 @@
 <!-- #section:basics/content.breadcrumbs -->
 <div class="breadcrumbs" id="breadcrumbs">
     <script type="text/javascript">
-        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        try{ace.settings.check('breadcrumbs' , 'disable')}catch(e){}
     </script>
 
     <ul class="breadcrumb">
@@ -693,7 +693,7 @@
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Add New Employee</h5>
+                                <h5 class="widget-title">Assign Role Ability</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -735,22 +735,82 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="employee_new_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Employee</a><br><br>
-                                            <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Assign Reporting Manager to Employee</a><br><br>
-                                            <a href="employee_tags_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Assign Tags to Employee</a><br><br>
-                                            <a href="action_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Action Creation</a><br><br>
-                                            <a href="action_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Action Test Page</a><br><br>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="employees_new_bulk.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add Bulk Employees</a><br><br>
-                                            <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Edit Bulk Employees</a><br><br>
-                                            <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Employee Reporting Line Test Page</a><br><br>
-                                            <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Organizational Tags Test Page</a><br><br>
-                                            <a href="goal_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Goal Creation</a><br><br>
-                                        </div>
-                                    </div>
+
+                                    <form id="role_ability_form" class="form-horizontal themed">
+                                        <fieldset>
+                                            <!--<div class="form-group">-->
+                                            <!--<div class="row">-->
+                                            <!--<div  class="col-md-3">-->
+                                            <!--<label for="role_name">Role</label>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-9">-->
+                                            <!--<input type="text" class="form-control"  id="role_name" />-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+
+                                            <div class="form-group">
+
+                                                    <div class="col-md-3">
+                                                        <label class="control-label" for="org_role">Role</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="controls">
+                                                            <select id="org_role" class="with-search">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                    <div  class="col-md-3">
+                                                        <label>Ability</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <table class="table table-bordered" id="abilities_list">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Check/Uncheck</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                            </div>
+
+                                            <!--<div class="form-group" style="display:none">-->
+                                            <!--<div class="row"><div class="col-md-3"><label class="control-label" for="multiSelect">Abilities</label></div>-->
+                                            <!--<div class="col-md-9"><div class="controls">-->
+                                            <!--<select multiple="multiple" id="multiSelect" class="with-search">-->
+                                            <!--<option value="AK">A1</option>-->
+                                            <!--<option value="HI">A2</option>-->
+                                            <!--<option value="CA">A3</option>-->
+                                            <!--<option value="NV">A4</option>-->
+                                            <!--<option value="OR">A5</option>-->
+                                            <!--<option value="WA">A6</option>-->
+                                            <!--<option value="AZ">A7</option>-->
+                                            <!--</select>-->
+                                            <!--</div></div></div>-->
+                                            <!--</div>-->
+
+
+                                            <div class="form-actions">
+                                                <button type="reset" class="btn medium btn-danger">
+                                                    Cancel
+                                                </button>
+                                                <button id="submit-form-btn" type="submit" class="btn medium btn-primary">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+
+
                                 </div>
                             </div>
                         </div>
@@ -761,92 +821,11 @@
 
                 </div>
                 <!-- /.row 1 end -->
-                <!--<row 2 >-->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 widget-container-col">
-                        <!-- #section:custom/widget-box -->
-                        <div class="widget-box">
-                            <div class="widget-header">
-                                <h5 class="widget-title">Employees list</h5>
 
-                                <!-- #section:custom/widget-box.toolbar -->
-                                <div class="widget-toolbar">
-                                    <div class="widget-menu">
-                                        <a href="#" data-action="settings" data-toggle="dropdown">
-                                            <i class="ace-icon fa fa-bars"></i>
-                                        </a>
-
-                                        <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                                            <li>
-                                                <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                                            </li>
-
-                                            <li>
-                                                <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <a href="#" data-action="fullscreen" class="orange2">
-                                        <i class="ace-icon fa fa-expand"></i>
-                                    </a>
-
-                                    <a href="#" data-action="reload">
-                                        <i class="ace-icon fa fa-refresh"></i>
-                                    </a>
-
-                                    <a href="#" data-action="collapse">
-                                        <i class="ace-icon fa fa-chevron-up"></i>
-                                    </a>
-
-                                    <a href="#" data-action="close">
-                                        <i class="ace-icon fa fa-times"></i>
-                                    </a>
-                                </div>
-
-                                <!-- /section:custom/widget-box.toolbar -->
-                            </div>
-
-                            <div class="widget-body">
-                                <div class="widget-main">
-                                    <table class="table table-bordered table-hover responsive" id="employees_list">
-                                        <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Roles</th>
-                                            <th>Reporting Officer</th>
-                                            <th>Tags</th>
-                                            <th>Groups/Department</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- /section:custom/widget-box -->
-                    </div>
-
-
-                </div>
-                <!-- /.row 12 end -->
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
         </div>
         <!-- /1 row -->
-
     </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
@@ -889,98 +868,89 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
-var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-
-
-function get_employees(){
-    $.ajax({
-        url: remote_host+"org/"+urlParams.orgId+"/users",
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-            if(res){
-                var row_html, role, reportsTo, orgTags = [], teams = [];
-                res.forEach(function(user){
-                    //console.log(user);
-
-                    if (user.role)
-                        role = user.role.name;
-                    else
-                        role = "";
-
-                    if (user.reportsTo)
-                        reportsTo = user.reportsTo.name;
-                    else
-                        reportsTo = "";
-
-                    if (user.orgtags) {
-                        orgTags = [];
-                        $.each(user.orgtags, function(index, value) {
-                            orgTags.push(value.name)
-                        });
-                    }
-                    else{
-                        orgTags = "";
-                    }
-
-                    if (user.teams) {
-                        teams = [];
-                        $.each(user.teams, function(index, value) {
-                            teams.push(value.name)
-                        });
-                    }
-                    else{
-                        teams = "";
-                    }
-
-
-                    row_html = '<tr>'+
-                            '<td class="text-center aligned">'+user.name+'</td>'+
-                            '<td class="text-center aligned">'+role+'</td>'+
-                            '<td class="text-center aligned">'+reportsTo+'</td>'+
-                            '<td class="text-center aligned">'+orgTags+'</td>'+
-                            '<td class="text-center aligned">'+teams+'</td>'+
-                            '<td class="text-center aligned">'+
-                            '<div class="block" style="width: 50px;">' +
-                            '<a href="employee_edit_form.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
-                            '<a href="employee_show.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
-                            '</div>' +
-                            '</td>'+
-                            '</tr>';
-
-                    $("#employees_list").find('tbody').append(row_html);
-
-                });
-                var oTable1 =
-                        $('#employees_list')
-                            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-                                .dataTable( {
-                                    "bPaginate": true,
-                                    "bFilter": true,
-                                    "bLengthChange": true,
-                                    "bSort": false,
-                                    "iDisplayLength": 10
-                                } );
-
-
+    function get_roles(){
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/roles",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    res.forEach(function(role){
+                        $('#org_role').append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
+                    });
+                }
             }
-        }
-        ,
-        error: function(e , msg){
-            //processError(e,msg);
-        }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+    function get_abilities(){
+        $.ajax({
+            url: remote_host+"abilities",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var row_html;
+                    res.forEach(function(role){
+                        row_html = '<tr>'+
+                                '<td class="text-center">'+role.name+'</td>'+
+                                '<td class="text-center"> <input type="checkbox" name="ability" value="'+role._id+'"> </td>'+
+                                '</tr>';
+
+                        $("#abilities_list").find('tbody').append(row_html);
+                    });
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+
+    $(function () {
+
+        get_roles();
+        get_abilities();
+
+        $("#submit-form-btn").click(function() {
+            var role_id = $("#org_role option:selected").val();
+            var assigned_abilities = [];
+            $('#abilities_list input:checked').each(function() {
+                assigned_abilities.push($(this).val());
+            });
+
+            //var selected = $("#emp_role")[0];
+            var roleAbilities = {
+                //role: role_id,
+                abilities: assigned_abilities
+            };
+
+            $.ajax({
+                ///org/:orgId/roles/:roleId/abilities
+                url: remote_host+"org/"+urlParams.orgId+"/roles/"+role_id+"/abilities",
+                type: 'POST',
+                dataType: 'json',
+                data: roleAbilities,
+                success: function(res) {
+                    var success_text = "Abilities assigned to role.";
+                    show_notification(success_text);
+                } ,
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+            return false;
+        });
+
     });
-}
-
-
-$(function () {
-    var row_html;
-    get_employees();
-
-
-});
-
 
 
 
@@ -1018,6 +988,8 @@ jQuery(function($) {
     $(window).on('resize.scroll_reset', function() {
         $('.scrollable-horizontal').ace_scroll('reset');
     });
+
+
 
 
     /**
@@ -1076,54 +1048,6 @@ jQuery(function($) {
     });
 
 });
-</script>
-<script type="text/javascript">
-    var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
-    ace.load_ajax_scripts(scripts, function() {
-        //inline scripts related to this page
-        jQuery(function($) {
-
-            /**
-             var tableTools = new $.fn.dataTable.TableTools( oTable1, {
-			"sSwfPath": "../../copy_csv_xls_pdf.swf",
-	        "buttons": [
-	            "copy",
-	            "csv",
-	            "xls",
-				"pdf",
-	            "print"
-	        ]
-	    } );
-             $( tableTools.fnContainer() ).insertBefore('#sample-table-2');
-             */
-
-
-            $(document).on('click', 'th input:checkbox' , function(){
-                var that = this;
-                $(this).closest('table').find('tr > td:first-child input:checkbox')
-                        .each(function(){
-                            this.checked = that.checked;
-                            $(this).closest('tr').toggleClass('selected');
-                        });
-            });
-
-
-            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-            function tooltip_placement(context, source) {
-                var $source = $(source);
-                var $parent = $source.closest('table')
-                var off1 = $parent.offset();
-                var w1 = $parent.width();
-
-                var off2 = $source.offset();
-                //var w2 = $source.width();
-
-                if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-                return 'left';
-            }
-
-        })
-    });
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->
