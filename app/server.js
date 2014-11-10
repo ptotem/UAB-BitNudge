@@ -11,6 +11,7 @@ var restify = require('restify');
 var jwt = require('jwt-simple');
 var secret="ungessableSecret";
 var UserModel=require('./system/models/Users').Users;
+var TransactionMasterCollection=require('./system/models/TransactionMaster/TransactionMasterCollection.js');
 var EventsController=require('./system/controllers/EventsController.js');
 var bunyan = require('bunyan');
 
@@ -86,8 +87,10 @@ server.post('/login/bitnudge',passport.authenticate('local',{session:false}), fu
         UserModel.getUser(req.user._id,"lastLogin","",[{path:"roles",select:"name"}],function(err1,obj1){
             if(obj1.lastLogin>moment().subtract(1,'day').valueOf()){
                 //hardcoding the system activity for performance.
-                var loggingInSystemActivityId="543b7a15f392420615a1f34d";
-                EventsController.triggerSystemActivity(obj1.orgId,req.user._id,loggingInSystemActivityId,function(){});
+                //Id Hard Coding removed, now Hard coding is based on name
+                TransactionMasterCollection.findOne({name : "Log In"},function(err,obj){
+                    EventsController.triggerSystemActivity(obj1.orgId,req.user._id,obj._id,function(){});
+                });
             }
             UserModel.setLastLogin(req.user._id,new Date(),function(err,obj){
                 var ele={userId:req.user._id,expires:moment().add(1,'day').valueOf()};
