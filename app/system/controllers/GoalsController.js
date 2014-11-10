@@ -4,10 +4,13 @@ var TransactionMasterCollection=require('../models/TransactionMaster/Transaction
 var GoalsController={
   createGoal:function(req,res){
     //if the criteria is Action, then it must be stored in the goalMaster so that user can reuse it later.
+    //This is for development purposes.
+    //TODO:- Change to req.user._id
     req.body.type="goal";
     if(req.body.criteria=="Action"){
       // var newGoalMaster=JSON.parse(JSON.stringify(req.body));
       // newGoalMaster.
+      req.body.creator="54181598d465d283167f8d13";
       GoalMasterModel.createGoalMaster(req.params.orgId,req.body,function(err,goalMasterObj){
         UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
           if(err)res.send(err);

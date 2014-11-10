@@ -14,7 +14,7 @@ if(!test[1]){
   var rl=readline.createInterface({input:process.stdin,output:process.stdout});
   rl.question("Please enter the organizationId",function(orgId){
     try{
-      var orgObjId=mongoose.Types.ObjectId(orgId);
+      orgObjId=mongoose.Types.ObjectId(orgId);
     }
     catch(e){
       console.log("Not a valid ObjectId");
@@ -25,7 +25,7 @@ if(!test[1]){
 }
 else{
   try{
-    var orgObjId=mongoose.Types.ObjectId(test[1]);
+    orgObjId=mongoose.Types.ObjectId(test[1]);
   }
   catch(e){
     console.log("Not a valid ObjectId");
@@ -48,9 +48,10 @@ function later(){
       var limits=objects;
       var currLimits=JSON.stringify(objects);
       currLimits=currLimits.replace(/\"([a-z0-9]+)\"/g,"$1");
-      var calculationFn="function(points){var limits="+currLimits+";limits.forEach(function(limit){if(points<limit.max){return limit.level;}});return 0;}";
+      var calculationFn="function(points){var limits="+currLimits+";for(var i=0;i<limits.length;i++){if(points<limits[i].max){return limits[i].level;}};return 0;}";
       LevelsModel.createLevel(orgObjId,{calculationFn:calculationFn},function(err,object){
-        console.log("done writing "+object+" to database");
+        console.log("done writing to database");
+        console.log(object);
       });
     }
   });

@@ -19,13 +19,13 @@ var Leaderboard={
   //     LeaderboardCollection.findOne({_id:id},fields,options).exec(callback);
   // },
   makePlayerRankObject:function(rank,playerId){
-    return {rankNo:rank,player:player};
+    return {rankNo:rank,player:playerId};
   },
   makeTeamRankObject:function(rank,playerId){
-    return {rankNo:rank,team:player};
+    return {rankNo:rank,team:playerId};
   },
   makePlayerInTeamRankObject:function(rank,playerId){
-    return {rankNo:rank,player:player};
+    return {rankNo:rank,player:playerId};
   },
   getQueryFromDate:function(period,date){
     var currDate,start,end;
@@ -110,14 +110,16 @@ var Leaderboard={
     query['playerRanks.player']=userId;
     query.orgId=orgId;
     LeaderboardCollection.findOne(query,"playerRanks.$",function(err,obj){
-      if(err) res.send(err);
-      else callback(err,obj.playerRanks[0]);
+      if(err) callback(err);
+      if(obj&&obj.playerRanks&&obj.playerRanks[0])
+        callback(err,obj.playerRanks[0]);
+      else callback(err);
     });
   },
   getUserRankOfTeamOfPeriod:function(orgId,teamId,userId,period,date,callback){
     var query=Leaderboard.getQueryFromDate(period,date);
-    query.orgId=orgId;
-    LeaderboardCollection.aggregate({$match:{}},{$project:{playerInTeamRanks:1}},{$unwind:"$playerInTeamRanks"},{$match:{'playerInTeamRanks.team':mongoose.Types.ObjectId(teamId)}},{$unwind:"$playerInTeamRanks.playerRanks"},{$match:{'playerInTeamRanks.playerRanks.player':mongoose.Types.ObjectId(userId)}},{$group:{_id:"$_id",rankNo:{$last:'$playerInTeamRanks.playerRanks.rankNo'}}},function(err,obj){
+    query.orgId=mongoose.Types.ObjectId(orgId);
+    LeaderboardCollection.aggregate({$match:query},{$project:{playerInTeamRanks:1}},{$unwind:"$playerInTeamRanks"},{$match:{'playerInTeamRanks.team':mongoose.Types.ObjectId(teamId)}},{$unwind:"$playerInTeamRanks.playerRanks"},{$match:{'playerInTeamRanks.playerRanks.player':mongoose.Types.ObjectId(userId)}},{$group:{_id:"$_id",rankNo:{$last:'$playerInTeamRanks.playerRanks.rankNo'}}},function(err,obj){
       if(err) callback(err,obj);
       else callback(err,obj[0]);
     });
@@ -127,8 +129,10 @@ var Leaderboard={
     query['teamRanks.team']=teamId;
     query.orgId=orgId;
     LeaderboardCollection.findOne(query,"teamRanks.$",function(err,obj){
-      if(err) res.send(err);
-      else callback(err,obj.teamRanks[0]);
+      if(err) callback(err);
+      if(obj&&obj.teamRanks&&obj.teamRanks[0])
+        callback(err,obj.teamRanks[0]);
+      else callback(err);
     });
   },
   getRankSchema:function(){

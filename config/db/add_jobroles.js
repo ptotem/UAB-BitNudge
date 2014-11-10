@@ -14,7 +14,7 @@ if(!test[1]){
   var rl=readline.createInterface({input:process.stdin,output:process.stdout});
   rl.question("Please enter the organizationId",function(orgId){
     try{
-      var orgObjId=mongoose.Types.ObjectId(orgId);
+      orgObjId=mongoose.Types.ObjectId(orgId);
     }
     catch(e){
       console.log("Not a valid ObjectId");
@@ -25,7 +25,7 @@ if(!test[1]){
 }
 else{
   try{
-    var orgObjId=mongoose.Types.ObjectId(test[1]);
+    orgObjId=mongoose.Types.ObjectId(test[1]);
   }
   catch(e){
     console.log("Not a valid ObjectId");
@@ -45,9 +45,10 @@ function later(){
     var objects=JSON.parse(data);
     if(objects instanceof Array){
         objects.forEach(function(object){
-            console.log(object);
             JobRolesModel.createJobRole(orgObjId,object,function(err,obj){
-              console.log("done writing "+object+" to database");
+              if(err) console.log(err);
+              console.log("done writing to database");
+              console.log(obj);
             });
         });
     }

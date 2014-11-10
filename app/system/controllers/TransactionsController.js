@@ -1,4 +1,3 @@
-var TransactionMasterModel=require('../models/TransactionMaster');
 var tempModel=require('../models/Users');
 var UserModel=tempModel.Users;
 var TransactionModel=tempModel.Transactions;
@@ -33,15 +32,17 @@ var TransactionController={
   },
   approveTransaction:function(req,res){
     TransactionModel.approveTransaction(req.params.userId,req.params.transactionId,null,function(err,obj){
-      TransactionModel.getTransaction(req.params.transactionId,"","","",function(err1,transObj){
+      TransactionModel.getTransaction(req.params.userId,req.params.transactionId,"","","",function(err1,transObj){
         TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
           eval("var pointsFunction=("+points.pointsFn+");");
-          var pointsEarned=pointsFunction(transObj.target);
-          EventsController.triggerUserPointsAddition(req.params.orgId,req.params.userId,pointsEarned,"transactions",transObj._id,function(){});
-          EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
-            if(err) res.send("fail");
-            else res.send("success");
+          var pointsEarned=pointsFunction(transObj.keyParamValue);
+          EventsController.triggerUserPointsAddition(req.params.orgId,req.params.userId,pointsEarned,"transactions",transObj._id,new Date(),function(err3,ppp){
+            if(err3)res.send(err3); else res.send("success");
           });
+          // EventsController.processTransactionForUser(req.params.userId,transObj,function(err,obj){
+          //   if(err) res.send("fail");
+          //   else res.send("success");
+          // });
         });
       });
     });
@@ -74,7 +75,7 @@ var TransactionController={
     });
   },
   getAllTransactionMasters:function(req,res){
-    TransactionMasterModel.getAllTransactionMasters("","","",function(err,obj){
+    TransactionMasterModel.getAllTransactionMastersOfOrganization(req.params.orgId,"","","",function(err,obj){
       if(err) res.send(err);
       else res.send(obj);
     });
