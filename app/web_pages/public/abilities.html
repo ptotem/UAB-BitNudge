@@ -421,8 +421,8 @@
     </div>
 </div><!-- /.sidebar-shortcuts -->
 
-    <ul class="nav nav-list">
-        <li >
+<ul class="nav nav-list">
+        <li>
             <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text">Department List</span>
@@ -498,7 +498,7 @@
             <b class="arrow"></b>
         </li>
         <li class="">
-            <a href="leve.html">
+            <a href="level.html">
                 <i class="menu-icon fa fa-picture-o"></i>
                 <span class="menu-text"> Level </span>
             </a>
@@ -689,11 +689,13 @@
                 <!-- PAGE CONTENT BEGINS -->
                 <!--<row 1 >-->
                 <div class="row">
+                    <div class="row">
+
                     <div class="col-lg-12 col-md-12 widget-container-col">
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Abilities</h5>
+                                <h5 class="widget-title">Add New Abilities</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -737,10 +739,7 @@
                                 <div class="widget-main">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <a href="abilities_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Badge</a>
-                                        </div>
-
-                                    </div>
+                                            <a href="abilities_new_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Abilities</a></div>
                                 </div>
                             </div>
                         </div>
@@ -750,8 +749,9 @@
 
 
                 </div>
+               </div>
                 <!-- /.row 1 end -->
-                <!--row 2-->
+                <!--<row 2 >-->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 widget-container-col">
                         <!-- #section:custom/widget-box -->
@@ -802,10 +802,12 @@
                                     <table class="table table-bordered table-hover responsive" id="abilities_list">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Name</th>
+                                            <th>Name</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                         </tbody>
                                     </table>
 
@@ -818,8 +820,7 @@
 
 
                 </div>
-                <!--row 2 end-->
-
+                <!-- /.row 12 end -->
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
         </div>
@@ -868,37 +869,42 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
-var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
 
 
 
 $(function () {
 
-    //$('#main').css('opacity', 1);
-    //$('header').fadeIn();
+row_html = '<tr>'+
+        '<td class="text-center aligned">1</td>'+
+        '<td class="text-center aligned">'+
+        '<div class="block" style="width: 50px;">' +
+        '<a style="padding:5px" href="abilities_edit_form.html"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
+        '<a style="padding:5px" href="abilities_show.html"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+        '</div>' +
+        '</td>'+
+        '</tr>';
 
-    var row_html;
+$("#abilities_list").find('tbody').append(row_html);
 
-    for (var l = 0; l < 15; l++) {
-        row_html = '<tr>' +
-                '<td class="text-center">Laurel</td>' +
-                '<td class="text-center">' +
-                '<a style="padding: 5px;" href="badges_edit_form.html">' + '<i class="ace-icon glyphicon glyphicon-pencil"></i>' + '</a>' +
-                '<a style="padding: 5px;" href="badges_show.html">' + '<i class="ace-icon glyphicon glyphicon-info-sign"></i>' + '</a>' +
-                '</td>' +
-                '</tr>';
 
-        $("#badges_list").find('tbody').append(row_html);
-    }
+var oTable1 =
+        $('#abilities_list')
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                .dataTable( {
+                    "bPaginate": true,
+                    "bFilter": true,
+                    "bLengthChange": true,
+                    "bSort": false,
+                    "iDisplayLength": 10
+                } );
 
-    $('#badges_list').dataTable({
-        "bPaginate": true,
-        "bFilter": true,
-        "bLengthChange": true,
-        "bSort": false
-    });
+
 
 });
+
+
+
+
 jQuery(function($) {
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){

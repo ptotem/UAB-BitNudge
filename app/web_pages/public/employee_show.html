@@ -685,7 +685,7 @@
                                                     <label>Name</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="emp-details" id="emp_name">amit</div>
+                                                    <div class="emp-details" id="emp_name"></div>
                                                 </div>
                                             </div>
 
@@ -697,7 +697,7 @@
                                                     <label>E-mail</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="emp-details" id="emp_email">a@gamil.com</div>
+                                                    <div class="emp-details" id="emp_email"></div>
                                                 </div>
                                             </div>
 
@@ -709,7 +709,7 @@
                                                     <label>Designation</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="emp-details" id="emp_designation">manager</div>
+                                                    <div class="emp-details" id="emp_designation"></div>
                                                 </div>
                                             </div>
 
@@ -721,7 +721,7 @@
                                                     <label>Roles</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="emp-details" id="emp_role">admin</div>
+                                                    <div class="emp-details" id="emp_role"></div>
                                                 </div>
                                             </div>
 
@@ -732,7 +732,7 @@
                                                     <label>Reporting Officer</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="emp-details" id="emp_reporting_officer">admin</div>
+                                                    <div class="emp-details" id="emp_reporting_officer"></div>
                                                 </div>
                                             </div>
 
@@ -743,7 +743,7 @@
                                                     <label>Tags</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="emp-details" id="emp_tags">gold</div>
+                                                    <div class="emp-details" id="emp_tags"></div>
                                                 </div>
                                             </div>
 
@@ -754,7 +754,7 @@
                                                     <label>Group/Department</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="emp-details" id="emp_dept">dev</div>
+                                                    <div class="emp-details" id="emp_dept"></div>
                                                 </div>
                                             </div>
 
@@ -829,16 +829,55 @@
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-    function get_roles(){
+    function get_employee(){
+        var emp_id = window.location.search.replace("?","").split("=")[1];
+
+        $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
+
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/roles",
+            ///org/:orgId/users/:userId
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
+                console.log("res");
+                console.log(res);
                 if(res){
-                    res.forEach(function(role){
-                        $('#emp_role').append("<option data-id="+role._id+" value="+role.name+">"+role.name+"</option>");
-                    });
+                    //console.log(res);
+                    var reportsTo, orgTags = [], teams = [];
+                    if (res.reportsTo)
+                        reportsTo = res.reportsTo.name;
+                    else
+                        reportsTo = "";
+
+                    if (res.orgtags) {
+                        orgTags = [];
+                        $.each(res.orgtags, function(index, value) {
+                            orgTags.push(value.name)
+                        });
+                    }
+                    else{
+                        orgTags = "";
+                    }
+
+                    if (res.teams) {
+                        teams = [];
+                        $.each(res.teams, function(index, value) {
+                            teams.push(value.name)
+                        });
+                    }
+                    else{
+                        teams = "";
+                    }
+
+                    $("#emp_name").text(res.name);
+                    $("#emp_email").text(res.email);
+                    $("#emp_role").text(res.roles[0].name);
+                    $("#emp_reporting_officer").text(reportsTo);
+                    $("#emp_tags").text(orgTags);
+                    $("#emp_dept").text(teams);
+                    $("#emp_designation").text(res.designation);
+                    $("#emp_addr").text(res.address);
                 }
             }
             ,
@@ -849,10 +888,11 @@
     }
 
 
-$(function () {
-    var row_html;
-    get_roles();
-});
+    $(function () {
+
+        get_employee();
+
+    });
 
 
 
