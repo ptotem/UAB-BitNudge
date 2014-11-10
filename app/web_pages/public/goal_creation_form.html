@@ -455,6 +455,19 @@
                                                         <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-md-3">
+                                                                    <label class="control-label" for="key_param_select">Select Key Parameter</label>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="controls">
+                                                                        <select id="key_param_select" class="with-search">
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
                                                                     <label class="control-label" for="transaction_select">Allowed Transaction</label>
                                                                 </div>
                                                                 <div class="col-md-9">
@@ -632,6 +645,7 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    var actionsJSON = "";
     var criteria_val = "";
 
     function show_notification(text){
@@ -699,6 +713,20 @@
         });
     }
 
+    var hasTag = function(key_param_val) {
+        var i = null;
+        var filteredactionsJSON = []
+        for (i = 0; actionsJSON.length > i; i += 1) {
+            //console.log(actionsJSON[i]);
+            if (actionsJSON[i].keyParam === key_param_val) {
+                filteredactionsJSON.push(actionsJSON[i]);
+                //return actionsJSON[i];
+            }
+        }
+        return filteredactionsJSON;
+//        return false;
+    };
+
     function get_actions(){
         $.ajax({
                            // /org/:orgId/transactions
@@ -707,9 +735,17 @@
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    res.forEach(function(transactionMaster){
+                    actionsJSON = res;
+                    var keyParamArray = [];
+                    res.forEach(function(transactionMaster, index){
                         //console.log(transactionMaster);
-                        $('#transaction_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
+                        if (transactionMaster.keyParam !== undefined) {
+                            keyParamArray.push(res[index].keyParam);
+                        }
+                    });
+                    var uniqueKeyParamArray = jQuery.unique(keyParamArray);
+                    keyParamArray.forEach(function(keyParam, index){
+                        $("#key_param_select").append("<option value="+keyParam+">"+keyParam+"</option>");
                     });
                 }
             }
@@ -721,25 +757,23 @@
     }
 
     function get_my_created_goals(){
-        console.log("get_my_created_goals() called, msg :- REST endpoint to be made for goals created by me");
-//        $.ajax({
-//            // /org/:orgId/transactions
-//            url: remote_host+"org/"+urlParams.orgId+"/transactions",
-//            type: 'GET',
-//            dataType: 'json',
-//            success: function(res) {
-//                if(res){
-//                    res.forEach(function(goal){
-//                        //console.log(transactionMaster);
-//                        $('#subgoal_select').append("<option value="+goal._id+">"+goal.name+"</option>");
-//                    });
-//                }
-//            }
-//            ,
-//            error: function(e , msg){
-//                //processError(e,msg);
-//            }
-//        });
+        $.ajax({
+                          // /org/:orgId/users/:userId/subgoals
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/subgoals",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    res.forEach(function(goal){
+                        $('#subgoal_select').append("<option value="+goal._id+">"+goal.name+"</option>");
+                    });
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
     }
 
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
@@ -768,6 +802,15 @@
 
             var today_date = get_current_date();
             set_datepicker_date(today_date);
+
+            $('#key_param_select').on('change', function () {
+                $('#transaction_select').empty();
+                var key_param_val = $("#key_param_select :selected").val();
+                var filtered_actions = hasTag(key_param_val);
+                filtered_actions.forEach(function(filtered_action, index){
+                    $('#transaction_select').append("<option value="+filtered_action._id+">"+filtered_action.name+"</option>");
+                });
+            });
 
             $('#criteria_select').on('change', function () {
                 criteria_val = $("#criteria_select :selected").val();
@@ -864,20 +907,20 @@
                 console.log("data");
                 console.log(data);
 
-                $.ajax({
-                                  // /org/:orgId/users/:userId/goals
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/goals",
-                    type: 'POST',
-                    dataType: 'json',
-                    data: data,
-                    success: function(res) {
-                        var success_text = "Goal assigned to user.";
-                        show_notification(success_text);
-                    } ,
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
+//                $.ajax({
+//                                  // /org/:orgId/users/:userId/goals
+//                    url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/goals",
+//                    type: 'POST',
+//                    dataType: 'json',
+//                    data: data,
+//                    success: function(res) {
+//                        var success_text = "Goal assigned to user.";
+//                        show_notification(success_text);
+//                    } ,
+//                    error: function(e , msg){
+//                        //processError(e,msg);
+//                    }
+//                });
 
                 return false;
             });

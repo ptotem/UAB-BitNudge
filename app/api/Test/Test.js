@@ -73,6 +73,8 @@ var userGoalFn=function(orgId,obj){
 
     console.log("headers");
     console.log(headers);
+    console.log(headers[4]);
+
 
 //    if(!headers[4])return;
 //    var users=[];

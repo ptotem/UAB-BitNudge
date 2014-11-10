@@ -454,6 +454,14 @@
                                         </div>
 
                                     </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <a id="view_goal_link" href="#">View My Goals</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </fieldset>
 
                             </div>
@@ -546,14 +554,20 @@
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
+
     function get_employee(){
         var emp_id = window.location.search.replace("?","").split("=")[1];
+
+        $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
+
         $.ajax({
             ///org/:orgId/users/:userId
             url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
+                console.log("res");
+                console.log(res);
                 if(res){
                     //console.log(res);
                     var reportsTo, orgTags = [], teams = [];
@@ -584,7 +598,7 @@
 
                     $("#emp_name").text(res.name);
                     $("#emp_email").text(res.email);
-                    $("#emp_role").text(res.role.name);
+                    $("#emp_role").text(res.roles[0].name);
                     $("#emp_reporting_officer").text(reportsTo);
                     $("#emp_tags").text(orgTags);
                     $("#emp_dept").text(teams);

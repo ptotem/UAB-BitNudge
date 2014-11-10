@@ -17,7 +17,7 @@ var GoalMaster= {
         GoalMasterCollection.findOne({_id:mongoose.Types.ObjectId(id)},fields,options).populate(populationData).exec(callback);
     },
     getGoalMastersOfUser:function(userId,fields,options,populationData,callback){
-        GoalMasterCollection.findOne({creator:userId},fields,options).populate(populationData).exec(callback);
+        GoalMasterCollection.find({creator:userId},fields,options).populate(populationData).exec(callback);
     },
     getAllGoalMasters:function(fields,options,populationData,callback){
         GoalMasterCollection.find({},fields,options).populate(populationData).exec(callback);
