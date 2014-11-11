@@ -14,6 +14,7 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
+    <link rel="stylesheet" href="assets/css/chosen.css" />
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
@@ -72,7 +73,7 @@
     <a href="#" class="navbar-brand">
         <small>
             <i class="fa fa-leaf"></i>
-            Ace Admin
+            BitNudge
         </small>
     </a>
 
@@ -509,7 +510,7 @@
             <b class="arrow"></b>
         </li>
         <li class="">
-            <a href="leve.html">
+            <a href="level.html">
                 <i class="menu-icon fa fa-picture-o"></i>
                 <span class="menu-text"> Level </span>
             </a>
@@ -776,7 +777,7 @@
                                                 <label class="control-label" for="users_select_1">Users</label>
 
                                                 <div class="controls">
-                                                    <select id="users_select_1" class="with-search">
+                                                    <select id="users_select_1" class="chosen-select">
                                                         <!-- <option value="AK">Alaska</option> -->
                                                         <!-- <option value="HI">Hawaii</option> -->
                                                         <!-- <option value="CA">California</option> -->
@@ -788,7 +789,7 @@
                                                 <label class="control-label" for="abilities_select_1">Abilities</label>
 
                                                 <div class="controls">
-                                                    <select id="abilities_select_1" class="with-search">
+                                                    <select id="abilities_select_1" class="chosen-select">
                                                         <!-- <option value="A1">A1</option> -->
                                                         <!-- <option value="A2">A2</option> -->
                                                         <!-- <option value="A3">A3</option> -->
@@ -816,7 +817,7 @@
                                                 <label class="control-label" for="users_select_2">Users</label>
 
                                                 <div class="controls">
-                                                    <select id="users_select_2" class="with-search">
+                                                    <select id="users_select_2" class="chosen-select">
                                                         <!-- <option value="AK">Alaska</option> -->
                                                         <!-- <option value="HI">Hawaii</option> -->
                                                         <!-- <option value="CA">California</option> -->
@@ -844,7 +845,7 @@
                                                        for="abilities_select_2">Abilities</label>
 
                                                 <div class="controls">
-                                                    <select id="abilities_select_2" class="with-search">
+                                                    <select id="abilities_select_2" class="chosen-select">
                                                         <!-- <option value="A1">A1</option> -->
                                                         <!-- <option value="A2">A2</option> -->
                                                         <!-- <option value="A3">A3</option> -->
@@ -926,6 +927,7 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/chosen.jquery.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -949,6 +951,8 @@
                     $("#users_select_1").append("<option data-id='" + user._id + "' value='" + user.name + "'>" + user.name + "</option>");
                     $("#users_select_2").append("<option data-id='" + user._id + "' value='" + user.name + "'>" + user.name + "</option>");
                 });
+                $('#users_select_1').chosen().trigger("chosen:updated");
+                $('#users_select_2').chosen().trigger("chosen:updated");
             },
             error: function (err) {
                 console.log(err);
@@ -962,6 +966,8 @@
                     $("#abilities_select_1").append("<option data-id='" + ability._id + "' value='" + ability.name + "'>" + ability.name + "</option>");
                     $("#abilities_select_2").append("<option data-id='" + ability._id + "' value='" + ability.name + "'>" + ability.name + "</option>");
                 });
+                $('#abilities_select_1').chosen().trigger("chosen:updated");
+                $('#abilities_select_2').chosen().trigger("chosen:updated");
             },
             error: function (err) {
                 console.log(err);
@@ -1011,6 +1017,19 @@
 
 
         jQuery(function ($) {
+
+            $('.chosen-select').chosen({allow_single_deselect:true});
+            //resize the chosen on window resize
+
+            $(window)
+                    .off('resize.chosen')
+                    .on('resize.chosen', function() {
+                        $('.chosen-select').each(function() {
+                            var $this = $(this);
+                            $this.next().css({'width': $this.parent().width()});
+                        })
+
+                    }).trigger('resize.chosen');
 
             $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
                 var color_class = $(this).find('option:selected').data('class');

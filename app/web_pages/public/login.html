@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Login Page - Ace Admin</title>
+		<title>Login Page - BitNudge</title>
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -301,10 +301,7 @@
                         .done(function(data) {
                             var storageData={token:data.token,expires:data.expires};
                             localStorage.setItem("user_access_token", JSON.stringify(storageData));
-                            localStorage.setItem('user_data', JSON.stringify({
-                                userId: data.user._id,
-                                orgId: data.user.orgId
-                            }));
+                            localStorage.setItem('user_data', JSON.stringify({userId: data.user._id,orgId: data.user.orgId}));
                             window.location.href = local_host+"employees.html";
 //                    if(data.user.role.name=="Admin")
 //                      window.location.href=local_host+"admin_pages/admin_user_page.html?userId="+data.user._id+"&orgId="+data.user.orgId;

@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Widgets - Ace Admin</title>
+    <title>Widgets - BitNudge</title>
 
     <meta name="description" content="Draggabble Widget Boxes &amp; Containers" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -14,6 +14,7 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="assets/css/chosen.css" />
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css" />
@@ -69,7 +70,7 @@
     <a href="#" class="navbar-brand">
         <small>
             <i class="fa fa-leaf"></i>
-            Ace Admin
+            BitNudge
         </small>
     </a>
 
@@ -431,7 +432,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="">
+        <li class="active">
             <a href="roles.html">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> Roles </span>
@@ -439,7 +440,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="active">
+        <li>
             <a href="employees.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Employees</span>
@@ -481,6 +482,64 @@
 
             <b class="arrow"></b>
         </li>
+        <li class="">
+            <a href="badges.html">
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text"> Badges </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="abilities.html">
+                <i class="menu-icon fa fa-bar-chart-o"></i>
+                <span class="menu-text"> Abilities </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="level.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Level </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="org_tags.html">
+                <i class="menu-icon fa fa-book"></i>
+                <span class="menu-text"> Organization Tag </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="team.html">
+                <i class="menu-icon fa fa-envelope"></i>
+                <span class="menu-text"> Team </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="reward_master.html">
+                <i class="menu-icon fa fa-envelope"></i>
+                <span class="menu-text"> Reward Master </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="action_sec.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Action Section </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+
     </ul><!-- /.nav-list -->
 
 <!-- #section:basics/sidebar.layout.minimize -->
@@ -685,7 +744,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="clearfix controls">
-                                                        <select id="actions_select" class="with-search col-md-9">
+                                                        <select id="actions_select" class="chosen-select col-md-9">
                                                         </select>
                                                     </div>
                                                     <div id="result_1" class="result-block">
@@ -748,6 +807,7 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/chosen.jquery.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -774,7 +834,9 @@ function get_actions(){
                     //console.log(transactionMaster);
                     $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
                 });
+
             }
+            $('#actions_select').chosen().trigger("chosen:updated");
         }
         ,
         error: function(e , msg){
@@ -833,7 +895,7 @@ $(function () {
             });
 
             $.each(selectfields_array, function (key, value) {
-                field_html = '<select id=select_'+value+' class="with-search col-md-12">'+'</select>';
+                field_html = '<select id=select_'+value+' class="chosen-select col-md-12">'+'</select>';
                 $.ajax({
                     url: remote_host+"org/"+urlParams.orgId+"/tags/"+value,
                     type: 'GET',
@@ -903,6 +965,22 @@ $(function () {
 
 jQuery(function($) {
 
+    $('.chosen-select').chosen({allow_single_deselect:true});
+    //resize the chosen on window resize
+
+    $(window)
+            .off('resize.chosen')
+            .on('resize.chosen', function() {
+                $('.chosen-select').each(function() {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+
+            }).trigger('resize.chosen');
+    
+    
+    
+    
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
         var color_class = $(this).find('option:selected').data('class');
         var new_class = 'widget-box';
