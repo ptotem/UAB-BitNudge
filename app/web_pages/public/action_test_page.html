@@ -745,10 +745,6 @@
                                         <label class="control-label" for="action_select_2">Actions</label>
                                         <div class="controls">
                                             <select id="action_select_2" class="with-search">
-                                                <!-- <option value="AK">Alaska</option> -->
-                                                <!-- <option value="HI">Hawaii</option> -->
-                                                <!-- <option value="CA">California</option> -->
-                                                <!-- <option value="NV">Nevada</option> -->
                                             </select>
                                         </div>
                                     </div>
@@ -779,10 +775,6 @@
                                         <label class="control-label" for="action_select_user">User</label>
                                         <div class="controls">
                                             <select id="action_select_user" class="with-search">
-                                                <option>System Analysts</option>
-                                                <option>Administrator</option>
-                                                <option>Manager</option>
-                                                <option>Employee</option>
                                             </select>
                                         </div>
                                     </div>
@@ -793,10 +785,6 @@
                                     <label class="control-label" for="action_select_action">Action</label>
                                     <div class="controls">
                                         <select id="action_select_action" class="with-search">
-                                            <!-- <option value="AK">Alaska</option> -->
-                                            <!-- <option value="HI">Hawaii</option> -->
-                                            <!-- <option value="CA">California</option> -->
-                                            <!-- <option value="NV">Nevada</option> -->
                                         </select>
                                     </div>
 
@@ -1039,26 +1027,6 @@
             });
         });
 
-        $("#action_select_4").change(function(){
-            var selected_user = $("#action_select_4 :selected").val();
-            $.ajax({
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    if(res){
-                        var option_html;
-                        res.forEach(function(users){
-                            //console.log("User Name :"+users.name+"Points :"+users.totalPoints)
-                        });
-                    }
-                },
-                error: function(e , msg){
-                    //processError(e,msg);
-                }
-            });
-        });
-
         $("#action_select_2").change(function(){
             $('#result_2_action').empty();
             //get_transactions();
@@ -1071,9 +1039,11 @@
                 success: function(res) {
                     if(res){
                         console.log(res);
-//                        res.forEach(function(users){
-//                            get_username(users._id);
-//                        });
+                        //res.forEach(function(users){
+                            //console.log(users._id);
+                            get_username(res._id);
+                            //$('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
+                        //});
                     }
 
                 },
