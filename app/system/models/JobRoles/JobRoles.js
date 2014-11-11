@@ -3,12 +3,12 @@ var mongoose=require('mongoose');
 var JobRoles= {
   createJobRole:function(organizationId,data,callback){
     data.createdAt=new Date();
-    JobRoles.getJobRolesOfOrganization(organizationId,"","","",function(err,docExists){
+    JobRolesCollection.findOne({orgId:organizationId},"","").exec(function(err,docExists){
       if(err) callback(err);
       if(docExists)
         JobRolesCollection.update({orgId:organizationId},{$addToSet:{jobRoles:data}},callback);
       else{
-        var l=new JobRolesCollection({orgId:organizationI,jobRoles:[data]});
+        var l=new JobRolesCollection({orgId:organizationId,jobRoles:[data]});
         l.save(callback);
       }
     });

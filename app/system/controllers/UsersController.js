@@ -17,7 +17,7 @@ var UsersController={
       NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
       NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
       NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
-      UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,req.params._id,{},function(){});
+      UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,user._id,{},function(){});
       res.send(user);
     });
   },

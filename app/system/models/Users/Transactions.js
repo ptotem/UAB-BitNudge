@@ -7,7 +7,11 @@ var Transactions={
       UsersCollection.update({_id:userId},{$push:{transactions:transactionData}},callback);
   },
   getTransaction:function(userId,transactionId,fields,options,populationData,callback){
-    UsersCollection.findOne({userId:userId,'transactions._id':transactionId},{'transactions.$':1},options).populate(populationData).exec(callback);
+    UsersCollection.findOne({_id:userId,'transactions._id':transactionId},{'transactions.$':1},options).populate(populationData).exec(function(err,obj){
+      if(err) callback(err);
+      if(obj&&obj.transactions)
+        callback(err,obj.transactions[0]);
+    });
   },
   getTransactionsOfUser:function(userId,fields,options,populationData,callback){
       fields+=" transactions";
@@ -21,7 +25,7 @@ var Transactions={
       }
 //    if(fields)
 //      fields+=" transactions";
-////    UsersCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
+////    UsersCollection.find({_id:userId},fields,options).populate(populationData).exec(callback);
 //      if(options)
 //       UsersCollection.findOne( {'_id':userId},{ transactions:{ $slice: [ parseInt(offset),parseInt(limit) ] } },fields,options).populate(populationData).exec(callback);
 //      else
@@ -34,7 +38,7 @@ var Transactions={
     return UsersCollection.Schema;
   },
   approveTransaction:function(userId,transactionId,approver,callback){
-    UsersCollection.update({userId:userId,'transactions._id':transactionId},{$set:{'transactions.$.approved':true}},callback);
+    UsersCollection.update({_id:userId,'transactions._id':transactionId},{$set:{'transactions.$.approved':true}},callback);
   },
   deleteTransaction:function(userId,transactionId,callback){
       UsersCollection.update({_id:userId},{$pull:{transactions:{_id:transactionId}}},callback);

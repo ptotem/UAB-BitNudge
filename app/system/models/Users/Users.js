@@ -3,8 +3,6 @@ var mongoose=require('mongoose');
 var UserGoals=require('./UserGoals.js');
 var UserTransactions=require('./Transactions.js');
 var bcrypt=require('bcryptjs');
-var nodemailer = require("nodemailer");
-var smtpTransport = require('nodemailer-smtp-transport');
 
 var UserManagement={
   getUserSchema:function(){
@@ -15,7 +13,7 @@ var UserManagement={
     //password is in plain text, they must be salted and shed
     //obviously, salt and hash it properly.
     data.createdAt=new Date();
-    data.orgId=mongoose.Types.ObjectId(organizationId);
+    data.orgId=organizationId;
     if(data.password){
       bcrypt.genSalt(10, function(err, salt) {
         bcrypt.hash(data.password, salt, function(err, hash) {
@@ -82,17 +80,17 @@ var UserManagement={
     UserCollection.update({_id:userId},{$set:{lastLogin:date}},callback);
   },
   addTeam:function(userId,teamId,callback){
-    UserCollection.update({_id:userId},{$push:{teams:teamId}},callback);
+    UserCollection.update({_id:userId},{$addToSet:{teams:teamId}},callback);
   },
 
   removeTeam:function(userId,teamId,callback){
     UserCollection.update({_id:userId},{$pull:{teams:teamId}},callback);
   },
   addFollower:function(userId,followerId,callback){
-    UserCollection.update({userId:userId},{$push:{followers:followerId},$inc:{followerCount:1}},callback);
+    UserCollection.update({_id:userId},{$addToSet:{followers:followerId},$inc:{followerCount:1}},callback);
   },
   giveMedalToUser:function(userId,medalId,callback){
-    UserCollection.update({_id:userId},{$push:{medals:medalId}},callback);
+    UserCollection.update({_id:userId},{$addToSet:{medals:medalId}},callback);
   },
   giveItemToUser:function(userId,itemId,callback){
     UserCollection.update({_id:userId},{$push:{items:itemId}},callback);
@@ -110,9 +108,10 @@ var UserManagement={
       UserCollection.find({orgId:orgId},fields,options).populate(populationData).exec(callback);
   },
   addPointsObject:function(userId,pointsObj,callback){
+    console.log(pointsObj);
     if(!pointsObj.date)
       pointsObj.date=new Date();
-    UserCollection.update({userId:userId},{$push:{points:pointsObj},$inc:{totalCash:pointsObj.pointsEarned,totalPoints:pointsObj.pointsEarned}},callback);
+    UserCollection.update({_id:userId},{$push:{points:pointsObj},$inc:{totalCash:pointsObj.pointsEarned,totalPoints:pointsObj.pointsEarned}},callback);
   },
   getUserByAuthentication:function(username,password,fields,options,populationData,callback){
     UserCollection.findOne({email:username},fields,options).populate(populationData).exec(function(err,user){

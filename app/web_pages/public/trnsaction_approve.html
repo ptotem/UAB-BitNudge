@@ -550,16 +550,16 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var orgId="5417f10a195e61022fff91ee";
+//    var orgId="5417f10a195e61022fff91ee";
 
     var name;
     function get_transactionName(transactionId){
-        var orgId="5417f10a195e61022fff91ee";
+//        var orgId="5417f10a195e61022fff91ee";
 //   var name;
 //        $('#result_1_action').empty();
         $.ajax({
 //            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
-            url: remote_host+"org/"+orgId+"/transactions/"+transactionId+"/name",
+            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId+"/name",
 //            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
             type: 'GET',
             dataType: 'json',
@@ -578,7 +578,7 @@
     function get_employees(){
         $.ajax({
 //            url: remote_host+"org/"+urlParams.orgId+"/users",
-            url: remote_host+"org/"+orgId+"/users",
+            url: remote_host+"org/"+urlParams.orgId+"/users",
 //            url: remote_host+"org/"+orgId+"/users",
             type: 'GET',
             dataType: 'json',
@@ -597,11 +597,11 @@
         });
     }
     function get_transactions(userId){
-        var orgId="5417f10a195e61022fff91ee"
+//        var orgId="5417f10a195e61022fff91ee"
 //        var userId="54181598d465d283167f8d14"
         $.ajax({
 //            url: remote_host+"org/"+orgId+"/users",
-            url: remote_host+"org/"+orgId+"/users/"+userId+"/transactions",
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+userId+"/transactions",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -683,92 +683,6 @@
             }
         });
     }
-    function get_transactions1(){
-        var orgId="5417f10a195e61022fff91ee"
-//        var userId="54181598d465d283167f8d14"
-        $.ajax({
-//            url: remote_host+"org/"+orgId+"/users",
-            url: remote_host+"org/"+orgId+"/users/"+userId+"/transactions",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-//                    console.log(res);
-                    var row_html, keyParamsValue, transactions, Tags = [], teams = [] , tagId;
-                    res.transactions.forEach(function(data){
-//                        //console.log(user);
-//
-                        if (data.keyParamValue)
-                            keyParamsValue = data.keyParamValue;
-                        else
-                            keyParamsValue = "";
-//
-                        if (data.transactionMaster)
-                        {
-                            transactions=  get_transactionName(data.transactionMaster);
-//                            transactions = res;
-                        }
-
-                        else
-                            transactions = "";
-                        if (data.tag) {
-                            Tags = [];
-                            $.each(data.tags, function(index, value) {
-//                                 tagId=value.tag;
-                                Tags.push(value.tag)
-                                Tags.push(value.tagName)
-                            });
-                        }
-                        else{
-                            Tags = "";
-                        }
-//                     })
-
-//
-//                        if (user.t) {
-//                            teams = [];
-//                            $.each(user.teams, function(index, value) {
-//                                teams.push(value.name)
-//                            });
-//                        }
-//                        else{
-//                            teams = "";
-//                        }
-
-//
-                        row_html = '<tr>'+
-                                '<td class="text-center aligned">'+keyParamsValue+'</td>'+
-                                '<td class="text-center aligned">'+transactions+'</td>'+
-                                '<td class="text-center aligned">'+"reportsTo"+'</td>'+
-                                '<td class="text-center aligned">'+"orgTags"+'</td>'+
-                                '<td class="text-center aligned">'+Tags+'</td>'+
-                                '<td class="text-center aligned">'+
-                                '<div class="block" style="width: 50px;">' +
-                                '<a href="employee_edit_form.html?userId='+data._id+'"><i class="cus-pencil"></i></a>'+
-                                '<a href="employee_show.html?userId='+data._id+'"><i class="cus-exclamation"></i></a>'+
-                                '</div>' +
-                                '</td>'+
-                                '</tr>';
-
-                        $("#employees_list").find('tbody').append(row_html);
-
-                    });
-
-                    $('#employees_list').dataTable({
-                        "bPaginate": true,
-                        "bFilter": true,
-                        "bLengthChange": true,
-                        "bSort": false
-                    });
-//
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
 
     $(function () {
 
@@ -777,32 +691,6 @@
         $("#users_select").change(function(){
             var selected_user = $("#users_select :selected").val();
             get_transactions(selected_user);
-//            console.log('hello');
-//            var orgId="5417f10a195e61022fff91ee"
-
-////                console.log(selected_user);
-//            $('#result_1_action').empty();
-
-//            $.ajax({
-//                // /org/:orgId/users/:userId/actions
-//                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
-////                    url: remote_host+"org/"+orgId+"/users/"+selected_user,
-//                type: 'GET',
-//                dataType: 'json',
-//                success: function(res) {
-//                    if(res){
-//                        var option_html;
-//                        res.transactions.forEach(function(transactions){
-//                            get_transactionName(transactions.transactionMaster);
-//
-//                        });
-//                    }
-//
-//                },
-//                error: function(e , msg){
-//                    //processError(e,msg);
-//                }
-//            });
         });
     }); // Actions of Users
 
@@ -821,20 +709,6 @@
         document.write('<script src="js/include/jquery.placeholder.min.js"><\/script>');
 
         /** DEMO SCRIPTS **/
-        $(function () {
-
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
-
-            var row_html;
-            var userid;
-
-//            get_transactions1();
-//
-
-
-
-        });
 
         /** end DEMO SCRIPTS **/
 

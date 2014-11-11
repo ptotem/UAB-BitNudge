@@ -74,6 +74,7 @@ var userTags={
             })
 
     },
+
     'get /org/:orgId/transactions':function(req,res){
         TransactionCollection.find({}, function(err, data) {
             console.log(data);
@@ -92,6 +93,20 @@ var userTags={
             res.send(data);
         });
     },
+
+    // 'get /org/:orgId/transactions':function(req,res){
+    //     TransactionCollection.find({}, function(err, data) {
+    //         console.log(data);
+    //         res.send(data);
+    //     });
+    // },
+    // 'get /org/:orgId/transactions/:transactionId':function(req,res){
+    //     TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
+    //         console.log(data);
+    //         res.send(data);
+    //     });
+    // },
+
 
     'get /org/:orgId/users/:userId/downlineactions':function(req,res){
         UserCollection.findOne({reportsTo: req.params.userId }) .populate('reportsTo') .exec(function (err, downlineactions) {

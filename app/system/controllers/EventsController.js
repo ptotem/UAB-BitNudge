@@ -6,6 +6,7 @@ var GoalMasterModel=require('../models/GoalMaster');
 var LevelsModel=require('../models/Levels');
 var UserModel=tempModel.Users;
 var UserPointsModel=require('../models/UserPeriodPoints');
+var TeamPeriodPointsModel=require('../models/TeamPeriodPoints');
 var RankController=require('../controllers/PointsEngine/RankController.js');
 var async=require('async');
 var EventsController={
@@ -77,68 +78,76 @@ var EventsController={
     //     UserGoalsModel.updateGoalOfUser(userId,goalObj._id,goalObj,callback);
     //   });
     // });
-    var asyncify=function(){
+    var asyncify=function(scopeCallback){
       UserGoalsModel.getLiveGoalsAndChallengesOfUserWithQuery(userId,{'goals.action.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
-        var allGoals=goals[0].goals;
-        allGoals.forEach(function(goalObj){
-          goalObj.action.allowedTransactions.forEach(function(allowedTransaction){
-            if(allowedTransaction==transactionData.transactionMaster){
-              TransactionMasterModel.getTransactionMaster(allowedTransaction,"","","",function(err,transMaster){
-                if(!action.currentValue)
-                  action.currentValue=0;
-                if(transMaster.paramCategory=="additive"){
-                  action.currentValue+=transactionData.keyParamValue;
-                  if(action.targetValue<=action.currentValue)
-                    goalObj.done=true;
-                }
-                else if(transMaster.paramCategory=="binary"){
-                  action.currentValue=transactionData.keyParamValue;
-                  if(action.targetValue<=action.currentValue)
-                    goalObj.done=true;
-                }
-                else if(transMaster.paramCategory=="state"){
-                  action.currentValue=transactionData.keyParamValue;
-                  if(action.targetValue<=action.currentValue)
-                    goalObj.done=true;
-                }
-              });
-            }
+        if(!goals[0])
+          scopeCallback(err,goals);
+        else{
+          var allGoals=goals[0].goals;
+          allGoals.forEach(function(goalObj){
+            goalObj.action.allowedTransactions.forEach(function(allowedTransaction){
+              if(allowedTransaction==transactionData.transactionMaster){
+                TransactionMasterModel.getTransactionMaster(allowedTransaction,"","","",function(err,transMaster){
+                  if(!action.currentValue)
+                    action.currentValue=0;
+                  if(transMaster.paramCategory=="additive"){
+                    action.currentValue+=transactionData.keyParamValue;
+                    if(action.targetValue<=action.currentValue)
+                      goalObj.done=true;
+                  }
+                  else if(transMaster.paramCategory=="binary"){
+                    action.currentValue=transactionData.keyParamValue;
+                    if(action.targetValue<=action.currentValue)
+                      goalObj.done=true;
+                  }
+                  else if(transMaster.paramCategory=="state"){
+                    action.currentValue=transactionData.keyParamValue;
+                    if(action.targetValue<=action.currentValue)
+                      goalObj.done=true;
+                  }
+                });
+              }
+            });
           });
-        });
+        }
       });
     };
     UserGoalsModel.getLiveGoalsAndChallengesOfUserWithQuery(userId,{'goals.subgoals.allowedTransactions':transactionData.transactionMaster},new Date(),function(err,goals){
-      var allGoals=goals[0].goals;
-      allGoals.forEach(function(goalObj){
-        goalObj.subgoals.forEach(function(subgoal){
-          subgoal.allowedTransactions.forEach(function(allowedTransaction){
-            if(allowedTransaction==transactionData.transactionMaster){
-              TransactionMasterModel.getTransactionMaster(allowedTransaction,"","","",function(err,transMaster){
-                if(!subgoal.currentValue)
-                  subgoal.currentValue=0;
-                if(transMaster.paramCategory=="additive"){
-                  subgoal.currentValue+=transactionData.keyParamValue;
-                  if(subgoal.targetValue<=subgoal.currentValue)
-                    subgoal.done=true;
-                }
-                else if(transMaster.paramCategory=="binary"){
-                  subgoal.currentValue=transactionData.keyParamValue;
-                  if(subgoal.targetValue<=subgoal.currentValue)
-                    subgoal.done=true;
-                }
-                else if(transMaster.paramCategory=="state"){
-                  subgoal.currentValue=transactionData.keyParamValue;
-                  if(subgoal.targetValue<=subgoal.currentValue)
-                    subgoal.done=true;
-                }
-                EventsController.checkGoalStatus(orgId,userId,goalObj);
-                UserGoalsModel.updateGoalOfUser(userId,goalObj._id,goalObj,callback);
-              });
-            }
+      if(!goals[0])
+        callback(err,goals);
+      else{
+        var allGoals=goals[0].goals;
+        allGoals.forEach(function(goalObj){
+          goalObj.subgoals.forEach(function(subgoal){
+            subgoal.allowedTransactions.forEach(function(allowedTransaction){
+              if(allowedTransaction==transactionData.transactionMaster){
+                TransactionMasterModel.getTransactionMaster(allowedTransaction,"","","",function(err,transMaster){
+                  if(!subgoal.currentValue)
+                    subgoal.currentValue=0;
+                  if(transMaster.paramCategory=="additive"){
+                    subgoal.currentValue+=transactionData.keyParamValue;
+                    if(subgoal.targetValue<=subgoal.currentValue)
+                      subgoal.done=true;
+                  }
+                  else if(transMaster.paramCategory=="binary"){
+                    subgoal.currentValue=transactionData.keyParamValue;
+                    if(subgoal.targetValue<=subgoal.currentValue)
+                      subgoal.done=true;
+                  }
+                  else if(transMaster.paramCategory=="state"){
+                    subgoal.currentValue=transactionData.keyParamValue;
+                    if(subgoal.targetValue<=subgoal.currentValue)
+                      subgoal.done=true;
+                  }
+                  EventsController.checkGoalStatus(orgId,userId,goalObj);
+                  UserGoalsModel.updateGoalOfUser(userId,goalObj._id,goalObj,callback);
+                });
+              }
+            });
           });
         });
-      });
-      asyncify();
+      }
+      // asyncify(callback);
     });
   },
   onGoalFinished:function(orgId,userId,goalObj,callback){
@@ -192,29 +201,30 @@ var EventsController={
   triggerUserPointsAddition:function(orgId,userId,pointsEarned,pointsType,pointsFrom,date,finalCallback){
     async.series([
       function(callback){
-        UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,type:pointsType,from:pointsFrom},callback);
+        UserModel.addPointsObject(userId,{pointsEarned:pointsEarned,source:pointsType,from:pointsFrom},callback);
       },
       function(callback){
-        UserPointsModel.addPointsEverywhere(userId,new Date(),pointsEarned,callback);
+        UserPointsModel.addPointsEverywhere(userId,date,pointsEarned,callback);
       },
       function(callback){
         UserModel.getUser(userId,"teams orgId totalPoints","","",function(err,user){
-          async.each(user.teams,
-            function(teamId,eachCallback){
-              TeamPeriodPointsModel.addPointsEverywhere(teamId,new Date(),pointsEarned,eachCallback);
-            },
-            function(err){
-              callback(err);
+          EventsController.triggerLevelCalculation(orgId,user._id,user.totalPoints,function(err,result){
+            async.each(user.teams,
+              function(teamId,eachCallback){
+                TeamPeriodPointsModel.addPointsEverywhere(teamId,date,pointsEarned,eachCallback);
+              },
+              function(err){
+                callback(err);
             });
+          });
         });
       },
       function(callback){
-        EventsController.triggerLevelCalculation(orgId,userId,user.totalPoints,callback);
-      },
-      function(callback){
-        RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",new Date(),callback);
-      }],
+        RankController.calculateRankOfUserOfPeriod(orgId,userId,"month",date,callback);
+      }
+    ],
       function(err,results){
+        finalCallback(err);
     });
   },
   // triggerRankCalculation:function(orgId){
@@ -223,10 +233,9 @@ var EventsController={
   triggerLevelCalculation:function(orgId,userId,totalPoints,callback){
     LevelsModel.getLevelOfOrganization(orgId,"","","",function(err,obj){
       eval("var levelFn=("+obj.calculationFn+");");
-      var levelNo=levelFn(points);
-      UserModel.setLevelOfUser(userId,level,callback);
+      var levelNo=levelFn(totalPoints);
+      UserModel.setLevelOfUser(userId,levelNo,callback);
     });
-    // PointsEngine.calculateLevel(orgId);
   },
   triggerRevenueCalculation:function(orgId){
     RevenuesController.calculateRevenues(orgId);

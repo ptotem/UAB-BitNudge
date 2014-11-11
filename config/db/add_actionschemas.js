@@ -5,6 +5,7 @@ var mongoose=require('mongoose');
 var readline=require('readline');
 test.shift();
 test.shift();
+var orgObjId;
 if(!test[0]){
   console.log("Please enter the json file as a command line argument");
   process.exit();
@@ -13,7 +14,7 @@ if(!test[1]){
   var rl=readline.createInterface({input:process.stdin,output:process.stdout});
   rl.question("Please enter the organizationId",function(orgId){
     try{
-      var orgObjId=mongoose.Types.ObjectId(orgId);
+      orgObjId=mongoose.Types.ObjectId(orgId);
     }
     catch(e){
       console.log("Not a valid ObjectId");
@@ -24,7 +25,7 @@ if(!test[1]){
 }
 else{
   try{
-    var orgObjId=mongoose.Types.ObjectId(test[1]);
+    orgObjId=mongoose.Types.ObjectId(test[1]);
   }
   catch(e){
     console.log("Not a valid ObjectId");
@@ -45,7 +46,8 @@ function later(){
     if(objects instanceof Array){
       objects.forEach(function(object){
           TransactionMasterModel.createTransactionMaster(orgObjId,object,function(err,obj){
-            console.log("done writing "+object+" to database");
+            console.log("done writing to database");
+            console.log(obj);
           });
       });
     }

@@ -481,7 +481,7 @@
 
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <label class="control-label" for="action_select_action">Action</label>
+                                                            <label class="control-label" for="action_select_action">Goal</label>
                                                             <div class="controls">
                                                                 <select id="action_select_action" class="with-search">
                                                                     <!-- <option value="AK">Alaska</option> -->
@@ -626,13 +626,9 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var orgId="5417f10a195e61022fff91ee"
-//    var a = remote_host+"org/"+urlParams.orgId+"/users";
-//    console.log(urlParams);
     function get_employees(){
         $.ajax({
-//            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
-            url: remote_host+"org/"+orgId+"/users",
+            url: remote_host+"org/"+urlParams.orgId+"/users",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -641,6 +637,8 @@
                     res.forEach(function(user){
                         option_html = "<option value="+user._id+">"+user.name+"</option>";
                         $('#users_select').append(option_html);
+                        $('#action_select_user').append(option_html);
+
                     });
                 }
             },
@@ -651,12 +649,10 @@
     }
     function user_goal(goalId){
         $('#result_1_action').empty();
-        var urlParams = JSON.parse(localStorage.getItem('user_data'));
-        var orgId="5417f10a195e61022fff91ee"
         $.ajax({
-            url: remote_host+"org/"+orgId+"/goals/"+goalId,
+//            url: remote_host+"org/"+orgId+"/goals/"+goalId,
 
-//            url: remote_host+"org/"+url.Params.orgId+"/goals/"+goalId,
+            url: remote_host+"org/"+urlParams.orgId+"/goals/"+goalId,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -672,10 +668,10 @@
     }
     function user_downline_goal(goalId){
         $('#action_select_action').empty();
-        var urlParams = JSON.parse(localStorage.getItem('user_data'));
+//        var urlParams = JSON.parse(localStorage.getItem('user_data'));
 //        var orgId="5417f10a195e61022fff91ee"
         $.ajax({
-            url: remote_host+"org/"+orgId+"/goals/"+goalId,
+            url: remote_host+"org/"+urlParams.orgId+"/goals/"+goalId,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -693,28 +689,6 @@
         });
 
     }
-    function get_userdata(){
-        var orgId="5417f10a195e61022fff91ee";
-        $.ajax({
-
-                    url: remote_host+"org/"+orgId+"/users",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-            if(res){
-                var option_html;
-                res.forEach(function(user){
-                    option_html = "<option value="+user._id+">"+user.name+"</option>";
-                    $('#action_select_user').append(option_html);
-                });
-            }
-        },
-        error: function(e , msg){
-            //processError(e,msg);
-        }
-    });
-    }
-
 //    var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
 
@@ -734,12 +708,12 @@
         /** DEMO SCRIPTS **/
         $(function () {
             get_employees();
+
             $("#users_select").change(function(){
                 $('#result_1_action').empty();
-                var orgId="5417f10a195e61022fff91ee"
                 var selected_user = $("#users_select :selected").val();
                 $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+selected_user,
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
@@ -763,11 +737,11 @@
         $(function () {
             $("#action_select_user").change(function(){
                 $('#action_select_action').empty();
-                var orgId="5417f10a195e61022fff91ee";
+//                var orgId="5417f10a195e61022fff91ee";
                 var user = $("#action_select_user :selected").val();
 //                var tr="5421698c67481ed26eab3e3d";
                 $.ajax({
-                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
                             success: function(res) {
@@ -792,12 +766,6 @@
             });
         });
 
-        $(function () {
-            $("#users").click(function(){
-                get_userdata();
-
-            });
-        });
         /** end DEMO SCRIPTS **/
 
     } else {

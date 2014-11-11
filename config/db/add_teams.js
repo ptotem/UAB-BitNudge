@@ -1,13 +1,10 @@
 var fs=require('fs');
-var UsersModel=require('../../app/system/models/Users').Users;
+var TeamsModel=require('../../app/system/models/Teams');
+var UsersCollection=require('../../app/system/models/Users/UsersCollection.js');
+var UsersModel=require('../../app/system/models/Users');
 var test=process.argv;
 var mongoose=require('mongoose');
 var readline=require('readline');
-var NudgeMailbox=require('../../app/system/models/NudgeMailbox');
-var NudgeChat=require('../../app/system/models/NudgeChat');
-var NotificationCenterModel=require('../../app/system/models/NotificationCenter');
-var OrganizationalModel=require('../../app/system/models/Organizations');
-var UserPeriodPointsModel=require('../../app/system/models/UserPeriodPoints');
 var async=require('async');
 test.shift();
 test.shift();
@@ -51,29 +48,33 @@ function later(){
     var objects=JSON.parse(data);
     if(objects instanceof Array){
       objects.forEach(function(object){
-        UsersModel.createUser(orgObjId,object,function(err,user){
-          if(user){
-            async.parallel([
-              function(callback){
-                NudgeMailbox.createNudgeMailbox(orgObjId,user._id,{},callback);
+        object.membersTemp=[];
+        console.log(object.members);
+        async.each(object.members,
+          function(member,callback){
+            UsersCollection.findOne({email:member,orgId:orgObjId},function(err,user){
+              object.membersTemp.push(user._id);
+              callback();
+            });
+          },
+          function(err){
+            if(err) console.log(err);
+            object.members=object.membersTemp;
+            delete object.membersTemp;
+            TeamsModel.createTeam(orgObjId,object,function(err,team){
+              TeamPeriodPointsModel.createTeamPeriodPoints(orgObjId,team._id,{},function(err){
+                if(err) console.log("encountered error with team period points");
+                else console.log("made team period points");
+              });
+              async.each(team.members,function(memberId,eachCallback){
+                UsersModel.addTeam(memberId,team._id,eachCallback);
               },
-              function(callback){
-                NudgeChat.createNudgeChat(orgObjId,user._id,{},callback);
-              },
-              function(callback){
-                NotificationCenterModel.createNotificationCenter(orgObjId,user._id,{},callback);
-              },
-              function(callback){
-                UserPeriodPointsModel.createUserPeriodPoints(orgObjId,user._id,{},callback);
-              }],
               function(err,results){
                 if(err) console.log(err);
                 console.log("done writing to database");
-                console.log(user);
-              }
-              );
-          }
-          else console.log(err);
+                console.log(team);
+              });
+            });
         });
       });
     }

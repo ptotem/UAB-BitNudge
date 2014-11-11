@@ -548,16 +548,12 @@
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
     function get_employee(){
-        var orgId="5417f10a195e61022fff91ee";
-
         var emp_id = window.location.search.replace("?","").split("=")[1];
         var user_id = window.location.search.replace("?","").split("=")[2];
         console.log(emp_id);
         console.log(user_id);
         $.ajax({
-            ///org/:orgId/users/:userId
-//            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
-            url: remote_host+"org/"+orgId+"/transactions/"+emp_id,
+            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+emp_id,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -614,15 +610,13 @@
     }
     $(function () {
         $("#btn_approve").click(function(){
-            var orgId="5417f10a195e61022fff91ee";
-
             var emp_id = window.location.search.replace("?","").split("=")[1];
             var user_id = window.location.search.replace("?","").split("=")[2];
             console.log(emp_id);
             console.log(user_id);
             $.ajax({
 //                url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
-                url: remote_host+'org/'+orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
+                url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
 //                data: data,
                 // contentType: 'multipart/form-data',
                 contentType: false,

@@ -626,7 +626,6 @@
 
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var orgId="5417f10a195e61022fff91ee"
     function get_employees(){
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users",
@@ -639,27 +638,10 @@
                     res.forEach(function(user){
                         option_html = "<option value="+user._id+">"+user.name+"</option>";
                         $('#users_select').append(option_html);
-                    });
-                }
-            },
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-    function get_user(){
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users",
-//            url: remote_host+"org/"+orgId+"/users",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-//                    console.log(res);
-                    res.forEach(function(user){
-                        option_html = "<option value="+user._id+">"+user.name+"</option>";
                         $('#action_select_4').append(option_html);
+                        $('#action_select_user').append(option_html);
+
+
                     });
                 }
             },
@@ -667,27 +649,6 @@
                 //processError(e,msg);
             }
         });
-    }
-    function get_userdata(){
-        $.ajax({
-
-                    url: remote_host+"org/"+urlParams.orgId+"/users",
-//                    url: remote_host+"org/"+orgId+"/users",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-            if(res){
-                var option_html;
-                res.forEach(function(user){
-                    option_html = "<option value="+user._id+">"+user.name+"</option>";
-                    $('#action_select_user').append(option_html);
-                });
-            }
-        },
-        error: function(e , msg){
-            //processError(e,msg);
-        }
-    });
     }
     function get_username(user_id){
         $('#result_2_action').empty();
@@ -699,8 +660,6 @@
             dataType: 'json',
             success: function(res) {
                 if(res){
-//                    console.log(res.name)
-//                    result_2_action
                     $('#result_2_action').append('<h4> User <b>'+ res.name +'</b></h4>');
                 }
             },
@@ -709,9 +668,6 @@
             }
         });
     }
-
-    //    var urlParams = JSON.parse(localStorage.getItem('user_data'));
-//    var orgId="5417f10a195e61022fff91ee"
     function get_transactions(){
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/transactions",
@@ -745,7 +701,7 @@
                 if(res){
                     var option_html;
 //                    console.log(res);
-                    $('#result_1_action').append('<h4> Actions Of Selected User <b>'+ res +'</b></h4>');
+                    $('#result_1_action').append('<h4> Actions Of Selected User <b>'+ res.name +'</b></h4>');
                 }
             },
             error: function(e , msg){
@@ -765,7 +721,7 @@
                 if(res){
                     var option_html;
 //                    console.log(res);
-                    option_html = "<option value="+transactionId+">"+res+"</option>";
+                    option_html = "<option value="+transactionId+">"+res.name+"</option>";
                     $('#action_select_action').append(option_html);
                 }
             },
@@ -809,6 +765,7 @@
                     success: function(res) {
                         if(res){
                             var option_html;
+//                            console.log(res);
                             res.transactions.forEach(function(transactions){
                                 get_transactionName(transactions.transactionMaster);
 
@@ -856,8 +813,8 @@
                 var selected_transactions = $("#action_select_2 :selected").val();
 //                console.log(selected_transactions);
                 $.ajax({
-//                    url: remote_host+"org/"+urlParams.orgId+"/transaction/"+selected_transactions+"/users",
-                    url: remote_host+"org/"+orgId+"/transaction/"+selected_transactions+"/users",
+                    url: remote_host+"org/"+urlParams.orgId+"/transaction/"+selected_transactions+"/users",
+//                    url: remote_host+"org/"+orgId+"/transaction/"+selected_transactions+"/users",
                     type: 'GET',
                     dataType: 'json',
                     success: function(res) {
@@ -878,14 +835,6 @@
                 });
             });
         });
-
-        $(function () {
-            $("#s4_user").click(function(){
-                get_user();
-
-            });
-        });
-        // function for points:(last Tab)
         $(function () {
             $("#action_select_4").change(function(){
                 $('#result_4_action').empty();
@@ -920,7 +869,7 @@
                 var user = $("#action_select_user :selected").val();
                 $('#action_select_action').empty();
                 $.ajax({
-                    url: remote_host+"org/"+urlParams.orgId+"/user/"+user+"/downlink",
+                    url: remote_host+"org/"+urlParams.orgId+"/users/"+user+"/downlink",
 //                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
                     type: 'GET',
                     dataType: 'json',
@@ -955,12 +904,12 @@
 
             });
         });
-        $(function () {
-            $("#users").click(function(){
-                get_userdata();
-
-            });
-        });
+//        $(function () {
+//            $("#users").click(function(){
+//                get_userdata();
+//
+//            });
+//        });
         /** end DEMO SCRIPTS **/
 
     } else {

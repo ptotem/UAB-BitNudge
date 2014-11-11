@@ -87,7 +87,7 @@ server.post('/login/bitnudge',passport.authenticate('local',{session:false}), fu
             if(obj1.lastLogin>moment().subtract(1,'day').valueOf()){
                 //hardcoding the system activity for performance.
                 var loggingInSystemActivityId="543b7a15f392420615a1f34d";
-                EventsController.triggerSystemActivity(req.user._id,loggingInSystemActivityId,function(){});
+                EventsController.triggerSystemActivity(obj1.orgId,req.user._id,loggingInSystemActivityId,function(){});
             }
             UserModel.setLastLogin(req.user._id,new Date(),function(err,obj){
                 var ele={userId:req.user._id,expires:moment().add(1,'day').valueOf()};
