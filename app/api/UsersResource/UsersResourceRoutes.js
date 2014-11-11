@@ -102,6 +102,9 @@ var challengesRoutes={
   'get /org/:orgId/users/:userId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','list',req,res,next);},function(req,res){
     challengesController.getLiveUserChallenges(req,res);
   }],
+  'get /org/:orgId/users/:userId/challengeboard':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','list',req,res,next);},function(req,res){
+    challengesController.getChallengeBoardOfUser(req,res);
+  }],
   'post /org/:orgId/users/:userId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','assign',req,res,next);},function(req,res){
     challengesController.assignChallengeToUser(req,res);
   }]

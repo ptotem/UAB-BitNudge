@@ -2,10 +2,17 @@ var ChallengesCollection=require('./ChallengesCollection.js');
 var mongoose=require('mongoose');
 var Challenges= {
   createChallengeOfOrganization:function(organizationId,data,callback){
-      data.orgId=organizationId;
-      data.createdAt=new Date();
-      var l=new ChallengesCollection(data);
-      l.save(callback);
+    ChallengesCollection.findOne({orgId:organizationId},function(err,orgChallenges){
+      if(err)callback(err);
+      if(!orgChallenges){
+        data.orgId=organizationId;
+        data.createdAt=new Date();
+        var l=new ChallengesCollection(data);
+        l.save(callback);
+      }
+      else 
+        ChallengesModel.update({orgId:orgId},{$push:{challenges:data}},callback);
+    });
   },
   getChallengeOfOrganization:function(orgId,id,fields,options,populationData,callback){
     ChallengesCollection.findOne({orgId:orgId,'challenges._id':id},{'challenges.$':1},options).populate(populationData).exec(function(err,obj){

@@ -154,7 +154,7 @@ var roleRoutes={
   }]
 };
 
-var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes,levelRoutes,roleRoutes,transactionMasterRoutes];
+var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes,levelRoutes,roleRoutes,transactionMasterRoutes,challengesRoutes];
 module.exports={
   initialize:function(server,handlers){
     stuff.forEach(function(routesObj){
