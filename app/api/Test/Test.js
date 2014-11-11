@@ -1,5 +1,6 @@
 var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
+var GoalCollection=require('../../system/models/GoalMaster/GoalMasterCollection.js');
 var RolesModel=require('../../system/models/Roles');
 var GoalMasterModel=require('../../system/models/GoalMaster');
 var UserGoalsModel=require('../../system/models/Users').Goals;
@@ -80,26 +81,51 @@ var userGoalFn=function(orgId,obj){
             var userGoalObj = {};
             if(criteria=="Action"){
                 var goalObj={};
+                var subgoalObj={};
+                var subgoalObj1={};
                 goalObj[headers[1]]=data[1];
                 goalObj[headers[5]]=data[5];
                 goalObj[headers[6]]=data[6];
-                console.log(data[5]);
+      var subgoal=data[2];
+      var subgoalname;
+      var subtransactionname;
+                var aFirst = subgoal.split(',');
+
+                var str_array = subgoal.split(',');
+                for (var i = 0; i < aFirst.length; i++) {
+                    subgoalname=aFirst[0];
+                    subtransactionname=aFirst[1];
+//                    console.log(aFirst[i]);
+                }
+
+//                console.log(subgoalname);
+//                console.log(subtransactionname);
                 var action={};
+                var sub={};
                 var creator={};
+                var subname={};
                 action[headers[3]]=data[3];
                 action[headers[4]]=data[4];
                 userGoalObj[headers[0]]=data[0];
                 userGoalObj["action"]=action;
                 UserCollection.findOne({email: data[7]}, function (err, user) {
-//                  var r=  "ObjectId("+"'" +user._id+"'" +")"
-                    creator["type"]=user._id;
+//                    creator["type"]=user._id;
 //                    userGoalObj["creator"]=creator;
 //                    console.log(goalObj);
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
-                        UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
-                            console.log(user._id);
+                        GoalCollection.findOne({name: subgoalname}, function (err, subgoal) {
+//                            console.log(subgoal._id);
+//                            action["type"]=subgoal._id;
+
+                        subgoalObj["subgoal"]=action;
+                        subgoalObj["targetValue"]=data[4];
+                            subgoalObj1["subgoals"]=subgoalObj;
+//                            subgoalgoalObj["targetValue"]=data[4];
+                        console.log(subgoalObj1);
+                        UserGoalsModel.createGoal(user._id,subgoalObj1,function(err,obj){
                             if(err)console.log("error"+err)
                             else console.log("success");
+                        });
                         });
                     });
                 });
@@ -302,7 +328,7 @@ var usersGoals={
         var xlsx = require('node-xlsx');
         //var obj = xlsx.parse(req.files.users.path); // parses a file
         var obj = xlsx.parse(req.files.users_goals.path); // parses a file
-        //console.log("----------------------------------- obj -----------------------------------");
+        console.log("----------------------------------- obj -----------------------------------");
         //console.log(obj);
         userGoalFn(req.params.orgId,obj);
         res.send(obj);

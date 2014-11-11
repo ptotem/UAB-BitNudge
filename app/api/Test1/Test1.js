@@ -29,13 +29,13 @@ var actionFn=function(orgId,obj){
                 TransactionCollection.findOne({name: data[0]} , function(err,transaction)
                 {
                     actionObj1["transactionMaster"] =transaction._id;
-                        TransactionsModel.addTransaction(user._id,actionObj1,function(err,obj){
+                    TransactionsModel.addTransaction(user._id,actionObj1,function(err,obj){
                         if(err)console.log("error"+err)
                         else console.log("transaction._id");
                     });
+                });
             });
-         });
-       }
+        }
     });
 };
 var userTags={
@@ -63,16 +63,35 @@ var userTags={
             }
             res.send(action.transactions);
 
-            });
+        });
 
         UserCollection
             .findOne({_id: req.params.userId })
             .populate('transactions') .exec(function (err, actions) {
                 if (err) return handleError(err);
-                console.log( actions.transactions.name);
+                console.log( actions.transactions);
                 // prints "The creator is Aaron"
             })
 
+    },
+
+    'get /org/:orgId/transactions':function(req,res){
+        TransactionCollection.find({}, function(err, data) {
+            console.log(data);
+            res.send(data);
+        });
+    },
+    'get /org/:orgId/transactions/:transactionId/name':function(req,res){
+        TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
+            console.log(data);
+            res.send(data.name);
+        });
+    },
+    'get /org/:orgId/transactions/:transactionId':function(req,res){
+        TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
+            console.log(data);
+            res.send(data);
+        });
     },
 
     // 'get /org/:orgId/transactions':function(req,res){
@@ -93,11 +112,11 @@ var userTags={
         UserCollection.findOne({reportsTo: req.params.userId }) .populate('reportsTo') .exec(function (err, downlineactions) {
 
 
-                if (err) return handleError(err);
-                var actions=downlineactions.reportsTo;
-                console.log(actions.name);
-                res.send(actions);
-            })
+            if (err) return handleError(err);
+            var actions=downlineactions.reportsTo;
+            console.log(actions.name);
+            res.send(actions);
+        })
 
     },
     'get /org/:orgId/users/:userId/downlinepoints':function(req,res){
