@@ -7,7 +7,6 @@ var mongoose=require('mongoose');
 var passport=require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var BearerStrategy=require('passport-http-bearer').Strategy;
-var restify = require('restify');
 var jwt = require('jwt-simple');
 var secret="ungessableSecret";
 var UserModel=require('./system/models/Users').Users;
@@ -31,18 +30,18 @@ server.use(restify.bodyParser({ mapParams : false }));
 // server.use(restify.jsonp());
 
 //implementing logging
-server.use(restify.requestLogger({
-    properties: {
-        foo: 'bar'
-    },
-    serializers:bunyan.stdSerializers
-}));
-server.on('after', restify.auditLogger({
-    log: bunyan.createLogger({
-        name: 'auditLogger',
-        stream: process.stdout
-    })
-}));
+// server.use(restify.requestLogger({
+//     properties: {
+//         foo: 'bar'
+//     },
+//     serializers:bunyan.stdSerializers
+// }));
+// server.on('after', restify.auditLogger({
+//     log: bunyan.createLogger({
+//         name: 'auditLogger',
+//         stream: process.stdout
+//     })
+// }));
 
 server.use(restify.throttle({
     burst : 100 ,

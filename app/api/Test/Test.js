@@ -16,7 +16,7 @@ var userFn=function(orgId,obj){
                     RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
                         // userObj[headers[indexNew]]=[role._id];
                         if(err) console.log(err);
-                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{roles:[role[0]._id]}},function(err,ans){
+                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{role:[role[0]._id]}},function(err,ans){
                             if(err) console.log(err);
                             else console.log("setted roles");
                         });
@@ -44,7 +44,7 @@ var userEditFn=function(orgId,obj){
                 if(indexNew==4)
                     RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
                         if(err) console.log(err);
-                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{roles:[role[0]._id]}},function(err,ans){
+                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{role:role[0]._id}},function(err,ans){
                             if(err) console.log(err);
                             else console.log("setted roles");
                         });
@@ -177,7 +177,7 @@ var userAuthorization={
     },
     'get /org/:orgId/users/:userId/abilities/:abilityId':function(req,res){
         UserModel.getUser(req.params.userId,"","","",function(err,user){
-            RoleAbilitiesCollection.find({role:user.roles[0],abilities:req.params.abilityId}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
+            RoleAbilitiesCollection.find({role:user.role,abilities:req.params.abilityId}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
                 if(err) res.send(err);
                 else {
                     if(result[0])
@@ -190,7 +190,7 @@ var userAuthorization={
     },
     'get /org/:orgId/users/:userId/abilities':function(req,res){
         UserModel.getUser(req.params.userId,"","","",function(err,user){
-            RoleAbilitiesCollection.find({role:user.roles[0]}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
+            RoleAbilitiesCollection.find({role:user.role}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
                 if(err) res.send(err);
                 else{
                     if(result[0])
@@ -209,8 +209,8 @@ var userAuthorization={
                 //     else res.send(user);
                 // });
             });
-            UserCollection.find({roles:{$in:roles}},function(err1,user){
-                console.log(user);
+            UserCollection.find({role:{$in:roles}},function(err1,user){
+                // console.log(roles);
                 if(err1) res.send(err1);
 
                 else res.send(user);
