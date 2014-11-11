@@ -122,10 +122,10 @@ var userGoalFn=function(orgId,obj){
                             subgoalObj1["subgoals"]=subgoalObj;
 //                            subgoalgoalObj["targetValue"]=data[4];
                         console.log(subgoalObj1);
-                        UserGoalsModel.createGoal(user._id,subgoalObj1,function(err,obj){
-                            if(err)console.log("error"+err)
-                            else console.log("success");
-                        });
+//                        UserGoalsModel.createGoal(user._id,subgoalObj1,function(err,obj){
+//                            if(err)console.log("error"+err)
+//                            else console.log("success");
+//                        });
                         });
                     });
                 });

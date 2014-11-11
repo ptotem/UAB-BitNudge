@@ -352,7 +352,7 @@
 <!-- main content -->
 <div id="page-content">
 <!-- page header -->
-<h1 id="page-header">Goal Creation</h1>
+<h1 id="page-header">Challenge Creation</h1>
 
 <div class="fluid-container">
 
@@ -364,7 +364,7 @@
 <!-- new widget -->
 <div class="jarviswidget" id="goal-creation-widget">
 <header>
-    <h2>Goal Creation</h2>
+    <h2>Challenge Creation</h2>
 </header>
 <!-- wrap div -->
 <div>
@@ -395,14 +395,31 @@
                 <div class="form-group">
                     <div class="row">
                         <div  class="col-md-3">
-                            <label for="goal_name">Name</label>
+                            <label for="challenge_name">Name</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control"  id="goal_name" />
+                            <input type="text" class="form-control"  id="challenge_name" />
                         </div>
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="control-label" for="criteria_select">Scope</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="controls">
+                                <select id="scope_select" class="with-search">
+                                    <option value="default" disabled="disabled" selected="selected">Select one--</option>
+                                    <option value="Organization">Organization</option>
+                                    <option value="Team">Team</option>
+                                    <option value="Player">Player</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-3">
@@ -419,6 +436,60 @@
                         </div>
                     </div>
                 </div>
+
+  <!--scope data div:-->
+
+                <div id="scope_content_block">
+                    <!-- html for subgoal and its target value starts -->
+                    <div class="criteria-content-blocks" id="team_content_block">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="control-label" for="Team_select">Team</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="controls">
+                                        <select name ="team_name" id="Team_select" class="with-search">
+                                            <!--<option value="tree1">Team 1</option>-->
+                                            <!--<option  value="tree2">Team 3</option>-->
+                                            <!--<option  value="tree3">Team 4</option>-->
+                                            <!--<option value="tree14">Team 2</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<div class="row">-->
+                                <!--<div  class="col-md-3">-->
+                                    <!--<label for="player_target_value">Player Value</label>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-9">-->
+                                    <!--<input type="text" class="form-control"  id="player_target_value" />-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                    <!-- html for subgoal and its target value ends -->
+
+                    <!-- html for allowed transactions and its target value starts -->
+                    <div class="criteria-content-blocks" id="scope_player_block">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="control-label" for="key_param_select">Select Player</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="controls">
+                                        <select id="select_user" class="with-search">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+
 
 
                 <div id="criteria_content_block">
@@ -552,10 +623,11 @@
                     <button type="reset" class="btn medium btn-danger">
                         Cancel
                     </button>
-                    <button id="goal_submit_btn" type="submit" class="btn medium btn-primary">
+                    <button id="challenge_submit_btn" type="submit" class="btn medium btn-primary">
                         Create
                     </button>
                 </div>
+                <div>
             </fieldset>
         </form>
 
@@ -647,6 +719,7 @@
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
 var actionsJSON = "";
 var criteria_val = "";
+var scope_val = "";
 
 function show_notification(text){
     $.jGrowl(text, {
@@ -702,6 +775,9 @@ function get_employees(){
                 res.forEach(function(user){
                     option_html = "<option value="+user._id+">"+user.name+"</option>";
                     $('#users_select').append(option_html);
+                    $('#select_user').append(option_html);
+//                    $("#key_param_select").append("<option value="+keyParam+">"+keyParam+"</option>");
+
                 });
 
             }
@@ -713,6 +789,31 @@ function get_employees(){
     });
 }
 
+function get_teams(){
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/teams",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var option_html;
+                res.forEach(function(teams){
+//                    console.log(teams);
+                    option_html = "<option value="+teams._id+">"+teams.name+"</option>";
+                    $('#Team_select').append(option_html);
+
+                });
+
+            }
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+
 var hasTag = function(key_param_val) {
     var i = null;
     var filteredactionsJSON = []
@@ -723,8 +824,8 @@ var hasTag = function(key_param_val) {
             //return actionsJSON[i];
         }
     }
-    console.log("filteredactionsJSON")
-    console.log(filteredactionsJSON)
+//    console.log("filteredactionsJSON")
+//    console.log(filteredactionsJSON)
     return filteredactionsJSON;
 //        return false;
 };
@@ -800,6 +901,7 @@ if (!ismobile) {
 
         get_employees();
         get_actions();
+        get_teams();
         get_my_created_goals();
 
         var today_date = get_current_date();
@@ -813,7 +915,6 @@ if (!ismobile) {
                 $('#transaction_select').append("<option value="+filtered_action._id+">"+filtered_action.name+"</option>");
             });
         });
-
         $('#criteria_select').on('change', function () {
             criteria_val = $("#criteria_select :selected").val();
             if (criteria_val == "Action") {
@@ -821,6 +922,7 @@ if (!ismobile) {
                 $("#transaction_content_block").show();
             }
             else if (criteria_val == "Subgoal") {
+//                console.log('hello')
                 $("#transaction_content_block").hide();
                 $("#subgoal_content_block").show();
             }
@@ -830,16 +932,46 @@ if (!ismobile) {
             }
         });
 
-        $("#goal_submit_btn").click(function(e) {
 
-            var goal_name = $("#goal_name").val();
+        $('#scope_select').on('change', function () {
+            scope_val = $("#scope_select :selected").val();
+            if (scope_val == "Organization") {
+//                console.log("urlParams");
+//                console.log(urlParams.orgId);;
+//                $("#subgoal_content_block").hide();
+//                $("#transaction_content_block").show();
+            }
+            else if (scope_val == "Team") {
+//                console.log('hello');
+                $("#scope_player_block").hide();
+                $("#team_content_block").show();
+            }
+            else if (scope_val == "Player") {
+//                console.log('hii')
+                $("#team_content_block").hide();
+                $("#scope_player_block").show();
+            }
+            else{
+//                $("#transaction_content_block").hide();
+//                $("#subgoal_content_block").hide();
+            }
+        });
 
+        $("#challenge_submit_btn").click(function(e) {
+
+            var challenge_name = $("#challenge_name").val();
+            var org_id=urlParams.orgId;
             var selected_transaction = $("#transaction_select :selected").val();
             var transaction_target_value = $("#transaction_target_value").val();
 
             var selected_subgoal = $("#subgoal_select :selected").val();
-            var subgoal_target_value = $("#subgoal_target_value").val();
+            var team_name = $("#Team_select :selected").val();
+            var player_name = $("#select_user :selected").val();
 
+//            var team_name = $('#Team_select').val(); // for multiselect value
+//            var player_name=$('#select_user').val();
+            var subgoal_target_value = $("#subgoal_target_value").val();
+            var org_scope={};
             var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
             //new Date(year, month, day, hours, minutes, seconds, milliseconds)
             var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1])-1, parseInt(goal_start_date.split("-")[0]));
@@ -848,13 +980,30 @@ if (!ismobile) {
             var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1])-1, parseInt(goal_end_date.split("-")[0]));
 
             var goal_points = $("#goal_points").val();
-
-            var assign_to = $("#users_select :selected").val();
-
             var data = {}, action_data = {}, subgoal_data = {};
+            if (scope_val == "Organization") {
+                org_scope= {
+                    scope: "Organization",
+                    entity: org_id
+                };
+            }
+            else if(scope_val == "Team"){
+                org_scope= {
+                    scope: "Team",
+                    entity: team_name
+                };
+            }
+            else if(scope_val == "Player"){
+                org_scope= {
+                    scope: "Player",
+                    entity: player_name
+                };
+            }
+            var assign_to = $("#users_select :selected").val();
             if (criteria_val == "Action") {
                 action_data = {
-                    name: goal_name,
+                    scope:org_scope,
+                    name: challenge_name,
                     criteria: criteria_val,
                     startDate: formatted_start_date,
                     endDate: formatted_end_date,
@@ -869,7 +1018,8 @@ if (!ismobile) {
             }
             else if (criteria_val == "Subgoal") {
                 subgoal_data = {
-                    name: goal_name,
+                    scope:org_scope,
+                    name: challenge_name,
                     criteria: criteria_val,
                     startDate: formatted_start_date,
                     endDate: formatted_end_date,
@@ -883,12 +1033,14 @@ if (!ismobile) {
                 data = subgoal_data;
             }
 
+//          console.log(challenge_name+selected_transaction+selected_subgoal+team_name+player_name+subgoal_target_value+goal_start_date+formatted_start_date+goal_points)
+
             console.log("data");
             console.log(data);
 
             $.ajax({
                 // /org/:orgId/users/:userId/goals
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+assign_to+"/goals",
+                url: remote_host+"org/"+urlParams.orgId+"/challenges",
                 type: 'POST',
                 dataType: 'json',
                 data: data,
