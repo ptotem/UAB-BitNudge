@@ -1,13 +1,31 @@
-var UserChallengesModel=require('../models/Users').Goals;
+var tempModel=require('../models/Users');
+var UserChallengesModel=tempModel.Goals;
+var UsersModel=tempModel.Users;
 var ChallengesModel=require('../models/Challenges');
+var ChallengesCollection=require('../models/Challenges/ChallengesCollection.js');
 var TransactionCollection=require('../models/TransactionMaster/TransactionMasterCollection.js');
 var GoalMasterModel=require('../models/GoalMaster');
 var ChallengesController={
+  canUserAcceptChallenge:function(user,challengeObj){
+    if(challengeObj.scope=="organization"&&challengeObj.entity.toString()==user.orgId.toString())
+      return true;
+    else if(challengeObj.scope=="team"){
+      user.teams.forEach(function(teamId){
+        if(teamId.toString()==challengeObj.entity.toString())
+          return true;
+      });
+    }
+    else if(challengeObj.scope=="player"&&challengeObj.entity.toString()==user._id.toString())
+      return true;
+    return false;
+  },
   assignChallengeToUser:function(req,res){
     //if the criteria is Action, then it must be stored in the goal so that user can reuse it later.
     ChallengesModel.getChallenge(req.body.challenge,"","","",function(err,challengeObj){
-      if(err) res.send(err);
-      if(!challengeObj) res.send("failed");
+      if(err) return res.send(err);
+      if(!challengeObj) return res.send("failed");
+      if(!ChallengesController.canUserAcceptChallenge)
+        return res.send("this user cannot accept this challenge");
       challengeObj.goalType="challenge";
       delete challengeObj.scope;
       delete challengeObj.entity;
@@ -36,7 +54,7 @@ var ChallengesController={
     });
   },
   createChallenge:function(req,res){
-    ChallengesModel.createChallenge(req.params.orgId,req.body,function(err,obj){
+    ChallengesModel.createChallengeOfOrganization(req.params.orgId,req.body,function(err,obj){
       if(err)
         res.send(err);
       else res.send("success");
@@ -46,6 +64,24 @@ var ChallengesController={
     ChallengesModel.approveChallenge(req.params.orgId,req.params.challengeId,null,function(err,obj){
       if(err) res.send(err);
       else res.send("success");
+    });
+  },
+  getChallengeBoardOfUser:function(req,res){
+    var currDate=new Date();
+    var dateQuery={$gte:currDate};
+    UserModel.getUser(req.params.userId,"","","",function(err,user){
+      if(err||!user) callback(err,user);
+      else{
+        var entitiesQuery=user.teams.slice();
+        entitiesQuery.push(user.orgId);
+        entitiesQuery.push(user._id);
+        ChallengesCollection.aggregate({$match:{orgId:req.params.orgId}},{$unwind:"$challenges"},{$match:{"challenges.endDate":dateQuery,"challenges.entity":{$in:entitiesQuery}}},{$group:{_id:"$_id",allChallenges:{$push:"$challenges"}}},function(err,result){
+          if(err) res.send(err);
+          else 
+            if(!result[0]&&!result[0].challenges)
+              res.send(result[0].challenges);
+        });
+      }
     });
   },
   getChallenge:function(req,res){
