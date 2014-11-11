@@ -635,7 +635,7 @@
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Employee Edit form</h5>
+                                <h5 class="widget-title">Department Edit form</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -678,15 +678,15 @@
                             <div class="widget-body">
                                 <div class="widget-main">
 
-                                    <form id="edit_employee_form" class="form-horizontal themed">
+                                    <form id="edit_dept_form" class="form-horizontal themed">
                                         <fieldset>
                                             <div class="form-group">
 
                                                     <div  class="col-md-3">
-                                                        <label for="emp_name">Name</label>
+                                                        <label for="dep_name">Name</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <input type="text" class="form-control"  id="emp_name" value="" />
+                                                        <input type="text" class="form-control"  id="dep_name" value="" />
                                                     </div>
 
                                             </div>
@@ -694,43 +694,21 @@
                                             <div class="form-group">
 
                                                     <div  class="col-md-3">
-                                                        <label for="emp_email">E-mail</label>
+                                                        <label for="parent_grp">Parent group</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <input type="email" class="form-control"  id="emp_email" value="" />
+                                                        <input type="email" class="form-control"  id="parent_grp" value="" />
                                                     </div>
 
                                             </div>
 
-                                            <!--<div class="form-group">-->
-                                            <!--<div class="row">-->
-                                            <!--<div  class="col-md-3">-->
-                                            <!--<label for="emp_password">Password</label>-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-9">-->
-                                            <!--<input type="password" class="form-control"  id="emp_password" />-->
-                                            <!--</div>-->
-                                            <!--</div>-->
-                                            <!--</div>-->
-
-                                            <!--<div class="form-group">-->
-                                            <!--<div class="row">-->
-                                            <!--<div  class="col-md-3">-->
-                                            <!--<label for="emp_password_confirm">Password confirmation</label>-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-9">-->
-                                            <!--<input type="password" class="form-control"  id="emp_password_confirm" />-->
-                                            <!--</div>-->
-                                            <!--</div>-->
-                                            <!--</div>-->
-
                                             <div class="form-group">
 
                                                     <div  class="col-md-3">
-                                                        <label for="emp_designation">Designation</label>
+                                                        <label for="child_grp">Child group</label>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <input type="text" class="form-control"  id="emp_designation" value="" />
+                                                        <input type="text" class="form-control"  id="child_grp" value="" />
                                                     </div>
 
                                             </div>
@@ -738,24 +716,13 @@
                                             <div class="form-group">
 
                                                     <div class="col-md-3">
-                                                        <label class="control-label" for="emp_role">Role</label>
+                                                        <label class="control-label" for="tag_department">Tags</label>
                                                     </div>
                                                     <div class="col-md-9">
                                                         <div class="controls">
-                                                            <select id="emp_role" class="with-search">
+                                                            <select id="tag_department" class="with-search">
                                                             </select>
                                                         </div>
-                                                    </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-
-                                                    <div  class="col-md-3">
-                                                        <label for="emp_addr">Address</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <input type="text" class="form-control"  id="emp_addr" value="" />
                                                     </div>
 
                                             </div>
@@ -829,36 +796,6 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-
-    function get_roles(){
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/roles",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    res.forEach(function(role){
-                        $('#emp_role').append("<option data-id="+role._id+" value="+role.name+">"+role.name+"</option>");
-                    });
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
-
-$(function () {
-    var row_html;
-    get_roles();
-});
-
-
-
-
-
 jQuery(function($) {
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){

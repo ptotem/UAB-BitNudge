@@ -422,7 +422,7 @@
 </div><!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
-        <li>
+        <li class="active">
             <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text">Department List</span>
@@ -456,7 +456,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li >
+        <li>
             <a href="badge_master.html">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text"> Badge Master </span>
@@ -465,7 +465,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="active">
+        <li class="">
             <a href="reward_center.html">
                 <i class="menu-icon fa fa-calendar"></i>
                 <span class="menu-text"> Reward Center </span>
@@ -481,64 +481,6 @@
 
             <b class="arrow"></b>
         </li>
-        <li class="">
-            <a href="badges.html">
-                <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> Badges </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="abilities.html">
-                <i class="menu-icon fa fa-bar-chart-o"></i>
-                <span class="menu-text"> Abilities </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="level.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Level </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="org_tags.html">
-                <i class="menu-icon fa fa-book"></i>
-                <span class="menu-text"> Organization Tag </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="team.html">
-                <i class="menu-icon fa fa-envelope"></i>
-                <span class="menu-text"> Team </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="reward_master.html">
-                <i class="menu-icon fa fa-envelope"></i>
-                <span class="menu-text"> Reward Master </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="action_sec.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Action Section </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-
     </ul><!-- /.nav-list -->
 
 <!-- #section:basics/sidebar.layout.minimize -->
@@ -554,6 +496,34 @@
 
 <!-- /section:basics/sidebar -->
 <div class="main-content">
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Widgets</li>
+    </ul><!-- /.breadcrumb -->
+
+    <!-- #section:basics/content.searchbox -->
+    <div class="nav-search" id="nav-search">
+        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="ace-icon fa fa-search nav-search-icon"></i>
+							</span>
+        </form>
+    </div><!-- /.nav-search -->
+
+    <!-- /section:basics/content.searchbox -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
     <!-- #section:settings.box -->
     <div class="ace-settings-container" id="ace-settings-container">
@@ -659,13 +629,13 @@
         <div class="row">
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
-               <!--row 1-->
+                <!--<row 1 >-->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 widget-container-col">
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Reward Center</h5>
+                                <h5 class="widget-title">Role Show</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -707,24 +677,34 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <table class="table table-striped table-bordered responsive" id="reward_center_list">
-                                        <thead>
-                                        <tr>
-                                            <th>Currency</th>
-                                            <th>Conversion Rate</th>
-                                            <th>Rewards</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Name</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    Prakash Mehra
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label>Tags</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    Red
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </fieldset>
+
+
 
                                 </div>
                             </div>
@@ -735,13 +715,12 @@
 
 
                 </div>
-                <!--row 1 end-->
+                <!-- /.row 1 end -->
 
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
         </div>
         <!-- /1 row -->
-
     </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
@@ -784,47 +763,7 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
-var urlParams = JSON.parse(localStorage.getItem('user_data'));
-
-
-
-$(function () {
-
-    //$('#main').css('opacity', 1);
-    //$('header').fadeIn();
-
-    var row_html;
-
-    var row_html;
-   for(i=0;i<15;i++)
-   {
-
-       var row_html;
-       row_html ='<tr class="odd gradeX">'+
-               '<td class="text-center">Rupee</td>'+
-               '<td class="text-center">65</td>'+
-               '<td class="text-center">1000</td>'+
-               '<td class="text-center">' +
-               '<a style="padding: 5px;" href="reward_center_edit_form.html">' + '<i class="ace-icon glyphicon glyphicon-pencil"></i>' + '</a>' +
-               '<a style="padding: 5px;" href="reward_center_show.html">' + '<i class="ace-icon glyphicon glyphicon-info-sign"></i>' + '</a>' +
-               '</td>' +
-               '</tr>'
-
-       console.log(row_html);
-
-       $("#reward_center_list").find('tbody').append(row_html);
-   }
-
-    $('#reward_center_list').dataTable({
-        "bPaginate": true,
-        "bFilter": true,
-        "bLengthChange": false,
-        "aaSorting": [
-            [ 0, "asc" ]
-        ]
-    });
-
-});
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
 jQuery(function($) {
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
@@ -858,6 +797,8 @@ jQuery(function($) {
     $(window).on('resize.scroll_reset', function() {
         $('.scrollable-horizontal').ace_scroll('reset');
     });
+
+
 
 
     /**
@@ -916,54 +857,6 @@ jQuery(function($) {
 //    });
 
 });
-</script>
-<script type="text/javascript">
-    var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
-    ace.load_ajax_scripts(scripts, function() {
-        //inline scripts related to this page
-        jQuery(function($) {
-
-            /**
-             var tableTools = new $.fn.dataTable.TableTools( oTable1, {
-			"sSwfPath": "../../copy_csv_xls_pdf.swf",
-	        "buttons": [
-	            "copy",
-	            "csv",
-	            "xls",
-				"pdf",
-	            "print"
-	        ]
-	    } );
-             $( tableTools.fnContainer() ).insertBefore('#sample-table-2');
-             */
-
-
-            $(document).on('click', 'th input:checkbox' , function(){
-                var that = this;
-                $(this).closest('table').find('tr > td:first-child input:checkbox')
-                        .each(function(){
-                            this.checked = that.checked;
-                            $(this).closest('tr').toggleClass('selected');
-                        });
-            });
-
-
-            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-            function tooltip_placement(context, source) {
-                var $source = $(source);
-                var $parent = $source.closest('table')
-                var off1 = $parent.offset();
-                var w1 = $parent.width();
-
-                var off2 = $source.offset();
-                //var w2 = $source.width();
-
-                if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-                return 'left';
-            }
-
-        })
-    });
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->
