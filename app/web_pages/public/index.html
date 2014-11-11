@@ -1,389 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
-    <title>UAB BitNudge</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-	<!-- http://davidbcalhoun.com/2010/viewport-metatag -->
-	<meta name="HandheldFriendly" content="True">
-	<meta name="MobileOptimized" content="320">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="_token" content="{{ csrf_token() }}"/>
-	<!--// OPTIONAL & CONDITIONAL CSS FILES //-->   
-	<!-- date picker css -->
-	<link rel="stylesheet" href="css/datepicker.css?v=1">
-	<!-- full calander css -->
-	<link rel="stylesheet" href="css/fullcalendar.css?v=1">
-	<!-- data tables extended CSS -->
-	<link rel="stylesheet" href="css/TableTools.css?v=1">
-	<!-- bootstrap wysimhtml5 editor -->
-	<link rel="stylesheet" href="css/bootstrap-wysihtml5.css?v=1">
-	<link rel="stylesheet" href="css/wysiwyg-color.css">
-	<!-- custom/responsive growl messages -->
-	<link rel="stylesheet" href="css/toastr.custom.css?v=1">
-	<link rel="stylesheet" href="css/toastr-responsive.css?v=1">
-	<link rel="stylesheet" href="css/jquery.jgrowl.css?v=1">
-	
-	<!-- // DO NOT REMOVE OR CHANGE ORDER OF THE FOLLOWING // -->
-	<!-- bootstrap default css (DO NOT REMOVE) -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!--<link rel="stylesheet" href="css/bootstrap-responsive.min.css?v=1">-->
-	<!-- font awsome and custom icons -->
-	<link rel="stylesheet" href="css/font-awesome.min.css?v=1">
-	<link rel="stylesheet" href="css/cus-icons.css?v=1">
-	<!-- jarvis widget css -->
-	<link rel="stylesheet" href="css/jarvis-widgets.css?v=1">
-	<!-- Data tables, normal tables and responsive tables css -->
-	<link rel="stylesheet" href="css/DT_bootstrap.css?v=1">
-	<link rel="stylesheet" href="css/responsive-tables.css?v=1">
-	<!-- used where radio, select and form elements are used -->
-	<link rel="stylesheet" href="css/uniform.default.css?v=1">
-	<link rel="stylesheet" href="css/select2.css?v=1">
-	<!-- main theme files -->
-	<link rel="stylesheet" href="css/theme.css?v=1">
-	<link rel="stylesheet" href="css/theme-responsive.css?v=1">
-      <link rel="stylesheet" href="css/customstyle.css" type="text/css">
-    
-	<!-- // THEME CSS changed by javascript: the CSS link below will override the rules above // -->
-	<!-- For more information, please see the documentation for "THEMES" -->
-    <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">   
-	
-   	<!-- To switch to full width -->
-    <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
-    
-	<!-- Webfonts -->
-	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700' type='text/css'>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>Login Page - Ace Admin</title>
 
-	<!-- Print Invoice CSS -->
-	<link rel="stylesheet" href="css/print-invoice.css">
-	
-	<!-- All javascripts are located at the bottom except for HTML5 Shim -->
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-   		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-   		<script src="js/include/respond.min.js"></script>
-   	<![endif]-->
+    <meta name="description" content="User login page"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
-	<!-- For Modern Browsers -->
-	<link rel="shortcut icon" href="img/favicons/favicon.png">
-	<!-- For everything else -->
-	<link rel="shortcut icon" href="img/favicons/favicon.ico">
-	<!-- For retina screens -->
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png">
-	<!-- For iPad 1-->
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png">
-	<!-- For iPhone 3G, iPod Touch and Android -->
-	<link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png">
-	
-	<!-- iOS web-app metas -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<!-- Add your custom home screen title: -->
-	<meta name="apple-mobile-web-app-title" content="Jarvis"> 
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
 
-	<!-- Startup image for web apps -->
-	<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
-	<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
-	<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-	
-  </head>
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
 
-  <body>
-  	<!-- .height-wrapper -->
-	<div class="height-wrapper">
-				
-		<!-- header -->
-		<header>
-			<!-- tool bar -->
-			<div id="header-toolbar" class="container-fluid">
-				<!-- .contained -->
-				<div class="contained">
-					
-					<!-- theme name -->
-					<h1> <span class="hidden-xs">UAB BitNudge</span> </h1>
-					<!-- end theme name -->
-					
-					<!-- span4 -->
-					<div class="pull-right">
-						<!-- demo theme switcher-->
-						<div id="theme-switcher" class="btn-toolbar">
-							
-							<!-- search and log off button for phone devices -->
-							<div class="btn-group pull-right visible-xs">
-								<a href="javascript:void(0)" class="btn btn-inverse btn-sm"><i class="icon-search"></i></a>
-								<a href="login.html" class="btn btn-inverse btn-sm"><i class="icon-off"></i></a>
-							</div>
-							<!-- end buttons for phone device -->
-							
-							<!-- theme dropdown -->
-							<div class="btn-group hidden-xs">
-								<a href="javascript:void(0)" class="btn btn-sm btn-inverse" id="reset-widget"><i class="icon-refresh"></i></a>
-								<a href="javascript:void(0)" class="btn btn-sm btn-inverse dropdown-toggle" data-toggle="dropdown">Themes <span class="caret"></span></a>
-								<ul id="theme-links-js" class="dropdown-menu toolbar pull-right">
-									<li>
-										<a href="javascript:void(0)" data-rel="purple"><i class="icon-sign-blank purple-icon"></i>Royal Purple</a>
-									</li>
-									<li>
-										<a href="javascript:void(0)" data-rel="blue"><i class="icon-sign-blank navyblue-icon"></i>Navy Blue</a>
-									</li>
-									<li>
-										<a href="javascript:void(0)" data-rel="green"><i class="icon-sign-blank green-icon "></i>Emerald</a>
-									</li>
-									<li>
-										<a href="javascript:void(0)" data-rel="darkred"><i class="icon-sign-blank red-icon "></i>Dark Rose</a>
-									</li>
-									<li>
-										<a href="javascript:void(0)" data-rel="default"><i class="icon-sign-blank grey-icon"></i>Default</a>
-									</li>
-								</ul>
-							</div>
-							<!-- end theme dropdown-->
-							
-						</div>
-					  	<!-- end demo theme switcher-->
-					</div>
-					<!-- end span4 -->
-				</div>
-				<!-- end .contained -->
-			</div>
-			<!-- end tool bar -->
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.min.css"/>
 
-		</header>
-		<!-- end header -->	
-			<!--<div id="login-logo"></div>-->
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ace-part2.min.css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css"/>
 
-			<div class="jarviswidget login">
-				<header>
-					<h2>UAB BitNudge</h2>
-				</header>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ace-ie.min.css"/>
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/ace.onpage-help.css"/>
 
-					<!-- content goes here -->
-					<div id="main-content">
-						
-						<form class="form-signin" method="post" action="">
-							<div class="form-group">
-								<input type="email" required id="user_email" class="input-block-level email_text_box " autofocus placeholder="Email" >
-							</div>
-							<div class="form-group">
-								<input type="password" required id="user_password" class="input-block-level" placeholder="Password">
-							</div>
-							<div class="form-group no-border">
-                                <div class="row">
-                                    <div class="col-md-4 col-xs-4 col-sm-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
-                                        <input class="btn btn-primary" id="sign_in_form_submit_btn" type="submit" value="Sign in">
-                                    </div>
-                                </div>
-							</div>
-						</form>
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <div class="widget-content-padding" style="padding: 5px;">
-                                    <strong>Don't have an account?</strong>
-                                    <br>
-                                    <a href="signup.html" style="color: #1f5f3e">Create One</a>
-                                </div>
-                            </div>
-                        </div>
-					</div>
-					<!-- end content goes here -->
-						
-			</div>
-		
-	</div>
-	<!-- end .height-wrapper -->	
-	
-	<!-- footer -->
-	
-	<!-- if you like you can insert your footer here -->
-	
-	<!-- end footer -->
-
-    <!--================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
-    <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
-    	<!-- OPTIONAL: Use this migrate scrpit for plugins that are not supported by jquery 1.9+ -->
-		<!-- DISABLED <script src="js/libs/jquery.migrate-1.0.0.min.js"></script> -->
+    <!-- OPTIONAL: Use this migrate scrpit for plugins that are not supported by jquery 1.9+ -->
+    <!-- DISABLED <script src="js/libs/jquery.migrate-1.0.0.min.js"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
     <script>window.jQuery.ui || document.write('<script src="js/libs/jquery.ui.min.js"><\/script>')</script>
-    
-    <!-- IMPORTANT: Jquery Touch Punch is always placed under Jquery UI -->
-    <script src="js/include/jquery.ui.touch-punch.min.js"></script>
-    
-    <!-- REQUIRED: Mobile responsive menu generator -->
-	<script src="js/include/selectnav.min.js"></script>
 
-	<!-- REQUIRED: Datatable components -->
-    <script src="js/include/jquery.accordion.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
-	<!-- REQUIRED: Toastr & Jgrowl notifications  -->
-    <script src="js/include/toastr.min.js"></script>
-    <script src="js/include/jquery.jgrowl.min.js"></script>
-    
-    <!-- REQUIRED: Sleek scroll UI  -->
-    <script src="js/include/slimScroll.min.js"></script>
-	
-	<!-- REQUIRED: Datatable components -->
-	<script src="js/include/jquery.dataTables.min.js"></script> 
-	<script src="js/include/DT_bootstrap.min.js"></script> 
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
 
-    <!-- REQUIRED: Form element skin  -->
-    <script src="js/include/jquery.uniform.min.js"></script> 
+    <![endif]-->
+</head>
 
-	<!-- REQUIRED: AmCharts  -->
-    <script src="js/include/amchart/amcharts.js"></script>
-	<script src="js/include/amchart/amchart-draw1.js"></script>
-  
-    <!-- DO NOT REMOVE: Theme Config file -->
-    <script src="js/config.js"></script>
-    <script src="js/app/app_config.js"></script>
+<body class="login-layout">
+<div class="main-container">
+<div class="main-content">
+<div class="row">
+<div class="col-sm-10 col-sm-offset-1">
+<div class="login-container">
+<div class="center">
+    <h1>
+        <i class="ace-icon fa fa-leaf green"></i>
+        <span class="red">Ace</span>
+        <span class="white" id="id-text2">Application</span>
+    </h1>
+    <h4 class="blue" id="id-company-text">&copy; Company Name</h4>
+</div>
 
-	<script type="text/javascript">
-		var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
-	    if(!ismobile){
-	    	
-	    	/** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
-	    	
-	    	/* REQUIRED: Datatable PDF/Excel output componant */
-	    	
-	    	document.write('<script src="js/include/ZeroClipboard.min.js"><\/script>'); 
-	    	document.write('<script src="js/include/TableTools.min.js"><\/script>'); 
-	    	document.write('<script src="js/include/select2.min.js"><\/script>'); 
-	    	document.write('<script src="js/include/jquery.excanvas.min.js"><\/script>');  
-	    	document.write('<script src="js/include/jquery.placeholder.min.js"><\/script>');  
-			
-			/** DEMO SCRIPTS **/
-	        $(function() {
+<div class="space-6"></div>
 
+<div class="position-relative">
+    <div id="login-box" class="login-box visible widget-box no-border">
+        <div class="widget-body">
+            <div class="widget-main">
+                <h4 class="header blue lighter bigger">
+                    <i class="ace-icon fa fa-coffee green"></i>
+                    Please Enter Your Information
+                </h4>
 
-	        });
-	        
-	    }else{
-	    	
-	    	/** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
-	    	
-	    	document.write('<script src="js/include/responsive-tables.min.js"><\/script>');
-	    }
+                <div class="space-6"></div>
 
-        $("#sign_in_form_submit_btn").click(function() {
+                <form class="form-signin" method="post" action="">
+                    <fieldset>
+                        <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" required id="user_email"
+                                                                   class="input-block-level email_text_box  form-control"
+                                                                   autofocus placeholder="Email">
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+                        </label>
+
+                        <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" required id="user_password"
+                                                                   class="input-block-level form-control"
+                                                                   placeholder="Password">
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+                        </label>
+
+                        <div class="space"></div>
+
+                        <div class="clearfix">
+                            <label class="inline">
+                                <input type="checkbox" class="ace"/>
+                                <span class="lbl"> Remember Me</span>
+                            </label>
+
+                            <input class="btn btn-primary width-35 pull-right" id="sign_in_form_submit_btn"
+                                   type="submit" value="Sign in">
+                        </div>
+
+                        <div class="space-4"></div>
+                    </fieldset>
+                </form>
+
+                <div class="social-or-login center">
+                    <span class="bigger-110">Or Login Using</span>
+                </div>
+
+                <div class="space-6"></div>
+
+                <div class="social-login center">
+                    <a class="btn btn-primary">
+                        <i class="ace-icon fa fa-facebook"></i>
+                    </a>
+
+                    <a class="btn btn-info">
+                        <i class="ace-icon fa fa-twitter"></i>
+                    </a>
+
+                    <a class="btn btn-danger">
+                        <i class="ace-icon fa fa-google-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- /.widget-main -->
+
+            <div class="toolbar clearfix">
+                <div>
+                    <a href="#" data-target="#forgot-box" class="forgot-password-link">
+                        <i class="ace-icon fa fa-arrow-left"></i>
+                        I forgot my password
+                    </a>
+                </div>
+
+                <div>
+                    <a href="#" data-target="#signup-box" class="user-signup-link">
+                        I want to register
+                        <i class="ace-icon fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /.widget-body -->
+    </div>
+    <!-- /.login-box -->
+
+    <div id="forgot-box" class="forgot-box widget-box no-border">
+        <div class="widget-body">
+            <div class="widget-main">
+                <h4 class="header red lighter bigger">
+                    <i class="ace-icon fa fa-key"></i>
+                    Retrieve Password
+                </h4>
+
+                <div class="space-6"></div>
+                <p>
+                    Enter your email and to receive instructions
+                </p>
+
+                <form>
+                    <fieldset>
+                        <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" class="form-control"
+                                                                   placeholder="Email"/>
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+                        </label>
+
+                        <div class="clearfix">
+                            <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                <i class="ace-icon fa fa-lightbulb-o"></i>
+                                <span class="bigger-110">Send Me!</span>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.widget-main -->
+
+            <div class="toolbar center">
+                <a href="#" data-target="#login-box" class="back-to-login-link">
+                    Back to login
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <!-- /.widget-body -->
+    </div>
+    <!-- /.forgot-box -->
+
+    <div id="signup-box" class="signup-box widget-box no-border">
+        <div class="widget-body">
+            <div class="widget-main">
+                <h4 class="header green lighter bigger">
+                    <i class="ace-icon fa fa-users blue"></i>
+                    New User Registration
+                </h4>
+
+                <div class="space-6"></div>
+                <p> Enter your details to begin: </p>
+
+                <form>
+                    <fieldset>
+                        <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" class="form-control"
+                                                                   placeholder="Email"/>
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+                        </label>
+
+                        <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control"
+                                                                   placeholder="Username"/>
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+                        </label>
+
+                        <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control"
+                                                                   placeholder="Password"/>
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+                        </label>
+
+                        <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control"
+                                                                   placeholder="Repeat password"/>
+															<i class="ace-icon fa fa-retweet"></i>
+														</span>
+                        </label>
+
+                        <label class="block">
+                            <input type="checkbox" class="ace"/>
+														<span class="lbl">
+															I accept the
+															<a href="#">User Agreement</a>
+														</span>
+                        </label>
+
+                        <div class="space-24"></div>
+
+                        <div class="clearfix">
+                            <button type="reset" class="width-30 pull-left btn btn-sm">
+                                <i class="ace-icon fa fa-refresh"></i>
+                                <span class="bigger-110">Reset</span>
+                            </button>
+
+                            <button type="button" class="width-65 pull-right btn btn-sm btn-success">
+                                <span class="bigger-110">Register</span>
+
+                                <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="toolbar center">
+                <a href="#" data-target="#login-box" class="back-to-login-link">
+                    <i class="ace-icon fa fa-arrow-left"></i>
+                    Back to login
+                </a>
+            </div>
+        </div>
+        <!-- /.widget-body -->
+    </div>
+    <!-- /.signup-box -->
+</div>
+<!-- /.position-relative -->
+
+<div class="navbar-fixed-top align-right">
+    <br/>
+    &nbsp;
+    <a id="btn-login-dark" href="#">Dark</a>
+    &nbsp;
+    <span class="blue">/</span>
+    &nbsp;
+    <a id="btn-login-blur" href="#">Blur</a>
+    &nbsp;
+    <span class="blue">/</span>
+    &nbsp;
+    <a id="btn-login-light" href="#">Light</a>
+    &nbsp; &nbsp; &nbsp;
+</div>
+</div>
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.main-content -->
+</div>
+<!-- /.main-container -->
+
+<!-- basic scripts -->
+<script src="assets/js/app/app_config.js"></script>
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='assets/js/jquery.min.js'>" + "<" + "/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>" + "<" + "/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    $(function(){
+        console.log("remote_host  :- " + remote_host);
+        $("#sign_in_form_submit_btn").click(function (e) {
+//            e.preventDefault();
             var user_email = $("#user_email").val();
             var user_password = $("#user_password").val();
-            var jqxhr = $.post(remote_host+"login/bitnudge?username="+user_email+'&password='+user_password, function() {
+
+            var jqxhr = $.post(remote_host + "login/bitnudge?username=" + user_email + '&password=' + user_password, function () {
                 //alert( "success" );
             })
-                .done(function(data) {
-                    var storageData={token:data.token,expires:data.expires};
-                    localStorage.setItem("user_access_token", JSON.stringify(storageData));
-                    localStorage.setItem('user_data', JSON.stringify({
-                        userId: data.user._id,
-                        orgId: data.user.orgId
-                    }));
-                    window.location.href = local_host+"employees.html";
+                    .done(function (data) {
+                        var storageData = {token: data.token, expires: data.expires};
+                        localStorage.setItem("user_access_token", JSON.stringify(storageData));
+                        localStorage.setItem('user_data', JSON.stringify({
+                            userId: data.user._id,
+                            orgId: data.user.orgId
+                        }));
+                        console.log("localStorage :- ");
+                        console.log(localStorage);
+                        window.location.href = local_host + "employees.html";
 //                    if(data.user.role.name=="Admin")
 //                      window.location.href=local_host+"admin_pages/admin_user_page.html?userId="+data.user._id+"&orgId="+data.user.orgId;
 //                    else
 //                      window.location.href=local_host+"dashboard.html?userId="+data.user._id+"&orgId="+data.user.orgId;
-                })
-                .fail(function() {
-                    alert( "error" );
-                    //TODO :display invalid email or password
-                })
-                .always(function() {
-                    //alert( "finished" );
-                });
+                    })
+                    .fail(function () {
+                        alert("error");
+                        //TODO :display invalid email or password
+                    })
+                    .always(function () {
+                        //alert( "finished" );
+                    });
 
-            //$.post(remote_host+"login?username="+user_email+'&password='+user_password);
+            $.post(remote_host + "login?username=" + user_email + '&password=' + user_password);
 
             return false;
         });
+    })
 
-	</script>
 
-	<!-- REQUIRED: iButton -->
-    <script src="js/include/jquery.ibutton.min.js"></script>
-	
-	<!-- REQUIRED: Justgage animated charts -->
-	<script src="js/include/raphael.2.1.0.min.js"></script>
-    <script src="js/include/justgage.min.js"></script>
-    
-    <!-- REQUIRED: Morris Charts -->
-    <script src="js/include/morris.min.js"></script> 
-    <script src="js/include/morris-chart-settings.js"></script> 
-    
-    <!-- REQUIRED: Animated pie chart -->
-    <script src="js/include/jquery.easy-pie-chart.min.js"></script>
-    
-    <!-- REQUIRED: Functional Widgets -->
-    <script src="js/include/jarvis.widget.min.js"></script>
-    <script src="js/include/mobiledevices.min.js"></script>
-    <!-- DISABLED (only needed for IE7 <script src="js/include/json2.js"></script> -->
-	
-	<!-- REQUIRED: Full Calendar -->
-    <script src="js/include/jquery.fullcalendar.min.js"></script>		
-    
-    <!-- REQUIRED: Flot Chart Engine -->
-    <script src="js/include/jquery.flot.cust.min.js"></script>			
-    <script src="js/include/jquery.flot.resize.min.js"></script>		
-    <script src="js/include/jquery.flot.tooltip.min.js"></script>		
-    <script src="js/include/jquery.flot.orderBar.min.js"></script> 	
-    <script src="js/include/jquery.flot.fillbetween.min.js"></script>	
-    <script src="js/include/jquery.flot.pie.min.js"></script> 	 
-    
-    <!-- REQUIRED: Sparkline Charts -->
-    <script src="js/include/jquery.sparkline.min.js"></script>
 
-	<!-- REQUIRED: Infinite Sliding Menu (used with inbox page) -->
-	<script src="js/include/jquery.inbox.slashc.sliding-menu.js"></script> 
+    jQuery(function ($) {
+        $(document).on('click', '.toolbar a[data-target]', function (e) {
+            e.preventDefault();
+            var target = $(this).data('target');
+            $('.widget-box.visible').removeClass('visible');//hide others
+            $(target).addClass('visible');//show target
+        });
+    });
 
-	<!-- REQUIRED: Form validation plugin -->
-    <script src="js/include/jquery.validate.min.js"></script>
-    
-    <!-- REQUIRED: Progress bar animation -->
-    <script src="js/include/bootstrap-progressbar.min.js"></script>
-    
-    <!-- REQUIRED: wysihtml5 editor -->
-    <script src="js/include/wysihtml5-0.3.0.min.js"></script>
-    <script src="js/include/bootstrap-wysihtml5.min.js"></script>
 
-	<!-- REQUIRED: Masked Input -->
-    <script src="js/include/jquery.maskedinput.min.js"></script>
-    
-    <!-- REQUIRED: Bootstrap Date Picker -->
-    <script src="js/include/bootstrap-datepicker.min.js"></script>
+    //you don't need this, just used for changing background
+    jQuery(function ($) {
+        $('#btn-login-dark').on('click', function (e) {
+            $('body').attr('class', 'login-layout');
+            $('#id-text2').attr('class', 'white');
+            $('#id-company-text').attr('class', 'blue');
 
-    <!-- REQUIRED: Bootstrap Wizard -->
-    <script src="js/include/bootstrap.wizard.min.js"></script> 
-    
-	<!-- REQUIRED: Bootstrap Color Picker -->
-    <script src="js/include/bootstrap-colorpicker.min.js"></script>
+            e.preventDefault();
+        });
+        $('#btn-login-light').on('click', function (e) {
+            $('body').attr('class', 'login-layout light-login');
+            $('#id-text2').attr('class', 'grey');
+            $('#id-company-text').attr('class', 'blue');
 
-    
-	<!-- REQUIRED: Bootstrap Time Picker -->
-    <script src="js/include/bootstrap-timepicker.min.js"></script> 
-    
-    <!-- REQUIRED: Bootstrap Prompt -->
-    <script src="js/include/bootbox.min.js"></script>
-    
-    <!-- REQUIRED: Bootstrap engine -->
-    <script src="js/include/bootstrap.min.js"></script>
-    
+            e.preventDefault();
+        });
+        $('#btn-login-blur').on('click', function (e) {
+            $('body').attr('class', 'login-layout blur-login');
+            $('#id-text2').attr('class', 'white');
+            $('#id-company-text').attr('class', 'light-blue');
 
-    <!-- d3 library placed at the bottom for better performance -->
-    <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
-    <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->
-    <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-2.js"></script> -->
+            e.preventDefault();
+        });
 
-    <!-- Google Geo Chart -->
-    <!-- DISABLED <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script> -->
-    <!-- DISABLED <script type='text/javascript' src='https://www.google.com/jsapi'></script>-->
-    <!-- DISABLED <script src="js/include/adv_charts/geochart.js"></script> -->
-    
-    <!-- end scripts -->
-  </body>
+    });
+</script>
+</body>
 </html>

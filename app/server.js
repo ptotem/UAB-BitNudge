@@ -7,7 +7,6 @@ var mongoose=require('mongoose');
 var passport=require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var BearerStrategy=require('passport-http-bearer').Strategy;
-var restify = require('restify');
 var jwt = require('jwt-simple');
 var secret="ungessableSecret";
 var UserModel=require('./system/models/Users').Users;

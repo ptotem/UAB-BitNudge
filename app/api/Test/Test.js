@@ -177,7 +177,7 @@ var userAuthorization={
     },
     'get /org/:orgId/users/:userId/abilities/:abilityId':function(req,res){
         UserModel.getUser(req.params.userId,"","","",function(err,user){
-            RoleAbilitiesCollection.find({role:user.roles[0],abilities:req.params.abilityId}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
+            RoleAbilitiesCollection.find({role:user.roles,abilities:req.params.abilityId}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
                 if(err) res.send(err);
                 else {
                     if(result[0])
@@ -190,7 +190,8 @@ var userAuthorization={
     },
     'get /org/:orgId/users/:userId/abilities':function(req,res){
         UserModel.getUser(req.params.userId,"","","",function(err,user){
-            RoleAbilitiesCollection.find({role:user.roles[0]}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
+            RoleAbilitiesCollection.find({role:user.roles}).populate({path:"abilities",model:"abilities"}).exec(function(err,result){
+                res.send(result);
                 if(err) res.send(err);
                 else{
                     if(result[0])
