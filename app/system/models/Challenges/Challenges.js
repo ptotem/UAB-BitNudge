@@ -12,6 +12,9 @@ var Challenges= {
       callback(err,obj.challenges[0]);
     });
   },
+  approveChallenge:function(orgId,challengeId,approver,callback){
+    ChallengesCollection.update({orgId:orgId,'challenges._id':challengeId},{$set:{approved:true}},callback);
+  },
   getChallengesOfOrganization:function(orgId,fields,options,populationData,callback){
     ChallengesCollection.find({orgId:mongoose.Types.ObjectId(orgId)},fields,options).populate(populationData).exec(callback);
   },

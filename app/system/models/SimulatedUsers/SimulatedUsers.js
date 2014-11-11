@@ -8,9 +8,21 @@ var SimulatedUserManagement={
   getSimulatedUserSchema:function(){
     return SimulatedUserCollection.schema;
   },
-  createSimulationOfUser:function(allUserData,callback){
-    var newUser=new UserCollection(data);
-    newUser.save(callback);
+  createSimulationOfUser:function(clonedUserData,callback){
+    clonedUserData._id=undefined;
+    if(!clonedUserData.orgId)
+      callback("orgId of the doc must be set");
+    if(!clonedUserData.userId)
+      callback("userId of the doc must be set");
+    clonedUserData.createdAt=new Date();
+    SimulatedUserCollection.findOne({userId:clonedUserData.userId},function(err,simUser){
+      if(!simUser){
+        var newUser=new SimulatedUserCollection(clonedUserData);
+        newUser.save(callback);
+      }
+      else
+        SimulatedUserCollection.update({userId:clonedUserData.userId},{$set:clonedUserData},callback);
+    });
   },
   setLevelOfSimulatedUser:function(userId,levelNo,callback){
     SimulatedUserCollection.update({_id:userId},{$set:{level:levelNo}},callback);
