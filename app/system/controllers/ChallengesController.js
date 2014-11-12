@@ -104,7 +104,9 @@ var ChallengesController={
   // },
   getLiveUserChallenges:function(req,res){
     UserChallengesModel.getLiveChallengesOfUser(req.params.userId,new Date(),function(err,objs){
-      res.send(objs[0]);
+      if(objs[0]&&objs[0].challenges)
+        res.send(objs[0].challenges);
+      else res.send(objs);
       // TransactionMasterCollection.populate(objs,{path:"goals.transactions.transactionMaster",model:'TransactionMasters',select:'name'},function(err1,objs1){
       //   if(err) res.send(err);
       //   res.send(objs1[0]);
