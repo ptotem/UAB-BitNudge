@@ -14,6 +14,7 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="assets/css/chosen.css" />
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css" />
@@ -715,7 +716,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="controls">
-                                            <select id="users_select" class="with-search">
+                                            <select id="users_select" class="chosen-select">
                                             </select>
                                         </div>
                                     </div>
@@ -744,7 +745,7 @@
                                     <div class="col-md-5">
                                         <label class="control-label" for="action_select_2">Actions</label>
                                         <div class="controls">
-                                            <select id="action_select_2" class="with-search">
+                                            <select id="action_select_2">
                                                 <!-- <option value="AK">Alaska</option> -->
                                                 <!-- <option value="HI">Hawaii</option> -->
                                                 <!-- <option value="CA">California</option> -->
@@ -778,7 +779,7 @@
                                     <div class="col-md-5">
                                         <label class="control-label" for="action_select_user">User</label>
                                         <div class="controls">
-                                            <select id="action_select_user" class="with-search">
+                                            <select id="action_select_user" class="chosen-select">
                                                 <option>System Analysts</option>
                                                 <option>Administrator</option>
                                                 <option>Manager</option>
@@ -792,7 +793,7 @@
                                 <div class="col-md-5">
                                     <label class="control-label" for="action_select_action">Action</label>
                                     <div class="controls">
-                                        <select id="action_select_action" class="with-search">
+                                        <select id="action_select_action">
                                             <!-- <option value="AK">Alaska</option> -->
                                             <!-- <option value="HI">Hawaii</option> -->
                                             <!-- <option value="CA">California</option> -->
@@ -828,7 +829,7 @@
                                     <div class="col-md-5">
                                         <label class="control-label" for="action_select_4">User</label>
                                         <div class="controls">
-                                            <select id="action_select_4" class="with-search">
+                                            <select id="action_select_4">
                                                 <option>System Analysts</option>
                                                 <option>Administrator</option>
                                                 <option>Manager</option>
@@ -901,6 +902,7 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/chosen.jquery.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -924,7 +926,9 @@
                         option_html = "<option value="+user._id+">"+user.name+"</option>";
                         $('#users_select').append(option_html);
                     });
+
                 }
+                $("#users_select").chosen().trigger('chosen:updated');
             },
             error: function(e , msg){
                 //processError(e,msg);
@@ -957,6 +961,20 @@
     });
 
     jQuery(function($) {
+        $(window).on('resize.scroll_reset', function() {
+            $('.scrollable-horizontal').ace_scroll('reset');
+        });
+
+        $('.chosen-select').chosen({allow_single_deselect:true});
+        //resize the chosen on window resize
+        $(window)
+                .off('resize.chosen')
+                .on('resize.chosen', function() {
+                    $('.chosen-select').each(function() {
+                        var $this = $(this);
+                        $this.next().css({'width': $this.parent().width()});
+                    })
+                }).trigger('resize.chosen');
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
             var color_class = $(this).find('option:selected').data('class');
@@ -986,9 +1004,7 @@
             ).css({'padding-top': 12});
         });
 
-        $(window).on('resize.scroll_reset', function() {
-            $('.scrollable-horizontal').ace_scroll('reset');
-        });
+
 
 
         /**

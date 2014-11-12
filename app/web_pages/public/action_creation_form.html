@@ -14,6 +14,8 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="assets/css/chosen.css" />
+
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css" />
@@ -687,7 +689,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="controls">
-                                                        <select id="actions_select" class="with-search">
+                                                        <select id="actions_select" class="chosen-select">
                                                         </select>
                                                     </div>
                                                     <div id="result_1" class="result-block">
@@ -756,6 +758,7 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/chosen.jquery.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -782,6 +785,7 @@ function get_actions(){
                     //console.log(transactionMaster);
                     $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
                 });
+                $("#actions_select").chosen().trigger('chosen:updated');
             }
         }
         ,
@@ -912,6 +916,16 @@ $(function () {
 
 
 jQuery(function($) {
+    $('.chosen-select').chosen({allow_single_deselect:true});
+    //resize the chosen on window resize
+    $(window)
+            .off('resize.chosen')
+            .on('resize.chosen', function() {
+                $('.chosen-select').each(function() {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            }).trigger('resize.chosen');
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
         var color_class = $(this).find('option:selected').data('class');
