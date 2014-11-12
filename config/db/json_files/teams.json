@@ -1,1 +1,10 @@
-[{"name":"Dev Team","members":["vikram@ptotem.com","sunny@ptotem.com"]},{"name":"HR Team","members":["amol@ptotem.com"]}]
+[
+    {
+        "name": "Dev Team",
+        "members": ["vikram@ptotem.com", "sunny@ptotem.com", "nilesh@ptotem.com"]
+    },
+    {
+        "name": "HR Team",
+        "members": ["amol@ptotem.com"]
+    }
+]
