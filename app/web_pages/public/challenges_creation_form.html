@@ -1013,7 +1013,7 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
-var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
 var actionsJSON = "";
 var criteria_val = "";
@@ -1176,6 +1176,7 @@ function get_my_created_goals(){
         }
     });
 }
+
 $(function () {
 
     if ($('#goal-start-date-js').length){
@@ -1241,6 +1242,8 @@ $(function () {
     });
 
     $("#challenge_submit_btn").click(function(e) {
+        e.preventDefault();
+//        console.log('hello');
 
         var challenge_name = $("#challenge_name").val();
         var org_id=urlParams.orgId;
@@ -1256,11 +1259,15 @@ $(function () {
         var subgoal_target_value = $("#subgoal_target_value").val();
         var org_scope={};
         var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
+//        console.log(goal_start_date)
         //new Date(year, month, day, hours, minutes, seconds, milliseconds)
-        var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1])-1, parseInt(goal_start_date.split("-")[0]));
+        var formatted_start_date=$('#goal-start-date-js').val();
+//        console.log(a);
+//        var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1])-1, parseInt(goal_start_date.split("-")[0]));
 
         var goal_end_date = $("#goal-end-date-js").find(".datepicker-input").val();
-        var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1])-1, parseInt(goal_end_date.split("-")[0]));
+//        var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1])-1, parseInt(goal_end_date.split("-")[0]));
+        var formatted_end_date=  $('#goal-end-date-js').val();
 
         var goal_points = $("#goal_points").val();
         var data = {}, action_data = {}, subgoal_data = {};
@@ -1329,7 +1336,8 @@ $(function () {
             data: data,
             success: function(res) {
                 var success_text = "Goal assigned to user.";
-                show_notification(success_text);
+                console.log('data');
+//                    show_notification(success_text);
             } ,
             error: function(e , msg){
                 //processError(e,msg);
@@ -1340,6 +1348,7 @@ $(function () {
     });
 
 });
+
 
 
 jQuery(function ($) {
