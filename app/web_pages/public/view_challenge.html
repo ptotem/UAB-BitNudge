@@ -780,6 +780,14 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
+                                                <button type="button" id="btnSubmit">Submit</button>                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
                                                 <a id="view_goal_link" href="#">View My Goals</a>
                                             </div>
                                         </div>
@@ -856,49 +864,49 @@
 
         $.ajax({
             ///org/:orgId/users/:userId
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+"/challenges",
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+"/challengeboard",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 console.log("res");
                 console.log(res);
-                if(res){
-                    //console.log(res);
-                    var reportsTo, orgTags = [], teams = [];
-                    if (res.reportsTo)
-                        reportsTo = res.reportsTo.name;
-                    else
-                        reportsTo = "";
-
-                    if (res.orgtags) {
-                        orgTags = [];
-                        $.each(res.orgtags, function(index, value) {
-                            orgTags.push(value.name)
-                        });
-                    }
-                    else{
-                        orgTags = "";
-                    }
-
-                    if (res.teams) {
-                        teams = [];
-                        $.each(res.teams, function(index, value) {
-                            teams.push(value.name)
-                        });
-                    }
-                    else{
-                        teams = "";
-                    }
-
-                    $("#emp_name").text(res.name);
-                    $("#emp_email").text(res.email);
-                    $("#emp_role").text(res.role.name);
-                    $("#emp_reporting_officer").text(reportsTo);
-                    $("#emp_tags").text(orgTags);
-                    $("#emp_dept").text(teams);
-                    $("#emp_designation").text(res.designation);
-                    $("#emp_addr").text(res.address);
-                }
+//                if(res){
+//                    //console.log(res);
+//                    var reportsTo, orgTags = [], teams = [];
+//                    if (res.reportsTo)
+//                        reportsTo = res.reportsTo.name;
+//                    else
+//                        reportsTo = "";
+//
+//                    if (res.orgtags) {
+//                        orgTags = [];
+//                        $.each(res.orgtags, function(index, value) {
+//                            orgTags.push(value.name)
+//                        });
+//                    }
+//                    else{
+//                        orgTags = "";
+//                    }
+//
+//                    if (res.teams) {
+//                        teams = [];
+//                        $.each(res.teams, function(index, value) {
+//                            teams.push(value.name)
+//                        });
+//                    }
+//                    else{
+//                        teams = "";
+//                    }
+//
+//                    $("#emp_name").text(res.name);
+//                    $("#emp_email").text(res.email);
+//                    $("#emp_role").text(res.role.name);
+//                    $("#emp_reporting_officer").text(reportsTo);
+//                    $("#emp_tags").text(orgTags);
+//                    $("#emp_dept").text(teams);
+//                    $("#emp_designation").text(res.designation);
+//                    $("#emp_addr").text(res.address);
+//                }
             }
             ,
             error: function(e , msg){
@@ -912,7 +920,10 @@
         var row_html;
         get_employee();
     });
-
+    $("#btnSubmit").click(function(e) {
+//        get_employee();
+        e.preventDefault();
+    });
 
 
 

@@ -93,48 +93,6 @@ var userTags={
             res.send(data);
         });
     },
-
-    // 'get /org/:orgId/transactions':function(req,res){
-    //     TransactionCollection.find({}, function(err, data) {
-    //         console.log(data);
-    //         res.send(data);
-    //     });
-    // },
-    // 'get /org/:orgId/transactions/:transactionId':function(req,res){
-    //     TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
-    //         console.log(data);
-    //         res.send(data);
-    //     });
-    // },
-
-
-    'get /org/:orgId/users/:userId/downlineactions':function(req,res){
-        UserCollection.findOne({reportsTo: req.params.userId }) .populate('reportsTo') .exec(function (err, downlineactions) {
-
-
-            if (err) return handleError(err);
-            var actions=downlineactions.reportsTo;
-            console.log(actions.name);
-            res.send(actions);
-        })
-
-    },
-    'get /org/:orgId/users/:userId/downlinepoints':function(req,res){
-        UserCollection.findOne({reportsTo: req.params.userId }) .populate('reportsTo') .exec(function (err, downlinepoints) {
-            if (err) return handleError(err);
-            var actions=downlinepoints.reportsTo;
-            console.log(actions.totalPoints);
-            res.send(actions);
-        })
-    },
-    'get /org/:orgId/transactions/:transactionId/users':function(req,res){
-        UserCollection.findOne({roles: req.params.transactionId }) .populate('transactions') .exec(function (err, users) {
-            if (err) return handleError(err);
-            var actions=users.transactions;
-            console.log(actions.name);
-            res.send(actions.name);
-        })
-    },
     'get /org/:orgId/goals/:goalId/goaldata':function(req,res){
         GoalCollection.findOne({_id:req.params.goalId},function(err, goal) {
             console.log(goal);
@@ -203,12 +161,6 @@ var uploadAction={
         var xlsx = require('node-xlsx');
         var obj = xlsx.parse(req.files.actions.path); // parses a file
         actionFn(req.params.orgId,obj);
-        res.send(obj);
-    },
-    'post /org/:orgId/excel/user/edit':function(req,res,next){
-        var xlsx = require('node-xlsx');
-        var obj = xlsx.parse(req.files.actions.path); // parses a file
-        actionEditFn(req.params.orgId,obj);
         res.send(obj);
     }
 }

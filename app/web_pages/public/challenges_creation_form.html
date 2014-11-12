@@ -1019,24 +1019,6 @@ var actionsJSON = "";
 var criteria_val = "";
 var scope_val = "";
 
-function show_notification(text){
-    $.jGrowl(text, {
-        header: 'Notification',
-        sticky: false,
-        life: 3000,
-        speed: 500,
-        theme: 'with-icon',
-        position: 'top-right', //this is default position
-        easing: 'easeOutBack',
-        animateOpen: {
-            height: "show"
-        },
-        animateClose: {
-            opacity: 'hide'
-        }
-    });
-}
-
 function get_current_date(){
     var today = new Date();
     var dd = today.getDate();
@@ -1122,8 +1104,6 @@ var hasTag = function(key_param_val) {
             //return actionsJSON[i];
         }
     }
-//    console.log("filteredactionsJSON")
-//    console.log(filteredactionsJSON)
     return filteredactionsJSON;
 //        return false;
 };
@@ -1243,7 +1223,6 @@ $(function () {
 
     $("#challenge_submit_btn").click(function(e) {
         e.preventDefault();
-//        console.log('hello');
 
         var challenge_name = $("#challenge_name").val();
         var org_id=urlParams.orgId;
@@ -1254,45 +1233,48 @@ $(function () {
         var team_name = $("#Team_select :selected").val();
         var player_name = $("#select_user :selected").val();
 
-//            var team_name = $('#Team_select').val(); // for multiselect value
-//            var player_name=$('#select_user').val();
         var subgoal_target_value = $("#subgoal_target_value").val();
         var org_scope={};
         var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
-//        console.log(goal_start_date)
-        //new Date(year, month, day, hours, minutes, seconds, milliseconds)
-        var formatted_start_date=$('#goal-start-date-js').val();
-//        console.log(a);
-//        var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1])-1, parseInt(goal_start_date.split("-")[0]));
-
+        var goal_start_date=$('#goal-start-date-js').val();
+        var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1])-1, parseInt(goal_start_date.split("-")[0]));
         var goal_end_date = $("#goal-end-date-js").find(".datepicker-input").val();
-//        var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1])-1, parseInt(goal_end_date.split("-")[0]));
-           var formatted_end_date=  $('#goal-end-date-js').val();
+           var goal_end_date=  $('#goal-end-date-js').val();
+        var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1])-1, parseInt(goal_end_date.split("-")[0]));
 
         var goal_points = $("#goal_points").val();
         var data = {}, action_data = {}, subgoal_data = {};
+        var entity;
+        var scope;
         if (scope_val == "Organization") {
-            org_scope= {
-                scope: "Organization",
-                entity: org_id
-            };
+//            org_scope= {
+//                scope: "Organization",
+                entity= org_id
+            scope='organization'
+//            };
         }
-        else if(scope_val == "Team"){
-            org_scope= {
-                scope: "Team",
-                entity: team_name
-            };
+         if(scope_val == "Team"){
+//            org_scope= {
+//                scope: "Team",
+                entity= team_name,
+                scope='team'
+
+//            };
         }
-        else if(scope_val == "Player"){
-            org_scope= {
-                scope: "Player",
-                entity: player_name
-            };
+         if(scope_val == "Player"){
+//            org_scope= {
+//                scope: "Player",
+                entity= player_name,
+                        scope='player'
+
+//            };
         }
+        console.log(org_scope);
         var assign_to = $("#users_select :selected").val();
         if (criteria_val == "Action") {
             action_data = {
-                scope:org_scope,
+                scope:scope,
+                entity:entity,
                 name: challenge_name,
                 criteria: criteria_val,
                 startDate: formatted_start_date,
@@ -1322,8 +1304,6 @@ $(function () {
             };
             data = subgoal_data;
         }
-
-//          console.log(challenge_name+selected_transaction+selected_subgoal+team_name+player_name+subgoal_target_value+goal_start_date+formatted_start_date+goal_points)
 
         console.log("data");
         console.log(data);
