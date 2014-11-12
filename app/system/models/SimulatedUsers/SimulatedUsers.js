@@ -82,7 +82,7 @@ var SimulatedUserManagement={
   }
 };
 module.exports={
-  Users:UserManagement,
-  Goals:UserGoals,
+  Users:SimulatedUserManagement,
+  Goals:SimulatedUserGoals,
   Transactions:SimulatedUserTransactions
 };
