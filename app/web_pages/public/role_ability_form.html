@@ -869,7 +869,6 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    console.log(urlParams);
 
     function get_roles(){
         $.ajax({
@@ -943,7 +942,7 @@
                 data: roleAbilities,
                 success: function(res) {
                     var success_text = "Abilities assigned to role.";
-                    show_notification(success_text);
+                    //show_notification(success_text);
                 } ,
                 error: function(e , msg){
                     //processError(e,msg);
