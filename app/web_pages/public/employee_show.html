@@ -774,10 +774,12 @@
                                             <div class="col-md-3">
                                                 <a id="view_goal_link" href="#">View My Goals</a> |
                                                 <a id="edit_user_link" href="#">Edit Details</a>
+                                                <a id="view_challenges_link" href="#">View My Challenges</a>
                                             </div>
                                         </div>
 
                                     </div>
+
                                 </fieldset>
 
 
@@ -845,6 +847,7 @@
 
         $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
         $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
+        $("#view_challenges_link").attr("href","view_challenge.html?userId="+emp_id);
 
         $.ajax({
             ///org/:orgId/users/:userId

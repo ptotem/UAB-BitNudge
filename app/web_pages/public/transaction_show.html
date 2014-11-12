@@ -831,9 +831,7 @@
             type: 'GET',
             dataType: 'json',
             success: function(res) {
-// console.log(res);
                 if(res){
-//console.log(res);
                     var reportsTo, orgTags = [], teams = [],format,name,pointFn,type,no_of_params;
                     if (res.name)
                         name = res.name;
@@ -863,23 +861,19 @@
                     else{
                         type = "";
                     }
-//
                     $("#emp_name").text(res.name);
                     $("#emp_email").text(res.format);
                     $("#emp_role").text(res.pointsFn);
                     $("#emp_reporting_officer").text(type);
-// $("#emp_tags").text(no_of_params);
-// $("#emp_dept").text(teams);
-// $("#emp_designation").text(res.designation);
-// $("#emp_addr").text(res.address);
                 }
             }
             ,
             error: function(e , msg){
-//processError(e,msg);
+                //processError(e,msg);
             }
         });
     }
+
     $(function () {
         $("#btn_approve").click(function(){
             var emp_id = window.location.search.replace("?","").split("=")[1];
@@ -887,7 +881,6 @@
             console.log(emp_id);
             console.log(user_id);
             $.ajax({
-// url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
                 url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
 // data: data,
 // contentType: 'multipart/form-data',
@@ -905,10 +898,10 @@
 // get_user();
         });
     });
+
     $(function () {
         get_employee();
     });
-
 
 
     jQuery(function($) {
@@ -980,28 +973,6 @@
 
         // widget boxes
         // widget box drag & drop example
-//    $('.widget-container-col').sortable({
-//        connectWith: '.widget-container-col',
-//        items:'> .widget-box',
-//        handle: ace.vars['touch'] ? '.widget-header' : false,
-//        cancel: '.fullscreen',
-//        opacity:0.8,
-//        revert:true,
-//        forceHelperSize:true,
-//        placeholder: 'widget-placeholder',
-//        forcePlaceholderSize:true,
-//        tolerance:'pointer',
-//        start: function(event, ui) {
-//            //when an element is moved, it's parent becomes empty with almost zero height.
-//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
-//            ui.item.parent().css({'min-height':ui.item.height()})
-//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
-//        },
-//        update: function(event, ui) {
-//            ui.item.parent({'min-height':''})
-//            //p.style.removeProperty('background-color');
-//        }
-//    });
 
     });
 </script>
