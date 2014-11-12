@@ -69,7 +69,7 @@
     <a href="#" class="navbar-brand">
         <small>
             <i class="fa fa-leaf"></i>
-            Ace Admin
+            BitNudge
         </small>
     </a>
 
@@ -423,7 +423,7 @@
 
     <ul class="nav nav-list">
         <li>
-            <a href="index.html">
+            <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text">Department List</span>
             </a>
@@ -431,8 +431,8 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="">
-            <a href="#" class="dropdown-toggle">
+        <li class="roles.html">
+            <a href="#">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> Roles </span>
             </a>
@@ -449,7 +449,7 @@
         </li>
 
         <li class="">
-            <a href="#" >
+            <a href="goals.html">
                 <i class="menu-icon fa fa-pencil-square-o"></i>
                 <span class="menu-text"> Goals </span>
             </a>
@@ -457,7 +457,7 @@
         </li>
 
         <li>
-            <a href="widgets.html">
+            <a href="badge_master.html">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text"> Badge Master </span>
             </a>
@@ -466,7 +466,7 @@
         </li>
 
         <li class="">
-            <a href="calendar.html">
+            <a href="reward_center.html">
                 <i class="menu-icon fa fa-calendar"></i>
                 <span class="menu-text"> Reward Center </span>
             </a>
@@ -474,7 +474,7 @@
         </li>
 
         <li class="">
-            <a href="gallery.html">
+            <a href="reward_master.html">
                 <i class="menu-icon fa fa-picture-o"></i>
                 <span class="menu-text"> Reward Master </span>
             </a>
@@ -635,7 +635,7 @@
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Add New Action</h5>
+                                <h5 class="widget-title">Add Bulk Employees</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -677,21 +677,20 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-
-                                    <form id="actions_bulk_upload_form" class="form-horizontal themed">
+                                    <form id="employees_bulk_upload_form" class="form-horizontal themed">
                                         <fieldset>
                                             <div class="form-group">
 
-                                                    <div class="col-md-3">
-                                                        <label class="control-label" for="bulk_actions_excel_2">File input</label>
+                                                <div class="col-md-3">
+                                                    <label class="control-label" for="bulk_employees_excel_2">File input</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="controls">
+                                                        <!--<input class="file" id="bulk_employees_excel" type="file" />-->
+
+                                                        <input class="file-no-style" id="bulk_employees_excel_2" type="file" />
                                                     </div>
-                                                    <div class="col-md-9">
-                                                        <div class="controls">
-                                                            <!--<input class="file" id="bulk_employees_excel" type="file" />-->
-                                                            <div class="space"></div>
-                                                            <input class="file-no-style" id="bulk_actions_excel_2" type="file" />
-                                                        </div>
-                                                    </div>
+                                                </div>
 
                                             </div>
 
@@ -706,7 +705,6 @@
                                             </div>
                                         </fieldset>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
@@ -764,107 +762,138 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
-var urlParams = JSON.parse(localStorage.getItem('user_data'));
-$(function () {
-
-    $("#actions_bulk_upload_form").submit(function(event){
-        event.preventDefault();
-        var data=new FormData();
-        data.append("users",$("#bulk_actions_excel_2")[0].files[0]);
-
-        $.ajax({
-            url: remote_host + 'org/' + urlParams.orgId + '/excel/action/new',
-            data: data,
-            // contentType: 'multipart/form-data',
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(data){
-                console.log(data);
-            },
-            error:function(err){
-                console.log(err);
-            }
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    $(function () {
+        var row_html;
+        $('#bulk_employees_excel_2').ace_file_input({
+            no_file:'No File ...',
+            btn_choose:'Choose',
+            btn_change:'Change',
+            droppable:false,
+            onchange:null,
+            thumbnail:false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
         });
-        return false;
-    });
-
-});
-
-
-
-
-
-
-jQuery(function($) {
-
-    $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
-        var color_class = $(this).find('option:selected').data('class');
-        var new_class = 'widget-box';
-        if(color_class != 'default')  new_class += ' widget-color-'+color_class;
-        $(this).closest('.widget-box').attr('class', new_class);
-    });
-
-
-    // scrollables
-    $('.scrollable').each(function () {
-        var $this = $(this);
-        $(this).ace_scroll({
-            size: $this.data('size') || 100
-            //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
-        });
-    });
-    $('.scrollable-horizontal').each(function () {
-        var $this = $(this);
-        $(this).ace_scroll(
-                {
-                    horizontal: true,
-                    styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
-                    size: $this.data('size') || 500,
-                    mouseWheelLock: true
+        $("#employees_bulk_upload_form").submit(function(event){
+            event.preventDefault();
+            var data=new FormData();
+            data.append("users",$("#bulk_employees_excel_2")[0].files[0]);
+            $.ajax({
+                url: remote_host+'org/'+urlParams.orgId+'/excel/user/new',
+                data: data,
+                // contentType: 'multipart/form-data',
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function(data){
+                    console.log(data);
+                },
+                error:function(err){
+                    console.log(err);
                 }
-        ).css({'padding-top': 12});
+            });
+            return false;
+        });
     });
 
-    $(window).on('resize.scroll_reset', function() {
-        $('.scrollable-horizontal').ace_scroll('reset');
-    });
 
 
-    /**
-     //or use slimScroll plugin
-     $('.slim-scrollable').each(function () {
+
+
+    jQuery(function($) {
+
+        $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
+            var color_class = $(this).find('option:selected').data('class');
+            var new_class = 'widget-box';
+            if(color_class != 'default')  new_class += ' widget-color-'+color_class;
+            $(this).closest('.widget-box').attr('class', new_class);
+        });
+
+
+        // scrollables
+        $('.scrollable').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll({
+                size: $this.data('size') || 100
+                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
+            });
+        });
+        $('.scrollable-horizontal').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll(
+                    {
+                        horizontal: true,
+                        styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
+                        size: $this.data('size') || 500,
+                        mouseWheelLock: true
+                    }
+            ).css({'padding-top': 12});
+        });
+
+        $(window).on('resize.scroll_reset', function() {
+            $('.scrollable-horizontal').ace_scroll('reset');
+        });
+
+
+        /**
+         //or use slimScroll plugin
+         $('.slim-scrollable').each(function () {
 					var $this = $(this);
 					$this.slimScroll({
 						height: $this.data('height') || 100,
 						railVisible:true
 					});
 				});
-     */
+         */
 
 
-    /**$('.widget-box').on('setting.ace.widget' , function(e) {
+        /**$('.widget-box').on('setting.ace.widget' , function(e) {
 					e.preventDefault();
 				});*/
 
-    /**
-     $('.widget-box').on('show.ace.widget', function(e) {
+        /**
+         $('.widget-box').on('show.ace.widget', function(e) {
 					//e.preventDefault();
 					//this = the widget-box
 				});
-     $('.widget-box').on('reload.ace.widget', function(e) {
+         $('.widget-box').on('reload.ace.widget', function(e) {
 					//this = the widget-box
 				});
-     */
+         */
 
-    //$('#my-widget-box').widget_box('hide');
+        //$('#my-widget-box').widget_box('hide');
 
 
 
-    // widget boxes
-    // widget box drag & drop example
+        // widget boxes
+        // widget box drag & drop example
+//    $('.widget-container-col').sortable({
+//        connectWith: '.widget-container-col',
+//        items:'> .widget-box',
+//        handle: ace.vars['touch'] ? '.widget-header' : false,
+//        cancel: '.fullscreen',
+//        opacity:0.8,
+//        revert:true,
+//        forceHelperSize:true,
+//        placeholder: 'widget-placeholder',
+//        forcePlaceholderSize:true,
+//        tolerance:'pointer',
+//        start: function(event, ui) {
+//            //when an element is moved, it's parent becomes empty with almost zero height.
+//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
+//            ui.item.parent().css({'min-height':ui.item.height()})
+//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
+//        },
+//        update: function(event, ui) {
+//            ui.item.parent({'min-height':''})
+//            //p.style.removeProperty('background-color');
+//        }
+//    });
 
-});
+    });
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->

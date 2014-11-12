@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <title>BitNudge</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!--// OPTIONAL & CONDITIONAL CSS FILES //-->
+    <!-- date picker css -->
+    <link rel="stylesheet" href="css/datepicker.css?v=1">
+    <!-- full calander css -->
+    <link rel="stylesheet" href="css/fullcalendar.css?v=1">
+    <!-- data tables extended CSS -->
+    <link rel="stylesheet" href="css/TableTools.css?v=1">
+    <!-- bootstrap wysimhtml5 editor -->
+    <link rel="stylesheet" href="css/bootstrap-wysihtml5.css?v=1">
+    <link rel="stylesheet" href="css/wysiwyg-color.css">
+    <!-- custom/responsive growl messages -->
+    <link rel="stylesheet" href="css/toastr.custom.css?v=1">
+    <link rel="stylesheet" href="css/toastr-responsive.css?v=1">
+    <link rel="stylesheet" href="css/jquery.jgrowl.css?v=1">
+
+    <!-- // DO NOT REMOVE OR CHANGE ORDER OF THE FOLLOWING // -->
+    <!-- bootstrap default css (DO NOT REMOVE) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--	<link rel="stylesheet" href="css/bootstrap-responsive.min.css?v=1">-->
+    <!-- font awsome and custom icons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css?v=1">
+    <link rel="stylesheet" href="css/cus-icons.css?v=1">
+    <!-- jarvis widget css -->
+    <link rel="stylesheet" href="css/jarvis-widgets.css?v=1">
+    <!-- Data tables, normal tables and responsive tables css -->
+    <link rel="stylesheet" href="css/DT_bootstrap.css?v=1">
+    <link rel="stylesheet" href="css/responsive-tables.css?v=1">
+    <!-- used where radio, select and form elements are used -->
+    <link rel="stylesheet" href="css/uniform.default.css?v=1">
+    <link rel="stylesheet" href="css/select2.css?v=1">
+    <!-- main theme files -->
+    <link rel="stylesheet" href="css/theme.css?v=1">
+    <link rel="stylesheet" href="css/theme-responsive.css?v=1">
+
+    <!-- // THEME CSS changed by javascript: the CSS link below will override the rules above // -->
+    <!-- For more information, please see the documentation for "THEMES" -->
+    <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">
+
+    <!-- BitNudge CSS -->
+    <!--<link rel="stylesheet" href="css/bitnudge.css">-->
+
+    <!-- To switch to full width -->
+    <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
+
+    <!-- Webfonts -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700' type='text/css'>
+
+    <!-- All javascripts are located at the bottom except for HTML5 Shim -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="js/include/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- For Modern Browsers -->
+    <link rel="shortcut icon" href="img/favicons/favicon.png">
+    <!-- For everything else -->
+    <link rel="shortcut icon" href="img/favicons/favicon.ico">
+    <!-- For retina screens -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png">
+    <!-- For iPad 1-->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png">
+    <!-- For iPhone 3G, iPod Touch and Android -->
+    <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png">
+
+    <!-- iOS web-app metas -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Add your custom home screen title: -->
+    <meta name="apple-mobile-web-app-title" content="Jarvis">
+
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png"
+          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png"
+          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+    <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .aligned{
+            width: 20%;
+        }
+
+        .result-block{
+            height: 140px;
+            overflow: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- .height-wrapper -->
+<div class="height-wrapper">
+<!-- header -->
+<header>
+    <!-- tool bar -->
+    <div id="header-toolbar" class="container-fluid">
+        <!-- .contained -->
+        <div class="contained">
+
+            <!-- theme name -->
+            <h1 style="font-size: 2em" class="appname"><img src="img/bitnudge/logo.png" style="height:28px"/> BitNudge
+            </h1>
+            <!-- end theme name -->
+
+            <!-- span4 -->
+            <div class="pull-right">
+                <!-- demo theme switcher-->
+                <div id="theme-switcher" class="btn-toolbar">
+                    <!-- search and log off button for phone devices -->
+                    <div class="btn-group pull-right visible-xs">
+                        <a href="javascript:void(0)" class="btn btn-inverse btn-sm"><i class="icon-search"></i></a>
+                        <a href="login.html" class="btn btn-inverse btn-sm"><i class="icon-off"></i></a>
+                    </div>
+                    <!-- end buttons for phone device -->
+
+                    <!-- dropdown mini-inbox-->
+                    <div class="btn-group">
+                        <!-- new mail ticker -->
+                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse dropdown-toggle"
+                           data-toggle="dropdown">
+                            <span class="mail-sticker">3</span>
+                            <i class="cus-bell"></i>
+                        </a>
+                        <!-- end new mail ticker -->
+
+                        <!-- email lists -->
+                        <div class="dropdown-menu toolbar pull-right">
+                            <h3>Inbox</h3>
+                            <!-- "mailbox-slimscroll-js" identifier is used with Slimscroll.js plugin -->
+                            <ul id="mailbox-slimscroll-js" class="mailbox">
+                                <li>
+                                    <a href="javascript:void(0)" class="unread">
+                                        <img src="img/email-important.png" alt="important mail">
+                                        New Goal
+                                        <i class="icon-paper-clip"></i>
+                                        <span>You have been assigned a new business goal. Click here to...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="unread attachment">
+
+                                        <img src="img/email-unread.png" alt="important mail">
+                                        Transaction Uploaded
+                                        <i class="icon-paper-clip"></i>
+                                        <span>Your loan of AED 100 mln to Tumult Solutions has been uploaded. Click...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="unread">
+                                        <img src="img/email-unread.png" alt="important mail">
+                                        MILO for September Pending
+                                        <i class="icon-paper-clip"></i>
+                                        <span>You haven't uploaded your MILO for the month. Please ensure that...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="read">
+                                        <img src="img/email-read.png" alt="important mail">
+                                        Bonus Points
+                                        <i class="icon-paper-clip"></i>
+                                        <span>You earned 100 bonus points for the manager commendation for...</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="read">
+                                        <img src="img/email-read.png" alt="important mail">
+                                        2 Bugs found...
+                                        <i class="icon-paper-clip"></i>
+                                        <span>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales.</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="read">
+                                        <img src="img/email-read.png" alt="important mail">
+                                        Welcome to Jarvis!
+                                        <i class="icon-paper-clip"></i>
+                                        <span>Feugiat a, tellus. Phasellus viverra nulla ut metus varius. Quisque rutrum. Aenean imperdiet... </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <a href="javascript:void(0);" id="go-to-inbox">Go to Inbox <i
+                                    class="icon-double-angle-right"></i></a>
+                        </div>
+                        <!-- end email lists -->
+                    </div>
+                    <!-- end dropdown mini-inbox-->
+
+                    <!-- Goals -->
+                    <div class="btn-group hidden-xs">
+                        <a href="javascript:void(0)" class="btn btn-inverse btn-sm">Critical Goals</a>
+                        <a href="javascript:void(0)" class="btn btn-inverse dropdown-toggle btn-sm"
+                           data-toggle="dropdown"><span class="caret"></span></a>
+
+                        <div class="dropdown-menu toolbar pull-right">
+                            <h3>Showing Critical Goals</h3>
+                            <ul class="progressbox">
+                                <li>
+                                    <strong><i class="online pull-left"></i>Net Interest Income</strong><b>Complete</b>
+
+                                    <div class="progress progress-success slim">
+                                        <div class="bar" style="width: 100%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>Net Fee Income</strong><b>70%</b>
+
+                                    <div class="progress progress-info slim">
+                                        <div class="bar" style="width: 70%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>Deposit Base</strong><b>50%</b>
+
+                                    <div class="progress progress-danger slim">
+                                        <div class="bar" style="width: 50%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>New to Bank Clients</strong><b>22%</b>
+
+                                    <div class="progress progress-danger slim">
+                                        <div class="bar" style="width: 22%;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="javascript:void(0);" id="go-to-goals">Go to All Goals <i
+                                    class="icon-double-angle-right"></i></a>
+                        </div>
+
+                    </div>
+                    <!-- end Tasks -->
+
+                    <!-- theme dropdown -->
+                    <div class="btn-group hidden-xs">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse" id="reset-widget"><i
+                                class="icon-refresh"></i></a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse dropdown-toggle"
+                           data-toggle="dropdown">Themes <span class="caret"></span></a>
+                        <ul id="theme-links-js" class="dropdown-menu toolbar pull-right">
+                            <li>
+                                <a href="javascript:void(0)" data-rel="purple"><i
+                                        class="icon-sign-blank purple-icon"></i>Royal Purple</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-rel="grey"><i class="icon-sign-blank grey-icon"></i>Grey</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-rel="green"><i
+                                        class="icon-sign-blank green-icon "></i>Emerald</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-rel="darkred"><i
+                                        class="icon-sign-blank red-icon "></i>Dark Rose</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-rel="default"><i
+                                        class="icon-sign-blank navyblue-icon"></i>Default</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end theme dropdown-->
+
+                    <div class="btn-group hidden-xs">
+                        <a href="index.html" class="btn btn-sm btn-inverse">Logout</a>
+                    </div>
+
+                </div>
+                <!-- end demo theme switcher-->
+            </div>
+            <!-- end span4 -->
+        </div>
+        <!-- end .contained -->
+    </div>
+    <!-- end tool bar -->
+
+</header>
+<!-- end header -->
+
+<!--<div id="splash">-->
+<!--<h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>-->
+
+<!--<h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>-->
+<!--</div>-->
+
+<div id="main" role="main" class="container-fluid">
+
+<div class="contained">
+<!-- aside -->
+<aside>
+
+    <!-- aside item: Mini profile -->
+    <div class="divider"></div>
+    <!-- end aside item: Mini profile -->
+
+    <!-- aside item: Menu -->
+    <div class="sidebar-nav-fixed">
+
+        <ul class="menu" id="accordion-menu-js">
+            <li>
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
+            </li>
+            <li>
+                <a href="role.html"><i class="icon-off"></i>Roles</a>
+            </li>
+            <li>
+                <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
+            </li>
+            <li>
+                <a href="#"><i class="icon-check"></i>Goals</a>
+            </li>
+            <li>
+                <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
+            </li>
+            <li>
+                <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
+            </li>
+            <li>
+                <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
+            </li>
+            <li class="current">
+                <a href="action.html"><i class="icon-home"></i>Actions</a>
+            </li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <!-- end aside item: Menu -->
+</aside>
+<!-- aside end -->
+<!-- main content -->
+<div id="page-content">
+<!-- page header -->
+<h1 id="page-header">Action Test Page</h1>
+<div class="fluid-container">
+<!-- widget grid -->
+<section id="widget-grid" class="">
+    <!--------row 2---------->
+    <div class="row">
+        <article class="col-md-12">
+            <!-- new widget -->
+            <div class="jarviswidget" id="action-tags-test-widget">
+                <header>
+                    <h2>Action Test</h2>
+                </header>
+                <!-- wrap div -->
+                <div>
+                    <div class="jarviswidget-editbox">
+                        <div>
+                            <label>Title:</label>
+                            <input type="text"/>
+                        </div>
+                        <div>
+                            <label>Styles:</label>
+                            <span data-widget-setstyle="purple" class="purple-btn"></span>
+                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                            <span data-widget-setstyle="green" class="green-btn"></span>
+                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                            <span data-widget-setstyle="orange" class="orange-btn"></span>
+                            <span data-widget-setstyle="pink" class="pink-btn"></span>
+                            <span data-widget-setstyle="red" class="red-btn"></span>
+                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                            <span data-widget-setstyle="black" class="black-btn"></span>
+                        </div>
+                    </div>
+                    <div class="inner-spacer widget-content-padding">
+                        <!-- content goes here -->
+                        <ul id="queries_tab" class="nav nav-tabs default-tabs">
+                            <li class="active">
+                                <a href="#s1" data-toggle="tab">Actions done <br> by selected user</a>
+                            </li>
+                            <li>
+                                <a href="#s2" data-toggle="tab" id="actions">Users who have done <br> selected action</a>
+                            </li>
+                            <li>
+                                <a href="#s3" data-toggle="tab" id="users">Actions done by <br> selected user's downline</a>
+                            </li>
+                            <li>
+                                <a href="#s4" data-toggle="tab" id="s4_user">Points earned by <br> selected user's downline</a>
+                            </li>
+                        </ul>
+                        <div id="queries_tabContent" class="tab-content">
+                            <div class="tab-pane fade in active" id="s1">
+                                <form id="test_1" class="form-horizontal themed">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="control-label" for="users_select">User</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="controls">
+                                                        <select id="users_select" class="with-search">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="action_result_block1" id="result_1_action">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade" id="s2">
+                                <form id="action-tags-test-form-tab2" class="form-horizontal themed">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h5>Show users who have done action single select tag</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <label class="control-label" for="action_select_2">Actions</label>
+                                                    <div class="controls">
+                                                        <select id="action_select_2" class="with-search">
+                                                            <!--<option value="AK">Alaska</option>-->
+                                                            <!--<option value="HI">Hawaii</option>-->
+                                                            <!--<option value="CA">California</option>-->
+                                                            <!--<option value="NV">Nevada</option>-->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="action_result_block2" id="result_2_action">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="s3">
+                                <form id="action-tags-test-form-tab3" class="form-horizontal themed">
+                                    <fieldset>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h5>Show action done by downline with single select tag</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <label class="control-label" for="action_select_user">User</label>
+                                                    <div class="controls">
+                                                        <select id="action_select_user" class="with-search">
+                                                            <!--<option>System Analysts</option>-->
+                                                            <!--<option>Administrator</option>-->
+                                                            <!--<option>Manager</option>-->
+                                                            <!--<option>Employee</option>-->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label class="control-label" for="action_select_action">Action</label>
+                                                    <div class="controls">
+                                                        <select id="action_select_action" class="with-search">
+                                                            <!-- <option value="AK">Alaska</option> -->
+                                                            <!-- <option value="HI">Hawaii</option> -->
+                                                            <!-- <option value="CA">California</option> -->
+                                                            <!-- <option value="NV">Nevada</option> -->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="action_result_block3" id="result_3_action">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+                            </div>
+                            <div class="tab-pane fade" id="s4">
+                                <form id="action-tags-test-form-tab4" class="form-horizontal themed">
+                                    <fieldset>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h5>Show points earn by downline with single select tag</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <label class="control-label" for="action_select_4">User</label>
+                                                    <div class="controls">
+                                                        <select id="action_select_4" class="with-search">
+                                                            <!--<option>System Analysts</option>-->
+                                                            <!--<option>Administrator</option>-->
+                                                            <!--<option>Manager</option>-->
+                                                            <!--<option>Employee</option>-->
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="action_result_block4" id="result_4_action"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!-- end wrap div -->
+            </div>
+            <!-- end widget -->
+        </article>
+    </div>
+    <!------------row 2 end----------------->
+
+</section>
+<!-- end widget grid -->
+
+</div>
+
+</div>
+<!-- end main content -->
+
+<!-- aside right on high res -->
+<aside class="right">
+
+    <!-- date picker -->
+    <div id="datepicker"></div>
+    <div class="divider"></div>
+    <!-- end date picker -->
+
+</aside>
+
+<!-- end aside right -->
+</div>
+
+</div>
+<!--end fluid-container-->
+<div class="push"></div>
+</div>
+<!-- end .height wrapper -->
+
+<!-- footer -->
+
+<!-- if you like you can insert your footer here -->
+
+<!-- end footer -->
+
+<!--================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
+<!-- OPTIONAL: Use this migrate script for plugins that are not supported by jquery 1.9+ -->
+<!-- DISABLED <script src="js/libs/jquery.migrate-1.0.0.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script>window.jQuery.ui || document.write('<script src="js/libs/jquery.ui.min.js"><\/script>')</script>
+
+<!-- IMPORTANT: Jquery Touch Punch is always placed under Jquery UI -->
+<script src="js/include/jquery.ui.touch-punch.min.js"></script>
+
+<!-- REQUIRED: Mobile responsive menu generator -->
+<script src="js/include/selectnav.min.js"></script>
+
+<!-- REQUIRED: Datatable components -->
+<script src="js/include/jquery.accordion.min.js"></script>
+
+<!-- REQUIRED: Toastr & Jgrowl notifications  -->
+<script src="js/include/toastr.min.js"></script>
+<script src="js/include/jquery.jgrowl.min.js"></script>
+
+<!-- REQUIRED: Sleek scroll UI  -->
+<script src="js/include/slimScroll.min.js"></script>
+
+<!-- REQUIRED: Datatable components -->
+<script src="js/include/jquery.dataTables.min.js"></script>
+<!--<script src="js/include/DT_bootstrap.min.js"></script>-->
+<script src="js/include/DT_bootstrap3.js"></script>
+<!--<script src="js/include/dataTables.scroller.min.js"></script>-->
+
+<!-- REQUIRED: Form element skin  -->
+<script src="js/include/jquery.uniform.min.js"></script>
+
+<!-- REQUIRED: AmCharts  -->
+<script src="js/include/amchart/amcharts.js"></script>
+<script src="js/include/amchart/amchart-draw1.js"></script>
+
+<script src="js/app/app_config.js"></script>
+
+<script type="text/javascript">
+var urlParams = JSON.parse(localStorage.getItem('user_data'));
+function get_employees(){
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users",
+//            url: remote_host+"org/"+orgId+"/users",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var option_html;
+                res.forEach(function(user){
+                    option_html = "<option value="+user._id+">"+user.name+"</option>";
+                    $('#users_select').append(option_html);
+                    $('#action_select_4').append(option_html);
+                    $('#action_select_user').append(option_html);
+
+
+                });
+            }
+        },
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+function get_username(user_id){
+    $('#result_2_action').empty();
+    $.ajax({
+
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+user_id,
+//            url: remote_host+"org/"+orgId+"/users/"+user_id,
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                $('#result_2_action').append('<h4> User <b>'+ res.name +'</b></h4>');
+            }
+        },
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+function get_transactions(){
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/transactions",
+//            url: remote_host+"org/"+orgId+"/transactions",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var option_html;
+                res.forEach(function(transaction){
+                    option_html = "<option value="+transaction._id+">"+transaction.name+"</option>";
+                    $('#action_select_2').append(option_html);
+                });
+            }
+        },
+        error: function(e , msg){
+
+        }
+    });
+
+}
+
+function get_transactionName(transactionId){
+    $('#result_1_action').empty();
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
+//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var option_html;
+//                    console.log(res);
+                $('#result_1_action').append('<h4> Actions Of Selected User <b>'+ res.name +'</b></h4>');
+            }
+        },
+        error: function(e , msg){
+
+        }
+    });
+
+}
+function get_downline_transactionName(transactionId){
+    $('#action_select_action').empty();
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
+//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var option_html;
+//                    console.log(res);
+                option_html = "<option value="+transactionId+">"+res.name+"</option>";
+                $('#action_select_action').append(option_html);
+            }
+        },
+        error: function(e , msg){
+
+        }
+    });
+
+}
+
+var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+if (!ismobile) {
+
+    /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
+
+    /* REQUIRED: Datatable PDF/Excel output componant */
+
+    document.write('<script src="js/include/ZeroClipboard.min.js"><\/script>');
+    document.write('<script src="js/include/TableTools.min.js"><\/script>');
+    document.write('<script src="js/include/select2.min.js"><\/script>');
+    document.write('<script src="js/include/jquery.excanvas.min.js"><\/script>');
+    document.write('<script src="js/include/jquery.placeholder.min.js"><\/script>');
+
+    /** DEMO SCRIPTS **/
+    $(function () {
+
+        get_employees();
+
+        $("#users_select").change(function(){
+            var orgId="5417f10a195e61022fff91ee"
+            var selected_user = $("#users_select :selected").val();
+//                console.log(selected_user);
+            $('#result_1_action').empty();
+
+            $.ajax({
+                // /org/:orgId/users/:userId/actions
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
+//                    url: remote_host+"org/"+orgId+"/users/"+selected_user,
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                    if(res){
+                        var option_html;
+//                            console.log(res);
+                        res.transactions.forEach(function(transactions){
+                            get_transactionName(transactions.transactionMaster);
+
+                        });
+                    }
+
+                },
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+        });
+    }); // Actions of Users
+    $(function () {
+        $("#action_select_4").change(function(){
+            var selected_user = $("#action_select_4 :selected").val();
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                    if(res){
+                        res.forEach(function(users){
+                                //console.log("User Name :"+users.name+"Points :"+users.totalPoints)
+                        });
+                    }
+                },
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+        });
+    });
+
+    $(function () {
+        $("#action_select_2").change(function(){
+            $('#result_2_action').empty();
+            get_transactions();
+//                var orgId="5417f10a195e61022fff91ee"
+            var selected_transactions = $("#action_select_2 :selected").val();
+//                console.log(selected_transactions);
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/transaction/"+selected_transactions+"/users",
+//                    url: remote_host+"org/"+orgId+"/transaction/"+selected_transactions+"/users",
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+//                        get_username()
+                    if(res){
+                        var option_html;
+                        res.forEach(function(users){
+//                                console.log(users._id);
+                            get_username(users._id);
+//                                $('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
+                        });
+                    }
+
+                },
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+        });
+    });
+    $(function () {
+        $("#action_select_4").change(function(){
+            $('#result_4_action').empty();
+            var orgId="5417f10a195e61022fff91ee"
+            var selected_user = $("#action_select_4 :selected").val();
+//                console.log(selected_user);
+
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
+//                    url: remote_host+"org/"+orgId+"/users/"+selected_user+"/downlink",
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                    if(res){
+                        var option_html;
+                        res.forEach(function(users){
+                            $('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
+
+                        });
+                    }
+                },
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+        });
+    });
+    // function for actions:(third Tab)
+    $(function () {
+        $("#action_select_user").change(function(){
+            var orgId="5417f10a195e61022fff91ee"
+            var user = $("#action_select_user :selected").val();
+            $('#action_select_action').empty();
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+user+"/downlink",
+//                    url: remote_host+"org/"+orgId+"/users/"+user+"/downlink",
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                    if(res){
+                        var option_html;
+                        $('#action_select_action').empty();
+                        res.forEach(function(users){
+//                                        console.log(users);
+
+                            users.transactions.forEach(function(transactions)
+                            {
+//                                            console.log(transactions.transactionMaster);
+                                get_downline_transactionName(transactions.transactionMaster);
+
+                            })
+                        });
+                    }
+                },
+
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+
+        });
+    });
+
+    $(function () {
+        $("#actions").click(function(){
+            get_transactions();
+
+        });
+    });
+//        $(function () {
+//            $("#users").click(function(){
+//                get_userdata();
+//
+//            });
+//        });
+    /** end DEMO SCRIPTS **/
+
+} else {
+
+    /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
+
+    document.write('<script src="js/include/selectnav.min.js"><\/script>');
+}
+</script>
+
+
+<!-- REQUIRED: iButton -->
+<script src="js/include/jquery.ibutton.min.js"></script>
+
+<!-- REQUIRED: Justgage animated charts -->
+<script src="js/include/raphael.2.1.0.min.js"></script>
+<script src="js/include/justgage.min.js"></script>
+
+<!-- REQUIRED: Morris Charts -->
+<script src="js/include/morris.min.js"></script>
+<script src="js/include/morris-chart-settings.js"></script>
+
+<!-- REQUIRED: Animated pie chart -->
+<script src="js/include/jquery.easy-pie-chart.min.js"></script>
+
+<!-- REQUIRED: Functional Widgets -->
+<script src="js/include/jarvis.widget.min.js"></script>
+<script src="js/include/mobiledevices.min.js"></script>
+<!-- DISABLED (only needed for IE7 <script src="js/include/json2.js"></script> -->
+
+<!-- REQUIRED: Full Calendar -->
+<script src="js/include/jquery.fullcalendar.min.js"></script>
+
+<!-- REQUIRED: Flot Chart Engine -->
+<script src="js/include/jquery.flot.cust.min.js"></script>
+<script src="js/include/jquery.flot.resize.min.js"></script>
+<script src="js/include/jquery.flot.tooltip.min.js"></script>
+<script src="js/include/jquery.flot.orderBar.min.js"></script>
+<script src="js/include/jquery.flot.fillbetween.min.js"></script>
+<script src="js/include/jquery.flot.pie.min.js"></script>
+
+<!-- REQUIRED: Sparkline Charts -->
+<script src="js/include/jquery.sparkline.min.js"></script>
+
+<!-- REQUIRED: Infinite Sliding Menu (used with inbox page) -->
+<script src="js/include/jquery.inbox.slashc.sliding-menu.js"></script>
+
+<!-- REQUIRED: Form validation plugin -->
+<script src="js/include/jquery.validate.min.js"></script>
+
+<!-- REQUIRED: Progress bar animation -->
+<script src="js/include/bootstrap-progressbar.min.js"></script>
+
+<!-- REQUIRED: wysihtml5 editor -->
+<script src="js/include/wysihtml5-0.3.0.min.js"></script>
+<script src="js/include/bootstrap-wysihtml5.min.js"></script>
+
+<!-- REQUIRED: Masked Input -->
+<script src="js/include/jquery.maskedinput.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Date Picker -->
+<script src="js/include/bootstrap-datepicker.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Wizard -->
+<script src="js/include/bootstrap.wizard.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Color Picker -->
+<script src="js/include/bootstrap-colorpicker.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Time Picker -->
+<script src="js/include/bootstrap-timepicker.min.js"></script>
+
+<!-- REQUIRED: Bootstrap Prompt -->
+<script src="js/include/bootbox.min.js"></script>
+
+<!-- REQUIRED: Bootstrap engine -->
+<script src="js/include/bootstrap.min.js"></script>
+
+<!-- DO NOT REMOVE: Theme Config file -->
+<script src="js/config.js"></script>
+<!-- d3 library placed at the bottom for better performance -->
+<!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
+<!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->
+<!-- DISABLED  <script src="js/include/adv_charts/d3-chart-2.js"></script> -->
+
+<!-- Google Geo Chart -->
+<!-- DISABLED <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script> -->
+<!-- DISABLED <script type='text/javascript' src='https://www.google.com/jsapi'></script>-->
+<!-- DISABLED <script src="js/include/adv_charts/geochart.js"></script> -->
+
+<!-- end scripts -->
+</body>
+</html>

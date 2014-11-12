@@ -14,7 +14,7 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
-    <link rel="stylesheet" href="assets/css/chosen.css" />
+    <link rel="stylesheet" href="assets/css/datepicker.css" />
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
@@ -435,7 +435,7 @@
 
     <ul class="nav nav-list">
         <li>
-            <a href="departments.html">
+            <a href="index.html">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text">Department List</span>
             </a>
@@ -443,15 +443,15 @@
             <b class="arrow"></b>
         </li>
 
-        <li class="active">
-            <a href="roles.html">
+        <li class="">
+            <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> Roles </span>
             </a>
             <b class="arrow"></b>
         </li>
 
-        <li>
+        <li class="active">
             <a href="employees.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Employees</span>
@@ -461,7 +461,7 @@
         </li>
 
         <li class="">
-            <a href="goals.html">
+            <a href="#">
                 <i class="menu-icon fa fa-pencil-square-o"></i>
                 <span class="menu-text"> Goals </span>
             </a>
@@ -469,7 +469,7 @@
         </li>
 
         <li>
-            <a href="badge_master.html">
+            <a href="widgets.html">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text"> Badge Master </span>
             </a>
@@ -478,7 +478,7 @@
         </li>
 
         <li class="">
-            <a href="reward_center.html">
+            <a href="calendar.html">
                 <i class="menu-icon fa fa-calendar"></i>
                 <span class="menu-text"> Reward Center </span>
             </a>
@@ -486,71 +486,13 @@
         </li>
 
         <li class="">
-            <a href="reward_master.html">
+            <a href="gallery.html">
                 <i class="menu-icon fa fa-picture-o"></i>
                 <span class="menu-text"> Reward Master </span>
             </a>
 
             <b class="arrow"></b>
         </li>
-        <li class="">
-            <a href="badges.html">
-                <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> Badges </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="abilities.html">
-                <i class="menu-icon fa fa-bar-chart-o"></i>
-                <span class="menu-text"> Abilities </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="leve.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Level </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="org_tags.html">
-                <i class="menu-icon fa fa-book"></i>
-                <span class="menu-text"> Organization Tag </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="team.html">
-                <i class="menu-icon fa fa-envelope"></i>
-                <span class="menu-text"> Team </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="reward_master.html">
-                <i class="menu-icon fa fa-envelope"></i>
-                <span class="menu-text"> Reward Master </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="action_sec.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Action Section </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-
     </ul>
     <!-- /.nav-list -->
 
@@ -575,7 +517,7 @@
 <div class="breadcrumbs" id="breadcrumbs">
     <script type="text/javascript">
         try {
-            ace.settings.check('breadcrumbs', 'disable')
+            ace.settings.check('breadcrumbs', 'fixed')
         } catch (e) {
         }
     </script>
@@ -701,179 +643,330 @@
 
 <!-- /section:settings.box -->
 <div class="page-content-area">
-    <div class="page-header">
-        <h1>
-            Widgets
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                Draggabble Widget Boxes &amp; Containers
-            </small>
-        </h1>
+<div class="page-header">
+    <h1>
+        Widgets
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            Draggabble Widget Boxes &amp; Containers
+        </small>
+    </h1>
+</div>
+<!-- /.page-header -->
+<!--row 1-->
+<div class="row">
+<div class="col-xs-12">
+<!-- PAGE CONTENT BEGINS -->
+<!--<row 1 >-->
+<div class="row">
+<div class="col-lg-12 col-md-12 widget-container-col">
+<!-- #section:custom/widget-box -->
+<div class="widget-box">
+<div class="widget-header">
+    <h5 class="widget-title">Add New Action</h5>
+
+    <!-- #section:custom/widget-box.toolbar -->
+    <div class="widget-toolbar">
+        <div class="widget-menu">
+            <a href="#" data-action="settings" data-toggle="dropdown">
+                <i class="ace-icon fa fa-bars"></i>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                <li>
+                    <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                </li>
+
+                <li>
+                    <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                </li>
+            </ul>
+        </div>
+
+        <a href="#" data-action="fullscreen" class="orange2">
+            <i class="ace-icon fa fa-expand"></i>
+        </a>
+
+        <a href="#" data-action="reload">
+            <i class="ace-icon fa fa-refresh"></i>
+        </a>
+
+        <a href="#" data-action="collapse">
+            <i class="ace-icon fa fa-chevron-up"></i>
+        </a>
+
+        <a href="#" data-action="close">
+            <i class="ace-icon fa fa-times"></i>
+        </a>
     </div>
-    <!-- /.page-header -->
-    <!--row 1-->
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- PAGE CONTENT BEGINS -->
-            <!--<row 1 >-->
-            <div class="row">
-                <div class="col-lg-12 col-md-12 widget-container-col">
-                    <!-- #section:custom/widget-box -->
-                    <div class="widget-box">
-                        <div class="widget-header">
-                            <h5 class="widget-title">Assign Role Ability</h5>
 
-                            <!-- #section:custom/widget-box.toolbar -->
-                            <div class="widget-toolbar">
-                                <div class="widget-menu">
-                                    <a href="#" data-action="settings" data-toggle="dropdown">
-                                        <i class="ace-icon fa fa-bars"></i>
-                                    </a>
+    <!-- /section:custom/widget-box.toolbar -->
+</div>
 
-                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                                        </li>
+<div class="widget-body">
+<div class="widget-main">
 
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                                        </li>
-                                    </ul>
-                                </div>
+<form id="goal_creation_form" class="form-horizontal themed">
+<fieldset>
+<div class="form-group">
 
-                                <a href="#" data-action="fullscreen" class="orange2">
-                                    <i class="ace-icon fa fa-expand"></i>
-                                </a>
+    <div class="col-md-3">
+        <label for="challenge_name">Name</label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="challenge_name"/>
+    </div>
 
-                                <a href="#" data-action="reload">
-                                    <i class="ace-icon fa fa-refresh"></i>
-                                </a>
+</div>
 
-                                <a href="#" data-action="collapse">
-                                    <i class="ace-icon fa fa-chevron-up"></i>
-                                </a>
+<div class="form-group">
 
-                                <a href="#" data-action="close">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </a>
-                            </div>
+    <div class="col-md-3">
+        <label class="control-label" for="criteria_select">Scope</label>
+    </div>
+    <div class="col-md-9">
+        <div class="controls">
+            <select id="scope_select" class="with-search">
+                <option value="default" disabled="disabled" selected="selected">Select one--</option>
+                <option value="Organization">Organization</option>
+                <option value="Team">Team</option>
+                <option value="Player">Player</option>
+            </select>
+        </div>
+    </div>
 
-                            <!-- /section:custom/widget-box.toolbar -->
-                        </div>
+</div>
+<div class="form-group">
 
-                        <div class="widget-body">
-                            <div class="widget-main">
+    <div class="col-md-3">
+        <label class="control-label" for="criteria_select">Criteria</label>
+    </div>
+    <div class="col-md-9">
+        <div class="controls">
+            <select id="criteria_select" class="with-search">
+                <option value="default" disabled="disabled" selected="selected">Select one--</option>
+                <option value="Action">Action</option>
+                <option value="Subgoal">Sub-Goal</option>
+            </select>
+        </div>
+    </div>
 
-                                <form id="new_employee_form" class="form-horizontal themed">
-                                    <fieldset>
-                                        <div class="form-group">
+</div>
 
+<!--scope data div:-->
 
-                                            <div class="col-md-12">
-                                                <h5>Can single select user do single select task?</h5>
-                                            </div>
+<div id="scope_content_block">
+    <!-- html for subgoal and its target value starts -->
+    <div class="criteria-content-blocks" id="team_content_block">
+        <div class="form-group">
 
-                                            <div class="col-md-5">
-                                                <label class="control-label" for="users_select_1">Users</label>
+            <div class="col-md-3">
+                <label class="control-label" for="Team_select">Team</label>
+            </div>
+            <div class="col-md-9">
+                <div class="controls">
+                    <select name="team_name" id="Team_select" class="with-search">
+                        <!--<option value="tree1">Team 1</option>-->
+                        <!--<option  value="tree2">Team 3</option>-->
+                        <!--<option  value="tree3">Team 4</option>-->
+                        <!--<option value="tree14">Team 2</option>-->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="form-group">-->
+    <!--<div class="row">-->
+    <!--<div  class="col-md-3">-->
+    <!--<label for="player_target_value">Player Value</label>-->
+    <!--</div>-->
+    <!--<div class="col-md-9">-->
+    <!--<input type="text" class="form-control"  id="player_target_value" />-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>
+<!-- html for subgoal and its target value ends -->
 
-                                                <div class="controls">
-                                                    <select id="users_select_1" class="chosen-select">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <label class="control-label" for="abilities_select_1">Abilities</label>
+<!-- html for allowed transactions and its target value starts -->
+<div class="criteria-content-blocks" id="scope_player_block">
+    <div class="form-group">
 
-                                                <div class="controls">
-                                                    <select id="abilities_select_1" class="chosen-select">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="result-block" id="result_1">
-                                                </div>
-                                            </div>
+        <div class="col-md-3">
+            <label class="control-label" for="key_param_select">Select Player</label>
+        </div>
+        <div class="col-md-9">
+            <div class="controls">
+                <select id="select_user" class="with-search">
+                </select>
+            </div>
+        </div>
 
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <div class="col-md-12">
-                                                <h5>Show single select user abilities</h5>
-                                            </div>
-
-                                            <div class="col-md-5">
-                                                <label class="control-label" for="users_select_2">Users</label>
-
-                                                <div class="controls">
-                                                    <select id="users_select_2" class="chosen-select">
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="result-block" id="result_2">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <div class="col-md-12">
-                                                <h5>Show users with single select ability</h5>
-                                            </div>
-
-                                            <div class="col-md-5">
-                                                <label class="control-label"
-                                                       for="abilities_select_2">Abilities</label>
-
-                                                <div class="controls">
-                                                    <select id="abilities_select_2" class="chosen-select">
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="result-block" id="result_3">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <!--<div class="form-actions">-->
-                                        <!--<button type="reset" class="btn medium btn-danger">-->
-                                        <!--Cancel-->
-                                        <!--</button>-->
-                                        <!--<button type="submit" class="btn medium btn-primary">-->
-                                        <!--Save changes-->
-                                        <!--</button>-->
-                                        <!--</div>-->
-                                    </fieldset>
-                                </form>
+    </div>
+</div>
 
 
-                            </div>
-                        </div>
-                    </div>
+<div id="criteria_content_block">
+    <!-- html for subgoal and its target value starts -->
+    <div class="criteria-content-blocks" id="subgoal_content_block">
+        <div class="form-group">
 
-                    <!-- /section:custom/widget-box -->
+            <div class="col-md-3">
+                <label class="control-label" for="subgoal_select">Subgoal</label>
+            </div>
+            <div class="col-md-9">
+                <div class="controls">
+                    <select id="subgoal_select" class="with-search">
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-3">
+                <label for="subgoal_target_value">Sub-Goal Target Value</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="subgoal_target_value"/>
+            </div>
+        </div>
+
+    </div>
+    <!-- html for subgoal and its target value ends -->
+
+    <!-- html for allowed transactions and its target value starts -->
+    <div class="criteria-content-blocks" id="transaction_content_block">
+        <div class="form-group">
+
+            <div class="col-md-3">
+                <label class="control-label" for="key_param_select">Select Key Parameter</label>
+            </div>
+            <div class="col-md-9">
+                <div class="controls">
+                    <select id="key_param_select" class="with-search">
+                    </select>
                 </div>
 
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-3">
+                <label class="control-label" for="transaction_select">Allowed Transaction</label>
+            </div>
+            <div class="col-md-9">
+                <div class="controls">
+                    <select id="transaction_select" class="with-search">
+                    </select>
+                </div>
 
             </div>
-            <!-- /.row 1 end -->
-
-            <!-- PAGE CONTENT ENDS -->
         </div>
-        <!-- /.col -->
+        <div class="form-group">
+
+            <div class="col-md-3">
+                <label for="transaction_target_value">Transaction Target Value</label>
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="transaction_target_value"/>
+            </div>
+        </div>
+
     </div>
-    <!-- /1 row -->
+</div>
+<!-- html for allowed transactions and its target value ends -->
+
+
+<div class="form-group">
+
+    <div class="col-md-3">
+        <label class="control-label">Start Date</label>
+    </div>
+    <div class="col-md-9">
+        <div class="input-group">
+            <input class="form-control date-picker" id="goal-start-date-js" type="text" data-date-format="dd-mm-yyyy" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
+        </div>
+
+
+        <p class="help-block">Default datepicker</p>
+    </div>
+
+</div>
+
+<div class="form-group">
+
+    <div class="col-md-3">
+        <label class="control-label">End Date</label>
+    </div>
+    <div class="col-md-9">
+        <div class="input-group">
+            <input class="form-control date-picker" id="goal-end-date-js" type="text" data-date-format="dd-mm-yyyy" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
+        </div>
+        <p class="help-block">Default datepicker</p>
+    </div>
+
+</div>
+
+<div class="form-group">
+
+    <div class="col-md-3">
+        <label for="goal_points">Points</label>
+    </div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="goal_points"/>
+    </div>
+
+</div>
+
+<div class="form-group">
+
+    <div class="col-md-3">
+        <label class="control-label" for="users_select">Assign To</label>
+    </div>
+    <div class="col-md-9">
+        <div class="controls">
+            <select id="users_select" class="with-search">
+            </select>
+        </div>
+    </div>
+
+</div>
+
+<div class="form-actions">
+    <button type="reset" class="btn medium btn-danger">
+        Cancel
+    </button>
+    <button id="challenge_submit_btn" type="submit" class="btn medium btn-primary">
+        Create
+    </button>
+</div>
+
+</fieldset>
+</form>
+
+</div>
+</div>
+</div>
+
+<!-- /section:custom/widget-box -->
+</div>
+
+
+</div>
+<!-- /.row 1 end -->
+
+<!-- PAGE CONTENT ENDS -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /1 row -->
 </div>
 <!-- /.page-content-area -->
 </div>
@@ -910,7 +1003,7 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/js/chosen.jquery.min.js"></script>
+<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -920,172 +1013,419 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
-    var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-    $(function () {
+var urlParams = JSON.parse(localStorage.getItem('user_data'));
+var actionsJSON = "";
+var criteria_val = "";
+var scope_val = "";
 
-        //$('#main').css('opacity', 1);
-        //$('header').fadeIn();
-        $.ajax({
-            url: remote_host+'org/'+urlParams.orgId+'/users',
-            type: 'GET',
-            success: function (data) {
-                data.forEach(function (user) {
-                    $("#users_select_1").append("<option data-id='"+user._id+"' value='"+user.name+"'>"+user.name+"</option>");
-                    $("#users_select_2").append("<option data-id='"+user._id+"' value='"+user.name+"'>"+user.name+"</option>");
+function show_notification(text){
+    $.jGrowl(text, {
+        header: 'Notification',
+        sticky: false,
+        life: 3000,
+        speed: 500,
+        theme: 'with-icon',
+        position: 'top-right', //this is default position
+        easing: 'easeOutBack',
+        animateOpen: {
+            height: "show"
+        },
+        animateClose: {
+            opacity: 'hide'
+        }
+    });
+}
+
+function get_current_date(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+
+    if(dd < 10){
+        dd = '0'+dd;
+    }
+    if(mm < 10){
+        mm = '0'+mm;
+    }
+
+    var current_date = dd+'-'+mm+'-'+yyyy;
+    return current_date;
+}
+
+function set_datepicker_date(date){
+    var date_field = $(".date");
+    date_field.each(function() {
+        $(this).attr("data-date", date);
+        $(this).find(".datepicker-input").val(date);
+    });
+}
+
+function get_employees(){
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var option_html;
+                res.forEach(function(user){
+                    option_html = "<option value="+user._id+">"+user.name+"</option>";
+                    $('#users_select').append(option_html);
+                    $('#select_user').append(option_html);
+//                    $("#key_param_select").append("<option value="+keyParam+">"+keyParam+"</option>");
+
                 });
-                $("#users_select_1").chosen().trigger('chosen:updated');
-                $("#users_select_2").chosen().trigger('chosen:updated');
-            },
-            error: function (err) {
-                console.log(err);
+
+            }
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+function get_teams(){
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/teams",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var option_html;
+                res.forEach(function(teams){
+//                    console.log(teams);
+                    option_html = "<option value="+teams._id+">"+teams.name+"</option>";
+                    $('#Team_select').append(option_html);
+
+                });
+
+            }
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+
+var hasTag = function(key_param_val) {
+    var i = null;
+    var filteredactionsJSON = []
+    for (i = 0; actionsJSON.length > i; i += 1) {
+        //console.log(actionsJSON[i]);
+        if (actionsJSON[i].keyParam === key_param_val) {
+            filteredactionsJSON.push(actionsJSON[i]);
+            //return actionsJSON[i];
+        }
+    }
+//    console.log("filteredactionsJSON")
+//    console.log(filteredactionsJSON)
+    return filteredactionsJSON;
+//        return false;
+};
+
+function get_actions(){
+    $.ajax({
+        // /org/:orgId/transactions
+        url: remote_host+"org/"+urlParams.orgId+"/transactions",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                actionsJSON = res;
+                var keyParamArray = [];
+                res.forEach(function(transactionMaster, index){
+                    //console.log(transactionMaster);
+                    if (transactionMaster.keyParam !== undefined) {
+                        keyParamArray.push(res[index].keyParam);
+                    }
+                });
+                var uniqueKeyParamArray = jQuery.unique(keyParamArray);
+                keyParamArray.forEach(function(keyParam, index){
+                    $("#key_param_select").append("<option value="+keyParam+">"+keyParam+"</option>");
+                });
+            }
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+function get_my_created_goals(){
+    $.ajax({
+        // /org/:orgId/users/:userId/subgoals
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/subgoals",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                res.forEach(function(goal){
+                    $('#subgoal_select').append("<option value="+goal._id+">"+goal.name+"</option>");
+                });
+            }
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+$(function () {
+
+    if ($('#goal-start-date-js').length){
+        $('#goal-start-date-js, #goal-end-date-js').datepicker()
+    }
+
+    get_employees();
+    get_actions();
+    get_teams();
+    get_my_created_goals();
+
+    var today_date = get_current_date();
+    set_datepicker_date(today_date);
+
+    $('#key_param_select').on('change', function () {
+        $('#transaction_select').empty();
+        var key_param_val = $("#key_param_select :selected").val();
+        var filtered_actions = hasTag(key_param_val);
+        filtered_actions.forEach(function(filtered_action, index){
+            $('#transaction_select').append("<option value="+filtered_action._id+">"+filtered_action.name+"</option>");
+        });
+    });
+    $('#criteria_select').on('change', function () {
+        criteria_val = $("#criteria_select :selected").val();
+        if (criteria_val == "Action") {
+            $("#subgoal_content_block").hide();
+            $("#transaction_content_block").show();
+        }
+        else if (criteria_val == "Subgoal") {
+//                console.log('hello')
+            $("#transaction_content_block").hide();
+            $("#subgoal_content_block").show();
+        }
+        else{
+            $("#transaction_content_block").hide();
+            $("#subgoal_content_block").hide();
+        }
+    });
+
+
+    $('#scope_select').on('change', function () {
+        scope_val = $("#scope_select :selected").val();
+        if (scope_val == "Organization") {
+//                console.log("urlParams");
+//                console.log(urlParams.orgId);;
+//                $("#subgoal_content_block").hide();
+//                $("#transaction_content_block").show();
+        }
+        else if (scope_val == "Team") {
+//                console.log('hello');
+            $("#scope_player_block").hide();
+            $("#team_content_block").show();
+        }
+        else if (scope_val == "Player") {
+//                console.log('hii')
+            $("#team_content_block").hide();
+            $("#scope_player_block").show();
+        }
+        else{
+//                $("#transaction_content_block").hide();
+//                $("#subgoal_content_block").hide();
+        }
+    });
+
+    $("#challenge_submit_btn").click(function(e) {
+
+        var challenge_name = $("#challenge_name").val();
+        var org_id=urlParams.orgId;
+        var selected_transaction = $("#transaction_select :selected").val();
+        var transaction_target_value = $("#transaction_target_value").val();
+
+        var selected_subgoal = $("#subgoal_select :selected").val();
+        var team_name = $("#Team_select :selected").val();
+        var player_name = $("#select_user :selected").val();
+
+//            var team_name = $('#Team_select').val(); // for multiselect value
+//            var player_name=$('#select_user').val();
+        var subgoal_target_value = $("#subgoal_target_value").val();
+        var org_scope={};
+        var goal_start_date = $("#goal-start-date-js").find(".datepicker-input").val();
+        //new Date(year, month, day, hours, minutes, seconds, milliseconds)
+        var formatted_start_date = new Date(parseInt(goal_start_date.split("-")[2]), parseInt(goal_start_date.split("-")[1])-1, parseInt(goal_start_date.split("-")[0]));
+
+        var goal_end_date = $("#goal-end-date-js").find(".datepicker-input").val();
+        var formatted_end_date = new Date(parseInt(goal_end_date.split("-")[2]), parseInt(goal_end_date.split("-")[1])-1, parseInt(goal_end_date.split("-")[0]));
+
+        var goal_points = $("#goal_points").val();
+        var data = {}, action_data = {}, subgoal_data = {};
+        if (scope_val == "Organization") {
+            org_scope= {
+                scope: "Organization",
+                entity: org_id
+            };
+        }
+        else if(scope_val == "Team"){
+            org_scope= {
+                scope: "Team",
+                entity: team_name
+            };
+        }
+        else if(scope_val == "Player"){
+            org_scope= {
+                scope: "Player",
+                entity: player_name
+            };
+        }
+        var assign_to = $("#users_select :selected").val();
+        if (criteria_val == "Action") {
+            action_data = {
+                scope:org_scope,
+                name: challenge_name,
+                criteria: criteria_val,
+                startDate: formatted_start_date,
+                endDate: formatted_end_date,
+                action:{
+                    allowedTransactions: [selected_transaction],
+                    targetValue: transaction_target_value
+                },
+                pointsFn: "function(t){return "+goal_points+";}",
+                creator: urlParams.userId
+            };
+            data = action_data;
+        }
+        else if (criteria_val == "Subgoal") {
+            subgoal_data = {
+                scope:org_scope,
+                name: challenge_name,
+                criteria: criteria_val,
+                startDate: formatted_start_date,
+                endDate: formatted_end_date,
+                subgoals:[{
+                    subgoal: selected_subgoal,
+                    targetValue: subgoal_target_value
+                }],
+                pointsFn: "function(t){return "+goal_points+";}",
+                creator: urlParams.userId
+            };
+            data = subgoal_data;
+        }
+
+//          console.log(challenge_name+selected_transaction+selected_subgoal+team_name+player_name+subgoal_target_value+goal_start_date+formatted_start_date+goal_points)
+
+        console.log("data");
+        console.log(data);
+
+        $.ajax({
+            // /org/:orgId/users/:userId/goals
+            url: remote_host+"org/"+urlParams.orgId+"/challenges",
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            success: function(res) {
+                var success_text = "Goal assigned to user.";
+                show_notification(success_text);
+            } ,
+            error: function(e , msg){
+                //processError(e,msg);
             }
         });
 
-        $.ajax({
-            url: remote_host+'abilities',
-            type: 'GET',
-            success: function (data) {
-                data.forEach(function (ability) {
-                    $("#abilities_select_1").append("<option data-id='"+ability._id+"' value='"+ability.name+"'>"+ability.name+"</option>");
-                    $("#abilities_select_2").append("<option data-id='"+ability._id+"' value='"+ability.name+"'>"+ability.name+"</option>");
-                });
-                $("#abilities_select_1").chosen().trigger('chosen:updated');
-                $("#abilities_select_2").chosen().trigger('chosen:updated');
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
+        return false;
+    });
 
-        $("#abilities_select_1").change(function(){
-            var userElement=$("#users_select_1 :selected")[0];
-            var abilityElement=$("#abilities_select_1 :selected")[0];
-            $.ajax({
-                url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement.getAttribute("data-id")+'/abilities/'+abilityElement.getAttribute("data-id"),
-                type: 'GET',
-                success: function(data){
-                    $("#result_1").text(data);
+});
+
+
+jQuery(function ($) {
+
+    $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
+        var color_class = $(this).find('option:selected').data('class');
+        var new_class = 'widget-box';
+        if (color_class != 'default')  new_class += ' widget-color-' + color_class;
+        $(this).closest('.widget-box').attr('class', new_class);
+    });
+
+
+    // scrollables
+    $('.scrollable').each(function () {
+        var $this = $(this);
+        $(this).ace_scroll({
+            size: $this.data('size') || 100
+            //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
+        });
+    });
+    $('.scrollable-horizontal').each(function () {
+        var $this = $(this);
+        $(this).ace_scroll(
+                {
+                    horizontal: true,
+                    styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
+                    size: $this.data('size') || 500,
+                    mouseWheelLock: true
                 }
-            });
-        });
+        ).css({'padding-top': 12});
+    });
 
-        $("#users_select_2").change(function(){
-            $("#result_2").text("");
-            var userElement=$("#users_select_2 :selected")[0];
-            $.ajax({
-                url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement.getAttribute("data-id")+'/abilities',
-                type: 'GET',
-                success: function(data){
-                    console.log(data);
-                    //$("#result_2").text("");
-                    $("#result_2").append("<ul>");
-                    data.forEach(function(abil){
-                        $("#result_2").append("<li>"+abil.name+"</li>");
-                    });
-                    $("#result_2").append("</ul>");
-                }
-            });
-        });
-
-        $("#abilities_select_2").change(function(){
-            var abilityElement=$("#abilities_select_2 :selected")[0];
-            $.ajax({
-                url: remote_host+'org/'+urlParams.orgId+'/abilities/'+abilityElement.getAttribute("data-id")+'/users',
-                type: 'GET',
-                success: function(data){
-                    $("#result_3").text("");
-                    $("#result_3").append("<ul>");
-                    data.forEach(function(user){
-                        $("#result_3").append("<li>"+user.name+"</li>");
-                    });
-                    $("#result_3").append("</ul>");
-                }
-            });
-        });
+    $(window).on('resize.scroll_reset', function () {
+        $('.scrollable-horizontal').ace_scroll('reset');
+    });
+    $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    })
 
 
-        jQuery(function ($) {
-
-            $('.chosen-select').chosen({allow_single_deselect:true});
-            //resize the chosen on window resize
-
-            $(window)
-                    .off('resize.chosen')
-                    .on('resize.chosen', function() {
-                        $('.chosen-select').each(function() {
-                            var $this = $(this);
-                            $this.next().css({'width': $this.parent().width()});
-                        })
-                    }).trigger('resize.chosen');
-
-            $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
-                var color_class = $(this).find('option:selected').data('class');
-                var new_class = 'widget-box';
-                if (color_class != 'default')  new_class += ' widget-color-' + color_class;
-                $(this).closest('.widget-box').attr('class', new_class);
+    $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    })
+        //show datepicker when clicking on the icon
+            .next().on(ace.click_event, function(){
+                $(this).prev().focus();
             });
 
+    //or change it into a date range picker
+    $('.input-daterange').datepicker({autoclose:true});
 
-            // scrollables
-            $('.scrollable').each(function () {
-                var $this = $(this);
-                $(this).ace_scroll({
-                    size: $this.data('size') || 100
-                    //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
-                });
-            });
-            $('.scrollable-horizontal').each(function () {
-                var $this = $(this);
-                $(this).ace_scroll(
-                        {
-                            horizontal: true,
-                            styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
-                            size: $this.data('size') || 500,
-                            mouseWheelLock: true
-                        }
-                ).css({'padding-top': 12});
-            });
-
-            $(window).on('resize.scroll_reset', function () {
-                $('.scrollable-horizontal').ace_scroll('reset');
-            });
-
-
-            /**
-             //or use slimScroll plugin
-             $('.slim-scrollable').each(function () {
+    /**
+     //or use slimScroll plugin
+     $('.slim-scrollable').each(function () {
 					var $this = $(this);
 					$this.slimScroll({
 						height: $this.data('height') || 100,
 						railVisible:true
 					});
 				});
-             */
+     */
 
 
-            /**$('.widget-box').on('setting.ace.widget' , function(e) {
+    /**$('.widget-box').on('setting.ace.widget' , function(e) {
 					e.preventDefault();
 				});*/
 
-            /**
-             $('.widget-box').on('show.ace.widget', function(e) {
+    /**
+     $('.widget-box').on('show.ace.widget', function(e) {
 					//e.preventDefault();
 					//this = the widget-box
 				});
-             $('.widget-box').on('reload.ace.widget', function(e) {
+     $('.widget-box').on('reload.ace.widget', function(e) {
 					//this = the widget-box
 				});
-             */
+     */
 
-            //$('#my-widget-box').widget_box('hide');
+    //$('#my-widget-box').widget_box('hide');
 
 
-            // widget boxes
-            // widget box drag & drop example
+    // widget boxes
+    // widget box drag & drop example
 
-        });
-    });
+});
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->

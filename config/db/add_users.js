@@ -51,29 +51,32 @@ function later(){
     var objects=JSON.parse(data);
     if(objects instanceof Array){
       objects.forEach(function(object){
-        UsersModel.createUser(orgObjId,object,function(err,user){
-          if(user){
-            async.parallel([
-              function(callback){
-                NudgeMailbox.createNudgeMailbox(orgObjId,user._id,{},callback);
-              },
-              function(callback){
-                NudgeChat.createNudgeChat(orgObjId,user._id,{},callback);
-              },
-              function(callback){
-                NotificationCenterModel.createNotificationCenter(orgObjId,user._id,{},callback);
-              },
-              function(callback){
-                UserPeriodPointsModel.createUserPeriodPoints(orgObjId,user._id,{},callback);
-              }],
-              function(err,results){
-                if(err) console.log(err);
-                console.log("done writing to database");
-                console.log(user);
-              }
-              );
-          }
-          else console.log(err);
+        RolesCollection.findOne({name:object.role},function(err,role){
+          object.role=role._id;
+          UsersModel.createUser(orgObjId,object,function(err,user){
+            if(user){
+              async.parallel([
+                function(callback){
+                  NudgeMailbox.createNudgeMailbox(orgObjId,user._id,{},callback);
+                },
+                function(callback){
+                  NudgeChat.createNudgeChat(orgObjId,user._id,{},callback);
+                },
+                function(callback){
+                  NotificationCenterModel.createNotificationCenter(orgObjId,user._id,{},callback);
+                },
+                function(callback){
+                  UserPeriodPointsModel.createUserPeriodPoints(orgObjId,user._id,{},callback);
+                }],
+                function(err,results){
+                  if(err) console.log(err);
+                  console.log("done writing to database");
+                  console.log(user);
+                }
+                );
+            }
+            else console.log(err);
+          });
         });
       });
     }

@@ -91,13 +91,6 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
     <link href="css/customstyle.css" rel="stylesheet" type="text/css">
-
-    <style>
-        .aligned{
-            width: 20%;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -297,148 +290,206 @@
 
 <div id="main" role="main" class="container-fluid">
 
-    <div class="contained">
-        <!-- aside -->
-        <aside>
+<div class="contained">
+<!-- aside -->
+<aside>
 
-            <!-- aside item: Mini profile -->
-            <div class="divider"></div>
-            <!-- end aside item: Mini profile -->
+    <!-- aside item: Mini profile -->
+    <div class="divider"></div>
+    <!-- end aside item: Mini profile -->
 
-            <!-- aside item: Menu -->
-            <div class="sidebar-nav-fixed">
+    <!-- aside item: Menu -->
+    <div class="sidebar-nav-fixed">
 
-                <ul class="menu" id="accordion-menu-js">
-                    <li class="current">
-                        <a href="departments.html"><i class="icon-home"></i>Department List</a>
-                    </li>
-                    <li>
-                        <a href="role.html"><i class="icon-off"></i>Roles</a>
-                    </li>
-                    <li>
-                        <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="icon-check"></i>Goals</a>
-                    </li>
-                    <li>
-                        <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
-                    </li>
-                    <li>
-                        <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
-                    </li>
-                    <li>
-                        <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
-                    </li>
-                </ul>
+        <ul class="menu" id="accordion-menu-js">
+            <li>
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
+            </li>
+            <li>
+                <a href="role.html"><i class="icon-off"></i>Roles</a>
+            </li>
+            <li class="current">
+                <a href="employees.html"><i class="icon-envelope"></i>Transaction</a>
+            </li>
+            <li>
+                <a href="#"><i class="icon-check"></i>Goals</a>
+            </li>
+            <li>
+                <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
+            </li>
+            <li>
+                <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
+            </li>
+            <li>
+                <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
+            </li>
+        </ul>
 
-            </div>
-            <div class="divider"></div>
-            <!-- end aside item: Menu -->
-
-        </aside>
-        <!-- aside end -->
-
-        <!-- main content -->
-        <div id="page-content">
-            <!-- page header -->
-            <h1 id="page-header">Add Bulk Actions</h1>
-
-            <div class="fluid-container">
-
-                <!-- widget grid -->
-                <section id="widget-grid" class="">
-                    <!--------row 2---------->
-                    <div class="row">
-                        <article class="col-md-12">
-                            <!-- new widget -->
-                            <div class="jarviswidget" id="create-bulk-employees-widget">
-                                <header>
-                                    <h2>Add Bulk Actions</h2>
-                                </header>
-                                <!-- wrap div -->
-                                <div>
-
-                                    <div class="jarviswidget-editbox">
-                                        <div>
-                                            <label>Title:</label>
-                                            <input type="text"/>
-                                        </div>
-                                        <div>
-                                            <label>Styles:</label>
-                                            <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                            <span data-widget-setstyle="green" class="green-btn"></span>
-                                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                            <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                            <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                            <span data-widget-setstyle="red" class="red-btn"></span>
-                                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                            <span data-widget-setstyle="black" class="black-btn"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="inner-spacer widget-content-padding">
-                                        <!-- content goes here -->
-                                        <form id="actions_bulk_upload_form" class="form-horizontal themed">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label class="control-label" for="bulk_actions_excel_2">File input</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <div class="controls">
-                                                                <!--<input class="file" id="bulk_employees_excel" type="file" />-->
-                                                                <div class="space"></div>
-                                                                <input class="file-no-style" id="bulk_actions_excel_2" type="file" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="form-actions">
-                                                    <button type="reset" class="btn medium btn-danger">
-                                                        Cancel
-                                                    </button>
-                                                    <button id="upload_btn" type="submit" class="btn medium btn-primary">
-                                                        Upload
-                                                    </button>
-                                                </div>
-                                            </fieldset>
-                                        </form>
-
-                                    </div>
-                                    <!-- end content-->
-                                </div>
-                                <!-- end wrap div -->
-                            </div>
-                            <!-- end widget -->
-                        </article>
-                    </div>
-                    <!------------row 2 end----------------->
-
-                </section>
-                <!-- end widget grid -->
-
-            </div>
-
-        </div>
-        <!-- end main content -->
-
-        <!-- aside right on high res -->
-        <aside class="right">
-
-            <!-- date picker -->
-            <div id="datepicker"></div>
-            <div class="divider"></div>
-            <!-- end date picker -->
-
-        </aside>
-
-        <!-- end aside right -->
     </div>
+    <div class="divider"></div>
+    <!-- end aside item: Menu -->
+
+</aside>
+<!-- aside end -->
+
+<!-- main content -->
+<div id="page-content">
+    <!-- page header -->
+    <h1 id="page-header">Transaction list</h1>
+
+    <div class="fluid-container">
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+            <!--------row 2---------->
+            <div class="row">
+                <article class="col-md-12">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="widget-id-0">
+                        <header>
+                            <h2>Transactions</h2>
+                        </header>
+                        <!-- wrap div -->
+                        <div>
+
+                            <div class="jarviswidget-editbox">
+                                <div>
+                                    <label>Title:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div>
+                                    <label>Styles:</label>
+                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                    <span data-widget-setstyle="green" class="green-btn"></span>
+                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                    <span data-widget-setstyle="red" class="red-btn"></span>
+                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                    <span data-widget-setstyle="black" class="black-btn"></span>
+                                </div>
+                            </div>
+
+                            <div class="inner-spacer widget-content-padding">
+                                <!-- content goes here -->
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                               <div class="emp-details" id="emp_name"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Format</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_email"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>No of Params</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_designation"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Point Function</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_role"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Type</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_reporting_officer"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label></label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_tags"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <button type="button" id="btn_approve">Approve</button>
+                                                <!--<label></label>-->
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_dept"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+
+                            </div>
+                            <!-- end content-->
+                        </div>
+                        <!-- end wrap div -->
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+
+
+
+            <!------------row 2 end----------------->
+
+        </section>
+        <!-- end widget grid -->
+
+    </div>
+
+</div>
+<!-- end main content -->
+
+<!-- aside right on high res -->
+<aside class="right">
+
+    <!-- date picker -->
+    <div id="datepicker"></div>
+    <div class="divider"></div>
+    <!-- end date picker -->
+
+</aside>
+
+<!-- end aside right -->
+</div>
 
 </div>
 <!--end fluid-container-->
@@ -491,8 +542,101 @@
 <script src="js/include/amchart/amcharts.js"></script>
 <script src="js/include/amchart/amchart-draw1.js"></script>
 
+<script src="js/app/app_config.js"></script>
+
 <script type="text/javascript">
-    var urlParams=JSON.parse(localStorage.getItem("user_data"));
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function get_employee(){
+        var emp_id = window.location.search.replace("?","").split("=")[1];
+        var user_id = window.location.search.replace("?","").split("=")[2];
+        console.log(emp_id);
+        console.log(user_id);
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+emp_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+//                console.log(res);
+                if(res){
+                    //console.log(res);
+                    var reportsTo, orgTags = [], teams = [],format,name,pointFn,type,no_of_params;
+                    if (res.name)
+                        name = res.name;
+                    else
+                        name = "";
+
+                    if (res.format) {
+                        format = res.format;
+                    }
+                    else{
+                        format = "";
+                    }
+                    if (res.noOfParams) {
+                        no_of_params=res.noOfParams;
+                    }
+                    else{
+                        no_of_params = "";
+                    }
+
+                    if (res.pointsFn) {
+                        pointFn=res.pointsFn;
+                    }
+                    else{
+                        pointFn = "";
+                    }
+                    if (res.type) {
+                        type=res.type;
+                    }
+                    else{
+                        type = "";
+                    }
+//
+                    $("#emp_name").text(res.name);
+                    $("#emp_email").text(res.format);
+                    $("#emp_role").text(res.pointsFn);
+                    $("#emp_reporting_officer").text(type);
+//                    $("#emp_tags").text(no_of_params);
+//                    $("#emp_dept").text(teams);
+//                    $("#emp_designation").text(res.designation);
+//                    $("#emp_addr").text(res.address);
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+    $(function () {
+        $("#btn_approve").click(function(){
+            var emp_id = window.location.search.replace("?","").split("=")[1];
+            var user_id = window.location.search.replace("?","").split("=")[2];
+            console.log(emp_id);
+            console.log(user_id);
+            $.ajax({
+//                url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
+                url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
+//                data: data,
+                // contentType: 'multipart/form-data',
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function(data){
+                    console.log("data");
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            });
+
+
+//            console.log('hello');
+//            get_user();
+
+        });
+    });
+
     var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
     if (!ismobile) {
 
@@ -509,61 +653,9 @@
         /** DEMO SCRIPTS **/
         $(function () {
 
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
-
-            var row_html;
-
-            for(var l=0; l<15; l++){
-                row_html = '<tr>'+
-                                '<td class="text-center">Emp '+(l+1)+'</td>'+
-                                '<td class="text-center">Role</td>'+
-                                '<td class="text-center">Reporting Officer</td>'+
-                                '<td class="text-center">Tags</td>'+
-                                '<td class="text-center">Department</td>'+
-                                '<td class="text-center">'+
-                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-exclamation"></i>'+'</a>'+
-                                    '<a style="padding: 5px;" href="department_show.html">'+'<i class="cus-pencil"></i>'+'</a>'+
-                                '</td>'+
-                            '</tr>';
-
-                $("#employees_list").find('tbody').append(row_html);
-            }
-//
-            $('#employees_list').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": true,
-                "bSort": false
-            });
+            get_employee();
 
         });
-        $(function () {
-
-            $("#actions_bulk_upload_form").submit(function(event){
-                event.preventDefault();
-                var data=new FormData();
-                data.append("users",$("#bulk_actions_excel_2")[0].files[0]);
-
-                $.ajax({
-                    url: remote_host + 'org/' + urlParams.orgId + '/excel/action/new',
-                    data: data,
-                    // contentType: 'multipart/form-data',
-                    contentType: false,
-                    processData: false,
-                    type: 'POST',
-                    success: function(data){
-                        console.log(data);
-                    },
-                    error:function(err){
-                        console.log(err);
-                    }
-                });
-                return false;
-            });
-
-        });
-
         /** end DEMO SCRIPTS **/
 
     } else {
@@ -643,7 +735,6 @@
 
 <!-- DO NOT REMOVE: Theme Config file -->
 <script src="js/config.js"></script>
-<script src="js/app/app_config.js"></script>
 <!-- d3 library placed at the bottom for better performance -->
 <!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
 <!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->

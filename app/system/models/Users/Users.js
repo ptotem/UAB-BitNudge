@@ -8,10 +8,7 @@ var UserManagement={
   getUserSchema:function(){
     return UserCollection.schema;
   },
-  //the attribute data is an object which contains key value pairs of the fields and values.
   createUser:function(organizationId,data,callback){
-    //password is in plain text, they must be salted and shed
-    //obviously, salt and hash it properly.
     data.createdAt=new Date();
     data.orgId=organizationId;
     if(data.password){
@@ -22,8 +19,6 @@ var UserManagement={
           newUser.save(callback);
         });
       });
-      // data.passwordSalt=data.password+"salt!";
-      // data.passwordHash=data.password+"hash!";
     }
     else return callback("please give a password");
   },
@@ -31,9 +26,6 @@ var UserManagement={
   updateUser:function(id,updateData,callback){
     UserCollection.update({_id:id},{$set:updateData},callback);
   },
-    updateUseractions:function(email,updateData,callback){
-        UserCollection.update({email:email},{$set:updateData},callback);
-    },
   getRoleOfUser:function(id,fields,options,callback){
     UserCollection.findOne({_id:id},fields,options).populate('role').exec(function(err,objs){
       if(objs)
@@ -141,6 +133,15 @@ var UserManagement={
   },
   getTransactionHistoryOfUser:function(userId,callback){
     UserCollection.findOne({_id:userId},"items",{sort:"items.time"}).populate("items.item").exec(callback);
+  },
+  cloneUserDocument:function(userId,callback){
+    UserCollection.findOne({_id:userId},function(err,user){
+      if(err) callback(err);
+      else {
+        var clonedUser=new UserCollection(user);
+        callback(err,clonedUser);
+      }
+    });
   }
 };
 module.exports={

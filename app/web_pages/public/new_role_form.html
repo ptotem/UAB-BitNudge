@@ -69,7 +69,7 @@
     <a href="#" class="navbar-brand">
         <small>
             <i class="fa fa-leaf"></i>
-            Ace Admin
+            BitNudge
         </small>
     </a>
 
@@ -498,7 +498,7 @@
             <b class="arrow"></b>
         </li>
         <li class="">
-            <a href="leve.html">
+            <a href="level.html">
                 <i class="menu-icon fa fa-picture-o"></i>
                 <span class="menu-text"> Level </span>
             </a>
@@ -823,29 +823,25 @@
 
     $(function () {
 
-        $("#submit-form-btn").click(function(e) {
-            e.preventDefault();
+        $("#submit-form-btn").click(function() {
             var role_name = $("#role_name").val();
 
             var data = {
                 role_name: role_name
             };
 
-            console.log(data);
-//            $.ajax({
-//                ///org/:orgId/roles/:roleId/abilities
-//                url: remote_host+"org/"+urlParams.orgId+"/roles",
-//                type: 'POST',
-//                dataType: 'json',
-//                data: data,
-//                success: function(res) {
-//                    var success_text = "Role Created.";
-//                    //show_notification(success_text);
-//                } ,
-//                error: function(e , msg){
-//                    //processError(e,msg);
-//                }
-//            });
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/roles",
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+                success: function(res) {
+                    var success_text = "Role Created.";
+                } ,
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
             return false;
         });
 
