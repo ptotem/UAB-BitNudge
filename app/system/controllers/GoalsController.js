@@ -5,7 +5,7 @@ var GoalsController={
   createGoal:function(req,res){
     //if the criteria is Action, then it must be stored in the goalMaster so that user can reuse it later.
     //This is for development purposes.
-    //TODO:- Change to req.user._id
+    //TODO:- Change to req.user._id once the authorization module is included.
     req.body.goalType="goal";
     if(req.body.criteria=="Action"){
       // var newGoalMaster=JSON.parse(JSON.stringify(req.body));
@@ -51,10 +51,11 @@ var GoalsController={
   // },
   getLiveUserGoals:function(req,res){
     UserGoalsModel.getLiveGoalsOfUser(req.params.userId,new Date(),function(err,objs){
-      TransactionMasterCollection.populate(objs,{path:"goals.transactions.transactionMaster",model:'transactionMasters',select:'name'},function(err1,objs1){
+      // TransactionMasterCollection.populate(objs,{path:"goals.transactions.transactionMaster",model:'transactionMasters',select:'name'},function(err1,objs1){
         if(err) res.send(err);
-        res.send(objs1[0]);
-      });
+        if(objs[0]&&objs[0].goals)
+        res.send(objs[0].goals);
+      // });
     });
   },
   getCreatedGoalsOfUser:function(req,res){
