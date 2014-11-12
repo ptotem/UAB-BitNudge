@@ -1142,21 +1142,22 @@ $(function () {
 
         console.log("data");
         console.log(data);
+        dataStuff=data;
 
-        $.ajax({
-            // /org/:orgId/users/:userId/goals
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+assign_to+"/goals",
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-            success: function(res) {
-                var success_text = "Goal assigned to user.";
-                //show_notification(success_text);
-            } ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
+        // $.ajax({
+        //     // /org/:orgId/users/:userId/goals
+        //     url: remote_host+"org/"+urlParams.orgId+"/users/"+assign_to+"/goals",
+        //     type: 'POST',
+        //     dataType: 'json',
+        //     data: data,
+        //     success: function(res) {
+        //         var success_text = "Goal assigned to user.";
+        //         //show_notification(success_text);
+        //     } ,
+        //     error: function(e , msg){
+        //         //processError(e,msg);
+        //     }
+        // });
 
         return false;
     });
