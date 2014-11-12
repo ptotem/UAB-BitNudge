@@ -232,6 +232,34 @@
 
 <!-- /section:basics/sidebar -->
 <div class="main-content">
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Widgets</li>
+    </ul><!-- /.breadcrumb -->
+
+    <!-- #section:basics/content.searchbox -->
+    <div class="nav-search" id="nav-search">
+        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="ace-icon fa fa-search nav-search-icon"></i>
+							</span>
+        </form>
+    </div><!-- /.nav-search -->
+
+    <!-- /section:basics/content.searchbox -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
     <!-- #section:settings.box -->
     <div class="ace-settings-container" id="ace-settings-container">
@@ -324,17 +352,28 @@
 
     <!-- /section:settings.box -->
     <div class="page-content-area">
-
+        <div class="page-header">
+            <h1>
+                Widgets
+                <small>
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    Draggabble Widget Boxes &amp; Containers
+                </small>
+            </h1>
+        </div><!-- /.page-header -->
         <!--row 1-->
         <div class="row">
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
+                <!--<row 1 >-->
                 <div class="row">
+
+
                     <div class="col-lg-12 col-md-12 widget-container-col">
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Level Show</h5>
+                                <h5 class="widget-title">Add New goal</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -376,30 +415,15 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <form id="edit_badge_form" class="form-horizontal themed">
-                                        <fieldset>
-                                            <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a href="goal_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Goal test page</a><br>
+                                            <a href="bulk_goal_creation.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Bulk goal Creation</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="goal_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Goal</a>
 
-                                                    <div class="col-md-3">
-                                                        <label>Name</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div id="team_name"></div>
-                                                    </div>
-
-                                            </div>
-                                            <div class="form-actions">
-                                                <a href="teams.html">Go Back to Teams</a>
-                                                <!--<button type="reset" class="btn medium btn-danger">-->
-                                                    <!--Cancel-->
-                                                <!--</button>-->
-                                                <!--<button type="submit" id="update_emp_btn" class="btn medium btn-primary">-->
-                                                    <!--Update-->
-                                                <!--</button>-->
-                                            </div>
-                                        </fieldset>
-                                    </form>
-
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -409,11 +433,12 @@
 
 
                 </div>
-                <!--row 2 end-->
 
+                <!-- /.row 1 end -->
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
         </div>
+            </div>
         <!-- /1 row -->
 
     </div><!-- /.page-content-area -->
@@ -460,18 +485,41 @@
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-function get_team(){
-    var team_id = window.location.search.replace("?","").split("=")[1];
-    console.log("team_id :- " + team_id);
-
+function get_teams(){
     $.ajax({
-        url: remote_host+"org/"+urlParams.orgId+"/teams/"+team_id,
+        url: remote_host+"org/"+urlParams.orgId+"/teams",
         type: 'GET',
         dataType: 'json',
         success: function(res) {
             if(res){
-                console.log(res);
-                $("#team_name").text(res.name);
+                var row_html;
+                res.forEach(function(team){
+                    console.log(team);
+
+                    row_html = '<tr>'+
+                            '<td class="text-center aligned">'+team.name+'</td>'+
+                            '<td class="text-center aligned">'+
+                            '<div class="block" style="width: 50px;">' +
+                            '<a href="team_edit_form.html?teamId='+team._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
+                            '<a href="team_show.html?teamId='+team._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+                            '</div>' +
+                            '</tr>';
+
+                    $("#teams_list").find('tbody').append(row_html);
+
+                });
+                var oTable1 =
+                        $('#teams_list')
+                            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                                .dataTable( {
+                                    "bPaginate": true,
+                                    "bFilter": true,
+                                    "bLengthChange": true,
+                                    "bSort": false,
+                                    "iDisplayLength": 10
+                                } );
+
+
             }
         }
         ,
@@ -481,10 +529,12 @@ function get_team(){
     });
 }
 
-
 $(function () {
-    get_team();
+    get_teams();
 });
+
+
+
 
 jQuery(function($) {
 
@@ -553,6 +603,28 @@ jQuery(function($) {
 
         // widget boxes
         // widget box drag & drop example
+//    $('.widget-container-col').sortable({
+//        connectWith: '.widget-container-col',
+//        items:'> .widget-box',
+//        handle: ace.vars['touch'] ? '.widget-header' : false,
+//        cancel: '.fullscreen',
+//        opacity:0.8,
+//        revert:true,
+//        forceHelperSize:true,
+//        placeholder: 'widget-placeholder',
+//        forcePlaceholderSize:true,
+//        tolerance:'pointer',
+//        start: function(event, ui) {
+//            //when an element is moved, it's parent becomes empty with almost zero height.
+//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
+//            ui.item.parent().css({'min-height':ui.item.height()})
+//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
+//        },
+//        update: function(event, ui) {
+//            ui.item.parent({'min-height':''})
+//            //p.style.removeProperty('background-color');
+//        }
+//    });
 
 });
 </script>
