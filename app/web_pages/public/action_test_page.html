@@ -14,6 +14,7 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="assets/css/chosen.css" />
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css" />
@@ -715,15 +716,15 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="controls">
-                                            <select id="users_select" class="with-search">
+                                            <select id="users_select" class="chosen-select">
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <ul class="action_result_block1" id="result_1_action">
-                                        </ul>
+                                        <div class="action_result_block1" id="result_1_action">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -744,16 +745,20 @@
                                     <div class="col-md-5">
                                         <label class="control-label" for="action_select_2">Actions</label>
                                         <div class="controls">
-                                            <select id="action_select_2" class="with-search">
+                                            <select id="action_select_2">
+                                                <!-- <option value="AK">Alaska</option> -->
+                                                <!-- <option value="HI">Hawaii</option> -->
+                                                <!-- <option value="CA">California</option> -->
+                                                <!-- <option value="NV">Nevada</option> -->
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <ul class="action_result_block2" id="result_2_action">
+                                        <div class="action_result_block2" id="result_2_action">
 
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -774,18 +779,36 @@
                                     <div class="col-md-5">
                                         <label class="control-label" for="action_select_user">User</label>
                                         <div class="controls">
-                                            <select id="action_select_user" class="with-search">
+                                            <select id="action_select_user" class="chosen-select">
+                                                <option>System Analysts</option>
+                                                <option>Administrator</option>
+                                                <option>Manager</option>
+                                                <option>Employee</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="col-md-5">
+                                    <label class="control-label" for="action_select_action">Action</label>
+                                    <div class="controls">
+                                        <select id="action_select_action">
+                                            <!-- <option value="AK">Alaska</option> -->
+                                            <!-- <option value="HI">Hawaii</option> -->
+                                            <!-- <option value="CA">California</option> -->
+                                            <!-- <option value="NV">Nevada</option> -->
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <ul class="action_result_block3" id="result_3_action_user">
-                                        </ul>
-                                        <ul class="action_result_block3" id="result_3_action">
+                                        <div class="action_result_block3" id="result_3_action">
 
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -806,18 +829,18 @@
                                     <div class="col-md-5">
                                         <label class="control-label" for="action_select_4">User</label>
                                         <div class="controls">
-                                            <select id="action_select_4" class="with-search">
-                                                <!--<option>System Analysts</option>-->
-                                                <!--<option>Administrator</option>-->
-                                                <!--<option>Manager</option>-->
-                                                <!--<option>Employee</option>-->
+                                            <select id="action_select_4">
+                                                <option>System Analysts</option>
+                                                <option>Administrator</option>
+                                                <option>Manager</option>
+                                                <option>Employee</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <ul class="action_result_block4" id="result_4_action"></ul>
+                                        <div class="action_result_block4" id="result_4_action"></div>
                                     </div>
                                 </div>
                             </div>
@@ -879,6 +902,7 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/chosen.jquery.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -891,7 +915,6 @@
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
     function get_employees(){
-        console.log("in get_employees fn :- " + remote_host);
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users",
             type: 'GET',
@@ -902,200 +925,56 @@
                     res.forEach(function(user){
                         option_html = "<option value="+user._id+">"+user.name+"</option>";
                         $('#users_select').append(option_html);
-                        $('#action_select_4').append(option_html);
-                        $('#action_select_user').append(option_html);
                     });
+
                 }
+                $("#users_select").chosen().trigger('chosen:updated');
             },
             error: function(e , msg){
                 //processError(e,msg);
             }
         });
     }
-
-    function get_username(user_id){
-        $('#result_2_action').empty();
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+user_id,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                        $('#result_2_action').append('<li>'+ res.name +'</li>');
-//
-                }
-            },
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
-    function get_transactions(){
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/transactions",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-                    res.forEach(function(transaction){
-                        option_html = "<option value="+transaction._id+">"+transaction.name+"</option>";
-                        $('#action_select_2').append(option_html);
-                    });
-                }
-            },
-            error: function(e , msg){
-
-            }
-        });
-
-    }
-
-    function get_transactionName(transactionId){
-        $('#result_1_action').empty();
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-                    $('#result_1_action').append('<li>'+ res.name +'</li>');
-                }
-            },
-            error: function(e , msg){
-
-            }
-        });
-
-    }
-
-    function get_downline_transactionName(transactionId){
-        $('#result_3_action').empty();
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-
-                    var option_html;
-                    $('#result_3_action').append('<li>'+ res.name +'</li>');
-                }
-            },
-            error: function(e , msg){
-
-            }
-        });
-
-    }
-
     $(function () {
 
         get_employees();
-        get_transactions();
 
         $("#users_select").change(function(){
             var selected_user = $("#users_select :selected").val();
-            $('#result_1_action').empty();
+            console.log(selected_user);
 
-            $.ajax({
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    if(res){
-                        var option_html;
-                        res.transactions.forEach(function(transactions){
-                            get_transactionName(transactions.transactionMaster);
-                        });
-                    }
-                },
-                error: function(e , msg){
-                    //processError(e,msg);
-                }
-            });
+//                $.ajax({
+//                                  // /org/:orgId/users/:userId/actions
+//                    url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/actions",
+//                    type: 'GET',
+//                    dataType: 'json',
+//                    success: function(res) {
+//                        console.log(res);
+//                        //if(res){
+//                        //}
+//                    },
+//                    error: function(e , msg){
+//                        //processError(e,msg);
+//                    }
+//                });
         });
-
-        $("#action_select_2").change(function(){
-            $('#result_2_action').empty();
-            //get_transactions();
-            var selected_transactions = $("#action_select_2 :selected").val();
-            $.ajax({
-                url: remote_host+"org/"+urlParams.orgId+"/transaction/"+selected_transactions+"/users",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    if(res){
-                        res.forEach(function(users){
-                            get_username(users._id);
-//
-                        });
-                    }
-
-                },
-                error: function(e , msg){
-                    //processError(e,msg);
-                }
-            });
-        });
-
-        $("#action_select_4").change(function(){
-            $('#result_4_action').empty();
-            var selected_user = $("#action_select_4 :selected").val();
-
-            $.ajax({
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    if(res){
-                        var option_html;
-                        res.forEach(function(users){
-                            $('#result_4_action').append('<li> User Name:'+ users.name +'and their Points:'+users.totalPoints+'</li>');
-
-//                            $('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
-                        });
-                    }
-                },
-                error: function(e , msg){
-                    //processError(e,msg);
-                }
-            });
-        });
-
-        $("#action_select_user").change(function(){
-            var user = $("#action_select_user :selected").val();
-            $('#action_select_action').empty();
-            $.ajax({
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+user+"/downlink",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    if(res){
-                        var option_html;
-                        $('#action_select_action').empty();
-                        res.forEach(function(users){
-                            $('#result_3_action_user').append('<li>'+ users.name +'</li>');
-
-                            users.transactions.forEach(function(transactions)
-                            {
-                                get_downline_transactionName(transactions.transactionMaster);
-                            })
-                        });
-                    }
-                },
-                error: function(e , msg){
-                    //processError(e,msg);
-                }
-            });
-        });
-
-
     });
 
     jQuery(function($) {
+        $(window).on('resize.scroll_reset', function() {
+            $('.scrollable-horizontal').ace_scroll('reset');
+        });
+
+        $('.chosen-select').chosen({allow_single_deselect:true});
+        //resize the chosen on window resize
+        $(window)
+                .off('resize.chosen')
+                .on('resize.chosen', function() {
+                    $('.chosen-select').each(function() {
+                        var $this = $(this);
+                        $this.next().css({'width': $this.parent().width()});
+                    })
+                }).trigger('resize.chosen');
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
             var color_class = $(this).find('option:selected').data('class');
@@ -1125,9 +1004,7 @@
             ).css({'padding-top': 12});
         });
 
-        $(window).on('resize.scroll_reset', function() {
-            $('.scrollable-horizontal').ace_scroll('reset');
-        });
+
 
 
         /**
@@ -1162,6 +1039,28 @@
 
         // widget boxes
         // widget box drag & drop example
+//    $('.widget-container-col').sortable({
+//        connectWith: '.widget-container-col',
+//        items:'> .widget-box',
+//        handle: ace.vars['touch'] ? '.widget-header' : false,
+//        cancel: '.fullscreen',
+//        opacity:0.8,
+//        revert:true,
+//        forceHelperSize:true,
+//        placeholder: 'widget-placeholder',
+//        forcePlaceholderSize:true,
+//        tolerance:'pointer',
+//        start: function(event, ui) {
+//            //when an element is moved, it's parent becomes empty with almost zero height.
+//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
+//            ui.item.parent().css({'min-height':ui.item.height()})
+//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
+//        },
+//        update: function(event, ui) {
+//            ui.item.parent({'min-height':''})
+//            //p.style.removeProperty('background-color');
+//        }
+//    });
 
     });
 </script>
