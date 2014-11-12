@@ -92,22 +92,17 @@ var userGoalFn=function(orgId,obj){
                 var subgoalname;
                 var subtransactionname;
                 var aFirst = subgoal.split(',');
-
+                var transactionname=[];
                 var str_array = subgoal.split(',');
-                for (var i = 0; i < aFirst.length; i++) {
-                    subgoalname=aFirst[0];
-                    subtransactionname=aFirst[1];
-//                    console.log(aFirst[i]);
-                }
-
-//                console.log(subgoalname);
-                console.log(subtransactionname);
+//                console.log(str_array);
+//                console.log(subtransactionname);
                 var action={};
                 var sub={};
                 var creator={};
                 var subname={};
 //                action[headers[3]]=data[3];
                 action[headers[4]]=data[4];
+                action["allowedTransactions"]=
                 userGoalObj[headers[0]]=data[0];
                 userGoalObj["action"]=action;
                 UserCollection.findOne({email: data[7]}, function (err, user) {
@@ -115,25 +110,35 @@ var userGoalFn=function(orgId,obj){
 //                    userGoalObj["creator"]=creator;
 //                    console.log(goalObj);
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
-                        GoalCollection.findOne({name: subgoalname}, function (err, subgoal) {
-                            TransactionCollection.findOne({name: subtransactionname}, function (err, transaction) {
-                                console.log(transaction);
+//                        GoalCollection.findOne({name: subgoalname}, function (err, subgoal) {
+                for (var i = 0; i < aFirst.length; i++) {
+//                    console.log(aFirst[i]);
+                    subgoalname = aFirst[0];
+                    subgoalObjArray[i]=aFirst[0];
+                    transactionname = aFirst[i];
+//                    subtransactionname=aFirst[1];
+//                    console.log(aFirst[i]);
+                }
+
+                            TransactionCollection.findOne({name: aFirst[i]}, function (err, transaction) {
+//                                console.log(transaction);
                                 subgoalObj["targetValue"] = data[4];
-                                subgoalObj["subgoal"] = subgoal._id;
+//                                subgoalObj["subgoal"] = subgoal._id;
                                 subgoalObj["allowedTransactions"] = transaction._id;
                                 subgoalObjArray.push(subgoalObj);
-                                goalObj["subgoals"] = subgoalObjArray;
+                                goalObj["action"] = subgoalObjArray;
 //                            subgoalgoalObj["targetValue"]=data[4];
 //                                console.log(subgoalObjArray);
-//                            console.log(subgoalObj);
+                            console.log(goalObj);
                                 UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
                                     if (err)console.log("error" + err)
                                     else console.log("success");
                                 });
                             });
+//                }
                         });
                     });
-                });
+//                });
             }
             else{
 
