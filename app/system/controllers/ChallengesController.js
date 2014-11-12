@@ -5,6 +5,7 @@ var ChallengesModel=require('../models/Challenges');
 var ChallengesCollection=require('../models/Challenges/ChallengesCollection.js');
 var TransactionCollection=require('../models/TransactionMaster/TransactionMasterCollection.js');
 var GoalMasterModel=require('../models/GoalMaster');
+var mongoose=require('mongoose');
 var ChallengesController={
   canUserAcceptChallenge:function(user,challengeObj){
     if(challengeObj.scope=="organization"&&challengeObj.entity.toString()==user.orgId.toString())
@@ -21,7 +22,8 @@ var ChallengesController={
   },
   assignChallengeToUser:function(req,res){
     //if the criteria is Action, then it must be stored in the goal so that user can reuse it later.
-    ChallengesModel.getChallenge(req.body.challenge,"","","",function(err,challengeObj){
+    ChallengesModel.getChallengeOfOrganization(req.params.orgId,req.body.challenge,"","","",function(err,challengeObj1){
+      var challengeObj=challengeObj1.toObject();
       if(err) return res.send(err);
       if(!challengeObj) return res.send("failed");
       if(!ChallengesController.canUserAcceptChallenge)
@@ -46,7 +48,7 @@ var ChallengesController={
         });
       }
       else{
-        UserChallengesModel.assignChallengeToUser(req.params.userId,req.body,function(err,obj){
+        UserChallengesModel.assignChallengeToUser(req.params.userId,challengeObj,function(err,obj){
           if(err)res.send(err);
           else res.send("success");
         });
@@ -69,17 +71,18 @@ var ChallengesController={
   getChallengeBoardOfUser:function(req,res){
     var currDate=new Date();
     var dateQuery={$gte:currDate};
-    UserModel.getUser(req.params.userId,"","","",function(err,user){
+    UsersModel.getUser(req.params.userId,"","","",function(err,user){
       if(err||!user) callback(err,user);
       else{
         var entitiesQuery=user.teams.slice();
         entitiesQuery.push(user.orgId);
         entitiesQuery.push(user._id);
-        ChallengesCollection.aggregate({$match:{orgId:req.params.orgId}},{$unwind:"$challenges"},{$match:{"challenges.endDate":dateQuery,"challenges.entity":{$in:entitiesQuery}}},{$group:{_id:"$_id",allChallenges:{$push:"$challenges"}}},function(err,result){
+        ChallengesCollection.aggregate({$match:{orgId:mongoose.Types.ObjectId(req.params.orgId)}},{$unwind:"$challenges"},{$match:{"challenges.endDate":dateQuery,"challenges.entity":{$in:entitiesQuery}}},{$group:{_id:"$_id",challenges:{$push:"$challenges"}}},function(err,result){
           if(err) res.send(err);
           else 
-            if(!result[0]&&!result[0].challenges)
+            if(result[0]&&result[0].challenges)
               res.send(result[0].challenges);
+            else res.send(result);
         });
       }
     });

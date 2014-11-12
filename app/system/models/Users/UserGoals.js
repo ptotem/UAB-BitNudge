@@ -17,7 +17,7 @@ var UserGoals={
     UsersCollection.findOne({userId:userId,'goals._id':goalId},{'goals.$':1},options).populate(populationData).exec(callback);
   },
   getLiveGoalsOfUser:function(userId,currDate,callback){
-    UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate}},'goals.goalType':"goal"}, {$group:{_id:'$_id',goals:{$push:'$goals'}}},callback);
+    UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}},{$unwind:'$goals'},{$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate},'goals.goalType':"goal"}},{$group:{_id:'$_id',goals:{$push:'$goals'}}},callback);
   },
   getLiveChallengesOfUser:function(userId,currDate,callback){
     UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate}},'goals.goalType':"challenge"}, {$group:{_id:'$_id',challenges:{$push:'$goals'}}},callback);
