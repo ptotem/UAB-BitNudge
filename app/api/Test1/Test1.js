@@ -64,15 +64,6 @@ var userTags={
             res.send(action.transactions);
 
         });
-
-        UserCollection
-            .findOne({_id: req.params.userId })
-            .populate('transactions') .exec(function (err, actions) {
-                if (err) return handleError(err);
-                console.log( actions.transactions);
-                // prints "The creator is Aaron"
-            })
-
     },
 
     'get /org/:orgId/transactions':function(req,res){
@@ -109,48 +100,11 @@ var userTags={
 
         });
     },
-
-
     'get /org/:orgId/transaction/:transactionId/users':function(req,res){
 //        { $match: {tracks: {$elemMatch: {'language': 'en'}} } },
         UserCollection.find({ transactions :{ $elemMatch: { transactionMaster: req.params.transactionId } } },function(err, data) {
             res.send(data);
         });
-    },
-
-
-
-    'get /org/:orgId/users/:userId/uplinkuser':function(req,res){
-        var users=[];
-        var recur=function(userId){
-            UserModel.getUser(userId,"","","",function(err,user){
-                if(err) res.send(err);
-                users.push(user);
-                if(user&&user.reportsTo){
-                    recur(user.reportsTo);
-                }
-                else res.send(users);
-            });
-        };
-        recur(req.params.userId);
-    },
-    'get /org/:orgId/users/:userId/downlinkuser':function(req,res){
-        var users=[];
-        UserModel.getUser(req.params.userId,"","","",function(err,user1){
-            users.push(user1);
-        });
-        var recur=function(userId){
-            UserCollection.findOne({reportsTo:userId},function(err,user){
-                if(err) res.send(err);
-                if(!user) res.send(users);
-                users.push(user);
-                if(user&&user.reportsTo){
-                    recur(user._id);
-                }
-                else res.send(users);
-            });
-        };
-        recur(req.params.userId);
     }
 
 };

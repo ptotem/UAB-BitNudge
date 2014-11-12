@@ -943,10 +943,8 @@ function get_transactions(userId){
         dataType: 'json',
         success: function(res) {
             if(res){
-//                    console.log(res);
                 var row_html, keyParamsValue, transactions, Tags = [], teams = [] , tagId;
                 res.transactions.forEach(function(data){
-//                        //console.log(user);
 //
                     if (data.keyParamValue)
                         keyParamsValue = data.keyParamValue;
@@ -956,8 +954,6 @@ function get_transactions(userId){
                     if (data.transactionMaster)
                     {
                         transactions=  get_transactionName(data.transactionMaster);
-//                        console.log(data.transactionMaster);
-//                            transactions = res;
                     }
 
                     else
@@ -965,7 +961,6 @@ function get_transactions(userId){
                     if (data.tag) {
                         Tags = [];
                         $.each(data.tags, function(index, value) {
-//                                 tagId=value.tag;
                             Tags.push(value.tag)
                             Tags.push(value.tagName)
                         });
@@ -973,19 +968,6 @@ function get_transactions(userId){
                     else{
                         Tags = "";
                     }
-//                     })
-
-//
-//                        if (user.t) {
-//                            teams = [];
-//                            $.each(user.teams, function(index, value) {
-//                                teams.push(value.name)
-//                            });
-//                        }
-//                        else{
-//                            teams = "";
-//                        }
-
 //
                     row_html = '<tr>'+
                             '<td class="text-center aligned">'+keyParamsValue+'</td>'+

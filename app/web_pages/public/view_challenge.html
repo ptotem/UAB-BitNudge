@@ -682,10 +682,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Name</label>
+                                                <label>Target Value</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <div class="emp-details" id="emp_name"></div>
+                                                <div class="emp-details" id="target_value"></div>
                                             </div>
                                         </div>
 
@@ -694,10 +694,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>E-mail</label>
+                                                <label>Created At:</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <div class="emp-details" id="emp_email"></div>
+                                                <div class="emp-details" id="created_at"></div>
                                             </div>
                                         </div>
 
@@ -706,10 +706,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Designation</label>
+                                                <label>End Date :</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <div class="emp-details" id="emp_designation"></div>
+                                                <div class="emp-details" id="end_date"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -717,10 +717,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Address</label>
+                                                <label>Start Date</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <div class="emp-details" id="emp_addr"></div>
+                                                <div class="emp-details" id="start_date"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -728,10 +728,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Roles</label>
+                                                <label>Point Function</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <div class="emp-details" id="emp_role"></div>
+                                                <div class="emp-details" id="point_function"></div>
                                             </div>
                                         </div>
 
@@ -739,10 +739,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Reporting Officer</label>
+                                                <label>Scope</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <div class="emp-details" id="emp_reporting_officer"></div>
+                                                <div class="emp-details" id="scope"></div>
                                             </div>
                                         </div>
 
@@ -750,50 +750,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Tags</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_tags"></div>
-                                            </div>
+                                                <button type="button" id="btnSubmit">Approve</button>                                            </div>
                                         </div>
 
                                     </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Group/Department</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_dept"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <a id="view_challenges_link" href="#">View My Challenges</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <button type="button" id="btnSubmit">Submit</button>                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <a id="view_goal_link" href="#">View My Goals</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
                                 </fieldset>
 
 
@@ -855,58 +815,28 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-
-    function get_employee(){
-        var emp_id = window.location.search.replace("?","").split("=")[1];
-
-        $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
-        $("#view_challenges_link").attr("href","view_challenge.html?userId="+emp_id);
+    var emp_id = window.location.search.replace("?","").split("=")[2];
+    var challenge_id = window.location.search.replace("?","").split("=")[1];
+    function get_challenges(){
 
         $.ajax({
-            ///org/:orgId/users/:userId
             url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+"/challengeboard",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
-                console.log("res");
-                console.log(res);
-//                if(res){
-//                    //console.log(res);
-//                    var reportsTo, orgTags = [], teams = [];
-//                    if (res.reportsTo)
-//                        reportsTo = res.reportsTo.name;
-//                    else
-//                        reportsTo = "";
-//
-//                    if (res.orgtags) {
-//                        orgTags = [];
-//                        $.each(res.orgtags, function(index, value) {
-//                            orgTags.push(value.name)
-//                        });
-//                    }
-//                    else{
-//                        orgTags = "";
-//                    }
-//
-//                    if (res.teams) {
-//                        teams = [];
-//                        $.each(res.teams, function(index, value) {
-//                            teams.push(value.name)
-//                        });
-//                    }
-//                    else{
-//                        teams = "";
-//                    }
-//
-//                    $("#emp_name").text(res.name);
-//                    $("#emp_email").text(res.email);
-//                    $("#emp_role").text(res.role.name);
-//                    $("#emp_reporting_officer").text(reportsTo);
-//                    $("#emp_tags").text(orgTags);
-//                    $("#emp_dept").text(teams);
-//                    $("#emp_designation").text(res.designation);
-//                    $("#emp_addr").text(res.address);
-//                }
+                res.forEach(function(challenge) {
+                    if(challenge_id==challenge_id)
+                    {
+                        $("#target_value").text(challenge.action.targetValue);
+                        $("#created_at").text(challenge.createdAt);
+                        $("#end_date").text(challenge.endDate);
+                        $("#start_date").text(challenge.startDate);
+                        $("#point_function").text(challenge.pointsFn);
+                        $("#scope").text(challenge.scope);
+
+                    }
+                });
+
             }
             ,
             error: function(e , msg){
@@ -917,12 +847,24 @@
 
 
     $(function () {
-        var row_html;
-        get_employee();
+        get_challenges();
     });
     $("#btnSubmit").click(function(e) {
-//        get_employee();
         e.preventDefault();
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+'/challenges',
+            type: 'POST',
+            dataType: 'json',
+//            data: data,
+            success: function(res) {
+                var success_text = "Challenges Approved.";
+                console.log(success_text);
+            } ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+
     });
 
 

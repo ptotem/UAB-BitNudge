@@ -635,7 +635,7 @@
                     <!-- #section:custom/widget-box -->
                     <div class="widget-box">
                         <div class="widget-header">
-                            <h5 class="widget-title">Department Show</h5>
+                            <h5 class="widget-title">Department f</h5>
 
                             <!-- #section:custom/widget-box.toolbar -->
                             <div class="widget-toolbar">
@@ -824,16 +824,12 @@
     function get_employee(){
         var emp_id = window.location.search.replace("?","").split("=")[1];
         var user_id = window.location.search.replace("?","").split("=")[2];
-        console.log(emp_id);
-        console.log(user_id);
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/transactions/"+emp_id,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
-//                console.log(res);
                 if(res){
-                    //console.log(res);
                     var reportsTo, orgTags = [], teams = [],format,name,pointFn,type,no_of_params;
                     if (res.name)
                         name = res.name;
@@ -886,8 +882,6 @@
         $("#btn_approve").click(function(){
             var emp_id = window.location.search.replace("?","").split("=")[1];
             var user_id = window.location.search.replace("?","").split("=")[2];
-            console.log(emp_id);
-            console.log(user_id);
             $.ajax({
 //                url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
                 url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
@@ -903,10 +897,6 @@
                     console.log(err);
                 }
             });
-
-
-//            console.log('hello');
-//            get_user();
 
         });
     });

@@ -72,9 +72,6 @@ var userGoalFn=function(orgId,obj){
     var headers=allData[0];
     if(!headers[4])return;
     var goal=[];
-//    var goal_data={};
-//    console.log(allData.length);
-
     allData.forEach(function(data,index){
         var criteria=data[1];
         var email=data[7];
@@ -92,13 +89,8 @@ var userGoalFn=function(orgId,obj){
                 var subgoalname;
                 var subtransactionname;
                 var aFirst = subgoal.split(',');
-//                console.log(aFirst);
-
                 var str_array = subgoal.split(',');
-      var transaction_id;
-
-//                console.log(subgoalname);
-//                console.log(subtransactionname);
+                 var transaction_id;
                 var action={};
                 var sub={};
                 var creator={};
@@ -108,11 +100,7 @@ var userGoalFn=function(orgId,obj){
                 userGoalObj[headers[0]]=data[0];
                 userGoalObj["action"]=action;
                 UserCollection.findOne({email: data[7]}, function (err, user) {
-//                    creator["type"]=user._id;
-//                    userGoalObj["creator"]=creator;
-//                    console.log(goalObj);
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
-//                        GoalCollection.findOne({name: subgoalname}, function (err, subgoal) {
                         for (var i = 0; i < aFirst.length; i++) {
                             subgoalname=aFirst[i];
                             TransactionCollection.findOne({name: aFirst[i]}, function (err, transaction) {
@@ -120,7 +108,6 @@ var userGoalFn=function(orgId,obj){
                                 subgoalObjArray.push(transaction_id);
                                 subgoalObj["allowedTransactions"] =subgoalObjArray;
                         goalObj["action"] = subgoalObj;
-//                        console.log(goalObj);
                                 UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
                                     if (err)console.log("error" + err)
                                     else console.log("success");
@@ -146,13 +133,8 @@ var userGoalFn=function(orgId,obj){
                 var subgoalname;
                 var subtransactionname;
                 var aFirst = subgoal.split(',');
-//                console.log(aFirst);
-
                 var str_array = subgoal.split(',');
                 var transaction_id;
-
-//                console.log(subgoalname);
-//                console.log(subtransactionname);
                 var action={};
                 var sub={};
                 var creator={};
@@ -162,25 +144,16 @@ var userGoalFn=function(orgId,obj){
                 userGoalObj[headers[0]]=data[0];
                 userGoalObj["action"]=action;
                 UserCollection.findOne({email: data[7]}, function (err, user) {
-//                    creator["type"]=user._id;
-//                    userGoalObj["creator"]=creator;
-//                    console.log(goalObj);
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
 
                         for (var i = 0; i < aFirst.length; i++) {
                             GoalCollection.findOne({name: aFirst[i]}, function (err, subgoal) {
-//                            subgoalname=aFirst[i];
                                 subgoalObj["targetValue"] = data[4];
                                 subgoalObj["subgoal"] = subgoal._id;
-//                                subgoalObj["allowedTransactions"] = transaction._id;
                                 subgoalObjArray.push(subgoalObj);
                                 goalObj["subgoals"] = subgoalObjArray;
-//                            TransactionCollection.findOne({name: aFirst[i]}, function (err, transaction) {
-//                                transaction_id=transaction._id;
-//                                subgoalObjArray.push(transaction_id);
                                 subgoalObj["subgoal"] =subgoal._id;
                                 goalObj["subgoals"] = subgoalObj;
-                                console.log(goalObj);
                                 UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
                                     if (err)console.log("error" + err)
                                     else console.log("success");
@@ -212,12 +185,6 @@ var roleSchema=new Schema({
     // createdAt:Date
 });
 var RoleAbilitiesCollection=mongoose.model('roleAbilities',roleSchema);
-
-
-
-
-
-
 
 
 var userAuthentication={
@@ -295,7 +262,6 @@ var userAuthorization={
                 // });
             });
             UserCollection.find({role:{$in:roles}},function(err1,user){
-                // console.log(roles);
                 if(err1) res.send(err1);
 
                 else res.send(user);
@@ -380,8 +346,6 @@ var usersGoals={
         var xlsx = require('node-xlsx');
         //var obj = xlsx.parse(req.files.users.path); // parses a file
         var obj = xlsx.parse(req.files.users_goals.path); // parses a file
-        //console.log("----------------------------------- obj -----------------------------------");
-        //console.log(obj);
         userGoalFn(req.params.orgId,obj);
         res.send(obj);
     }
