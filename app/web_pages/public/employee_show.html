@@ -854,7 +854,7 @@
                 console.log(res);
                 if(res){
                     //console.log(res);
-                    var reportsTo, orgTags = [], teams = [], role;
+                    var reportsTo, orgTags = [], teams = [];
                     if (res.reportsTo)
                         reportsTo = res.reportsTo.name;
                     else
@@ -880,16 +880,9 @@
                         teams = "";
                     }
 
-                    if (res.roles) {
-                        role = res.roles[0].name;
-                    }
-                    else{
-                        role = "";
-                    }
-
                     $("#emp_name").text(res.name);
                     $("#emp_email").text(res.email);
-                    $("#emp_role").text();
+                    $("#emp_role").text(res.role.name);
                     $("#emp_reporting_officer").text(reportsTo);
                     $("#emp_tags").text(orgTags);
                     $("#emp_dept").text(teams);

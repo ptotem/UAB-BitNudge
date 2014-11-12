@@ -229,7 +229,7 @@ var userAuthorization={
         RoleAbilitiesCollection.find({abilities:req.params.abilityId},function(err,roleAbilites){
             roleAbilites.forEach(function(raObj){
                 roles.push(raObj.role);
-                // UserCollection.find({roles:{$in:roleAbilites},function(err1,user){
+                // UserCollection.find({roles:{$in:`roleAbilites},function(err1,user){
                 //     if(err1) res.send(err1);
                 //     else res.send(user);
                 // });
