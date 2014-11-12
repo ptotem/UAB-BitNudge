@@ -772,7 +772,8 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <a id="view_goal_link" href="#">View My Goals</a>
+                                                <a id="view_goal_link" href="#">View My Goals</a> |
+                                                <a id="edit_user_link" href="#">Edit Details</a>
                                             </div>
                                         </div>
 
@@ -843,6 +844,7 @@
         var emp_id = window.location.search.replace("?","").split("=")[1];
 
         $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
+        $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
 
         $.ajax({
             ///org/:orgId/users/:userId
@@ -899,7 +901,6 @@
 
 
     $(function () {
-        var row_html;
         get_employee();
     });
 
