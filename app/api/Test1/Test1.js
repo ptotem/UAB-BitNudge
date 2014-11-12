@@ -145,8 +145,7 @@ var userTags={
     },
     'get /org/:orgId/transaction/:transactionId/users':function(req,res){
 //        { $match: {tracks: {$elemMatch: {'language': 'en'}} } },
-        UserCollection.findOne({},{ transactions :{ $elemMatch: { transactionMaster: req.params.transactionId } } },function(err, data) {
-            console.log(data);
+        UserCollection.find({ transactions :{ $elemMatch: { transactionMaster: req.params.transactionId } } },function(err, data) {
             res.send(data);
         });
     },

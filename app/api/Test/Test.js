@@ -1,7 +1,9 @@
 var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
+var TransactionCollection=require('../../system/models/TransactionMaster/TransactionMasterCollection.js');
 var RolesModel=require('../../system/models/Roles');
 var GoalMasterModel=require('../../system/models/GoalMaster');
+var GoalCollection=require('../../system/models/GoalMaster/GoalMasterCollection.js');
 var UserGoalsModel=require('../../system/models/Users').Goals;
 var userFn=function(orgId,obj){
     var allData=obj[0].data;
@@ -80,6 +82,7 @@ var userGoalFn=function(orgId,obj){
             var userGoalObj = {};
             if(criteria=="Action"){
                 var goalObj={};
+                var subgoalObjArray=[];
                 var subgoalObj={};
                 var subgoalObj1={};
                 goalObj[headers[1]]=data[1];
@@ -98,12 +101,12 @@ var userGoalFn=function(orgId,obj){
                 }
 
 //                console.log(subgoalname);
-//                console.log(subtransactionname);
+                console.log(subtransactionname);
                 var action={};
                 var sub={};
                 var creator={};
                 var subname={};
-                action[headers[3]]=data[3];
+//                action[headers[3]]=data[3];
                 action[headers[4]]=data[4];
                 userGoalObj[headers[0]]=data[0];
                 userGoalObj["action"]=action;
@@ -113,18 +116,21 @@ var userGoalFn=function(orgId,obj){
 //                    console.log(goalObj);
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
                         GoalCollection.findOne({name: subgoalname}, function (err, subgoal) {
-//                            console.log(subgoal._id);
-//                            action["type"]=subgoal._id;
-
-                            subgoalObj["subgoal"]=action;
-                            subgoalObj["targetValue"]=data[4];
-                            subgoalObj1["subgoals"]=subgoalObj;
+                            TransactionCollection.findOne({name: subtransactionname}, function (err, transaction) {
+                                console.log(transaction);
+                                subgoalObj["targetValue"] = data[4];
+                                subgoalObj["subgoal"] = subgoal._id;
+                                subgoalObj["allowedTransactions"] = transaction._id;
+                                subgoalObjArray.push(subgoalObj);
+                                goalObj["subgoals"] = subgoalObjArray;
 //                            subgoalgoalObj["targetValue"]=data[4];
-                            console.log(subgoalObj1);
-//                        UserGoalsModel.createGoal(user._id,subgoalObj1,function(err,obj){
-//                            if(err)console.log("error"+err)
-//                            else console.log("success");
-//                        });
+//                                console.log(subgoalObjArray);
+//                            console.log(subgoalObj);
+                                UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
+                                    if (err)console.log("error" + err)
+                                    else console.log("success");
+                                });
+                            });
                         });
                     });
                 });
