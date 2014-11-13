@@ -1,5 +1,5 @@
-remote_host = "http://192.168.2.13:3004/";
-local_host = "http://192.168.2.13/public/";
+remote_host = "http://localhost:3004/";
+local_host = "http://localhost:3004/public/";
 admin_pages_host = "http://localhost:3004/public/admin_pages/";
 
 // for server
