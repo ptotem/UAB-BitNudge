@@ -750,7 +750,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <button type="button" id="btnSubmit">Approve</button>                                            </div>
+                                                <button type="button" id="btnSubmit">Accept</button>                                            </div>
                                         </div>
 
                                     </div>
@@ -817,6 +817,14 @@
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
     var emp_id = window.location.search.replace("?","").split("=")[2];
     var challenge_id = window.location.search.replace("?","").split("=")[1];
+    var aFirst = challenge_id.split('?');
+    var challenge_id1;
+    var challenge_id2;
+    for (var i = 0; i < aFirst.length; i++) {
+        challenge_id1 = aFirst[0]
+        challenge_id2 = aFirst[1]
+
+    }
     function get_challenges(){
 
         $.ajax({
@@ -846,6 +854,7 @@
     }
 
 
+
     $(function () {
         get_challenges();
     });
@@ -855,7 +864,7 @@
             url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+'/challenges',
             type: 'POST',
             dataType: 'json',
-//            data: data,
+            data: {challenge:challenge_id1},
             success: function(res) {
                 var success_text = "Challenges Approved.";
                 console.log(success_text);
@@ -864,6 +873,7 @@
                 //processError(e,msg);
             }
         });
+
 
     });
 
