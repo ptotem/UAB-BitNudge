@@ -809,6 +809,7 @@
 
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
     var emp_id = window.location.search.replace("?","").split("=")[1];
+    console.log(emp_id);
     var row_html;
     function user_goal(goalId){
         $('#result_1_action').empty();
@@ -817,6 +818,7 @@
             type: 'GET',
             dataType: 'json',
             success: function(res) {
+                console.log(res)
 
                 row_html = '<tr>'+
                         '<td class="text-center aligned">'+res.name+'</td>'+
@@ -846,7 +848,7 @@
             success: function(res) {
                 if(res){
                     res.goals.forEach(function(goal){
-                        goal.subgoal.forEach(function(subgoal){
+                        goal.subgoals.forEach(function(subgoal){
                             user_goal(subgoal.subgoal);
                         })
                     })

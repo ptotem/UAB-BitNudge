@@ -43,12 +43,6 @@ var userTags={
             res.send(data.name);
         });
     },
-    'get /org/:orgId/transactions':function(req,res){
-        TransactionCollection.find({}, function(err, data) {
-            console.log(data);
-            res.send(data);
-        });
-    },
     'get /org/:orgId/transactions/:transactionId':function(req,res){
         TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
             res.send(data);

@@ -1070,8 +1070,11 @@
         });
 
     }
-    function get_downline_transactionName(transactionId,user){
+    function get_downline_transactionName(transactionId,username){
         $('#result_3_action').empty();
+//      console.log(username.length)
+        $('#result_3_action').append('<li>'+ username[0] +'</li>');
+        console.log(username)
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
             type: 'GET',
@@ -1080,7 +1083,7 @@
                 if(res){
 
                     var option_html;
-                    $('#result_3_action').append('<li>'+ user[0].name +'</li>');
+//                    $('#result_3_action').append('<li>'+ user[0].name +'</li>');
 
                     $('#result_3_action').append('<li>'+ res.name +'</li>');
                 }
@@ -1193,13 +1196,21 @@
                 success: function(res) {
                     if(res){
                         var option_html;
+                        var userdata=[]
                         $('#action_select_action').empty();
                         res.forEach(function(users){
-                            $('#result_3_action_user').append('<li>'+ users.name +'</li>');
+//                            $('#result_3_action_user').append('<li>'+ users.name +'</li>');
+//                            console.log(users);
+//                            for (var i=0;i<=users.length;i++){
+                                userdata.push(users.name);
+//                                console.log(userdata)
+
+//                            }
+
 
                             users.transactions.forEach(function(transactions)
                             {
-                                get_downline_transactionName(transactions.transactionMaster,users);
+                                get_downline_transactionName(transactions.transactionMaster,userdata);
                             })
                         });
                     }
