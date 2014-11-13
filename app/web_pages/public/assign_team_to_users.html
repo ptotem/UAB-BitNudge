@@ -81,7 +81,6 @@
 </div>
 
 <!-- #section:basics/navbar.dropdown -->
-
     <div class="navbar-buttons navbar-header pull-right" role="navigation">
         <ul class="nav ace-nav">
             <!-- #section:basics/navbar.user_menu -->
@@ -125,6 +124,7 @@
             <!-- /section:basics/navbar.user_menu -->
         </ul>
     </div>
+
 <!-- /section:basics/navbar.dropdown -->
 </div><!-- /.navbar-container -->
 </div>
@@ -277,7 +277,7 @@
 <!-- #section:basics/content.breadcrumbs -->
 <div class="breadcrumbs" id="breadcrumbs">
     <script type="text/javascript">
-        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        try{ace.settings.check('breadcrumbs' , 'disable')}catch(e){}
     </script>
 
     <ul class="breadcrumb">
@@ -394,180 +394,123 @@
 
 <!-- /section:settings.box -->
 <div class="page-content-area">
-<div class="page-header">
-    <h1>
-        Widgets
-        <small>
-            <i class="ace-icon fa fa-angle-double-right"></i>
-            Draggabble Widget Boxes &amp; Containers
-        </small>
-    </h1>
-</div><!-- /.page-header -->
-<!--row 1-->
-<div class="row">
-<div class="col-xs-12">
-<!-- PAGE CONTENT BEGINS -->
-<!--<row 1 >-->
-<div class="row">
-<div class="col-xs-12 col-sm-12 widget-container-col">
-<!-- #section:custom/widget-box -->
-<div class="widget-box">
-<div class="widget-header">
-    <h5 class="widget-title">Goal test page</h5>
+    <div class="page-header">
+        <h1>
+            Widgets
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                Draggabble Widget Boxes &amp; Containers
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+    <!--row 1-->
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <!--<row 1 >-->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 widget-container-col">
+                    <!-- #section:custom/widget-box -->
+                    <div class="widget-box">
+                        <div class="widget-header">
+                            <h5 class="widget-title">Assign Team To User</h5>
 
-    <!-- #section:custom/widget-box.toolbar -->
-    <div class="widget-toolbar">
-        <div class="widget-menu">
-            <a href="#" data-action="settings" data-toggle="dropdown">
-                <i class="ace-icon fa fa-bars"></i>
-            </a>
+                            <!-- #section:custom/widget-box.toolbar -->
+                            <div class="widget-toolbar">
+                                <div class="widget-menu">
+                                    <a href="#" data-action="settings" data-toggle="dropdown">
+                                        <i class="ace-icon fa fa-bars"></i>
+                                    </a>
 
-            <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                <li>
-                    <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                </li>
+                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                        <li>
+                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                        </li>
 
-                <li>
-                    <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                </li>
-            </ul>
-        </div>
-
-        <a href="#" data-action="fullscreen" class="orange2">
-            <i class="ace-icon fa fa-expand"></i>
-        </a>
-
-        <a href="#" data-action="reload">
-            <i class="ace-icon fa fa-refresh"></i>
-        </a>
-
-        <a href="#" data-action="collapse">
-            <i class="ace-icon fa fa-chevron-up"></i>
-        </a>
-
-        <a href="#" data-action="close">
-            <i class="ace-icon fa fa-times"></i>
-        </a>
-    </div>
-
-    <!-- /section:custom/widget-box.toolbar -->
-</div>
-
-<div class="widget-body">
-    <div class="widget-main">
-        <div class="tabbable">
-            <ul class="nav nav-tabs" id="myTab">
-                <li class="active">
-                    <a data-toggle="tab" href="#tab1">
-                        Goal done <br> by selected user
-                    </a>
-                </li>
-
-                <li>
-                    <a data-toggle="tab" href="#tab2">
-                        Goal done by <br> selected user's downline
-                    </a>
-                </li>
-            </ul>
-
-            <div class="tab-content">
-                <div id="tab1" class="tab-pane fade in active">
-                    <form id="test_1" class="form-horizontal themed">
-                        <fieldset>
-                            <div class="form-group">
-
-                                    <div class="col-md-3">
-                                        <label class="control-label" for="users_select">User</label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="controls">
-                                            <select id="users_select" class="with-search">
-                                            </select>
-                                        </div>
-
+                                        <li>
+                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="action_result_block1" id="result_1_action">
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <a href="#" data-action="fullscreen" class="orange2">
+                                    <i class="ace-icon fa fa-expand"></i>
+                                </a>
+
+                                <a href="#" data-action="reload">
+                                    <i class="ace-icon fa fa-refresh"></i>
+                                </a>
+
+                                <a href="#" data-action="collapse">
+                                    <i class="ace-icon fa fa-chevron-up"></i>
+                                </a>
+
+                                <a href="#" data-action="close">
+                                    <i class="ace-icon fa fa-times"></i>
+                                </a>
                             </div>
-                        </fieldset>
-                    </form>
+
+                            <!-- /section:custom/widget-box.toolbar -->
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="widget-main">
+
+                                <form id="user_team_form" class="form-horizontal themed">
+                                    <fieldset>
+                                        <!--</div>-->
+
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+                                                <label class="control-label" for="users_select">User</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="controls">
+                                                    <select id="users_select" class="with-search">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-1">
+                                                <label class="control-label" for="teams_select">User</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="controls">
+                                                    <select id="teams_select" class="with-search">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-actions">
+                                            <button type="reset" class="btn medium btn-danger">
+                                                Cancel
+                                            </button>
+                                            <button id="submit-form-btn" type="submit" class="btn medium btn-primary">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /section:custom/widget-box -->
                 </div>
 
-                <div id="tab2" class="tab-pane fade">
-                    <form id="action-tags-test-form-tab3" class="form-horizontal themed">
-                        <fieldset>
 
-                            <div class="form-group">
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h5>Show action done by downline with single select tag</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label class="control-label" for="action_select_user">User</label>
-                                        <div class="controls">
-                                            <select id="action_select_user" class="with-search">
-                                                <!--<option>System Analysts</option>-->
-                                                <!--<option>Administrator</option>-->
-                                                <!--<option>Manager</option>-->
-                                                <!--<option>Employee</option>-->
-                                            </select>
-                                        </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <label class="control-label" for="action_select_action">Goal</label>
-                                        <div class="controls">
-                                            <select id="action_select_action" class="with-search">
-                                                <!-- <option value="AK">Alaska</option> -->
-                                                <!-- <option value="HI">Hawaii</option> -->
-                                                <!-- <option value="CA">California</option> -->
-                                                <!-- <option value="NV">Nevada</option> -->
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="action_result_block3" id="result_3_action">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
             </div>
-        </div>
+            <!-- /.row 1 end -->
 
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
     </div>
-
-</div>
-</div>
-
-<!-- /section:custom/widget-box -->
-</div>
-
-
-</div>
-
-
-<!-- /.row 1 end -->
-
-<!-- PAGE CONTENT ENDS -->
-</div><!-- /.col -->
-</div>
-<!-- /1 row -->
+    <!-- /1 row -->
 </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
@@ -611,6 +554,7 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
     function get_employees(){
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users",
@@ -622,8 +566,6 @@
                     res.forEach(function(user){
                         option_html = "<option value="+user._id+">"+user.name+"</option>";
                         $('#users_select').append(option_html);
-                        $('#action_select_user').append(option_html);
-
                     });
                 }
             },
@@ -632,107 +574,71 @@
             }
         });
     }
-    function user_goal(goalId){
-        $('#result_1_action').empty();
-        $.ajax({
-//            url: remote_host+"org/"+orgId+"/goals/"+goalId,
 
-            url: remote_host+"org/"+urlParams.orgId+"/goals/"+goalId,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    $('#result_1_action').append('<h4> Goals Of Selected User <b>'+ res +'</b></h4>');
-                }
-            },
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-
-    }
-    function user_downline_goal(goalId){
-        $('#action_select_action').empty();
-//        var urlParams = JSON.parse(localStorage.getItem('user_data'));
-//        var orgId="5417f10a195e61022fff91ee"
+    function get_teams(){
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/goals/"+goalId,
+            url: remote_host+"org/"+urlParams.orgId+"/teams",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
                     var option_html;
-                    option_html = "<option value="+goalId+">"+res+"</option>";
-                    $('#action_select_action').append(option_html);
-
-
+                    res.forEach(function(team){
+                        option_html = "<option value="+team._id+">"+team.name+"</option>";
+                        $('#teams_select').append(option_html);
+                    });
                 }
             },
             error: function(e , msg){
                 //processError(e,msg);
             }
         });
-
     }
+
+
     $(function () {
+
         get_employees();
+        get_teams();
 
-        $("#users_select").change(function(){
-            $('#result_1_action').empty();
-            var selected_user = $("#users_select :selected").val();
+        $("#submit-form-btn").click(function(e) {
+            e.preventDefault();
+
+            var user_id = $("#users_select option:selected").val();
+            var team_id = $("#teams_select option:selected").val();
+
+            console.log("user_id :- " + user_id);
+            console.log("team_id :- " + team_id);
+
+            var data = {
+                members: [user_id]
+            };
+
+            console.log("data");
+            console.log(data);
+
             $.ajax({
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
-                type: 'GET',
+                ///org/:orgId/roles/:roleId/abilities
+                url: remote_host+"org/"+urlParams.orgId+"/teams/"+team_id+"/members",
+                type: 'POST',
                 dataType: 'json',
+                data: data,
                 success: function(res) {
-                    if(res){
-                        res.goals.forEach(function(goal){
-                            goal.subgoals.forEach(function(subgoal){
-                                user_goal(subgoal.subgoal);
-                            })
-                        })
-
-                    }
-                },
+                    var success_text = "Team assigned to user.";
+                    //show_notification(success_text);
+                } ,
                 error: function(e , msg){
                     //processError(e,msg);
                 }
             });
+            return false;
         });
+
     });
-    // Down line Goal call
 
-    $(function () {
-        $("#action_select_user").change(function(){
-            $('#action_select_action').empty();
-//                var orgId="5417f10a195e61022fff91ee";
-            var user = $("#action_select_user :selected").val();
-//                var tr="5421698c67481ed26eab3e3d";
-            $.ajax({
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+user+"/downlink",
-                type: 'GET',
-                dataType: 'json',
-                success: function(res) {
-                    if(res){
-                        var option_html;
-                        res.forEach(function(users){
-                            users.goals.forEach(function(goal) {
-                                goal.subgoals.forEach(function(subgoal) {
-                                    user_downline_goal(subgoal.subgoal);
 
-                                });
-                            });
-                        });
-                    }
-                },
 
-                error: function(e , msg){
-                    //processError(e,msg);
-                }
-            });
 
-        });
-    });
     jQuery(function($) {
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
@@ -768,6 +674,8 @@
         });
 
 
+
+
         /**
          //or use slimScroll plugin
          $('.slim-scrollable').each(function () {
@@ -800,28 +708,6 @@
 
         // widget boxes
         // widget box drag & drop example
-//    $('.widget-container-col').sortable({
-//        connectWith: '.widget-container-col',
-//        items:'> .widget-box',
-//        handle: ace.vars['touch'] ? '.widget-header' : false,
-//        cancel: '.fullscreen',
-//        opacity:0.8,
-//        revert:true,
-//        forceHelperSize:true,
-//        placeholder: 'widget-placeholder',
-//        forcePlaceholderSize:true,
-//        tolerance:'pointer',
-//        start: function(event, ui) {
-//            //when an element is moved, it's parent becomes empty with almost zero height.
-//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
-//            ui.item.parent().css({'min-height':ui.item.height()})
-//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
-//        },
-//        update: function(event, ui) {
-//            ui.item.parent({'min-height':''})
-//            //p.style.removeProperty('background-color');
-//        }
-//    });
 
     });
 </script>
