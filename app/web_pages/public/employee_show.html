@@ -86,10 +86,10 @@
             <!-- #section:basics/navbar.user_menu -->
             <li class="light-blue">
                 <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+                    <!--<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />-->
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									<span id="user_name"></span>
 								</span>
 
                     <i class="ace-icon fa fa-caret-down"></i>
@@ -600,7 +600,6 @@
     function get_employee(){
         var emp_id = window.location.search.replace("?","").split("=")[1];
 
-
         $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
         //$("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
         $("#view_goal_link").attr("href","show_goal.html?userId="+emp_id);
@@ -641,7 +640,7 @@
                     else{
                         teams = "";
                     }
-
+                    $("#user_name").text(res.name);
                     $("#emp_name").text(res.name);
                     $("#emp_email").text(res.email);
                     $("#emp_role").text(res.role.name);
