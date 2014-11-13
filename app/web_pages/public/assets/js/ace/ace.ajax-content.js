@@ -179,7 +179,7 @@ ace.enable_ajax_content = function($, options) {
 			$title.remove();
 		}
 		else if(link_text.length > 0) {
-			var extra = $.trim(String(document.title).replace(/^(.*)[\-]/, ''));//for example like " - Ace Admin"
+			var extra = $.trim(String(document.title).replace(/^(.*)[\-]/, ''));//for example like " - BitNudge"
 			if(extra) extra = ' - ' + extra;
 			link_text = $.trim(link_text) + extra;
 		}
