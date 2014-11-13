@@ -905,7 +905,8 @@
     }
 
     function get_employee(){
-        var emp_id = window.location.search.replace("?","").split("=")[1];
+        var emp_id = window.location.search.replace("?","").split("=")[2];
+        console.log("emp_id  :- " + emp_id);
 
         $.ajax({
             ///org/:orgId/users/:userId
@@ -914,11 +915,12 @@
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    res.goals.forEach(function(goal){
-                        goal.subgoal.forEach(function(subgoal){
-                             user_goal(subgoal.subgoal);
-                        })
-                    })
+                    console.log(res);
+//                    res.goals.forEach(function(goal){
+//                        goal.subgoal.forEach(function(subgoal){
+//                             user_goal(subgoal.subgoal);
+//                        })
+//                    })
                 }
             }
             ,

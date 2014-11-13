@@ -431,14 +431,13 @@
                                 <table class="table table-bordered table-hover responsive" id="challenges_list">
                                     <thead>
                                     <tr>
-                                        <th>Target Value</th>
-                                        <th>Created At</th>
-                                        <th>End Date</th>
-                                        <th>Start Date</th>
-                                        <th>Point Function</th>
-                                        <th>Scope</th>
-                                        <th></th>
-                                     </tr>
+                                        <th class="text-center aligned">Name</th>
+                                        <th class="text-center aligned">Scope</th>
+                                        <th class="text-center aligned">Start Date</th>
+                                        <th class="text-center aligned">End Date</th>
+                                        <th class="text-center aligned">Target Value</th>
+                                        <!--<th class="text-center aligned"></th>-->
+                                    </tr>
                                     </thead>
                                     <tbody>
                                     </tbody>
@@ -510,37 +509,45 @@
         var emp_id = window.location.search.replace("?","").split("=")[1];
          var row_html;
 
-
         $.ajax({
-            ///org/:orgId/users/:userId
             url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+"/challengeboard",
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    res.forEach(function(challenge) {
+                    console.log(res);
+                    //Name, Scope, Start Date, End Date, Target Value, ""
+                    var challenge_name, target_val;
+                    res.forEach(function(challenge){
+                        if (challenge.name!=undefined){
+                            challenge_name = challenge.name;
+                        }
+                        else{
+                            challenge_name = "";
+                        }
 
-                row_html = '<tr>'+
-                        '<td class="text-center aligned">'+challenge.action.targetValue+'</td>'+
-                        '<td class="text-center aligned">'+challenge.createdAt+'</td>'+
-                        '<td class="text-center aligned">'+challenge.endDate+'</td>'+
-                        '<td class="text-center aligned">'+challenge.startDate+'</td>'+
-                        '<td class="text-center aligned">'+challenge.pointsFn+'</td>'+
-                        '<td class="text-center aligned">'+challenge.scope+'</td>'+
-                        '<td class="text-center aligned">'+
-                        '<div class="block" style="width: 50px;">' +
-                        '<a href="view_challenge.html?challengeId='+challenge._id+'?userId='+emp_id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
-
-                        '</div>' +
-                        '</td>'+
-                        '</tr>';
+                        if (challenge.action.targetValue!=undefined){
+                            target_val = challenge.action.targetValue;
+                        }
+                        else{
+                            target_val = "NA";
+                        }
+                        row_html = '<tr>'+
+                                '<td class="text-center aligned">'+challenge_name+'</td>'+
+                                '<td class="text-center aligned">'+challenge.scope+'</td>'+
+                                '<td class="text-center aligned">'+challenge.startDate+'</td>'+
+                                '<td class="text-center aligned">'+challenge.endDate+'</td>'+
+                                '<td class="text-center aligned">'+target_val+'</td>'+
+//                                '<td class="text-center aligned">'+
+//                                    '<div class="block" style="width: 50px;">' +
+//                                        '<a href="view_challenge.html?challengeId='+challenge._id+'?userId='+emp_id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+//                                    '</div>' +
+//                                '</td>'+
+                                '</tr>';
+                        $("#challenges_list").find('tbody').append(row_html);
                     });
                 }
-
-
-                $("#challenges_list").find('tbody').append(row_html);
-                }
-
+            }
             ,
             error: function(e , msg){
                 //processError(e,msg);
