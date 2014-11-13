@@ -497,6 +497,22 @@
                                                     </div>
                                                 </fieldset>
                                             </form>
+
+                                            <table class="table table-bordered table-hover responsive" id="challenges_list">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center aligned">Name</th>
+                                                    <th class="text-center aligned">Scope</th>
+                                                    <th class="text-center aligned">Start Date</th>
+                                                    <th class="text-center aligned">End Date</th>
+                                                    <th class="text-center aligned">Target Value</th>
+                                                    <th class="text-center aligned"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+
                                         </div>
 
                                         <div id="test_2" class="tab-pane">
@@ -521,6 +537,21 @@
                                                     </div>
                                                 </fieldset>
                                             </form>
+
+                                            <table class="table table-bordered table-hover responsive" id="accepted_challenges_list">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center aligned">Name</th>
+                                                    <th class="text-center aligned">Scope</th>
+                                                    <th class="text-center aligned">Start Date</th>
+                                                    <th class="text-center aligned">End Date</th>
+                                                    <th class="text-center aligned">Target Value</th>
+                                                    <th class="text-center aligned"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
                                         </div>
 
                                     </div>
@@ -610,12 +641,34 @@
         });
     }
 
+    function accept_challenge(this_obj){
+        console.log(this_obj.attr("id"));
+        var challenge_id = this_obj.attr("id").split("_")[1];
+        var user_id = this_obj.attr("id").split("_")[3];
+
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+user_id+'/challenges',
+                type: 'POST',
+                dataType: 'json',
+                data: {challenge:challenge_id},
+                success: function(res) {
+                    var success_text = "Challenges Approved.";
+                    console.log(success_text);
+                } ,
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+    }
+
     $(function () {
 
         get_employees();
 
         $("#users_select_1").change(function(){
+            $("#challenges_list").find('tbody').empty();
             var selected_user = $("#users_select_1 :selected").val();
+            var row_html;
 
             $.ajax({
                 url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/challengeboard",
@@ -624,11 +677,36 @@
                 success: function(res) {
                     if(res){
                         console.log(res);
-//                        res.forEach(function(transactionMaster){
-//                            //console.log(transactionMaster);
-//                            $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
-//                        });
-//                        $("#actions_select").chosen().trigger('chosen:updated');
+                        //Name, Scope, Start Date, End Date, Target Value, ""
+                        var challenge_name, target_val;
+                        res.forEach(function(challenge){
+                            if (challenge.name!=undefined){
+                                challenge_name = challenge.name;
+                            }
+                            else{
+                                challenge_name = "";
+                            }
+
+                            if (challenge.action.targetValue!=undefined){
+                                target_val = challenge.action.targetValue;
+                            }
+                            else{
+                                target_val = "NA";
+                            }
+                            row_html = '<tr>'+
+                                    '<td class="text-center aligned">'+challenge_name+'</td>'+
+                                    '<td class="text-center aligned">'+challenge.scope+'</td>'+
+                                    '<td class="text-center aligned">'+challenge.startDate+'</td>'+
+                                    '<td class="text-center aligned">'+challenge.endDate+'</td>'+
+                                    '<td class="text-center aligned">'+target_val+'</td>'+
+                                    '<td class="text-center aligned">'+
+                                        '<div class="block" style="width: 50px;">' +
+                                            '<button onclick="accept_challenge($(this));" class="accept-challenge-btn btn btn-info" id=challenge_'+challenge._id+'_user_'+selected_user+'>'+"Accept"+'</button>'+
+                                        '</div>' +
+                                    '</td>'+
+                                    '</tr>';
+                            $("#challenges_list").find('tbody').append(row_html);
+                        });
                     }
                 }
                 ,
@@ -640,8 +718,11 @@
         });
 
         $("#users_select_2").change(function(){
+            $("#accepted_challenges_list").find('tbody').empty();
             var selected_user = $("#users_select_2 :selected").val();
             console.log("selected_user :- " + selected_user);
+
+            var row_html;
 
             $.ajax({
                 url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+'/challenges',
@@ -650,11 +731,23 @@
                 success: function(res) {
                     if(res){
                         console.log(res);
-//                        res.forEach(function(transactionMaster){
-//                            //console.log(transactionMaster);
-//                            $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
-//                        });
-//                        $("#actions_select").chosen().trigger('chosen:updated');
+                        res.forEach(function(acceptedChallenge){
+                            console.log(accept_challenge);
+//                            row_html = '<tr>'+
+//                                    '<td class="text-center aligned">'+challenge_name+'</td>'+
+//                                    '<td class="text-center aligned">'+challenge.scope+'</td>'+
+//                                    '<td class="text-center aligned">'+challenge.startDate+'</td>'+
+//                                    '<td class="text-center aligned">'+challenge.endDate+'</td>'+
+//                                    '<td class="text-center aligned">'+target_val+'</td>'+
+//                                    '<td class="text-center aligned">'+
+//                                    '<div class="block" style="width: 50px;">' +
+//                                        '<button onclick="accept_challenge($(this));" class="accept-challenge-btn btn btn-info" id=challenge_'+challenge._id+'_user_'+selected_user+'>'+"Accept"+'</button>'+
+//                                    '</div>' +
+//                                    '</td>'+
+//                                    '</tr>';
+//
+//                            $("#accepted_challenges_list").find('tbody').append(row_html);
+                        });
                     }
                 }
                 ,

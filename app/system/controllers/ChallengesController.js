@@ -5,6 +5,7 @@ var ChallengesModel=require('../models/Challenges');
 var ChallengesCollection=require('../models/Challenges/ChallengesCollection.js');
 var TransactionCollection=require('../models/TransactionMaster/TransactionMasterCollection.js');
 var GoalMasterModel=require('../models/GoalMaster');
+var async = require("async");
 var mongoose=require('mongoose');
 var ChallengesController={
   canUserAcceptChallenge:function(user,challengeObj){
