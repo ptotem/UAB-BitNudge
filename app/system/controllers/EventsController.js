@@ -86,25 +86,26 @@ var EventsController={
           var allGoals=goals[0].goals;
           allGoals.forEach(function(goalObj){
             goalObj.action.allowedTransactions.forEach(function(allowedTransaction){
-              if(allowedTransaction==transactionData.transactionMaster){
+              if(allowedTransaction.toString()==transactionData.transactionMaster.toString()){
                 TransactionMasterModel.getTransactionMaster(allowedTransaction,"","","",function(err,transMaster){
-                  if(!action.currentValue)
-                    action.currentValue=0;
+                  if(!goalObj.action.currentValue)
+                    goalObj.action.currentValue=0;
                   if(transMaster.paramCategory=="additive"){
-                    action.currentValue+=transactionData.keyParamValue;
-                    if(action.targetValue<=action.currentValue)
-                      goalObj.done=true;
+                    goalObj.action.currentValue+=transactionData.keyParamValue;
+                    if(goalObj.action.targetValue<=goalObj.action.currentValue)
+                      goalObj.completed=true;
                   }
                   else if(transMaster.paramCategory=="binary"){
-                    action.currentValue=transactionData.keyParamValue;
-                    if(action.targetValue<=action.currentValue)
-                      goalObj.done=true;
+                    goalObj.action.currentValue=transactionData.keyParamValue;
+                    if(goalObj.action.targetValue<=goalObj.action.currentValue)
+                      goalObj.completed=true;
                   }
                   else if(transMaster.paramCategory=="state"){
-                    action.currentValue=transactionData.keyParamValue;
-                    if(action.targetValue<=action.currentValue)
-                      goalObj.done=true;
+                    goalObj.action.currentValue=transactionData.keyParamValue;
+                    if(goalObj.action.targetValue<=goalObj.action.currentValue)
+                      goalObj.completed=true;
                   }
+                  UserGoalsModel.updateGoalOfUser(userId,goalObj._id,goalObj,scopeCallback);
                 });
               }
             });
@@ -127,17 +128,17 @@ var EventsController={
                   if(transMaster.paramCategory=="additive"){
                     subgoal.currentValue+=transactionData.keyParamValue;
                     if(subgoal.targetValue<=subgoal.currentValue)
-                      subgoal.done=true;
+                      subgoal.completed=true;
                   }
-                  else if(transMaster.paramCategory=="binary"){
+                  if(transMaster.paramCategory=="binary"){
                     subgoal.currentValue=transactionData.keyParamValue;
                     if(subgoal.targetValue<=subgoal.currentValue)
-                      subgoal.done=true;
+                      subgoal.completed=true;
                   }
-                  else if(transMaster.paramCategory=="state"){
+                  if(transMaster.paramCategory=="state"){
                     subgoal.currentValue=transactionData.keyParamValue;
                     if(subgoal.targetValue<=subgoal.currentValue)
-                      subgoal.done=true;
+                      subgoal.completed=true;
                   }
                   EventsController.checkGoalStatus(orgId,userId,goalObj);
                   UserGoalsModel.updateGoalOfUser(userId,goalObj._id,goalObj,callback);
@@ -147,7 +148,7 @@ var EventsController={
           });
         });
       }
-      // asyncify(callback);
+      asyncify(callback);
     });
   },
   onGoalFinished:function(orgId,userId,goalObj,callback){

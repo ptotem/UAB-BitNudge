@@ -11,20 +11,14 @@ var challengesController=require('../../system/controllers/ChallengesController.
 var passport=require('passport');
 fs   = require('fs');
 var userRoutes={
-
-
     'post /org/:orgId/users/:userId/upload':[function(req,res,next){AuthorizationController.isAuthorized('Users','update',req,res,next);},function(req,res){
-                    userController.updateUserImage(req,res);
+      userController.updateUserImage(req,res);
     }],
     'get /org/:orgId/users/:userId/user_image':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
-        userController.getUserImage(req,res);
-
-
+      userController.getUserImage(req,res);
     }],
     'get /sendmail':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
-        userController.sendMailToUser(req,res);
-
-
+      userController.sendMailToUser(req,res);
     }],
   // 'get /org/:orgId/users/:userId':[function(req,res,next){AuthorizationController.isAuthorized('Users','read',req,res,next);},function(req,res){
   //   userController.getUser(req,res);
@@ -107,6 +101,9 @@ var subGoalRoutes={
 var challengesRoutes={
   'get /org/:orgId/users/:userId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','list',req,res,next);},function(req,res){
     challengesController.getLiveUserChallenges(req,res);
+  }],
+  'get /org/:orgId/users/:userId/challengeboard':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','list',req,res,next);},function(req,res){
+    challengesController.getChallengeBoardOfUser(req,res);
   }],
   'post /org/:orgId/users/:userId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','assign',req,res,next);},function(req,res){
     challengesController.assignChallengeToUser(req,res);

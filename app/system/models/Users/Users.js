@@ -141,6 +141,15 @@ var UserManagement={
   },
   getTransactionHistoryOfUser:function(userId,callback){
     UserCollection.findOne({_id:userId},"items",{sort:"items.time"}).populate("items.item").exec(callback);
+  },
+  cloneUserDocument:function(userId,callback){
+    UserCollection.findOne({_id:userId},function(err,user){
+      if(err) callback(err);
+      else {
+        var clonedUser=new UserCollection(user);
+        callback(err,clonedUser);
+      }
+    });
   }
 };
 module.exports={

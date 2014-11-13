@@ -32,8 +32,14 @@ var goalMasterRoutes={
 };
 
 var challengesRoutes={
-  'get /org/:orgId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','create',req,res,next);},function(req,res){
+  'post /org/:orgId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','create',req,res,next);},function(req,res){
     challengesController.createChallenge(req,res);
+  }],
+  'get /org/:orgId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','get',req,res,next);},function(req,res){
+    challengesController.getChallengesOfOrganization(req,res);
+  }],
+  'post /org/:orgId/challenges/:challengeId/approve':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','get',req,res,next);},function(req,res){
+    challengesController.approveChallenge(req,res);
   }]
 };
 
@@ -148,7 +154,7 @@ var roleRoutes={
   }]
 };
 
-var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes,levelRoutes,roleRoutes,transactionMasterRoutes];
+var stuff=[leaderboardRoutes,goalMasterRoutes,medalRoutes,storeItemRoutes,storeRoutes,organizationRoutes,socialFeedRoutes,tagRoutes,levelRoutes,roleRoutes,transactionMasterRoutes,challengesRoutes];
 module.exports={
   initialize:function(server,handlers){
     stuff.forEach(function(routesObj){
