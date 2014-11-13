@@ -13,11 +13,11 @@ var SimulationController={
       });
     });
   },
-  // addTransactionToSimulation:function(req,res){
-  //   SimulatedTransactionModel.addTransaction(req.params.userId,req.body,function(err,obj){
-  //     if(err)res.send(err);
-  //     else res.send("success");
-  //   });
-  // }
+  addTransactionToSimulation:function(req,res){
+    SimulatedTransactionModel.addTransaction(req.params.userId,req.body,function(err,obj){
+      if(err)res.send(err);
+      else res.send("success");
+    });
+  }
 };
 module.exports=SimulationController;

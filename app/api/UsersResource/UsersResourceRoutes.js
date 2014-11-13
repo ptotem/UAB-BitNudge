@@ -49,7 +49,7 @@ var transactionRoutes={
   'post org/:orgId/users/:userId/transactions/:transactionId/approve':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','approve',req,res,next);},function(req,res){
     transactionController.approveTransaction(req,res);
   }],
-  'post /org/:orgId/users/:userId/transactions/':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','create',req,res,next);},function(req,res){
+  'post /org/:orgId/users/:userId/transactions':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','create',req,res,next);},function(req,res){
     transactionController.createTransaction(req,res);
   }],
   'del org/:orgId/users/:userId/transaction/:transactionId':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','delete',req,res,next);},function(req,res){
