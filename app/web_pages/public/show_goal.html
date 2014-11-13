@@ -846,7 +846,7 @@
             success: function(res) {
                 if(res){
                     res.goals.forEach(function(goal){
-                        goal.subgoal.forEach(function(subgoal){
+                        goal.subgoals.forEach(function(subgoal){
                             user_goal(subgoal.subgoal);
                         })
                     })

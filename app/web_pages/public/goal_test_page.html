@@ -464,9 +464,9 @@
                 </li>
 
                 <li>
-                    <a data-toggle="tab" href="#tab2">
-                        Goal done by <br> selected user's downline
-                    </a>
+                    <!--<a data-toggle="tab" href="#tab2">-->
+                        <!--Goal done by <br> selected user's downline-->
+                    <!--</a>-->
                 </li>
             </ul>
 
@@ -489,6 +489,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="action_result_block1" id="result_1_action">
+                                            <ul></ul>
                                         </div>
                                     </div>
                                 </div>
@@ -678,18 +679,27 @@
         get_employees();
 
         $("#users_select").change(function(){
-            $('#result_1_action').empty();
+            $('#result_1_action').find('ul').empty();
             var selected_user = $("#users_select :selected").val();
             $.ajax({
-                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/goals",
                 type: 'GET',
                 dataType: 'json',
                 success: function(res) {
                     if(res){
-                        res.goals.forEach(function(goal){
-                            goal.subgoals.forEach(function(subgoal){
-                                user_goal(subgoal.subgoal);
-                            })
+                        var goal_name;
+                        res.forEach(function(goal){
+                            console.log(goal);
+                            if (goal.name!=undefined) {
+                                goal_name = goal.name;
+                            }
+                            else{
+                                goal_name = "NA";
+                            }
+                            $('#result_1_action').find('ul').append('<li>'+goal_name+'</li>');
+//                            goal.subgoals.forEach(function(subgoal){
+//                                user_goal(subgoal.subgoal);
+//                            })
                         })
 
                     }
