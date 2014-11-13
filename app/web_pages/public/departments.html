@@ -1,617 +1,1040 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
     <title>BitNudge</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <!-- http://davidbcalhoun.com/2010/viewport-metatag -->
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Draggabble Widget Boxes &amp; Containers" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-    <!--// OPTIONAL & CONDITIONAL CSS FILES //-->
-    <!-- date picker css -->
-    <link rel="stylesheet" href="css/datepicker.css?v=1">
-    <!-- full calander css -->
-    <link rel="stylesheet" href="css/fullcalendar.css?v=1">
-    <!-- data tables extended CSS -->
-    <link rel="stylesheet" href="css/TableTools.css?v=1">
-    <!-- bootstrap wysimhtml5 editor -->
-    <link rel="stylesheet" href="css/bootstrap-wysihtml5.css?v=1">
-    <link rel="stylesheet" href="css/wysiwyg-color.css">
-    <!-- custom/responsive growl messages -->
-    <link rel="stylesheet" href="css/toastr.custom.css?v=1">
-    <link rel="stylesheet" href="css/toastr-responsive.css?v=1">
-    <link rel="stylesheet" href="css/jquery.jgrowl.css?v=1">
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
 
-    <!-- // DO NOT REMOVE OR CHANGE ORDER OF THE FOLLOWING // -->
-    <!-- bootstrap default css (DO NOT REMOVE) -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!--	<link rel="stylesheet" href="css/bootstrap-responsive.min.css?v=1">-->
-    <!-- font awsome and custom icons -->
-    <link rel="stylesheet" href="css/font-awesome.min.css?v=1">
-    <link rel="stylesheet" href="css/cus-icons.css?v=1">
-    <!-- jarvis widget css -->
-    <link rel="stylesheet" href="css/jarvis-widgets.css?v=1">
-    <!-- Data tables, normal tables and responsive tables css -->
-    <link rel="stylesheet" href="css/DT_bootstrap.css?v=1">
-    <link rel="stylesheet" href="css/responsive-tables.css?v=1">
-    <!-- used where radio, select and form elements are used -->
-    <link rel="stylesheet" href="css/uniform.default.css?v=1">
-    <link rel="stylesheet" href="css/select2.css?v=1">
-    <!-- main theme files -->
-    <link rel="stylesheet" href="css/theme.css?v=1">
-    <link rel="stylesheet" href="css/theme-responsive.css?v=1">
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
 
-    <!-- // THEME CSS changed by javascript: the CSS link below will override the rules above // -->
-    <!-- For more information, please see the documentation for "THEMES" -->
-    <link rel="stylesheet" id="switch-theme-js" href="css/themes/default.css?v=1">
+    <!-- text fonts -->
+    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
 
-    <!-- BitNudge CSS -->
-    <!--<link rel="stylesheet" href="css/bitnudge.css">-->
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.min.css" id="main-ace-style" />
 
-    <!-- To switch to full width -->
-    <link rel="stylesheet" id="switch-width" href="css/full-width.css?v=1">
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ace-part2.min.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 
-    <!-- Webfonts -->
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700' type='text/css'>
-
-    <!-- All javascripts are located at the bottom except for HTML5 Shim -->
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <script src="js/include/respond.min.js"></script>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
 
-    <!-- For Modern Browsers -->
-    <link rel="shortcut icon" href="img/favicons/favicon.png">
-    <!-- For everything else -->
-    <link rel="shortcut icon" href="img/favicons/favicon.ico">
-    <!-- For retina screens -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicons/apple-touch-icon-retina.png">
-    <!-- For iPad 1-->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicons/apple-touch-icon-ipad.png">
-    <!-- For iPhone 3G, iPod Touch and Android -->
-    <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon.png">
+    <!-- inline styles related to this page -->
 
-    <!-- iOS web-app metas -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <!-- Add your custom home screen title: -->
-    <meta name="apple-mobile-web-app-title" content="Jarvis">
+    <!-- ace settings handler -->
+    <script src="assets/js/ace-extra.min.js"></script>
 
-    <!-- Startup image for web apps -->
-    <link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png"
-          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
-    <link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png"
-          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
-    <link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
-    <link href="css/customstyle.css" rel="stylesheet" type="text/css">
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
-    <style>
-        .aligned {
-            width: 20%;
-        }
-    </style>
-
+    <!--[if lte IE 8]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
 
-<body>
-<!-- .height-wrapper -->
-<div class="height-wrapper">
-<!-- header -->
-<header>
-    <!-- tool bar -->
-    <div id="header-toolbar" class="container-fluid">
-        <!-- .contained -->
-        <div class="contained">
-
-            <!-- theme name -->
-            <h1 style="font-size: 2em" class="appname"><img src="img/bitnudge/logo.png" style="height:28px"/> BitNudge
-            </h1>
-            <!-- end theme name -->
-
-            <!-- span4 -->
-            <div class="pull-right">
-                <!-- demo theme switcher-->
-                <div id="theme-switcher" class="btn-toolbar">
-                    <!-- search and log off button for phone devices -->
-                    <div class="btn-group pull-right visible-xs">
-                        <a href="javascript:void(0)" class="btn btn-inverse btn-sm"><i class="icon-search"></i></a>
-                        <a href="login.html" class="btn btn-inverse btn-sm"><i class="icon-off"></i></a>
-                    </div>
-                    <!-- end buttons for phone device -->
-
-                    <!-- dropdown mini-inbox-->
-                    <div class="btn-group">
-                        <!-- new mail ticker -->
-                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse dropdown-toggle"
-                           data-toggle="dropdown">
-                            <span class="mail-sticker">3</span>
-                            <i class="cus-bell"></i>
-                        </a>
-                        <!-- end new mail ticker -->
-
-                        <!-- email lists -->
-                        <div class="dropdown-menu toolbar pull-right">
-                            <h3>Inbox</h3>
-                            <!-- "mailbox-slimscroll-js" identifier is used with Slimscroll.js plugin -->
-                            <ul id="mailbox-slimscroll-js" class="mailbox">
-                                <li>
-                                    <a href="javascript:void(0)" class="unread">
-                                        <img src="img/email-important.png" alt="important mail">
-                                        New Goal
-                                        <i class="icon-paper-clip"></i>
-                                        <span>You have been assigned a new business goal. Click here to...</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="unread attachment">
-
-                                        <img src="img/email-unread.png" alt="important mail">
-                                        Transaction Uploaded
-                                        <i class="icon-paper-clip"></i>
-                                        <span>Your loan of AED 100 mln to Tumult Solutions has been uploaded. Click...</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="unread">
-                                        <img src="img/email-unread.png" alt="important mail">
-                                        MILO for September Pending
-                                        <i class="icon-paper-clip"></i>
-                                        <span>You haven't uploaded your MILO for the month. Please ensure that...</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="read">
-                                        <img src="img/email-read.png" alt="important mail">
-                                        Bonus Points
-                                        <i class="icon-paper-clip"></i>
-                                        <span>You earned 100 bonus points for the manager commendation for...</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="read">
-                                        <img src="img/email-read.png" alt="important mail">
-                                        2 Bugs found...
-                                        <i class="icon-paper-clip"></i>
-                                        <span>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales.</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="read">
-                                        <img src="img/email-read.png" alt="important mail">
-                                        Welcome to Jarvis!
-                                        <i class="icon-paper-clip"></i>
-                                        <span>Feugiat a, tellus. Phasellus viverra nulla ut metus varius. Quisque rutrum. Aenean imperdiet... </span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <a href="javascript:void(0);" id="go-to-inbox">Go to Inbox <i
-                                    class="icon-double-angle-right"></i></a>
-                        </div>
-                        <!-- end email lists -->
-                    </div>
-                    <!-- end dropdown mini-inbox-->
-
-                    <!-- Goals -->
-                    <div class="btn-group hidden-xs">
-                        <a href="javascript:void(0)" class="btn btn-inverse btn-sm">Critical Goals</a>
-                        <a href="javascript:void(0)" class="btn btn-inverse dropdown-toggle btn-sm"
-                           data-toggle="dropdown"><span class="caret"></span></a>
-
-                        <div class="dropdown-menu toolbar pull-right">
-                            <h3>Showing Critical Goals</h3>
-                            <ul class="progressbox">
-                                <li>
-                                    <strong><i class="online pull-left"></i>Net Interest Income</strong><b>Complete</b>
-
-                                    <div class="progress progress-success slim">
-                                        <div class="bar" style="width: 100%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>Net Fee Income</strong><b>70%</b>
-
-                                    <div class="progress progress-info slim">
-                                        <div class="bar" style="width: 70%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>Deposit Base</strong><b>50%</b>
-
-                                    <div class="progress progress-danger slim">
-                                        <div class="bar" style="width: 50%;"></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong>New to Bank Clients</strong><b>22%</b>
-
-                                    <div class="progress progress-danger slim">
-                                        <div class="bar" style="width: 22%;"></div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <a href="javascript:void(0);" id="go-to-goals">Go to All Goals <i
-                                    class="icon-double-angle-right"></i></a>
-                        </div>
-
-                    </div>
-                    <!-- end Tasks -->
-
-                    <!-- theme dropdown -->
-                    <div class="btn-group hidden-xs">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse" id="reset-widget"><i
-                                class="icon-refresh"></i></a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-inverse dropdown-toggle"
-                           data-toggle="dropdown">Themes <span class="caret"></span></a>
-                        <ul id="theme-links-js" class="dropdown-menu toolbar pull-right">
-                            <li>
-                                <a href="javascript:void(0)" data-rel="purple"><i
-                                        class="icon-sign-blank purple-icon"></i>Royal Purple</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" data-rel="grey"><i class="icon-sign-blank grey-icon"></i>Grey</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" data-rel="green"><i
-                                        class="icon-sign-blank green-icon "></i>Emerald</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" data-rel="darkred"><i
-                                        class="icon-sign-blank red-icon "></i>Dark Rose</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" data-rel="default"><i
-                                        class="icon-sign-blank navyblue-icon"></i>Default</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end theme dropdown-->
-
-                    <div class="btn-group hidden-xs">
-                        <a href="index.html" class="btn btn-sm btn-inverse">Logout</a>
-                    </div>
-
-                </div>
-                <!-- end demo theme switcher-->
-            </div>
-            <!-- end span4 -->
-        </div>
-        <!-- end .contained -->
-    </div>
-    <!-- end tool bar -->
-
-</header>
-<!-- end header -->
-
-<!--<div id="splash">-->
-<!--<h1 style="font-size: 10em; color:white;"><img src="img/bitnudge/logo.png" style="height:256px"/> BitNudge </h1>-->
-
-<!--<h2 style="font-size: 4em; color:lightblue;margin-top: -1.5em;margin-left: 4em;">Plan right. Play right.</h2>-->
-<!--</div>-->
-
-<div id="main" role="main" class="container-fluid">
-
-    <div class="contained">
-        <!-- aside -->
-        <aside>
-
-            <!-- aside item: Mini profile -->
-            <div class="divider"></div>
-            <!-- end aside item: Mini profile -->
-
-            <!-- aside item: Menu -->
-            <div class="sidebar-nav-fixed">
-
-                <ul class="menu" id="accordion-menu-js">
-                    <li class="current">
-                        <a href="departments.html"><i class="icon-home"></i>Department List</a>
-                    </li>
-                    <li>
-                        <a href="role.html"><i class="icon-off"></i>Roles</a>
-                    </li>
-                    <li>
-                        <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="icon-check"></i>Goals</a>
-                    </li>
-                    <li>
-                        <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
-                    </li>
-                    <li>
-                        <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
-                    </li>
-                    <li>
-                        <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
-                    </li>
-                </ul>
-
-            </div>
-            <div class="divider"></div>
-            <!-- end aside item: Menu -->
-
-        </aside>
-        <!-- aside end -->
-
-        <!-- main content -->
-        <div id="page-content">
-            <!-- page header -->
-            <h1 id="page-header">Departments List</h1>
-            <a href="department_form.html" style="padding: 5px;"><i class="cus-add"></i>Add New Department</a><br><br>
-
-            <div class="fluid-container">
-
-                <!-- widget grid -->
-                <section id="widget-grid" class="">
-                    <!--------row 2---------->
-                    <div class="row">
-                        <article class="col-md-12">
-                            <!-- new widget -->
-                            <div class="jarviswidget" id="departments-list-widget">
-                                <header>
-                                    <h2>Departments List</h2>
-                                </header>
-                                <!-- wrap div -->
-                                <div>
-
-                                    <div class="jarviswidget-editbox">
-                                        <div>
-                                            <label>Title:</label>
-                                            <input type="text"/>
-                                        </div>
-                                        <div>
-                                            <label>Styles:</label>
-                                            <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                            <span data-widget-setstyle="green" class="green-btn"></span>
-                                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                            <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                            <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                            <span data-widget-setstyle="red" class="red-btn"></span>
-                                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                            <span data-widget-setstyle="black" class="black-btn"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="inner-spacer widget-content-padding">
-                                        <!-- content goes here -->
-                                        <table class="table table-bordered table-hover responsive" id="departments_list">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Parent(s) Group</th>
-                                                <th>Children Group</th>
-                                                <th>Tags</th>
-                                                <th></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                    <!-- end content-->
-                                </div>
-                                <!-- end wrap div -->
-                            </div>
-                            <!-- end widget -->
-                        </article>
-                    </div>
-                    <!------------row 2 end----------------->
-
-                </section>
-                <!-- end widget grid -->
-
-            </div>
-
-        </div>
-        <!-- end main content -->
-
-        <!-- aside right on high res -->
-        <aside class="right">
-
-            <!-- date picker -->
-            <div id="datepicker"></div>
-            <div class="divider"></div>
-            <!-- end date picker -->
-
-        </aside>
-
-        <!-- end aside right -->
-    </div>
-
-</div>
-<!--end fluid-container-->
-<div class="push"></div>
-</div>
-<!-- end .height wrapper -->
-
-<!-- footer -->
-
-<!-- if you like you can insert your footer here -->
-
-<!-- end footer -->
-
-<!--================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
-<!-- OPTIONAL: Use this migrate script for plugins that are not supported by jquery 1.9+ -->
-<!-- DISABLED <script src="js/libs/jquery.migrate-1.0.0.min.js"></script> -->
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-<script>window.jQuery.ui || document.write('<script src="js/libs/jquery.ui.min.js"><\/script>')</script>
-
-<!-- IMPORTANT: Jquery Touch Punch is always placed under Jquery UI -->
-<script src="js/include/jquery.ui.touch-punch.min.js"></script>
-
-<!-- REQUIRED: Mobile responsive menu generator -->
-<script src="js/include/selectnav.min.js"></script>
-
-<!-- REQUIRED: Datatable components -->
-<script src="js/include/jquery.accordion.min.js"></script>
-
-<!-- REQUIRED: Toastr & Jgrowl notifications  -->
-<script src="js/include/toastr.min.js"></script>
-<script src="js/include/jquery.jgrowl.min.js"></script>
-
-<!-- REQUIRED: Sleek scroll UI  -->
-<script src="js/include/slimScroll.min.js"></script>
-
-<!-- REQUIRED: Datatable components -->
-<script src="js/include/jquery.dataTables.min.js"></script>
-<!--<script src="js/include/DT_bootstrap.min.js"></script>-->
-<script src="js/include/DT_bootstrap3.js"></script>
-<!--<script src="js/include/dataTables.scroller.min.js"></script>-->
-
-<!-- REQUIRED: Form element skin  -->
-<script src="js/include/jquery.uniform.min.js"></script>
-
-<!-- REQUIRED: AmCharts  -->
-<script src="js/include/amchart/amcharts.js"></script>
-<script src="js/include/amchart/amchart-draw1.js"></script>
-
+<body class="no-skin">
+<!-- #section:basics/navbar.layout -->
+<div id="navbar" class="navbar navbar-default">
 <script type="text/javascript">
-    var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
-    if (!ismobile) {
-
-        /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
-
-        /* REQUIRED: Datatable PDF/Excel output componant */
-
-        document.write('<script src="js/include/ZeroClipboard.min.js"><\/script>');
-        document.write('<script src="js/include/TableTools.min.js"><\/script>');
-        document.write('<script src="js/include/select2.min.js"><\/script>');
-        document.write('<script src="js/include/jquery.excanvas.min.js"><\/script>');
-        document.write('<script src="js/include/jquery.placeholder.min.js"><\/script>');
-
-        /** DEMO SCRIPTS **/
-        $(function () {
-
-            //$('#main').css('opacity', 1);
-            //$('header').fadeIn();
-
-            var row_html;
-
-            for (var l = 0; l < 15; l++) {
-                row_html = '<tr>' +
-                                '<td class="text-center">Dept ' + (l + 1) + '</td>' +
-                                '<td class="text-center">Parent Dept 1</td>' +
-                                '<td class="text-center">Child Dept 2</td>' +
-                                '<td class="text-center">Tags</td>' +
-                                '<td class="text-center">' +
-                                    '<a style="padding: 5px;" href="department_edit_form.html">' + '<i class="cus-pencil"></i>' + '</a>' +
-                                    '<a style="padding: 5px;" href="department_show.html">' + '<i class="cus-exclamation"></i>' + '</a>' +
-                                '</td>' +
-                            '</tr>';
-
-                $("#departments_list").find('tbody').append(row_html);
-            }
-
-            $('#departments_list').dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": true,
-                "bSort": false
-            });
-
-        });
-
-        /** end DEMO SCRIPTS **/
-
-    } else {
-
-        /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
-
-        document.write('<script src="js/include/selectnav.min.js"><\/script>');
-    }
+    try{ace.settings.check('navbar' , 'fixed')}catch(e){}
 </script>
 
-<!-- REQUIRED: iButton -->
-<script src="js/include/jquery.ibutton.min.js"></script>
+<div class="navbar-container" id="navbar-container">
+<!-- #section:basics/sidebar.mobile.toggle -->
+<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+    <span class="sr-only">Toggle sidebar</span>
 
-<!-- REQUIRED: Justgage animated charts -->
-<script src="js/include/raphael.2.1.0.min.js"></script>
-<script src="js/include/justgage.min.js"></script>
+    <span class="icon-bar"></span>
 
-<!-- REQUIRED: Morris Charts -->
-<script src="js/include/morris.min.js"></script>
-<script src="js/include/morris-chart-settings.js"></script>
+    <span class="icon-bar"></span>
 
-<!-- REQUIRED: Animated pie chart -->
-<script src="js/include/jquery.easy-pie-chart.min.js"></script>
+    <span class="icon-bar"></span>
+</button>
 
-<!-- REQUIRED: Functional Widgets -->
-<script src="js/include/jarvis.widget.min.js"></script>
-<script src="js/include/mobiledevices.min.js"></script>
-<!-- DISABLED (only needed for IE7 <script src="js/include/json2.js"></script> -->
+<!-- /section:basics/sidebar.mobile.toggle -->
+<div class="navbar-header pull-left">
+    <!-- #section:basics/navbar.layout.brand -->
+    <a href="#" class="navbar-brand">
+        <small>
+            <i class="fa fa-leaf"></i>
+            BitNudge
+        </small>
+    </a>
 
-<!-- REQUIRED: Full Calendar -->
-<script src="js/include/jquery.fullcalendar.min.js"></script>
+    <!-- /section:basics/navbar.layout.brand -->
 
-<!-- REQUIRED: Flot Chart Engine -->
-<script src="js/include/jquery.flot.cust.min.js"></script>
-<script src="js/include/jquery.flot.resize.min.js"></script>
-<script src="js/include/jquery.flot.tooltip.min.js"></script>
-<script src="js/include/jquery.flot.orderBar.min.js"></script>
-<script src="js/include/jquery.flot.fillbetween.min.js"></script>
-<script src="js/include/jquery.flot.pie.min.js"></script>
+    <!-- #section:basics/navbar.toggle -->
 
-<!-- REQUIRED: Sparkline Charts -->
-<script src="js/include/jquery.sparkline.min.js"></script>
+    <!-- /section:basics/navbar.toggle -->
+</div>
 
-<!-- REQUIRED: Infinite Sliding Menu (used with inbox page) -->
-<script src="js/include/jquery.inbox.slashc.sliding-menu.js"></script>
+<!-- #section:basics/navbar.dropdown -->
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
+<ul class="nav ace-nav">
+<li class="grey">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-tasks"></i>
+        <span class="badge badge-grey">4</span>
+    </a>
 
-<!-- REQUIRED: Form validation plugin -->
-<script src="js/include/jquery.validate.min.js"></script>
+    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-check"></i>
+            4 Tasks to complete
+        </li>
 
-<!-- REQUIRED: Progress bar animation -->
-<script src="js/include/bootstrap-progressbar.min.js"></script>
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Software Update</span>
+                    <span class="pull-right">65%</span>
+                </div>
 
-<!-- REQUIRED: wysihtml5 editor -->
-<script src="js/include/wysihtml5-0.3.0.min.js"></script>
-<script src="js/include/bootstrap-wysihtml5.min.js"></script>
+                <div class="progress progress-mini">
+                    <div style="width:65%" class="progress-bar"></div>
+                </div>
+            </a>
+        </li>
 
-<!-- REQUIRED: Masked Input -->
-<script src="js/include/jquery.maskedinput.min.js"></script>
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Hardware Upgrade</span>
+                    <span class="pull-right">35%</span>
+                </div>
 
-<!-- REQUIRED: Bootstrap Date Picker -->
-<script src="js/include/bootstrap-datepicker.min.js"></script>
+                <div class="progress progress-mini">
+                    <div style="width:35%" class="progress-bar progress-bar-danger"></div>
+                </div>
+            </a>
+        </li>
 
-<!-- REQUIRED: Bootstrap Wizard -->
-<script src="js/include/bootstrap.wizard.min.js"></script>
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Unit Testing</span>
+                    <span class="pull-right">15%</span>
+                </div>
 
-<!-- REQUIRED: Bootstrap Color Picker -->
-<script src="js/include/bootstrap-colorpicker.min.js"></script>
+                <div class="progress progress-mini">
+                    <div style="width:15%" class="progress-bar progress-bar-warning"></div>
+                </div>
+            </a>
+        </li>
 
-<!-- REQUIRED: Bootstrap Time Picker -->
-<script src="js/include/bootstrap-timepicker.min.js"></script>
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Bug Fixes</span>
+                    <span class="pull-right">90%</span>
+                </div>
 
-<!-- REQUIRED: Bootstrap Prompt -->
-<script src="js/include/bootbox.min.js"></script>
+                <div class="progress progress-mini progress-striped active">
+                    <div style="width:90%" class="progress-bar progress-bar-success"></div>
+                </div>
+            </a>
+        </li>
 
-<!-- REQUIRED: Bootstrap engine -->
-<script src="js/include/bootstrap.min.js"></script>
+        <li class="dropdown-footer">
+            <a href="#">
+                See tasks with details
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
 
-<!-- DO NOT REMOVE: Theme Config file -->
-<script src="js/config.js"></script>
-<!-- d3 library placed at the bottom for better performance -->
-<!-- DISABLED  <script src="js/include/d3.v3.min.js"></script> -->
-<!-- DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script> -->
-<!-- DISABLED  <script src="js/include/adv_charts/d3-chart-2.js"></script> -->
+<li class="purple">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+        <span class="badge badge-important">8</span>
+    </a>
 
-<!-- Google Geo Chart -->
-<!-- DISABLED <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script> -->
-<!-- DISABLED <script type='text/javascript' src='https://www.google.com/jsapi'></script>-->
-<!-- DISABLED <script src="js/include/adv_charts/geochart.js"></script> -->
+    <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-exclamation-triangle"></i>
+            8 Notifications
+        </li>
 
-<!-- end scripts -->
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+												New Comments
+											</span>
+                    <span class="pull-right badge badge-info">+12</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="btn btn-xs btn-primary fa fa-user"></i>
+                Bob just signed up as an editor ...
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+												New Orders
+											</span>
+                    <span class="pull-right badge badge-success">+8</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
+												Followers
+											</span>
+                    <span class="pull-right badge badge-info">+11</span>
+                </div>
+            </a>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="#">
+                See all notifications
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="green">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+        <span class="badge badge-success">5</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-envelope-o"></i>
+            5 Messages
+        </li>
+
+        <li class="dropdown-content">
+            <ul class="dropdown-menu dropdown-navbar">
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Alex:</span>
+														Ciao sociis natoque penatibus et auctor ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>a moment ago</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Susan:</span>
+														Vestibulum id ligula porta felis euismod ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>20 minutes ago</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Bob:</span>
+														Nullam quis risus eget urna mollis ornare ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>3:15 pm</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Kate:</span>
+														Ciao sociis natoque eget urna mollis ornare ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>1:33 pm</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Fred:</span>
+														Vestibulum id penatibus et auctor  ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>10:09 am</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="inbox.html">
+                See all messages
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<!-- #section:basics/navbar.user_menu -->
+<li class="light-blue">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+								<span class="user-info">
+									<small>Welcome,</small>
+									Jason
+								</span>
+
+        <i class="ace-icon fa fa-caret-down"></i>
+    </a>
+
+    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-cog"></i>
+                Settings
+            </a>
+        </li>
+
+        <li>
+            <a href="profile.html">
+                <i class="ace-icon fa fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-power-off"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</li>
+
+<!-- /section:basics/navbar.user_menu -->
+</ul>
+</div>
+
+<!-- /section:basics/navbar.dropdown -->
+</div><!-- /.navbar-container -->
+</div>
+
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+<script type="text/javascript">
+    try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+</script>
+
+<!-- #section:basics/sidebar -->
+<div id="sidebar" class="sidebar                  responsive">
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+            <button class="btn btn-success">
+                <i class="ace-icon fa fa-signal"></i>
+            </button>
+
+            <button class="btn btn-info">
+                <i class="ace-icon fa fa-pencil"></i>
+            </button>
+
+            <!-- #section:basics/sidebar.layout.shortcuts -->
+            <button class="btn btn-warning">
+                <i class="ace-icon fa fa-users"></i>
+            </button>
+
+            <button class="btn btn-danger">
+                <i class="ace-icon fa fa-cogs"></i>
+            </button>
+
+            <!-- /section:basics/sidebar.layout.shortcuts -->
+        </div>
+
+        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+            <span class="btn btn-success"></span>
+
+            <span class="btn btn-info"></span>
+
+            <span class="btn btn-warning"></span>
+
+            <span class="btn btn-danger"></span>
+        </div>
+    </div><!-- /.sidebar-shortcuts -->
+
+    <ul class="nav nav-list">
+        <li class="active">
+            <a href="departments.html">
+                <i class="menu-icon fa fa-tachometer"></i>
+                <span class="menu-text">Department List</span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="roles.html">
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text"> Roles </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li>
+            <a href="employees.html">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Employees</span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="goals.html">
+                <i class="menu-icon fa fa-pencil-square-o"></i>
+                <span class="menu-text"> Goals </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li>
+            <a href="badge_master.html">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text"> Badge Master </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="reward_center.html">
+                <i class="menu-icon fa fa-calendar"></i>
+                <span class="menu-text"> Reward Center </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="reward_master.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Reward Master </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="badges.html">
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text"> Badges </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="abilities.html">
+                <i class="menu-icon fa fa-bar-chart-o"></i>
+                <span class="menu-text"> Abilities </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="level.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Level </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="org_tags.html">
+                <i class="menu-icon fa fa-book"></i>
+                <span class="menu-text"> Organization Tag </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="team.html">
+                <i class="menu-icon fa fa-envelope"></i>
+                <span class="menu-text"> Team </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="reward_master.html">
+                <i class="menu-icon fa fa-envelope"></i>
+                <span class="menu-text"> Reward Master </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="action_sec.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Action Section </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+
+    </ul><!-- /.nav-list -->
+
+    <!-- #section:basics/sidebar.layout.minimize -->
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+
+    <!-- /section:basics/sidebar.layout.minimize -->
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+    </script>
+</div>
+
+<!-- /section:basics/sidebar -->
+<div class="main-content">
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Widgets</li>
+    </ul><!-- /.breadcrumb -->
+
+    <!-- #section:basics/content.searchbox -->
+    <div class="nav-search" id="nav-search">
+        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="ace-icon fa fa-search nav-search-icon"></i>
+							</span>
+        </form>
+    </div><!-- /.nav-search -->
+
+    <!-- /section:basics/content.searchbox -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+<!-- #section:settings.box -->
+<div class="ace-settings-container" id="ace-settings-container">
+    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+        <i class="ace-icon fa fa-cog bigger-150"></i>
+    </div>
+
+    <div class="ace-settings-box clearfix" id="ace-settings-box">
+        <div class="pull-left width-50">
+            <!-- #section:settings.skins -->
+            <div class="ace-settings-item">
+                <div class="pull-left">
+                    <select id="skin-colorpicker" class="hide">
+                        <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                        <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                        <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                        <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                    </select>
+                </div>
+                <span>&nbsp; Choose Skin</span>
+            </div>
+
+            <!-- /section:settings.skins -->
+
+            <!-- #section:settings.navbar -->
+            <div class="ace-settings-item">
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+            </div>
+
+            <!-- /section:settings.navbar -->
+
+            <!-- #section:settings.sidebar -->
+            <div class="ace-settings-item">
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+            </div>
+
+            <!-- /section:settings.sidebar -->
+
+            <!-- #section:settings.breadcrumbs -->
+            <div class="ace-settings-item">
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+                <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+            </div>
+
+            <!-- /section:settings.breadcrumbs -->
+
+            <!-- #section:settings.rtl -->
+            <div class="ace-settings-item">
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
+                <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+            </div>
+
+            <!-- /section:settings.rtl -->
+
+            <!-- #section:settings.container -->
+            <div class="ace-settings-item">
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                <label class="lbl" for="ace-settings-add-container">
+                    Inside
+                    <b>.container</b>
+                </label>
+            </div>
+
+            <!-- /section:settings.container -->
+        </div><!-- /.pull-left -->
+
+        <div class="pull-left width-50">
+            <!-- #section:basics/sidebar.options -->
+            <div class="ace-settings-item">
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
+                <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+            </div>
+
+            <div class="ace-settings-item">
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact"/>
+                <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+            </div>
+
+            <div class="ace-settings-item">
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
+                <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+            </div>
+
+            <!-- /section:basics/sidebar.options -->
+        </div><!-- /.pull-left -->
+    </div><!-- /.ace-settings-box -->
+</div><!-- /.ace-settings-container -->
+
+<!-- /section:settings.box -->
+<div class="page-content-area">
+    <div class="page-header">
+        <h1>
+            Widgets
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                Draggabble Widget Boxes &amp; Containers
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+    <!--row 1-->
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <!--<row 1 >-->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 widget-container-col">
+                    <!-- #section:custom/widget-box -->
+                    <div class="widget-box">
+                        <div class="widget-header">
+                            <h5 class="widget-title">Add New Departments</h5>
+
+                            <!-- #section:custom/widget-box.toolbar -->
+                            <div class="widget-toolbar">
+                                <div class="widget-menu">
+                                    <a href="#" data-action="settings" data-toggle="dropdown">
+                                        <i class="ace-icon fa fa-bars"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                        <li>
+                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                        </li>
+
+                                        <li>
+                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <a href="#" data-action="fullscreen" class="orange2">
+                                    <i class="ace-icon fa fa-expand"></i>
+                                </a>
+
+                                <a href="#" data-action="reload">
+                                    <i class="ace-icon fa fa-refresh"></i>
+                                </a>
+
+                                <a href="#" data-action="collapse">
+                                    <i class="ace-icon fa fa-chevron-up"></i>
+                                </a>
+
+                                <a href="#" data-action="close">
+                                    <i class="ace-icon fa fa-times"></i>
+                                </a>
+                            </div>
+
+                            <!-- /section:custom/widget-box.toolbar -->
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="widget-main">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="department_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Department</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /section:custom/widget-box -->
+                </div>
+
+
+            </div>
+            <!-- /.row 1 end -->
+            <!--row 2-->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 widget-container-col">
+                    <!-- #section:custom/widget-box -->
+                    <div class="widget-box">
+                        <div class="widget-header">
+                            <h5 class="widget-title">Employees list</h5>
+
+                            <!-- #section:custom/widget-box.toolbar -->
+                            <div class="widget-toolbar">
+                                <div class="widget-menu">
+                                    <a href="#" data-action="settings" data-toggle="dropdown">
+                                        <i class="ace-icon fa fa-bars"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                        <li>
+                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                        </li>
+
+                                        <li>
+                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <a href="#" data-action="fullscreen" class="orange2">
+                                    <i class="ace-icon fa fa-expand"></i>
+                                </a>
+
+                                <a href="#" data-action="reload">
+                                    <i class="ace-icon fa fa-refresh"></i>
+                                </a>
+
+                                <a href="#" data-action="collapse">
+                                    <i class="ace-icon fa fa-chevron-up"></i>
+                                </a>
+
+                                <a href="#" data-action="close">
+                                    <i class="ace-icon fa fa-times"></i>
+                                </a>
+                            </div>
+
+                            <!-- /section:custom/widget-box.toolbar -->
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="widget-main">
+                                <table class="table table-bordered table-hover responsive" id="departments_list">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Parent(s) Group</th>
+                                        <th>Children Group</th>
+                                        <th>Tags</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /section:custom/widget-box -->
+                </div>
+
+
+            </div>
+            <!--row 2 end-->
+
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div>
+    <!-- /1 row -->
+
+</div><!-- /.page-content-area -->
+</div><!-- /.page-content -->
+</div><!-- /.main-content -->
+
+
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='assets/js/jquery.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="assets/js/jquery-ui.custom.min.js"></script>
+<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+
+<!-- ace scripts -->
+<script src="assets/js/ace-elements.min.js"></script>
+<script src="assets/js/ace.min.js"></script>
+
+<!-- inline scripts related to this page -->
+
+<script src="assets/js/app/app_config.js"></script>
+<script type="text/javascript">
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+
+
+    $(function () {
+
+        //$('#main').css('opacity', 1);
+        //$('header').fadeIn();
+
+        var row_html;
+
+        for (var l = 0; l < 15; l++) {
+            row_html = '<tr>' +
+                    '<td class="text-center">Dept ' + (l + 1) + '</td>' +
+                    '<td class="text-center">Parent Dept 1</td>' +
+                    '<td class="text-center">Child Dept 2</td>' +
+                    '<td class="text-center">Tags</td>' +
+                    '<td class="text-center">' +
+                    '<a style="padding: 5px;" href="department_edit_form.html">' + '<i class="ace-icon glyphicon glyphicon-pencil"></i>' + '</a>' +
+                    '<a style="padding: 5px;" href="department_show.html">' + '<i class="ace-icon glyphicon glyphicon-info-sign"></i>' + '</a>' +
+                    '</td>' +
+                    '</tr>';
+
+            $("#departments_list").find('tbody').append(row_html);
+        }
+
+        $('#departments_list').dataTable({
+            "bPaginate": true,
+            "bFilter": true,
+            "bLengthChange": true,
+            "bSort": false
+        });
+
+    });
+    jQuery(function($) {
+
+        $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
+            var color_class = $(this).find('option:selected').data('class');
+            var new_class = 'widget-box';
+            if(color_class != 'default')  new_class += ' widget-color-'+color_class;
+            $(this).closest('.widget-box').attr('class', new_class);
+        });
+
+
+        // scrollables
+        $('.scrollable').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll({
+                size: $this.data('size') || 100
+                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
+            });
+        });
+        $('.scrollable-horizontal').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll(
+                    {
+                        horizontal: true,
+                        styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
+                        size: $this.data('size') || 500,
+                        mouseWheelLock: true
+                    }
+            ).css({'padding-top': 12});
+        });
+
+        $(window).on('resize.scroll_reset', function() {
+            $('.scrollable-horizontal').ace_scroll('reset');
+        });
+
+
+        /**
+         //or use slimScroll plugin
+         $('.slim-scrollable').each(function () {
+					var $this = $(this);
+					$this.slimScroll({
+						height: $this.data('height') || 100,
+						railVisible:true
+					});
+				});
+         */
+
+
+        /**$('.widget-box').on('setting.ace.widget' , function(e) {
+					e.preventDefault();
+				});*/
+
+        /**
+         $('.widget-box').on('show.ace.widget', function(e) {
+					//e.preventDefault();
+					//this = the widget-box
+				});
+         $('.widget-box').on('reload.ace.widget', function(e) {
+					//this = the widget-box
+				});
+         */
+
+        //$('#my-widget-box').widget_box('hide');
+
+
+
+        // widget boxes
+        // widget box drag & drop example
+
+    });
+</script>
+<script type="text/javascript">
+    var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
+    ace.load_ajax_scripts(scripts, function() {
+        //inline scripts related to this page
+        jQuery(function($) {
+
+            /**
+             var tableTools = new $.fn.dataTable.TableTools( oTable1, {
+			"sSwfPath": "../../copy_csv_xls_pdf.swf",
+	        "buttons": [
+	            "copy",
+	            "csv",
+	            "xls",
+				"pdf",
+	            "print"
+	        ]
+	    } );
+             $( tableTools.fnContainer() ).insertBefore('#sample-table-2');
+             */
+
+
+            $(document).on('click', 'th input:checkbox' , function(){
+                var that = this;
+                $(this).closest('table').find('tr > td:first-child input:checkbox')
+                        .each(function(){
+                            this.checked = that.checked;
+                            $(this).closest('tr').toggleClass('selected');
+                        });
+            });
+
+
+            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+            function tooltip_placement(context, source) {
+                var $source = $(source);
+                var $parent = $source.closest('table')
+                var off1 = $parent.offset();
+                var w1 = $parent.width();
+
+                var off2 = $source.offset();
+                //var w2 = $source.width();
+
+                if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+                return 'left';
+            }
+
+        })
+    });
+</script>
+
+<!-- the following scripts are used in demo only for onpage help and you don't need them -->
+<link rel="stylesheet" href="assets/css/ace.onpage-help.css" />
+<link rel="stylesheet" href="docs/assets/js/themes/sunburst.css" />
+
+<script type="text/javascript"> ace.vars['base'] = '..'; </script>
+<script src="assets/js/ace/elements.onpage-help.js"></script>
+<script src="assets/js/ace/ace.onpage-help.js"></script>
+<script src="docs/assets/js/rainbow.js"></script>
+<script src="docs/assets/js/language/generic.js"></script>
+<script src="docs/assets/js/language/html.js"></script>
+<script src="docs/assets/js/language/css.js"></script>
+<script src="docs/assets/js/language/javascript.js"></script>
 </body>
 </html>

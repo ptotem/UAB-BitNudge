@@ -971,18 +971,19 @@
         });
 
         $("#users_select_2").change(function(){
+            $("#result_2").text("");
             var userElement=$("#users_select_2 :selected")[0];
             $.ajax({
                 url: remote_host+'org/'+urlParams.orgId+'/users/'+userElement.getAttribute("data-id")+'/abilities',
                 type: 'GET',
                 success: function(data){
                     console.log(data);
-//                    $("#result_2").text("");
-//                    $("#result_2").append("<ul>");
-//                    data.forEach(function(abil){
-//                        $("#result_2").append("<li>"+abil.name+"</li>");
-//                    });
-//                    $("#result_2").append("</ul>");
+                    //$("#result_2").text("");
+                    $("#result_2").append("<ul>");
+                    data.forEach(function(abil){
+                        $("#result_2").append("<li>"+abil.name+"</li>");
+                    });
+                    $("#result_2").append("</ul>");
                 }
             });
         });

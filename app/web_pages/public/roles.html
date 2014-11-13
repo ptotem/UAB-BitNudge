@@ -811,7 +811,7 @@
                                     <tr>
                                         <th>Roles</th>
                                         <th>Abilities</th>
-                                        <th></th>
+                                        <!--<th></th>-->
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -908,10 +908,10 @@
                                 row_html = '<tr>'+
                                         '<td class="text-center">'+role.name+'</td>'+
                                         '<td class="text-center">'+abilititesArray.replace(/,/g, '<br>')+'</td>'+
-                                        '<td class="text-center">'+
-                                        '<a style="padding: 5px;" href="role_edit_form.html?roleId='+role._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
-                                        '<a style="padding: 5px;" href="role_form_show.html?roleId='+role._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
-                                        '</td>'+
+//                                        '<td class="text-center">'+
+//                                        '<a style="padding: 5px;" href="role_edit_form.html?roleId='+role._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
+//                                        '<a style="padding: 5px;" href="role_form_show.html?roleId='+role._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+//                                        '</td>'+
                                         '</tr>';
 
                                 $("#role_list").find('tbody').append(row_html);

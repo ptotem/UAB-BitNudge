@@ -771,12 +771,16 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <a id="view_goal_link" href="#">View My Goals</a>
+                                            <div class="col-md-12">
+                                                <a id="edit_user_link" href="#">Edit Details</a> |
+                                                <a id="view_transactions_link" href="#">View My Transactions</a> |
+                                                <a id="view_goal_link" href="#">View My Goals</a> |
+                                                <a id="view_challenges_link" href="#">View My Challenges</a>
                                             </div>
                                         </div>
 
                                     </div>
+
                                 </fieldset>
 
 
@@ -842,7 +846,10 @@
     function get_employee(){
         var emp_id = window.location.search.replace("?","").split("=")[1];
 
+        $("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
         $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
+        $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
+        $("#view_challenges_link").attr("href","view_challenge.html?userId="+emp_id);
 
         $.ajax({
             ///org/:orgId/users/:userId
@@ -854,7 +861,7 @@
                 console.log(res);
                 if(res){
                     //console.log(res);
-                    var reportsTo, orgTags = [], teams = [], role;
+                    var reportsTo, orgTags = [], teams = [];
                     if (res.reportsTo)
                         reportsTo = res.reportsTo.name;
                     else
@@ -880,16 +887,9 @@
                         teams = "";
                     }
 
-                    if (res.roles) {
-                        role = res.roles[0].name;
-                    }
-                    else{
-                        role = "";
-                    }
-
                     $("#emp_name").text(res.name);
                     $("#emp_email").text(res.email);
-                    $("#emp_role").text();
+                    $("#emp_role").text(res.role.name);
                     $("#emp_reporting_officer").text(reportsTo);
                     $("#emp_tags").text(orgTags);
                     $("#emp_dept").text(teams);
@@ -906,7 +906,6 @@
 
 
     $(function () {
-        var row_html;
         get_employee();
     });
 

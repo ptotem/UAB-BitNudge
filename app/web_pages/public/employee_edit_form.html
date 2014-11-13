@@ -822,7 +822,7 @@
                     $("#emp_name").val(res.name);
                     $("#emp_email").val(res.email);
                     $("#emp_designation").val(res.designation);
-                    $("#emp_role").val(res.roles[0].name);
+                    $("#emp_role").val(res.role.name);
                     $("#emp_addr").val(res.address);
                 }
             }
@@ -873,19 +873,20 @@
             console.log("userData");
             console.log(userData);
 
-//            $.ajax({
-//                url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
-//                type: 'POST',
-//                dataType: 'json',
-//                data:userData,
-//                success: function(res) {
-//                    var success_text = "Employee Updated.";
-//                    show_notification(success_text);
-//                } ,
-//                error: function(e , msg){
-//                    //processError(e,msg);
-//                }
-//            });
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
+                type: 'POST',
+                dataType: 'json',
+                data:userData,
+                success: function(res) {
+                    var success_text = "Employee Updated.";
+                    //show_notification(success_text);
+                    window.location.href = local_host+"employee_show.html?userId="+emp_id;
+                } ,
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
             return false;
         });
     });

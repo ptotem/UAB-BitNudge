@@ -69,7 +69,7 @@
     <a href="#" class="navbar-brand">
         <small>
             <i class="fa fa-leaf"></i>
-            BitNudge
+            Ace Admin
         </small>
     </a>
 
@@ -422,7 +422,7 @@
     </div><!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
-        <li class="active">
+        <li>
             <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text">Department List</span>
@@ -439,7 +439,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li>
+        <li class="active">
             <a href="employees.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Employees</span>
@@ -635,7 +635,7 @@
                     <!-- #section:custom/widget-box -->
                     <div class="widget-box">
                         <div class="widget-header">
-                            <h5 class="widget-title">Department Show</h5>
+                            <h5 class="widget-title">Show Challenge</h5>
 
                             <!-- #section:custom/widget-box.toolbar -->
                             <div class="widget-toolbar">
@@ -685,7 +685,53 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-9">
-                                                Prakash Mehra
+                                                <div class="emp-details" id="emp_name"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>E-mail</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_email"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Designation</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_designation"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_addr"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Roles</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_role"></div>
                                             </div>
                                         </div>
 
@@ -693,21 +739,10 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Parent group</label>
+                                                <label>Reporting Officer</label>
                                             </div>
                                             <div class="col-md-9">
-                                                Red
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Children Group</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                Blue
+                                                <div class="emp-details" id="emp_reporting_officer"></div>
                                             </div>
                                         </div>
 
@@ -718,11 +753,39 @@
                                                 <label>Tags</label>
                                             </div>
                                             <div class="col-md-9">
-                                                Gold
+                                                <div class="emp-details" id="emp_tags"></div>
                                             </div>
                                         </div>
 
                                     </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Group/Department</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_dept"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <a id="view_challenges_link" href="#">View My Challenges</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <a id="view_goal_link" href="#">View My Goals</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </fieldset>
 
 
@@ -784,6 +847,76 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function get_employee(){
+        var emp_id = window.location.search.replace("?","").split("=")[1];
+
+        $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
+        $("#view_challenges_link").attr("href","view_challenge.html?userId="+emp_id);
+
+        $.ajax({
+            ///org/:orgId/users/:userId
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+"/challenges",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                console.log("res");
+                console.log(res);
+                if(res){
+                    //console.log(res);
+                    var reportsTo, orgTags = [], teams = [];
+                    if (res.reportsTo)
+                        reportsTo = res.reportsTo.name;
+                    else
+                        reportsTo = "";
+
+                    if (res.orgtags) {
+                        orgTags = [];
+                        $.each(res.orgtags, function(index, value) {
+                            orgTags.push(value.name)
+                        });
+                    }
+                    else{
+                        orgTags = "";
+                    }
+
+                    if (res.teams) {
+                        teams = [];
+                        $.each(res.teams, function(index, value) {
+                            teams.push(value.name)
+                        });
+                    }
+                    else{
+                        teams = "";
+                    }
+
+                    $("#emp_name").text(res.name);
+                    $("#emp_email").text(res.email);
+                    $("#emp_role").text(res.role.name);
+                    $("#emp_reporting_officer").text(reportsTo);
+                    $("#emp_tags").text(orgTags);
+                    $("#emp_dept").text(teams);
+                    $("#emp_designation").text(res.designation);
+                    $("#emp_addr").text(res.address);
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+
+    $(function () {
+        var row_html;
+        get_employee();
+    });
+
+
+
+
+
     jQuery(function($) {
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
@@ -853,6 +986,7 @@
 
         // widget boxes
         // widget box drag & drop example
+
 
     });
 </script>

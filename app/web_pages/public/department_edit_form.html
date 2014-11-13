@@ -384,45 +384,45 @@
 
 <!-- #section:basics/sidebar -->
 <div id="sidebar" class="sidebar                  responsive">
-    <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-    </script>
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+</script>
 
-    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-            <button class="btn btn-success">
-                <i class="ace-icon fa fa-signal"></i>
-            </button>
+<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+        <button class="btn btn-success">
+            <i class="ace-icon fa fa-signal"></i>
+        </button>
 
-            <button class="btn btn-info">
-                <i class="ace-icon fa fa-pencil"></i>
-            </button>
+        <button class="btn btn-info">
+            <i class="ace-icon fa fa-pencil"></i>
+        </button>
 
-            <!-- #section:basics/sidebar.layout.shortcuts -->
-            <button class="btn btn-warning">
-                <i class="ace-icon fa fa-users"></i>
-            </button>
+        <!-- #section:basics/sidebar.layout.shortcuts -->
+        <button class="btn btn-warning">
+            <i class="ace-icon fa fa-users"></i>
+        </button>
 
-            <button class="btn btn-danger">
-                <i class="ace-icon fa fa-cogs"></i>
-            </button>
+        <button class="btn btn-danger">
+            <i class="ace-icon fa fa-cogs"></i>
+        </button>
 
-            <!-- /section:basics/sidebar.layout.shortcuts -->
-        </div>
+        <!-- /section:basics/sidebar.layout.shortcuts -->
+    </div>
 
-        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-            <span class="btn btn-success"></span>
+    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+        <span class="btn btn-success"></span>
 
-            <span class="btn btn-info"></span>
+        <span class="btn btn-info"></span>
 
-            <span class="btn btn-warning"></span>
+        <span class="btn btn-warning"></span>
 
-            <span class="btn btn-danger"></span>
-        </div>
-    </div><!-- /.sidebar-shortcuts -->
+        <span class="btn btn-danger"></span>
+    </div>
+</div><!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
-        <li class="active">
+        <li>
             <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text">Department List</span>
@@ -439,7 +439,7 @@
             <b class="arrow"></b>
         </li>
 
-        <li>
+        <li class="active">
             <a href="employees.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Employees</span>
@@ -483,15 +483,15 @@
         </li>
     </ul><!-- /.nav-list -->
 
-    <!-- #section:basics/sidebar.layout.minimize -->
-    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-    </div>
+<!-- #section:basics/sidebar.layout.minimize -->
+<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+    <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+</div>
 
-    <!-- /section:basics/sidebar.layout.minimize -->
-    <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-    </script>
+<!-- /section:basics/sidebar.layout.minimize -->
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+</script>
 </div>
 
 <!-- /section:basics/sidebar -->
@@ -525,223 +525,268 @@
 
 <!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
-<!-- #section:settings.box -->
-<div class="ace-settings-container" id="ace-settings-container">
-    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-        <i class="ace-icon fa fa-cog bigger-150"></i>
-    </div>
+    <!-- #section:settings.box -->
+    <div class="ace-settings-container" id="ace-settings-container">
+        <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+            <i class="ace-icon fa fa-cog bigger-150"></i>
+        </div>
 
-    <div class="ace-settings-box clearfix" id="ace-settings-box">
-        <div class="pull-left width-50">
-            <!-- #section:settings.skins -->
-            <div class="ace-settings-item">
-                <div class="pull-left">
-                    <select id="skin-colorpicker" class="hide">
-                        <option data-skin="no-skin" value="#438EB9">#438EB9</option>
-                        <option data-skin="skin-1" value="#222A2D">#222A2D</option>
-                        <option data-skin="skin-2" value="#C6487E">#C6487E</option>
-                        <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-                    </select>
+        <div class="ace-settings-box clearfix" id="ace-settings-box">
+            <div class="pull-left width-50">
+                <!-- #section:settings.skins -->
+                <div class="ace-settings-item">
+                    <div class="pull-left">
+                        <select id="skin-colorpicker" class="hide">
+                            <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                            <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                            <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                            <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                        </select>
+                    </div>
+                    <span>&nbsp; Choose Skin</span>
                 </div>
-                <span>&nbsp; Choose Skin</span>
-            </div>
 
-            <!-- /section:settings.skins -->
+                <!-- /section:settings.skins -->
 
-            <!-- #section:settings.navbar -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-                <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-            </div>
+                <!-- #section:settings.navbar -->
+                <div class="ace-settings-item">
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                    <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                </div>
 
-            <!-- /section:settings.navbar -->
+                <!-- /section:settings.navbar -->
 
-            <!-- #section:settings.sidebar -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-                <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-            </div>
+                <!-- #section:settings.sidebar -->
+                <div class="ace-settings-item">
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                    <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                </div>
 
-            <!-- /section:settings.sidebar -->
+                <!-- /section:settings.sidebar -->
 
-            <!-- #section:settings.breadcrumbs -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-                <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-            </div>
+                <!-- #section:settings.breadcrumbs -->
+                <div class="ace-settings-item">
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+                    <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                </div>
 
-            <!-- /section:settings.breadcrumbs -->
+                <!-- /section:settings.breadcrumbs -->
 
-            <!-- #section:settings.rtl -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-                <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-            </div>
+                <!-- #section:settings.rtl -->
+                <div class="ace-settings-item">
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
+                    <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                </div>
 
-            <!-- /section:settings.rtl -->
+                <!-- /section:settings.rtl -->
 
-            <!-- #section:settings.container -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-                <label class="lbl" for="ace-settings-add-container">
-                    Inside
-                    <b>.container</b>
-                </label>
-            </div>
+                <!-- #section:settings.container -->
+                <div class="ace-settings-item">
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                    <label class="lbl" for="ace-settings-add-container">
+                        Inside
+                        <b>.container</b>
+                    </label>
+                </div>
 
-            <!-- /section:settings.container -->
-        </div><!-- /.pull-left -->
+                <!-- /section:settings.container -->
+            </div><!-- /.pull-left -->
 
-        <div class="pull-left width-50">
-            <!-- #section:basics/sidebar.options -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
-                <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
-            </div>
+            <div class="pull-left width-50">
+                <!-- #section:basics/sidebar.options -->
+                <div class="ace-settings-item">
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
+                    <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                </div>
 
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact"/>
-                <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
-            </div>
+                <div class="ace-settings-item">
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact"/>
+                    <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                </div>
 
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
-                <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
-            </div>
+                <div class="ace-settings-item">
+                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
+                    <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                </div>
 
-            <!-- /section:basics/sidebar.options -->
-        </div><!-- /.pull-left -->
-    </div><!-- /.ace-settings-box -->
-</div><!-- /.ace-settings-container -->
+                <!-- /section:basics/sidebar.options -->
+            </div><!-- /.pull-left -->
+        </div><!-- /.ace-settings-box -->
+    </div><!-- /.ace-settings-container -->
 
-<!-- /section:settings.box -->
-<div class="page-content-area">
-    <div class="page-header">
-        <h1>
-            Widgets
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                Draggabble Widget Boxes &amp; Containers
-            </small>
-        </h1>
-    </div><!-- /.page-header -->
-    <!--row 1-->
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- PAGE CONTENT BEGINS -->
-            <!--<row 1 >-->
-            <div class="row">
-                <div class="col-lg-12 col-md-12 widget-container-col">
-                    <!-- #section:custom/widget-box -->
-                    <div class="widget-box">
-                        <div class="widget-header">
-                            <h5 class="widget-title">Department Show</h5>
+    <!-- /section:settings.box -->
+    <div class="page-content-area">
+        <div class="page-header">
+            <h1>
+                Widgets
+                <small>
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    Draggabble Widget Boxes &amp; Containers
+                </small>
+            </h1>
+        </div><!-- /.page-header -->
+        <!--row 1-->
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <!--<row 1 >-->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 widget-container-col">
+                        <!-- #section:custom/widget-box -->
+                        <div class="widget-box">
+                            <div class="widget-header">
+                                <h5 class="widget-title">Employee Edit form</h5>
 
-                            <!-- #section:custom/widget-box.toolbar -->
-                            <div class="widget-toolbar">
-                                <div class="widget-menu">
-                                    <a href="#" data-action="settings" data-toggle="dropdown">
-                                        <i class="ace-icon fa fa-bars"></i>
+                                <!-- #section:custom/widget-box.toolbar -->
+                                <div class="widget-toolbar">
+                                    <div class="widget-menu">
+                                        <a href="#" data-action="settings" data-toggle="dropdown">
+                                            <i class="ace-icon fa fa-bars"></i>
+                                        </a>
+
+                                        <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                            <li>
+                                                <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                            </li>
+
+                                            <li>
+                                                <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <a href="#" data-action="fullscreen" class="orange2">
+                                        <i class="ace-icon fa fa-expand"></i>
                                     </a>
 
-                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                                        </li>
+                                    <a href="#" data-action="reload">
+                                        <i class="ace-icon fa fa-refresh"></i>
+                                    </a>
 
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                                        </li>
-                                    </ul>
+                                    <a href="#" data-action="collapse">
+                                        <i class="ace-icon fa fa-chevron-up"></i>
+                                    </a>
+
+                                    <a href="#" data-action="close">
+                                        <i class="ace-icon fa fa-times"></i>
+                                    </a>
                                 </div>
 
-                                <a href="#" data-action="fullscreen" class="orange2">
-                                    <i class="ace-icon fa fa-expand"></i>
-                                </a>
-
-                                <a href="#" data-action="reload">
-                                    <i class="ace-icon fa fa-refresh"></i>
-                                </a>
-
-                                <a href="#" data-action="collapse">
-                                    <i class="ace-icon fa fa-chevron-up"></i>
-                                </a>
-
-                                <a href="#" data-action="close">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </a>
+                                <!-- /section:custom/widget-box.toolbar -->
                             </div>
 
-                            <!-- /section:custom/widget-box.toolbar -->
-                        </div>
+                            <div class="widget-body">
+                                <div class="widget-main">
 
-                        <div class="widget-body">
-                            <div class="widget-main">
+                                    <form id="edit_employee_form" class="form-horizontal themed">
+                                        <fieldset>
+                                            <div class="form-group">
 
-                                <fieldset>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                Prakash Mehra
-                                            </div>
-                                        </div>
+                                                    <div  class="col-md-3">
+                                                        <label for="emp_name">Name</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control"  id="emp_name" value="" />
+                                                    </div>
 
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Parent group</label>
                                             </div>
-                                            <div class="col-md-9">
-                                                Red
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Children Group</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                Blue
-                                            </div>
-                                        </div>
+                                            <div class="form-group">
 
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Tags</label>
+                                                    <div  class="col-md-3">
+                                                        <label for="emp_email">E-mail</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input type="email" class="form-control"  id="emp_email" value="" />
+                                                    </div>
+
                                             </div>
-                                            <div class="col-md-9">
-                                                Gold
+
+                                            <!--<div class="form-group">-->
+                                            <!--<div class="row">-->
+                                            <!--<div  class="col-md-3">-->
+                                            <!--<label for="emp_password">Password</label>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-9">-->
+                                            <!--<input type="password" class="form-control"  id="emp_password" />-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+
+                                            <!--<div class="form-group">-->
+                                            <!--<div class="row">-->
+                                            <!--<div  class="col-md-3">-->
+                                            <!--<label for="emp_password_confirm">Password confirmation</label>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-9">-->
+                                            <!--<input type="password" class="form-control"  id="emp_password_confirm" />-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+
+                                            <div class="form-group">
+
+                                                    <div  class="col-md-3">
+                                                        <label for="emp_designation">Designation</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control"  id="emp_designation" value="" />
+                                                    </div>
+
                                             </div>
-                                        </div>
 
-                                    </div>
-                                </fieldset>
+                                            <div class="form-group">
 
+                                                    <div class="col-md-3">
+                                                        <label class="control-label" for="emp_role">Role</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="controls">
+                                                            <select id="emp_role" class="with-search">
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                    <div  class="col-md-3">
+                                                        <label for="emp_addr">Address</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control"  id="emp_addr" value="" />
+                                                    </div>
+
+                                            </div>
+
+                                            <div class="form-actions">
+                                                <button type="reset" class="btn medium btn-danger">
+                                                    Cancel
+                                                </button>
+                                                <button type="submit" id="update_emp_btn" class="btn medium btn-primary">
+                                                    Update
+                                                </button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+
+                                </div>
                             </div>
                         </div>
+
+                        <!-- /section:custom/widget-box -->
                     </div>
 
-                    <!-- /section:custom/widget-box -->
+
                 </div>
+                <!-- /.row 1 end -->
 
-
-            </div>
-            <!-- /.row 1 end -->
-
-            <!-- PAGE CONTENT ENDS -->
-        </div><!-- /.col -->
-    </div>
-    <!-- /1 row -->
-</div><!-- /.page-content-area -->
+                <!-- PAGE CONTENT ENDS -->
+            </div><!-- /.col -->
+        </div>
+        <!-- /1 row -->
+    </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
 
@@ -784,68 +829,98 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    jQuery(function($) {
 
-        $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
-            var color_class = $(this).find('option:selected').data('class');
-            var new_class = 'widget-box';
-            if(color_class != 'default')  new_class += ' widget-color-'+color_class;
-            $(this).closest('.widget-box').attr('class', new_class);
+    function get_roles(){
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/roles",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    res.forEach(function(role){
+                        $('#emp_role').append("<option data-id="+role._id+" value="+role.name+">"+role.name+"</option>");
+                    });
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
         });
+    }
 
 
-        // scrollables
-        $('.scrollable').each(function () {
-            var $this = $(this);
-            $(this).ace_scroll({
-                size: $this.data('size') || 100
-                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
-            });
+$(function () {
+    var row_html;
+    get_roles();
+});
+
+
+
+
+
+jQuery(function($) {
+
+    $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
+        var color_class = $(this).find('option:selected').data('class');
+        var new_class = 'widget-box';
+        if(color_class != 'default')  new_class += ' widget-color-'+color_class;
+        $(this).closest('.widget-box').attr('class', new_class);
+    });
+
+
+    // scrollables
+    $('.scrollable').each(function () {
+        var $this = $(this);
+        $(this).ace_scroll({
+            size: $this.data('size') || 100
+            //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
         });
-        $('.scrollable-horizontal').each(function () {
-            var $this = $(this);
-            $(this).ace_scroll(
-                    {
-                        horizontal: true,
-                        styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
-                        size: $this.data('size') || 500,
-                        mouseWheelLock: true
-                    }
-            ).css({'padding-top': 12});
-        });
+    });
+    $('.scrollable-horizontal').each(function () {
+        var $this = $(this);
+        $(this).ace_scroll(
+                {
+                    horizontal: true,
+                    styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
+                    size: $this.data('size') || 500,
+                    mouseWheelLock: true
+                }
+        ).css({'padding-top': 12});
+    });
 
-        $(window).on('resize.scroll_reset', function() {
-            $('.scrollable-horizontal').ace_scroll('reset');
-        });
+    $(window).on('resize.scroll_reset', function() {
+        $('.scrollable-horizontal').ace_scroll('reset');
+    });
 
 
 
 
-        /**
-         //or use slimScroll plugin
-         $('.slim-scrollable').each(function () {
+    /**
+     //or use slimScroll plugin
+     $('.slim-scrollable').each(function () {
 					var $this = $(this);
 					$this.slimScroll({
 						height: $this.data('height') || 100,
 						railVisible:true
 					});
 				});
-         */
+     */
 
 
-        /**$('.widget-box').on('setting.ace.widget' , function(e) {
+    /**$('.widget-box').on('setting.ace.widget' , function(e) {
 					e.preventDefault();
 				});*/
 
-        /**
-         $('.widget-box').on('show.ace.widget', function(e) {
+    /**
+     $('.widget-box').on('show.ace.widget', function(e) {
 					//e.preventDefault();
 					//this = the widget-box
 				});
-         $('.widget-box').on('reload.ace.widget', function(e) {
+     $('.widget-box').on('reload.ace.widget', function(e) {
 					//this = the widget-box
 				});
-         */
+     */
 
         //$('#my-widget-box').widget_box('hide');
 
@@ -853,8 +928,30 @@
 
         // widget boxes
         // widget box drag & drop example
+//    $('.widget-container-col').sortable({
+//        connectWith: '.widget-container-col',
+//        items:'> .widget-box',
+//        handle: ace.vars['touch'] ? '.widget-header' : false,
+//        cancel: '.fullscreen',
+//        opacity:0.8,
+//        revert:true,
+//        forceHelperSize:true,
+//        placeholder: 'widget-placeholder',
+//        forcePlaceholderSize:true,
+//        tolerance:'pointer',
+//        start: function(event, ui) {
+//            //when an element is moved, it's parent becomes empty with almost zero height.
+//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
+//            ui.item.parent().css({'min-height':ui.item.height()})
+//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
+//        },
+//        update: function(event, ui) {
+//            ui.item.parent({'min-height':''})
+//            //p.style.removeProperty('background-color');
+//        }
+//    });
 
-    });
+});
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->

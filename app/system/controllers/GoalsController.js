@@ -22,8 +22,9 @@ var GoalsController={
     else{
       req.body.subgoals.forEach(function(subgoalObj,index){
         GoalMasterModel.getGoalMaster(subgoalObj.subgoal,"","","",function(err,subgoalMasterObj){
-          subgoalObj.allowedTransactions=subgoalMasterObj.allowedTransactions;
-          if(index==subgoals.length-1){
+          subgoalObj.allowedTransactions=subgoalMasterObj.action.allowedTransactions;
+          console.log(subgoalMasterObj);
+          if(index==req.body.subgoals.length-1){
             UserGoalsModel.createGoal(req.params.userId,req.body,function(err,obj){
               if(err)res.send(err);
               else res.send("success");
