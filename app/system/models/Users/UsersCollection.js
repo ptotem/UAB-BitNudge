@@ -37,6 +37,7 @@ var userSchema=new Schema({
     goals:[{
         // goalMaster:{type:Schema.Types.ObjectId,ref:'goalMasters'},
         // tags:[{type:Schema.Types.ObjectId,ref:'tags'}],
+        name:String,
         goalType:String,      //can be challenge or goal
         challenge:{type:Schema.Types.ObjectId,ref:'challenges'},
         criteria:String,

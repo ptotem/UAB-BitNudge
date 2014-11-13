@@ -542,11 +542,9 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="text-center aligned">Name</th>
-                                                    <th class="text-center aligned">Scope</th>
                                                     <th class="text-center aligned">Start Date</th>
                                                     <th class="text-center aligned">End Date</th>
                                                     <th class="text-center aligned">Target Value</th>
-                                                    <th class="text-center aligned"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -730,23 +728,33 @@
                 dataType: 'json',
                 success: function(res) {
                     if(res){
-                        console.log(res);
+                        //console.log(res);
+                        var accepted_challenge_name, accepted_challenge_target_val;
                         res.forEach(function(acceptedChallenge){
-                            console.log(accept_challenge);
-//                            row_html = '<tr>'+
-//                                    '<td class="text-center aligned">'+challenge_name+'</td>'+
-//                                    '<td class="text-center aligned">'+challenge.scope+'</td>'+
-//                                    '<td class="text-center aligned">'+challenge.startDate+'</td>'+
-//                                    '<td class="text-center aligned">'+challenge.endDate+'</td>'+
-//                                    '<td class="text-center aligned">'+target_val+'</td>'+
-//                                    '<td class="text-center aligned">'+
-//                                    '<div class="block" style="width: 50px;">' +
-//                                        '<button onclick="accept_challenge($(this));" class="accept-challenge-btn btn btn-info" id=challenge_'+challenge._id+'_user_'+selected_user+'>'+"Accept"+'</button>'+
-//                                    '</div>' +
-//                                    '</td>'+
-//                                    '</tr>';
-//
-//                            $("#accepted_challenges_list").find('tbody').append(row_html);
+                            //console.log(acceptedChallenge);
+                            if (acceptedChallenge.name!=undefined){
+                                accepted_challenge_name = acceptedChallenge.name;
+                            }
+                            else{
+                                accepted_challenge_name = "";
+                            }
+
+                            if (acceptedChallenge.action.targetValue!=undefined){
+                                accepted_challenge_target_val = acceptedChallenge.action.targetValue;
+                            }
+                            else{
+                                accepted_challenge_target_val = "NA";
+                            }
+                            //Name, Start Date, End Date, Target Value
+
+                            row_html = '<tr>'+
+                                    '<td class="text-center aligned">'+accepted_challenge_name+'</td>'+
+                                    '<td class="text-center aligned">'+acceptedChallenge.startDate+'</td>'+
+                                    '<td class="text-center aligned">'+acceptedChallenge.endDate+'</td>'+
+                                    '<td class="text-center aligned">'+accepted_challenge_target_val+'</td>'+
+                                    '</tr>';
+
+                            $("#accepted_challenges_list").find('tbody').append(row_html);
                         });
                     }
                 }
