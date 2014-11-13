@@ -14,8 +14,6 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-    <link rel="stylesheet" href="assets/css/chosen.css" />
-
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css" />
@@ -71,7 +69,7 @@
     <a href="#" class="navbar-brand">
         <small>
             <i class="fa fa-leaf"></i>
-            Ace Admin
+            BitNudge
         </small>
     </a>
 
@@ -386,46 +384,46 @@
 
 <!-- #section:basics/sidebar -->
 <div id="sidebar" class="sidebar                  responsive">
-    <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-    </script>
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+</script>
 
-    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-            <button class="btn btn-success">
-                <i class="ace-icon fa fa-signal"></i>
-            </button>
+<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+        <button class="btn btn-success">
+            <i class="ace-icon fa fa-signal"></i>
+        </button>
 
-            <button class="btn btn-info">
-                <i class="ace-icon fa fa-pencil"></i>
-            </button>
+        <button class="btn btn-info">
+            <i class="ace-icon fa fa-pencil"></i>
+        </button>
 
-            <!-- #section:basics/sidebar.layout.shortcuts -->
-            <button class="btn btn-warning">
-                <i class="ace-icon fa fa-users"></i>
-            </button>
+        <!-- #section:basics/sidebar.layout.shortcuts -->
+        <button class="btn btn-warning">
+            <i class="ace-icon fa fa-users"></i>
+        </button>
 
-            <button class="btn btn-danger">
-                <i class="ace-icon fa fa-cogs"></i>
-            </button>
+        <button class="btn btn-danger">
+            <i class="ace-icon fa fa-cogs"></i>
+        </button>
 
-            <!-- /section:basics/sidebar.layout.shortcuts -->
-        </div>
+        <!-- /section:basics/sidebar.layout.shortcuts -->
+    </div>
 
-        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-            <span class="btn btn-success"></span>
+    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+        <span class="btn btn-success"></span>
 
-            <span class="btn btn-info"></span>
+        <span class="btn btn-info"></span>
 
-            <span class="btn btn-warning"></span>
+        <span class="btn btn-warning"></span>
 
-            <span class="btn btn-danger"></span>
-        </div>
-    </div><!-- /.sidebar-shortcuts -->
+        <span class="btn btn-danger"></span>
+    </div>
+</div><!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
         <li>
-            <a href="index.html">
+            <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
                 <span class="menu-text">Department List</span>
             </a>
@@ -434,14 +432,14 @@
         </li>
 
         <li class="">
-            <a href="#" class="dropdown-toggle">
+            <a href="roles.html">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> Roles </span>
             </a>
             <b class="arrow"></b>
         </li>
 
-        <li class="active">
+        <li>
             <a href="employees.html">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">Employees</span>
@@ -451,15 +449,15 @@
         </li>
 
         <li class="">
-            <a href="#" >
+            <a href="goals.html">
                 <i class="menu-icon fa fa-pencil-square-o"></i>
                 <span class="menu-text"> Goals </span>
             </a>
             <b class="arrow"></b>
         </li>
 
-        <li>
-            <a href="widgets.html">
+        <li >
+            <a href="badge_master.html">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text"> Badge Master </span>
             </a>
@@ -468,7 +466,7 @@
         </li>
 
         <li class="">
-            <a href="calendar.html">
+            <a href="reward_center.html">
                 <i class="menu-icon fa fa-calendar"></i>
                 <span class="menu-text"> Reward Center </span>
             </a>
@@ -476,56 +474,86 @@
         </li>
 
         <li class="">
-            <a href="gallery.html">
+            <a href="reward_master.html">
                 <i class="menu-icon fa fa-picture-o"></i>
                 <span class="menu-text"> Reward Master </span>
             </a>
 
             <b class="arrow"></b>
         </li>
+        <li>
+            <a href="badges.html">
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text"> Badges </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="active">
+            <a href="abilities.html">
+                <i class="menu-icon fa fa-bar-chart-o"></i>
+                <span class="menu-text"> Abilities </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="level.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Level </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="org_tags.html">
+                <i class="menu-icon fa fa-book"></i>
+                <span class="menu-text"> Organization Tag </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="team.html">
+                <i class="menu-icon fa fa-envelope"></i>
+                <span class="menu-text"> Team </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="reward_master.html">
+                <i class="menu-icon fa fa-envelope"></i>
+                <span class="menu-text"> Reward Master </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="action_sec.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Action Section </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+
     </ul><!-- /.nav-list -->
 
-    <!-- #section:basics/sidebar.layout.minimize -->
-    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-    </div>
+<!-- #section:basics/sidebar.layout.minimize -->
+<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+    <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+</div>
 
-    <!-- /section:basics/sidebar.layout.minimize -->
-    <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-    </script>
+<!-- /section:basics/sidebar.layout.minimize -->
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+</script>
 </div>
 
 <!-- /section:basics/sidebar -->
 <div class="main-content">
-<!-- #section:basics/content.breadcrumbs -->
-<div class="breadcrumbs" id="breadcrumbs">
-    <script type="text/javascript">
-        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-    </script>
-
-    <ul class="breadcrumb">
-        <li>
-            <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">Widgets</li>
-    </ul><!-- /.breadcrumb -->
-
-    <!-- #section:basics/content.searchbox -->
-    <div class="nav-search" id="nav-search">
-        <form class="form-search">
-							<span class="input-icon">
-								<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-								<i class="ace-icon fa fa-search nav-search-icon"></i>
-							</span>
-        </form>
-    </div><!-- /.nav-search -->
-
-    <!-- /section:basics/content.searchbox -->
-</div>
-
-<!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
     <!-- #section:settings.box -->
     <div class="ace-settings-container" id="ace-settings-container">
@@ -618,26 +646,17 @@
 
     <!-- /section:settings.box -->
     <div class="page-content-area">
-        <div class="page-header">
-            <h1>
-                Widgets
-                <small>
-                    <i class="ace-icon fa fa-angle-double-right"></i>
-                    Draggabble Widget Boxes &amp; Containers
-                </small>
-            </h1>
-        </div><!-- /.page-header -->
+
         <!--row 1-->
         <div class="row">
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
-                <!--<row 1 >-->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 widget-container-col">
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Add New Action</h5>
+                                <h5 class="widget-title">Abilities Show</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -679,32 +698,24 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-
-                                    <form id="new_action_form" class="form-horizontal themed">
+                                    <form id="edit_badge_form" class="form-horizontal themed">
                                         <fieldset>
                                             <div class="form-group">
 
-                                                <div class="col-md-3">
-                                                    <label class="control-label" for="actions_select">Select Action</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="controls">
-                                                        <select id="actions_select" class="chosen-select">
-                                                        </select>
+                                                    <div  class="col-md-3">
+                                                        <label>Name</label>
                                                     </div>
-                                                    <div id="result_1" class="result-block">
+                                                    <div class="col-md-9">
+                                                        Laurel
                                                     </div>
-                                                </div>
 
                                             </div>
-
-
                                             <div class="form-actions">
                                                 <button type="reset" class="btn medium btn-danger">
                                                     Cancel
                                                 </button>
-                                                <button id="submit_action_form_btn" type="submit" class="btn medium btn-primary">
-                                                    Create
+                                                <button type="submit" id="update_emp_btn" class="btn medium btn-primary">
+                                                    Update
                                                 </button>
                                             </div>
                                         </fieldset>
@@ -719,12 +730,13 @@
 
 
                 </div>
-                <!-- /.row 1 end -->
+                <!--row 2 end-->
 
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
         </div>
         <!-- /1 row -->
+
     </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
@@ -758,7 +770,6 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/js/chosen.jquery.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -769,164 +780,7 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
-var transactionMaster;
-
-function get_actions(){
-    $.ajax({
-        // /org/:orgId/transactions
-        url: remote_host+"org/"+urlParams.orgId+"/transactions",
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-            //console.log(res);
-            transactionMaster = res;
-            if(res){
-                res.forEach(function(transactionMaster){
-                    //console.log(transactionMaster);
-                    $('#actions_select').append("<option value="+transactionMaster._id+">"+transactionMaster.name+"</option>");
-                });
-                $("#actions_select").chosen().trigger('chosen:updated');
-            }
-        }
-        ,
-        error: function(e , msg){
-            //processError(e,msg);
-        }
-    });
-}
-
-var ary = [];
-
-function pushToAry(name, val) {
-    var obj = {};
-    obj[name] = val;
-    ary.push(obj);
-}
-
-var hasTag = function(this_transaction_id) {
-    var i = null;
-    for (i = 0; transactionMaster.length > i; i += 1) {
-        if (transactionMaster[i]._id === this_transaction_id) {
-            return transactionMaster[i];
-        }
-    }
-    return false;
-};
-
-$(function () {
-
-    get_actions();
-
-    $('#actions_select').on('change', function () {
-        var this_transaction_id = $(this).val();
-        var this_transaction_obj = hasTag(this_transaction_id);
-        var transaction_format = this_transaction_obj.format;
-
-        var fields = transaction_format.match(/%{([^}]*)}/g);
-
-        $("#result_1").empty();
-
-        var fields_array = [];
-        var selectfields_array = [];
-        if (fields != null) {
-            $.each(fields, function (key, value) {
-                fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
-            });
-            var titlized_field_name, keyParam_html, field_html;
-            //console.clear();
-            $.each(fields_array, function (key, value) {
-                fields_array[key] = value.replace(/[^a-zA-Z 0-9]+/g, '');
-                titlized_field_name = fields_array[key].charAt(0).toUpperCase() + fields_array[key].slice(1);
-                if (fields_array[key] == this_transaction_obj.keyParam) {
-                    keyParam_html = '<label for=transaction_' + this_transaction_id + "_" + fields_array[key] + '>' + titlized_field_name + '</label>' +
-                            '<input type="text" id=transaction_' + this_transaction_id + "_" + fields_array[key] + ' class="form-control">'
-                    $("#result_1").append(keyParam_html);
-                }
-                else{
-                    selectfields_array.push(fields_array[key]);
-                }
-            });
-
-            $.each(selectfields_array, function (key, value) {
-                field_html = '<select id=select_'+value+' class="with-search col-md-12">'+'</select>';
-                $.ajax({
-                    url: remote_host+"org/"+urlParams.orgId+"/tags/"+value,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(res) {
-                        if(res){
-                            res.forEach(function(role){
-                                $('#select_'+value).append("<option data-id="+role._id+" value="+role._id+">"+role.name+"</option>");
-                            });
-                        }
-                    },
-                    error: function(e , msg){
-                        //processError(e,msg);
-                    }
-                });
-                $("#result_1").append(field_html);
-            });
-
-        }
-    });
-
-
-    $("#submit_action_form_btn").click(function(e) {
-        //e.preventDefault();
-        var transaction_id = $("#actions_select option:selected").val();
-        var keyParamValue = $("#result_1").find('input[type=text]').val();
-
-        var select_id, selected_value;
-        var tagJSON = [];
-        $('#result_1').find('select').each(function(i) {
-            select_id = $(this).attr("id");
-            selected_value = $("#"+select_id).val();
-            //pushToAry(select_id.split("_")[1], selected_value);
-            var tag = { "tagName": select_id.split("_")[1], "tag":selected_value };
-            tagJSON.push(tag);
-        });
-
-        var data = {
-            actionId: transaction_id,
-            keyParamValue: keyParamValue,
-            tags: tagJSON
-        };
-
-        $.ajax({
-            // /org/:orgId/users/:userId/transactions/
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+"/transactions",
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-            success: function(res) {
-                var success_text = "Action created.";
-                //show_notification(success_text);
-                window.location.href = local_host+"employee_show.html?userId="+urlParams.userId;
-            } ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-        return false;
-    });
-
-});
-
-
-
-
-
 jQuery(function($) {
-    $('.chosen-select').chosen({allow_single_deselect:true});
-    //resize the chosen on window resize
-    $(window)
-            .off('resize.chosen')
-            .on('resize.chosen', function() {
-                $('.chosen-select').each(function() {
-                    var $this = $(this);
-                    $this.next().css({'width': $this.parent().width()});
-                })
-            }).trigger('resize.chosen');
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
         var color_class = $(this).find('option:selected').data('class');
@@ -987,14 +841,84 @@ jQuery(function($) {
 				});
      */
 
-    //$('#my-widget-box').widget_box('hide');
+        //$('#my-widget-box').widget_box('hide');
 
 
 
-    // widget boxes
-    // widget box drag & drop example
+        // widget boxes
+        // widget box drag & drop example
+//    $('.widget-container-col').sortable({
+//        connectWith: '.widget-container-col',
+//        items:'> .widget-box',
+//        handle: ace.vars['touch'] ? '.widget-header' : false,
+//        cancel: '.fullscreen',
+//        opacity:0.8,
+//        revert:true,
+//        forceHelperSize:true,
+//        placeholder: 'widget-placeholder',
+//        forcePlaceholderSize:true,
+//        tolerance:'pointer',
+//        start: function(event, ui) {
+//            //when an element is moved, it's parent becomes empty with almost zero height.
+//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
+//            ui.item.parent().css({'min-height':ui.item.height()})
+//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
+//        },
+//        update: function(event, ui) {
+//            ui.item.parent({'min-height':''})
+//            //p.style.removeProperty('background-color');
+//        }
+//    });
 
 });
+</script>
+<script type="text/javascript">
+    var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
+    ace.load_ajax_scripts(scripts, function() {
+        //inline scripts related to this page
+        jQuery(function($) {
+
+            /**
+             var tableTools = new $.fn.dataTable.TableTools( oTable1, {
+			"sSwfPath": "../../copy_csv_xls_pdf.swf",
+	        "buttons": [
+	            "copy",
+	            "csv",
+	            "xls",
+				"pdf",
+	            "print"
+	        ]
+	    } );
+             $( tableTools.fnContainer() ).insertBefore('#sample-table-2');
+             */
+
+
+            $(document).on('click', 'th input:checkbox' , function(){
+                var that = this;
+                $(this).closest('table').find('tr > td:first-child input:checkbox')
+                        .each(function(){
+                            this.checked = that.checked;
+                            $(this).closest('tr').toggleClass('selected');
+                        });
+            });
+
+
+            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+            function tooltip_placement(context, source) {
+                var $source = $(source);
+                var $parent = $source.closest('table')
+                var off1 = $parent.offset();
+                var w1 = $parent.width();
+
+                var off2 = $source.offset();
+                //var w2 = $source.width();
+
+                if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+                return 'left';
+            }
+
+        })
+    });
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->

@@ -11,16 +11,16 @@ var UserGoals={
       goalObj.createdAt=new Date();
     if(goalObj.goalType!="challenge")
       goalObj.goalType="challenge";
-    UsersCollection.update({_id:userId},{$push:{goals:goalObj}},callback);
+    UsersCollection.update({_id:userId},{$addToSet:{goals:goalObj}},callback);
   },
   getGoal:function(userId,goalId,fields,options,populationData,callback){
     UsersCollection.findOne({userId:userId,'goals._id':goalId},{'goals.$':1},options).populate(populationData).exec(callback);
   },
   getLiveGoalsOfUser:function(userId,currDate,callback){
-    UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate}},'goals.goalType':"goal"}, {$group:{_id:'$_id',goals:{$push:'$goals'}}},callback);
+    UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}},{$unwind:'$goals'},{$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate},'goals.goalType':"goal"}},{$group:{_id:'$_id',goals:{$push:'$goals'}}},callback);
   },
   getLiveChallengesOfUser:function(userId,currDate,callback){
-    UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate}},'goals.goalType':"challenge"}, {$group:{_id:'$_id',challenges:{$push:'$goals'}}},callback);
+    UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate},'goals.goalType':"challenge"}}, {$group:{_id:'$_id',challenges:{$push:'$goals'}}},callback);
   },
   getChallenge:function(userId,goalId,fields,options,populationData,callback){
     UsersCollection.findOne({userId:userId,'goals._id':goalId},{'goals.$':1},options).populate(populationData).exec(callback);

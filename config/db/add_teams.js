@@ -1,7 +1,8 @@
 var fs=require('fs');
 var TeamsModel=require('../../app/system/models/Teams');
 var UsersCollection=require('../../app/system/models/Users/UsersCollection.js');
-var UsersModel=require('../../app/system/models/Users');
+var UsersModel=require('../../app/system/models/Users').Users;
+var TeamPeriodPointsModel = require('../../app/system/models/TeamPeriodPoints');
 var test=process.argv;
 var mongoose=require('mongoose');
 var readline=require('readline');

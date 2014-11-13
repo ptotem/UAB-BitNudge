@@ -8,6 +8,7 @@ var NudgeChat=require('../../app/system/models/NudgeChat');
 var NotificationCenterModel=require('../../app/system/models/NotificationCenter');
 var OrganizationalModel=require('../../app/system/models/Organizations');
 var UserPeriodPointsModel=require('../../app/system/models/UserPeriodPoints');
+var RolesCollection=require('../../app/system/models/Roles/RolesCollection.js');
 var async=require('async');
 test.shift();
 test.shift();

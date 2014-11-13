@@ -1,1 +1,30 @@
-[{"name" : "Vikram T", "email" : "vikram@ptotem.com","password":"test", "designation" : "Administrator","role":"User"},{"name" : "Amol", "email" : "amol@ptotem.com","password":"test", "designation" : "Administrator","role":"User"},{"name" : "Sunny", "email" : "sunny@ptotem.com","password":"test", "designation" : "Development Head","role":"User"}]
+[
+    {
+        "name": "Vikram T",
+        "email": "vikram@ptotem.com",
+        "password": "test",
+        "designation": "Administrator",
+        "role": "Admin"
+    },
+    {
+        "name": "Amol",
+        "email": "amol@ptotem.com",
+        "password": "test",
+        "designation": "HR Head",
+        "role": "User"
+    },
+    {
+        "name": "Sunny",
+        "email": "sunny@ptotem.com",
+        "password": "test",
+        "designation": "Development Head",
+        "role": "User"
+    },
+    {
+        "name": "Nilesh",
+        "email": "nilesh@ptotem.com",
+        "password": "test",
+        "designation": "Senior Software Developer",
+        "role": "User"
+    }
+]

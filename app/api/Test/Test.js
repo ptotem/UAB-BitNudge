@@ -1,7 +1,9 @@
 var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
+var TransactionCollection=require('../../system/models/TransactionMaster/TransactionMasterCollection.js');
 var RolesModel=require('../../system/models/Roles');
 var GoalMasterModel=require('../../system/models/GoalMaster');
+var GoalCollection=require('../../system/models/GoalMaster/GoalMasterCollection.js');
 var UserGoalsModel=require('../../system/models/Users').Goals;
 var userFn=function(orgId,obj){
     var allData=obj[0].data;
@@ -80,6 +82,7 @@ var userGoalFn=function(orgId,obj){
             var userGoalObj = {};
             if(criteria=="Action"){
                 var goalObj={};
+                var subgoalObjArray=[];
                 var subgoalObj={};
                 var subgoalObj1={};
                 goalObj[headers[1]]=data[1];
@@ -89,22 +92,17 @@ var userGoalFn=function(orgId,obj){
                 var subgoalname;
                 var subtransactionname;
                 var aFirst = subgoal.split(',');
-
+                var transactionname=[];
                 var str_array = subgoal.split(',');
-                for (var i = 0; i < aFirst.length; i++) {
-                    subgoalname=aFirst[0];
-                    subtransactionname=aFirst[1];
-//                    console.log(aFirst[i]);
-                }
-
-//                console.log(subgoalname);
+//                console.log(str_array);
 //                console.log(subtransactionname);
                 var action={};
                 var sub={};
                 var creator={};
                 var subname={};
-                action[headers[3]]=data[3];
+//                action[headers[3]]=data[3];
                 action[headers[4]]=data[4];
+                action["allowedTransactions"]=
                 userGoalObj[headers[0]]=data[0];
                 userGoalObj["action"]=action;
                 UserCollection.findOne({email: data[7]}, function (err, user) {
@@ -112,22 +110,35 @@ var userGoalFn=function(orgId,obj){
 //                    userGoalObj["creator"]=creator;
 //                    console.log(goalObj);
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
-                        GoalCollection.findOne({name: subgoalname}, function (err, subgoal) {
-//                            console.log(subgoal._id);
-//                            action["type"]=subgoal._id;
+//                        GoalCollection.findOne({name: subgoalname}, function (err, subgoal) {
+                for (var i = 0; i < aFirst.length; i++) {
+//                    console.log(aFirst[i]);
+                    subgoalname = aFirst[0];
+                    subgoalObjArray[i]=aFirst[0];
+                    transactionname = aFirst[i];
+//                    subtransactionname=aFirst[1];
+//                    console.log(aFirst[i]);
+                }
 
-                            subgoalObj["subgoal"]=action;
-                            subgoalObj["targetValue"]=data[4];
-                            subgoalObj1["subgoals"]=subgoalObj;
+                            TransactionCollection.findOne({name: aFirst[i]}, function (err, transaction) {
+//                                console.log(transaction);
+                                subgoalObj["targetValue"] = data[4];
+//                                subgoalObj["subgoal"] = subgoal._id;
+                                subgoalObj["allowedTransactions"] = transaction._id;
+                                subgoalObjArray.push(subgoalObj);
+                                goalObj["action"] = subgoalObjArray;
 //                            subgoalgoalObj["targetValue"]=data[4];
-                            console.log(subgoalObj1);
-//                        UserGoalsModel.createGoal(user._id,subgoalObj1,function(err,obj){
-//                            if(err)console.log("error"+err)
-//                            else console.log("success");
-//                        });
+//                                console.log(subgoalObjArray);
+                            console.log(goalObj);
+                                UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
+                                    if (err)console.log("error" + err)
+                                    else console.log("success");
+                                });
+                            });
+//                }
                         });
                     });
-                });
+//                });
             }
             else{
 

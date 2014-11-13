@@ -687,8 +687,8 @@
                                                 <div class="col-md-9">
                                                     <div class="controls">
                                                         <!--<input class="file" id="bulk_goals_excel" type="file" />-->
-                                                        <div class="space"></div>
                                                         <input class="file-no-style" id="bulk_goals_excel_2" type="file" />
+
                                                     </div>
                                                 </div>
 
@@ -764,8 +764,21 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-
     $(function () {
+        $('#bulk_goals_excel_2').ace_file_input({
+            no_file:'No File ...',
+            btn_choose:'Choose',
+            btn_change:'Change',
+            droppable:false,
+            onchange:null,
+            thumbnail:false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+
+        console.log(urlParams)
         $("#employees_bulk_upload_form").submit(function(event){
             event.preventDefault();
             var data=new FormData();

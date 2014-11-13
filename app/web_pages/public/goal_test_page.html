@@ -635,7 +635,7 @@
 <!-- #section:custom/widget-box -->
 <div class="widget-box">
 <div class="widget-header">
-    <h5 class="widget-title">Action test page</h5>
+    <h5 class="widget-title">Goal test page</h5>
 
     <!-- #section:custom/widget-box.toolbar -->
     <div class="widget-toolbar">
@@ -681,27 +681,15 @@
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active">
                     <a data-toggle="tab" href="#tab1">
-                        Actions done <br> by selected user
+                        Goal done <br> by selected user
                     </a>
                 </li>
 
                 <li>
                     <a data-toggle="tab" href="#tab2">
-                        Users who have done <br> selected action
+                        Goal done by <br> selected user's downline
                     </a>
                 </li>
-                <li>
-                    <a data-toggle="tab" href="#tab3">
-                        Actions done by <br> selected user's downline
-                    </a>
-                </li>
-                <li>
-                    <a data-toggle="tab" href="#tab4">
-                        Users who have done <br> selected action
-                    </a>
-                </li>
-
-
             </ul>
 
             <div class="tab-content">
@@ -710,16 +698,16 @@
                         <fieldset>
                             <div class="form-group">
 
-                                <div class="col-md-3">
-                                    <label class="control-label" for="users_select">User</label>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="controls">
-                                        <select id="users_select" class="with-search">
-                                        </select>
+                                    <div class="col-md-3">
+                                        <label class="control-label" for="users_select">User</label>
                                     </div>
-                                </div>
+                                    <div class="col-md-9">
+                                        <div class="controls">
+                                            <select id="users_select" class="with-search">
+                                            </select>
+                                        </div>
 
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="action_result_block1" id="result_1_action">
@@ -732,75 +720,42 @@
                 </div>
 
                 <div id="tab2" class="tab-pane fade">
-                    <form id="action-tags-test-form-tab2" class="form-horizontal themed">
-                        <fieldset>
-                            <div class="form-group">
-
-
-                                <div class="col-md-12">
-                                    <h5>Show users who have done action single select tag</h5>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <label class="control-label" for="action_select_2">Actions</label>
-                                    <div class="controls">
-                                        <select id="action_select_2" class="with-search">
-                                            <!--<option value="AK">Alaska</option>-->
-                                            <!--<option value="HI">Hawaii</option>-->
-                                            <!--<option value="CA">California</option>-->
-                                            <!--<option value="NV">Nevada</option>-->
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="action_result_block2" id="result_2_action">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-                <div id="tab3" class="tab-pane fade">
                     <form id="action-tags-test-form-tab3" class="form-horizontal themed">
                         <fieldset>
 
                             <div class="form-group">
 
-
-                                <div class="col-md-12">
-                                    <h5>Show action done by downline with single select tag</h5>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <label class="control-label" for="action_select_user">User</label>
-                                    <div class="controls">
-                                        <select id="action_select_user" class="with-search">
-                                            <!--<option>System Analysts</option>-->
-                                            <!--<option>Administrator</option>-->
-                                            <!--<option>Manager</option>-->
-                                            <!--<option>Employee</option>-->
-                                        </select>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5>Show action done by downline with single select tag</h5>
+                                        </div>
                                     </div>
+                                    <div class="col-md-5">
+                                        <label class="control-label" for="action_select_user">User</label>
+                                        <div class="controls">
+                                            <select id="action_select_user" class="with-search">
+                                                <!--<option>System Analysts</option>-->
+                                                <!--<option>Administrator</option>-->
+                                                <!--<option>Manager</option>-->
+                                                <!--<option>Employee</option>-->
+                                            </select>
+                                        </div>
 
                                 </div>
 
-
-                                <div class="col-md-5">
-                                    <label class="control-label" for="action_select_action">Action</label>
-                                    <div class="controls">
-                                        <select id="action_select_action" class="with-search">
-                                            <!-- <option value="AK">Alaska</option> -->
-                                            <!-- <option value="HI">Hawaii</option> -->
-                                            <!-- <option value="CA">California</option> -->
-                                            <!-- <option value="NV">Nevada</option> -->
-                                        </select>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label class="control-label" for="action_select_action">Goal</label>
+                                        <div class="controls">
+                                            <select id="action_select_action" class="with-search">
+                                                <!-- <option value="AK">Alaska</option> -->
+                                                <!-- <option value="HI">Hawaii</option> -->
+                                                <!-- <option value="CA">California</option> -->
+                                                <!-- <option value="NV">Nevada</option> -->
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-
 
 
                                 <div class="row">
@@ -814,39 +769,6 @@
                         </fieldset>
                     </form>
                 </div>
-                <div id="tab4" class="tab-pane fade">
-                    <form id="action-tags-test-form-tab4" class="form-horizontal themed">
-                        <fieldset>
-
-                            <div class="form-group">
-
-
-                                <div class="col-md-12">
-                                    <h5>Show points earn by downline with single select tag</h5>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <label class="control-label" for="action_select_4">User</label>
-                                    <div class="controls">
-                                        <select id="action_select_4" class="with-search">
-                                            <!--<option>System Analysts</option>-->
-                                            <!--<option>Administrator</option>-->
-                                            <!--<option>Manager</option>-->
-                                            <!--<option>Employee</option>-->
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="action_result_block4" id="result_4_action"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-
             </div>
         </div>
 
@@ -911,7 +833,6 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-
     function get_employees(){
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users",
@@ -923,6 +844,8 @@
                     res.forEach(function(user){
                         option_html = "<option value="+user._id+">"+user.name+"</option>";
                         $('#users_select').append(option_html);
+                        $('#action_select_user').append(option_html);
+
                     });
                 }
             },
@@ -931,13 +854,12 @@
             }
         });
     }
-
     function user_goal(goalId){
         $('#result_1_action').empty();
-        var urlParams = JSON.parse(localStorage.getItem('user_data'));
         $.ajax({
+//            url: remote_host+"org/"+orgId+"/goals/"+goalId,
 
-            url: remote_host+"org/"+url.Params.orgId+"/goals/"+goalId,
+            url: remote_host+"org/"+urlParams.orgId+"/goals/"+goalId,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -953,9 +875,10 @@
     }
     function user_downline_goal(goalId){
         $('#action_select_action').empty();
-        var urlParams = JSON.parse(localStorage.getItem('user_data'));
+//        var urlParams = JSON.parse(localStorage.getItem('user_data'));
+//        var orgId="5417f10a195e61022fff91ee"
         $.ajax({
-            url: remote_host+"org/"+url.Params.orgId+"/goals/"+goalId,
+            url: remote_host+"org/"+urlParams.orgId+"/goals/"+goalId,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -973,25 +896,65 @@
         });
 
     }
-    function get_userdata(){
-        $.ajax({
-            url: remote_host+"org/"+url.Params.orgId+"/users",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var option_html;
-                    res.forEach(function(user){
-                        option_html = "<option value="+user._id+">"+user.name+"</option>";
-                        $('#action_select_user').append(option_html);
-                    });
+    $(function () {
+        get_employees();
+
+        $("#users_select").change(function(){
+            $('#result_1_action').empty();
+            var selected_user = $("#users_select :selected").val();
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                    if(res){
+                        res.goals.forEach(function(goal){
+                            goal.subgoal.forEach(function(subgoal){
+                                user_goal(subgoal.subgoal);
+                            })
+                        })
+
+                    }
+                },
+                error: function(e , msg){
+                    //processError(e,msg);
                 }
-            },
-            error: function(e , msg){
-                //processError(e,msg);
-            }
+            });
         });
-    }
+    });
+    // Down line Goal call
+
+    $(function () {
+        $("#action_select_user").change(function(){
+            $('#action_select_action').empty();
+//                var orgId="5417f10a195e61022fff91ee";
+            var user = $("#action_select_user :selected").val();
+//                var tr="5421698c67481ed26eab3e3d";
+            $.ajax({
+                url: remote_host+"org/"+urlParams.orgId+"/users/"+user+"/downlink",
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                    if(res){
+                        var option_html;
+                        res.forEach(function(users){
+                            users.goals.forEach(function(goal) {
+                                goal.subgoal.forEach(function(subgoal) {
+                                    user_downline_goal(subgoal.subgoal);
+
+                                });
+                            });
+                        });
+                    }
+                },
+
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+
+        });
+    });
     jQuery(function($) {
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
@@ -1059,6 +1022,28 @@
 
         // widget boxes
         // widget box drag & drop example
+//    $('.widget-container-col').sortable({
+//        connectWith: '.widget-container-col',
+//        items:'> .widget-box',
+//        handle: ace.vars['touch'] ? '.widget-header' : false,
+//        cancel: '.fullscreen',
+//        opacity:0.8,
+//        revert:true,
+//        forceHelperSize:true,
+//        placeholder: 'widget-placeholder',
+//        forcePlaceholderSize:true,
+//        tolerance:'pointer',
+//        start: function(event, ui) {
+//            //when an element is moved, it's parent becomes empty with almost zero height.
+//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
+//            ui.item.parent().css({'min-height':ui.item.height()})
+//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
+//        },
+//        update: function(event, ui) {
+//            ui.item.parent({'min-height':''})
+//            //p.style.removeProperty('background-color');
+//        }
+//    });
 
     });
 </script>

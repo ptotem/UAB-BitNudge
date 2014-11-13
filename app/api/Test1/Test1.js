@@ -135,6 +135,14 @@ var userTags={
             res.send(actions.name);
         })
     },
+    'get /org/:orgId/goals/:goalId/goaldata':function(req,res){
+        GoalCollection.findOne({_id:req.params.goalId},function(err, goal) {
+            console.log(goal);
+            res.send(goal);
+
+
+        });
+    },
     'get /org/:orgId/goals/:goalId':function(req,res){
         GoalCollection.findOne({_id:req.params.goalId},function(err, goal) {
             console.log(goal);
@@ -143,13 +151,16 @@ var userTags={
 
         });
     },
+
+
     'get /org/:orgId/transaction/:transactionId/users':function(req,res){
 //        { $match: {tracks: {$elemMatch: {'language': 'en'}} } },
-        UserCollection.findOne({},{ transactions :{ $elemMatch: { transactionMaster: req.params.transactionId } } },function(err, data) {
-            console.log(data);
+        UserCollection.find({ transactions :{ $elemMatch: { transactionMaster: req.params.transactionId } } },function(err, data) {
             res.send(data);
         });
     },
+
+
 
     'get /org/:orgId/users/:userId/uplinkuser':function(req,res){
         var users=[];

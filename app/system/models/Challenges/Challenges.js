@@ -7,11 +7,11 @@ var Challenges= {
       if(!orgChallenges){
         data.orgId=organizationId;
         data.createdAt=new Date();
-        var l=new ChallengesCollection(data);
+        var l=new ChallengesCollection({orgId:organizationId,createdAt:new Date(),challenges:[data]});
         l.save(callback);
       }
       else 
-        ChallengesModel.update({orgId:orgId},{$push:{challenges:data}},callback);
+        ChallengesCollection.update({orgId:organizationId},{$push:{challenges:data}},callback);
     });
   },
   getChallengeOfOrganization:function(orgId,id,fields,options,populationData,callback){
