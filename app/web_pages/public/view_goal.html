@@ -336,7 +336,7 @@
         <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									<span id="user_name"></span>
 								</span>
 
         <i class="ace-icon fa fa-caret-down"></i>
@@ -519,13 +519,7 @@
         try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
     </script>
 
-    <ul class="breadcrumb">
-        <li>
-            <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">Widgets</li>
-    </ul><!-- /.breadcrumb -->
+
 
     <!-- #section:basics/content.searchbox -->
 
@@ -850,6 +844,20 @@
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
      var goaldata;
+    function employee_name() {
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+//            url: remote_host + "abilities",
+            type: 'GET',
+            dataType: 'json',
+            success: function (res) {
+                $("#user_name").text(res.name);
+            },
+            error: function (e, msg) {
+                //processError(e,msg);
+            }
+        });
+    }
     function user_goal(goalId){
         $('#result_1_action').empty();
         $.ajax({
@@ -932,6 +940,7 @@
     $(function () {
         var row_html;
         get_employee();
+        employee_name();
     });
 
 

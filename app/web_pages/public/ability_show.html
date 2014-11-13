@@ -484,6 +484,25 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
+function employee_name() {
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+//            url: remote_host + "abilities",
+        type: 'GET',
+        dataType: 'json',
+        success: function (res) {
+            $("#user_name").text(res.name);
+        },
+        error: function (e, msg) {
+            //processError(e,msg);
+        }
+    });
+}
+$(function () {
+    employee_name();
+});
+
+
 jQuery(function($) {
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
