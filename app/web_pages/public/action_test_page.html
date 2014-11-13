@@ -711,7 +711,7 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label class="control-label" for="users_select">User</label>
+                                        <label class="control-label" for="users_select">I am</label>
                                     </div>
                                     <div class="col-md-9">
                                         <div class="controls">
@@ -720,9 +720,81 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" data-clientid="result_1_action">
                                     <div class="col-md-12">
-                                        <ul class="action_result_block1" id="result_1_action">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 widget-container-col">
+                                                <!-- #section:custom/widget-box -->
+                                                <div class="widget-box">
+                                                    <div class="widget-header">
+                                                        <h5 class="widget-title">Transactions List</h5>
+
+                                                        <!-- #section:custom/widget-box.toolbar -->
+                                                        <div class="widget-toolbar">
+                                                            <div class="widget-menu">
+                                                                <a href="#" data-action="settings" data-toggle="dropdown">
+                                                                    <i class="ace-icon fa fa-bars"></i>
+                                                                </a>
+
+                                                                <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                                                    <li>
+                                                                        <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <a href="#" data-action="fullscreen" class="orange2">
+                                                                <i class="ace-icon fa fa-expand"></i>
+                                                            </a>
+
+                                                            <a href="#" data-action="reload">
+                                                                <i class="ace-icon fa fa-refresh"></i>
+                                                            </a>
+
+                                                            <a href="#" data-action="collapse">
+                                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                                            </a>
+
+                                                            <a href="#" data-action="close">
+                                                                <i class="ace-icon fa fa-times"></i>
+                                                            </a>
+                                                        </div>
+
+                                                        <!-- /section:custom/widget-box.toolbar -->
+                                                    </div>
+
+                                                    <div class="widget-body">
+                                                        <div class="widget-main">
+                                                            <!--<select id="users_select1" class="with-search">-->
+                                                            <!--</select>-->
+                                                            <table class="table table-bordered table-hover responsive" id="transaction_list">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>KeyParamValue</th>
+                                                                    <th>Transaction  Master Name</th>
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- /section:custom/widget-box -->
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <!--<ul class="action_result_block1" id="result_1_action">-->
                                         </ul>
                                     </div>
                                 </div>
@@ -863,13 +935,15 @@
 <script type="text/javascript">
     window.jQuery || document.write("<script src='assets/js/jquery.min.js'>"+"<"+"/script>");
 </script>
-
+<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
+
     window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
 </script>
+
 <![endif]-->
 <script type="text/javascript">
     if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
@@ -961,7 +1035,7 @@
             success: function(res) {
                 if(res){
                     var option_html;
-                    $('#result_1_action').append('<li>'+ res.name +'</li>');
+//                    $('#result_1_action').append('<li>'+ res.name +'</li>');
                 }
             },
             error: function(e , msg){
@@ -970,6 +1044,91 @@
         });
 
     }
+    function get_transactions_user(userId){
+        $.ajax({
+//            url: remote_host+"org/"+orgId+"/users",
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+userId+"/transactions",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var row_html, keyParamsValue, transactions, Tags = [], teams = [] , tagId;
+                    res.transactions.forEach(function(data){
+//
+                        if (data.keyParamValue)
+                            keyParamsValue = data.keyParamValue;
+                        else
+                            keyParamsValue = "";
+//
+                        if (data.transactionMaster)
+                        {
+                            transactions=  get_transactionName(data.transactionMaster);
+                        }
+
+                        else
+                            transactions = "";
+                        if (data.tag) {
+                            Tags = [];
+                            $.each(data.tags, function(index, value) {
+                                Tags.push(value.tag)
+                                Tags.push(value.tagName)
+                            });
+                        }
+                        else{
+                            Tags = "";
+                        }
+//
+                        row_html = '<tr>'+
+                                '<td class="text-center aligned">'+keyParamsValue+'</td>'+
+                                '<td class="text-center aligned">'+transactions+'</td>'+
+                                '<td class="text-center aligned">'+
+                                '<div class="block" style="width: 50px;">' +
+//                                '<a href="transaction_show.html?transactionId='+data.transactionMaster+'?userId='+userId+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+                                '<button type="button" id="btn_approve" value='+data.transactionMaster+'>Approve</button>'+
+
+                                '</div>' +
+                                '</td>'+
+                                '</tr>';
+
+                        $("#transaction_list").find('tbody').append(row_html);
+
+                    });
+
+//                    $('#transaction_list').dataTable({
+//                        "bPaginate": true,
+//                        "bFilter": true,
+//                        "bLengthChange": true,
+//                        "bSort": false
+//                    });
+//
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+    function get_transactionName(transactionId){
+        $.ajax({
+//            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
+            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId+"/name",
+//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    name=res;
+                }
+            },
+            error: function(e , msg){
+
+            }
+        });
+        return name;
+
+    }
+
 
     function get_downline_transactionName(transactionId){
         $('#result_3_action').empty();
@@ -994,12 +1153,13 @@
     $(function () {
 
         get_employees();
+
         get_transactions();
 
         $("#users_select").change(function(){
             var selected_user = $("#users_select :selected").val();
+            get_transactions_user(selected_user);
             $('#result_1_action').empty();
-
             $.ajax({
                 url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
                 type: 'GET',
@@ -1044,7 +1204,6 @@
         $("#action_select_4").change(function(){
             $('#result_4_action').empty();
             var selected_user = $("#action_select_4 :selected").val();
-
             $.ajax({
                 url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
                 type: 'GET',
@@ -1054,8 +1213,6 @@
                         var option_html;
                         res.forEach(function(users){
                             $('#result_4_action').append('<li> User Name:'+ users.name +'and their Points:'+users.totalPoints+'</li>');
-
-//                            $('#result_4_action').append('<h4> User Name :'+ users.name + 'Points'+users.totalPoints+' </h4>');
                         });
                     }
                 },
@@ -1094,7 +1251,24 @@
 
 
     });
+    $('#transaction_list tbody').on( 'click', 'tr', function () {
+            var transaction = $('#btn_approve').val();
+            var user_id = $("#action_select_user :selected").val();
+            $.ajax({
+                url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+transaction+'approve',
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function(data){
+                    console.log("Successfully Approved");
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            });
 
+//        });
+    });
     jQuery(function($) {
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){

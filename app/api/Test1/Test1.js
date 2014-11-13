@@ -14,7 +14,6 @@ var actionFn=function(orgId,obj){
     var headers=allData[0];
     if(!headers[4])return;
     allData.forEach(function(data,index){
-//        console.log(data[6]);
         if(index!==0) {
             var actionObj = {};
             var actionObj1 = {};
@@ -31,7 +30,7 @@ var actionFn=function(orgId,obj){
                     actionObj1["transactionMaster"] =transaction._id;
                     TransactionsModel.addTransaction(user._id,actionObj1,function(err,obj){
                         if(err)console.log("error"+err)
-                        else console.log("transaction._id");
+//                        else console.log("transaction._id");
                     });
                 });
             });
@@ -39,54 +38,18 @@ var actionFn=function(orgId,obj){
     });
 };
 var userTags={
-    'get /org/:orgId/users/:userId/actions':function(req,res){
-        UserCollection.findOne({_id: req.params.userId },function(err, action) {
-            console.log(action.transactions);
-//            console.log(action.transactions.length)
-
-            var option_html;
-            for (var i=0;i<=action.transactions.length;i++){
-
-                var array={};
-                var userObj={};
-                var transaction=action.transactions[i].transactionMaster;
-                TransactionCollection.findOne({_id: transaction },function(err, actions) {
-                    userObj={name:actions.name};
-                    useractions.push(userObj);
-//                    useractions[i]=actions.name;
-                    array=userObj;
-
-                });
-//                console.log(array);
-//                console.log(userObj);
-                useractions.push(userObj);
-            }
-            res.send(action.transactions);
-
-        });
-    },
-
-    'get /org/:orgId/transactions':function(req,res){
-        TransactionCollection.find({}, function(err, data) {
-            console.log(data);
-            res.send(data);
-        });
-    },
     'get /org/:orgId/transactions/:transactionId/name':function(req,res){
         TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
-            console.log(data);
             res.send(data.name);
         });
     },
     'get /org/:orgId/transactions/:transactionId':function(req,res){
         TransactionCollection.findOne({_id: req.params.transactionId },function(err, data) {
-            console.log(data);
             res.send(data);
         });
     },
     'get /org/:orgId/goals/:goalId/goaldata':function(req,res){
         GoalCollection.findOne({_id:req.params.goalId},function(err, goal) {
-            console.log(goal);
             res.send(goal);
 
 
@@ -94,7 +57,6 @@ var userTags={
     },
     'get /org/:orgId/goals/:goalId':function(req,res){
         GoalCollection.findOne({_id:req.params.goalId},function(err, goal) {
-            console.log(goal);
             res.send(goal.name);
 
 
