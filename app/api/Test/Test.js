@@ -26,7 +26,11 @@ var userFn=function(orgId,obj){
                 else userObj[headers[indexNew]]=fieldData;
             });
             // users.push(userObj);
-            UserModel.createUser(orgId,userObj,function(err){
+            UserModel.createUser(orgId,userObj,function(err,user){
+                NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
+                NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
+                NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
+                UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,user._id,{},function(){});
                 if(err)
                     console.log("err creating user from excel"+err);
                 else console.log("created User from excel"+index);
