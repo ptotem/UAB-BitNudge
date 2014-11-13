@@ -600,10 +600,11 @@
     function get_employee(){
         var emp_id = window.location.search.replace("?","").split("=")[1];
 
-        $("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
-        $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
+
         $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
-        $("#view_challenges_link").attr("href","view_challenge.html?userId="+emp_id);
+        $("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
+        $("#view_goal_link").attr("href","show_goal.html?userId="+emp_id);
+        $("#view_challenges_link").attr("href","show_challenge.html?userId="+emp_id);
 
         $.ajax({
             ///org/:orgId/users/:userId

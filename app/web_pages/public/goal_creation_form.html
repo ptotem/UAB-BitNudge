@@ -489,7 +489,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="controls">
-                                        <select id="subgoal_select" class="with-search col-md-10">
+                                        <select multiple="" id="subgoal_select" class="with-search col-md-10">
                                         </select>
                                     </div>
                                 </div>
@@ -525,7 +525,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="controls">
-                                        <select id="transaction_select" class="with-search col-md-10">
+                                        <select multiple="" id="transaction_select" class="with-search col-md-10">
                                         </select>
                                     </div>
                                 </div>
@@ -756,33 +756,10 @@ var hasTag = function(key_param_val) {
             //return actionsJSON[i];
         }
     }
-    console.log("filteredactionsJSON")
-    console.log(filteredactionsJSON)
+    console.log("filteredactionsJSON");
+    console.log(filteredactionsJSON);
     return filteredactionsJSON;
-//        return false;
 };
-
-function get_my_created_goals(){
-    console.log("get_my_created_goals() called, msg :- REST endpoint to be made for goals created by me");
-//        $.ajax({
-//            // /org/:orgId/transactions
-//            url: remote_host+"org/"+urlParams.orgId+"/transactions",
-//            type: 'GET',
-//            dataType: 'json',
-//            success: function(res) {
-//                if(res){
-//                    res.forEach(function(goal){
-//                        //console.log(transactionMaster);
-//                        $('#subgoal_select').append("<option value="+goal._id+">"+goal.name+"</option>");
-//                    });
-//                }
-//            }
-//            ,
-//            error: function(e , msg){
-//                //processError(e,msg);
-//            }
-//        });
-}
 
 function get_my_created_goals(){
     $.ajax({
@@ -846,10 +823,18 @@ $(function () {
         e.preventDefault();
         var goal_name = $("#goal_name").val();
 
-        var selected_transaction = $("#transaction_select :selected").val();
+        var transactionElements = $("#transaction_select :selected");
+        var selected_transactions = [];
+        $.each(transactionElements,function(index, transactionElement){
+            selected_transactions.push($(transactionElement).val());
+        });
         var transaction_target_value = $("#transaction_target_value").val();
 
-        var selected_subgoal = $("#subgoal_select :selected").val();
+        var subgoalElements = $("#subgoal_select :selected");
+        var selected_subgoals = [];
+        $.each(subgoalElements,function(index, subgoalElement){
+            selected_subgoals.push($(subgoalElement).val());
+        });
         var subgoal_target_value = $("#subgoal_target_value").val();
 
         var goal_start_date = $("#goal-start-date-js").val();
@@ -871,7 +856,7 @@ $(function () {
                 startDate: formatted_start_date,
                 endDate: formatted_end_date,
                 action:{
-                    allowedTransactions: [selected_transaction],
+                    allowedTransactions: selected_transactions,
                     targetValue: transaction_target_value
                 },
                 pointsFn: "function(t){return "+goal_points+";}",
@@ -886,7 +871,7 @@ $(function () {
                 startDate: formatted_start_date,
                 endDate: formatted_end_date,
                 subgoals:[{
-                    subgoal: selected_subgoal,
+                    subgoal: selected_subgoals,
                     targetValue: subgoal_target_value
                 }],
                 pointsFn: "function(t){return "+goal_points+";}",

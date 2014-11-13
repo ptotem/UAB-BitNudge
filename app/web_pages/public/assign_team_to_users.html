@@ -41,9 +41,7 @@
     <!--[if lte IE 8]>
     <script src="assets/js/html5shiv.min.js"></script>
     <script src="assets/js/respond.min.js"></script>
-
     <![endif]-->
-    <script src="assets/js/jquery.dataTables.bootstrap.js"></script>
 </head>
 
 <body class="no-skin">
@@ -254,7 +252,6 @@
         </li>
     </ul><!-- /.nav-list -->
 
-
     <!-- #section:basics/sidebar.layout.minimize -->
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
         <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -271,7 +268,7 @@
 <!-- #section:basics/content.breadcrumbs -->
 <div class="breadcrumbs" id="breadcrumbs">
     <script type="text/javascript">
-        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        try{ace.settings.check('breadcrumbs' , 'disable')}catch(e){}
     </script>
 
     <ul class="breadcrumb">
@@ -392,7 +389,7 @@
                     <!-- #section:custom/widget-box -->
                     <div class="widget-box">
                         <div class="widget-header">
-                            <h5 class="widget-title">Add New Employee</h5>
+                            <h5 class="widget-title">Assign Team To User</h5>
 
                             <!-- #section:custom/widget-box.toolbar -->
                             <div class="widget-toolbar">
@@ -434,22 +431,47 @@
 
                         <div class="widget-body">
                             <div class="widget-main">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a href="employee_new_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Employee</a><br><br>
-                                        <a href="employee_reporting_manager_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Assign Reporting Manager to Employee</a><br><br>
-                                        <a href="employee_tags_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Assign Tags to Employee</a><br><br>
-                                        <a href="action_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Action Creation</a><br><br>
-                                        <a href="action_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Action Test Page</a><br><br>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <a href="employees_new_bulk.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add Bulk Employees</a><br><br>
-                                        <a href="employees_edit_bulk.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Edit Bulk Employees</a><br><br>
-                                        <a href="employee_reporting_line_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Employee Reporting Line Test Page</a><br><br>
-                                        <a href="organizational_tags_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Organizational Tags Test Page</a><br><br>
-                                        <a href="goal_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Goal Creation</a><br><br>
-                                    </div>
-                                </div>
+
+                                <form id="user_team_form" class="form-horizontal themed">
+                                    <fieldset>
+                                        <!--</div>-->
+
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+                                                <label class="control-label" for="users_select">User</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="controls">
+                                                    <select id="users_select" class="with-search">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-1">
+                                                <label class="control-label" for="teams_select">User</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="controls">
+                                                    <select id="teams_select" class="with-search">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-actions">
+                                            <button type="reset" class="btn medium btn-danger">
+                                                Cancel
+                                            </button>
+                                            <button id="submit-form-btn" type="submit" class="btn medium btn-primary">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+
                             </div>
                         </div>
                     </div>
@@ -460,86 +482,11 @@
 
             </div>
             <!-- /.row 1 end -->
-            <!--<row 2 >-->
-            <div class="row">
-                <div class="col-lg-12 col-md-12 widget-container-col">
-                    <!-- #section:custom/widget-box -->
-                    <div class="widget-box">
-                        <div class="widget-header">
-                            <h5 class="widget-title">Employees list</h5>
 
-                            <!-- #section:custom/widget-box.toolbar -->
-                            <div class="widget-toolbar">
-                                <div class="widget-menu">
-                                    <a href="#" data-action="settings" data-toggle="dropdown">
-                                        <i class="ace-icon fa fa-bars"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <a href="#" data-action="fullscreen" class="orange2">
-                                    <i class="ace-icon fa fa-expand"></i>
-                                </a>
-
-                                <a href="#" data-action="reload">
-                                    <i class="ace-icon fa fa-refresh"></i>
-                                </a>
-
-                                <a href="#" data-action="collapse">
-                                    <i class="ace-icon fa fa-chevron-up"></i>
-                                </a>
-
-                                <a href="#" data-action="close">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </a>
-                            </div>
-
-                            <!-- /section:custom/widget-box.toolbar -->
-                        </div>
-
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <select id="users_select" class="with-search">
-                                </select>
-                                <table class="table table-bordered table-hover responsive" id="employees_list">
-                                    <thead>
-                                    <tr>
-                                        <th>KeyParamValue</th>
-                                        <th>Transaction Name</th>
-                                        <th></th>
-                                        <th>Tags Name</th>
-                                        <th>Groups/Department</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- /section:custom/widget-box -->
-                </div>
-
-
-            </div>
-            <!-- /.row 12 end -->
             <!-- PAGE CONTENT ENDS -->
         </div><!-- /.col -->
     </div>
     <!-- /1 row -->
-
 </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
@@ -582,277 +529,162 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
-var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-
-
-var name;
-function get_transactionName(transactionId){
-//        var orgId="5417f10a195e61022fff91ee";
-//   var name;
-//        $('#result_1_action').empty();
-    $.ajax({
-//            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
-        url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId+"/name",
-//            url: remote_host+"org/"+orgId+"/transactions/"+transactionId,
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-            if(res){
-                name=res;
-            }
-        },
-        error: function(e , msg){
-
-        }
-    });
-    return name;
-
-}
-function get_employees(){
-    $.ajax({
-//            url: remote_host+"org/"+urlParams.orgId+"/users",
-        url: remote_host+"org/"+urlParams.orgId+"/users",
-//            url: remote_host+"org/"+orgId+"/users",
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-            if(res){
-                var option_html;
-                res.forEach(function(user){
-                    option_html = "<option value="+user._id+">"+user.name+"</option>";
-                    $('#users_select').append(option_html);
-                });
-            }
-        },
-        error: function(e , msg){
-            //processError(e,msg);
-        }
-    });
-}
-function get_transactions(userId){
-//        var orgId="5417f10a195e61022fff91ee"
-//        var userId="54181598d465d283167f8d14"
-    $.ajax({
-//            url: remote_host+"org/"+orgId+"/users",
-        url: remote_host+"org/"+urlParams.orgId+"/users/"+userId+"/transactions",
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-            if(res){
-                var row_html, keyParamsValue, transactions, Tags = [], teams = [] , tagId;
-                res.transactions.forEach(function(data){
-//
-                    if (data.keyParamValue)
-                        keyParamsValue = data.keyParamValue;
-                    else
-                        keyParamsValue = "";
-//
-                    if (data.transactionMaster)
-                    {
-                        transactions=  get_transactionName(data.transactionMaster);
-                    }
-
-                    else
-                        transactions = "";
-                    if (data.tag) {
-                        Tags = [];
-                        $.each(data.tags, function(index, value) {
-                            Tags.push(value.tag)
-                            Tags.push(value.tagName)
-                        });
-                    }
-                    else{
-                        Tags = "";
-                    }
-//
-                    row_html = '<tr>'+
-                            '<td class="text-center aligned">'+keyParamsValue+'</td>'+
-                            '<td class="text-center aligned">'+transactions+'</td>'+
-                            '<td class="text-center aligned">'+"reportsTo"+'</td>'+
-                            '<td class="text-center aligned">'+"orgTags"+'</td>'+
-                            '<td class="text-center aligned">'+Tags+'</td>'+
-                            '<td class="text-center aligned">'+
-                            '<div class="block" style="width: 50px;">' +
-                            '<a href="transaction_approve_edit.html?transactionId='+data.transactionMaster+'?userId='+userId+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
-                            '<a href="transaction_show.html?transactionId='+data.transactionMaster+'?userId='+userId+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
-                            '</div>' +
-                            '</td>'+
-                            '</tr>';
-
-                    $("#employees_list").find('tbody').append(row_html);
-
-                });
-
-                $('#employees_list').dataTable({
-                    "bPaginate": true,
-                    "bFilter": true,
-                    "bLengthChange": true,
-                    "bSort": false
-                });
-//
-            }
-        }
-        ,
-        error: function(e , msg){
-            //processError(e,msg);
-        }
-    });
-}
-
-$(function () {
-
-    get_employees();
-
-    $("#users_select").change(function(){
-        var selected_user = $("#users_select :selected").val();
-        get_transactions(selected_user);
-    });
-}); // Actions of Users
-
-
-
-
-
-
-jQuery(function($) {
-
-    $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
-        var color_class = $(this).find('option:selected').data('class');
-        var new_class = 'widget-box';
-        if(color_class != 'default')  new_class += ' widget-color-'+color_class;
-        $(this).closest('.widget-box').attr('class', new_class);
-    });
-
-
-    // scrollables
-    $('.scrollable').each(function () {
-        var $this = $(this);
-        $(this).ace_scroll({
-            size: $this.data('size') || 100
-            //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
-        });
-    });
-    $('.scrollable-horizontal').each(function () {
-        var $this = $(this);
-        $(this).ace_scroll(
-                {
-                    horizontal: true,
-                    styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
-                    size: $this.data('size') || 500,
-                    mouseWheelLock: true
+    function get_employees(){
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    res.forEach(function(user){
+                        option_html = "<option value="+user._id+">"+user.name+"</option>";
+                        $('#users_select').append(option_html);
+                    });
                 }
-        ).css({'padding-top': 12});
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+    function get_teams(){
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/teams",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    var option_html;
+                    res.forEach(function(team){
+                        option_html = "<option value="+team._id+">"+team.name+"</option>";
+                        $('#teams_select').append(option_html);
+                    });
+                }
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+
+    $(function () {
+
+        get_employees();
+        get_teams();
+
+        $("#submit-form-btn").click(function(e) {
+            e.preventDefault();
+
+            var user_id = $("#users_select option:selected").val();
+            var team_id = $("#teams_select option:selected").val();
+
+            console.log("user_id :- " + user_id);
+            console.log("team_id :- " + team_id);
+
+            var data = {
+                members: [user_id]
+            };
+
+            console.log("data");
+            console.log(data);
+
+            $.ajax({
+                ///org/:orgId/roles/:roleId/abilities
+                url: remote_host+"org/"+urlParams.orgId+"/teams/"+team_id+"/members",
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+                success: function(res) {
+                    var success_text = "Team assigned to user.";
+                    //show_notification(success_text);
+                } ,
+                error: function(e , msg){
+                    //processError(e,msg);
+                }
+            });
+            return false;
+        });
+
     });
 
-    $(window).on('resize.scroll_reset', function() {
-        $('.scrollable-horizontal').ace_scroll('reset');
-    });
 
 
-    /**
-     //or use slimScroll plugin
-     $('.slim-scrollable').each(function () {
+
+    jQuery(function($) {
+
+        $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
+            var color_class = $(this).find('option:selected').data('class');
+            var new_class = 'widget-box';
+            if(color_class != 'default')  new_class += ' widget-color-'+color_class;
+            $(this).closest('.widget-box').attr('class', new_class);
+        });
+
+
+        // scrollables
+        $('.scrollable').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll({
+                size: $this.data('size') || 100
+                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
+            });
+        });
+        $('.scrollable-horizontal').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll(
+                    {
+                        horizontal: true,
+                        styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
+                        size: $this.data('size') || 500,
+                        mouseWheelLock: true
+                    }
+            ).css({'padding-top': 12});
+        });
+
+        $(window).on('resize.scroll_reset', function() {
+            $('.scrollable-horizontal').ace_scroll('reset');
+        });
+
+
+
+
+        /**
+         //or use slimScroll plugin
+         $('.slim-scrollable').each(function () {
 					var $this = $(this);
 					$this.slimScroll({
 						height: $this.data('height') || 100,
 						railVisible:true
 					});
 				});
-     */
+         */
 
 
-    /**$('.widget-box').on('setting.ace.widget' , function(e) {
+        /**$('.widget-box').on('setting.ace.widget' , function(e) {
 					e.preventDefault();
 				});*/
 
-    /**
-     $('.widget-box').on('show.ace.widget', function(e) {
+        /**
+         $('.widget-box').on('show.ace.widget', function(e) {
 					//e.preventDefault();
 					//this = the widget-box
 				});
-     $('.widget-box').on('reload.ace.widget', function(e) {
+         $('.widget-box').on('reload.ace.widget', function(e) {
 					//this = the widget-box
 				});
-     */
+         */
 
-    //$('#my-widget-box').widget_box('hide');
-
-
-
-    // widget boxes
-    // widget box drag & drop example
-//    $('.widget-container-col').sortable({
-//        connectWith: '.widget-container-col',
-//        items:'> .widget-box',
-//        handle: ace.vars['touch'] ? '.widget-header' : false,
-//        cancel: '.fullscreen',
-//        opacity:0.8,
-//        revert:true,
-//        forceHelperSize:true,
-//        placeholder: 'widget-placeholder',
-//        forcePlaceholderSize:true,
-//        tolerance:'pointer',
-//        start: function(event, ui) {
-//            //when an element is moved, it's parent becomes empty with almost zero height.
-//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
-//            ui.item.parent().css({'min-height':ui.item.height()})
-//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
-//        },
-//        update: function(event, ui) {
-//            ui.item.parent({'min-height':''})
-//            //p.style.removeProperty('background-color');
-//        }
-//    });
-
-});
-</script>
-<script type="text/javascript">
-    var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
-    ace.load_ajax_scripts(scripts, function() {
-        //inline scripts related to this page
-        jQuery(function($) {
-
-            /**
-             var tableTools = new $.fn.dataTable.TableTools( oTable1, {
-			"sSwfPath": "../../copy_csv_xls_pdf.swf",
-	        "buttons": [
-	            "copy",
-	            "csv",
-	            "xls",
-				"pdf",
-	            "print"
-	        ]
-	    } );
-             $( tableTools.fnContainer() ).insertBefore('#sample-table-2');
-             */
+        //$('#my-widget-box').widget_box('hide');
 
 
-            $(document).on('click', 'th input:checkbox' , function(){
-                var that = this;
-                $(this).closest('table').find('tr > td:first-child input:checkbox')
-                        .each(function(){
-                            this.checked = that.checked;
-                            $(this).closest('tr').toggleClass('selected');
-                        });
-            });
 
+        // widget boxes
+        // widget box drag & drop example
 
-            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-            function tooltip_placement(context, source) {
-                var $source = $(source);
-                var $parent = $source.closest('table')
-                var off1 = $parent.offset();
-                var w1 = $parent.width();
-
-                var off2 = $source.offset();
-                //var w2 = $source.width();
-
-                if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
-                return 'left';
-            }
-
-        })
     });
 </script>
 

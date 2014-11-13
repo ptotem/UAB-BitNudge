@@ -860,7 +860,6 @@
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    console.log(res);
                     goaldata=res;
                     var reportsTo, orgTags = [], teams = [];
                     if (res.name)
@@ -908,59 +907,18 @@
     function get_employee(){
         var emp_id = window.location.search.replace("?","").split("=")[1];
 
-        $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
-        $("#view_challenges_link").attr("href","view_challenge.html?userId="+emp_id);
-
         $.ajax({
             ///org/:orgId/users/:userId
             url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
             type: 'GET',
             dataType: 'json',
             success: function(res) {
-//                console.log("res");
-//                console.log(res);
                 if(res){
                     res.goals.forEach(function(goal){
                         goal.subgoal.forEach(function(subgoal){
                              user_goal(subgoal.subgoal);
-//                            console.log(data);
                         })
                     })
-//                    //console.log(res);
-//                    var reportsTo, orgTags = [], teams = [];
-//                    if (res.reportsTo)
-//                        reportsTo = res.reportsTo.name;
-//                    else
-//                        reportsTo = "";
-//
-//                    if (res.orgtags) {
-//                        orgTags = [];
-//                        $.each(res.orgtags, function(index, value) {
-//                            orgTags.push(value.name)
-//                        });
-//                    }
-//                    else{
-//                        orgTags = "";
-//                    }
-//
-//                    if (res.teams) {
-//                        teams = [];
-//                        $.each(res.teams, function(index, value) {
-//                            teams.push(value.name)
-//                        });
-//                    }
-//                    else{
-//                        teams = "";
-//                    }
-//
-//                    $("#emp_name").text(res.name);
-//                    $("#emp_email").text(res.email);
-//                    $("#emp_role").text(res.role.name);
-//                    $("#emp_reporting_officer").text(reportsTo);
-//                    $("#emp_tags").text(orgTags);
-//                    $("#emp_dept").text(teams);
-//                    $("#emp_designation").text(res.designation);
-//                    $("#emp_addr").text(res.address);
                 }
             }
             ,

@@ -4,6 +4,7 @@ var Schema=mongoose.Schema;
 var challengesSchema=new Schema({
   orgId:{type:Schema.Types.ObjectId,ref:'organizations'},
   challenges:[{
+    name:String,
     creator:{type:Schema.Types.ObjectId,ref:'users'},
     criteria:String,
     startDate:Date,
