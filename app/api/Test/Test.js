@@ -105,20 +105,20 @@ var userGoalFn=function(orgId,obj){
                 userGoalObj["action"]=action;
                 UserCollection.findOne({email: data[7]}, function (err, user) {
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
-                        for (var i = 0; i < aFirst.length; i++) {
-                            subgoalname=aFirst[i];
-                            TransactionCollection.findOne({name: aFirst[i]}, function (err, transaction) {
-                                transaction_id=transaction._id;
-                                subgoalObjArray.push(transaction_id);
-                                subgoalObj["allowedTransactions"] =subgoalObjArray;
-                        goalObj["action"] = subgoalObj;
-                                UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
-                                    if (err)console.log("error" + err)
-                                    else console.log("success");
-                                });
-                            });
-
-                        }
+//                        for (var i = 0; i < aFirst.length; i++) {
+//                            subgoalname=aFirst[i];
+//                            TransactionCollection.findOne({name: aFirst[i]}, function (err, transaction) {
+//                                transaction_id=transaction._id;
+//                                subgoalObjArray.push(transaction_id);
+//                                subgoalObj["allowedTransactions"] =subgoalObjArray;
+//                        goalObj["action"] = subgoalObj;
+//                                UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
+//                                    if (err)console.log("error" + err)
+//                                    else console.log("success");
+//                                });
+//                            });
+//
+//                        }
                         });
                     });
 //                });
@@ -150,21 +150,21 @@ var userGoalFn=function(orgId,obj){
                 UserCollection.findOne({email: data[7]}, function (err, user) {
                     GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
 
-                        for (var i = 0; i < aFirst.length; i++) {
-                            GoalCollection.findOne({name: aFirst[i]}, function (err, subgoal) {
-                                subgoalObj["targetValue"] = data[4];
-                                subgoalObj["subgoal"] = subgoal._id;
-                                subgoalObjArray.push(subgoalObj);
-                                goalObj["subgoals"] = subgoalObjArray;
-                                subgoalObj["subgoal"] =subgoal._id;
-                                goalObj["subgoals"] = subgoalObj;
-                                UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
-                                    if (err)console.log("error" + err)
-                                    else console.log("success");
-                                });
-                            });
-
-                        }
+//                        for (var i = 0; i < aFirst.length; i++) {
+//                            GoalCollection.findOne({name: aFirst[i]}, function (err, subgoal) {
+//                                subgoalObj["targetValue"] = data[4];
+//                                subgoalObj["subgoal"] = subgoal._id;
+//                                subgoalObjArray.push(subgoalObj);
+//                                goalObj["subgoals"] = subgoalObjArray;
+//                                subgoalObj["subgoal"] =subgoal._id;
+//                                goalObj["subgoals"] = subgoalObj;
+//                                UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
+//                                    if (err)console.log("error" + err)
+//                                    else console.log("success");
+//                                });
+//                            });
+//
+//                        }
                     });
                 });
 

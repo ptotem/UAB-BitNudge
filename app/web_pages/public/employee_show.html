@@ -525,6 +525,39 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Points</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_points"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Cash</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_cash"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Level</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_level"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
                                             <div class="col-md-12">
                                                 <a id="edit_user_link" href="#">Edit Details</a> |
                                                 <!--<a id="view_transactions_link" href="#">View My Transactions</a> |-->
@@ -615,7 +648,7 @@
                 console.log(res);
                 if(res){
                     //console.log(res);
-                    var reportsTo, orgTags = [], teams = [];
+                    var reportsTo, orgTags = [], teams = [], total_pts, total_cash, level;
                     if (res.reportsTo)
                         reportsTo = res.reportsTo.name;
                     else
@@ -640,6 +673,24 @@
                     else{
                         teams = "";
                     }
+
+                    if ( (res.totalPoints) || (res.totalCash) ) {
+                        total_pts = res.totalPoints;
+                        total_cash = res.totalCash;
+                    }
+                    else{
+                        total_pts = 0;
+                        total_cash = 0;
+                    }
+
+                    if (res.level) {
+                        level = res.level;
+                    }
+                    else{
+                        level = 0;
+                    }
+
+
                     $("#user_name").text(res.name);
                     $("#emp_name").text(res.name);
                     $("#emp_email").text(res.email);
@@ -649,6 +700,11 @@
                     $("#emp_dept").text(teams);
                     $("#emp_designation").text(res.designation);
                     $("#emp_addr").text(res.address);
+                    $("#emp_points").text(total_pts);
+                    $("#emp_cash").text(total_cash);
+                    $("#emp_level").text(level);
+
+
                 }
             }
             ,

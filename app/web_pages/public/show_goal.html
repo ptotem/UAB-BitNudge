@@ -436,6 +436,7 @@
                                         <th class="text-center aligned">Start Date</th>
                                         <th class="text-center aligned">End Date</th>
                                         <th class="text-center aligned">Target Value</th>
+                                        <th class="text-center aligned">Status</th>
                                         <!--<th class="text-center aligned"></th>-->
                                      </tr>
                                     </thead>
@@ -543,7 +544,7 @@
             success: function(res) {
                 if(res){
                     console.log(res);
-                    var goal_name, target_val, row_html;
+                    var goal_name, target_val, row_html, goal_status;
 
                     res.forEach(function(goal){
                         console.log(goal);
@@ -561,11 +562,21 @@
                             target_val = "NA";
                         }
 
+                        if (goal.completed) {
+                            goal_status = "Completed"
+                        }
+                        else{
+                            goal_status = "Not Completed";
+                        }
+
+
+
                         row_html = '<tr>'+
                                     '<td class="text-center aligned">'+goal_name+'</td>'+
                                     '<td class="text-center aligned">'+goal.startDate+'</td>'+
                                     '<td class="text-center aligned">'+goal.endDate+'</td>'+
                                     '<td class="text-center aligned">'+target_val+'</td>'+
+                                    '<td class="text-center aligned">'+goal_status+'</td>'+
 //                                    '<td class="text-center aligned">'+
 //                                        '<div class="block" style="width: 50px;">' +
 //                                        '<a href="view_goal.html?goalId='+goal._id+'&userId='+emp_id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+

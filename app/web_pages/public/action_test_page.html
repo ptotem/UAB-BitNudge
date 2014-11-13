@@ -81,33 +81,296 @@
 </div>
 
 <!-- #section:basics/navbar.dropdown -->
-    <div class="navbar-buttons navbar-header pull-right" role="navigation">
-        <ul class="nav ace-nav">
-            <!-- #section:basics/navbar.user_menu -->
-            <li class="light-blue">
-                <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
+<ul class="nav ace-nav">
+<li class="grey">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-tasks"></i>
+        <span class="badge badge-grey">4</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-check"></i>
+            4 Tasks to complete
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Software Update</span>
+                    <span class="pull-right">65%</span>
+                </div>
+
+                <div class="progress progress-mini">
+                    <div style="width:65%" class="progress-bar"></div>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Hardware Upgrade</span>
+                    <span class="pull-right">35%</span>
+                </div>
+
+                <div class="progress progress-mini">
+                    <div style="width:35%" class="progress-bar progress-bar-danger"></div>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Unit Testing</span>
+                    <span class="pull-right">15%</span>
+                </div>
+
+                <div class="progress progress-mini">
+                    <div style="width:15%" class="progress-bar progress-bar-warning"></div>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Bug Fixes</span>
+                    <span class="pull-right">90%</span>
+                </div>
+
+                <div class="progress progress-mini progress-striped active">
+                    <div style="width:90%" class="progress-bar progress-bar-success"></div>
+                </div>
+            </a>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="#">
+                See tasks with details
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="purple">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+        <span class="badge badge-important">8</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-exclamation-triangle"></i>
+            8 Notifications
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+												New Comments
+											</span>
+                    <span class="pull-right badge badge-info">+12</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="btn btn-xs btn-primary fa fa-user"></i>
+                Bob just signed up as an editor ...
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+												New Orders
+											</span>
+                    <span class="pull-right badge badge-success">+8</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
+												Followers
+											</span>
+                    <span class="pull-right badge badge-info">+11</span>
+                </div>
+            </a>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="#">
+                See all notifications
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="green">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+        <span class="badge badge-success">5</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-envelope-o"></i>
+            5 Messages
+        </li>
+
+        <li class="dropdown-content">
+            <ul class="dropdown-menu dropdown-navbar">
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Alex:</span>
+														Ciao sociis natoque penatibus et auctor ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>a moment ago</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Susan:</span>
+														Vestibulum id ligula porta felis euismod ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>20 minutes ago</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Bob:</span>
+														Nullam quis risus eget urna mollis ornare ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>3:15 pm</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Kate:</span>
+														Ciao sociis natoque eget urna mollis ornare ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>1:33 pm</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Fred:</span>
+														Vestibulum id penatibus et auctor  ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>10:09 am</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="inbox.html">
+                See all messages
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<!-- #section:basics/navbar.user_menu -->
+<li class="light-blue">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									Jason
 								</span>
 
-                    <i class="ace-icon fa fa-caret-down"></i>
-                </a>
+        <i class="ace-icon fa fa-caret-down"></i>
+    </a>
 
-                <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                    <li>
-                        <a onclick="logout()">
-                            <i class="ace-icon fa fa-power-off"></i>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
-            </li>
+    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-cog"></i>
+                Settings
+            </a>
+        </li>
 
-            <!-- /section:basics/navbar.user_menu -->
-        </ul>
-    </div>
+        <li>
+            <a href="profile.html">
+                <i class="ace-icon fa fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+        <li class="divider"></li>
+
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-power-off"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</li>
+
+<!-- /section:basics/navbar.user_menu -->
+</ul>
+</div>
 
 <!-- /section:basics/navbar.dropdown -->
 </div><!-- /.navbar-container -->
@@ -160,92 +423,60 @@
 
     <ul class="nav nav-list">
         <li>
-            <a href="teams.html">
+            <a href="index.html">
                 <i class="menu-icon fa fa-tachometer"></i>
-                <span class="menu-text">Team</span>
+                <span class="menu-text">Department List</span>
             </a>
 
             <b class="arrow"></b>
         </li>
 
         <li class="">
-            <a href="employees.html">
+            <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> Employees </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
-
-        <li>
-            <a href="job_roles.html">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">Job Roles</span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        <li class="">
-            <a href="org_tags.html">
-                <i class="menu-icon fa fa-pencil-square-o"></i>
-                <span class="menu-text"> Organizational Tags </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
-
-        <li>
-            <a href="action_schemas.html">
-                <i class="menu-icon fa fa-list-alt"></i>
-                <span class="menu-text"> Action Schemas </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        <li class="">
-            <a href="levels.html">
-                <i class="menu-icon fa fa-calendar"></i>
-                <span class="menu-text"> Level </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
-
-        <li class="">
-            <a href="abilities.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Abilities </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="badges.html">
-                <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> Badges </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li>
-            <a href="roles.html">
-                <i class="menu-icon fa fa-bar-chart-o"></i>
                 <span class="menu-text"> Roles </span>
             </a>
-
             <b class="arrow"></b>
         </li>
-        <li class="">
-            <a href="goals.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Goals </span>
+
+        <li class="active">
+            <a href="employees.html">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Employees</span>
             </a>
 
             <b class="arrow"></b>
         </li>
+
         <li class="">
-            <a href="challenges.html">
-                <i class="menu-icon fa fa-laptop"></i>
-                <span class="menu-text"> Challenges </span>
+            <a href="#">
+                <i class="menu-icon fa fa-pencil-square-o"></i>
+                <span class="menu-text"> Goals </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li>
+            <a href="widgets.html">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text"> Badge Master </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="calendar.html">
+                <i class="menu-icon fa fa-calendar"></i>
+                <span class="menu-text"> Reward Center </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="gallery.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Reward Master </span>
             </a>
 
             <b class="arrow"></b>
@@ -280,7 +511,14 @@
     </ul><!-- /.breadcrumb -->
 
     <!-- #section:basics/content.searchbox -->
-
+    <div class="nav-search" id="nav-search">
+        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="ace-icon fa fa-search nav-search-icon"></i>
+							</span>
+        </form>
+    </div><!-- /.nav-search -->
 
     <!-- /section:basics/content.searchbox -->
 </div>
@@ -378,7 +616,15 @@
 
 <!-- /section:settings.box -->
 <div class="page-content-area">
-
+<div class="page-header">
+    <h1>
+        Widgets
+        <small>
+            <i class="ace-icon fa fa-angle-double-right"></i>
+            Draggabble Widget Boxes &amp; Containers
+        </small>
+    </h1>
+</div><!-- /.page-header -->
 <!--row 1-->
 <div class="row">
 <div class="col-xs-12">
@@ -388,203 +634,275 @@
 <div class="col-xs-12 col-sm-12 widget-container-col">
 <!-- #section:custom/widget-box -->
 <div class="widget-box">
-    <div class="widget-header">
-        <h5 class="widget-title">Action test page</h5>
+<div class="widget-header">
+    <h5 class="widget-title">Action test page</h5>
 
-        <!-- #section:custom/widget-box.toolbar -->
-        <div class="widget-toolbar">
-            <div class="widget-menu">
-                <a href="#" data-action="settings" data-toggle="dropdown">
-                    <i class="ace-icon fa fa-bars"></i>
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                    <li>
-                        <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                    </li>
-
-                    <li>
-                        <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                    </li>
-                </ul>
-            </div>
-
-            <a href="#" data-action="fullscreen" class="orange2">
-                <i class="ace-icon fa fa-expand"></i>
+    <!-- #section:custom/widget-box.toolbar -->
+    <div class="widget-toolbar">
+        <div class="widget-menu">
+            <a href="#" data-action="settings" data-toggle="dropdown">
+                <i class="ace-icon fa fa-bars"></i>
             </a>
 
-            <a href="#" data-action="reload">
-                <i class="ace-icon fa fa-refresh"></i>
-            </a>
+            <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                <li>
+                    <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                </li>
 
-            <a href="#" data-action="collapse">
-                <i class="ace-icon fa fa-chevron-up"></i>
-            </a>
-
-            <a href="#" data-action="close">
-                <i class="ace-icon fa fa-times"></i>
-            </a>
+                <li>
+                    <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                </li>
+            </ul>
         </div>
 
-        <!-- /section:custom/widget-box.toolbar -->
+        <a href="#" data-action="fullscreen" class="orange2">
+            <i class="ace-icon fa fa-expand"></i>
+        </a>
+
+        <a href="#" data-action="reload">
+            <i class="ace-icon fa fa-refresh"></i>
+        </a>
+
+        <a href="#" data-action="collapse">
+            <i class="ace-icon fa fa-chevron-up"></i>
+        </a>
+
+        <a href="#" data-action="close">
+            <i class="ace-icon fa fa-times"></i>
+        </a>
     </div>
 
-    <div class="widget-body">
-        <div class="widget-main">
-            <div class="tabbable">
-                <ul class="nav nav-tabs" id="myTab">
-                    <li class="active">
-                        <a data-toggle="tab" href="#tab1">
-                            Actions done <br> by selected user
-                        </a>
-                    </li>
+    <!-- /section:custom/widget-box.toolbar -->
+</div>
 
-                    <li>
-                        <a data-toggle="tab" href="#tab2">
-                            Users who have done <br> selected action
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#tab3">
-                            Actions done by <br> selected user's downline
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#tab4">
-                            Users who have done <br> selected action
-                        </a>
-                    </li>
+<div class="widget-body">
+<div class="widget-main">
+<div class="tabbable">
+<ul class="nav nav-tabs" id="myTab">
+    <li class="active">
+        <a data-toggle="tab" href="#tab1">
+            Actions done <br> by selected user
+        </a>
+    </li>
+
+    <li>
+        <a data-toggle="tab" href="#tab2">
+            Users who have done <br> selected action
+        </a>
+    </li>
+    <li>
+        <a data-toggle="tab" href="#tab3">
+            Actions done by <br> selected user's downline
+        </a>
+    </li>
+    <li>
+        <a data-toggle="tab" href="#tab4">
+            Users who have done <br> selected action
+        </a>
+    </li>
 
 
-                </ul>
+</ul>
 
-                <div class="tab-content">
-                    <div id="tab1" class="tab-pane fade in active">
-                        <form id="test_1" class="form-horizontal themed">
-                            <fieldset>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label class="control-label" for="users_select">User</label>
+<div class="tab-content">
+    <div id="tab1" class="tab-pane fade in active">
+        <form id="test_1" class="form-horizontal themed">
+            <fieldset>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="control-label" for="users_select">I am</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="controls">
+                                <select id="users_select" class="with-search">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-client>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 widget-container-col">
+                                    <!-- #section:custom/widget-box -->
+                                    <div class="widget-box">
+                                        <div class="widget-header">
+                                            <h5 class="widget-title">Transactions List</h5>
+
+                                            <!-- #section:custom/widget-box.toolbar -->
+                                            <div class="widget-toolbar">
+                                                <div class="widget-menu">
+                                                    <a href="#" data-action="settings" data-toggle="dropdown">
+                                                        <i class="ace-icon fa fa-bars"></i>
+                                                    </a>
+
+                                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                                        <li>
+                                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <a href="#" data-action="fullscreen" class="orange2">
+                                                    <i class="ace-icon fa fa-expand"></i>
+                                                </a>
+
+                                                <a href="#" data-action="reload">
+                                                    <i class="ace-icon fa fa-refresh"></i>
+                                                </a>
+
+                                                <a href="#" data-action="collapse">
+                                                    <i class="ace-icon fa fa-chevron-up"></i>
+                                                </a>
+
+                                                <a href="#" data-action="close">
+                                                    <i class="ace-icon fa fa-times"></i>
+                                                </a>
+                                            </div>
+
+                                            <!-- /section:custom/widget-box.toolbar -->
                                         </div>
-                                        <div class="col-md-9">
-                                            <div class="controls">
-                                                <select id="users_select" class="with-search">
-                                                </select>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <!--<select id="users_select1" class="with-search">-->
+                                                <!--</select>-->
+                                                <table class="table table-bordered table-hover responsive" id="transaction_list">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Transaction  Master Name</th>
+                                                        <th>Type of Action</th>
+                                                        <th></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="action_result_block1" id="result_1_action">
-                                            </ul>
-                                        </div>
-                                    </div>
+
+                                    <!-- /section:custom/widget-box -->
                                 </div>
-                            </fieldset>
-                        </form>
+
+
+                            </div>
+
+
+                            <!--<ul class="action_result_block1" id="result_1_action">-->
+                            </ul>
+                        </div>
                     </div>
-
-                    <div id="tab2" class="tab-pane fade">
-                        <form id="action-tags-test-form-tab2" class="form-horizontal themed">
-                            <fieldset>
-                                <div class="form-group">
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-                                            <h5>Show users who have done action single select tag</h5>
-                                        </div>
-
-                                        <div class="col-md-5">
-                                            <label class="control-label" for="action_select_2">Actions</label>
-                                            <div class="controls">
-                                                <select id="action_select_2" class="with-search">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="action_result_block2" id="result_2_action">
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div id="tab3" class="tab-pane fade">
-                        <form id="action-tags-test-form-tab3" class="form-horizontal themed">
-                            <fieldset>
-
-                                <div class="form-group">
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-                                            <h5>Show action done by downline with single select tag</h5>
-                                        </div>
-
-                                        <div class="col-md-5">
-                                            <label class="control-label" for="action_select_user">User</label>
-                                            <div class="controls">
-                                                <select id="action_select_user" class="with-search">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="action_result_block3" id="result_3_action_user">
-                                            </ul>
-                                            <ul class="action_result_block3" id="result_3_action">
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div id="tab4" class="tab-pane fade">
-                        <form id="action-tags-test-form-tab4" class="form-horizontal themed">
-                            <fieldset>
-
-                                <div class="form-group">
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-                                            <h5>Show points earn by downline with single select tag</h5>
-                                        </div>
-
-                                        <div class="col-md-5">
-                                            <label class="control-label" for="action_select_4">User</label>
-                                            <div class="controls">
-                                                <select id="action_select_4" class="with-search">
-                                                    <!--<option>System Analysts</option>-->
-                                                    <!--<option>Administrator</option>-->
-                                                    <!--<option>Manager</option>-->
-                                                    <!--<option>Employee</option>-->
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="action_result_block4" id="result_4_action"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-
                 </div>
-            </div>
-
-        </div>
-
+            </fieldset>
+        </form>
     </div>
+
+    <div id="tab2" class="tab-pane fade">
+        <form id="action-tags-test-form-tab2" class="form-horizontal themed">
+            <fieldset>
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h5>Show users who have done action single select tag</h5>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="control-label" for="action_select_2">Actions</label>
+                            <div class="controls">
+                                <select id="action_select_2" class="with-search">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="action_result_block2" id="result_2_action">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div id="tab3" class="tab-pane fade">
+        <form id="action-tags-test-form-tab3" class="form-horizontal themed">
+            <fieldset>
+
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h5>Show action done by downline with single select tag</h5>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="control-label" for="action_select_user">User</label>
+                            <div class="controls">
+                                <select id="action_select_user" class="with-search">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="action_result_block3" id="result_3_action_user">
+                            </ul>
+                            <ul class="action_result_block3" id="result_3_action">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div id="tab4" class="tab-pane fade">
+        <form id="action-tags-test-form-tab4" class="form-horizontal themed">
+            <fieldset>
+
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h5>Show points earn by downline with single select tag</h5>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="control-label" for="action_select_4">User</label>
+                            <div class="controls">
+                                <select id="action_select_4" class="with-search">
+                                    <!--<option>System Analysts</option>-->
+                                    <!--<option>Administrator</option>-->
+                                    <!--<option>Manager</option>-->
+                                    <!--<option>Employee</option>-->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="action_result_block4" id="result_4_action"></ul>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+</div>
 </div>
 
 <!-- /section:custom/widget-box -->
@@ -617,13 +935,15 @@
 <script type="text/javascript">
     window.jQuery || document.write("<script src='assets/js/jquery.min.js'>"+"<"+"/script>");
 </script>
-
+<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
+
     window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
 </script>
+
 <![endif]-->
 <script type="text/javascript">
     if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
@@ -643,6 +963,7 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
 
 function get_employees(){
     console.log("in get_employees fn :- " + remote_host);
@@ -706,16 +1027,43 @@ function get_transactions(){
 
 }
 
-function get_transactionName(transactionId){
-    console.log("in get_transactionName() transactionId :- " + transactionId);
-    $('#result_1_action').empty();
+function get_transactionName(transactionId, trId){
+    var selected_user = $("#users_select :selected").val();
+
     $.ajax({
         url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
         type: 'GET',
         dataType: 'json',
         success: function(res) {
             if(res){
-                var option_html;
+                console.log("res");
+                console.log(res);
+                var option_html,name,format,type,row_html;
+                if (res.name) {
+                    name = res.name;
+                }
+                else{
+                    name=""
+                }
+                if (res.paramCategory) {
+                    type = res.paramCategory;
+                }
+                else{
+                    type=""
+                }
+
+//
+                row_html = '<tr>'+
+                        '<td class="text-center aligned">'+name+'</td>'+
+                        '<td class="text-center aligned">'+type+'</td>'+
+                        '<td class="text-center aligned">'+
+                        '<div class="block" style="width: 50px;">' +
+                        '<a href="#" onclick="accept_transactions($(this));" class="accept-challenge-btn btn btn-info" id=transaction_'+trId+'_user_'+selected_user+'>'+"Approve"+'</button>'+
+                        '</div>' +
+                        '</td>'+
+                        '</tr>';
+
+                $("#transaction_list").find('tbody').append(row_html);
                 $('#result_1_action').append('<li>'+ res.name +'</li>');
             }
         },
@@ -725,9 +1073,7 @@ function get_transactionName(transactionId){
     });
 
 }
-
-function get_downline_transactionName(transactionId){
-    console.log("in get_downline_transactionName() transactionId :- " + transactionId);
+function get_downline_transactionName(transactionId,user){
     $('#result_3_action').empty();
     $.ajax({
         url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
@@ -746,15 +1092,33 @@ function get_downline_transactionName(transactionId){
     });
 
 }
+function accept_transactions(this_obj){
+    var action_id = this_obj.attr("id").split("_")[1];
+    var user_id = this_obj.attr("id").split("_")[3];
+    $.ajax({
+        url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'/transactions/'+action_id+'/approve',
+        type: 'POST',
+        success: function(data){
+            console.log("Successfully Approved");
+        },
+        error:function(err){
+            console.log(err);
+        }
+    });
+
+
+}
 
 $(function () {
 
     get_employees();
+
     get_transactions();
 
     $("#users_select").change(function(){
         var selected_user = $("#users_select :selected").val();
-        $('#result_1_action').empty();
+        $("#transaction_list").find('tbody').empty();
+//            $('#result_1_action').empty();
 
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
@@ -763,10 +1127,10 @@ $(function () {
             success: function(res) {
                 if(res){
                     var option_html;
-                    res.transactions.forEach(function(transaction){
-                        console.log("transaction.transactionMaster");
-                        console.log(transaction.transactionMaster);
-                        get_transactionName(transaction.transactionMaster);
+                    res.transactions.forEach(function(transactions){
+                        console.log("transactions");
+                        console.log(transactions);
+                        get_transactionName(transactions.transactionMaster, transactions._id);
                     });
                 }
             },
@@ -778,7 +1142,7 @@ $(function () {
 
     $("#action_select_2").change(function(){
         $('#result_2_action').empty();
-        //get_transactions();
+//            get_transactions();
         var selected_transactions = $("#action_select_2 :selected").val();
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/transaction/"+selected_transactions+"/users",
@@ -802,7 +1166,6 @@ $(function () {
     $("#action_select_4").change(function(){
         $('#result_4_action').empty();
         var selected_user = $("#action_select_4 :selected").val();
-
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
             type: 'GET',
@@ -839,7 +1202,7 @@ $(function () {
 
                         users.transactions.forEach(function(transactions)
                         {
-                            get_downline_transactionName(transactions.transactionMaster);
+                            get_downline_transactionName(transactions.transactionMaster,users);
                         })
                     });
                 }
@@ -936,6 +1299,5 @@ jQuery(function($) {
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
-<script src="assets/js/app/logout.js"></script>
 </body>
 </html>
