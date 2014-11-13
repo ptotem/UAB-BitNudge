@@ -41,7 +41,9 @@
     <!--[if lte IE 8]>
     <script src="assets/js/html5shiv.min.js"></script>
     <script src="assets/js/respond.min.js"></script>
+
     <![endif]-->
+    <script src="assets/js/jquery.dataTables.bootstrap.js"></script>
 </head>
 
 <body class="no-skin">
@@ -674,7 +676,7 @@ function get_transactions(userId){
                     if (data.transactionMaster)
                     {
                         transactions=  get_transactionName(data.transactionMaster);
-                        console.log(data.transactionMaster);
+//                        console.log(data.transactionMaster);
 //                            transactions = res;
                     }
 
@@ -723,12 +725,12 @@ function get_transactions(userId){
 
                 });
 
-//                $('#employees_list').dataTable({
-//                    "bPaginate": true,
-//                    "bFilter": true,
-//                    "bLengthChange": true,
-//                    "bSort": false
-//                });
+                $('#employees_list').dataTable({
+                    "bPaginate": true,
+                    "bFilter": true,
+                    "bLengthChange": true,
+                    "bSort": false
+                });
 //
             }
         }

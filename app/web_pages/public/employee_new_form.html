@@ -647,6 +647,7 @@
                 data:userData,
                 success: function(res) {
                     var success_text = "Employee Created.";
+                    window.location.href = local_host+"employee_show.html?userId="+res._id;
                 } ,
                 error: function(e , msg){
                     //processError(e,msg);

@@ -69,7 +69,7 @@
     <a href="#" class="navbar-brand">
         <small>
             <i class="fa fa-leaf"></i>
-            BitNudge
+            Ace Admin
         </small>
     </a>
 
@@ -81,49 +81,296 @@
 </div>
 
 <!-- #section:basics/navbar.dropdown -->
-    <div class="navbar-buttons navbar-header pull-right" role="navigation">
-        <ul class="nav ace-nav">
-            <!-- #section:basics/navbar.user_menu -->
-            <li class="light-blue">
-                <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+<div class="navbar-buttons navbar-header pull-right" role="navigation">
+<ul class="nav ace-nav">
+<li class="grey">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-tasks"></i>
+        <span class="badge badge-grey">4</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-check"></i>
+            4 Tasks to complete
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Software Update</span>
+                    <span class="pull-right">65%</span>
+                </div>
+
+                <div class="progress progress-mini">
+                    <div style="width:65%" class="progress-bar"></div>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Hardware Upgrade</span>
+                    <span class="pull-right">35%</span>
+                </div>
+
+                <div class="progress progress-mini">
+                    <div style="width:35%" class="progress-bar progress-bar-danger"></div>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Unit Testing</span>
+                    <span class="pull-right">15%</span>
+                </div>
+
+                <div class="progress progress-mini">
+                    <div style="width:15%" class="progress-bar progress-bar-warning"></div>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+                    <span class="pull-left">Bug Fixes</span>
+                    <span class="pull-right">90%</span>
+                </div>
+
+                <div class="progress progress-mini progress-striped active">
+                    <div style="width:90%" class="progress-bar progress-bar-success"></div>
+                </div>
+            </a>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="#">
+                See tasks with details
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="purple">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+        <span class="badge badge-important">8</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-exclamation-triangle"></i>
+            8 Notifications
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+												New Comments
+											</span>
+                    <span class="pull-right badge badge-info">+12</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="btn btn-xs btn-primary fa fa-user"></i>
+                Bob just signed up as an editor ...
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+												New Orders
+											</span>
+                    <span class="pull-right badge badge-success">+8</span>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
+												Followers
+											</span>
+                    <span class="pull-right badge badge-info">+11</span>
+                </div>
+            </a>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="#">
+                See all notifications
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="green">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+        <span class="badge badge-success">5</span>
+    </a>
+
+    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+        <li class="dropdown-header">
+            <i class="ace-icon fa fa-envelope-o"></i>
+            5 Messages
+        </li>
+
+        <li class="dropdown-content">
+            <ul class="dropdown-menu dropdown-navbar">
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Alex:</span>
+														Ciao sociis natoque penatibus et auctor ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>a moment ago</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Susan:</span>
+														Vestibulum id ligula porta felis euismod ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>20 minutes ago</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Bob:</span>
+														Nullam quis risus eget urna mollis ornare ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>3:15 pm</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Kate:</span>
+														Ciao sociis natoque eget urna mollis ornare ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>1:33 pm</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+												<span class="msg-body">
+													<span class="msg-title">
+														<span class="blue">Fred:</span>
+														Vestibulum id penatibus et auctor  ...
+													</span>
+
+													<span class="msg-time">
+														<i class="ace-icon fa fa-clock-o"></i>
+														<span>10:09 am</span>
+													</span>
+												</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown-footer">
+            <a href="inbox.html">
+                See all messages
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<!-- #section:basics/navbar.user_menu -->
+<li class="light-blue">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									Jason
 								</span>
 
-                    <i class="ace-icon fa fa-caret-down"></i>
-                </a>
+        <i class="ace-icon fa fa-caret-down"></i>
+    </a>
 
-                <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                    <li>
-                        <a href="#">
-                            <i class="ace-icon fa fa-cog"></i>
-                            Settings
-                        </a>
-                    </li>
+    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-cog"></i>
+                Settings
+            </a>
+        </li>
 
-                    <li>
-                        <a href="profile.html">
-                            <i class="ace-icon fa fa-user"></i>
-                            Profile
-                        </a>
-                    </li>
+        <li>
+            <a href="profile.html">
+                <i class="ace-icon fa fa-user"></i>
+                Profile
+            </a>
+        </li>
 
-                    <li class="divider"></li>
+        <li class="divider"></li>
 
-                    <li>
-                        <a href="#">
-                            <i class="ace-icon fa fa-power-off"></i>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
-            </li>
+        <li>
+            <a href="#">
+                <i class="ace-icon fa fa-power-off"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+</li>
 
-            <!-- /section:basics/navbar.user_menu -->
-        </ul>
-    </div>
+<!-- /section:basics/navbar.user_menu -->
+</ul>
+</div>
 
 <!-- /section:basics/navbar.dropdown -->
 </div><!-- /.navbar-container -->
@@ -176,89 +423,64 @@
 
     <ul class="nav nav-list">
         <li>
-            <a href="teams.html">
+            <a href="departments.html">
                 <i class="menu-icon fa fa-tachometer"></i>
-                <span class="menu-text">Team</span>
+                <span class="menu-text">Department List</span>
             </a>
 
             <b class="arrow"></b>
         </li>
 
         <li class="">
-            <a href="employees.html">
-                <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> Employees </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
-
-        <li>
-            <a href="job_roles.html">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">Job Roles</span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        <li class="">
-            <a href="org_tags.html">
-                <i class="menu-icon fa fa-pencil-square-o"></i>
-                <span class="menu-text"> Organizational Tags </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
-
-        <li>
-            <a href="action_schemas.html">
-                <i class="menu-icon fa fa-list-alt"></i>
-                <span class="menu-text"> Action Schemas </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        <li class="">
-            <a href="levels.html">
-                <i class="menu-icon fa fa-calendar"></i>
-                <span class="menu-text"> Level </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
-
-        <li class="">
-            <a href="abilities.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Abilities </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="badges.html">
-                <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> Badges </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li>
             <a href="roles.html">
-                <i class="menu-icon fa fa-bar-chart-o"></i>
+                <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> Roles </span>
             </a>
-
             <b class="arrow"></b>
         </li>
-        <li class="">
-            <a href="goals.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Goals </span>
+
+        <li class="active">
+            <a href="employees.html">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Employees</span>
             </a>
 
             <b class="arrow"></b>
         </li>
 
+        <li class="">
+            <a href="goals.html">
+                <i class="menu-icon fa fa-pencil-square-o"></i>
+                <span class="menu-text"> Goals </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li>
+            <a href="badge_master.html">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text"> Badge Master </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="reward_center.html">
+                <i class="menu-icon fa fa-calendar"></i>
+                <span class="menu-text"> Reward Center </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="reward_master.html">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text"> Reward Master </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
     </ul><!-- /.nav-list -->
 
     <!-- #section:basics/sidebar.layout.minimize -->
@@ -413,7 +635,7 @@
                     <!-- #section:custom/widget-box -->
                     <div class="widget-box">
                         <div class="widget-header">
-                            <h5 class="widget-title">Department Show</h5>
+                            <h5 class="widget-title">Show Goal</h5>
 
                             <!-- #section:custom/widget-box.toolbar -->
                             <div class="widget-toolbar">
@@ -472,7 +694,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Format</label>
+                                                <label>E-mail</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="emp-details" id="emp_email"></div>
@@ -484,19 +706,29 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>No of Params</label>
+                                                <label>Designation</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="emp-details" id="emp_designation"></div>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Point Function</label>
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="emp-details" id="emp_addr"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Roles</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="emp-details" id="emp_role"></div>
@@ -507,7 +739,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label>Type</label>
+                                                <label>Reporting Officer</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="emp-details" id="emp_reporting_officer"></div>
@@ -518,7 +750,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <label></label>
+                                                <label>Tags</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="emp-details" id="emp_tags"></div>
@@ -529,8 +761,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <button type="button" id="btn_approve">Approve</button>
-                                                <!--<label></label>-->
+                                                <label>Group/Department</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="emp-details" id="emp_dept"></div>
@@ -538,6 +769,23 @@
                                         </div>
 
                                     </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <a id="view_challenges_link" href="#">View My Challenges</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <a id="view_goal_link" href="#">View My Goals</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </fieldset>
 
 
@@ -599,50 +847,118 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    function get_employee(){
-        var emp_id = window.location.search.replace("?","").split("=")[1];
-        var user_id = window.location.search.replace("?","").split("=")[2];
-        console.log(emp_id);
-        console.log(user_id);
+     var goaldata;
+    function user_goal(goalId){
+        $('#result_1_action').empty();
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/transactions/"+emp_id,
+//            url: remote_host+"org/"+orgId+"/goals/"+goalId,
+
+            url: remote_host+"org/"+urlParams.orgId+"/goals/"+goalId+'/goaldata',
             type: 'GET',
             dataType: 'json',
             success: function(res) {
                 if(res){
-                    var reportsTo, orgTags = [], teams = [],format,name,pointFn,type,no_of_params;
+                    console.log(res);
+                    goaldata=res;
+                    var reportsTo, orgTags = [], teams = [];
                     if (res.name)
-                        name = res.name;
+                        reportsTo = res.name;
                     else
-                        name = "";
-                    if (res.format) {
-                        format = res.format;
+                        reportsTo = "";
+//
+                    if (res.orgtags) {
+                        orgTags = [];
+                        $.each(res.action, function(index, value) {
+                            orgTags.push(value.targetParam)
+                        });
                     }
                     else{
-                        format = "";
+                        orgTags = "";
                     }
-                    if (res.noOfParams) {
-                        no_of_params=res.noOfParams;
-                    }
-                    else{
-                        no_of_params = "";
-                    }
-                    if (res.pointsFn) {
-                        pointFn=res.pointsFn;
-                    }
-                    else{
-                        pointFn = "";
-                    }
-                    if (res.type) {
-                        type=res.type;
-                    }
-                    else{
-                        type = "";
-                    }
+//
+//                    if (res.teams) {
+//                        teams = [];
+//                        $.each(res.teams, function(index, value) {
+//                            teams.push(value.name)
+//                        });
+//                    }
+//                    else{
+//                        teams = "";
+//                    }
+//
                     $("#emp_name").text(res.name);
-                    $("#emp_email").text(res.format);
-                    $("#emp_role").text(res.pointsFn);
-                    $("#emp_reporting_officer").text(type);
+                    $("#emp_email").text(orgTags);
+                    $("#emp_role").text(res.targetValue);
+                    $("#emp_reporting_officer").text(res.createdAt);
+//                    $("#emp_reporting_officer").text(reportsTo);
+//                    $("#emp_tags").text(orgTags);
+//                    $("#emp_dept").text(teams);
+//                    $("#emp_designation").text(res.designation);
+//                    $("#emp_addr").text(res.address);
+                }
+            },
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+    function get_employee(){
+        var emp_id = window.location.search.replace("?","").split("=")[1];
+
+        $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
+        $("#view_challenges_link").attr("href","view_challenge.html?userId="+emp_id);
+
+        $.ajax({
+            ///org/:orgId/users/:userId
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+//                console.log("res");
+//                console.log(res);
+                if(res){
+                    res.goals.forEach(function(goal){
+                        goal.subgoal.forEach(function(subgoal){
+                             user_goal(subgoal.subgoal);
+//                            console.log(data);
+                        })
+                    })
+//                    //console.log(res);
+//                    var reportsTo, orgTags = [], teams = [];
+//                    if (res.reportsTo)
+//                        reportsTo = res.reportsTo.name;
+//                    else
+//                        reportsTo = "";
+//
+//                    if (res.orgtags) {
+//                        orgTags = [];
+//                        $.each(res.orgtags, function(index, value) {
+//                            orgTags.push(value.name)
+//                        });
+//                    }
+//                    else{
+//                        orgTags = "";
+//                    }
+//
+//                    if (res.teams) {
+//                        teams = [];
+//                        $.each(res.teams, function(index, value) {
+//                            teams.push(value.name)
+//                        });
+//                    }
+//                    else{
+//                        teams = "";
+//                    }
+//
+//                    $("#emp_name").text(res.name);
+//                    $("#emp_email").text(res.email);
+//                    $("#emp_role").text(res.role.name);
+//                    $("#emp_reporting_officer").text(reportsTo);
+//                    $("#emp_tags").text(orgTags);
+//                    $("#emp_dept").text(teams);
+//                    $("#emp_designation").text(res.designation);
+//                    $("#emp_addr").text(res.address);
                 }
             }
             ,
@@ -652,34 +968,14 @@
         });
     }
 
-    $(function () {
-        $("#btn_approve").click(function(){
-            var emp_id = window.location.search.replace("?","").split("=")[1];
-            var user_id = window.location.search.replace("?","").split("=")[2];
-            console.log(emp_id);
-            console.log(user_id);
-            $.ajax({
-                url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'transactions'+emp_id+'approve',
-// data: data,
-// contentType: 'multipart/form-data',
-                contentType: false,
-                processData: false,
-                type: 'POST',
-                success: function(data){
-                    console.log("data");
-                },
-                error:function(err){
-                    console.log(err);
-                }
-            });
-// console.log('hello');
-// get_user();
-        });
-    });
 
     $(function () {
+        var row_html;
         get_employee();
     });
+
+
+
 
 
     jQuery(function($) {
@@ -751,6 +1047,7 @@
 
         // widget boxes
         // widget box drag & drop example
+
 
     });
 </script>

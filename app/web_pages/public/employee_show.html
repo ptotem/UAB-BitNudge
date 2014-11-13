@@ -549,13 +549,16 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-12">
+                                                <a id="edit_user_link" href="#">Edit Details</a> |
+                                                <a id="view_transactions_link" href="#">View My Transactions</a> |
                                                 <a id="view_goal_link" href="#">View My Goals</a> |
-                                                <a id="edit_user_link" href="#">Edit Details</a>
+                                                <a id="view_challenges_link" href="#">View My Challenges</a>
                                             </div>
                                         </div>
 
                                     </div>
+
                                 </fieldset>
 
 
@@ -621,8 +624,10 @@
     function get_employee(){
         var emp_id = window.location.search.replace("?","").split("=")[1];
 
+        $("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
         $("#view_goal_link").attr("href","view_goal.html?userId="+emp_id);
         $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
+        $("#view_challenges_link").attr("href","view_challenge.html?userId="+emp_id);
 
         $.ajax({
             ///org/:orgId/users/:userId
