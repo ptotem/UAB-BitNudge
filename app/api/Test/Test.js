@@ -193,14 +193,16 @@ var RoleAbilitiesCollection=mongoose.model('roleAbilities',roleSchema);
 
 var userAuthentication={
     'post /org/:orgId/excel/user/new':function(req,res,next){
+        console.log(req.files.file.path)
+//        res.send(req)
         var xlsx = require('node-xlsx');
-        var obj = xlsx.parse(req.files.users.path); // parses a file
+        var obj = xlsx.parse(req.files.file.path); // parses a file
         userFn(req.params.orgId,obj);
         res.send(obj);
     },
     'post /org/:orgId/excel/user/edit':function(req,res,next){
         var xlsx = require('node-xlsx');
-        var obj = xlsx.parse(req.files.users.path); // parses a file
+        var obj = xlsx.parse(req.files.file.path); // parses a file
         userEditFn(req.params.orgId,obj);
         res.send(obj);
     }
@@ -348,8 +350,9 @@ var organizationTags={
 var usersGoals={
     'post /org/:orgId/excel/users_goals/new':function(req,res,next){
         var xlsx = require('node-xlsx');
+//        console.log(req.files)
         //var obj = xlsx.parse(req.files.users.path); // parses a file
-        var obj = xlsx.parse(req.files.users_goals.path); // parses a file
+        var obj = xlsx.parse(req.files.file.path); // parses a file
         userGoalFn(req.params.orgId,obj);
         res.send(obj);
     }
