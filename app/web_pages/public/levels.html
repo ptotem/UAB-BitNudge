@@ -339,7 +339,7 @@
         <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo"/>
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									<span id="user_name"></span>
 								</span>
 
         <i class="ace-icon fa fa-caret-down"></i>
@@ -347,23 +347,7 @@
 
     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
         <li>
-            <a href="#">
-                <i class="ace-icon fa fa-cog"></i>
-                Settings
-            </a>
-        </li>
-
-        <li>
-            <a href="profile.html">
-                <i class="ace-icon fa fa-user"></i>
-                Profile
-            </a>
-        </li>
-
-        <li class="divider"></li>
-
-        <li>
-            <a href="#">
+            <a onclick="logout()">
                 <i class="ace-icon fa fa-power-off"></i>
                 Logout
             </a>
@@ -434,65 +418,65 @@
 
     <ul class="nav nav-list">
         <li>
-            <a href="departments.html">
+            <a href="teams.html">
                 <i class="menu-icon fa fa-tachometer"></i>
-                <span class="menu-text">Department List</span>
+                <span class="menu-text">Team</span>
             </a>
 
             <b class="arrow"></b>
         </li>
 
         <li class="">
-            <a href="roles.html">
-                <i class="menu-icon fa fa-desktop"></i>
-                <span class="menu-text"> Roles </span>
-            </a>
-            <b class="arrow"></b>
-        </li>
-
-        <li>
             <a href="employees.html">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">Employees</span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        <li class="">
-            <a href="goals.html">
-                <i class="menu-icon fa fa-pencil-square-o"></i>
-                <span class="menu-text"> Goals </span>
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text"> Employees </span>
             </a>
             <b class="arrow"></b>
         </li>
 
         <li>
-            <a href="badge_master.html">
+            <a href="job_roles.html">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">Job Roles</span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
+
+        <li class="">
+            <a href="org_tags.html">
+                <i class="menu-icon fa fa-pencil-square-o"></i>
+                <span class="menu-text"> Organizational Tags </span>
+            </a>
+            <b class="arrow"></b>
+        </li>
+
+        <li>
+            <a href="action_schemas.html">
                 <i class="menu-icon fa fa-list-alt"></i>
-                <span class="menu-text"> Badge Master </span>
+                <span class="menu-text"> Action Schemas </span>
             </a>
 
             <b class="arrow"></b>
         </li>
 
         <li class="">
-            <a href="reward_center.html">
+            <a href="levels.html">
                 <i class="menu-icon fa fa-calendar"></i>
-                <span class="menu-text"> Reward Center </span>
+                <span class="menu-text"> Level </span>
             </a>
             <b class="arrow"></b>
         </li>
 
         <li class="">
-            <a href="reward_master.html">
+            <a href="abilities.html">
                 <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Reward Master </span>
+                <span class="menu-text"> Abilities </span>
             </a>
 
             <b class="arrow"></b>
         </li>
-        <li class="active">
+        <li class="">
             <a href="badges.html">
                 <i class="menu-icon fa fa-desktop"></i>
                 <span class="menu-text"> Badges </span>
@@ -501,56 +485,31 @@
             <b class="arrow"></b>
         </li>
         <li>
-            <a href="abilities.html">
+            <a href="roles.html">
                 <i class="menu-icon fa fa-bar-chart-o"></i>
-                <span class="menu-text"> Abilities </span>
+                <span class="menu-text"> Roles </span>
             </a>
 
             <b class="arrow"></b>
         </li>
         <li class="">
-            <a href="level.html">
+            <a href="goals.html">
                 <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Level </span>
+                <span class="menu-text"> Goals </span>
             </a>
 
             <b class="arrow"></b>
         </li>
         <li class="">
-            <a href="org_tags.html">
-                <i class="menu-icon fa fa-book"></i>
-                <span class="menu-text"> Organization Tag </span>
+            <a href="challenges.html">
+                <i class="menu-icon fa fa-laptop"></i>
+                <span class="menu-text"> Challenges </span>
             </a>
 
             <b class="arrow"></b>
         </li>
-        <li class="">
-            <a href="team.html">
-                <i class="menu-icon fa fa-envelope"></i>
-                <span class="menu-text"> Team </span>
-            </a>
+    </ul><!-- /.nav-list -->
 
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="reward_master.html">
-                <i class="menu-icon fa fa-envelope"></i>
-                <span class="menu-text"> Reward Master </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
-            <a href="action_sec.html">
-                <i class="menu-icon fa fa-picture-o"></i>
-                <span class="menu-text"> Action Section </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-
-    </ul>
     <!-- /.nav-list -->
 
     <!-- #section:basics/sidebar.layout.minimize -->
@@ -579,25 +538,11 @@
         }
     </script>
 
-    <ul class="breadcrumb">
-        <li>
-            <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">Widgets</li>
-    </ul>
+
     <!-- /.breadcrumb -->
 
     <!-- #section:basics/content.searchbox -->
-    <div class="nav-search" id="nav-search">
-        <form class="form-search">
-							<span class="input-icon">
-								<input type="text" placeholder="Search ..." class="nav-search-input"
-                                       id="nav-search-input" autocomplete="off"/>
-								<i class="ace-icon fa fa-search nav-search-icon"></i>
-							</span>
-        </form>
-    </div>
+
     <!-- /.nav-search -->
 
     <!-- /section:basics/content.searchbox -->
@@ -700,22 +645,13 @@
 
 <!-- /section:settings.box -->
 <div class="page-content-area">
-    <div class="page-header">
-        <h1>
-            Widgets
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                Draggabble Widget Boxes &amp; Containers
-            </small>
-        </h1>
-    </div>
-    <!-- /.page-header -->
+
     <!--row 1-->
     <div class="row">
         <div class="col-xs-12">
             <!-- PAGE CONTENT BEGINS -->
             <!--<row 1 >-->
-            <div class="row">
+
                 <div class="row">
 
                     <div class="col-lg-12 col-md-12 widget-container-col">
@@ -866,7 +802,7 @@
 <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
-</div>
+
 <!-- /.main-container -->
 
 <!-- basic scripts -->
@@ -901,6 +837,20 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    function employee_name() {
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+//            url: remote_host + "abilities",
+            type: 'GET',
+            dataType: 'json',
+            success: function (res) {
+                $("#user_name").text(res.name);
+            },
+            error: function (e, msg) {
+                //processError(e,msg);
+            }
+        });
+    }
 
     function get_badges(){
         $.ajax({
@@ -964,6 +914,7 @@
 
     $(function () {
         get_badges();
+        employee_name();
     });
 
 
@@ -1097,5 +1048,6 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+<script src="assets/js/app/logout.js"></script>
 </body>
 </html>

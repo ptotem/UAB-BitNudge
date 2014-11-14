@@ -121,42 +121,42 @@
 
 <!-- #section:basics/sidebar -->
 <div id="sidebar" class="sidebar                  responsive">
-    <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
-    </script>
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+</script>
 
-    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-            <button class="btn btn-success">
-                <i class="ace-icon fa fa-signal"></i>
-            </button>
+<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+        <button class="btn btn-success">
+            <i class="ace-icon fa fa-signal"></i>
+        </button>
 
-            <button class="btn btn-info">
-                <i class="ace-icon fa fa-pencil"></i>
-            </button>
+        <button class="btn btn-info">
+            <i class="ace-icon fa fa-pencil"></i>
+        </button>
 
-            <!-- #section:basics/sidebar.layout.shortcuts -->
-            <button class="btn btn-warning">
-                <i class="ace-icon fa fa-users"></i>
-            </button>
+        <!-- #section:basics/sidebar.layout.shortcuts -->
+        <button class="btn btn-warning">
+            <i class="ace-icon fa fa-users"></i>
+        </button>
 
-            <button class="btn btn-danger">
-                <i class="ace-icon fa fa-cogs"></i>
-            </button>
+        <button class="btn btn-danger">
+            <i class="ace-icon fa fa-cogs"></i>
+        </button>
 
-            <!-- /section:basics/sidebar.layout.shortcuts -->
-        </div>
+        <!-- /section:basics/sidebar.layout.shortcuts -->
+    </div>
 
-        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-            <span class="btn btn-success"></span>
+    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+        <span class="btn btn-success"></span>
 
-            <span class="btn btn-info"></span>
+        <span class="btn btn-info"></span>
 
-            <span class="btn btn-warning"></span>
+        <span class="btn btn-warning"></span>
 
-            <span class="btn btn-danger"></span>
-        </div>
-    </div><!-- /.sidebar-shortcuts -->
+        <span class="btn btn-danger"></span>
+    </div>
+</div><!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
         <li>
@@ -254,14 +254,14 @@
 
 
     <!-- #section:basics/sidebar.layout.minimize -->
-    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-    </div>
+<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+    <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+</div>
 
-    <!-- /section:basics/sidebar.layout.minimize -->
-    <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
-    </script>
+<!-- /section:basics/sidebar.layout.minimize -->
+<script type="text/javascript">
+    try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+</script>
 </div>
 
 <!-- /section:basics/sidebar -->
@@ -380,11 +380,13 @@
                 <!-- PAGE CONTENT BEGINS -->
                 <!--<row 1 >-->
                 <div class="row">
+
+
                     <div class="col-lg-12 col-md-12 widget-container-col">
                         <!-- #section:custom/widget-box -->
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h5 class="widget-title">Add Bulk Employees</h5>
+                                <h5 class="widget-title">Add New goal</h5>
 
                                 <!-- #section:custom/widget-box.toolbar -->
                                 <div class="widget-toolbar">
@@ -426,34 +428,15 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <form id="employees_bulk_upload_form" class="form-horizontal themed">
-                                        <fieldset>
-                                            <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <a href="goal_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Goal test page</a><br>
+                                            <a href="bulk_goal_creation.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Bulk goal Creation</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="goal_creation_form.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Add New Goal</a>
 
-                                                <div class="col-md-3">
-                                                    <label class="control-label" for="bulk_employees_excel_2">File input</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div class="controls">
-                                                        <!--<input class="file" id="bulk_employees_excel" type="file" />-->
-
-                                                        <input class="file-no-style" id="bulk_employees_excel_2" type="file" />
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-
-                                            <div class="form-actions">
-                                                <button type="reset" class="btn medium btn-danger">
-                                                    Cancel
-                                                </button>
-                                                <button id="upload_btn" type="submit" class="btn medium btn-primary">
-                                                    Upload
-                                                </button>
-                                            </div>
-                                        </fieldset>
-                                    </form>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -463,12 +446,14 @@
 
 
                 </div>
-                <!-- /.row 1 end -->
 
+                <!-- /.row 1 end -->
                 <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->
         </div>
+            </div>
         <!-- /1 row -->
+
     </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
@@ -511,130 +496,212 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
-    var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    function employee_name() {
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+var urlParams = JSON.parse(localStorage.getItem('user_data'));
+function employee_name() {
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
 //            url: remote_host + "abilities",
-            type: 'GET',
-            dataType: 'json',
-            success: function (res) {
-                $("#user_name").text(res.name);
-            },
-            error: function (e, msg) {
-                //processError(e,msg);
+        type: 'GET',
+        dataType: 'json',
+        success: function (res) {
+            $("#user_name").text(res.name);
+        },
+        error: function (e, msg) {
+            //processError(e,msg);
+        }
+    });
+}
+
+function get_teams(){
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/teams",
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                var row_html;
+                res.forEach(function(team){
+                    console.log(team);
+
+                    row_html = '<tr>'+
+                            '<td class="text-center aligned">'+team.name+'</td>'+
+                            '<td class="text-center aligned">'+
+                            '<div class="block" style="width: 50px;">' +
+                            '<a href="team_edit_form.html?teamId='+team._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
+                            '<a href="team_show.html?teamId='+team._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+                            '</div>' +
+                            '</tr>';
+
+                    $("#teams_list").find('tbody').append(row_html);
+
+                });
+                var oTable1 =
+                        $('#teams_list')
+                            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                                .dataTable( {
+                                    "bPaginate": true,
+                                    "bFilter": true,
+                                    "bLengthChange": true,
+                                    "bSort": false,
+                                    "iDisplayLength": 10
+                                } );
+
+
             }
-        });
-    }
-    $(function () {
-     employee_name();
-        $('#bulk_employees_excel_2').ace_file_input({
-            no_file:'No File ...',
-            btn_choose:'Choose',
-            btn_change:'Change',
-            droppable:false,
-            onchange:null,
-            thumbnail:false //| true | large
-            //whitelist:'gif|png|jpg|jpeg'
-            //blacklist:'exe|php'
-            //onchange:''
-            //
-        });
-        $("#employees_bulk_upload_form").submit(function(event){
-            event.preventDefault();
-            var data=new FormData();
-            data.append("users",$("#bulk_employees_excel_2")[0].files[0]);
-            $.ajax({
-                url: remote_host+'org/'+urlParams.orgId+'/excel/user/new',
-                data: data,
-                // contentType: 'multipart/form-data',
-                contentType: false,
-                processData: false,
-                type: 'POST',
-                success: function(data){
-                    console.log(data);
-                    window.location.href = local_host+"employees.html";
-                },
-                error:function(err){
-                    console.log(err);
-                }
-            });
-            return false;
-        });
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+$(function () {
+    get_teams();
+    employee_name();
+});
+
+
+
+
+jQuery(function($) {
+
+    $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
+        var color_class = $(this).find('option:selected').data('class');
+        var new_class = 'widget-box';
+        if(color_class != 'default')  new_class += ' widget-color-'+color_class;
+        $(this).closest('.widget-box').attr('class', new_class);
     });
 
 
-
-
-
-    jQuery(function($) {
-
-        $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
-            var color_class = $(this).find('option:selected').data('class');
-            var new_class = 'widget-box';
-            if(color_class != 'default')  new_class += ' widget-color-'+color_class;
-            $(this).closest('.widget-box').attr('class', new_class);
+    // scrollables
+    $('.scrollable').each(function () {
+        var $this = $(this);
+        $(this).ace_scroll({
+            size: $this.data('size') || 100
+            //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
         });
+    });
+    $('.scrollable-horizontal').each(function () {
+        var $this = $(this);
+        $(this).ace_scroll(
+                {
+                    horizontal: true,
+                    styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
+                    size: $this.data('size') || 500,
+                    mouseWheelLock: true
+                }
+        ).css({'padding-top': 12});
+    });
+
+    $(window).on('resize.scroll_reset', function() {
+        $('.scrollable-horizontal').ace_scroll('reset');
+    });
 
 
-        // scrollables
-        $('.scrollable').each(function () {
-            var $this = $(this);
-            $(this).ace_scroll({
-                size: $this.data('size') || 100
-                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
-            });
-        });
-        $('.scrollable-horizontal').each(function () {
-            var $this = $(this);
-            $(this).ace_scroll(
-                    {
-                        horizontal: true,
-                        styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
-                        size: $this.data('size') || 500,
-                        mouseWheelLock: true
-                    }
-            ).css({'padding-top': 12});
-        });
-
-        $(window).on('resize.scroll_reset', function() {
-            $('.scrollable-horizontal').ace_scroll('reset');
-        });
-
-
-        /**
-         //or use slimScroll plugin
-         $('.slim-scrollable').each(function () {
+    /**
+     //or use slimScroll plugin
+     $('.slim-scrollable').each(function () {
 					var $this = $(this);
 					$this.slimScroll({
 						height: $this.data('height') || 100,
 						railVisible:true
 					});
 				});
-         */
+     */
 
 
-        /**$('.widget-box').on('setting.ace.widget' , function(e) {
+    /**$('.widget-box').on('setting.ace.widget' , function(e) {
 					e.preventDefault();
 				});*/
 
-        /**
-         $('.widget-box').on('show.ace.widget', function(e) {
+    /**
+     $('.widget-box').on('show.ace.widget', function(e) {
 					//e.preventDefault();
 					//this = the widget-box
 				});
-         $('.widget-box').on('reload.ace.widget', function(e) {
+     $('.widget-box').on('reload.ace.widget', function(e) {
 					//this = the widget-box
 				});
-         */
+     */
 
-            //$('#my-widget-box').widget_box('hide');
+        //$('#my-widget-box').widget_box('hide');
 
 
 
-            // widget boxes
-            // widget box drag & drop example
+        // widget boxes
+        // widget box drag & drop example
+//    $('.widget-container-col').sortable({
+//        connectWith: '.widget-container-col',
+//        items:'> .widget-box',
+//        handle: ace.vars['touch'] ? '.widget-header' : false,
+//        cancel: '.fullscreen',
+//        opacity:0.8,
+//        revert:true,
+//        forceHelperSize:true,
+//        placeholder: 'widget-placeholder',
+//        forcePlaceholderSize:true,
+//        tolerance:'pointer',
+//        start: function(event, ui) {
+//            //when an element is moved, it's parent becomes empty with almost zero height.
+//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
+//            ui.item.parent().css({'min-height':ui.item.height()})
+//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
+//        },
+//        update: function(event, ui) {
+//            ui.item.parent({'min-height':''})
+//            //p.style.removeProperty('background-color');
+//        }
+//    });
 
+});
+</script>
+<script type="text/javascript">
+    var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
+    ace.load_ajax_scripts(scripts, function() {
+        //inline scripts related to this page
+        jQuery(function($) {
+
+            /**
+             var tableTools = new $.fn.dataTable.TableTools( oTable1, {
+			"sSwfPath": "../../copy_csv_xls_pdf.swf",
+	        "buttons": [
+	            "copy",
+	            "csv",
+	            "xls",
+				"pdf",
+	            "print"
+	        ]
+	    } );
+             $( tableTools.fnContainer() ).insertBefore('#sample-table-2');
+             */
+
+
+            $(document).on('click', 'th input:checkbox' , function(){
+                var that = this;
+                $(this).closest('table').find('tr > td:first-child input:checkbox')
+                        .each(function(){
+                            this.checked = that.checked;
+                            $(this).closest('tr').toggleClass('selected');
+                        });
+            });
+
+
+            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+            function tooltip_placement(context, source) {
+                var $source = $(source);
+                var $parent = $source.closest('table')
+                var off1 = $parent.offset();
+                var w1 = $parent.width();
+
+                var off2 = $source.offset();
+                //var w2 = $source.width();
+
+                if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+                return 'left';
+            }
+
+        })
     });
 </script>
 

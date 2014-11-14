@@ -336,7 +336,7 @@
         <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									<span id="user_name"></span>
 								</span>
 
         <i class="ace-icon fa fa-caret-down"></i>
@@ -502,13 +502,7 @@
         try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
     </script>
 
-    <ul class="breadcrumb">
-        <li>
-            <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">Widgets</li>
-    </ul><!-- /.breadcrumb -->
+
 
     <!-- #section:basics/content.searchbox -->
     <div class="nav-search" id="nav-search">
@@ -634,203 +628,275 @@
 <div class="col-xs-12 col-sm-12 widget-container-col">
 <!-- #section:custom/widget-box -->
 <div class="widget-box">
-    <div class="widget-header">
-        <h5 class="widget-title">Action test page</h5>
+<div class="widget-header">
+    <h5 class="widget-title">Action test page</h5>
 
-        <!-- #section:custom/widget-box.toolbar -->
-        <div class="widget-toolbar">
-            <div class="widget-menu">
-                <a href="#" data-action="settings" data-toggle="dropdown">
-                    <i class="ace-icon fa fa-bars"></i>
-                </a>
-
-                <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                    <li>
-                        <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                    </li>
-
-                    <li>
-                        <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                    </li>
-                </ul>
-            </div>
-
-            <a href="#" data-action="fullscreen" class="orange2">
-                <i class="ace-icon fa fa-expand"></i>
+    <!-- #section:custom/widget-box.toolbar -->
+    <div class="widget-toolbar">
+        <div class="widget-menu">
+            <a href="#" data-action="settings" data-toggle="dropdown">
+                <i class="ace-icon fa fa-bars"></i>
             </a>
 
-            <a href="#" data-action="reload">
-                <i class="ace-icon fa fa-refresh"></i>
-            </a>
+            <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                <li>
+                    <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                </li>
 
-            <a href="#" data-action="collapse">
-                <i class="ace-icon fa fa-chevron-up"></i>
-            </a>
-
-            <a href="#" data-action="close">
-                <i class="ace-icon fa fa-times"></i>
-            </a>
+                <li>
+                    <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                </li>
+            </ul>
         </div>
 
-        <!-- /section:custom/widget-box.toolbar -->
+        <a href="#" data-action="fullscreen" class="orange2">
+            <i class="ace-icon fa fa-expand"></i>
+        </a>
+
+        <a href="#" data-action="reload">
+            <i class="ace-icon fa fa-refresh"></i>
+        </a>
+
+        <a href="#" data-action="collapse">
+            <i class="ace-icon fa fa-chevron-up"></i>
+        </a>
+
+        <a href="#" data-action="close">
+            <i class="ace-icon fa fa-times"></i>
+        </a>
     </div>
 
-    <div class="widget-body">
-        <div class="widget-main">
-            <div class="tabbable">
-                <ul class="nav nav-tabs" id="myTab">
-                    <li class="active">
-                        <a data-toggle="tab" href="#tab1">
-                            Actions done <br> by selected user
-                        </a>
-                    </li>
+    <!-- /section:custom/widget-box.toolbar -->
+</div>
 
-                    <li>
-                        <a data-toggle="tab" href="#tab2">
-                            Users who have done <br> selected action
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#tab3">
-                            Actions done by <br> selected user's downline
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#tab4">
-                            Users who have done <br> selected action
-                        </a>
-                    </li>
+<div class="widget-body">
+<div class="widget-main">
+<div class="tabbable">
+<ul class="nav nav-tabs" id="myTab">
+    <li class="active">
+        <a data-toggle="tab" href="#tab1">
+            Actions done <br> by selected user
+        </a>
+    </li>
+
+    <li>
+        <a data-toggle="tab" href="#tab2">
+            Users who have done <br> selected action
+        </a>
+    </li>
+    <li>
+        <a data-toggle="tab" href="#tab3">
+            Actions done by <br> selected user's downline
+        </a>
+    </li>
+    <li>
+        <a data-toggle="tab" href="#tab4">
+            Users who have done <br> selected action
+        </a>
+    </li>
 
 
-                </ul>
+</ul>
 
-                <div class="tab-content">
-                    <div id="tab1" class="tab-pane fade in active">
-                        <form id="test_1" class="form-horizontal themed">
-                            <fieldset>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label class="control-label" for="users_select">User</label>
+<div class="tab-content">
+    <div id="tab1" class="tab-pane fade in active">
+        <form id="test_1" class="form-horizontal themed">
+            <fieldset>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="control-label" for="users_select">I am</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="controls">
+                                <select id="users_select" class="with-search">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" data-client>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 widget-container-col">
+                                    <!-- #section:custom/widget-box -->
+                                    <div class="widget-box">
+                                        <div class="widget-header">
+                                            <h5 class="widget-title">Transactions List</h5>
+
+                                            <!-- #section:custom/widget-box.toolbar -->
+                                            <div class="widget-toolbar">
+                                                <div class="widget-menu">
+                                                    <a href="#" data-action="settings" data-toggle="dropdown">
+                                                        <i class="ace-icon fa fa-bars"></i>
+                                                    </a>
+
+                                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                                        <li>
+                                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <a href="#" data-action="fullscreen" class="orange2">
+                                                    <i class="ace-icon fa fa-expand"></i>
+                                                </a>
+
+                                                <a href="#" data-action="reload">
+                                                    <i class="ace-icon fa fa-refresh"></i>
+                                                </a>
+
+                                                <a href="#" data-action="collapse">
+                                                    <i class="ace-icon fa fa-chevron-up"></i>
+                                                </a>
+
+                                                <a href="#" data-action="close">
+                                                    <i class="ace-icon fa fa-times"></i>
+                                                </a>
+                                            </div>
+
+                                            <!-- /section:custom/widget-box.toolbar -->
                                         </div>
-                                        <div class="col-md-9">
-                                            <div class="controls">
-                                                <select id="users_select" class="with-search">
-                                                </select>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <!--<select id="users_select1" class="with-search">-->
+                                                <!--</select>-->
+                                                <table class="table table-bordered table-hover responsive" id="transaction_list">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Transaction  Master Name</th>
+                                                        <th>Type of Action</th>
+                                                        <th></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="action_result_block1" id="result_1_action">
-                                            </ul>
-                                        </div>
-                                    </div>
+
+                                    <!-- /section:custom/widget-box -->
                                 </div>
-                            </fieldset>
-                        </form>
+
+
+                            </div>
+
+
+                            <!--<ul class="action_result_block1" id="result_1_action">-->
+                            </ul>
+                        </div>
                     </div>
-
-                    <div id="tab2" class="tab-pane fade">
-                        <form id="action-tags-test-form-tab2" class="form-horizontal themed">
-                            <fieldset>
-                                <div class="form-group">
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-                                            <h5>Show users who have done action single select tag</h5>
-                                        </div>
-
-                                        <div class="col-md-5">
-                                            <label class="control-label" for="action_select_2">Actions</label>
-                                            <div class="controls">
-                                                <select id="action_select_2" class="with-search">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="action_result_block2" id="result_2_action">
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div id="tab3" class="tab-pane fade">
-                        <form id="action-tags-test-form-tab3" class="form-horizontal themed">
-                            <fieldset>
-
-                                <div class="form-group">
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-                                            <h5>Show action done by downline with single select tag</h5>
-                                        </div>
-
-                                        <div class="col-md-5">
-                                            <label class="control-label" for="action_select_user">User</label>
-                                            <div class="controls">
-                                                <select id="action_select_user" class="with-search">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="action_result_block3" id="result_3_action_user">
-                                            </ul>
-                                            <ul class="action_result_block3" id="result_3_action">
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div id="tab4" class="tab-pane fade">
-                        <form id="action-tags-test-form-tab4" class="form-horizontal themed">
-                            <fieldset>
-
-                                <div class="form-group">
-                                    <div class="row">
-
-                                        <div class="col-md-12">
-                                            <h5>Show points earn by downline with single select tag</h5>
-                                        </div>
-
-                                        <div class="col-md-5">
-                                            <label class="control-label" for="action_select_4">User</label>
-                                            <div class="controls">
-                                                <select id="action_select_4" class="with-search">
-                                                    <!--<option>System Analysts</option>-->
-                                                    <!--<option>Administrator</option>-->
-                                                    <!--<option>Manager</option>-->
-                                                    <!--<option>Employee</option>-->
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="action_result_block4" id="result_4_action"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-
                 </div>
-            </div>
-
-        </div>
-
+            </fieldset>
+        </form>
     </div>
+
+    <div id="tab2" class="tab-pane fade">
+        <form id="action-tags-test-form-tab2" class="form-horizontal themed">
+            <fieldset>
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h5>Show users who have done action single select tag</h5>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="control-label" for="action_select_2">Actions</label>
+                            <div class="controls">
+                                <select id="action_select_2" class="with-search">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="action_result_block2" id="result_2_action">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div id="tab3" class="tab-pane fade">
+        <form id="action-tags-test-form-tab3" class="form-horizontal themed">
+            <fieldset>
+
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h5>Show action done by downline with single select tag</h5>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="control-label" for="action_select_user">User</label>
+                            <div class="controls">
+                                <select id="action_select_user" class="with-search">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="action_result_block3" id="result_3_action_user">
+                            </ul>
+                            <ul class="action_result_block3" id="result_3_action">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div id="tab4" class="tab-pane fade">
+        <form id="action-tags-test-form-tab4" class="form-horizontal themed">
+            <fieldset>
+
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h5>Show points earn by downline with single select tag</h5>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="control-label" for="action_select_4">User</label>
+                            <div class="controls">
+                                <select id="action_select_4" class="with-search">
+                                    <!--<option>System Analysts</option>-->
+                                    <!--<option>Administrator</option>-->
+                                    <!--<option>Manager</option>-->
+                                    <!--<option>Employee</option>-->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="action_result_block4" id="result_4_action"></ul>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+</div>
 </div>
 
 <!-- /section:custom/widget-box -->
@@ -863,13 +929,15 @@
 <script type="text/javascript">
     window.jQuery || document.write("<script src='assets/js/jquery.min.js'>"+"<"+"/script>");
 </script>
-
+<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
+
     window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
 </script>
+
 <![endif]-->
 <script type="text/javascript">
     if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
@@ -889,6 +957,21 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
+function employee_name() {
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+//            url: remote_host + "abilities",
+        type: 'GET',
+        dataType: 'json',
+        success: function (res) {
+            $("#user_name").text(res.name);
+        },
+        error: function (e, msg) {
+            //processError(e,msg);
+        }
+    });
+}
+
 
 function get_employees(){
     console.log("in get_employees fn :- " + remote_host);
@@ -952,16 +1035,43 @@ function get_transactions(){
 
 }
 
-function get_transactionName(transactionId){
-    console.log("in get_transactionName() transactionId :- " + transactionId);
-    $('#result_1_action').empty();
+function get_transactionName(transactionId, trId){
+    var selected_user = $("#users_select :selected").val();
+
     $.ajax({
         url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
         type: 'GET',
         dataType: 'json',
         success: function(res) {
             if(res){
-                var option_html;
+                console.log("res");
+                console.log(res);
+                var option_html,name,format,type,row_html;
+                if (res.name) {
+                    name = res.name;
+                }
+                else{
+                    name=""
+                }
+                if (res.paramCategory) {
+                    type = res.paramCategory;
+                }
+                else{
+                    type=""
+                }
+
+//
+                row_html = '<tr>'+
+                        '<td class="text-center aligned">'+name+'</td>'+
+                        '<td class="text-center aligned">'+type+'</td>'+
+                        '<td class="text-center aligned">'+
+                        '<div class="block" style="width: 50px;">' +
+                        '<a href="#" onclick="accept_transactions($(this));" class="accept-challenge-btn btn btn-info" id=transaction_'+trId+'_user_'+selected_user+'>'+"Approve"+'</button>'+
+                        '</div>' +
+                        '</td>'+
+                        '</tr>';
+
+                $("#transaction_list").find('tbody').append(row_html);
                 $('#result_1_action').append('<li>'+ res.name +'</li>');
             }
         },
@@ -971,9 +1081,7 @@ function get_transactionName(transactionId){
     });
 
 }
-
-function get_downline_transactionName(transactionId){
-    console.log("in get_downline_transactionName() transactionId :- " + transactionId);
+function get_downline_transactionName(transactionId,user){
     $('#result_3_action').empty();
     $.ajax({
         url: remote_host+"org/"+urlParams.orgId+"/transactions/"+transactionId,
@@ -992,15 +1100,34 @@ function get_downline_transactionName(transactionId){
     });
 
 }
+function accept_transactions(this_obj){
+    var action_id = this_obj.attr("id").split("_")[1];
+    var user_id = this_obj.attr("id").split("_")[3];
+    $.ajax({
+        url: remote_host+'org/'+urlParams.orgId+'/users/'+user_id+'/transactions/'+action_id+'/approve',
+        type: 'POST',
+        success: function(data){
+            console.log("Successfully Approved");
+        },
+        error:function(err){
+            console.log(err);
+        }
+    });
+
+
+}
 
 $(function () {
+    employee_name();
 
     get_employees();
+
     get_transactions();
 
     $("#users_select").change(function(){
         var selected_user = $("#users_select :selected").val();
-        $('#result_1_action').empty();
+        $("#transaction_list").find('tbody').empty();
+//            $('#result_1_action').empty();
 
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user,
@@ -1009,10 +1136,10 @@ $(function () {
             success: function(res) {
                 if(res){
                     var option_html;
-                    res.transactions.forEach(function(transaction){
-                        console.log("transaction.transactionMaster");
-                        console.log(transaction.transactionMaster);
-                        get_transactionName(transaction.transactionMaster);
+                    res.transactions.forEach(function(transactions){
+                        console.log("transactions");
+                        console.log(transactions);
+                        get_transactionName(transactions.transactionMaster, transactions._id);
                     });
                 }
             },
@@ -1024,7 +1151,7 @@ $(function () {
 
     $("#action_select_2").change(function(){
         $('#result_2_action').empty();
-        //get_transactions();
+//            get_transactions();
         var selected_transactions = $("#action_select_2 :selected").val();
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/transaction/"+selected_transactions+"/users",
@@ -1048,7 +1175,6 @@ $(function () {
     $("#action_select_4").change(function(){
         $('#result_4_action').empty();
         var selected_user = $("#action_select_4 :selected").val();
-
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+selected_user+"/downlink",
             type: 'GET',
@@ -1085,7 +1211,7 @@ $(function () {
 
                         users.transactions.forEach(function(transactions)
                         {
-                            get_downline_transactionName(transactions.transactionMaster);
+                            get_downline_transactionName(transactions.transactionMaster,users);
                         })
                     });
                 }

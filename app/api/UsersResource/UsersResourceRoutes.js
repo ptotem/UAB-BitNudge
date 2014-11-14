@@ -8,13 +8,14 @@ var userController=require('../../system/controllers/UsersController.js');
 var AuthorizationController=require('../../system/controllers/AuthorizationController.js');
 var UsersDescription=require('./UsersResourceDescription.js');
 var challengesController=require('../../system/controllers/ChallengesController.js');
+var simulationController=require('../../system/controllers/SimulationController.js');
 var passport=require('passport');
-fs   = require('fs');
+var fs   = require('fs');
 var userRoutes={
     'post /org/:orgId/users/:userId/upload':[function(req,res,next){AuthorizationController.isAuthorized('Users','update',req,res,next);},function(req,res){
       userController.updateUserImage(req,res);
     }],
-    'get /org/:orgId/users/:userId/user_image':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
+    'get /org/:orgId/users/:userId/userimage':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
       userController.getUserImage(req,res);
     }],
     'get /sendmail':[function(req,res,next){UsersDescription.authorizeAndValidate('Users','read',req,res,next);},function(req,res){
@@ -48,7 +49,7 @@ var transactionRoutes={
   'post org/:orgId/users/:userId/transactions/:transactionId/approve':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','approve',req,res,next);},function(req,res){
     transactionController.approveTransaction(req,res);
   }],
-  'post /org/:orgId/users/:userId/transactions/':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','create',req,res,next);},function(req,res){
+  'post /org/:orgId/users/:userId/transactions':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','create',req,res,next);},function(req,res){
     transactionController.createTransaction(req,res);
   }],
   'del org/:orgId/users/:userId/transaction/:transactionId':[function(req,res,next){AuthorizationController.isAuthorized('Transactions','delete',req,res,next);},function(req,res){
@@ -107,6 +108,12 @@ var challengesRoutes={
   }],
   'post /org/:orgId/users/:userId/challenges':[function(req,res,next){AuthorizationController.isAuthorized('Challenges','assign',req,res,next);},function(req,res){
     challengesController.assignChallengeToUser(req,res);
+  }]
+};
+
+var simulationRoutes={
+  'post /org/:orgId/users/:userId/simulation/start':[function(req,res,next){AuthorizationController.isAuthorized('Simulations','create',req,res,next);},function(req,res){
+    simulationController.startSimulationOfUser(req,res);
   }]
 };
 

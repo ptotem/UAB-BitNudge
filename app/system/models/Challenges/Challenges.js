@@ -2,11 +2,11 @@ var ChallengesCollection=require('./ChallengesCollection.js');
 var mongoose=require('mongoose');
 var Challenges= {
   createChallengeOfOrganization:function(organizationId,data,callback){
+    data.createdAt=new Date();
     ChallengesCollection.findOne({orgId:organizationId},function(err,orgChallenges){
       if(err)callback(err);
       if(!orgChallenges){
         data.orgId=organizationId;
-        data.createdAt=new Date();
         var l=new ChallengesCollection({orgId:organizationId,createdAt:new Date(),challenges:[data]});
         l.save(callback);
       }
