@@ -5,9 +5,9 @@ var GoalMaster= {
         return GoalMasterCollection;
     },
     createGoalMaster:function(orgId,data,callback){
+        data.orgId=mongoose.Types.ObjectId(orgId);
+        data.createdAt=new Date();
         var goalMaster=new GoalMasterCollection(data);
-        goalMaster.orgId=mongoose.Types.ObjectId(orgId);
-        goalMaster.createdAt=new Date();
         goalMaster.save(callback);
     },
     deleteGoalMaster:function(id,callback){
