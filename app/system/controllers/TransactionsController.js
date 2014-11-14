@@ -5,15 +5,18 @@ var UserPointsModel=require('../models/UserPeriodPoints');
 var TeamPointsModel=require('../models/TeamPeriodPoints');
 var EventsController=require('./EventsController.js');
 var TransactionMasterModel=require('../models/TransactionMaster');
+var NotificationCenterModel=require('../models/NotificationCenter');
 
-//The architecture of transactions has changed. Now the admin enters transactions, and they are pre-approved.
 var TransactionController={
   createTransaction:function(req,res){
     // if(!req.body.date)
     req.body.date=new Date();
     TransactionModel.addTransaction(req.params.userId,req.body,function(err,obj){
       if(err) res.send(err);
-      else res.send(obj);
+      else {
+        NotificationCenterModel.addNotification(req.params.userId,{content:"Your transaction was created successfully. Waiting for approval",url:"-"},function(){});
+        res.send(obj);
+      }
     });
   },
   getTransaction:function(req,res){
@@ -33,20 +36,27 @@ var TransactionController={
     });
   },
   approveTransaction:function(req,res){
-    TransactionModel.approveTransaction(req.params.userId,req.params.transactionId,null,function(err,obj){
-      TransactionModel.getTransaction(req.params.userId,req.params.transactionId,"","","",function(err1,transObj){
-        TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
-          eval("var pointsFunction=("+points.pointsFn+");");
-          var pointsEarned=pointsFunction(transObj.keyParamValue);
-          EventsController.triggerUserPointsAddition(req.params.orgId,req.params.userId,pointsEarned,"transactions",transObj._id,new Date(),function(err3,ppp){
-            if(err3)res.send(err3);
-            EventsController.processTransactionForUser(req.params.userId,transObj,function(err,processObj){
-              if(err) res.send("fail");
-              else res.send("success");
+    TransactionModel.isTransactionApproved(req.params.userId,req.params.transactionId,function(err,isApproved){
+      if(isApproved)
+        return res.send("This transaction has already been approved");
+      else {
+        TransactionModel.approveTransaction(req.params.userId,req.params.transactionId,null,function(err,obj){
+          TransactionModel.getTransaction(req.params.userId,req.params.transactionId,"","","",function(err1,transObj){
+            TransactionMasterModel.getTransactionMaster(transObj.transactionMaster,"","","",function(err2,points){
+              NotificationCenterModel.addNotification(req.params.userId,{content:"Your transaction "+transObj+" has been approved",url:"-"},function(){});
+              eval("var pointsFunction=("+points.pointsFn+");");
+              var pointsEarned=pointsFunction(transObj.keyParamValue);
+              EventsController.triggerUserPointsAddition(req.params.orgId,req.params.userId,pointsEarned,"transactions",transObj._id,new Date(),function(err3,ppp){
+                if(err3)res.send(err3);
+                EventsController.processTransactionForUser(req.params.userId,transObj,function(err,processObj){
+                  if(err) res.send("fail");
+                  else res.send("success");
+                });
+              });
             });
           });
         });
-      });
+      }
     });
   },
   // approveTransaction:function(req,res){

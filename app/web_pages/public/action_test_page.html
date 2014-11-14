@@ -1137,9 +1137,8 @@ $(function () {
                 if(res){
                     var option_html;
                     res.transactions.forEach(function(transactions){
-                        console.log("transactions");
-                        console.log(transactions);
-                        get_transactionName(transactions.transactionMaster, transactions._id);
+                        if(!transactions.approved)
+                          get_transactionName(transactions.transactionMaster, transactions._id);
                     });
                 }
             },

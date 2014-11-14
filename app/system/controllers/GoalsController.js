@@ -1,12 +1,14 @@
 var UserGoalsModel=require('../models/Users').Goals;
 var GoalMasterModel=require('../models/GoalMaster');
 var TransactionMasterCollection=require('../models/TransactionMaster/TransactionMasterCollection.js');
+var NotificationCenterModel=require('../models/NotificationCenter');
 var GoalsController={
   createGoal:function(req,res){
     //if the criteria is Action, then it must be stored in the goalMaster so that user can reuse it later.
     //This is for development purposes.
     //TODO:- Change to req.user._id once the authorization module is included.
     req.body.goalType="goal";
+    NotificationCenterModel.addNotification(req.params.userId,{content:"You have been assigned a Goal:- "+name,url:"-"},function(){});
     if(req.body.criteria=="Action"){
       // var newGoalMaster=JSON.parse(JSON.stringify(req.body));
       // newGoalMaster.
@@ -37,11 +39,6 @@ var GoalsController={
   updateGoal:function(req,res){
     UserGoalsModel.updateGoalOfUser(req.params.userId,req.body,function(err,obj){
       if(err) return res.send(err);
-      res.send(obj);
-    });
-  },
-  getGoal:function(req,res){
-    GoalsModel.getGoal(req.params.id,function(err,obj){
       res.send(obj);
     });
   },

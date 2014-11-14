@@ -62,8 +62,8 @@ var TeamPoints={
     });
   },
   createTeamPeriodPoints:function(orgId,teamId,data,callback){
-    data.orgId=mongoose.Schema.Types.ObjectId(orgId);
-    data.teamId=mongoose.Schema.Types.ObjectId(teamId);
+    data.orgId=orgId;
+    data.teamId=teamId;
     data.createdAt=new Date();
     var temp=new TeamPeriodPointsCollection(data);
     temp.save(callback);

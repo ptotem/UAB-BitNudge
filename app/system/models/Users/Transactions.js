@@ -40,6 +40,11 @@ var Transactions={
   approveTransaction:function(userId,transactionId,approver,callback){
     UsersCollection.update({_id:userId,'transactions._id':transactionId},{$set:{'transactions.$.approved':true}},callback);
   },
+  isTransactionApproved:function(userId,transactionId,callback){
+    Transactions.getTransaction(userId,transactionId,"","","",function(err,trans){
+      callback(err,trans.approved);
+    });
+  },
   deleteTransaction:function(userId,transactionId,callback){
       UsersCollection.update({_id:userId},{$pull:{transactions:{_id:transactionId}}},callback);
   }

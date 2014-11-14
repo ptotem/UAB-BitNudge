@@ -3,22 +3,26 @@ var UserCollection=require('../../system/models/Users/UsersCollection.js');
 var TransactionCollection=require('../../system/models/TransactionMaster/TransactionMasterCollection.js');
 var RolesModel=require('../../system/models/Roles');
 var GoalMasterModel=require('../../system/models/GoalMaster');
+var GoalMasterCollection=require('../../system/models/GoalMaster/GoalMasterCollection.js');
 var GoalCollection=require('../../system/models/GoalMaster/GoalMasterCollection.js');
 var UserGoalsModel=require('../../system/models/Users').Goals;
+var UsersCollection=require('../../system/models/Users/UsersCollection.js');
+var async=require('async');
 var userFn=function(orgId,obj){
+    var roleColumnNumber=4;
     var allData=obj[0].data;
     var headers=allData[0];
-    if(!headers[4])return;
+    if(!headers[roleColumnNumber])return;
     var users=[];
     allData.forEach(function(data,index){
         if(index!==0){
             var userObj={};
             data.forEach(function(fieldData,indexNew){
-                if(indexNew==4)
+                if(indexNew==roleColumnNumber)
                     RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
                         // userObj[headers[indexNew]]=[role._id];
                         if(err) console.log(err);
-                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{role:[role[0]._id]}},function(err,ans){
+                        UsersCollection.update({email:userObj.email,name:userObj.name},{$set:{role:[role[0]._id]}},function(err,ans){
                             if(err) console.log(err);
                             else console.log("setted roles");
                         });
@@ -41,16 +45,17 @@ var userFn=function(orgId,obj){
 var userEditFn=function(orgId,obj){
     var allData=obj[0].data;
     var headers=allData[0];
-    if(!headers[4])return;
+    var roleColumnNumber=4;
+    if(!headers[roleColumnNumber])return;
     var users=[];
     allData.forEach(function(data,index){
         if(index!==0){
             var userObj={};
             data.forEach(function(fieldData,indexNew){
-                if(indexNew==4)
+                if(indexNew==roleColumnNumber)
                     RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
                         if(err) console.log(err);
-                        UserCollection.update({email:userObj.email,name:userObj.name},{$set:{role:role[0]._id}},function(err,ans){
+                        UsersCollection.update({email:userObj.email,name:userObj.name},{$set:{role:role[0]._id}},function(err,ans){
                             if(err) console.log(err);
                             else console.log("setted roles");
                         });
@@ -59,9 +64,7 @@ var userEditFn=function(orgId,obj){
                 else userObj[headers[indexNew]]=fieldData;
             });
             // users.push(userObj);
-            console.log(userObj);
-            UserCollection.findOne({email:userObj.email},function(err,userQuery){
-                console.log(userQuery._id);
+            UsersCollection.findOne({email:userObj.email},function(err,userQuery){
                 UserModel.updateUser(userQuery._id,userObj,function(err){
                     if(err)
                         console.log("err editing user from excel"+err);
@@ -71,110 +74,74 @@ var userEditFn=function(orgId,obj){
         }
     });
 };
-var userGoalFn=function(orgId,obj){
+var userGoalFn=function(orgId,creator,obj,lastCallback){
     var allData=obj[0].data;
-    var headers=allData[0];
-    if(!headers[4])return;
-    var goal=[];
-    allData.forEach(function(data,index){
-        var criteria=data[1];
-        var email=data[7];
-        if(index!==0) {
-            var userGoalObj = {};
-            if(criteria=="Action"){
-                var goalObj={};
-                var subgoalObjArray=[];
-                var subgoalObj={};
-                var subgoalObj1={};
-                goalObj[headers[1]]=data[1];
-                goalObj[headers[5]]=data[5];
-                goalObj[headers[6]]=data[6];
-                var subgoal=data[2];
-                var subgoalname;
-                var subtransactionname;
-                var aFirst = subgoal.split(',');
-                var str_array = subgoal.split(',');
-                 var transaction_id;
-                var action={};
-                var sub={};
-                var creator={};
-                var subname={};
-//                action[headers[3]]=data[3];
-                action[headers[4]]=data[4];
-                userGoalObj[headers[0]]=data[0];
-                userGoalObj["action"]=action;
-                UserCollection.findOne({email: data[7]}, function (err, user) {
-                    GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
-//                        for (var i = 0; i < aFirst.length; i++) {
-//                            subgoalname=aFirst[i];
-//                            TransactionCollection.findOne({name: aFirst[i]}, function (err, transaction) {
-//                                transaction_id=transaction._id;
-//                                subgoalObjArray.push(transaction_id);
-//                                subgoalObj["allowedTransactions"] =subgoalObjArray;
-//                        goalObj["action"] = subgoalObj;
-//                                UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
-//                                    if (err)console.log("error" + err)
-//                                    else console.log("success");
-//                                });
-//                            });
-//
-//                        }
-                        });
-                    });
-//                });
+    var headers=allData.shift();
+    async.eachSeries(allData,function(row,callback){
+      var goalObj={goalType:"goal",creator:creator,createdAt:new Date()};
+      goalObj[headers[0]]=row[0];
+      goalObj[headers[1]]=row[1];
+      goalObj[headers[5]]=new Date(row[5]);
+      goalObj[headers[6]]=new Date(row[6]);
+      goalObj[headers[8]]="function(t){return "+row[8]+";}";
+      goalObj.action={};
+      if(row[1]=="Action"){
+        goalObj.action.targetValue=row[4];
+        var transactions=row[2].split(",");
+        var transactionIds=[];
+        async.each(transactions,function(transName,eachCallback){
+          TransactionCollection.findOne({name:transName},function(err,obj){
+            if(err)
+              eachCallback(err);
+            else {
+              if(obj)
+                transactionIds.push(obj._id);
+              eachCallback();
             }
-            if(criteria=="Subgoal"){
-
-
-                var goalObj={};
-                var subgoalObjArray=[];
-                var subgoalObj={};
-                var subgoalObj1={};
-                goalObj[headers[1]]=data[1];
-                goalObj[headers[5]]=data[5];
-                goalObj[headers[6]]=data[6];
-                var subgoal=data[2];
-                var subgoalname;
-                var subtransactionname;
-                var aFirst = subgoal.split(',');
-                var str_array = subgoal.split(',');
-                var transaction_id;
-                var action={};
-                var sub={};
-                var creator={};
-                var subname={};
-//                action[headers[3]]=data[3];
-                action[headers[4]]=data[4];
-                userGoalObj[headers[0]]=data[0];
-                userGoalObj["action"]=action;
-                UserCollection.findOne({email: data[7]}, function (err, user) {
-                    GoalMasterModel.createGoalMaster(orgId,userGoalObj,function(err,goalMasterObj) {
-
-//                        for (var i = 0; i < aFirst.length; i++) {
-//                            GoalCollection.findOne({name: aFirst[i]}, function (err, subgoal) {
-//                                subgoalObj["targetValue"] = data[4];
-//                                subgoalObj["subgoal"] = subgoal._id;
-//                                subgoalObjArray.push(subgoalObj);
-//                                goalObj["subgoals"] = subgoalObjArray;
-//                                subgoalObj["subgoal"] =subgoal._id;
-//                                goalObj["subgoals"] = subgoalObj;
-//                                UserGoalsModel.createGoal(user._id, goalObj, function (err, obj) {
-//                                    if (err)console.log("error" + err)
-//                                    else console.log("success");
-//                                });
-//                            });
-//
-//                        }
-                    });
-                });
-
-
-            }
-            data.forEach(function(fieldData,indexNew) {
-
+          });
+        },
+        function(err,results){
+          goalObj.action.allowedTransactions=transactionIds;
+          GoalMasterModel.createGoalMaster(orgId,goalObj,function(err,goalMasterObj){
+            if(!err)
+              UserGoalsModel.createGoal(creator,goalObj,function(err,obj){
+                if(err)console.log(err);
+                else console.log("success");
+                callback(err);
+              });
+            else callback(err);
+          });
+        });
+      }
+      else if(row[1]=="Subgoal"){
+        var subgoalObjs=[];
+        async.each(row[2].split(","),function(subgoalName,eachCallback){
+          GoalMasterCollection.findOne({name:subgoalName},function(err,subgoalMasterObj){
+            if(err)eachCallback(err);
+            var temp={};
+            temp.allowedTransactions=subgoalMasterObj.action.allowedTransactions;
+            temp.subgoal=subgoalMasterObj._id;
+            temp.targetValue=row[4];
+            subgoalObjs.push(temp);
+            eachCallback();
+          });
+        },
+        function(err,results){
+          goalObj.subgoals=subgoalObjs;
+          UsersCollection.findOne({email:row[7]},function(err,user){
+            if(!user)eachCallback(err);
+            UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
+              if(err)console.log(err);
+              else console.log(obj);
+              callback(err);
             });
-        }
-
+          });
+        });
+      }
+    },
+    function(err,results){
+      if(err) lastCallback(err);
+      else lastCallback("done with bulk upload goals");
     });
 };
 
@@ -346,12 +313,11 @@ var organizationTags={
 
 //bulk goal creation
 var usersGoals={
-    'post /org/:orgId/excel/users_goals/new':function(req,res,next){
+    'post /org/:orgId/users/:userId/excel/goals/new':function(req,res,next){
         var xlsx = require('node-xlsx');
         //var obj = xlsx.parse(req.files.users.path); // parses a file
-        var obj = xlsx.parse(req.files.users_goals.path); // parses a file
-        userGoalFn(req.params.orgId,obj);
-        res.send(obj);
+        var obj = xlsx.parse(req.files.goals.path); // parses a file
+        userGoalFn(req.params.orgId,req.params.userId,obj,function(tem){res.send(tem)});
     }
 };
 

@@ -652,7 +652,7 @@
                 dataType: 'json',
                 data: {challenge:challenge_id},
                 success: function(res) {
-                    var success_text = "Challenges Approved.";
+                    var success_text = "Challenges Accepted.";
                     console.log(success_text);
                 } ,
                 error: function(e , msg){
@@ -685,6 +685,8 @@
                         //Name, Scope, Start Date, End Date, Target Value, ""
                         var challenge_name, target_val;
                         res.forEach(function(challenge){
+                            if(challenge.accepted)
+                                return;
                             if (challenge.name!=undefined){
                                 challenge_name = challenge.name;
                             }
