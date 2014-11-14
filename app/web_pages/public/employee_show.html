@@ -477,7 +477,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <label>Roles</label>
+                                                        <label>Role</label>
                                                     </div>
                                                     <div class="col-md-9">
                                                         <div class="emp-details" id="emp_role"></div>
@@ -586,22 +586,21 @@
                                             <div class="tab-content padding-8">
                                                 <div id="comment-tab" class="tab-pane active">
                                                     <!-- #section:pages/dashboard.comments -->
-                                                    <p>You have accepted below challenges</p>
                                                     <div class="comments">
 
                                                     </div>
 
                                                     <div class="hr hr8"></div>
 
-                                                    <div class="center">
-                                                        &nbsp;
-                                                        <a href="#" class="btn btn-sm btn-white btn-info">
-                                                            See all challenges &nbsp;
-                                                            <i class="ace-icon fa fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
+                                                    <!--<div class="center">-->
+                                                        <!--&nbsp;-->
+                                                        <!--<a href="#" class="btn btn-sm btn-white btn-info">-->
+                                                            <!--See all challenges &nbsp;-->
+                                                            <!--<i class="ace-icon fa fa-arrow-right"></i>-->
+                                                        <!--</a>-->
+                                                    <!--</div>-->
 
-                                                    <div class="hr hr-double hr8"></div>
+                                                    <!--<div class="hr hr-double hr8"></div>-->
 
                                                     <!-- /section:pages/dashboard.comments -->
                                                 </div>
@@ -808,7 +807,7 @@
                                 //'<div class="name">' +
                                     //'<a href="#">Bob Doe</a>' +
                                 //'</div>' +
-                                '<div class="text">'+accepted_challenge_name+'</div>'+
+                                '<div class="text">'+ "You have accepted " +accepted_challenge_name+'</div>'+
                                 '</div>' +
                                 '<div class="tools">' +
                                 '<div class="inline position-relative">' +
@@ -844,7 +843,85 @@
                                 '</div>' +
                                 '</div>';
 
-                        $("#comment-tab").find(".comments").append(recent_challenge_html)
+                        $("#comment-tab").find(".comments").append(recent_challenge_html);
+
+                    });
+                }
+                get_goals();
+                get_transactions();
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+    function get_goals(){
+
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/goals',
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    //console.log(res);
+                    var recent_goal_html;
+
+                    var goal_name;
+                    res.forEach(function(goal){
+                        if (goal.name!=undefined){
+                            goal_name = goal.name;
+                        }
+                        else{
+                            goal_name = "NA";
+                        }
+
+                        //Name, Start Date, End Date, Target Value
+
+                        recent_goal_html =
+                                '<div class="itemdiv commentdiv" style="min-height: 28px;">' +
+                                '<div class="body">' +
+                            //'<div class="name">' +
+                            //'<a href="#">Bob Doe</a>' +
+                            //'</div>' +
+                                '<div class="text">'+ "You have goal :- " +goal_name+'</div>'+
+                                '</div>' +
+                                '<div class="tools">' +
+                                '<div class="inline position-relative">' +
+                                '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
+                                '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                                '<li>' +
+                                '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
+                                '<span class="green">' +
+                                '<i class="ace-icon fa fa-check bigger-110"></i>' +
+                                '</span>'+
+                                '</a>' +
+                                '</li>' +
+
+                                '<li>' +
+                                '<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">' +
+                                '<span class="orange">' +
+                                '<i class="ace-icon fa fa-times bigger-110"></i>' +
+                                '</span>' +
+                                '</a>' +
+                                '</li>' +
+
+                                '<li>' +
+                                '<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">' +
+                                '<span class="red">' +
+                                '<i class="ace-icon fa fa-trash-o bigger-110"></i>' +
+                                '</span>' +
+                                '</a>' +
+                                '</li>' +
+                                '</ul>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+
+                        $("#comment-tab").find(".comments").append(recent_goal_html);
                     });
                 }
             }
@@ -855,57 +932,79 @@
         });
     }
 
-    function append_dummy_content(){
-        var recent_challenge_html;
+    function get_transactions(){
 
-        for (var i=0; i<5; i++) {
-            recent_challenge_html =
-                    '<div class="itemdiv commentdiv">' +
-                    '<div class="body">' +
-                    '<div class="name">' +
-                    '<a href="#">Bob Doe</a>' +
-                    '</div>' +
-                    '<div class="text">' +
-                    '<i class="ace-icon fa fa-quote-left"></i>' +
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis &hellip;" +
-                    '</div>'+
-                    '</div>' +
-                    '<div class="tools">' +
-                    '<div class="inline position-relative">' +
-                    '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
-                    '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
-                    '</button>' +
-                    '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
-                    '<li>' +
-                    '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
-                    '<span class="green">' +
-                    '<i class="ace-icon fa fa-check bigger-110"></i>' +
-                    '</span>'+
-                    '</a>' +
-                    '</li>' +
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/transactions',
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    console.log(res);
+                    var recent_transaction_html;
 
-                    '<li>' +
-                    '<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">' +
-                    '<span class="orange">' +
-                    '<i class="ace-icon fa fa-times bigger-110"></i>' +
-                    '</span>' +
-                    '</a>' +
-                    '</li>' +
+                    var transaction_name;
+                    res.forEach(function(transaction){
+                        if (transaction.transactionMaster){
+                            transaction_name = transaction.transactionMaster.name;
+                        }
+                        else{
+                            transaction_name = "NA";
+                        }
 
-                    '<li>' +
-                    '<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">' +
-                    '<span class="red">' +
-                    '<i class="ace-icon fa fa-trash-o bigger-110"></i>' +
-                    '</span>' +
-                    '</a>' +
-                    '</li>' +
-                    '</ul>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
+                        //Name, Start Date, End Date, Target Value
 
-            $("#comment-tab").find(".comments").append(recent_challenge_html)
-        }
+                        recent_transaction_html =
+                                '<div class="itemdiv commentdiv" style="min-height: 28px;">' +
+                                '<div class="body">' +
+                            //'<div class="name">' +
+                            //'<a href="#">Bob Doe</a>' +
+                            //'</div>' +
+                                '<div class="text">'+ "You have done :- " +transaction_name+'</div>'+
+                                '</div>' +
+                                '<div class="tools">' +
+                                '<div class="inline position-relative">' +
+                                '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
+                                '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                                '<li>' +
+                                '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
+                                '<span class="green">' +
+                                '<i class="ace-icon fa fa-check bigger-110"></i>' +
+                                '</span>'+
+                                '</a>' +
+                                '</li>' +
+
+                                '<li>' +
+                                '<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">' +
+                                '<span class="orange">' +
+                                '<i class="ace-icon fa fa-times bigger-110"></i>' +
+                                '</span>' +
+                                '</a>' +
+                                '</li>' +
+
+                                '<li>' +
+                                '<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">' +
+                                '<span class="red">' +
+                                '<i class="ace-icon fa fa-trash-o bigger-110"></i>' +
+                                '</span>' +
+                                '</a>' +
+                                '</li>' +
+                                '</ul>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+
+                        $("#comment-tab").find(".comments").append(recent_transaction_html);
+                    });
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
     }
 
 
@@ -914,8 +1013,7 @@
         employee_name();
 
         get_challenges();
-
-        //append_dummy_content();
+        //get_goals();
 
     });
 

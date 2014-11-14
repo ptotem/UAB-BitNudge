@@ -27,6 +27,8 @@ var TransactionController={
 //          } ,"stores",function(err,obj){
     TransactionModel.getTransactionsOfUser(req.params.userId,"",{  slice: {  limits: parseInt(req.query.limits), offset: parseInt(req.query.offset) }},{path:'transactions.transactionMaster',model:"transactionMasters",select:"name"},function(err,obj){
       if(err) return handleError(err);
+      if(obj&&obj.transactions)
+        res.send(obj.transactions);
       else res.send(obj);
     });
   },
