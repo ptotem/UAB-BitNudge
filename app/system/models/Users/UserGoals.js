@@ -33,6 +33,13 @@ var UserGoals={
   getLiveGoalsAndChallengesOfUser:function(userId,currDate,callback){
     UsersCollection.aggregate({$match:{_id:mongoose.Types.ObjectId(userId)}}, {$unwind:'$goals'}, {$match:{'goals.startDate':{$lte:currDate},'goals.endDate':{$gte:currDate}}}, {$group:{_id:'$_id',goals:{$push:'$goals'}}},callback);
   },
+  isChallengeAccepted:function(userId,challengeId,callback){
+    UsersCollection.findOne({_id:userId,"goals._id":challengeId},function(err,result){
+      if(result)
+        callback(err,true);
+      else callback(err,false);
+    });
+  },
   getLiveGoalsAndChallengesOfUserWithQuery:function(userId,query,currDate,callback){
     query['goals.startDate']={$lte:currDate};
     query['goals.endDate']={$gte:currDate};

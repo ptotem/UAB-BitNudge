@@ -5,6 +5,7 @@ var ChallengesModel=require('../models/Challenges');
 var ChallengesCollection=require('../models/Challenges/ChallengesCollection.js');
 var TransactionCollection=require('../models/TransactionMaster/TransactionMasterCollection.js');
 var GoalMasterModel=require('../models/GoalMaster');
+var NotificationCenterModel=require('../models/NotificationCenter');
 var async = require("async");
 var mongoose=require('mongoose');
 var ChallengesController={
@@ -29,6 +30,7 @@ var ChallengesController={
       if(!challengeObj) return res.send("failed");
       if(!ChallengesController.canUserAcceptChallenge)
         return res.send("this user cannot accept this challenge");
+      NotificationCenterModel.addNotification(req.params.userId,{content:"You have accepted the "+challengeObj.name+" challenge",url:"-"},function(){});
       challengeObj.goalType="challenge";
       delete challengeObj.scope;
       delete challengeObj.entity;
@@ -60,7 +62,10 @@ var ChallengesController={
     ChallengesModel.createChallengeOfOrganization(req.params.orgId,req.body,function(err,obj){
       if(err)
         res.send(err);
-      else res.send("success");
+      else {
+        NotificationCenterModel.addNotification(obj.creator,{content:'You have successfully created the '+obj.name+" challenge",url:"-"},function(){});
+        res.send("success");
+      }
     });
   },
   approveChallenge:function(req,res){
@@ -80,17 +85,22 @@ var ChallengesController={
         entitiesQuery.push(user._id);
         ChallengesCollection.aggregate({$match:{orgId:mongoose.Types.ObjectId(req.params.orgId)}},{$unwind:"$challenges"},{$match:{"challenges.endDate":dateQuery,"challenges.entity":{$in:entitiesQuery}}},{$group:{_id:"$_id",challenges:{$push:"$challenges"}}},function(err,result){
           if(err) res.send(err);
-          else 
-            if(result[0]&&result[0].challenges)
-              res.send(result[0].challenges);
+          else{
+            if(result[0]&&result[0].challenges){
+              async.each(result[0].challenges,function(challengeObj,callback){
+                UserChallengesModel.isChallengeAccepted(req.params.userId,challengeObj._id,function(err,isAccepted){
+                  challengeObj.accepted=isAccepted;
+                  callback();
+                });
+              },
+              function(err,results){
+                res.send(result[0].challenges);
+              });
+            }
             else res.send(result);
+          }
         });
       }
-    });
-  },
-  getChallenge:function(req,res){
-    ChallengesModel.getChallenge(req.params.id,function(err,obj){
-      res.send(obj);
     });
   },
   getChallengesOfOrganization:function(req,res){

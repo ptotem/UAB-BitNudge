@@ -15,15 +15,15 @@ var NotificationCenter={
   getNotificationCenterOfUser:function(userId,fields,options,populationData,callback){
     NotificationCenterCollection.find({userId:userId},fields,options).populate(populationData).exec(callback);
   },
-  getNotificationsOfUser:function(userId,fields,options,callback){
-    NotificationCenterCollection.findOne({userId:userId},fields,options,function(err,obj){
+  getNotificationsOfUser:function(userId,fields,options,populationData,callback){
+    NotificationCenterCollection.findOne({userId:userId},fields,options).populate(populationData).exec(function(err,obj){
       if(err) handleError(err);
       return callback(err,obj.notifications);
     });
   },
   addNotification:function(userId,notificationData,callback){
     if(!notificationData.time)
-      notificationData.time=new Date();
+      notificationData.createdAt=new Date();
     NotificationCenterCollection.update({userId:userId},{$push:{notifications:notificationData}},callback);
   },
   getNotificationCenterSchema:function(){
