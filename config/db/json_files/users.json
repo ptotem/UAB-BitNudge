@@ -26,5 +26,12 @@
         "password": "test",
         "designation": "Senior Software Developer",
         "role": "User"
+    },
+    {
+        "name": "Yash",
+        "email": "yash@ptotem.com",
+        "password": "test",
+        "designation": "Senior Tester",
+        "role": "User"
     }
 ]
