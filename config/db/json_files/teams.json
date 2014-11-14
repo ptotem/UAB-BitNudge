@@ -1,7 +1,12 @@
 [
     {
+        "name":"Testing Team",
+        "members":["yash@ptotem.com"]
+    },
+    {
         "name": "Dev Team",
-        "members": ["vikram@ptotem.com", "sunny@ptotem.com", "nilesh@ptotem.com"]
+        "members": ["vikram@ptotem.com", "sunny@ptotem.com", "nilesh@ptotem.com"],
+        "teams":["Testing Team"]
     },
     {
         "name": "HR Team",
