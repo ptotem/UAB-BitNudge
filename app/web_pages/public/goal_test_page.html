@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
 
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -583,6 +585,18 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right'
+        });
+    }
+
     function employee_name() {
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
@@ -663,6 +677,10 @@
     $(function () {
         get_employees();
         employee_name();
+
+        if ( (getParameterByName("showNoti")!="") && (getParameterByName("showNoti")!=null) ) {
+            show_notification(getParameterByName("showNoti"));
+        }
 
         $("#users_select").change(function(){
             $('#result_1_action').find('ul').empty();
@@ -834,6 +852,10 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets/js/jquery.jgrowl.min.js"></script>
+
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>

@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
 
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -430,7 +432,7 @@
                                 <div class="widget-main">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <a href="goal_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Goal test page</a><br>
+                                            <a href="goal_test_page.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Goal Test Page</a><br>
                                             <a href="bulk_goal_creation.html" style="padding: 5px;"><i class="ace-icon glyphicon glyphicon-plus"></i>Bulk goal Creation</a>
                                         </div>
                                         <div class="col-md-6">
@@ -497,6 +499,18 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+function show_notification(text){
+    $.jGrowl(text, {
+        header: 'Notification',
+        sticky: false,
+        life: 3000,
+        speed: 500,
+        theme: 'with-icon',
+        position: 'top-right'
+    });
+}
+
 function employee_name() {
     $.ajax({
         url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
@@ -559,6 +573,10 @@ function get_teams(){
 $(function () {
     get_teams();
     employee_name();
+
+    if ( (getParameterByName("showNoti")!="") && (getParameterByName("showNoti")!=null) ) {
+        show_notification(getParameterByName("showNoti"));
+    }
 });
 
 
@@ -717,6 +735,10 @@ jQuery(function($) {
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets/js/jquery.jgrowl.min.js"></script>
+
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>

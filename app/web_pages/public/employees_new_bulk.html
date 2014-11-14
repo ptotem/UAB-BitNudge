@@ -552,8 +552,8 @@
                 processData: false,
                 type: 'POST',
                 success: function(data){
-                    console.log(data);
-                    window.location.href = local_host+"employees.html";
+                    var success_text = "Employees Uploaded.";
+                    window.location.href = local_host+"employees.html?showNoti="+success_text;
                 },
                 error:function(err){
                     console.log(err);

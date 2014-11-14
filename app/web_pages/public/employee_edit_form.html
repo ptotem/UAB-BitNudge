@@ -645,6 +645,8 @@
                     var success_text = "Employee Updated.";
                     //show_notification(success_text);
                     window.location.href = local_host+"employee_show.html?userId="+emp_id;
+
+                    window.location.href = local_host+"employee_show.html?userId="+emp_id+"&showNoti="+success_text;
                 } ,
                 error: function(e , msg){
                     //processError(e,msg);

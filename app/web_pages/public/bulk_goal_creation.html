@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
 
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -512,6 +514,7 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
     function employee_name() {
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
@@ -557,6 +560,8 @@
                 type: 'POST',
                 success: function(data){
                     console.log(data);
+                    var success_text = "Goals Uploaded.";
+                    window.location.href = local_host+"goals.html?showNoti="+success_text;
                 },
                 error:function(err){
                     console.log(err);
@@ -655,6 +660,10 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets/js/jquery.jgrowl.min.js"></script>
+
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>

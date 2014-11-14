@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
 
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -42,6 +44,15 @@
     <script src="assets/js/html5shiv.min.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        .closebox{
+            padding: 1px 4px;
+            top: 2px;
+            right: 3px;
+        }
+    </style>
+
 </head>
 
 <body class="no-skin">
@@ -265,351 +276,300 @@
 
 <!-- /section:basics/sidebar -->
 <div class="main-content">
-<!-- #section:basics/content.breadcrumbs -->
-<div class="breadcrumbs" id="breadcrumbs">
-    <script type="text/javascript">
-        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-    </script>
-
-
-
-    <!-- #section:basics/content.searchbox -->
-
-
-    <!-- /section:basics/content.searchbox -->
-</div>
-
-<!-- /section:basics/content.breadcrumbs -->
-<div class="page-content">
-<!-- #section:settings.box -->
-<div class="ace-settings-container" id="ace-settings-container">
-    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-        <i class="ace-icon fa fa-cog bigger-150"></i>
+    <!-- #section:basics/content.breadcrumbs -->
+    <div class="breadcrumbs" id="breadcrumbs">
+        <script type="text/javascript">
+            try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        </script>
     </div>
 
-    <div class="ace-settings-box clearfix" id="ace-settings-box">
-        <div class="pull-left width-50">
-            <!-- #section:settings.skins -->
-            <div class="ace-settings-item">
-                <div class="pull-left">
-                    <select id="skin-colorpicker" class="hide">
-                        <option data-skin="no-skin" value="#438EB9">#438EB9</option>
-                        <option data-skin="skin-1" value="#222A2D">#222A2D</option>
-                        <option data-skin="skin-2" value="#C6487E">#C6487E</option>
-                        <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-                    </select>
-                </div>
-                <span>&nbsp; Choose Skin</span>
+    <!-- /section:basics/content.breadcrumbs -->
+    <div class="page-content">
+
+        <!-- #section:settings.box -->
+        <div class="ace-settings-container" id="ace-settings-container">
+            <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                <i class="ace-icon fa fa-cog bigger-150"></i>
             </div>
 
-            <!-- /section:settings.skins -->
+            <div class="ace-settings-box clearfix" id="ace-settings-box">
+                <div class="pull-left width-50">
+                    <!-- #section:settings.skins -->
+                    <div class="ace-settings-item">
+                        <div class="pull-left">
+                            <select id="skin-colorpicker" class="hide">
+                                <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                            </select>
+                        </div>
+                        <span>&nbsp; Choose Skin</span>
+                    </div>
 
-            <!-- #section:settings.navbar -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-                <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-            </div>
+                    <!-- /section:settings.skins -->
 
-            <!-- /section:settings.navbar -->
+                    <!-- #section:settings.navbar -->
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                        <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                    </div>
 
-            <!-- #section:settings.sidebar -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-                <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-            </div>
+                    <!-- /section:settings.navbar -->
 
-            <!-- /section:settings.sidebar -->
+                    <!-- #section:settings.sidebar -->
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                        <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                    </div>
 
-            <!-- #section:settings.breadcrumbs -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-                <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-            </div>
+                    <!-- /section:settings.sidebar -->
 
-            <!-- /section:settings.breadcrumbs -->
+                    <!-- #section:settings.breadcrumbs -->
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+                        <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                    </div>
 
-            <!-- #section:settings.rtl -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-                <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-            </div>
+                    <!-- /section:settings.breadcrumbs -->
 
-            <!-- /section:settings.rtl -->
+                    <!-- #section:settings.rtl -->
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
+                        <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                    </div>
 
-            <!-- #section:settings.container -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-                <label class="lbl" for="ace-settings-add-container">
-                    Inside
-                    <b>.container</b>
-                </label>
-            </div>
+                    <!-- /section:settings.rtl -->
 
-            <!-- /section:settings.container -->
-        </div><!-- /.pull-left -->
+                    <!-- #section:settings.container -->
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                        <label class="lbl" for="ace-settings-add-container">
+                            Inside
+                            <b>.container</b>
+                        </label>
+                    </div>
 
-        <div class="pull-left width-50">
-            <!-- #section:basics/sidebar.options -->
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
-                <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
-            </div>
+                    <!-- /section:settings.container -->
+                </div><!-- /.pull-left -->
 
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact"/>
-                <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
-            </div>
+                <div class="pull-left width-50">
+                    <!-- #section:basics/sidebar.options -->
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
+                        <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                    </div>
 
-            <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
-                <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
-            </div>
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" />
+                        <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                    </div>
 
-            <!-- /section:basics/sidebar.options -->
-        </div><!-- /.pull-left -->
-    </div><!-- /.ace-settings-box -->
-</div><!-- /.ace-settings-container -->
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
+                        <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                    </div>
 
-<!-- /section:settings.box -->
-<div class="page-content-area">
+                    <!-- /section:basics/sidebar.options -->
+                </div><!-- /.pull-left -->
+            </div><!-- /.ace-settings-box -->
+        </div><!-- /.ace-settings-container -->
+        <!-- /section:settings.box -->
 
-    <!--row 1-->
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- PAGE CONTENT BEGINS -->
-            <!--<row 1 >-->
+        <div class="page-content-area">
+            <div class="page-header">
+                <h1>User Profile Page</h1>
+            </div><!-- /.page-header -->
+
             <div class="row">
-                <div class="col-lg-12 col-md-12 widget-container-col">
-                    <!-- #section:custom/widget-box -->
-                    <div class="widget-box">
-                        <div class="widget-header">
-                            <h5 class="widget-title">Employee Show</h5>
+                <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
 
-                            <!-- #section:custom/widget-box.toolbar -->
-                            <div class="widget-toolbar">
-                                <div class="widget-menu">
-                                    <a href="#" data-action="settings" data-toggle="dropdown">
-                                        <i class="ace-icon fa fa-bars"></i>
-                                    </a>
+                    <div>
+                        <div id="user-profile-1" class="user-profile row">
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="center">
+                                    <!-- #section:pages/profile.picture -->
+                                    <span class="profile-picture">
+                                        <img id="avatar" class="editable img-responsive" alt="Employee's Avatar" src="assets/avatars/profile-pic.jpg" />
+                                    </span>
+                                    <!-- /section:pages/profile.picture -->
+                                    <div class="space-4"></div>
 
-                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                                        </li>
-
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                                        </li>
-                                    </ul>
+                                    <div class="width-95 label label-info label-xlg arrowed-in arrowed-in-right">
+                                        <div class="inline position-relative">
+                                            <a href="#" class="user-title-label">
+                                                <span class="white emp-name"></span>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <a href="#" data-action="fullscreen" class="orange2">
-                                    <i class="ace-icon fa fa-expand"></i>
-                                </a>
+                                <div class="space-6"></div>
 
-                                <a href="#" data-action="reload">
-                                    <i class="ace-icon fa fa-refresh"></i>
-                                </a>
+                                <!-- #section:pages/profile.contact -->
+                                <div class="profile-contact-info">
+                                    <div class="profile-contact-links align-left">
 
-                                <a href="#" data-action="collapse">
-                                    <i class="ace-icon fa fa-chevron-up"></i>
-                                </a>
+                                        <a id="edit_user_link" href="#" class="btn btn-link">
+                                            <i class="ace-icon fa fa-pencil-square-o bigger-120 green"></i>
+                                            Edit Profile
+                                        </a>
+                                        <br />
 
-                                <a href="#" data-action="close">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </a>
-                            </div>
+                                        <!--<a id="view_transactions_link" href="#" class="btn btn-link">-->
+                                            <!--<i class="ace-icon fa fa-check-square-o bigger-120 pink"></i>-->
+                                            <!--View My Transactions-->
+                                        <!--</a>-->
+                                        <!--<br />-->
 
-                            <!-- /section:custom/widget-box.toolbar -->
-                        </div>
+                                        <a id="view_goal_link" href="#" class="btn btn-link">
+                                            <i class="ace-icon fa fa-check-square-o bigger-125 blue"></i>
+                                            View My Goals
+                                        </a>
+                                        <br />
 
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <fieldset>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Name</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_name"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>E-mail</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_email"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Designation</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_designation"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Address</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_addr"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Role</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_role"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Reporting Officer</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_reporting_officer"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Tags</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_tags"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Group/Department</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_dept"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Points</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_points"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Cash</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_cash"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Level</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_level"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a id="edit_user_link" href="#">Edit Details</a> |
-                                                        <!--<a id="view_transactions_link" href="#">View My Transactions</a> |-->
-                                                        <a id="view_goal_link" href="#">View My Goals</a> |
-                                                        <a id="view_challenges_link" href="#">View My Challenges</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </fieldset>
+                                        <a id="view_challenges_link" href="#" class="btn btn-link">
+                                            <i class="ace-icon fa fa-check-square-o bigger-125 blue"></i>
+                                            View My Challenges
+                                        </a>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="widget-box transparent" id="recent-box">
-                                            <div class="widget-header">
-                                                <h4 class="widget-title lighter smaller">
-                                                    <i class="ace-icon fa fa-rss orange"></i>Recent Activities
-                                                </h4>
 
-                                                <div class="widget-toolbar no-border">
-                                                    <!--<ul class="nav nav-tabs" id="recent-tab">-->
-                                                        <!--<li class="active">-->
-                                                            <!--<a data-toggle="tab" href="#comment-tab">Comments</a>-->
-                                                        <!--</li>-->
-                                                    <!--</ul>-->
-                                                </div>
+                                    <div class="space-6"></div>
+
+                                    <div class="widget-box transparent" id="recent-box">
+                                        <div class="widget-header">
+                                            <h4 class="widget-title lighter smaller">
+                                                <i class="ace-icon fa fa-rss orange"></i>Recent Activities
+                                            </h4>
+
+                                            <div class="widget-toolbar no-border">
+                                                <!--<ul class="nav nav-tabs" id="recent-tab">-->
+                                                <!--<li class="active">-->
+                                                <!--<a data-toggle="tab" href="#comment-tab">Comments</a>-->
+                                                <!--</li>-->
+                                                <!--</ul>-->
                                             </div>
+                                        </div>
 
-                                            <div class="widget-body">
+                                        <div class="widget-body">
                                             <div class="widget-main padding-4">
-                                            <div class="tab-content padding-8">
-                                                <div id="comment-tab" class="tab-pane active">
-                                                    <!-- #section:pages/dashboard.comments -->
-                                                    <div class="comments">
+                                                <div class="tab-content padding-8">
+                                                    <div id="comment-tab" class="tab-pane active">
+                                                        <!-- #section:pages/dashboard.comments -->
+                                                        <div class="comments">
 
-                                                    </div>
+                                                        </div>
 
-                                                    <div class="hr hr8"></div>
+                                                        <div class="hr hr8"></div>
 
-                                                    <!--<div class="center">-->
+                                                        <!--<div class="center">-->
                                                         <!--&nbsp;-->
                                                         <!--<a href="#" class="btn btn-sm btn-white btn-info">-->
-                                                            <!--See all challenges &nbsp;-->
-                                                            <!--<i class="ace-icon fa fa-arrow-right"></i>-->
+                                                        <!--See all challenges &nbsp;-->
+                                                        <!--<i class="ace-icon fa fa-arrow-right"></i>-->
                                                         <!--</a>-->
-                                                    <!--</div>-->
+                                                        <!--</div>-->
 
-                                                    <!--<div class="hr hr-double hr8"></div>-->
+                                                        <!--<div class="hr hr-double hr8"></div>-->
 
-                                                    <!-- /section:pages/dashboard.comments -->
+                                                        <!-- /section:pages/dashboard.comments -->
+                                                    </div>
                                                 </div>
-                                            </div>
                                             </div><!-- /.widget-main -->
-                                            </div><!-- /.widget-body -->
-                                        </div><!-- /.widget-box -->
+                                        </div><!-- /.widget-body -->
+                                    </div><!-- /.widget-box -->
+
+                                </div>
+
+                                <!-- /section:pages/profile.contact -->
+                            </div>
+
+                            <div class="col-xs-12 col-sm-8">
+                                <div class="center">
+                                    <span class="btn btn-app btn-sm btn-yellow no-hover">
+                                        <span class="line-height-1" id="emp_points"></span>
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Points </span>
+                                    </span>
+
+                                    <span class="btn btn-app btn-sm btn-grey no-hover">
+                                        <span class="line-height-1" id="emp_cash"></span>
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Cash </span>
+                                    </span>
+
+                                    <span class="btn btn-app btn-sm btn-success no-hover">
+                                        <span class="line-height-1" id="emp_level"></span>
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Level </span>
+                                    </span>
+                                </div>
+
+                                <div class="space-12"></div>
+
+                                <!-- #section:pages/profile.info -->
+                                <div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Username </div>
+                                        <div class="profile-info-value">
+                                            <span id="emp_name" class="emp-name"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> E-mail </div>
+                                        <div class="profile-info-value">
+                                            <span id="emp_email"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Designation </div>
+                                        <div class="profile-info-value">
+                                            <span id="emp_designation"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Address </div>
+                                        <div class="profile-info-value">
+                                            <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                            <span class="editable" id="emp_addr"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Role </div>
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="emp_role"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Reporting Officer </div>
+                                        <div class="profile-info-value">
+                                            <span id="emp_reporting_officer"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Tags </div>
+                                        <div class="profile-info-value">
+                                            <span id="emp_tags"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Team </div>
+                                        <div class="profile-info-value">
+                                            <span id="emp_dept"></span>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <!-- /section:pages/profile.info -->
+                                <div class="space-20"></div>
 
 
 
@@ -618,19 +578,12 @@
                         </div>
                     </div>
 
-                    <!-- /section:custom/widget-box -->
-                </div>
 
-
-            </div>
-            <!-- /.row 1 end -->
-
-            <!-- PAGE CONTENT ENDS -->
-        </div><!-- /.col -->
-    </div>
-    <!-- /1 row -->
-</div><!-- /.page-content-area -->
-</div><!-- /.page-content -->
+                    <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content-area -->
+    </div><!-- /.page-content -->
 </div><!-- /.main-content -->
 
 
@@ -672,10 +625,28 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right' //this is default position
+//            easing: 'easeOutBack',
+//            animateOpen: {
+//                height: "show"
+//            },
+//            animateClose: {
+//                opacity: 'hide'
+//            }
+        });
+    }
+
     function employee_name() {
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
-//            url: remote_host + "abilities",
             type: 'GET',
             dataType: 'json',
             success: function (res) {
@@ -687,8 +658,7 @@
         });
     }
 
-    function get_employee(){
-        var emp_id = window.location.search.replace("?","").split("=")[1];
+    function get_employee(emp_id){
 
         $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
         //$("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
@@ -749,7 +719,8 @@
 
 
                     $("#user_name").text(res.name);
-                    $("#emp_name").text(res.name);
+                    //$("#emp_name").text(res.name);
+                    $(".emp-name").text(res.name);
                     $("#emp_email").text(res.email);
                     $("#emp_role").text(res.role.name);
                     $("#emp_reporting_officer").text(reportsTo);
@@ -771,10 +742,10 @@
         });
     }
 
-    function get_challenges(){
+    function get_challenges(emp_id){
 
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/challenges',
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+'/challenges',
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -807,7 +778,7 @@
                                 //'<div class="name">' +
                                     //'<a href="#">Bob Doe</a>' +
                                 //'</div>' +
-                                '<div class="text">'+ "You have accepted " +accepted_challenge_name+'</div>'+
+                                '<div class="text">'+ "You have accepted a challenge :- " +accepted_challenge_name+'</div>'+
                                 '</div>' +
                                 '<div class="tools">' +
                                 '<div class="inline position-relative">' +
@@ -847,8 +818,8 @@
 
                     });
                 }
-                get_goals();
-                get_transactions();
+                get_goals(emp_id);
+                get_transactions(emp_id);
             }
             ,
             error: function(e , msg){
@@ -857,10 +828,10 @@
         });
     }
 
-    function get_goals(){
+    function get_goals(emp_id){
 
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/goals',
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+'/goals',
             type: 'GET',
             dataType: 'json',
             success: function(res) {
@@ -885,7 +856,7 @@
                             //'<div class="name">' +
                             //'<a href="#">Bob Doe</a>' +
                             //'</div>' +
-                                '<div class="text">'+ "You have goal :- " +goal_name+'</div>'+
+                                '<div class="text">'+ "You have a new goal :- " +goal_name+'</div>'+
                                 '</div>' +
                                 '<div class="tools">' +
                                 '<div class="inline position-relative">' +
@@ -932,7 +903,7 @@
         });
     }
 
-    function get_transactions(){
+    function get_transactions(emp_id){
 
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/transactions',
@@ -1009,11 +980,19 @@
 
 
     $(function () {
-        get_employee();
+
         employee_name();
 
-        get_challenges();
-        //get_goals();
+        //var emp_id = window.location.search.replace("?","").split("=")[1];
+        var emp_id = getParameterByName("userId");
+        console.log("emp_id");
+        console.log(emp_id);
+        get_employee(emp_id);
+        get_challenges(emp_id);
+
+        if ( (getParameterByName("showNoti")!="") && (getParameterByName("showNoti")!=null) ) {
+            show_notification(getParameterByName("showNoti"));
+        }
 
     });
 
@@ -1107,6 +1086,10 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets/js/jquery.jgrowl.min.js"></script>
+
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>

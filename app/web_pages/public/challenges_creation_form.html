@@ -1074,7 +1074,7 @@ $(function () {
             success: function(res) {
                 var success_text = "Goal assigned to user.";
                 console.log('data');
-//                    show_notification(success_text);
+                window.location.href = local_host+"challenges_test_page.html?showNoti="+success_text;
             } ,
             error: function(e , msg){
                 //processError(e,msg);

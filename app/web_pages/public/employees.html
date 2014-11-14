@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
 
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -500,12 +502,12 @@
                                 <table class="table table-bordered table-hover responsive" id="employees_list">
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Roles</th>
-                                        <th>Reporting Officer</th>
-                                        <th>Tags</th>
-                                        <th>Groups/Department</th>
-                                        <th></th>
+                                        <th class="text-center aligned">Name</th>
+                                        <th class="text-center aligned">Roles</th>
+                                        <th class="text-center aligned">Reporting Officer</th>
+                                        <th class="text-center aligned">Tags</th>
+                                        <th class="text-center aligned">Team</th>
+                                        <th class="text-center aligned"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -574,6 +576,18 @@
     var scripts = [null,"assets/js/jquery.dataTables.min.js","assets/js/jquery.dataTables.bootstrap.js", null]
 
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+
+    function show_notification(text){
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right'
+        });
+    }
+
     function employee_name() {
         $.ajax({
             url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
@@ -675,6 +689,11 @@
     $(function () {
         get_employees();
         employee_name();
+
+        if ( (getParameterByName("showNoti")!="") && (getParameterByName("showNoti")!=null) ) {
+            show_notification(getParameterByName("showNoti"));
+        }
+
     });
 
 
@@ -813,6 +832,10 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets/js/jquery.jgrowl.min.js"></script>
+
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>
