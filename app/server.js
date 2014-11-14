@@ -14,8 +14,9 @@ var TransactionMasterCollection=require('./system/models/TransactionMaster/Trans
 var EventsController=require('./system/controllers/EventsController.js');
 var bunyan = require('bunyan');
 
-mongoose.connect('mongodb://localhost/uabTest'); //localdb
-//mongoose.connect('mongodb://localhost/uabTest-SysConfig'); //serverdb - chrumble.com:3019 - db
+//mongoose.connect('mongodb://localhost/uabTest'); //localdb
+mongoose.connect('mongodb://localhost/uabTest-SysConfig'); //serverdb - chrumble.com:3019 - db
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -101,9 +102,10 @@ server.post('/login/bitnudge',passport.authenticate('local',{session:false}), fu
 
 
 //starting the server. - on chrumble.com:3019
-server.listen(3004, function () {
+server.listen(3019, function () {
     console.log('%s listening at %s', server.name, server.url);
 });
+
 var moment=require('moment');
 
 server.get('/',function(req,res){
