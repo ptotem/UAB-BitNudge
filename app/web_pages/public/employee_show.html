@@ -271,13 +271,7 @@
         try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
     </script>
 
-    <ul class="breadcrumb">
-        <li>
-            <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">Widgets</li>
-    </ul><!-- /.breadcrumb -->
+
 
     <!-- #section:basics/content.searchbox -->
 
@@ -431,144 +425,161 @@
 
                         <div class="widget-body">
                             <div class="widget-main">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Name</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_name"></div>
+                                                    </div>
+                                                </div>
 
-                                <fieldset>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Name</label>
                                             </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_name"></div>
-                                            </div>
-                                        </div>
 
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>E-mail</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_email"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Designation</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_designation"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Address</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_addr"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Roles</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_role"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Reporting Officer</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_reporting_officer"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Tags</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_tags"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Group/Department</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_dept"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Points</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_points"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Cash</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_cash"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label>Level</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="emp-details" id="emp_level"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <a id="edit_user_link" href="#">Edit Details</a> |
+                                                        <!--<a id="view_transactions_link" href="#">View My Transactions</a> |-->
+                                                        <a id="view_goal_link" href="#">View My Goals</a> |
+                                                        <a id="view_challenges_link" href="#">View My Challenges</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </fieldset>
                                     </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>E-mail</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_email"></div>
-                                            </div>
-                                        </div>
-
+                                    <div class="col-md-6">
+                                        <caption>Recent Activity</caption>
+                                        <table class="table" id="recent_acivity_table">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-center aligned">Name</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
                                     </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Designation</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_designation"></div>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Address</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_addr"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Roles</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_role"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Reporting Officer</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_reporting_officer"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Tags</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_tags"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Group/Department</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_dept"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Points</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_points"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Cash</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_cash"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <label>Level</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="emp-details" id="emp_level"></div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <a id="edit_user_link" href="#">Edit Details</a> |
-                                                <!--<a id="view_transactions_link" href="#">View My Transactions</a> |-->
-                                                <a id="view_goal_link" href="#">View My Goals</a> |
-                                                <a id="view_challenges_link" href="#">View My Challenges</a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </fieldset>
 
 
                             </div>
@@ -629,6 +640,20 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
+    function employee_name() {
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+//            url: remote_host + "abilities",
+            type: 'GET',
+            dataType: 'json',
+            success: function (res) {
+                $("#user_name").text(res.name);
+            },
+            error: function (e, msg) {
+                //processError(e,msg);
+            }
+        });
+    }
 
     function get_employee(){
         var emp_id = window.location.search.replace("?","").split("=")[1];
@@ -644,8 +669,8 @@
             type: 'GET',
             dataType: 'json',
             success: function(res) {
-                console.log("res");
-                console.log(res);
+                //console.log("res");
+                //console.log(res);
                 if(res){
                     //console.log(res);
                     var reportsTo, orgTags = [], teams = [], total_pts, total_cash, level;
@@ -714,9 +739,57 @@
         });
     }
 
+    function get_challenges(){
+
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/challenges',
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    //console.log(res);
+                    var row_html;
+
+                    var accepted_challenge_name, accepted_challenge_target_val;
+                    res.forEach(function(acceptedChallenge){
+                        console.log("acceptedChallenge");
+                        console.log(acceptedChallenge);
+                        if (acceptedChallenge.name!=undefined){
+                            accepted_challenge_name = acceptedChallenge.name;
+                        }
+                        else{
+                            accepted_challenge_name = "NA";
+                        }
+
+                        if (acceptedChallenge.action.targetValue!=undefined){
+                            accepted_challenge_target_val = acceptedChallenge.action.targetValue;
+                        }
+                        else{
+                            accepted_challenge_target_val = "NA";
+                        }
+                        //Name, Start Date, End Date, Target Value
+
+                        row_html = '<tr>'+
+                                    '<td class="text-center aligned">'+accepted_challenge_name+'</td>'+
+                                '</tr>';
+
+                        $("#recent_acivity_table").find('tbody').append(row_html);
+                    });
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
 
     $(function () {
         get_employee();
+        employee_name();
+
+        get_challenges();
     });
 
 

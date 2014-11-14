@@ -89,7 +89,7 @@
                     <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									<span id="user_name"></span>
 								</span>
 
                     <i class="ace-icon fa fa-caret-down"></i>
@@ -272,13 +272,7 @@
         try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
     </script>
 
-    <ul class="breadcrumb">
-        <li>
-            <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">Widgets</li>
-    </ul><!-- /.breadcrumb -->
+
 
     <!-- #section:basics/content.searchbox -->
 
@@ -513,7 +507,23 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
+function employee_name() {
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+//            url: remote_host + "abilities",
+        type: 'GET',
+        dataType: 'json',
+        success: function (res) {
+            $("#user_name").text(res.name);
+        },
+        error: function (e, msg) {
+            //processError(e,msg);
+        }
+    });
+}
 jQuery(function($) {
+
+    employee_name();
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
         var color_class = $(this).find('option:selected').data('class');
