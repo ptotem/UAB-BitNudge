@@ -477,7 +477,7 @@
                                             <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <label>Roles</label>
+                                                        <label>Role</label>
                                                     </div>
                                                     <div class="col-md-9">
                                                         <div class="emp-details" id="emp_role"></div>
@@ -600,7 +600,7 @@
                                                         <!--</a>-->
                                                     <!--</div>-->
 
-                                                    <div class="hr hr-double hr8"></div>
+                                                    <!--<div class="hr hr-double hr8"></div>-->
 
                                                     <!-- /section:pages/dashboard.comments -->
                                                 </div>
@@ -848,6 +848,7 @@
                     });
                 }
                 get_goals();
+                get_transactions();
             }
             ,
             error: function(e , msg){
@@ -921,6 +922,81 @@
                                 '</div>';
 
                         $("#comment-tab").find(".comments").append(recent_goal_html);
+                    });
+                }
+            }
+            ,
+            error: function(e , msg){
+                //processError(e,msg);
+            }
+        });
+    }
+
+    function get_transactions(){
+
+        $.ajax({
+            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/transactions',
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                if(res){
+                    console.log(res);
+                    var recent_transaction_html;
+
+                    var transaction_name;
+                    res.forEach(function(transaction){
+                        if (transaction.transactionMaster){
+                            transaction_name = transaction.transactionMaster.name;
+                        }
+                        else{
+                            transaction_name = "NA";
+                        }
+
+                        //Name, Start Date, End Date, Target Value
+
+                        recent_transaction_html =
+                                '<div class="itemdiv commentdiv" style="min-height: 28px;">' +
+                                '<div class="body">' +
+                            //'<div class="name">' +
+                            //'<a href="#">Bob Doe</a>' +
+                            //'</div>' +
+                                '<div class="text">'+ "You have done :- " +transaction_name+'</div>'+
+                                '</div>' +
+                                '<div class="tools">' +
+                                '<div class="inline position-relative">' +
+                                '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
+                                '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
+                                '</button>' +
+                                '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                                '<li>' +
+                                '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
+                                '<span class="green">' +
+                                '<i class="ace-icon fa fa-check bigger-110"></i>' +
+                                '</span>'+
+                                '</a>' +
+                                '</li>' +
+
+                                '<li>' +
+                                '<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">' +
+                                '<span class="orange">' +
+                                '<i class="ace-icon fa fa-times bigger-110"></i>' +
+                                '</span>' +
+                                '</a>' +
+                                '</li>' +
+
+                                '<li>' +
+                                '<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">' +
+                                '<span class="red">' +
+                                '<i class="ace-icon fa fa-trash-o bigger-110"></i>' +
+                                '</span>' +
+                                '</a>' +
+                                '</li>' +
+                                '</ul>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+
+                        $("#comment-tab").find(".comments").append(recent_transaction_html);
                     });
                 }
             }
