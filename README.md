@@ -1,26 +1,31 @@
 Temporary repository for the UAB project. This file serves as temporary documentation for now.
 
-Currently Medals can't be deleted, because then we'll have to check each users medals and stuff...
+##Documentation
+Detailed Documentation about the backend can be found in the docs folder.
 
-The role and capability model works as follows-
-Each collection has a corresponding document in the ACL collection which describes which roles have the ability to do certain operations on them. 
-Currently, they are in the form of read write permissions, so a typical document looks like this-
+##Installing
+1. git clone this repository. After this, some data needs to be inputted in the database. These are-
+Roles
+Capabilities
+System Activities(must include the logging in system activity with the same system activity)
 
-{collectionName:"User",controlList:[{role:"superAdmin",permission:[{r:"y",w:'y'}]}]};
+2. Run seed files of an organization. the format is, you run- node config/db/add\_<seed file name> config/db/json_files/<seed file json>.json
+They must be run in this order-
+    1. organization
+    2. users(must have atleast one user, and should include an admin)
+    3. teams
+    4. jobroles
+    5. org_tags
+    6. actionschemas
+    7. my_tags
+    8. level
+    9. abilities
+    10. badges
 
-Each user has an array of roles that he has. Currently, during development, these roles are stored as strings, but they should be changed into ObjectID references.
+3. Run the app as- node app/server.js
 
-##Things that can be done.
-- Post /organizations and give name and teams as query params, where name and teams(comma separating teams) are strings. Currently only one team can be added until a better way is found to pass multiple arguments in rest. Currently only superAdmin can make teams. Login as vikram@ptotem.com password- test.
-- Post /teams and give name and users as query params, where name and user are strings. User is the username. Same issue as above. Also, currently only superAdmin can make teams
-- Get /teams/:teamName where teamName is string. If you can read, then the object is given to you.
-- Get organizations/:orgName
-- Post /organizations/:orgName to update it.
-- Post /teams/:teamName to update it.
-- Delete /teams/:teamName and /organizations/:orgName to delete.
+4. Access the webpages at- localhost:3004/public/
 
-##TODOs
-- Change the structure of ACLs from giving the permissions in a subfield, to creating a field for each operation. Example- CreateControlList,ReadControl list and other CRUD operations.
-- Change from using strings to reference other documents and convert them into their ObjectIDs.
-- (Maybe) Convert the update calls from post to patch.
-- (Maybe) Start using restify-mongoose.
+##Dev TODOs
+1. Once the system is stable, make sure all the packages we're using are included in package.json as dependencies or devDependencies(currently no devDependencies)
+2. Make a seed file for roles, capabilities and system activities so that it is easy when deploying or setting the project up in someone's development machine.
