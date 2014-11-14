@@ -1130,7 +1130,9 @@
                     if(res){
                         var option_html;
                         res.transactions.forEach(function(transactions){
+                            console.log(transactions);
                             get_transactionName(transactions.transactionMaster);
+
                         });
                     }
                 },
