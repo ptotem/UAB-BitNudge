@@ -1,6 +1,7 @@
 var fs=require('fs');
 var OrganiztionsModel=require('../../app/system/models/Organizations');
 var test=process.argv;
+var appConfig=require("../server_config.js");
 var mongoose=require('mongoose');
 var readline=require('readline');
 test.shift();
@@ -12,7 +13,7 @@ if(!test[0]){
 }
 later();
 function later(){
-  mongoose.connect('mongodb://localhost/uabTest');
+  mongoose.connect(appConfig.db_path);
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {

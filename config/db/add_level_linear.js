@@ -1,6 +1,7 @@
 var fs=require('fs');
 var LevelsModel=require('../../app/system/models/Levels');
 var test=process.argv;
+var appConfig=require("../server_config.js");
 var mongoose=require('mongoose');
 var readline=require('readline');
 test.shift();
@@ -34,7 +35,7 @@ else{
   later();
 }
 function later(){
-  mongoose.connect('mongodb://localhost/uabTest');
+  mongoose.connect(appConfig.db_path);
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {

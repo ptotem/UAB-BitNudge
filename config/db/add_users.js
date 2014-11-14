@@ -1,6 +1,7 @@
 var fs=require('fs');
 var UsersModel=require('../../app/system/models/Users').Users;
 var test=process.argv;
+var appConfig=require("../server_config.js");
 var mongoose=require('mongoose');
 var readline=require('readline');
 var NudgeMailbox=require('../../app/system/models/NudgeMailbox');
@@ -41,7 +42,7 @@ else{
   later();
 }
 function later(){
-  mongoose.connect('mongodb://localhost/uabTest');
+  mongoose.connect(appConfig.db_path);
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {

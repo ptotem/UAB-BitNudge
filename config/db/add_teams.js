@@ -5,6 +5,7 @@ var UsersCollection=require('../../app/system/models/Users/UsersCollection.js');
 var UsersModel=require('../../app/system/models/Users').Users;
 var TeamPeriodPointsModel = require('../../app/system/models/TeamPeriodPoints');
 var test=process.argv;
+var appConfig=require("../server_config.js");
 var mongoose=require('mongoose');
 var readline=require('readline');
 var async=require('async');
@@ -39,7 +40,7 @@ else{
   later();
 }
 function later(){
-  mongoose.connect('mongodb://localhost/uabTest');
+  mongoose.connect(appConfig.db_path);
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function callback () {
