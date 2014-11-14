@@ -630,7 +630,7 @@
                 //password: $("#emp_password")[0].value,
                 address: $("#emp_addr")[0].value,
                 designation: $("#emp_designation")[0].value,
-                roles:[selected[selected.selectedIndex].getAttribute("data-id")]
+                role:selected[selected.selectedIndex].getAttribute("data-id")
             };
 
             console.log("userData");
@@ -644,9 +644,7 @@
                 success: function(res) {
                     var success_text = "Employee Updated.";
                     //show_notification(success_text);
-                    window.location.href = local_host+"employee_show.html?userId="+emp_id;
-
-                    window.location.href = local_host+"employee_show.html?userId="+emp_id+"&showNoti="+success_text;
+                   window.location.href = local_host+"employee_show.html?userId="+emp_id+"&showNoti="+success_text;
                 } ,
                 error: function(e , msg){
                     //processError(e,msg);
