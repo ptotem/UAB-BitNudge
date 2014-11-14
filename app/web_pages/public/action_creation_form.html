@@ -663,8 +663,7 @@ $(function () {
             data: data,
             success: function(res) {
                 var success_text = "Action created.";
-                //show_notification(success_text);
-                window.location.href = local_host+"employee_show.html?userId="+urlParams.userId;
+                window.location.href = local_host+"employee_show.html?userId="+urlParams.userId+"&showNoti="+success_text;
             } ,
             error: function(e , msg){
                 //processError(e,msg);

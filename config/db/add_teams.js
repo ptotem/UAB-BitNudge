@@ -1,5 +1,6 @@
 var fs=require('fs');
 var TeamsModel=require('../../app/system/models/Teams');
+var TeamsCollection=require('../../app/system/models/Teams/TeamsCollection.js');
 var UsersCollection=require('../../app/system/models/Users/UsersCollection.js');
 var UsersModel=require('../../app/system/models/Users').Users;
 var TeamPeriodPointsModel = require('../../app/system/models/TeamPeriodPoints');
@@ -48,13 +49,14 @@ function later(){
     if (err) throw err;
     var objects=JSON.parse(data);
     if(objects instanceof Array){
-      objects.forEach(function(object){
+      async.eachSeries(objects,function(object,eachCallback){
         object.membersTemp=[];
         console.log(object.members);
         async.each(object.members,
           function(member,callback){
             UsersCollection.findOne({email:member,orgId:orgObjId},function(err,user){
-              object.membersTemp.push(user._id);
+              if(user)
+                object.membersTemp.push(user._id);
               callback();
             });
           },
@@ -62,21 +64,68 @@ function later(){
             if(err) console.log(err);
             object.members=object.membersTemp;
             delete object.membersTemp;
-            TeamsModel.createTeam(orgObjId,object,function(err,team){
-              TeamPeriodPointsModel.createTeamPeriodPoints(orgObjId,team._id,{},function(err){
-                if(err) console.log("encountered error with team period points");
-                else console.log("made team period points");
-              });
-              async.each(team.members,function(memberId,eachCallback){
-                UsersModel.addTeam(memberId,team._id,eachCallback);
+            if(object.teams){
+              object.teamsTemp=[];
+              async.each(object.teams,function(teamName,callback){
+                TeamsCollection.findOne({name:teamName,orgId:orgObjId},function(err,teamObj){
+                  console.log("team");
+                  console.log(teamObj);
+                  if(teamObj&&teamObj._id)
+                    object.teamsTemp.push(teamObj._id);
+                  callback();
+                });
               },
               function(err,results){
+                console.log("heeeeere");
                 if(err) console.log(err);
-                console.log("done writing to database");
-                console.log(team);
+                object.teams=object.teamsTemp;
+                delete object.teamsTemp;
+                TeamsModel.createTeam(orgObjId,object,function(err,team){
+                  if(err) console.log(err);
+                  TeamPeriodPointsModel.createTeamPeriodPoints(orgObjId,team._id,{},function(err){
+                    if(err) console.log("encountered error with team period points");
+                    else console.log("made team period points");
+                    if(team.members){
+                      async.each(team.members,function(memberId,eachCallback){
+                        UsersModel.addTeam(memberId,team._id,eachCallback);
+                      },
+                      function(err,results){
+                        if(err) console.log(err);
+                        console.log("done writing to database");
+                        console.log(team);
+                        eachCallback();
+                      });
+                    }
+                    else 
+                      eachCallback();
+                  });
+                });
               });
-            });
+            }
+            else{
+              TeamsModel.createTeam(orgObjId,object,function(err,team){
+                TeamPeriodPointsModel.createTeamPeriodPoints(orgObjId,team._id,{},function(err){
+                  if(err) console.log("encountered error with team period points");
+                  else console.log("made team period points");
+                  if(team.members){
+                    async.each(team.members,function(memberId,eachCallback){
+                      UsersModel.addTeam(memberId,team._id,eachCallback);
+                    },
+                    function(err,results){
+                      if(err) console.log(err);
+                      console.log("done writing to database");
+                      console.log(team);
+                      eachCallback();
+                    });
+                  }
+                  else 
+                    eachCallback();
+                });
+              });
+            }
         });
+      },function(err,results){
+        console.log("done.");
       });
     }
   });

@@ -555,6 +555,8 @@
                 type: 'POST',
                 success: function(data){
                     console.log(data);
+                    var success_text = "Actions Uploaded.";
+                    window.location.href = local_host+"action_schemas.html?showNoti="+success_text;
                 },
                 error:function(err){
                     console.log(err);

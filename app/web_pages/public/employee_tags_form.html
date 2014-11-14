@@ -454,11 +454,11 @@
                                         </div>
 
                                         <div class="form-actions">
-                                            <button type="reset" class="btn medium btn-danger">
+                                            <a href="employees.html" class="btn medium btn-danger">
                                                 Cancel
-                                            </button>
+                                            </a>
                                             <button id="employee-tags-form-submit-btn" type="submit" class="btn medium btn-primary">
-                                                Submit
+                                                Assign
                                             </button>
                                         </div>
                                     </fieldset>
@@ -610,7 +610,8 @@
             type: 'POST',
             data:{orgtags:assignedTags},
             success: function(data){
-                //show_notification("Tags assigned to user.");
+                var success_text = "Tags assigned to an employee.";
+                window.location.href = local_host+"employee_show.html?userId="+userElement+"&showNoti="+success_text;
             },
             error:function(err){
                 console.log(err);

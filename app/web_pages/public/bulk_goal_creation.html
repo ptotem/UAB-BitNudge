@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
     <![endif]-->
 
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -392,42 +394,6 @@
     $(function () {
         employee_name();
 
-//        $('#bulk_goals_excel_2').ace_file_input({
-//            no_file:'No File ...',
-//            btn_choose:'Choose',
-//            btn_change:'Change',
-//            droppable:false,
-//            onchange:null,
-//            thumbnail:false //| true | large
-//            //whitelist:'gif|png|jpg|jpeg'
-//            //blacklist:'exe|php'
-//            //onchange:''
-//            //
-//        });
-//
-//        console.log(urlParams)
-//        $("#employees_bulk_upload_form").submit(function(event){
-//            event.preventDefault();
-//            var data=new FormData();
-//            data.append("users_goals",$("#bulk_goals_excel_2")[0].files[0]);
-//
-//            $.ajax({
-//                url: remote_host+'org/'+urlParams.orgId+'/excel/users_goals/new',
-//                data: data,
-//                // contentType: 'multipart/form-data',
-//                contentType: false,
-//                processData: false,
-//                type: 'POST',
-//                success: function(data){
-//                    console.log(data);
-//                },
-//                error:function(err){
-//                    console.log(err);
-//                }
-//            });
-//            return false;
-//        });
-
     });
 
 
@@ -518,6 +484,10 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets/js/jquery.jgrowl.min.js"></script>
+
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>

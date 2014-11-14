@@ -9,6 +9,7 @@ var AuthorizationController=require('../../system/controllers/AuthorizationContr
 var UsersDescription=require('./UsersResourceDescription.js');
 var challengesController=require('../../system/controllers/ChallengesController.js');
 var simulationController=require('../../system/controllers/SimulationController.js');
+var notificationController=require('../../system/controllers/NotificationController.js');
 var passport=require('passport');
 var fs   = require('fs');
 var userRoutes={
@@ -194,7 +195,13 @@ var nudgeMailRoutes={
   //   socialEngine.NudgeMailsController.deleteMail(req,res);
   // }]
 };
-var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,medalRoutes,rankRoutes,subGoalRoutes,challengesRoutes];
+
+var notificationRoutes={
+  'get /org/:orgId/users/:userId/notifications':[function(req,res,next){AuthorizationController.isAuthorized('Notifications','list',req,res,next);},function(req,res) {
+    notificationController.getNotificationsOfUser(req,res);
+  }]
+};
+var stuff=[storeItemRoutes,leaderboardRoutes,userRoutes,transactionRoutes,transactionHistoryRoutes,goalRoutes,nudgeChatRoutes,nudgeMailBoxRoutes,nudgeMailRoutes,statusMessagesRoutes,medalRoutes,rankRoutes,subGoalRoutes,challengesRoutes,notificationRoutes];
 module.exports={
   initialize:function(server,handlers){
     stuff.forEach(function(routesObj){

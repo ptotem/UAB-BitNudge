@@ -463,11 +463,9 @@
                                         </div>
 
                                         <div class="form-actions">
-                                            <button type="reset" class="btn medium btn-danger">
-                                                Cancel
-                                            </button>
+                                            <a href="employees.html" class="btn medium btn-danger">Cancel</a>
                                             <button id="set_reporting_manager" type="submit" class="btn medium btn-primary">
-                                                Save changes
+                                                Assign
                                             </button>
                                         </div>
                                     </fieldset>
@@ -577,6 +575,8 @@
                 data:{reportsTo:reportedElement.getAttribute("data-id")},
                 success: function(data){
                     //show_notification("Assigned user to report to manager");
+                    var success_text = "Reporting manager assigned to an employee. Search for the employee in datatable to see details.";
+                    window.location.href = local_host+"employees.html?showNoti="+success_text;
                 },
                 error:function(err){
                     console.log(err);

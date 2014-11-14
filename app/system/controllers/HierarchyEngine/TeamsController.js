@@ -5,7 +5,7 @@ var AuthorizationController=('../../controllers/AuthorizationController.js');
 var UserModel=require('../../models/Users').Users;
 var HierarchyEngine={
   getTeam:function(req,res){
-    TeamModel.getTeam(req.params.teamId,{_id:0},{},{path:'teams'},function(err,obj){
+    TeamModel.getTeam(req.params.teamId,{_id:0},{},[{path:'teams',model:'teams',select:'name'},{path:'members',model:'users',select:'name'}],function(err,obj){
       if(err){
         res.send("fail"+err);
         return handleError(err);
@@ -25,7 +25,7 @@ var HierarchyEngine={
     //   });
     // },
  getTeamsOfOrganization:function(req,res){
-   TeamModel.getTeamsOfOrganization(req.params.orgId,{},{},{path:'teams'},function(err,objs){
+   TeamModel.getTeamsOfOrganization(req.params.orgId,{},{},[{path:'teams',model:'teams',select:'name'},{path:'members',model:'users',select:'name'}],function(err,objs){
      if(err){
        res.send("fail");
        return handleError(err);
@@ -151,8 +151,8 @@ var HierarchyEngine={
     },
     addSubteam:function(req,res){
     if(!req.body.subteam)
-      return res.send(404,"You must send subteams in the request body. eg: {subteam:'asv234vfve234'}");
-    TeamModel.addSubteams(req.params.teamId,req.body.subteam,function(err,obj){
+      return res.send(404,"You must send subteams in the request body. eg: {subteams:['asv234vfve234']}");
+    TeamModel.addSubteams(req.params.teamId,req.body.subteams,function(err,obj){
       if(err) res.send("fail");
       else res.send(obj);
     });

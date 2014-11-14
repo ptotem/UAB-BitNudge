@@ -6,7 +6,7 @@ var NotificationCenterSchema=new Schema({
   notifications:[{
     content:String,
     url:String,  //url the notification refers to.
-    time:Date,
+    createdAt:Date,
     read:Boolean
   }],
   createdAt:Date
