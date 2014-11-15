@@ -47,70 +47,70 @@
 <body class="no-skin">
 <!-- #section:basics/navbar.layout -->
 <div id="navbar" class="navbar navbar-default">
-<script type="text/javascript">
-    try{ace.settings.check('navbar' , 'fixed')}catch(e){}
-</script>
+    <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+    </script>
 
-<div class="navbar-container" id="navbar-container">
-<!-- #section:basics/sidebar.mobile.toggle -->
-<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
-    <span class="sr-only">Toggle sidebar</span>
+    <div class="navbar-container" id="navbar-container">
+        <!-- #section:basics/sidebar.mobile.toggle -->
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+            <span class="sr-only">Toggle sidebar</span>
 
-    <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
 
-    <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
 
-    <span class="icon-bar"></span>
-</button>
+            <span class="icon-bar"></span>
+        </button>
 
-<!-- /section:basics/sidebar.mobile.toggle -->
-<div class="navbar-header pull-left">
-    <!-- #section:basics/navbar.layout.brand -->
-    <a href="#" class="navbar-brand">
-        <small>
-            <i class="fa fa-leaf"></i>
-            BitNudge
-        </small>
-    </a>
+        <!-- /section:basics/sidebar.mobile.toggle -->
+        <div class="navbar-header pull-left">
+            <!-- #section:basics/navbar.layout.brand -->
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="fa fa-leaf"></i>
+                    BitNudge
+                </small>
+            </a>
 
-    <!-- /section:basics/navbar.layout.brand -->
+            <!-- /section:basics/navbar.layout.brand -->
 
-    <!-- #section:basics/navbar.toggle -->
+            <!-- #section:basics/navbar.toggle -->
 
-    <!-- /section:basics/navbar.toggle -->
-</div>
+            <!-- /section:basics/navbar.toggle -->
+        </div>
 
-<!-- #section:basics/navbar.dropdown -->
-    <div class="navbar-buttons navbar-header pull-right" role="navigation">
-        <ul class="nav ace-nav">
-            <!-- #section:basics/navbar.user_menu -->
-            <li class="light-blue">
-                <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <!--<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />-->
+        <!-- #section:basics/navbar.dropdown -->
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <!-- #section:basics/navbar.user_menu -->
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <!--<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />-->
 								<span class="user-info">
 									<small>Welcome,</small>
 									<span id="user_name"></span>
 								</span>
 
-                    <i class="ace-icon fa fa-caret-down"></i>
-                </a>
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
 
-                <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                    <li>
-                        <a onclick="logout()">
-                            <i class="ace-icon fa fa-power-off"></i>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a onclick="logout()">
+                                <i class="ace-icon fa fa-power-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-            <!-- /section:basics/navbar.user_menu -->
-        </ul>
-    </div>
+                <!-- /section:basics/navbar.user_menu -->
+            </ul>
+        </div>
 
-<!-- /section:basics/navbar.dropdown -->
-</div><!-- /.navbar-container -->
+        <!-- /section:basics/navbar.dropdown -->
+    </div><!-- /.navbar-container -->
 </div>
 
 <!-- /section:basics/navbar.layout -->
@@ -373,230 +373,222 @@
 <!-- /section:settings.box -->
 <div class="page-content-area">
 
-    <!--row 1-->
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- PAGE CONTENT BEGINS -->
-            <!--<row 1 >-->
-            <div class="row">
-                <div class="col-lg-12 col-md-12 widget-container-col">
-                    <!-- #section:custom/widget-box -->
-                    <div class="widget-box">
-                        <div class="widget-header">
-                            <h5 class="widget-title">Employee Show</h5>
+<!--row 1-->
+<div class="row">
+<div class="col-xs-12">
+<!-- PAGE CONTENT BEGINS -->
+<!--<row 1 >-->
+<div class="row">
+<div class="col-lg-12 col-md-12 widget-container-col">
+<!-- #section:custom/widget-box -->
+<!--<div class="widget-box">-->
+<div class="page-header">
+    <h1 >Employee Show</h1>
 
-                            <!-- #section:custom/widget-box.toolbar -->
-                            <div class="widget-toolbar">
-                                <div class="widget-menu">
-                                    <a href="#" data-action="settings" data-toggle="dropdown">
-                                        <i class="ace-icon fa fa-bars"></i>
-                                    </a>
+    <!-- #section:custom/widget-box.toolbar -->
 
-                                    <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                                        </li>
 
-                                        <li>
-                                            <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                                        </li>
-                                    </ul>
-                                </div>
+    <!-- /section:custom/widget-box.toolbar -->
+</div>
 
-                                <a href="#" data-action="fullscreen" class="orange2">
-                                    <i class="ace-icon fa fa-expand"></i>
-                                </a>
-
-                                <a href="#" data-action="reload">
-                                    <i class="ace-icon fa fa-refresh"></i>
-                                </a>
-
-                                <a href="#" data-action="collapse">
-                                    <i class="ace-icon fa fa-chevron-up"></i>
-                                </a>
-
-                                <a href="#" data-action="close">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </a>
+<div class="widget-body">
+    <div class="widget-main">
+        <div class="row">
+            <div class="col-sm-6">
+                <fieldset>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Name</label>
                             </div>
-
-                            <!-- /section:custom/widget-box.toolbar -->
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_name"></div>
+                            </div>
                         </div>
 
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <fieldset>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Name</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_name"></div>
-                                                    </div>
-                                                </div>
+                    </div>
 
-                                            </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>E-mail</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_email"></div>
+                            </div>
+                        </div>
 
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>E-mail</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_email"></div>
-                                                    </div>
-                                                </div>
+                    </div>
 
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Designation</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_designation"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Address</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_addr"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Roles</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_role"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Reporting Officer</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_reporting_officer"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Tags</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_tags"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Group/Department</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_dept"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Points</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_points"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Cash</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_cash"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <label>Level</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="emp-details" id="emp_level"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <a id="edit_user_link" href="#">Edit Details</a> |
-                                                        <!--<a id="view_transactions_link" href="#">View My Transactions</a> |-->
-                                                        <a id="view_goal_link" href="#">View My Goals</a> |
-                                                        <a id="view_challenges_link" href="#">View My Challenges</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <caption>Recent Activity</caption>
-                                        <table class="table" id="recent_acivity_table">
-                                            <thead>
-                                            <tr>
-                                                <th class="text-center aligned">Name</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-
-
-
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Designation</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_designation"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- /section:custom/widget-box -->
-                </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_addr"></div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Role</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_role"></div>
+                            </div>
+                        </div>
 
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Reporting Officer</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_reporting_officer"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Tags</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_tags"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Group/Department</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_dept"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Points</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_points"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Cash</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_cash"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Level</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="emp-details" id="emp_level"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a id="edit_user_link" href="#">Edit Details</a> |
+                                <!--<a id="view_transactions_link" href="#">View My Transactions</a> |-->
+                                <a id="view_goal_link" href="#">View My Goals</a> |
+                                <a id="view_challenges_link" href="#">View My Challenges</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </fieldset>
             </div>
-            <!-- /.row 1 end -->
+            <div class="col-sm-6">
+                <div class="widget-box transparent" id="recent-box">
+                    <!--<div class="widget-header">-->
+                        <h4 class="widget-title lighter smaller">
+                            <i class="ace-icon fa fa-rss orange"></i>Recent Activities
+                        </h4>
+                    <!--</div>-->
 
-            <!-- PAGE CONTENT ENDS -->
-        </div><!-- /.col -->
+                    <div class="widget-body">
+                        <div class="widget-main padding-4">
+                            <div class="tab-content padding-8">
+                                <div id="comment-tab" class="tab-pane active">
+                                    <!-- #section:pages/dashboard.comments -->
+                                    <div class="comments">
+
+                                    </div>
+
+                                    <div class="hr hr8"></div>
+
+                                    <!--<div class="center">-->
+                                    <!--&nbsp;-->
+                                    <!--<a href="#" class="btn btn-sm btn-white btn-info">-->
+                                    <!--See all challenges &nbsp;-->
+                                    <!--<i class="ace-icon fa fa-arrow-right"></i>-->
+                                    <!--</a>-->
+                                    <!--</div>-->
+
+                                    <!--<div class="hr hr-double hr8"></div>-->
+
+                                    <!-- /section:pages/dashboard.comments -->
+                                </div>
+                            </div>
+                        </div><!-- /.widget-main -->
+                    </div><!-- /.widget-body -->
+                </div><!-- /.widget-box -->
+            </div>
+        </div>
+
+
+
+
     </div>
-    <!-- /1 row -->
+</div>
+<!--</div>-->
+
+<!-- /section:custom/widget-box -->
+</div>
+
+
+</div>
+<!-- /.row 1 end -->
+
+<!-- PAGE CONTENT ENDS -->
+</div><!-- /.col -->
+</div>
+<!-- /1 row -->
 </div><!-- /.page-content-area -->
 </div><!-- /.page-content -->
 </div><!-- /.main-content -->
@@ -639,235 +631,428 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
-    var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    function employee_name() {
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+var urlParams = JSON.parse(localStorage.getItem('user_data'));
+function employee_name() {
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
 //            url: remote_host + "abilities",
-            type: 'GET',
-            dataType: 'json',
-            success: function (res) {
-                $("#user_name").text(res.name);
-            },
-            error: function (e, msg) {
-                //processError(e,msg);
-            }
-        });
-    }
+        type: 'GET',
+        dataType: 'json',
+        success: function (res) {
+            $("#user_name").text(res.name);
+        },
+        error: function (e, msg) {
+            //processError(e,msg);
+        }
+    });
+}
 
-    function get_employee(){
-        var emp_id = window.location.search.replace("?","").split("=")[1];
+function get_employee(){
+    var emp_id = window.location.search.replace("?","").split("=")[1];
 
-        $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
-        //$("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
-        $("#view_goal_link").attr("href","show_goal.html?userId="+emp_id);
-        $("#view_challenges_link").attr("href","show_challenge.html?userId="+emp_id);
+    $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
+    //$("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
+    $("#view_goal_link").attr("href","show_goal.html?userId="+emp_id);
+    $("#view_challenges_link").attr("href","show_challenge.html?userId="+emp_id);
 
-        $.ajax({
-            ///org/:orgId/users/:userId
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                //console.log("res");
+    $.ajax({
+        ///org/:orgId/users/:userId
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            //console.log("res");
+            //console.log(res);
+            if(res){
                 //console.log(res);
-                if(res){
-                    //console.log(res);
-                    var reportsTo, orgTags = [], teams = [], total_pts, total_cash, level;
-                    if (res.reportsTo)
-                        reportsTo = res.reportsTo.name;
-                    else
-                        reportsTo = "";
+                var reportsTo, orgTags = [], teams = [], total_pts, total_cash, level;
+                if (res.reportsTo)
+                    reportsTo = res.reportsTo.name;
+                else
+                    reportsTo = "";
 
-                    if (res.orgtags) {
-                        orgTags = [];
-                        $.each(res.orgtags, function(index, value) {
-                            orgTags.push(value.name)
-                        });
-                    }
-                    else{
-                        orgTags = "";
-                    }
-
-                    if (res.teams) {
-                        teams = [];
-                        $.each(res.teams, function(index, value) {
-                            teams.push(value.name)
-                        });
-                    }
-                    else{
-                        teams = "";
-                    }
-
-                    if ( (res.totalPoints) || (res.totalCash) ) {
-                        total_pts = res.totalPoints;
-                        total_cash = res.totalCash;
-                    }
-                    else{
-                        total_pts = 0;
-                        total_cash = 0;
-                    }
-
-                    if (res.level) {
-                        level = res.level;
-                    }
-                    else{
-                        level = 0;
-                    }
-
-
-                    $("#user_name").text(res.name);
-                    $("#emp_name").text(res.name);
-                    $("#emp_email").text(res.email);
-                    $("#emp_role").text(res.role.name);
-                    $("#emp_reporting_officer").text(reportsTo);
-                    $("#emp_tags").text(orgTags);
-                    $("#emp_dept").text(teams);
-                    $("#emp_designation").text(res.designation);
-                    $("#emp_addr").text(res.address);
-                    $("#emp_points").text(total_pts);
-                    $("#emp_cash").text(total_cash);
-                    $("#emp_level").text(level);
-
-
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
-        });
-    }
-
-    function get_challenges(){
-
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/challenges',
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    //console.log(res);
-                    var row_html;
-
-                    var accepted_challenge_name, accepted_challenge_target_val;
-                    res.forEach(function(acceptedChallenge){
-                        console.log("acceptedChallenge");
-                        console.log(acceptedChallenge);
-                        if (acceptedChallenge.name!=undefined){
-                            accepted_challenge_name = acceptedChallenge.name;
-                        }
-                        else{
-                            accepted_challenge_name = "NA";
-                        }
-
-                        if (acceptedChallenge.action.targetValue!=undefined){
-                            accepted_challenge_target_val = acceptedChallenge.action.targetValue;
-                        }
-                        else{
-                            accepted_challenge_target_val = "NA";
-                        }
-                        //Name, Start Date, End Date, Target Value
-
-                        row_html = '<tr>'+
-                                    '<td class="text-center aligned">'+accepted_challenge_name+'</td>'+
-                                '</tr>';
-
-                        $("#recent_acivity_table").find('tbody').append(row_html);
+                if (res.orgtags) {
+                    orgTags = [];
+                    $.each(res.orgtags, function(index, value) {
+                        orgTags.push(value.name)
                     });
                 }
+                else{
+                    orgTags = "";
+                }
+
+                if (res.teams) {
+                    teams = [];
+                    $.each(res.teams, function(index, value) {
+                        teams.push(value.name)
+                    });
+                }
+                else{
+                    teams = "";
+                }
+
+                if ( (res.totalPoints) || (res.totalCash) ) {
+                    total_pts = res.totalPoints;
+                    total_cash = res.totalCash;
+                }
+                else{
+                    total_pts = 0;
+                    total_cash = 0;
+                }
+
+                if (res.level) {
+                    level = res.level;
+                }
+                else{
+                    level = 0;
+                }
+
+
+                $("#user_name").text(res.name);
+                $("#emp_name").text(res.name);
+                $("#emp_email").text(res.email);
+                $("#emp_role").text(res.role.name);
+                $("#emp_reporting_officer").text(reportsTo);
+                $("#emp_tags").text(orgTags);
+                $("#emp_dept").text(teams);
+                $("#emp_designation").text(res.designation);
+                $("#emp_addr").text(res.address);
+                $("#emp_points").text(total_pts);
+                $("#emp_cash").text(total_cash);
+                $("#emp_level").text(level);
+
+
             }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+function get_challenges(){
+
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/challenges',
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                //console.log(res);
+                var recent_challenge_html;
+
+                var accepted_challenge_name, accepted_challenge_target_val;
+                res.forEach(function(acceptedChallenge){
+                    console.log("acceptedChallenge");
+                    console.log(acceptedChallenge);
+                    if (acceptedChallenge.name!=undefined){
+                        accepted_challenge_name = acceptedChallenge.name;
+                    }
+                    else{
+                        accepted_challenge_name = "NA";
+                    }
+
+                    if (acceptedChallenge.action.targetValue!=undefined){
+                        accepted_challenge_target_val = acceptedChallenge.action.targetValue;
+                    }
+                    else{
+                        accepted_challenge_target_val = "NA";
+                    }
+                    //Name, Start Date, End Date, Target Value
+
+                    recent_challenge_html =
+                            '<div class="itemdiv commentdiv" style="min-height: 28px;">' +
+                            '<div class="body">' +
+                        //'<div class="name">' +
+                        //'<a href="#">Bob Doe</a>' +
+                        //'</div>' +
+                            '<div class="text">'+ "You have accepted " +accepted_challenge_name+'</div>'+
+                            '</div>' +
+                            '<div class="tools">' +
+                            '<div class="inline position-relative">' +
+                            '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
+                            '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
+                            '</button>' +
+                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                            '<li>' +
+                            '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
+                            '<span class="green">' +
+                            '<i class="ace-icon fa fa-check bigger-110"></i>' +
+                            '</span>'+
+                            '</a>' +
+                            '</li>' +
+
+                            '<li>' +
+                            '<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">' +
+                            '<span class="orange">' +
+                            '<i class="ace-icon fa fa-times bigger-110"></i>' +
+                            '</span>' +
+                            '</a>' +
+                            '</li>' +
+
+                            '<li>' +
+                            '<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">' +
+                            '<span class="red">' +
+                            '<i class="ace-icon fa fa-trash-o bigger-110"></i>' +
+                            '</span>' +
+                            '</a>' +
+                            '</li>' +
+                            '</ul>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+
+                    $("#comment-tab").find(".comments").append(recent_challenge_html);
+
+                });
             }
+            get_goals();
+            get_transactions();
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+function get_goals(){
+
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/goals',
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                //console.log(res);
+                var recent_goal_html;
+
+                var goal_name;
+                res.forEach(function(goal){
+                    if (goal.name!=undefined){
+                        goal_name = goal.name;
+                    }
+                    else{
+                        goal_name = "NA";
+                    }
+
+                    //Name, Start Date, End Date, Target Value
+
+                    recent_goal_html =
+                            '<div class="itemdiv commentdiv" style="min-height: 28px;">' +
+                            '<div class="body">' +
+                        //'<div class="name">' +
+                        //'<a href="#">Bob Doe</a>' +
+                        //'</div>' +
+                            '<div class="text">'+ "You have goal :- " +goal_name+'</div>'+
+                            '</div>' +
+                            '<div class="tools">' +
+                            '<div class="inline position-relative">' +
+                            '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
+                            '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
+                            '</button>' +
+                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                            '<li>' +
+                            '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
+                            '<span class="green">' +
+                            '<i class="ace-icon fa fa-check bigger-110"></i>' +
+                            '</span>'+
+                            '</a>' +
+                            '</li>' +
+
+                            '<li>' +
+                            '<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">' +
+                            '<span class="orange">' +
+                            '<i class="ace-icon fa fa-times bigger-110"></i>' +
+                            '</span>' +
+                            '</a>' +
+                            '</li>' +
+
+                            '<li>' +
+                            '<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">' +
+                            '<span class="red">' +
+                            '<i class="ace-icon fa fa-trash-o bigger-110"></i>' +
+                            '</span>' +
+                            '</a>' +
+                            '</li>' +
+                            '</ul>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+
+                    $("#comment-tab").find(".comments").append(recent_goal_html);
+                });
+            }
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+function get_transactions(){
+
+    $.ajax({
+        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/transactions',
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if(res){
+                console.log(res);
+                var recent_transaction_html;
+
+                var transaction_name;
+                res.forEach(function(transaction){
+                    if (transaction.transactionMaster){
+                        transaction_name = transaction.transactionMaster.name;
+                    }
+                    else{
+                        transaction_name = "NA";
+                    }
+
+                    //Name, Start Date, End Date, Target Value
+
+                    recent_transaction_html =
+                            '<div class="itemdiv commentdiv" style="min-height: 28px;">' +
+                            '<div class="body">' +
+                        //'<div class="name">' +
+                        //'<a href="#">Bob Doe</a>' +
+                        //'</div>' +
+                            '<div class="text">'+ "You have done :- " +transaction_name+'</div>'+
+                            '</div>' +
+                            '<div class="tools">' +
+                            '<div class="inline position-relative">' +
+                            '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
+                            '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
+                            '</button>' +
+                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                            '<li>' +
+                            '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
+                            '<span class="green">' +
+                            '<i class="ace-icon fa fa-check bigger-110"></i>' +
+                            '</span>'+
+                            '</a>' +
+                            '</li>' +
+
+                            '<li>' +
+                            '<a href="#" class="tooltip-warning" data-rel="tooltip" title="Reject">' +
+                            '<span class="orange">' +
+                            '<i class="ace-icon fa fa-times bigger-110"></i>' +
+                            '</span>' +
+                            '</a>' +
+                            '</li>' +
+
+                            '<li>' +
+                            '<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">' +
+                            '<span class="red">' +
+                            '<i class="ace-icon fa fa-trash-o bigger-110"></i>' +
+                            '</span>' +
+                            '</a>' +
+                            '</li>' +
+                            '</ul>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+
+                    $("#comment-tab").find(".comments").append(recent_transaction_html);
+                });
+            }
+        }
+        ,
+        error: function(e , msg){
+            //processError(e,msg);
+        }
+    });
+}
+
+
+$(function () {
+    get_employee();
+    employee_name();
+
+    get_challenges();
+    //get_goals();
+
+});
+
+
+
+
+
+jQuery(function($) {
+
+    $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
+        var color_class = $(this).find('option:selected').data('class');
+        var new_class = 'widget-box';
+        if(color_class != 'default')  new_class += ' widget-color-'+color_class;
+        $(this).closest('.widget-box').attr('class', new_class);
+    });
+
+
+    // scrollables
+    $('.scrollable').each(function () {
+        var $this = $(this);
+        $(this).ace_scroll({
+            size: $this.data('size') || 100
+            //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
         });
-    }
+    });
+    $('.scrollable-horizontal').each(function () {
+        var $this = $(this);
+        $(this).ace_scroll(
+                {
+                    horizontal: true,
+                    styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
+                    size: $this.data('size') || 500,
+                    mouseWheelLock: true
+                }
+        ).css({'padding-top': 12});
+    });
 
-
-    $(function () {
-        get_employee();
-        employee_name();
-
-        get_challenges();
+    $(window).on('resize.scroll_reset', function() {
+        $('.scrollable-horizontal').ace_scroll('reset');
     });
 
 
 
 
-
-    jQuery(function($) {
-
-        $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
-            var color_class = $(this).find('option:selected').data('class');
-            var new_class = 'widget-box';
-            if(color_class != 'default')  new_class += ' widget-color-'+color_class;
-            $(this).closest('.widget-box').attr('class', new_class);
-        });
-
-
-        // scrollables
-        $('.scrollable').each(function () {
-            var $this = $(this);
-            $(this).ace_scroll({
-                size: $this.data('size') || 100
-                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
-            });
-        });
-        $('.scrollable-horizontal').each(function () {
-            var $this = $(this);
-            $(this).ace_scroll(
-                    {
-                        horizontal: true,
-                        styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
-                        size: $this.data('size') || 500,
-                        mouseWheelLock: true
-                    }
-            ).css({'padding-top': 12});
-        });
-
-        $(window).on('resize.scroll_reset', function() {
-            $('.scrollable-horizontal').ace_scroll('reset');
-        });
-
-
-
-
-        /**
-         //or use slimScroll plugin
-         $('.slim-scrollable').each(function () {
+    /**
+     //or use slimScroll plugin
+     $('.slim-scrollable').each(function () {
 					var $this = $(this);
 					$this.slimScroll({
 						height: $this.data('height') || 100,
 						railVisible:true
 					});
 				});
-         */
+     */
 
 
-        /**$('.widget-box').on('setting.ace.widget' , function(e) {
+    /**$('.widget-box').on('setting.ace.widget' , function(e) {
 					e.preventDefault();
 				});*/
 
-        /**
-         $('.widget-box').on('show.ace.widget', function(e) {
+    /**
+     $('.widget-box').on('show.ace.widget', function(e) {
 					//e.preventDefault();
 					//this = the widget-box
 				});
-         $('.widget-box').on('reload.ace.widget', function(e) {
+     $('.widget-box').on('reload.ace.widget', function(e) {
 					//this = the widget-box
 				});
-         */
+     */
 
-        //$('#my-widget-box').widget_box('hide');
-
-
-
-        // widget boxes
-        // widget box drag & drop example
+    //$('#my-widget-box').widget_box('hide');
 
 
-    });
+
+    // widget boxes
+    // widget box drag & drop example
+
+
+});
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->
