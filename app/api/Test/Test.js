@@ -2,6 +2,7 @@ var UserModel=require('../../system/models/Users').Users;
 var UserCollection=require('../../system/models/Users/UsersCollection.js');
 var TransactionCollection=require('../../system/models/TransactionMaster/TransactionMasterCollection.js');
 var RolesModel=require('../../system/models/Roles');
+var RolesCollection=require('../../system/models/Roles/RolesCollection.js');
 var GoalMasterModel=require('../../system/models/GoalMaster');
 var GoalMasterCollection=require('../../system/models/GoalMaster/GoalMasterCollection.js');
 var GoalCollection=require('../../system/models/GoalMaster/GoalMasterCollection.js');
@@ -18,26 +19,29 @@ var userFn=function(orgId,obj){
         if(index!==0){
             var userObj={};
             data.forEach(function(fieldData,indexNew){
-                if(indexNew==roleColumnNumber)
-                    RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
-                        // userObj[headers[indexNew]]=[role._id];
-                        if(err) console.log(err);
-                        UsersCollection.update({email:userObj.email,name:userObj.name},{$set:{role:[role[0]._id]}},function(err,ans){
-                            if(err) console.log(err);
-                            else console.log("setted roles");
-                        });
-                    });
-                else userObj[headers[indexNew]]=fieldData;
+                // if(indexNew==roleColumnNumber)
+                //     RolesModel.getRolesFromQuery({name:fieldData},"","","",function(err,role){
+                //         // userObj[headers[indexNew]]=[role._id];
+                //         if(err) console.log(err);
+                //         UsersCollection.update({email:userObj.email,name:userObj.name},{$set:{role:[role[0]._id]}},function(err,ans){
+                //             if(err) console.log(err);
+                //             else console.log("setted roles");
+                //         });
+                //     });
+                userObj[headers[indexNew]]=fieldData;
             });
             // users.push(userObj);
-            UserModel.createUser(orgId,userObj,function(err,user){
+            RolesCollection.findOne({name:userObj.role},function(err,role){
+              userObj.role=role._id;
+              UserModel.createUser(orgId,userObj,function(err,user){
                 NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
                 NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
                 NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
                 UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,user._id,{},function(){});
                 if(err)
-                    console.log("err creating user from excel"+err);
+                console.log("err creating user from excel"+err);
                 else console.log("created User from excel"+index);
+              });
             });
         }
     });
@@ -103,12 +107,16 @@ var userGoalFn=function(orgId,creator,obj,lastCallback){
         function(err,results){
           goalObj.action.allowedTransactions=transactionIds;
           GoalMasterModel.createGoalMaster(orgId,goalObj,function(err,goalMasterObj){
-            if(!err)
-              UserGoalsModel.createGoal(creator,goalObj,function(err,obj){
-                if(err)console.log(err);
-                else console.log("success");
-                callback(err);
+            if(!err){
+              UsersCollection.findOne({email:row[7]},function(err,user){
+                if(!user)callback(err);
+                UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
+                  if(err)console.log(err);
+                  else console.log("success");
+                  callback(err);
+                });
               });
+            }
             else callback(err);
           });
         });
@@ -129,7 +137,7 @@ var userGoalFn=function(orgId,creator,obj,lastCallback){
         function(err,results){
           goalObj.subgoals=subgoalObjs;
           UsersCollection.findOne({email:row[7]},function(err,user){
-            if(!user)eachCallback(err);
+            if(!user)callback(err);
             UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
               if(err)console.log(err);
               else console.log(obj);
