@@ -88,7 +88,7 @@ server.post('/login/bitnudge',passport.authenticate('local',{session:false}), fu
             if(obj1.lastLogin>moment().subtract(1,'day').valueOf()){
                 //hardcoding the system activity for performance.
                 //Id Hard Coding removed, now Hard coding is based on name
-                TransactionMasterCollection.findOne({name : "Log In"},function(err,obj){
+                TransactionMasterCollection.findOne({name : "Logging In"},function(err,obj){
                     EventsController.triggerSystemActivity(obj1.orgId,req.user._id,obj._id,function(){});
                 });
             }
