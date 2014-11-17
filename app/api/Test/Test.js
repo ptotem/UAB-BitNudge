@@ -32,16 +32,16 @@ var userFn=function(orgId,obj){
             });
             // users.push(userObj);
             RolesCollection.findOne({name:userObj.role},function(err,role){
-              userObj.role=role._id;
-              UserModel.createUser(orgId,userObj,function(err,user){
-                NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
-                NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
-                NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
-                UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,user._id,{},function(){});
-                if(err)
-                console.log("err creating user from excel"+err);
-                else console.log("created User from excel"+index);
-              });
+                userObj.role=role._id;
+                UserModel.createUser(orgId,userObj,function(err,user){
+                    NudgeMailbox.createNudgeMailbox(req.params.orgId,user._id,{},function(){});
+                    NudgeChat.createNudgeChat(req.params.orgId,user._id,{},function(){});
+                    NotificationCenterModel.createNotificationCenter(req.params.orgId,user._id,{},function(){});
+                    UserPeriodPointsModel.createUserPeriodPoints(req.params.orgId,user._id,{},function(){});
+                    if(err)
+                        console.log("err creating user from excel"+err);
+                    else console.log("created User from excel"+index);
+                });
             });
         }
     });
@@ -82,75 +82,75 @@ var userGoalFn=function(orgId,creator,obj,lastCallback){
     var allData=obj[0].data;
     var headers=allData.shift();
     async.eachSeries(allData,function(row,callback){
-      var goalObj={goalType:"goal",creator:creator,createdAt:new Date()};
-      goalObj[headers[0]]=row[0];
-      goalObj[headers[1]]=row[1];
-      goalObj[headers[5]]=new Date(row[5]);
-      goalObj[headers[6]]=new Date(row[6]);
-      goalObj[headers[8]]="function(t){return "+row[8]+";}";
-      goalObj.action={};
-      if(row[1]=="Action"){
-        goalObj.action.targetValue=row[4];
-        var transactions=row[2].split(",");
-        var transactionIds=[];
-        async.each(transactions,function(transName,eachCallback){
-          TransactionCollection.findOne({name:transName},function(err,obj){
-            if(err)
-              eachCallback(err);
-            else {
-              if(obj)
-                transactionIds.push(obj._id);
-              eachCallback();
+            var goalObj={goalType:"goal",creator:creator,createdAt:new Date()};
+            goalObj[headers[0]]=row[0];
+            goalObj[headers[1]]=row[1];
+            goalObj[headers[5]]=new Date(row[5]);
+            goalObj[headers[6]]=new Date(row[6]);
+            goalObj[headers[8]]="function(t){return "+row[8]+";}";
+            goalObj.action={};
+            if(row[1]=="Action"){
+                goalObj.action.targetValue=row[4];
+                var transactions=row[2].split(",");
+                var transactionIds=[];
+                async.each(transactions,function(transName,eachCallback){
+                        TransactionCollection.findOne({name:transName},function(err,obj){
+                            if(err)
+                                eachCallback(err);
+                            else {
+                                if(obj)
+                                    transactionIds.push(obj._id);
+                                eachCallback();
+                            }
+                        });
+                    },
+                    function(err,results){
+                        goalObj.action.allowedTransactions=transactionIds;
+                        GoalMasterModel.createGoalMaster(orgId,goalObj,function(err,goalMasterObj){
+                            if(!err){
+                                UsersCollection.findOne({email:row[7]},function(err,user){
+                                    if(!user)callback(err);
+                                    UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
+                                        if(err)console.log(err);
+                                        else console.log("success");
+                                        callback(err);
+                                    });
+                                });
+                            }
+                            else callback(err);
+                        });
+                    });
             }
-          });
+            else if(row[1]=="Subgoal"){
+                var subgoalObjs=[];
+                async.each(row[2].split(","),function(subgoalName,eachCallback){
+                        GoalMasterCollection.findOne({name:subgoalName},function(err,subgoalMasterObj){
+                            if(err)eachCallback(err);
+                            var temp={};
+                            temp.allowedTransactions=subgoalMasterObj.action.allowedTransactions;
+                            temp.subgoal=subgoalMasterObj._id;
+                            temp.targetValue=row[4];
+                            subgoalObjs.push(temp);
+                            eachCallback();
+                        });
+                    },
+                    function(err,results){
+                        goalObj.subgoals=subgoalObjs;
+                        UsersCollection.findOne({email:row[7]},function(err,user){
+                            if(!user)callback(err);
+                            UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
+                                if(err)console.log(err);
+                                else console.log(obj);
+                                callback(err);
+                            });
+                        });
+                    });
+            }
         },
         function(err,results){
-          goalObj.action.allowedTransactions=transactionIds;
-          GoalMasterModel.createGoalMaster(orgId,goalObj,function(err,goalMasterObj){
-            if(!err){
-              UsersCollection.findOne({email:row[7]},function(err,user){
-                if(!user)callback(err);
-                UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
-                  if(err)console.log(err);
-                  else console.log("success");
-                  callback(err);
-                });
-              });
-            }
-            else callback(err);
-          });
+            if(err) lastCallback(err);
+            else lastCallback("done with bulk upload goals");
         });
-      }
-      else if(row[1]=="Subgoal"){
-        var subgoalObjs=[];
-        async.each(row[2].split(","),function(subgoalName,eachCallback){
-          GoalMasterCollection.findOne({name:subgoalName},function(err,subgoalMasterObj){
-            if(err)eachCallback(err);
-            var temp={};
-            temp.allowedTransactions=subgoalMasterObj.action.allowedTransactions;
-            temp.subgoal=subgoalMasterObj._id;
-            temp.targetValue=row[4];
-            subgoalObjs.push(temp);
-            eachCallback();
-          });
-        },
-        function(err,results){
-          goalObj.subgoals=subgoalObjs;
-          UsersCollection.findOne({email:row[7]},function(err,user){
-            if(!user)callback(err);
-            UserGoalsModel.createGoal(user._id,goalObj,function(err,obj){
-              if(err)console.log(err);
-              else console.log(obj);
-              callback(err);
-            });
-          });
-        });
-      }
-    },
-    function(err,results){
-      if(err) lastCallback(err);
-      else lastCallback("done with bulk upload goals");
-    });
 };
 
 //this is a temp model cuz this is dummy data. Ideally, this should be the capability model,
