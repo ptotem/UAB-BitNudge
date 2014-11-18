@@ -480,7 +480,7 @@
                 if(res){
                     console.log(res);
                     //Name, Scope, Start Date, End Date, Target Value, ""
-                    var challenge_name, target_val, challenge_status;
+                    var challenge_name, target_val, challenge_status, scope;
                     res.forEach(function(challenge){
                         if (challenge.name!=undefined){
                             challenge_name = challenge.name;
@@ -502,9 +502,17 @@
                         else{
                             challenge_status = "Not Completed"
                         }
+
+                        if (challenge.scope) {
+                            scope = scope
+                        }
+                        else{
+                            scope = "NA"
+                        }
+
                         row_html = '<tr>'+
                                 '<td class="text-center aligned">'+challenge_name+'</td>'+
-                                '<td class="text-center aligned">'+challenge.scope+'</td>'+
+                                '<td class="text-center aligned">'+scope+'</td>'+
                                 '<td class="text-center aligned">'+challenge.startDate+'</td>'+
                                 '<td class="text-center aligned">'+challenge.endDate+'</td>'+
                                 '<td class="text-center aligned">'+target_val+'</td>'+

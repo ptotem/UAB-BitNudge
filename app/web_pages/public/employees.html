@@ -664,16 +664,21 @@
                         $("#employees_list").find('tbody').append(row_html);
 
                     });
-                    var oTable1 =
-                            $('#employees_list')
-                                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-                                    .dataTable( {
-                                        "bPaginate": true,
-                                        "bFilter": true,
-                                        "bLengthChange": true,
-                                        "bSort": false,
-                                        "iDisplayLength": 10
-                                    } );
+
+                    setTimeout(function() {
+                        var oTable1 =
+                                $('#employees_list')
+                                    //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                                        .dataTable( {
+                                            "bPaginate": true,
+                                            "bFilter": true,
+                                            "bLengthChange": true,
+                                            "bSort": false,
+                                            "iDisplayLength": 10
+                                        } );
+                    }, 2000);
+
+
 
 
                 }
