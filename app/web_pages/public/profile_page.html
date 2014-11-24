@@ -481,7 +481,7 @@
 		            <span class="profile-picture">
                                         <img id="avatar1" class="editable img-responsive" alt="Employee's Avatar"
                                              src="assets/avatars/profile-pic.jpg"/>
-                                    </span>
+                     </span>
 
             <div class="width-95 label label-info label-xlg arrowed-in arrowed-in-right">
                 <div class="inline position-relative">
@@ -492,7 +492,6 @@
             </div>
             <div class="profile-contact-info">
                 <div class="profile-contact-links align-left">
-
                     <a id="edit_user_link" href="#" class="btn btn-link">
                         <i class="ace-icon fa fa-pencil-square-o bigger-120 green"></i>
                         Edit Profile
@@ -880,9 +879,6 @@ function get_employee(emp_id) {
                 else {
                     level = 0;
                 }
-
-//  console.log(points);
-//                $("#user_name").text(res.name);
                 $("#emp_name").text(res.name);
                 $("#emp_point").text(res.totalPoints);
                 $("#emp_points_stats").text(res.totalPoints);
@@ -972,9 +968,6 @@ function get_challenges(emp_id) {
                     recent_challenge_html =
                             '<div class="itemdiv commentdiv" style="min-height: 28px;">' +
                             '<div class="body">' +
-                        //'<div class="name">' +
-                        //'<a href="#">Bob Doe</a>' +
-                        //'</div>' +
                             '<div class="text">' + "You have accepted a challenge :- " + accepted_challenge_name + '</div>' +
                             '</div>' +
                             '<div class="tools">' +
@@ -1182,8 +1175,6 @@ $(function () {
 
     //var emp_id = window.location.search.replace("?","").split("=")[1];
     var emp_id = getParameterByName("userId");
-//    console.log("emp_id");
-//    console.log(emp_id);
     get_employee(emp_id);
     get_challenges(emp_id);
 
@@ -1192,8 +1183,6 @@ $(function () {
     }
 
 });
-
-
 jQuery(function ($) {
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
