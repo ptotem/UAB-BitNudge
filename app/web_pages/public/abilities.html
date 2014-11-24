@@ -38,6 +38,10 @@
     <script src="assets/js/html5shiv.min.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
+
+    <!--<script src="assets/js/ejs/ejs.js"></script>-->
+    <!--<script src="assets/js/app/left_menu_links.js"></script>-->
+
 </head>
 
 <body class="no-skin">
@@ -259,6 +263,7 @@
             <b class="arrow"></b>
         </li>
     </ul><!-- /.nav-list -->
+
 
 
     <!-- #section:basics/sidebar.layout.minimize -->
@@ -643,7 +648,12 @@
 
 
 
+
     $(function () {
+
+        //var left_menu_links = new EJS({url: 'partials/left_menu.ejs'}).render(left_menu_links);
+        //$("#left_menu").html(left_menu_links);
+
         get_abilities();
         employee_name();
     });
@@ -683,60 +693,6 @@
             $('.scrollable-horizontal').ace_scroll('reset');
         });
 
-
-        /**
-         //or use slimScroll plugin
-         $('.slim-scrollable').each(function () {
-					var $this = $(this);
-					$this.slimScroll({
-						height: $this.data('height') || 100,
-						railVisible:true
-					});
-				});
-         */
-
-
-        /**$('.widget-box').on('setting.ace.widget' , function(e) {
-					e.preventDefault();
-				});*/
-
-        /**
-         $('.widget-box').on('show.ace.widget', function(e) {
-					//e.preventDefault();
-					//this = the widget-box
-				});
-         $('.widget-box').on('reload.ace.widget', function(e) {
-					//this = the widget-box
-				});
-         */
-
-        //$('#my-widget-box').widget_box('hide');
-
-
-        // widget boxes
-        // widget box drag & drop example
-//    $('.widget-container-col').sortable({
-//        connectWith: '.widget-container-col',
-//        items:'> .widget-box',
-//        handle: ace.vars['touch'] ? '.widget-header' : false,
-//        cancel: '.fullscreen',
-//        opacity:0.8,
-//        revert:true,
-//        forceHelperSize:true,
-//        placeholder: 'widget-placeholder',
-//        forcePlaceholderSize:true,
-//        tolerance:'pointer',
-//        start: function(event, ui) {
-//            //when an element is moved, it's parent becomes empty with almost zero height.
-//            //we set a min-height for it to be large enough so that later we can easily drop elements back onto it
-//            ui.item.parent().css({'min-height':ui.item.height()})
-//            //ui.sender.css({'min-height':ui.item.height() , 'background-color' : '#F5F5F5'})
-//        },
-//        update: function(event, ui) {
-//            ui.item.parent({'min-height':''})
-//            //p.style.removeProperty('background-color');
-//        }
-//    });
 
     });
 </script>

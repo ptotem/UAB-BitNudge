@@ -1,0 +1,13 @@
+<!-- left_menu.ejs -->
+
+<ul class="nav nav-list">
+	<% for(var i=0; i<left_menu_links.length; i++) {%>
+		<li>
+		    <a href="<%= left_menu_links[i].link %>">
+		        <i class="<%= left_menu_links[i].icon %>"></i>
+		        <span class="menu-text"><%= left_menu_links[i].link_name %></span>
+		    </a>
+		    <b class="arrow"></b>
+		</li>
+	<% } %>
+</ul>

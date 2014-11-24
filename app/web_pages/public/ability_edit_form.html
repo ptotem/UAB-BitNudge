@@ -42,6 +42,10 @@
     <script src="assets/js/html5shiv.min.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
+
+    <!--<script src="assets/js/ejs/ejs.js"></script>-->
+    <!--<script src="assets/js/app/left_menu_links.js"></script>-->
+
 </head>
 
 <body class="no-skin">
@@ -252,7 +256,8 @@
         </li>
     </ul><!-- /.nav-list -->
 
-<!-- #section:basics/sidebar.layout.minimize -->
+
+    <!-- #section:basics/sidebar.layout.minimize -->
 <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
     <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 </div>
@@ -484,8 +489,13 @@ function employee_name() {
     });
 }
 $(function () {
+
+    //var left_menu_links = new EJS({url: 'partials/left_menu.ejs'}).render(left_menu_links);
+    //$("#left_menu").html(left_menu_links);
+
     employee_name();
 });
+
 jQuery(function($) {
 
     $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){

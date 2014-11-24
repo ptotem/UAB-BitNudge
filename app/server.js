@@ -108,6 +108,10 @@ server.listen(3004, function () {
 
 var moment=require('moment');
 
+// set the view engine to ejs
+//server.set('view engine', 'ejs');
+// use res.render to load up an ejs view file
+
 server.get('/',function(req,res){
     res.send(404,"Please go to /public");
 });
