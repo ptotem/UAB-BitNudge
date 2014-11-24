@@ -93,7 +93,7 @@
     <link href="css/customstyle.css" rel="stylesheet" type="text/css">
 
     <style>
-        .aligned{
+        .aligned {
             width: 20%;
         }
     </style>
@@ -297,218 +297,219 @@
 
 <div id="main" role="main" class="container-fluid">
 
-    <div class="contained">
-        <!-- aside -->
-        <aside>
+<div class="contained">
+<!-- aside -->
+<aside>
 
-            <!-- aside item: Mini profile -->
-            <div class="divider"></div>
-            <!-- end aside item: Mini profile -->
+    <!-- aside item: Mini profile -->
+    <div class="divider"></div>
+    <!-- end aside item: Mini profile -->
 
-            <!-- aside item: Menu -->
-            <div class="sidebar-nav-fixed">
+    <!-- aside item: Menu -->
+    <div class="sidebar-nav-fixed">
 
-                <ul class="menu" id="accordion-menu-js">
-                    <li class="current">
-                        <a href="departments.html"><i class="icon-home"></i>Department List</a>
-                    </li>
-                    <li>
-                        <a href="role.html"><i class="icon-off"></i>Roles</a>
-                    </li>
-                    <li>
-                        <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="icon-check"></i>Goals</a>
-                    </li>
-                    <li>
-                        <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
-                    </li>
-                    <li>
-                        <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
-                    </li>
-                    <li>
-                        <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
-                    </li>
-                </ul>
+        <ul class="menu" id="accordion-menu-js">
+            <li class="current">
+                <a href="departments.html"><i class="icon-home"></i>Department List</a>
+            </li>
+            <li>
+                <a href="role.html"><i class="icon-off"></i>Roles</a>
+            </li>
+            <li>
+                <a href="employees.html"><i class="icon-envelope"></i>Employee</a>
+            </li>
+            <li>
+                <a href="#"><i class="icon-check"></i>Goals</a>
+            </li>
+            <li>
+                <a href="badge_master.html"><i class="icon-home"></i>Badge Master</a>
+            </li>
+            <li>
+                <a href="reward_center.html"><i class="icon-user"></i>Reward Center</a>
+            </li>
+            <li>
+                <a href="reward_master.html"><i class="icon-home"></i>Reward Master</a>
+            </li>
+        </ul>
 
-            </div>
-            <div class="divider"></div>
-            <!-- end aside item: Menu -->
+    </div>
+    <div class="divider"></div>
+    <!-- end aside item: Menu -->
 
-        </aside>
-        <!-- aside end -->
+</aside>
+<!-- aside end -->
 
-        <!-- main content -->
-        <div id="page-content">
-            <!-- page header -->
-            <h1 id="page-header">Edit Employee</h1>
+<!-- main content -->
+<div id="page-content">
+    <!-- page header -->
+    <h1 id="page-header">Edit Employee</h1>
 
-            <div class="fluid-container">
+    <div class="fluid-container">
 
-                <!-- widget grid -->
-                <section id="widget-grid" class="">
-                    <!--------row 2---------->
-                    <div class="row">
-                        <article class="col-md-12">
-                            <!-- new widget -->
-                            <div class="jarviswidget" id="new-employee-widget">
-                                <header>
-                                    <h2>Edit Employee</h2>
-                                </header>
-                                <!-- wrap div -->
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+            <!--------row 2---------->
+            <div class="row">
+                <article class="col-md-12">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="new-employee-widget">
+                        <header>
+                            <h2>Edit Employee</h2>
+                        </header>
+                        <!-- wrap div -->
+                        <div>
+
+                            <div class="jarviswidget-editbox">
                                 <div>
+                                    <label>Title:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div>
+                                    <label>Styles:</label>
+                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                    <span data-widget-setstyle="green" class="green-btn"></span>
+                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                    <span data-widget-setstyle="red" class="red-btn"></span>
+                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                    <span data-widget-setstyle="black" class="black-btn"></span>
+                                </div>
+                            </div>
 
-                                    <div class="jarviswidget-editbox">
-                                        <div>
-                                            <label>Title:</label>
-                                            <input type="text"/>
-                                        </div>
-                                        <div>
-                                            <label>Styles:</label>
-                                            <span data-widget-setstyle="purple" class="purple-btn"></span>
-                                            <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
-                                            <span data-widget-setstyle="green" class="green-btn"></span>
-                                            <span data-widget-setstyle="yellow" class="yellow-btn"></span>
-                                            <span data-widget-setstyle="orange" class="orange-btn"></span>
-                                            <span data-widget-setstyle="pink" class="pink-btn"></span>
-                                            <span data-widget-setstyle="red" class="red-btn"></span>
-                                            <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
-                                            <span data-widget-setstyle="black" class="black-btn"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="inner-spacer widget-content-padding">
-                                        <!-- content goes here -->
-                                        <form id="edit_employee_form" class="form-horizontal themed">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div  class="col-md-3">
-                                                            <label for="emp_name">Name</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <input type="text" class="form-control"  id="emp_name" value="" />
-                                                        </div>
-                                                    </div>
+                            <div class="inner-spacer widget-content-padding">
+                                <!-- content goes here -->
+                                <form id="edit_employee_form" class="form-horizontal themed">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="emp_name">Name</label>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div  class="col-md-3">
-                                                            <label for="emp_email">E-mail</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <input type="email" class="form-control"  id="emp_email" value="" />
-                                                        </div>
-                                                    </div>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" id="emp_name" value=""/>
                                                 </div>
-
-                                                <!--<div class="form-group">-->
-                                                    <!--<div class="row">-->
-                                                        <!--<div  class="col-md-3">-->
-                                                            <!--<label for="emp_password">Password</label>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="col-md-9">-->
-                                                            <!--<input type="password" class="form-control"  id="emp_password" />-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-
-                                                <!--<div class="form-group">-->
-                                                    <!--<div class="row">-->
-                                                        <!--<div  class="col-md-3">-->
-                                                            <!--<label for="emp_password_confirm">Password confirmation</label>-->
-                                                        <!--</div>-->
-                                                        <!--<div class="col-md-9">-->
-                                                            <!--<input type="password" class="form-control"  id="emp_password_confirm" />-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div  class="col-md-3">
-                                                            <label for="emp_designation">Designation</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <input type="text" class="form-control"  id="emp_designation" value="" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <label class="control-label" for="emp_role">Role</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <div class="controls">
-                                                                <select id="emp_role" class="with-search">
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div  class="col-md-3">
-                                                            <label for="emp_addr">Address</label>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <input type="text" class="form-control"  id="emp_addr" value="" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-actions">
-                                                    <button type="reset" class="btn medium btn-danger">
-                                                        Cancel
-                                                    </button>
-                                                    <button type="submit" id="update_emp_btn" class="btn medium btn-primary">
-                                                        Update
-                                                    </button>
-                                                </div>
-                                            </fieldset>
-                                        </form>
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <a href="employees.html">View All Employees</a>
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="emp_email">E-mail</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input type="email" class="form-control" id="emp_email" value=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--<div class="form-group">-->
+                                        <!--<div class="row">-->
+                                        <!--<div  class="col-md-3">-->
+                                        <!--<label for="emp_password">Password</label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-9">-->
+                                        <!--<input type="password" class="form-control"  id="emp_password" />-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+
+                                        <!--<div class="form-group">-->
+                                        <!--<div class="row">-->
+                                        <!--<div  class="col-md-3">-->
+                                        <!--<label for="emp_password_confirm">Password confirmation</label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-md-9">-->
+                                        <!--<input type="password" class="form-control"  id="emp_password_confirm" />-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="emp_designation">Designation</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" id="emp_designation"
+                                                           value=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label class="control-label" for="emp_role">Role</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="controls">
+                                                        <select id="emp_role" class="with-search">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="emp_addr">Address</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" id="emp_addr" value=""/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <button type="reset" class="btn medium btn-danger">
+                                                Cancel
+                                            </button>
+                                            <button type="submit" id="update_emp_btn" class="btn medium btn-primary">
+                                                Update
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a href="employees.html">View All Employees</a>
                                     </div>
-                                    <!-- end content-->
                                 </div>
-                                <!-- end wrap div -->
+
                             </div>
-                            <!-- end widget -->
-                        </article>
+                            <!-- end content-->
+                        </div>
+                        <!-- end wrap div -->
                     </div>
-                    <!------------row 2 end----------------->
-
-                </section>
-                <!-- end widget grid -->
-
+                    <!-- end widget -->
+                </article>
             </div>
+            <!------------row 2 end----------------->
 
-        </div>
-        <!-- end main content -->
+        </section>
+        <!-- end widget grid -->
 
-        <!-- aside right on high res -->
-        <aside class="right">
-
-            <!-- date picker -->
-            <div id="datepicker"></div>
-            <div class="divider"></div>
-            <!-- end date picker -->
-
-        </aside>
-
-        <!-- end aside right -->
     </div>
+
+</div>
+<!-- end main content -->
+
+<!-- aside right on high res -->
+<aside class="right">
+
+    <!-- date picker -->
+    <div id="datepicker"></div>
+    <div class="divider"></div>
+    <!-- end date picker -->
+
+</aside>
+
+<!-- end aside right -->
+</div>
 
 </div>
 <!--end fluid-container-->
@@ -566,15 +567,15 @@
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-    function get_employee(){
-        var emp_id = window.location.search.replace("?","").split("=")[1];
+    function get_employee() {
+        var emp_id = window.location.search.replace("?", "").split("=")[1];
         $.ajax({
             ///org/:orgId/users/:userId
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
+            url: remote_host + "org/" + urlParams.orgId + "/users/" + emp_id,
             type: 'GET',
             dataType: 'json',
-            success: function(res) {
-                if(res){
+            success: function (res) {
+                if (res) {
                     //console.log(res);
                     $("#emp_name").val(res.name);
                     $("#emp_email").val(res.email);
@@ -582,34 +583,32 @@
                     $("#emp_role").val(res.role.name);
                     $("#emp_addr").val(res.address);
                 }
-            }
-            ,
-            error: function(e , msg){
+            },
+            error: function (e, msg) {
                 //processError(e,msg);
             }
         });
     }
 
-    function get_roles(){
+    function get_roles() {
         $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/roles",
+            url: remote_host + "org/" + urlParams.orgId + "/roles",
             type: 'GET',
             dataType: 'json',
-            success: function(res) {
-                if(res){
-                    res.forEach(function(role){
-                        $('#emp_role').append("<option data-id="+role._id+" value="+role.name+">"+role.name+"</option>");
+            success: function (res) {
+                if (res) {
+                    res.forEach(function (role) {
+                        $('#emp_role').append("<option data-id=" + role._id + " value=" + role.name + ">" + role.name + "</option>");
                     });
                 }
-            }
-            ,
-            error: function(e , msg){
+            },
+            error: function (e, msg) {
                 //processError(e,msg);
             }
         });
     }
 
-    function show_notification(text){
+    function show_notification(text) {
         $.jGrowl(text, {
             header: 'Notification',
             sticky: false,
@@ -649,29 +648,29 @@
             get_employee();
             get_roles();
 
-            $("#update_emp_btn").click(function() {
-                var emp_id = window.location.search.replace("?","").split("=")[1];
+            $("#update_emp_btn").click(function () {
+                var emp_id = window.location.search.replace("?", "").split("=")[1];
 
                 var selected = $("#emp_role")[0];
-                var userData={
+                var userData = {
                     name: $("#emp_name")[0].value,
                     email: $("#emp_email")[0].value,
                     //password: $("#emp_password")[0].value,
                     address: $("#emp_addr")[0].value,
                     designation: $("#emp_designation")[0].value,
-                    roles:[selected[selected.selectedIndex].getAttribute("data-id")]
+                    roles: [selected[selected.selectedIndex].getAttribute("data-id")]
                 };
 
                 $.ajax({
-                    url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
+                    url: remote_host + "org/" + urlParams.orgId + "/users/" + emp_id,
                     type: 'POST',
                     dataType: 'json',
-                    data:userData,
-                    success: function(res) {
+                    data: userData,
+                    success: function (res) {
                         var success_text = "Employee Updated.";
                         show_notification(success_text);
-                    } ,
-                    error: function(e , msg){
+                    },
+                    error: function (e, msg) {
                         //processError(e,msg);
                     }
                 });
