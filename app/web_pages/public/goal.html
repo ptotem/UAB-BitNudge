@@ -14,14 +14,6 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
-    <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
-    <link rel="stylesheet" href="assets/css/chosen.css" />
-    <link rel="stylesheet" href="assets/css/datepicker.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-timepicker.css" />
-    <link rel="stylesheet" href="assets/css/daterangepicker.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.css" />
-    <link rel="stylesheet" href="assets/css/colorpicker.css" />
-
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
@@ -407,300 +399,134 @@
 <!-- /section:settings.box -->
 
 <div class="page-content-area">
-<div class="page-header">
-    <h1>Acitivity History Page</h1>
-</div>
-<!-- /.page-header -->
-
-<div class="row">
-<div class="col-xs-12">
-<!-- PAGE CONTENT BEGINS -->
-
-<div class="align-right">
-    <div class="inline dropdown-hover">
-        <button class="btn btn-minier btn-primary">
-            <span id="lb_filter_btn">This Month</span>
-            <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
-        </button>
-
-        <ul id="lb_filter"
-            class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
-            <li class="active">
-                <a href="#">
-                    <i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
-                    This Month
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                    Previous Month
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                    Quarter Till Date
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                    YTD
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                    Select Date Range
-                </a>
-            </li>
-        </ul>
+    <div class="page-header">
+        <h1>Goals</h1>
     </div>
+    <!-- /.page-header -->
 
-</div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- #section:elements.tab -->
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs" id="myTab">
+                            <li class="active">
+                                <a data-toggle="tab" href="#live_goals">
+                                    <i class="green ace-icon fa fa-home bigger-120"></i>
+                                    Live Goals
+                                </a>
+                            </li>
 
+                            <li>
+                                <a data-toggle="tab" href="#past_goals">
+                                    <i class="green ace-icon fa fa-home bigger-120"></i>
+                                    Past Goals
+                                </a>
+                            </li>
+                        </ul>
 
+                        <div class="tab-content">
+                            <div id="live_goals" class="tab-pane fade in active">
 
-<div class="row hide">
-    <div class="col-xs-8 col-sm-3">
-    <label>Range Picker</label>
-    </div>
-    <div class="col-xs-8 col-sm-5">
-        <div class="input-daterange input-group">
-            <input type="text" class="input-sm form-control" name="start" />
-																	<span class="input-group-addon">
-																		<i class="fa fa-exchange"></i>
-																	</span>
+                                <table id="live_goal_table" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Goal</th>
+                                        <th>Assign Date</th>
+                                        <th>Completed Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
 
-            <input type="text" class="input-sm form-control" name="end" />
-        </div>
+                                    <tbody>
+                                    <tr>
+                                        <td>Complete project</td>
+                                        <td>1 Oct 2014</td>
+                                        <td>15 Nov 2014</td>
+                                        <td>Completed</td>
+                                    </tr>
 
-        <!-- /section:plugins/date-time.datepicker -->
-    </div>
-</div>
-
-
-<div id="activity_page_timeline">
-<div class="row">
-<div class="col-xs-12 col-sm-10 col-sm-offset-1">
-<!-- #section:pages/timeline.style2 -->
-<div class="timeline-container timeline-style2">
-												<span class="timeline-label">
-
-													<b>November</b>
-													<div class="smaller-90">Nov 18 2014</div>
-												</span>
-
-    <div class="timeline-items">
-        <div class="timeline-item clearfix">
-            <div class="timeline-info">
-                <span class="timeline-date">11:15 pm</span>
-
-                <i class="timeline-indicator btn btn-info no-hover"></i>
-            </div>
-
-            <div class="widget-box transparent">
-                <div class="widget-body">
-                    <div class="widget-main no-padding">
-					You have submitted your project.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item clearfix">
-            <div class="timeline-info">
-                <span class="timeline-date">12:30 pm</span>
-
-                <i class="timeline-indicator btn btn-info no-hover"></i>
-            </div>
-
-            <div class="widget-box transparent">
-                <div class="widget-body">
-                    <div class="widget-main no-padding">
-                        You have complete the challenge assign to you.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item clearfix">
-            <div class="timeline-info">
-                <span class="timeline-date">11:15 pm</span>
-
-                <i class="timeline-indicator btn btn-info no-hover"></i>
-            </div>
-
-            <div class="widget-box transparent">
-                <div class="widget-body">
-                    <div class="widget-main no-padding">
-                       You have been asigned a new role.
-                    </div>
-                </div>
-            </div>
-        </div>
+                                    <tr>
+                                        <td>Submit project</td>
+                                        <td>1 Jan 2014</td>
+                                        <td>5 March 2014</td>
+                                        <td>Incomplete</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Complete Challenge</td>
+                                        <td>1 Jan 2014</td>
+                                        <td>5 March 2014</td>
+                                        <td>Complete</td>
+                                    </tr>
 
 
-    </div>
-    <!-- /.timeline-items -->
-</div>
-<!-- /.timeline-container -->
+                                    </tbody>
+                                </table>
 
-    <div class="timeline-container timeline-style2">
-												<span class="timeline-label smaller-90">
+                                <div class="row">
+                                    <hr class="hr dotted hr-16">
+                                    <div class="col-sm-12">
+                                        <a href="#" class="btn btn-success">View My Game Plan</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="past_goals" class="tab-pane fade">
+                                <table id="past_goal_table" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Goal</th>
+                                        <th>Assign Date</th>
+                                        <th>Completed Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <td>Complete project</td>
+                                        <td>1 Oct 2014</td>
+                                        <td>15 Nov 2014</td>
+                                        <td>Completed</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Submit project</td>
+                                        <td>1 Jan 2014</td>
+                                        <td>5 March 2014</td>
+                                        <td>Incomplete</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Complete Challenge</td>
+                                        <td>5 Oct 2014</td>
+                                        <td>25 Dec 2014</td>
+                                        <td>Incomplete</td>
+                                    </tr>
 
 
-													Nov 17 2014
-												</span>
-
-        <div class="timeline-items">
-            <div class="timeline-item clearfix">
-                <div class="timeline-info">
-                    <span class="timeline-date">11:15 pm</span>
-
-                    <i class="timeline-indicator btn btn-info no-hover"></i>
-                </div>
-
-                <div class="widget-box transparent">
-                    <div class="widget-body">
-                        <div class="widget-main no-padding">
-                            You have submitted your project.
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- /section:elements.tab -->
                 </div>
+                <!-- /.col -->
+
+
             </div>
-
-            <div class="timeline-item clearfix">
-                <div class="timeline-info">
-                    <span class="timeline-date">12:30 pm</span>
-
-                    <i class="timeline-indicator btn btn-info no-hover"></i>
-                </div>
-
-                <div class="widget-box transparent">
-                    <div class="widget-body">
-                        <div class="widget-main no-padding">
-                            You have complete the challenge assign to you.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item clearfix">
-                <div class="timeline-info">
-                    <span class="timeline-date">11:15 pm</span>
-
-                    <i class="timeline-indicator btn btn-info no-hover"></i>
-                </div>
-
-                <div class="widget-box transparent">
-                    <div class="widget-body">
-                        <div class="widget-main no-padding">
-                            You have been asigned a new role.
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- /.row -->
 
 
+            <!-- PAGE CONTENT ENDS -->
         </div>
-        <!-- /.timeline-items -->
+        <!-- /.col -->
     </div>
-    <!-- /.timeline-container -->
-    <div class="hr hr-double hr-dotted hr18"></div>
-
-<!-- /section:pages/timeline.style2 -->
-<div class="timeline-container timeline-style2">
-												<span class="timeline-label smaller-90">
-													<b>October</b>
-                                                    <br>
-                                                    Oct 20 2014
-
-												</span>
-
-    <div class="timeline-items">
-        <div class="timeline-item clearfix">
-            <div class="timeline-info">
-                <span class="timeline-date">9:00 am</span>
-
-                <i class="timeline-indicator btn btn-success no-hover"></i>
-            </div>
-
-            <div class="widget-box transparent">
-                <div class="widget-body">
-                    <div class="widget-main no-padding">
-                       You have completed Todays challenge.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item clearfix">
-            <div class="timeline-info">
-                <span class="timeline-date">9:00 am</span>
-
-                <i class="timeline-indicator btn btn-success no-hover"></i>
-            </div>
-
-            <div class="widget-box transparent">
-                <div class="widget-body">
-                    <div class="widget-main no-padding">
-                        You have to submit your project
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
-    <!-- /.timeline-items -->
-</div>
-<div class="hr hr-double hr-dotted hr18"></div>
-<!-- /.timeline-container -->
-<div class="timeline-container timeline-style2">
-												<span class="timeline-label smaller-90">
-													<b>September</b>
-                                                    Sept 19 2014
-												</span>
-
-        <div class="timeline-items">
-            <div class="timeline-item clearfix">
-                <div class="timeline-info">
-                    <span class="timeline-date">9:00 am</span>
-
-                    <i class="timeline-indicator btn btn-grey no-hover"></i>
-                </div>
-
-                <div class="widget-box transparent">
-                    <div class="widget-body">
-                        <div class="widget-main no-padding">
-                            New Goal assign.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.timeline-items -->
-    </div>
-
-
-
-<!-- /.timeline-container -->
-</div>
-</div>
-</div>
-
-
-<!-- PAGE CONTENT ENDS -->
-</div>
-<!-- /.col -->
-</div>
-<!-- /.row -->
-
-
+    <!-- /.row -->
 </div>
 <!-- /.page-content-area -->
 </div>
@@ -742,22 +568,7 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/js/jquery-ui.custom.min.js"></script>
-<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/js/chosen.jquery.min.js"></script>
-<script src="assets/js/fuelux/fuelux.spinner.min.js"></script>
-<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
-<script src="assets/js/date-time/bootstrap-timepicker.min.js"></script>
-<script src="assets/js/date-time/moment.min.js"></script>
-<script src="assets/js/date-time/daterangepicker.min.js"></script>
-<script src="assets/js/date-time/bootstrap-datetimepicker.min.js"></script>
-<script src="assets/js/bootstrap-colorpicker.min.js"></script>
-<script src="assets/js/jquery.knob.min.js"></script>
-<script src="assets/js/jquery.autosize.min.js"></script>
-<script src="assets/js/jquery.inputlimiter.1.3.1.min.js"></script>
-<script src="assets/js/jquery.maskedinput.min.js"></script>
-<script src="assets/js/bootstrap-tag.min.js"></script>
-<script src="assets/js/typeahead.jquery.min.js"></script>
+
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -765,22 +576,31 @@
 
 <!-- inline scripts related to this page -->
 <script>
-    $('.input-daterange').datepicker({autoclose:true});
-</script>
-
-<script type="text/javascript">
-    jQuery(function ($) {
-        $('[data-toggle="buttons"] .btn').on('click', function (e) {
-            var target = $(this).find('input[type=radio]');
-            var which = parseInt(target.val());
-            $('[id*="timeline-"]').addClass('hide');
-            $('#timeline-' + which).removeClass('hide');
-        });
+    $('#live_goal_table')
+        //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+            .dataTable({
+                "bPaginate": true,
+                "bFilter": true,
+                "bLengthChange": true,
+                "bSort": false,
+                "iDisplayLength": 3
+            });
+    $('#past_goal_table')
+        //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+            .dataTable({
+                "bPaginate": true,
+                "bFilter": true,
+                "bLengthChange": true,
+                "bSort": false,
+                "iDisplayLength": 3
+            });
+    $(window).on('resize.scroll_reset', function () {
+        $('.scrollable-horizontal').ace_scroll('reset');
     });
 </script>
-
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
+    var scripts = [null, "assets/js/jquery.dataTables.min.js", "assets/js/jquery.dataTables.bootstrap.js", null]
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
 
@@ -803,35 +623,11 @@
 
         employee_name();
 
-        $("#lb_filter li").click(function () {
-            $("#lb_filter").find("li").removeClass("active");
-            $("#lb_filter").find("li").find(".fa-caret-right").addClass("invisible");
-
-            $(this).addClass("active");
-            $(this).find(".fa-caret-right").removeClass("invisible");
-
-            $("#lb_filter_btn").text($(this).text());
-
-            $("#top_3_players_table").find("tbody").empty();
-
-            var top_3_player_row;
-            for (var i = 0; i < 5; i++) {
-                top_3_player_row = '<tr>' +
-                        '<td>' + (i + 1) + '</td>' +
-                        '<td><a href="#">John Mark</a></td>' +
-                        '<td>Red</td>' +
-                        '<td>8500</td>' +
-                        '</tr>';
-
-                $("#top_3_players_table").find("tbody").append(top_3_player_row);
-            }
-
-        });
-
     });
 
 
     jQuery(function ($) {
+
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
             var color_class = $(this).find('option:selected').data('class');
@@ -866,20 +662,13 @@
             mouseWheelLock: true,
             alwaysVisible: true
         });
-
-
-        var oTable1 =
-                $('#top_3_players_table')
-                        .dataTable({
-                            "bPaginate": false,
-                            "bFilter": true,
-                            "bLengthChange": false,
-                            "bSort": false,
-                            "iDisplayLength": 10
-                        });
-
-        $(window).on('resize.scroll_reset', function () {
-            $('.scrollable-horizontal').ace_scroll('reset');
+        $(document).on('click', 'th input:checkbox', function () {
+            var that = this;
+            $(this).closest('table').find('tr > td:first-child input:checkbox')
+                    .each(function () {
+                        this.checked = that.checked;
+                        $(this).closest('tr').toggleClass('selected');
+                    });
         });
 
 
