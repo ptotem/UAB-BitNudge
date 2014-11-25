@@ -528,6 +528,25 @@
                                 <div class="widget-body">
                                     <div class="widget-main">
 
+
+                                        <div class="row hide">
+                                            <div class="col-xs-5 col-sm-2">
+                                            <label>Select Date</label>
+                                                </div>
+                                            <div class="col-xs-6 col-sm-4">
+                                                <div class="input-daterange input-group ">
+                                                    <input type="text" class="input-sm form-control" name="start" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-exchange"></i>
+																	</span>
+
+                                                    <input type="text" class="input-sm form-control" name="end" />
+                                                </div>
+
+                                                <!-- /section:plugins/date-time.datepicker -->
+                                            </div>
+                                        </div>
+                                        <div class="space-4"></div>
                                         <table id="top_3_players_table" class="bn-dtable table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
@@ -770,6 +789,20 @@ function resize_chosen(){
 
 jQuery(function($) {
 
+    $('.input-daterange').datepicker({autoclose:true});
+
+    $('input[name=date-range-picker]').daterangepicker({
+        'applyClass' : 'btn-sm btn-success',
+        'cancelClass' : 'btn-sm btn-default',
+        locale: {
+            applyLabel: 'Apply',
+            cancelLabel: 'Cancel'
+        }
+    })
+            .prev().on(ace.click_event, function(){
+                $(this).next().focus();
+            });
+
     $('.chosen-select').chosen({allow_single_deselect:true});
     //resize the chosen on window resize
     resize_chosen();
@@ -850,6 +883,9 @@ function employee_name() {
 
 
 $(function () {
+
+
+
 
     employee_name();
 
