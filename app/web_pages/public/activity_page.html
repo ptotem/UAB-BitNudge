@@ -486,20 +486,6 @@
             <li>
                 <a href="#">
                     <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                    Quarter Till Date
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                    YTD
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
                     Select Date Range
                 </a>
             </li>
@@ -566,7 +552,7 @@
                     <div class="widget-box transparent">
                         <div class="widget-body">
                             <div class="widget-main no-padding">
-                                You have complete the challenge assign to you.
+                                You have complete the challenge assigned to you.
                             </div>
                         </div>
                     </div>
@@ -849,20 +835,6 @@
             $(this).find(".fa-caret-right").removeClass("invisible");
 
             $("#lb_filter_btn").text($(this).text());
-
-            $("#top_3_players_table").find("tbody").empty();
-
-            var top_3_player_row;
-            for (var i = 0; i < 5; i++) {
-                top_3_player_row = '<tr>' +
-                        '<td>' + (i + 1) + '</td>' +
-                        '<td><a href="#">John Mark</a></td>' +
-                        '<td>Red</td>' +
-                        '<td>8500</td>' +
-                        '</tr>';
-
-                $("#top_3_players_table").find("tbody").append(top_3_player_row);
-            }
 
         });
 

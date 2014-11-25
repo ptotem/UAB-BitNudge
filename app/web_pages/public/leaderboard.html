@@ -544,6 +544,23 @@
                                 <div class="widget-body">
                                     <div class="widget-main">
 
+
+                                        <div class="row" style="display: none;" id="custom_date_range_picker_row">
+                                            <div class="col-xs-6 col-sm-4">
+                                                <label>Select Date (From-To)</label>
+                                                <div class="input-daterange input-group ">
+                                                    <input type="text" class="input-sm form-control" name="start" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-exchange"></i>
+																	</span>
+
+                                                    <input type="text" class="input-sm form-control" name="end" />
+                                                </div>
+
+                                                <!-- /section:plugins/date-time.datepicker -->
+                                            </div>
+                                        </div>
+                                        <div class="space-4"></div>
                                         <table id="top_3_players_table" class="bn-dtable table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
@@ -705,13 +722,13 @@
                                                 <td><a href="#">John Mark</a></td>
                                                 <td>Red</td>
                                                 <td>8500</td>
-                                                <td>Aug 2014 - Nov 2014</td>
+                                                <td>Aug 2014 - Sept 2014</td>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Susan Smith</a></td>
                                                 <td>Blue</td>
                                                 <td>8320</td>
-                                                <td>Sept 2014 - Nov 2014</td>
+                                                <td>Sept 2014 - Oct 2014</td>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Jennifer Michael</a></td>
@@ -820,6 +837,20 @@ function resize_chosen(){
 
 jQuery(function($) {
 
+    $('.input-daterange').datepicker({autoclose:true});
+
+    $('input[name=date-range-picker]').daterangepicker({
+        'applyClass' : 'btn-sm btn-success',
+        'cancelClass' : 'btn-sm btn-default',
+        locale: {
+            applyLabel: 'Apply',
+            cancelLabel: 'Cancel'
+        }
+    })
+            .prev().on(ace.click_event, function(){
+                $(this).next().focus();
+            });
+
     $('.chosen-select').chosen({allow_single_deselect:true});
     //resize the chosen on window resize
     resize_chosen();
@@ -901,6 +932,9 @@ function employee_name() {
 
 $(function () {
 
+
+
+
     employee_name();
 
     //TODO: write single fn.
@@ -913,19 +947,30 @@ $(function () {
 
         $("#lb_filter_btn").text($(this).text());
 
-        $("#top_3_players_table").find("tbody").empty();
+        //console.log("text :- " + $(this).text());
 
-        var top_3_player_row;
-        for(var i=0; i<5; i++) {
-            top_3_player_row = '<tr>' +
-                    '<td>'+(i+1)+'</td>' +
-                    '<td><a href="#">John Mark</a></td>'+
-                    '<td>Red</td>' +
-                    '<td>8500</td>' +
-                    '</tr>';
-
-            $("#top_3_players_table").find("tbody").append(top_3_player_row);
+        if ($(this).text().contains("Range")) {
+            console.log("1");
+            $("#custom_date_range_picker_row").show();
         }
+        else{
+            console.log("2");
+            $("#custom_date_range_picker_row").hide();
+        }
+
+//        $("#top_3_players_table").find("tbody").empty();
+
+//        var top_3_player_row;
+//        for(var i=0; i<5; i++) {
+//            top_3_player_row = '<tr>' +
+//                    '<td>'+(i+1)+'</td>' +
+//                    '<td><a href="#">John Mark</a></td>'+
+//                    '<td>Red</td>' +
+//                    '<td>8500</td>' +
+//                    '</tr>';
+//
+//            $("#top_3_players_table").find("tbody").append(top_3_player_row);
+//        }
 
     });
 

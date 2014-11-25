@@ -471,17 +471,17 @@
             </div>
 
             <div class="widget-body">
-                <div class="widget-main padding-8">
+                <div class="widget-main padding-4">
                     <div class="comments">
                         <div class="itemdiv commentdiv">
-                            <div class="user">
-                                <img alt="Bob Doe's Avatar" src="assets/avatars/avatar.png"/>
-                            </div>
+                            <!--<div class="user">-->
+                                <!--<img alt="Bob Doe's Avatar" src="assets/avatars/avatar.png"/>-->
+                            <!--</div>-->
 
                             <div class="body">
-                                <div class="name">
-                                    <a href="#">Bob Doe</a>
-                                </div>
+                                <!--<div class="name">-->
+                                    <!--<a href="#">Bob Doe</a>-->
+                                <!--</div>-->
 
                                 <div class="text">
                                     <i class="ace-icon fa fa-quote-left" style="color: #dce3ed;"></i>
@@ -537,20 +537,6 @@
                             <div>
                                 <i class="pull-left thumbicon fa fa-check btn-success no-hover"></i>
                                 <a class="user" href="#"> Alexa </a>
-                                won
-                                <a href="#">Diwali Dhamaka</a>.
-
-                                <div class="time">
-                                    <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                    5 hours ago
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="profile-activity clearfix">
-                            <div>
-                                <i class="pull-left thumbicon fa fa-group btn-info no-hover"></i>
-                                <a class="user" href="#"> Spartans Team</a>
                                 won
                                 <a href="#">Diwali Dhamaka</a>.
 
@@ -779,6 +765,13 @@
                         </tr>
                         </tbody>
                     </table>
+                    <div class="hr hr-double"></div>
+                    <a href="my_playbook.html" class="btn btn-sm btn-primary btn-white btn-round pull-right">
+                        <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
+                        <span class="bigger-110">Go to My Playbook</span>
+
+                        <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+                    </a>
                 </div>
                 <!-- /.widget-main -->
             </div>
@@ -800,6 +793,36 @@
             </h4>
 
             <div class="widget-toolbar">
+                <div class="inline dropdown-hover">
+                    <button class="btn btn-minier btn-primary">
+                        <span id="lb_filter_btn">Overall</span>
+                        <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+                    </button>
+
+                    <ul id="lb_filter"
+                        class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+                        <li class="active">
+                            <a href="#">
+                                <i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
+                                Overall
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+                                Division
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+                                Circle
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
                 <a href="#" data-action="collapse">
                     <i class="ace-icon fa fa-chevron-up"></i>
                 </a>
@@ -1025,6 +1048,58 @@
 </div>
 <!-- /.col -->
 </div>
+
+<div class="hr dotted hr-8"></div>
+
+<div class="row">
+    <div class="col-sm-5">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title blue smaller">
+                    <i class="ace-icon fa fa-tachometer orange"></i>
+                    My Reputation
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <div class="center">
+                                <span class="btn btn-app btn-md btn-grey no-hover">
+                                    <span class="line-height-1" id="emp_break_down_reputation">1</span>
+                                    <br />
+                                    <span class="line-height-1 smaller-90"> Badge(s) </span>
+                                </span>
+                                <span class="btn btn-app btn-md btn-grey no-hover">
+                                    <span class="line-height-1">3</span>
+                                    <br />
+                                    <span class="line-height-1 smaller-90"> Awards </span>
+                                </span>
+                    </div>
+
+                </div>
+
+            </div><!-- /.widget-main -->
+        </div><!-- /.widget-box -->
+        <div class="hr hr-double"></div>
+        <div class="pull-right">
+            <a href="#" class="btn btn-sm btn-primary btn-white btn-round">
+                <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
+                <span class="bigger-110">My Learning Game</span>
+
+                <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+</div>
+
 
 
 <!-- PAGE CONTENT ENDS -->
