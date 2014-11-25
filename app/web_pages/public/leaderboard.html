@@ -439,21 +439,21 @@
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active">
                             <a data-toggle="tab" href="#overall_lb">
-                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                <i class="green ace-icon fa fa-group bigger-120"></i>
                                 Overall Leader-board
                             </a>
                         </li>
 
                         <li>
                             <a data-toggle="tab" href="#campaign_lb">
-                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                <i class="green ace-icon fa fa-archive bigger-120"></i>
                                 Campaign Leader-board
                             </a>
                         </li>
 
                         <li>
                             <a data-toggle="tab" href="#hall_of_fame">
-                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                <i class="green ace-icon fa fa-bars bigger-120"></i>
                                 Hall of Fame
                             </a>
                         </li>
@@ -465,6 +465,36 @@
                             <div class="widget-box transparent">
                                 <div class="widget-header widget-header-flat">
                                     <div class="widget-toolbar no-border">
+                                        <div class="inline dropdown-hover">
+                                            <button class="btn btn-minier btn-primary">
+                                                <span id="lb_at_diff_levels_filter_btn" class="bn-filter">Regional</span>
+                                                <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+                                            </button>
+
+                                            <ul id="lb_at_diff_levels_filter" class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+                                                <li class="active">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
+                                                        Regional
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+                                                        Zonal
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+                                                        Circle
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
                                         <div class="inline dropdown-hover">
                                             <button class="btn btn-minier btn-primary">
                                                 <span id="lb_filter_btn" class="bn-filter">This Month</span>
@@ -506,20 +536,6 @@
                                                         Select Date Range
                                                     </a>
                                                 </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                                        By Peer Group
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                                        By Virtual Group
-                                                    </a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -527,13 +543,43 @@
 
                                 <div class="widget-body">
                                     <div class="widget-main">
+
+
+                                        <div class="row" style="display: none;" id="custom_date_range_picker_row">
+                                            <div class="col-xs-6 col-sm-4">
+                                                <label>Select Date (From-To)</label>
+                                                <div class="input-daterange input-group ">
+                                                    <input type="text" class="input-sm form-control" name="start" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-exchange"></i>
+																	</span>
+
+                                                    <input type="text" class="input-sm form-control" name="end" />
+                                                </div>
+
+                                                <!-- /section:plugins/date-time.datepicker -->
+                                            </div>
+                                        </div>
+                                        <div class="space-4"></div>
                                         <table id="top_3_players_table" class="bn-dtable table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Rank</th>
-                                                    <th>Name</th>
-                                                    <th>Team</th>
-                                                    <th>Points</th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-dashboard bigger-110"></i>
+                                                        Rank
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-user bigger-110"></i>
+                                                        Name
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-users bigger-110"></i>
+                                                        Team
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-sun-o bigger-110"></i>
+                                                        Points
+                                                    </th>
                                                 </tr>
                                             </thead>
 
@@ -585,10 +631,18 @@
                                         <table id="campaign_lb_table" class="bn-dtable table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Winner</th>
-                                                    <th>Team</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-user bigger-110"></i>
+                                                        Leader
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-users bigger-110"></i>
+                                                        Team
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-sun-o bigger-110"></i>
+                                                        Points
+                                                    </th>
                                                 </tr>
                                             </thead>
 
@@ -596,14 +650,12 @@
                                                 <tr>
                                                     <td><a href="#">John Mark</a></td>
                                                     <td>Red</td>
-                                                    <td>Nov 18 2014</td>
-                                                    <td>Nov 20 2014</td>
+                                                    <td>8500</td>
                                                 </tr>
                                                 <tr>
                                                     <td><a href="#">Jennifer Michael</a></td>
-                                                    <td>Red</td>
-                                                    <td>Nov 19 2014</td>
-                                                    <td>Nov 21 2014</td>
+                                                    <td>Green</td>
+                                                    <td>8000</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -646,9 +698,22 @@
                                         <table id="hof_overall_table" class="bn-dtable table table-striped table-bordered table-hover">
                                             <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Team</th>
-                                                <th>Points</th>
+                                                <th>
+                                                    <i class="ace-icon fa fa-user bigger-110"></i>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    <i class="ace-icon fa fa-users bigger-110"></i>
+                                                    Team
+                                                </th>
+                                                <th>
+                                                    <i class="ace-icon fa fa-sun-o bigger-110"></i>
+                                                    Points
+                                                </th>
+                                                <th>
+                                                    <i class="ace-icon fa fa-calendar bigger-110"></i>
+                                                    Period
+                                                </th>
                                             </tr>
                                             </thead>
 
@@ -657,16 +722,19 @@
                                                 <td><a href="#">John Mark</a></td>
                                                 <td>Red</td>
                                                 <td>8500</td>
+                                                <td>Aug 2014 - Sept 2014</td>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Susan Smith</a></td>
                                                 <td>Blue</td>
                                                 <td>8320</td>
+                                                <td>Sept 2014 - Oct 2014</td>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Jennifer Michael</a></td>
                                                 <td>Green</td>
                                                 <td>8000</td>
+                                                <td>Oct 2014 - Nov 2014</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -769,6 +837,20 @@ function resize_chosen(){
 
 jQuery(function($) {
 
+    $('.input-daterange').datepicker({autoclose:true});
+
+    $('input[name=date-range-picker]').daterangepicker({
+        'applyClass' : 'btn-sm btn-success',
+        'cancelClass' : 'btn-sm btn-default',
+        locale: {
+            applyLabel: 'Apply',
+            cancelLabel: 'Cancel'
+        }
+    })
+            .prev().on(ace.click_event, function(){
+                $(this).next().focus();
+            });
+
     $('.chosen-select').chosen({allow_single_deselect:true});
     //resize the chosen on window resize
     resize_chosen();
@@ -850,6 +932,9 @@ function employee_name() {
 
 $(function () {
 
+
+
+
     employee_name();
 
     //TODO: write single fn.
@@ -862,19 +947,42 @@ $(function () {
 
         $("#lb_filter_btn").text($(this).text());
 
-        $("#top_3_players_table").find("tbody").empty();
+        //console.log("text :- " + $(this).text());
 
-        var top_3_player_row;
-        for(var i=0; i<5; i++) {
-            top_3_player_row = '<tr>' +
-                    '<td>'+(i+1)+'</td>' +
-                    '<td><a href="#">John Mark</a></td>'+
-                    '<td>Red</td>' +
-                    '<td>8500</td>' +
-                    '</tr>';
-
-            $("#top_3_players_table").find("tbody").append(top_3_player_row);
+        if ($(this).text().contains("Range")) {
+            console.log("1");
+            $("#custom_date_range_picker_row").show();
         }
+        else{
+            console.log("2");
+            $("#custom_date_range_picker_row").hide();
+        }
+
+//        $("#top_3_players_table").find("tbody").empty();
+
+//        var top_3_player_row;
+//        for(var i=0; i<5; i++) {
+//            top_3_player_row = '<tr>' +
+//                    '<td>'+(i+1)+'</td>' +
+//                    '<td><a href="#">John Mark</a></td>'+
+//                    '<td>Red</td>' +
+//                    '<td>8500</td>' +
+//                    '</tr>';
+//
+//            $("#top_3_players_table").find("tbody").append(top_3_player_row);
+//        }
+
+    });
+
+
+    $("#lb_at_diff_levels_filter li").click(function() {
+        $("#lb_at_diff_levels_filter").find("li").removeClass("active");
+        $("#lb_at_diff_levels_filter").find("li").find(".fa-caret-right").addClass("invisible");
+
+        $(this).addClass("active");
+        $(this).find(".fa-caret-right").removeClass("invisible");
+
+        $("#lb_at_diff_levels_filter_btn").text($(this).text());
 
     });
 
