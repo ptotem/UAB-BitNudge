@@ -439,21 +439,21 @@
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active">
                             <a data-toggle="tab" href="#overall_lb">
-                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                <i class="green ace-icon fa fa-group bigger-120"></i>
                                 Overall Leader-board
                             </a>
                         </li>
 
                         <li>
                             <a data-toggle="tab" href="#campaign_lb">
-                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                <i class="green ace-icon fa fa-archive bigger-120"></i>
                                 Campaign Leader-board
                             </a>
                         </li>
 
                         <li>
                             <a data-toggle="tab" href="#hall_of_fame">
-                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                <i class="green ace-icon fa fa-bars bigger-120"></i>
                                 Hall of Fame
                             </a>
                         </li>
@@ -465,6 +465,36 @@
                             <div class="widget-box transparent">
                                 <div class="widget-header widget-header-flat">
                                     <div class="widget-toolbar no-border">
+                                        <div class="inline dropdown-hover">
+                                            <button class="btn btn-minier btn-primary">
+                                                <span id="lb_at_diff_levels_filter_btn" class="bn-filter">Regional</span>
+                                                <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+                                            </button>
+
+                                            <ul id="lb_at_diff_levels_filter" class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+                                                <li class="active">
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
+                                                        Regional
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+                                                        Zonal
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+                                                        Circle
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
                                         <div class="inline dropdown-hover">
                                             <button class="btn btn-minier btn-primary">
                                                 <span id="lb_filter_btn" class="bn-filter">This Month</span>
@@ -506,20 +536,6 @@
                                                         Select Date Range
                                                     </a>
                                                 </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                                        By Peer Group
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                                        By Virtual Group
-                                                    </a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -530,10 +546,22 @@
                                         <table id="top_3_players_table" class="bn-dtable table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Rank</th>
-                                                    <th>Name</th>
-                                                    <th>Team</th>
-                                                    <th>Points</th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-dashboard bigger-110"></i>
+                                                        Rank
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-user bigger-110"></i>
+                                                        Name
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-users bigger-110"></i>
+                                                        Team
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-sun-o bigger-110"></i>
+                                                        Points
+                                                    </th>
                                                 </tr>
                                             </thead>
 
@@ -585,10 +613,18 @@
                                         <table id="campaign_lb_table" class="bn-dtable table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Winner</th>
-                                                    <th>Team</th>
-                                                    <th>Start Date</th>
-                                                    <th>End Date</th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-user bigger-110"></i>
+                                                        Leader
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-users bigger-110"></i>
+                                                        Team
+                                                    </th>
+                                                    <th>
+                                                        <i class="ace-icon fa fa-sun-o bigger-110"></i>
+                                                        Points
+                                                    </th>
                                                 </tr>
                                             </thead>
 
@@ -596,14 +632,12 @@
                                                 <tr>
                                                     <td><a href="#">John Mark</a></td>
                                                     <td>Red</td>
-                                                    <td>Nov 18 2014</td>
-                                                    <td>Nov 20 2014</td>
+                                                    <td>8500</td>
                                                 </tr>
                                                 <tr>
                                                     <td><a href="#">Jennifer Michael</a></td>
-                                                    <td>Red</td>
-                                                    <td>Nov 19 2014</td>
-                                                    <td>Nov 21 2014</td>
+                                                    <td>Green</td>
+                                                    <td>8000</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -646,9 +680,22 @@
                                         <table id="hof_overall_table" class="bn-dtable table table-striped table-bordered table-hover">
                                             <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Team</th>
-                                                <th>Points</th>
+                                                <th>
+                                                    <i class="ace-icon fa fa-user bigger-110"></i>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    <i class="ace-icon fa fa-users bigger-110"></i>
+                                                    Team
+                                                </th>
+                                                <th>
+                                                    <i class="ace-icon fa fa-sun-o bigger-110"></i>
+                                                    Points
+                                                </th>
+                                                <th>
+                                                    <i class="ace-icon fa fa-calendar bigger-110"></i>
+                                                    Period
+                                                </th>
                                             </tr>
                                             </thead>
 
@@ -657,16 +704,19 @@
                                                 <td><a href="#">John Mark</a></td>
                                                 <td>Red</td>
                                                 <td>8500</td>
+                                                <td>Aug 2014 - Nov 2014</td>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Susan Smith</a></td>
                                                 <td>Blue</td>
                                                 <td>8320</td>
+                                                <td>Sept 2014 - Nov 2014</td>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Jennifer Michael</a></td>
                                                 <td>Green</td>
                                                 <td>8000</td>
+                                                <td>Oct 2014 - Nov 2014</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -875,6 +925,18 @@ $(function () {
 
             $("#top_3_players_table").find("tbody").append(top_3_player_row);
         }
+
+    });
+
+
+    $("#lb_at_diff_levels_filter li").click(function() {
+        $("#lb_at_diff_levels_filter").find("li").removeClass("active");
+        $("#lb_at_diff_levels_filter").find("li").find(".fa-caret-right").addClass("invisible");
+
+        $(this).addClass("active");
+        $(this).find(".fa-caret-right").removeClass("invisible");
+
+        $("#lb_at_diff_levels_filter_btn").text($(this).text());
 
     });
 
