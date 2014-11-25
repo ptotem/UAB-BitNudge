@@ -86,6 +86,50 @@
     <div class="navbar-buttons navbar-header pull-right" role="navigation">
         <ul class="nav ace-nav">
             <!-- #section:basics/navbar.user_menu -->
+            <li class="purple">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                    <span class="badge badge-important">2</span>
+                </a>
+
+                <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                    <li class="dropdown-header">
+                        <i class="ace-icon fa fa-exclamation-triangle"></i>
+                        2 Notifications
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+												New Challenges
+											</span>
+                                <span class="pull-right badge badge-success">+2</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-info fa fa-bullseye"></i>
+												Goals
+											</span>
+                                <span class="pull-right badge badge-info">+2</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="dropdown-footer">
+                        <a href="#">
+                            See all notifications
+                            <i class="ace-icon fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="light-blue">
                 <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                     <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
@@ -656,7 +700,7 @@
                                 '<td class="text-center aligned">'+
                                 '<div class="block" style="width: 50px;">' +
                                 '<a href="employee_edit_form.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-pencil"></i></a>'+
-                                '<a href="employee_show.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
+                                '<a href="profile_page.html?userId='+user._id+'"><i class="ace-icon glyphicon glyphicon-info-sign"></i></a>'+
                                 '</div>' +
                                 '</td>'+
                                 '</tr>';

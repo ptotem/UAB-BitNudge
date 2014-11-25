@@ -14,6 +14,8 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
+    <link rel="stylesheet" href="assets/css/datepicker.css"/>
+    <link rel="stylesheet" href="assets/css/chosen.css"/>
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
@@ -31,6 +33,8 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css"/>
     <![endif]-->
 
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -42,123 +46,132 @@
     <script src="assets/js/html5shiv.min.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        .closebox {
+            padding: 1px 4px;
+            top: 2px;
+            right: 3px;
+        }
+    </style>
+
 </head>
 
 <body class="no-skin">
 <!-- #section:basics/navbar.layout -->
 <div id="navbar" class="navbar navbar-default">
-<script type="text/javascript">
-    try {
-        ace.settings.check('navbar', 'fixed')
-    } catch (e) {
-    }
-</script>
+    <script type="text/javascript">
+        try {
+            ace.settings.check('navbar', 'fixed')
+        } catch (e) {
+        }
+    </script>
 
-<div class="navbar-container" id="navbar-container">
-<!-- #section:basics/sidebar.mobile.toggle -->
-<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
-    <span class="sr-only">Toggle sidebar</span>
+    <div class="navbar-container" id="navbar-container">
+        <!-- #section:basics/sidebar.mobile.toggle -->
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+            <span class="sr-only">Toggle sidebar</span>
 
-    <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
 
-    <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
 
-    <span class="icon-bar"></span>
-</button>
+            <span class="icon-bar"></span>
+        </button>
 
-<!-- /section:basics/sidebar.mobile.toggle -->
-<div class="navbar-header pull-left">
-    <!-- #section:basics/navbar.layout.brand -->
-    <a href="#" class="navbar-brand">
-        <small>
-            <i class="fa fa-leaf"></i>
-            BitNudge
-        </small>
-    </a>
+        <!-- /section:basics/sidebar.mobile.toggle -->
+        <div class="navbar-header pull-left">
+            <!-- #section:basics/navbar.layout.brand -->
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="fa fa-leaf"></i>
+                    BitNudge
+                </small>
+            </a>
 
-    <!-- /section:basics/navbar.layout.brand -->
+            <!-- /section:basics/navbar.layout.brand -->
 
-    <!-- #section:basics/navbar.toggle -->
+            <!-- #section:basics/navbar.toggle -->
 
-    <!-- /section:basics/navbar.toggle -->
-</div>
+            <!-- /section:basics/navbar.toggle -->
+        </div>
 
-<!-- #section:basics/navbar.dropdown -->
-    <div class="navbar-buttons navbar-header pull-right" role="navigation">
-        <ul class="nav ace-nav">
-            <!-- #section:basics/navbar.user_menu -->
-            <li class="purple">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-                    <span class="badge badge-important">2</span>
-                </a>
+        <!-- #section:basics/navbar.dropdown -->
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <!-- #section:basics/navbar.user_menu -->
+                <li class="purple">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                        <span class="badge badge-important">2</span>
+                    </a>
 
-                <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-                    <li class="dropdown-header">
-                        <i class="ace-icon fa fa-exclamation-triangle"></i>
-                        2 Notifications
-                    </li>
+                    <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="ace-icon fa fa-exclamation-triangle"></i>
+                            2 Notifications
+                        </li>
 
-                    <li>
-                        <a href="#">
-                            <div class="clearfix">
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
 											<span class="pull-left">
 												<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
 												New Challenges
 											</span>
-                                <span class="pull-right badge badge-success">+2</span>
-                            </div>
-                        </a>
-                    </li>
+                                    <span class="pull-right badge badge-success">+2</span>
+                                </div>
+                            </a>
+                        </li>
 
-                    <li>
-                        <a href="#">
-                            <div class="clearfix">
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
 											<span class="pull-left">
 												<i class="btn btn-xs no-hover btn-info fa fa-bullseye"></i>
 												Goals
 											</span>
-                                <span class="pull-right badge badge-info">+2</span>
-                            </div>
-                        </a>
-                    </li>
+                                    <span class="pull-right badge badge-info">+2</span>
+                                </div>
+                            </a>
+                        </li>
 
-                    <li class="dropdown-footer">
-                        <a href="#">
-                            See all notifications
-                            <i class="ace-icon fa fa-arrow-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="light-blue">
-                <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                    <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+                        <li class="dropdown-footer">
+                            <a href="#">
+                                See all notifications
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <!--<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />-->
 								<span class="user-info">
 									<small>Welcome,</small>
 									<span id="user_name"></span>
 								</span>
 
-                    <i class="ace-icon fa fa-caret-down"></i>
-                </a>
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
 
-                <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                    <li>
-                        <a onclick="logout()">
-                            <i class="ace-icon fa fa-power-off"></i>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a onclick="logout()">
+                                <i class="ace-icon fa fa-power-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-            <!-- /section:basics/navbar.user_menu -->
-        </ul>
+                <!-- /section:basics/navbar.user_menu -->
+            </ul>
+        </div>
+
+        <!-- /section:basics/navbar.dropdown -->
     </div>
-
-<!-- /section:basics/navbar.dropdown -->
-</div>
-<!-- /.navbar-container -->
+    <!-- /.navbar-container -->
 </div>
 
 <!-- /section:basics/navbar.layout -->
@@ -171,7 +184,7 @@
 </script>
 
 <!-- #section:basics/sidebar -->
-<div id="sidebar" class="sidebar                  responsive">
+<div id="sidebar" class="sidebar responsive">
     <script type="text/javascript">
         try {
             ace.settings.check('sidebar', 'fixed')
@@ -305,7 +318,8 @@
 
             <b class="arrow"></b>
         </li>
-    </ul><!-- /.nav-list -->
+    </ul>
+    <!-- /.nav-list -->
 
     <!-- #section:basics/sidebar.layout.minimize -->
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -332,19 +346,11 @@
         } catch (e) {
         }
     </script>
-
-
-    <!-- /.breadcrumb -->
-
-    <!-- #section:basics/content.searchbox -->
-
-    <!-- /.nav-search -->
-
-    <!-- /section:basics/content.searchbox -->
 </div>
 
 <!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
+
 <!-- #section:settings.box -->
 <div class="ace-settings-container" id="ace-settings-container">
     <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
@@ -437,168 +443,241 @@
     <!-- /.ace-settings-box -->
 </div>
 <!-- /.ace-settings-container -->
-
 <!-- /section:settings.box -->
+
 <div class="page-content-area">
+<div class="page-header">
+    <h1>Submission Page</h1>
+</div>
+<!-- /.page-header -->
 
-    <!-- /.page-header -->
-    <!--row 1-->
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- PAGE CONTENT BEGINS -->
-            <!--<row 1 >-->
-            <div class="row">
+<div class="row">
+<div class="col-xs-12">
+<!-- PAGE CONTENT BEGINS -->
+<div>
+<div id="user-profile-1" class="user-profile row">
+<div class="tabbable">
+<ul class="nav nav-tabs padding-18">
+    <li class="active">
+        <a data-toggle="tab" href="#activities">
+            <i class="green ace-icon fa fa-user bigger-120"></i>
+            Activities
+        </a>
+    </li>
 
+    <li>
+        <a data-toggle="tab" href="#goal_submission">
+            <i class="orange ace-icon fa fa-rss bigger-120"></i>
+            Goal Submissions
+        </a>
+    </li>
+    <li>
+        <a data-toggle="tab" href="#other_submission">
+            <i class=" blue ace-icon fa fa-users bigger-120"></i>
+            Other submissions
+        </a>
+    </li>
+</ul>
+<div class="tab-content no-border padding-24">
+    <div id="activities" class="tab-pane in active">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 widget-container-col">
+                <!-- #section:custom/widget-box -->
+                <div class="widget-body">
+                    <div class="widget-main">
 
-                    <div class="col-lg-12 col-md-12 widget-container-col">
-                        <!-- #section:custom/widget-box -->
-                        <div class="widget-box">
-                            <div class="widget-header">
-                                <h5 class="widget-title">Add New Badge</h5>
+                        <form id="activities_form" class="form-horizontal themed">
+                            <fieldset>
+                                <div class="form-group">
 
-                                <!-- #section:custom/widget-box.toolbar -->
-                                <div class="widget-toolbar">
-                                    <div class="widget-menu">
-                                        <a href="#" data-action="settings" data-toggle="dropdown">
-                                            <i class="ace-icon fa fa-bars"></i>
-                                        </a>
-
-                                        <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                                            <li>
-                                                <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                                            </li>
-
-                                            <li>
-                                                <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                                            </li>
-                                        </ul>
+                                    <div class="col-md-3">
+                                        <label for="activity_name">Name</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" id="activity_name"/>
                                     </div>
 
-                                    <a href="#" data-action="fullscreen" class="orange2">
-                                        <i class="ace-icon fa fa-expand"></i>
-                                    </a>
-
-                                    <a href="#" data-action="reload">
-                                        <i class="ace-icon fa fa-refresh"></i>
-                                    </a>
-
-                                    <a href="#" data-action="collapse">
-                                        <i class="ace-icon fa fa-chevron-up"></i>
-                                    </a>
-
-                                    <a href="#" data-action="close">
-                                        <i class="ace-icon fa fa-times"></i>
-                                    </a>
                                 </div>
-
-                                <!-- /section:custom/widget-box.toolbar -->
-                            </div>
-
-                            <div class="widget-body">
-                                <div class="widget-main">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#" style="padding: 5px;"><i
-                                                    class="ace-icon glyphicon glyphicon-plus"></i>Add New Badge</a>
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label for="activity_select">Select Action</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select id="activity_select" class="with-search col-md-12">
+                                            <option value="A1">Action 1</option>
+                                            <option value="A2">Action 2</option>
+                                            <option value="A3">Action 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label class="control-label"> Date</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group col-md-12">
+                                            <input class="form-control date-picker" id="activity-date-js" type="text"
+                                                   data-date-format="dd-mm-yyyy"/>
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- /section:custom/widget-box -->
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- /.row 1 end -->
-                <!--<row 2 >-->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 widget-container-col">
-                        <!-- #section:custom/widget-box -->
-                        <div class="widget-box">
-                            <div class="widget-header">
-                                <h5 class="widget-title">Badges list</h5>
-
-                                <!-- #section:custom/widget-box.toolbar -->
-                                <div class="widget-toolbar">
-                                    <div class="widget-menu">
-                                        <a href="#" data-action="settings" data-toggle="dropdown">
-                                            <i class="ace-icon fa fa-bars"></i>
-                                        </a>
-
-                                        <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
-                                            <li>
-                                                <a data-toggle="tab" href="#dropdown1">Option#1</a>
-                                            </li>
-
-                                            <li>
-                                                <a data-toggle="tab" href="#dropdown2">Option#2</a>
-                                            </li>
-                                        </ul>
                                     </div>
 
-                                    <a href="#" data-action="fullscreen" class="orange2">
-                                        <i class="ace-icon fa fa-expand"></i>
-                                    </a>
-
-                                    <a href="#" data-action="reload">
-                                        <i class="ace-icon fa fa-refresh"></i>
-                                    </a>
-
-                                    <a href="#" data-action="collapse">
-                                        <i class="ace-icon fa fa-chevron-up"></i>
-                                    </a>
-
-                                    <a href="#" data-action="close">
-                                        <i class="ace-icon fa fa-times"></i>
-                                    </a>
                                 </div>
-
-                                <!-- /section:custom/widget-box.toolbar -->
-                            </div>
-
-                            <div class="widget-body">
-                                <div class="widget-main">
-                                    <table class="table table-bordered table-hover responsive" id="badge_master_list">
-                                        <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <!--<th></th>-->
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
+                                <div class="form-actions">
+                                    <button id="activity_btn" type="submit" class="btn medium btn-primary">
+                                        Submit
+                                    </button>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- /section:custom/widget-box -->
+                            </fieldset>
+                        </form>
                     </div>
-
-
                 </div>
-                <!-- /.row 12 end -->
-                <!-- PAGE CONTENT ENDS -->
+                <!-- /section:custom/widget-box -->
             </div>
-            <!-- /.col -->
+
+
         </div>
-        <!-- /1 row -->
+    </div>
+    <!-- /#activities -->
+    <div id="goal_submission" class="tab-pane">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 widget-container-col">
+                <!-- #section:custom/widget-box -->
+
+
+                <div class="widget-body">
+                    <div class="widget-main">
+
+                        <form id="goal_form" class="form-horizontal themed">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label for="goal_select">Select Goal</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select id="goal_select" class="with-search col-md-12">
+                                            <option value="A1">Goal 1</option>
+                                            <option value="A2">Goal 2</option>
+                                            <option value="A3">Goal 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="col-md-3">
+                                        <label for="goal_value">Enter value</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" id="goal_value"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <div class="col-md-3">
+                                        <label class="control-label"> Date</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group col-md-12">
+                                            <input class="form-control date-picker" id="goal-date-js" type="text"
+                                                   data-date-format="dd-mm-yyyy"/>
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button id="goal_btn" type="submit" class="btn medium btn-primary">
+                                        Submit
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- /section:custom/widget-box -->
+            </div>
+
+
+        </div>
+    </div>
+    <!-- /#goals -->
+    <div id="other_submission" class="tab-pane">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 widget-container-col">
+                <!-- #section:custom/widget-box -->
+
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <form id="other_submission_form" class="form-horizontal themed">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label for="other_submission_select">Types of Report</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select id="other_submission_select" class="with-search col-md-12">
+                                            <option value="A1">Call report</option>
+                                            <option value="A2">Pipeline report</option>
+                                            <option value="A3">Other reports</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label for="id-input-upload-others">Upload File</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="file" id="id-input-upload-others"/>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button id="other_submission_btn" type="submit" class="btn medium btn-primary">
+                                        Submit
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <!-- /section:custom/widget-box -->
+            </div>
+
+
+        </div>
+
 
     </div>
-    <!-- /.page-content-area -->
+    <!-- /#other submission -->
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE CONTENT ENDS -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.page-content-area -->
 </div>
 <!-- /.page-content -->
 </div>
 <!-- /.main-content -->
-</div>
 
 
 <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
-
+</div>
 <!-- /.main-container -->
 
 <!-- basic scripts -->
@@ -623,6 +702,8 @@
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
+<script src="assets/js/chosen.jquery.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -633,67 +714,56 @@
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    function employee_name() {
-        $.ajax({
-            url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
-//            url: remote_host + "abilities",
-            type: 'GET',
-            dataType: 'json',
-            success: function (res) {
-                $("#user_name").text(res.name);
-            },
-            error: function (e, msg) {
-                //processError(e,msg);
-            }
-        });
-    }
 
-    function get_badges(){
-        $.ajax({
-            //   /org/:orgId/medals
-            url: remote_host+"org/"+urlParams.orgId+"/medals",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if(res){
-                    var row_html, role, reportsTo, orgTags = [], teams = [];
-                    res.forEach(function(medal){
-                        row_html ='<tr>'+
-                                '<td class="text-center">'+medal.name+'</td>'+
-                                //'<td class="text-center">Links</td>'+
-                                '</tr>';
-
-                        $("#badge_master_list").find('tbody').append(row_html);
-
-                    });
-                    var oTable1 =
-                            $('#badge_master_list')
-                                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-                                    .dataTable( {
-                                        "bPaginate": true,
-                                        "bFilter": true,
-                                        "bLengthChange": true,
-                                        "bSort": false,
-                                        "iDisplayLength": 10
-                                    } );
-
-                }
-            }
-            ,
-            error: function(e , msg){
-                //processError(e,msg);
-            }
+    function show_notification(text) {
+        $.jGrowl(text, {
+            header: 'Notification',
+            sticky: false,
+            life: 3000,
+            speed: 500,
+            theme: 'with-icon',
+            position: 'top-right' //this is default position
+//            easing: 'easeOutBack',
+//            animateOpen: {
+//                height: "show"
+//            },
+//            animateClose: {
+//                opacity: 'hide'
+//            }
         });
     }
 
     $(function () {
-        get_badges();
-        employee_name();
+
+        var emp_id = getParameterByName("userId");
+        if ((getParameterByName("showNoti") != "") && (getParameterByName("showNoti") != null)) {
+            show_notification(getParameterByName("showNoti"));
+        }
+
     });
 
 
     jQuery(function ($) {
+        $('.date-picker').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        })
+                .next().on(ace.click_event, function () {
+                    $(this).prev().focus();
+                });
 
+        $(' #id-input-upload-others').ace_file_input({
+            no_file: 'No File ...',
+            btn_choose: 'Choose',
+            btn_change: 'Change',
+            droppable: false,
+            onchange: null,
+            thumbnail: false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
         $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
             var color_class = $(this).find('option:selected').data('class');
             var new_class = 'widget-box';
@@ -759,54 +829,7 @@
         // widget boxes
         // widget box drag & drop example
 
-    });
-</script>
-<script type="text/javascript">
-    var scripts = [null, "assets/js/jquery.dataTables.min.js", "assets/js/jquery.dataTables.bootstrap.js", null]
-    ace.load_ajax_scripts(scripts, function () {
-        //inline scripts related to this page
-        jQuery(function ($) {
 
-            /**
-             var tableTools = new $.fn.dataTable.TableTools( oTable1, {
-			"sSwfPath": "../../copy_csv_xls_pdf.swf",
-	        "buttons": [
-	            "copy",
-	            "csv",
-	            "xls",
-				"pdf",
-	            "print"
-	        ]
-	    } );
-             $( tableTools.fnContainer() ).insertBefore('#sample-table-2');
-             */
-
-
-            $(document).on('click', 'th input:checkbox', function () {
-                var that = this;
-                $(this).closest('table').find('tr > td:first-child input:checkbox')
-                        .each(function () {
-                            this.checked = that.checked;
-                            $(this).closest('tr').toggleClass('selected');
-                        });
-            });
-
-
-            $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-            function tooltip_placement(context, source) {
-                var $source = $(source);
-                var $parent = $source.closest('table')
-                var off1 = $parent.offset();
-                var w1 = $parent.width();
-
-                var off2 = $source.offset();
-                //var w2 = $source.width();
-
-                if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
-                return 'left';
-            }
-
-        })
     });
 </script>
 
@@ -822,6 +845,10 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets/js/jquery.jgrowl.min.js"></script>
+
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>

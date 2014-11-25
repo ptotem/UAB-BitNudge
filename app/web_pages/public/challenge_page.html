@@ -96,6 +96,50 @@
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
                 <!-- #section:basics/navbar.user_menu -->
+                <li class="purple">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                        <span class="badge badge-important">2</span>
+                    </a>
+
+                    <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="ace-icon fa fa-exclamation-triangle"></i>
+                            2 Notifications
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+												New Challenges
+											</span>
+                                    <span class="pull-right badge badge-success">+2</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-info fa fa-bullseye"></i>
+												Goals
+											</span>
+                                    <span class="pull-right badge badge-info">+2</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="dropdown-footer">
+                            <a href="#">
+                                See all notifications
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <!--<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />-->
@@ -409,7 +453,7 @@
 <!-- PAGE CONTENT BEGINS -->
 
 <div class="row">
-<div class="col-sm-12">
+
 <div class="col-sm-12">
 <!-- #section:elements.tab.position -->
 <div class="tabbable tabs-left">
@@ -424,14 +468,14 @@
     <li>
         <a data-toggle="tab" href="#past_challenge">
             <i class="blue ace-icon fa fa-user bigger-110"></i>
-            Throw a <br>Challenge
+            Past<br>Challenge
         </a>
     </li>
 
     <li>
         <a data-toggle="tab" href="#throw_challenge">
             <i class="ace-icon fa fa-rocket"></i>
-            Past <br>Challenges
+            Throw <br>Challenges
         </a>
     </li>
 </ul>
@@ -451,9 +495,7 @@
 
     <li>
         <a data-toggle="tab" href="#chal_accepted">
-
             Challenges Accepted by the User
-
         </a>
     </li>
     <li>
@@ -476,136 +518,133 @@
 
 <div class="tab-content">
 <div id="global_chal" class="tab-pane fade in active">
-<div>
-<table id="gobal_challenge_table" class="table table-striped table-bordered table-hover">
-<thead>
-<tr>
-    <th>Title</th>
-    <th>Start Date</th>
-    <th>End Date</th>
+    <div>
+        <table id="gobal_challenge_table" class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Start Date</th>
+                <th>End Date</th>
 
-    <th>
-        Scope
-    </th>
-    <th>Thrown By</th>
+                <th>
+                    Scope
+                </th>
+                <th>Thrown By</th>
 
-    <th>Action</th>
-</tr>
-</thead>
+                <th>Action</th>
+            </tr>
+            </thead>
 
-<tbody>
-<tr>
-    <td>
-        Challenge 1
-    </td>
-    <td>5 Nov 2014</td>
-    <td>18 Dec 2014</td>
-    <td>Organization</td>
+            <tbody>
+            <tr>
+                <td>
+                    Challenge 1
+                </td>
+                <td>5 Nov 2014</td>
+                <td>18 Dec 2014</td>
+                <td>Organization</td>
 
-    <td class="hidden-480">
-        User
-    </td>
+                <td class="hidden-480">
+                    User
+                </td>
 
-    <td>
-        <button class="btn btn-xs btn-warning">
-            <i class="ace-icon fa fa-check bigger-110"></i>
-            Accept
+                <td>
+                    <button class="btn btn-xs btn-warning">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Accept
 
-        </button>
-        <button class="btn btn-xs btn-danger">
-            <i class="ace-icon fa fa-crosshairs bigger-110"></i>
-            Reject
+                    </button>
+                    <button class="btn btn-xs btn-danger">
+                        <i class="ace-icon fa fa-crosshairs bigger-110"></i>
+                        Reject
 
-        </button>
+                    </button>
 
-    </td>
-</tr>
-<tr>
-    <td>
-        Challenge 2
-    </td>
-    <td>2 Jan 2014</td>
-    <td>5 March 2014</td>
-    <td>Team</td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Challenge 2
+                </td>
+                <td>2 Jan 2014</td>
+                <td>5 March 2014</td>
+                <td>Team</td>
 
-    <td>
-        Team
-    </td>
+                <td>
+                    Team
+                </td>
 
-    <td>
-        <button class="btn btn-xs btn-warning">
-            <i class="ace-icon fa fa-check bigger-110"></i>
-            Accept
+                <td>
+                    <button class="btn btn-xs btn-warning">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Accept
 
-        </button>
-        <button class="btn btn-xs btn-danger">
-            <i class="ace-icon fa fa-crosshairs bigger-110"></i>
-            Reject
+                    </button>
+                    <button class="btn btn-xs btn-danger">
+                        <i class="ace-icon fa fa-crosshairs bigger-110"></i>
+                        Reject
 
-        </button>
+                    </button>
 
-    </td>
-</tr>
-<tr>
-    <td>
-        Challenge 3
-    </td>
-    <td>12 March 2014</td>
-    <td>15 April 2014</td>
-    <td>Organization</td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Challenge 3
+                </td>
+                <td>12 March 2014</td>
+                <td>15 April 2014</td>
+                <td>Organization</td>
 
-    <td class="hidden-480">
-        Team
-    </td>
+                <td class="hidden-480">
+                    Team
+                </td>
 
-    <td>
-        <button class="btn btn-xs btn-warning">
-            <i class="ace-icon fa fa-check bigger-110"></i>
-            Accept
+                <td>
+                    <button class="btn btn-xs btn-warning">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Accept
 
-        </button>
-        <button class="btn btn-xs btn-danger">
-            <i class="ace-icon fa fa-crosshairs bigger-110"></i>
-            Reject
+                    </button>
+                    <button class="btn btn-xs btn-danger">
+                        <i class="ace-icon fa fa-crosshairs bigger-110"></i>
+                        Reject
 
-        </button>
+                    </button>
 
-    </td>
-</tr>
-<tr>
-    <td>
-        Challenge 4
-    </td>
-    <td>4 Oct 2014</td>
-    <td>26 Dec 2014</td>
-    <td>Organization</td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Challenge 4
+                </td>
+                <td>4 Oct 2014</td>
+                <td>26 Dec 2014</td>
+                <td>Organization</td>
 
-    <td class="hidden-480">
-        User
-    </td>
+                <td class="hidden-480">
+                    User
+                </td>
 
-    <td>
-        <button class="btn btn-xs btn-warning">
-            <i class="ace-icon fa fa-check bigger-110"></i>
-            Accept
+                <td>
+                    <button class="btn btn-xs btn-warning">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        Accept
 
-        </button>
-        <button class="btn btn-xs btn-danger">
-            <i class="ace-icon fa fa-crosshairs bigger-110"></i>
-            Reject
+                    </button>
+                    <button class="btn btn-xs btn-danger">
+                        <i class="ace-icon fa fa-crosshairs bigger-110"></i>
+                        Reject
 
-        </button>
+                    </button>
 
-    </td>
-</tr>
-
-
+                </td>
+            </tr>
 
 
-
-</tbody>
-</table>
-</div>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 
@@ -1291,9 +1330,10 @@
 </div>
 
 <!-- /section:elements.tab.position -->
-</div><!-- /.col -->
-<!-- /.widget-box -->
 </div>
+<!-- /.col -->
+<!-- /.widget-box -->
+
 <!-- /.col -->
 
 </div>
@@ -1340,8 +1380,8 @@
                         <td>
                             Challenge 1
                         </td>
-                        <td>5-6-2013</td>
-                        <td class="hidden-480">16-9-2013</td>
+                        <td>5 June 2013</td>
+                        <td class="hidden-480">16 Sept 2013</td>
                     </tr>
 
                     <tr>
@@ -1355,8 +1395,8 @@
                         <td>
                             Challenge 2
                         </td>
-                        <td>6-8-2014</td>
-                        <td>7-12-2014</td>
+                        <td>6 Oct 2014</td>
+                        <td>7 Dec 2014</td>
 
                     </tr>
 
@@ -1371,8 +1411,8 @@
                         <td>
                             Challenge 3
                         </td>
-                        <td>3-9-2013</td>
-                        <td>5-12-2013</td>
+                        <td>3 Feb 2013</td>
+                        <td>5 Dec 2013</td>
 
                     </tr>
 
@@ -1387,8 +1427,8 @@
                         <td>
                             Challenge 4
                         </td>
-                        <td>6-2-2008</td>
-                        <td>5-4-2008</td>
+                        <td>6 Feb 2008</td>
+                        <td>5 March 2008</td>
 
                     </tr>
 
@@ -1406,29 +1446,29 @@
                     Select
                 </button>
                 <!--<ul class="pagination pull-right no-margin">-->
-                    <!--<li class="prev disabled">-->
-                        <!--<a href="#">-->
-                            <!--<i class="ace-icon fa fa-angle-double-left"></i>-->
-                        <!--</a>-->
-                    <!--</li>-->
+                <!--<li class="prev disabled">-->
+                <!--<a href="#">-->
+                <!--<i class="ace-icon fa fa-angle-double-left"></i>-->
+                <!--</a>-->
+                <!--</li>-->
 
-                    <!--<li class="active">-->
-                        <!--<a href="#">1</a>-->
-                    <!--</li>-->
+                <!--<li class="active">-->
+                <!--<a href="#">1</a>-->
+                <!--</li>-->
 
-                    <!--<li>-->
-                        <!--<a href="#">2</a>-->
-                    <!--</li>-->
+                <!--<li>-->
+                <!--<a href="#">2</a>-->
+                <!--</li>-->
 
-                    <!--<li>-->
-                        <!--<a href="#">3</a>-->
-                    <!--</li>-->
+                <!--<li>-->
+                <!--<a href="#">3</a>-->
+                <!--</li>-->
 
-                    <!--<li class="next">-->
-                        <!--<a href="#">-->
-                            <!--<i class="ace-icon fa fa-angle-double-right"></i>-->
-                        <!--</a>-->
-                    <!--</li>-->
+                <!--<li class="next">-->
+                <!--<a href="#">-->
+                <!--<i class="ace-icon fa fa-angle-double-right"></i>-->
+                <!--</a>-->
+                <!--</li>-->
                 <!--</ul>-->
             </div>
         </div>
@@ -1509,7 +1549,7 @@
                 "bSort": false,
                 "iDisplayLength": 3
             });
-$('#throw_challenge_table')
+    $('#throw_challenge_table')
         //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
             .dataTable({
                 "bPaginate": true,
@@ -1518,7 +1558,7 @@ $('#throw_challenge_table')
                 "bSort": false,
                 "iDisplayLength": 3
             });
-$('#personal_challenge_table')
+    $('#personal_challenge_table')
         //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
             .dataTable({
                 "bPaginate": true,
@@ -1563,7 +1603,7 @@ $('#personal_challenge_table')
                 "bSort": false,
                 "iDisplayLength": 3
             });
-$('#throw_challenge_dtable')
+    $('#throw_challenge_dtable')
         //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
             .dataTable({
                 "bPaginate": true,
@@ -1581,16 +1621,6 @@ $('#throw_challenge_dtable')
                 "bSort": false,
                 "iDisplayLength": 3
             });
-
-
-
-
-
-
-
-
-
-
 
 
     $(window).on('resize.scroll_reset', function () {
@@ -1626,8 +1656,6 @@ $('#throw_challenge_dtable')
 
 
     jQuery(function ($) {
-
-
 
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {

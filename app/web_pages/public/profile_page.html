@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
     <title>BitNudge</title>
 
-    <meta name="description" content="Draggabble Widget Boxes &amp; Containers" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="Draggabble Widget Boxes &amp; Containers"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
 
     <!-- page specific plugin styles -->
-    <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="assets/css/ace-fonts.css" />
+    <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.min.css" id="main-ace-style" />
+    <link rel="stylesheet" href="assets/css/ace.min.css" id="main-ace-style"/>
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="assets/css/ace-part2.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-part2.min.css"/>
     <![endif]-->
-    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
-    <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="assets/css/ace-rtl.min.css"/>
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-ie.min.css"/>
     <![endif]-->
 
     <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
@@ -45,8 +45,11 @@
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
 
+    <!--<script src="assets/js/ejs/ejs.js"></script>-->
+    <!--<script src="assets/js/app/left_menu_links.js"></script>-->
+
     <style>
-        .closebox{
+        .closebox {
             padding: 1px 4px;
             top: 2px;
             right: 3px;
@@ -59,7 +62,10 @@
 <!-- #section:basics/navbar.layout -->
 <div id="navbar" class="navbar navbar-default">
     <script type="text/javascript">
-        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+        try {
+            ace.settings.check('navbar', 'fixed')
+        } catch (e) {
+        }
     </script>
 
     <div class="navbar-container" id="navbar-container">
@@ -95,6 +101,50 @@
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
                 <!-- #section:basics/navbar.user_menu -->
+                <li class="purple">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                        <span class="badge badge-important">2</span>
+                    </a>
+
+                    <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="ace-icon fa fa-exclamation-triangle"></i>
+                            2 Notifications
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+												New Challenges
+											</span>
+                                    <span class="pull-right badge badge-success">+2</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-xs no-hover btn-info fa fa-bullseye"></i>
+												Goals
+											</span>
+                                    <span class="pull-right badge badge-info">+2</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="dropdown-footer">
+                            <a href="#">
+                                See all notifications
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <!--<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />-->
@@ -121,19 +171,26 @@
         </div>
 
         <!-- /section:basics/navbar.dropdown -->
-    </div><!-- /.navbar-container -->
+    </div>
+    <!-- /.navbar-container -->
 </div>
 
 <!-- /section:basics/navbar.layout -->
 <div class="main-container" id="main-container">
 <script type="text/javascript">
-    try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    try {
+        ace.settings.check('main-container', 'fixed')
+    } catch (e) {
+    }
 </script>
 
 <!-- #section:basics/sidebar -->
 <div id="sidebar" class="sidebar                  responsive">
     <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+        try {
+            ace.settings.check('sidebar', 'fixed')
+        } catch (e) {
+        }
     </script>
 
     <div class="sidebar-shortcuts" id="sidebar-shortcuts">
@@ -167,7 +224,8 @@
 
             <span class="btn btn-danger"></span>
         </div>
-    </div><!-- /.sidebar-shortcuts -->
+    </div>
+    <!-- /.sidebar-shortcuts -->
 
     <ul class="nav nav-list">
         <li>
@@ -261,16 +319,22 @@
 
             <b class="arrow"></b>
         </li>
-    </ul><!-- /.nav-list -->
+    </ul>
+    <!-- /.nav-list -->
+
 
     <!-- #section:basics/sidebar.layout.minimize -->
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left"
+           data-icon2="ace-icon fa fa-angle-double-right"></i>
     </div>
 
     <!-- /section:basics/sidebar.layout.minimize -->
     <script type="text/javascript">
-        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+        try {
+            ace.settings.check('sidebar', 'collapsed')
+        } catch (e) {
+        }
     </script>
 </div>
 
@@ -279,7 +343,10 @@
 <!-- #section:basics/content.breadcrumbs -->
 <div class="breadcrumbs" id="breadcrumbs">
     <script type="text/javascript">
-        try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {
+        }
     </script>
 </div>
 
@@ -311,7 +378,7 @@
 
             <!-- #section:settings.navbar -->
             <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar"/>
                 <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
             </div>
 
@@ -319,7 +386,7 @@
 
             <!-- #section:settings.sidebar -->
             <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar"/>
                 <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
             </div>
 
@@ -327,7 +394,7 @@
 
             <!-- #section:settings.breadcrumbs -->
             <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs"/>
                 <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
             </div>
 
@@ -335,7 +402,7 @@
 
             <!-- #section:settings.rtl -->
             <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl"/>
                 <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
             </div>
 
@@ -343,7 +410,7 @@
 
             <!-- #section:settings.container -->
             <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container"/>
                 <label class="lbl" for="ace-settings-add-container">
                     Inside
                     <b>.container</b>
@@ -351,35 +418,40 @@
             </div>
 
             <!-- /section:settings.container -->
-        </div><!-- /.pull-left -->
+        </div>
+        <!-- /.pull-left -->
 
         <div class="pull-left width-50">
             <!-- #section:basics/sidebar.options -->
             <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover"/>
                 <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
             </div>
 
             <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" />
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact"/>
                 <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
             </div>
 
             <div class="ace-settings-item">
-                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
+                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight"/>
                 <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
             </div>
 
             <!-- /section:basics/sidebar.options -->
-        </div><!-- /.pull-left -->
-    </div><!-- /.ace-settings-box -->
-</div><!-- /.ace-settings-container -->
+        </div>
+        <!-- /.pull-left -->
+    </div>
+    <!-- /.ace-settings-box -->
+</div>
+<!-- /.ace-settings-container -->
 <!-- /section:settings.box -->
 
 <div class="page-content-area">
 <div class="page-header">
     <h1>User Profile</h1>
-</div><!-- /.page-header -->
+</div>
+<!-- /.page-header -->
 
 <div class="row">
 <div class="col-xs-12">
@@ -398,18 +470,17 @@
     <li>
         <a data-toggle="tab" href="#stats">
             <i class="orange ace-icon fa fa-rss bigger-120"></i>
-            Stats
+            Status
         </a>
     </li>
 </ul>
 <div class="tab-content no-border padding-24">
 <div id="home" class="tab-pane in active">
     <div class="row">
-        <div class="col-xs-12 col-sm-4 center">
-		            <span class="profile-picture">
-                                        <img id="avatar1" class="editable img-responsive" alt="Employee's Avatar" src="assets/avatars/profile-pic.jpg" />
-                                    </span>
-
+        <div class="col-xs-12 col-sm-3 center">
+            <span class="profile-picture">
+                <img id="avatar1" class="editable img-responsive" alt="Employee's Avatar" src="assets/avatars/profile-pic.jpg" />
+            </span>
 
             <div class="width-95 label label-info label-xlg arrowed-in arrowed-in-right">
                 <div class="inline position-relative">
@@ -423,18 +494,17 @@
 
             <div class="profile-contact-info">
                 <div class="profile-contact-links align-left">
-
                     <a id="edit_user_link" href="#" class="btn btn-link">
-                        <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                        <i class="ace-icon fa fa-pencil-square-o bigger-120 green"></i>
                         Edit Profile
                     </a>
-                    <br />
+                    <br/>
 
                     <a id="view_goal_link" href="#" class="btn btn-link">
                         <i class="ace-icon fa fa-check-square-o bigger-125 blue"></i>
                         View My Goals
                     </a>
-                    <br />
+                    <br/>
 
                     <a id="view_challenges_link" href="#" class="btn btn-link">
                         <i class="ace-icon fa fa-check-square-o bigger-125 blue"></i>
@@ -444,12 +514,44 @@
 
                 <div class="space-6"></div>
 
+                <div class="widget-box transparent" id="recent-box">
+                    <div class="widget-header">
+                        <h4 class="widget-title lighter smaller">
+                            <i class="ace-icon fa fa-rss orange"></i>Recent Activities
+                        </h4>
 
+                        <div class="widget-toolbar no-border">
+                            <!--<ul class="nav nav-tabs" id="recent-tab">-->
+                            <!--<li class="active">-->
+                            <!--<a data-toggle="tab" href="#comment-tab">Comments</a>-->
+                            <!--</li>-->
+                            <!--</ul>-->
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main padding-4">
+                            <div class="tab-content padding-8">
+                                <div id="comment-tab" class="tab-pane active">
+                                    <!-- #section:pages/dashboard.comments -->
+                                    <div class="comments">
+
+                                    </div>
+
+                                    <div class="hr hr8"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.widget-main -->
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-box -->
 
             </div>
             <div class="space space-4"></div>
-        </div><!-- /.col -->
-        <div class="col-xs-12 col-sm-8">
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-12 col-sm-9">
             <div class="profile-user-info">
                 <div class="profile-user-info profile-user-info-striped">
                     <div class="profile-info-row">
@@ -460,7 +562,7 @@
                     </div>
 
                     <div class="profile-info-row">
-                        <div class="profile-info-name"> E-mail </div>
+                        <div class="profile-info-name"> E-mail</div>
                         <div class="profile-info-value">
                             <span id="emp_email"></span>
                         </div>
@@ -526,63 +628,69 @@
 
             </div>
             <div class="hr hr-8 dotted"></div>
-            <div class="col-xs-12 col-sm-12">
+            <div class="col-xs-12 col-sm-8">
                 <div class="center">
                                     <span class="btn btn-app btn-sm btn-yellow no-hover">
-                                        <span class="line-height-1 smaller-90" id="emp_point_details"> </span>
-                                        <br />
                                         <span class="line-height-1" id="emp_points">Points</span>
+                                        <br/>
+                                        <span class="line-height-1 smaller-90" id="emp_point_details"> </span>
                                     </span>
 
                                     <span class="btn btn-app btn-sm btn-grey no-hover">
-                                        <span class="line-height-1 smaller-90" id="emp_cash_details"></span>
-                                        <br />
                                         <span class="line-height-1" id="emp_cash">Cash</span>
-
-
+                                        <br/>
+                                        <span class="line-height-1 smaller-90" id="emp_cash_details"></span>
                                     </span>
 
                                     <span class="btn btn-app btn-sm btn-success no-hover">
-                                        <span class="line-height-1 smaller-90" id="emp_level_details"> </span>
-                                        <br />
                                         <span class="line-height-1" id="emp_level">Levels</span>
+                                        <br/>
+                                        <span class="line-height-1 smaller-90" id="emp_level_details"> </span>
                                     </span>
                 </div>
+
+                <div class="space-12"></div>
+                <div class="space-20"></div>
             </div>
-        </div><!-- /.col -->
-    </div><!-- /.row -->
-</div><!-- /#home -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+
+    <div class="space-20"></div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-small">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#home -->
 <div id="stats" class="tab-pane">
     <div class="row">
-
-
-
-
-
-
-
-        <div class="col-xs-12 col-sm-4 widget-container-col">
+        <div class="col-xs-12 col-sm-3 widget-container-col">
             <div class="widget-box widget-color-dark light-border">
                 <div class="widget-header">
                     <h5 class="widget-title smaller">Points Break Down</h5>
                 </div>
                 <div class="widget-body">
                     <div class="widget-main padding-6">
-                        <div class="alert">
-
+                        <div class="alert alert-info">
                             <div class="center">
-                                    <span class="btn btn-app btn-md btn-yellow no-hover">
+                                    <span class="btn btn-app btn-sm btn-yellow no-hover">
                                         <span class="line-height-1" id="emp_break_down_points">100</span>
-                                        <br />
-                                        <span class="line-height-1 smaller-60">Activity Points </span>
+                                        <br/>
+                                        <span class="line-height-1 smaller-90">Activity </br> Points </span>
                                     </span>
 
-                                    <span class="btn btn-app btn-md btn-grey no-hover">
+                                    <span class="btn btn-app btn-sm btn-grey no-hover">
                                         <span class="line-height-1" id="emp_break_down_ranks">300</span>
-                                        <br />
-                                        <span class="line-height-1 smaller-60">Business Points</span>
+                                        <br/>
+                                        <span class="line-height-1 smaller-90">Business </br>Points</span>
                                     </span>
-
                             </div>
                         </div>
                     </div>
@@ -590,105 +698,92 @@
             </div>
 
         </div>
-
-            <div class="col-sm-5">
-                <div class="widget-box transparent">
-                    <div class="widget-header widget-header-flat">
-                        <h4 class="widget-title blue smaller">
-                            <i class="ace-icon fa fa-signal orange"></i>
-                            My Statistics
-                        </h4>
-
-                        <div class="widget-toolbar">
-                            <a href="#" data-action="collapse">
-                                <i class="ace-icon fa fa-chevron-up"></i>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="widget-body">
-                        <div class="widget-main padding-8">
-                            <div class="center">
-							    <span class="btn btn-app btn-md btn-yellow no-hover">
-                                    <span class="line-height-1" id="emp_rank">35</span>
-                                    <br/>
-                                    <span class="line-height-1 smaller-60"> Rank </span>
-                                </span>
-
-                                <span class="btn btn-app btn-md btn-grey no-hover">
-                                    <span class="line-height-1" id="emp_break_down_reputation">3500</span>
-                                    <br />
-                                    <span class="line-height-1 smaller-60"> Reputation </span>
-                                </span>
-
-                                <span class="btn btn-app btn-md btn-success no-hover">
-                                    <span class="line-height-1" id="emp_near_by">3</span>
-                                    <br />
-                                    <span class="line-height-1 smaller-60">Near By</span>
-                                </span>
-
-                                <span class="btn btn-app btn-md btn-primary no-hover">
-                                    <span class="line-height-1" id="emp_break_down_available_currency">3500</span>
-                                    <br />
-                                    <span class="line-height-1 smaller-60">Avaliable Currency </span>
-                                </span>
-
-                            </div>
-
-                        </div><!-- /.widget-main -->
-                    </div><!-- /.widget-body -->
-                </div><!-- /.widget-box -->
+        <div class="col-sm-7 infobox-container">
+            <div class="center">
+                                    <span class="btn btn-app btn-sm btn-yellow no-hover">
+                                        <span class="line-height-1" id="emp_rank">100</span>
+                                        <br/>
+                                        <span class="line-height-1 smaller-90">Rank</span>
+                                    </span>
+                                        <span class="btn btn-app btn-sm btn-pink no-hover">
+                                        <span class="line-height-1" id="emp_break_down_reputation">100</span>
+                                        <br/>
+                                        <span class="line-height-1 smaller-90">Reputation </span>
+                                    </span>
+                                         <span class="btn btn-app btn-sm btn-grey no-hover">
+                                        <span class="line-height-1" id="emp_near_by">100</span>
+                                        <br/>
+                                        <span class="line-height-1 smaller-90">Near By </span>
+                                    </span>
+                                        <span class="btn btn-app btn-sm btn-success no-hover">
+                                        <span class="line-height-1" id="emp_break_down_available_currency">100</span>
+                                        <br/>
+                                        <span class="line-height-1 smaller-90">Avl Currency </span>
+                                    </span>
             </div>
+        </div>
 
-
-
-
-
-    </div><!-- /.row -->
-    <div class="hr hr-double hr-dotted hr18"></div>
-
-    <div class="col-xs-12 col-sm-5">
-        <a href="activity_page.html" class="btn btn-info">Recent activity</a>
 
     </div>
+    <!-- /.row -->
+    <div class="space-20"></div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-small">
 
+                </div>
+            </div>
+        </div>
+    </div>
 
-</div><!-- /#stats -->
 </div>
+<!-- /#stats -->
+</div>
+</div>
+<div class="col-xs-12 col-sm-4">
+    <div class="center">
+        <div class="space-4"></div>
+    </div>
+    <div class="space-6"></div>
 </div>
 </div>
 </div>
 <!-- PAGE CONTENT ENDS -->
-</div><!-- /.col -->
-</div><!-- /.row -->
-</div><!-- /.page-content-area -->
-</div><!-- /.page-content -->
-</div><!-- /.main-content -->
-
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.page-content-area -->
+</div>
+<!-- /.page-content -->
+</div>
+<!-- /.main-content -->
 
 
 <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
-</div><!-- /.main-container -->
+</div>
+<!-- /.main-container -->
 
 <!-- basic scripts -->
 
 <!--[if !IE]> -->
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='assets/js/jquery.min.js'>"+"<"+"/script>");
+    window.jQuery || document.write("<script src='assets/js/jquery.min.js'>" + "<" + "/script>");
 </script>
 
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
+    window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>" + "<" + "/script>");
 </script>
 <![endif]-->
 <script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
 <script src="assets/js/bootstrap.min.js"></script>
 
@@ -706,7 +801,7 @@
 <script type="text/javascript">
 var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
-function show_notification(text){
+function show_notification(text) {
     $.jGrowl(text, {
         header: 'Notification',
         sticky: false,
@@ -726,7 +821,7 @@ function show_notification(text){
 
 function employee_name() {
     $.ajax({
-        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId,
+        url: remote_host + "org/" + urlParams.orgId + "/users/" + urlParams.userId,
         type: 'GET',
         dataType: 'json',
         success: function (res) {
@@ -738,29 +833,29 @@ function employee_name() {
     });
 }
 
-function get_employee(emp_id){
+function get_employee(emp_id) {
 
-    $("#edit_user_link").attr("href","employee_edit_form.html?userId="+emp_id);
+    $("#edit_user_link").attr("href", "employee_edit_form.html?userId=" + emp_id);
     //$("#view_transactions_link").attr("href","view_transaction.html?userId="+emp_id);
-    $("#view_goal_link").attr("href","show_goal.html?userId="+emp_id);
-    $("#view_challenges_link").attr("href","show_challenge.html?userId="+emp_id);
+    $("#view_goal_link").attr("href", "show_goal.html?userId=" + emp_id);
+    $("#view_challenges_link").attr("href", "show_challenge.html?userId=" + emp_id);
 
     $.ajax({
         ///org/:orgId/users/:userId
-        url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id,
+        url: remote_host + "org/" + urlParams.orgId + "/users/" + emp_id,
         type: 'GET',
         dataType: 'json',
-        success: function(res) {
+        success: function (res) {
             //console.log("res");
             //console.log(res);
-            if(res){
+            if (res) {
 //                console.log("res");
 //                console.log(res);
-                var reportsTo, orgTags = [], teams = [], total_pts, total_cash, level,points;
-                if(res.totalPoints)
-                    points=res.totalPoints;
+                var reportsTo, orgTags = [], teams = [], total_pts, total_cash, level, points;
+                if (res.totalPoints)
+                    points = res.totalPoints;
                 else
-                    points="";
+                    points = "";
                 if (res.reportsTo)
                     reportsTo = res.reportsTo.name;
                 else
@@ -768,29 +863,29 @@ function get_employee(emp_id){
 
                 if (res.orgtags) {
                     orgTags = [];
-                    $.each(res.orgtags, function(index, value) {
+                    $.each(res.orgtags, function (index, value) {
                         orgTags.push(value.name)
                     });
                 }
-                else{
+                else {
                     orgTags = "";
                 }
 
                 if (res.teams) {
                     teams = [];
-                    $.each(res.teams, function(index, value) {
+                    $.each(res.teams, function (index, value) {
                         teams.push(value.name)
                     });
                 }
-                else{
+                else {
                     teams = "";
                 }
 
-                if ( (res.totalPoints) || (res.totalCash) ) {
+                if ((res.totalPoints) || (res.totalCash)) {
                     total_pts = res.totalPoints;
                     total_cash = res.totalCash;
                 }
-                else{
+                else {
                     total_pts = 0;
                     total_cash = 0;
                 }
@@ -798,23 +893,21 @@ function get_employee(emp_id){
                 if (res.level) {
                     level = res.level;
                 }
-                else{
+                else {
                     level = 0;
                 }
-
-//  console.log(points);
-//                $("#user_name").text(res.name);
-                $("#emp_name").text(res.name);
                 $("#emp_point").text(res.totalPoints);
                 $("#emp_points_stats").text(res.totalPoints);
-                $("#emp_level_stats").text("level 1");
-                $("#emp_cash_stats").text("cash 1");
-                $("#emp_point_details").text("100");
-                $("#emp_cash_details").text("cash 1");
-                $("#emp_level_details").text("level 1");
+                //$("#emp_level_stats").text("level 1");
+                //$("#emp_cash_stats").text("cash 1");
+                //$("#emp_point_details").text("100");
+                //$("#emp_cash_details").text("cash 1");
+                //$("#emp_level_details").text("level 1");
 
 
-                //$(".emp-name").text(res.name);
+
+
+                $(".emp-name").text(res.name);
                 $("#emp_email").text(res.email);
                 //$("#emp_role").text(res.role.name);
                 $("#emp_reporting_officer").text(reportsTo);
@@ -828,66 +921,61 @@ function get_employee(emp_id){
                 $("#emp_level").text(level);
 
 
-
             }
-        }
-        ,
-        error: function(e , msg){
+        },
+        error: function (e, msg) {
             //processError(e,msg);
         }
     });
 }
 
-function get_employee_rank(emp_id){
+function get_employee_rank(emp_id) {
     $.ajax({
         ///org/:orgId/users/:userId
-        url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+"/rank",
+        url: remote_host + "org/" + urlParams.orgId + "/users/" + emp_id + "/rank",
         type: 'GET',
         dataType: 'json',
-        success: function(res) {
-            if(res){
+        success: function (res) {
+            if (res) {
 
                 $("#emp_name").text(res.name);
                 $("#emp_point").text(res.totalPoints);
 
 
-
-
             }
-        }
-        ,
-        error: function(e , msg){
+        },
+        error: function (e, msg) {
             //processError(e,msg);
         }
     });
 }
 
-function get_challenges(emp_id){
+function get_challenges(emp_id) {
 
     $.ajax({
-        url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+'/challenges',
+        url: remote_host + "org/" + urlParams.orgId + "/users/" + emp_id + '/challenges',
         type: 'GET',
         dataType: 'json',
-        success: function(res) {
-            if(res){
+        success: function (res) {
+            if (res) {
                 //console.log(res);
                 var recent_challenge_html;
 
                 var accepted_challenge_name, accepted_challenge_target_val;
-                res.forEach(function(acceptedChallenge){
+                res.forEach(function (acceptedChallenge) {
 //                    console.log("acceptedChallenge");
 //                    console.log(acceptedChallenge);
-                    if (acceptedChallenge.name!=undefined){
+                    if (acceptedChallenge.name != undefined) {
                         accepted_challenge_name = acceptedChallenge.name;
                     }
-                    else{
+                    else {
                         accepted_challenge_name = "NA";
                     }
 
-                    if (acceptedChallenge.action.targetValue!=undefined){
+                    if (acceptedChallenge.action.targetValue != undefined) {
                         accepted_challenge_target_val = acceptedChallenge.action.targetValue;
                     }
-                    else{
+                    else {
                         accepted_challenge_target_val = "NA";
                     }
                     //Name, Start Date, End Date, Target Value
@@ -895,22 +983,19 @@ function get_challenges(emp_id){
                     recent_challenge_html =
                             '<div class="itemdiv commentdiv" style="min-height: 28px;">' +
                             '<div class="body">' +
-                        //'<div class="name">' +
-                        //'<a href="#">Bob Doe</a>' +
-                        //'</div>' +
-                            '<div class="text">'+ "You have accepted a challenge :- " +accepted_challenge_name+'</div>'+
+                            '<div class="text">' + "You have accepted a challenge :- " + accepted_challenge_name + '</div>' +
                             '</div>' +
                             '<div class="tools">' +
                             '<div class="inline position-relative">' +
                             '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
                             '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
                             '</button>' +
-                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">' +
                             '<li>' +
                             '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
                             '<span class="green">' +
                             '<i class="ace-icon fa fa-check bigger-110"></i>' +
-                            '</span>'+
+                            '</span>' +
                             '</a>' +
                             '</li>' +
 
@@ -940,31 +1025,30 @@ function get_challenges(emp_id){
             }
             get_goals(emp_id);
             get_transactions(emp_id);
-        }
-        ,
-        error: function(e , msg){
+        },
+        error: function (e, msg) {
             //processError(e,msg);
         }
     });
 }
 
-function get_goals(emp_id){
+function get_goals(emp_id) {
 
     $.ajax({
-        url: remote_host+"org/"+urlParams.orgId+"/users/"+emp_id+'/goals',
+        url: remote_host + "org/" + urlParams.orgId + "/users/" + emp_id + '/goals',
         type: 'GET',
         dataType: 'json',
-        success: function(res) {
-            if(res){
+        success: function (res) {
+            if (res) {
                 //console.log(res);
                 var recent_goal_html;
 
                 var goal_name;
-                res.forEach(function(goal){
-                    if (goal.name!=undefined){
+                res.forEach(function (goal) {
+                    if (goal.name != undefined) {
                         goal_name = goal.name;
                     }
-                    else{
+                    else {
                         goal_name = "NA";
                     }
 
@@ -976,19 +1060,19 @@ function get_goals(emp_id){
                         //'<div class="name">' +
                         //'<a href="#">Bob Doe</a>' +
                         //'</div>' +
-                            '<div class="text">'+ "You have a new goal :- " +goal_name+'</div>'+
+                            '<div class="text">' + "You have a new goal :- " + goal_name + '</div>' +
                             '</div>' +
                             '<div class="tools">' +
                             '<div class="inline position-relative">' +
                             '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
                             '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
                             '</button>' +
-                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">' +
                             '<li>' +
                             '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
                             '<span class="green">' +
                             '<i class="ace-icon fa fa-check bigger-110"></i>' +
-                            '</span>'+
+                            '</span>' +
                             '</a>' +
                             '</li>' +
 
@@ -1015,31 +1099,30 @@ function get_goals(emp_id){
                     $("#comment-tab").find(".comments").append(recent_goal_html);
                 });
             }
-        }
-        ,
-        error: function(e , msg){
+        },
+        error: function (e, msg) {
             //processError(e,msg);
         }
     });
 }
 
-function get_transactions(emp_id){
+function get_transactions(emp_id) {
 
     $.ajax({
-        url: remote_host+"org/"+urlParams.orgId+"/users/"+urlParams.userId+'/transactions',
+        url: remote_host + "org/" + urlParams.orgId + "/users/" + urlParams.userId + '/transactions',
         type: 'GET',
         dataType: 'json',
-        success: function(res) {
-            if(res){
+        success: function (res) {
+            if (res) {
 //                console.log(res);
                 var recent_transaction_html;
 
                 var transaction_name;
-                res.forEach(function(transaction){
-                    if (transaction.transactionMaster){
+                res.forEach(function (transaction) {
+                    if (transaction.transactionMaster) {
                         transaction_name = transaction.transactionMaster.name;
                     }
-                    else{
+                    else {
                         transaction_name = "NA";
                     }
 
@@ -1051,19 +1134,19 @@ function get_transactions(emp_id){
                         //'<div class="name">' +
                         //'<a href="#">Bob Doe</a>' +
                         //'</div>' +
-                            '<div class="text">'+ "You have done :- " +transaction_name+'</div>'+
+                            '<div class="text">' + "You have done :- " + transaction_name + '</div>' +
                             '</div>' +
                             '<div class="tools">' +
                             '<div class="inline position-relative">' +
                             '<button class="btn btn-minier bigger btn-yellow dropdown-toggle" data-toggle="dropdown">' +
                             '<i class="ace-icon fa fa-angle-down icon-only bigger-120"></i>' +
                             '</button>' +
-                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">'+
+                            '<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">' +
                             '<li>' +
                             '<a href="#" class="tooltip-success" data-rel="tooltip" title="Approve">' +
                             '<span class="green">' +
                             '<i class="ace-icon fa fa-check bigger-110"></i>' +
-                            '</span>'+
+                            '</span>' +
                             '</a>' +
                             '</li>' +
 
@@ -1090,9 +1173,8 @@ function get_transactions(emp_id){
                     $("#comment-tab").find(".comments").append(recent_transaction_html);
                 });
             }
-        }
-        ,
-        error: function(e , msg){
+        },
+        error: function (e, msg) {
             //processError(e,msg);
         }
     });
@@ -1101,31 +1183,27 @@ function get_transactions(emp_id){
 
 $(function () {
 
+    //var left_menu_links = new EJS({url: 'partials/left_menu.ejs'}).render(left_menu_links);
+    //$("#left_menu").html(left_menu_links);
+
     employee_name();
 
     //var emp_id = window.location.search.replace("?","").split("=")[1];
     var emp_id = getParameterByName("userId");
-//    console.log("emp_id");
-//    console.log(emp_id);
     get_employee(emp_id);
     get_challenges(emp_id);
 
-    if ( (getParameterByName("showNoti")!="") && (getParameterByName("showNoti")!=null) ) {
+    if ((getParameterByName("showNoti") != "") && (getParameterByName("showNoti") != null)) {
         show_notification(getParameterByName("showNoti"));
     }
 
 });
+jQuery(function ($) {
 
-
-
-
-
-jQuery(function($) {
-
-    $('#simple-colorpicker-1').ace_colorpicker({pull_right:true}).on('change', function(){
+    $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
         var color_class = $(this).find('option:selected').data('class');
         var new_class = 'widget-box';
-        if(color_class != 'default')  new_class += ' widget-color-'+color_class;
+        if (color_class != 'default')  new_class += ' widget-color-' + color_class;
         $(this).closest('.widget-box').attr('class', new_class);
     });
 
@@ -1150,11 +1228,9 @@ jQuery(function($) {
         ).css({'padding-top': 12});
     });
 
-    $(window).on('resize.scroll_reset', function() {
+    $(window).on('resize.scroll_reset', function () {
         $('.scrollable-horizontal').ace_scroll('reset');
     });
-
-
 
 
     /**
@@ -1186,7 +1262,6 @@ jQuery(function($) {
     //$('#my-widget-box').widget_box('hide');
 
 
-
     // widget boxes
     // widget box drag & drop example
 
@@ -1195,8 +1270,8 @@ jQuery(function($) {
 </script>
 
 <!-- the following scripts are used in demo only for onpage help and you don't need them -->
-<link rel="stylesheet" href="assets/css/ace.onpage-help.css" />
-<link rel="stylesheet" href="docs/assets/js/themes/sunburst.css" />
+<link rel="stylesheet" href="assets/css/ace.onpage-help.css"/>
+<link rel="stylesheet" href="docs/assets/js/themes/sunburst.css"/>
 
 <script type="text/javascript"> ace.vars['base'] = '..'; </script>
 <script src="assets/js/ace/elements.onpage-help.js"></script>
