@@ -409,6 +409,8 @@
 		            <span class="profile-picture">
                                         <img id="avatar1" class="editable img-responsive" alt="Employee's Avatar" src="assets/avatars/profile-pic.jpg" />
                                     </span>
+
+
             <div class="width-95 label label-info label-xlg arrowed-in arrowed-in-right">
                 <div class="inline position-relative">
                     <a href="#" class="user-title-label">
@@ -416,6 +418,9 @@
                     </a>
                 </div>
             </div>
+            
+            <div class="space-6"></div>
+
             <div class="profile-contact-info">
                 <div class="profile-contact-links align-left">
 
@@ -448,15 +453,37 @@
             <div class="profile-user-info">
                 <div class="profile-user-info profile-user-info-striped">
                     <div class="profile-info-row">
-                        <div class="profile-info-name"> Username </div>
+                        <div class="profile-info-name"> Name </div>
                         <div class="profile-info-value">
                             <span id="emp_name" class="emp-name"></span>
                         </div>
                     </div>
+
                     <div class="profile-info-row">
                         <div class="profile-info-name"> E-mail </div>
                         <div class="profile-info-value">
                             <span id="emp_email"></span>
+                        </div>
+                    </div>
+
+                    <div class="profile-info-row">
+                        <div class="profile-info-name"> Department </div>
+                        <div class="profile-info-value">
+                            <span id="emp_dept"></span>
+                        </div>
+                    </div>
+
+                    <div class="profile-info-row">
+                        <div class="profile-info-name"> Team </div>
+                        <div class="profile-info-value">
+                            <span id="emp_team"></span>
+                        </div>
+                    </div>
+
+                    <div class="profile-info-row">
+                        <div class="profile-info-name"> Job Role </div>
+                        <div class="profile-info-value">
+                            <span id="emp_jobrole"></span>
                         </div>
                     </div>
 
@@ -467,20 +494,20 @@
                         </div>
                     </div>
 
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Address </div>
-                        <div class="profile-info-value">
-                            <i class="fa fa-map-marker light-orange bigger-110"></i>
-                            <span class="editable" id="emp_addr"></span>
-                        </div>
-                    </div>
+                    <!--<div class="profile-info-row">-->
+                        <!--<div class="profile-info-name"> Address </div>-->
+                        <!--<div class="profile-info-value">-->
+                            <!--<i class="fa fa-map-marker light-orange bigger-110"></i>-->
+                            <!--<span class="editable" id="emp_addr"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Role </div>
-                        <div class="profile-info-value">
-                            <span class="editable" id="emp_role"></span>
-                        </div>
-                    </div>
+                    <!--<div class="profile-info-row">-->
+                        <!--<div class="profile-info-name"> Role </div>-->
+                        <!--<div class="profile-info-value">-->
+                            <!--<span class="editable" id="emp_role"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                     <div class="profile-info-row">
                         <div class="profile-info-name"> Reporting Officer </div>
@@ -493,13 +520,6 @@
                         <div class="profile-info-name"> Tags </div>
                         <div class="profile-info-value">
                             <span id="emp_tags"></span>
-                        </div>
-                    </div>
-
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Team </div>
-                        <div class="profile-info-value">
-                            <span id="emp_dept"></span>
                         </div>
                     </div>
                 </div>
@@ -794,14 +814,15 @@ function get_employee(emp_id){
                 $("#emp_level_details").text("level 1");
 
 
-//                $(".emp-name").text(res.name);
+                //$(".emp-name").text(res.name);
                 $("#emp_email").text(res.email);
-                $("#emp_role").text(res.role.name);
+                //$("#emp_role").text(res.role.name);
                 $("#emp_reporting_officer").text(reportsTo);
                 $("#emp_tags").text(orgTags);
-                $("#emp_dept").text(teams);
+                $("#emp_team").text(teams);
+                $("#emp_jobrole").text(res.designation);
                 $("#emp_designation").text(res.designation);
-                $("#emp_addr").text(res.address);
+                //$("#emp_addr").text(res.address);
                 $("#emp_points").text(total_pts);
                 $("#emp_cash").text(total_cash);
                 $("#emp_level").text(level);
