@@ -14,6 +14,7 @@
 
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
+    <link rel="stylesheet" href="assets/css/chosen.css"/>
     <link rel="stylesheet" href="assets/css/datepicker.css"/>
 
     <!-- text fonts -->
@@ -73,7 +74,7 @@
             <a href="#" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
-                    Ace Admin
+                    BitNudge
                 </small>
             </a>
 
@@ -453,16 +454,38 @@
                         <div class="col-lg-12 col-md-12 widget-container-col">
                             <!-- #section:custom/widget-box -->
                             <div class="page-header">
-                                <h1>Sub Goal</h1>
+                                <h1>Create Sub Goal for :- Acquire 30 New Clients this quarter</h1>
                             </div>
 
                             <div class="widget-body">
-                                <div class="widget-main">
+                                <div class="widget-main" style="height:360px; max-height: 580px; overflow-y: auto; overflow-x: hidden;">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <button id="create_subgoal" type="submit" class="btn medium btn-primary">
+                                                Add Sub Goal
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <br>
                                     <div id="subgoal">
+
                                         <div class="row">
-                                            <div class="col-md-3"><label id="subgoal_name">Goal 1</label></div>
+                                            <!--<div class="col-md-3"><label id="subgoal_name">Goal 1</label></div>-->
 
                                             <div class="col-md-3">
+                                                <label>Select Goal</label>
+                                                <select class="chosen-select" id="select_subgoal"
+                                                        data-placeholder="Choose a Aspiration...">
+                                                    <option value="default" selected="selected" disabled="disabled">Select One--</option>
+                                                    <option>Client First Contact Call Report Submission</option>
+                                                    <option>Meeting Call Report Submission</option>
+                                                    <option>Phone Call Report Submission</option>
+                                                    <option>Senior Meeting Call Report Submission</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label>Start Date</label>
                                                 <div class="input-group">
                                                 <input class="form-control date-picker"
                                                                          id="goal-start-date-js" type="text"
@@ -474,7 +497,7 @@
                                             </div>
 
                                             <div class="col-md-3">
-                                                
+                                                <label>End Date</label>
                                                 <div class="input-group">
                                                 <input class="form-control date-picker"
                                                                          id="goal-end-date-js" type="text"
@@ -484,9 +507,12 @@
 																	</span>
                                                 </div>
                                                 </div>
-                                            <div class="col-md-3"><input type="text" class="form-control"
+                                            <div class="col-md-3">
+                                                <label>Target Value</label>
+                                                <input type="text" class="form-control"
                                                                          id="subgoal_target_value"/></div>
                                         </div>
+                                        <br>
 
                                     </div>
 
@@ -494,20 +520,17 @@
 
                                     </div>
 
-                                    <div class="row">
-                                        <button id="create_subgoal" type="submit" class="btn medium btn-primary">
-                                            Create subGoal
-                                        </button>
-                                    </div>
                                     <br/>
 
-                                    <div class="row">
-                                        <button id="create_subgoal_submit" type="submit" class="btn medium btn-primary">
-                                            Submit subGoal
-                                        </button>
-                                    </div>
 
 
+
+                                </div>
+
+                                <div class="row">
+                                    <button id="create_subgoal_submit" type="submit" class="btn medium btn-primary">
+                                        Create
+                                    </button>
                                 </div>
 
                             </div>
@@ -564,6 +587,8 @@
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 <script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
 
+<script src="assets/js/chosen.jquery.min.js"></script>
+
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
 <script src="assets/js/ace.min.js"></script>
@@ -572,6 +597,18 @@
 
 <script src="assets/js/app/app_config.js"></script>
 <script type="text/javascript">
+
+    $('.chosen-select').chosen({allow_single_deselect: true});
+    //resize the chosen on window resize
+
+    $(window)
+            .off('resize.chosen')
+            .on('resize.chosen', function () {
+                $('.chosen-select').each(function () {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            }).trigger('resize.chosen');
 
     $("#somebutton").click(function () {
         $("#container").append('<div class="module_holder"><div class="module_item"><img src="images/i-5.png" alt="Sweep Stakes"><br>sendSMS</div></div>');
