@@ -447,7 +447,7 @@
 
 <div class="page-content-area">
 <div class="page-header">
-    <h1>My GamePlan</h1>
+    <h1>My Game Plan</h1>
 </div>
 <!-- /.page-header -->
 
@@ -480,9 +480,8 @@
                         </div>
                         <div class="col-md-8">
                             <select class="chosen-select" id="action_select" data-placeholder="Choose a action...">
-                                <option>Income</option>
-                                <option>Client acquisition</option>
-
+                                <option>Income Booking</option>
+                                <option>Client Acquisition</option>
                             </select>
                         </div>
                     </div>
@@ -490,10 +489,10 @@
                     <div class="space-4"></div>
                     <div class="row">
                         <div class="col-md-3">
-                            <div for="target_value">Target Value</div>
+                            <div for="target_value">Target</div>
                         </div>
                         <div class="col-md-8">
-                            <div class="target_value">3000</div>
+                            <div class="target_value">50</div>
                         </div>
 
                     </div>
@@ -501,12 +500,12 @@
                     <div class="space-4"></div>
                     <div class="row">
                         <div class="col-md-3">
-                            <div for="target_value">If i have completed acquired</div>
+                            <div for="target_value">If You Acquire <br> (for This Month)</div>
                         </div>
                         <div class="col-md-8">
                             <div id="slider_range_target"></div>
                             <div class="space-4"></div>
-                            <span class="pull-left">0</span><span class="pull-right">3000</span>
+                            <span class="pull-left">0</span><span class="pull-right">50</span>
                         </div>
 
                     </div>
@@ -515,10 +514,30 @@
                     <div class="space-4"></div>
                     <div class="row">
                         <div class="col-md-3">
-                            <div for="result_value">Result</div>
+                            <div for="result_value">You will have</div>
                         </div>
                         <div class="col-md-8">
-                            <div id="result_view">1000 points</div>
+                            <div id="result_view">
+                                <!--1000 points-->
+                                <table class="table no-border">
+                                    <tr>
+                                        <th>Points</th>
+                                        <td>100</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Badge</th>
+                                        <td>Fastest Deal Closer</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Level</th>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Green Zone / Red Zone</th>
+                                        <td>Green Zone</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
 
                     </div>
@@ -552,22 +571,15 @@
                         <div class="profile-activity clearfix">
                             <div>
                                 <i class="pull-left thumbicon fa fa-gift btn-info no-hover"></i>
-                                Earn 500 points to meet your goal.
-                            </div>
-                        </div>
-                        <div class="profile-activity clearfix">
-                            <div>
-                                <i class="pull-left thumbicon fa fa-magic btn-warning no-hover"></i>
-                                Max is 200 points ahead of you Earn 100 points to overcome him.
+                                Earn 500 points to achieve your goal X.
                             </div>
                         </div>
                         <div class="profile-activity clearfix">
                             <div>
                                 <img class="pull-left" alt="Alex Doe's avatar" src="assets/avatars/avatar5.png"/>
-                                Score points by completeing your Challenge by today.
+                                Max is 200 points ahead of you Earn 100 points to overcome him.
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- /.widget-main -->
@@ -584,99 +596,7 @@
 <div class="hr dotted hr-16"></div>
 
 
-<div class="row">
-    <div class="col-sm-6">
-        <div class="widget-box transparent">
-            <div class="widget-header widget-header-flat">
-                <h4 class="widget-title blue smaller">
-                    <i class="ace-icon fa fa-bullseye orange"></i>
-                    Your Aspiration
-                </h4>
 
-                <div class="widget-toolbar">
-                    <a href="#" data-action="collapse">
-                        <i class="ace-icon fa fa-chevron-up"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="widget-body">
-                <div class="widget-main padding-8">
-                    <div class="row">
-                        <div class="col-md-4">Pick your aspiration</div>
-                        <div class="col-md-7">
-                            <select class="chosen-select" id="select_aspiration"
-                                    data-placeholder="Choose a Aspiration...">
-                                <option>Become top decile</option>
-                                <option>Beat player X</option>
-                                <option>Be #1 in region</option>
-                                <option>Be #1 in circle</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="space-12"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn medium btn-warning" type="reset">Submit</button>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- /.widget-main -->
-            </div>
-            <!-- /.widget-body -->
-        </div>
-        <!-- /.widget-box -->
-    </div>
-    <div class="col-sm-6">
-        <div class="widget-box transparent">
-            <div class="widget-header widget-header-flat">
-                <h4 class="widget-title blue smaller">
-                    <i class="ace-icon fa fa fa-bar-chart-o orange"></i>
-                    Your strategy
-                </h4>
-
-                <div class="widget-toolbar">
-                    <a href="#" data-action="collapse">
-                        <i class="ace-icon fa fa-chevron-up"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="widget-body">
-                <div class="widget-main padding-8">
-                    <div class="row">
-                        <div class="col-md-4">Pick your strategy</div>
-                        <div class="col-md-7">
-                            <select class="chosen-select" id="select_strategy"
-                                    data-placeholder="Choose a Aspiration...">
-                                <option>Become top decile</option>
-                                <option>Beat player X</option>
-                                <option>Be #1 in region</option>
-                                <option>Be #1 in circle</option>
-                            </select>
-                        </div>
-
-
-                    </div>
-
-                    <div class="space-12"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn medium btn-warning" type="reset">Submit</button>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- /.widget-main -->
-            </div>
-            <!-- /.widget-body -->
-        </div>
-        <!-- /.widget-box -->
-    </div>
-    <!-- /.col -->
-    <!-- /.col -->
-</div>
 <div class="hr dotted hr-16"></div>
 <div class="row">
     <div class="col-sm-6">
@@ -709,7 +629,103 @@
         </div>
         <!-- /.widget-box -->
     </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class="widget-title blue smaller">
+                            <i class="ace-icon fa fa-bullseye orange"></i>
+                            Your Aspiration
+                        </h4>
 
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div class="row">
+                                <div class="col-md-4">Pick Your Aspiration</div>
+                                <div class="col-md-7">
+                                    <select class="chosen-select" id="select_aspiration"
+                                            data-placeholder="Choose a Aspiration...">
+                                        <option value="default" selected="selected" disabled="disabled">Select One--</option>
+                                        <option>Become Top Decile</option>
+                                        <option>Beat Player X</option>
+                                        <option>Be #1 in Region</option>
+                                        <option>Be #1 in Circle</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="space-12"></div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <button class="btn medium btn-warning pull-right" type="reset">Submit</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.widget-main -->
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-box -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class="widget-title blue smaller">
+                            <i class="ace-icon fa fa fa-bar-chart-o orange"></i>
+                            Your Strategy
+                        </h4>
+
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div class="row">
+                                <div class="col-md-4">Pick Your Strategy</div>
+                                <div class="col-md-7">
+                                    <select class="chosen-select" id="select_strategy"
+                                            data-placeholder="Choose a Aspiration...">
+                                        <option value="default" selected="selected" disabled="disabled">Select One--</option>
+                                        <option>Become Top Decile</option>
+                                        <option>Beat Player X</option>
+                                        <option>Be #1 in Region</option>
+                                        <option>Be #1 in Circle</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+
+                            <div class="space-12"></div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <button class="btn medium btn-warning pull-right" type="reset">Submit</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.widget-main -->
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-box -->
+            </div>
+        </div>
+    </div>
 
 </div>
 
@@ -789,7 +805,7 @@
         orientation: "horizontal",
         range: true,
         min: 0,
-        max: 3000,
+        max: 50,
         values: [ 0, 0 ],
         slide: function (event, ui) {
             var val = ui.values[$(ui.handle).index() - 1] + "";
