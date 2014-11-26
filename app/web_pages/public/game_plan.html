@@ -15,10 +15,6 @@
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
     <link rel="stylesheet" href="assets/css/chosen.css"/>
-    <link rel="stylesheet" href="assets/css/datepicker.css"/>
-    <link rel="stylesheet" href="assets/css/bootstrap-timepicker.css"/>
-    <link rel="stylesheet" href="assets/css/daterangepicker.css"/>
-    <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.css"/>
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
@@ -101,6 +97,8 @@
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
                 <!-- #section:basics/navbar.user_menu -->
+
+
                 <li class="purple">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-bell icon-animated-bell"></i>
@@ -145,6 +143,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <!--<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />-->
@@ -165,7 +164,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <!-- /section:basics/navbar.user_menu -->
             </ul>
         </div>
@@ -349,8 +347,8 @@
         }
     </script>
 </div>
-<!-- /section:basics/content.breadcrumbs -->
 
+<!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
 
 <!-- #section:settings.box -->
@@ -449,7 +447,7 @@
 
 <div class="page-content-area">
 <div class="page-header">
-    <h1>My Playbook</h1>
+    <h1>My GamePlan</h1>
 </div>
 <!-- /.page-header -->
 
@@ -458,41 +456,12 @@
 <!-- PAGE CONTENT BEGINS -->
 
 <div class="row">
-<div class="col-sm-12">
-<div class="tabbable">
-<ul class="nav nav-tabs" id="myTab">
-    <li class="active">
-        <a data-toggle="tab" href="#points_view_tab">
-            <i class="green ace-icon fa fa-home bigger-120"></i>
-            Points View
-        </a>
-    </li>
-
-    <li>
-        <a data-toggle="tab" href="#scorecard_view_tab">
-            <i class="green ace-icon fa fa-home bigger-120"></i>
-            Scorecard View
-        </a>
-    </li>
-
-    <li>
-        <a data-toggle="tab" href="#analytics_tab">
-            <i class="green ace-icon fa fa-home bigger-120"></i>
-            Analytics
-        </a>
-    </li>
-
-</ul>
-
-<div class="tab-content">
-<div id="points_view_tab" class="tab-pane fade in active">
-<div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
         <div class="widget-box transparent">
             <div class="widget-header widget-header-flat">
                 <h4 class="widget-title blue smaller">
                     <i class="ace-icon fa fa-magic orange"></i>
-                    Total Points
+                    Simulation
                 </h4>
 
                 <div class="widget-toolbar">
@@ -503,450 +472,248 @@
             </div>
 
             <div class="widget-body">
-                <div class="widget-main padding-8">
-                    <div class="center">
-                            <span class="btn btn-app btn-sm btn-grey no-hover">
-                                 <span class="line-height-1">3500</span>
-                                   <br/>
-                                   <span class="line-height-1 smaller-90"> Points </span>
-                              </span>
-                    </div>
-                </div>
-                <!-- /.widget-main -->
-            </div>
-            <!-- /.widget-body -->
-        </div>
-        <!-- /.widget-box -->
-    </div>
-
-    <div class="col-sm-7 col-sm-offset-1">
-        <div class="widget-box transparent">
-            <div class="widget-header widget-header-flat">
-                <h4 class="widget-title blue smaller">
-                    <i class="ace-icon fa fa-magic orange"></i>
-                    Badges
-                </h4>
-
-                <div class="widget-toolbar">
-                    <div class="inline dropdown-hover">
-                        <button class="btn btn-minier btn-primary">
-                            <span id="badges_filter_btn" class="bn-filter">This Month</span>
-                            <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
-                        </button>
-
-                        <ul id="badges_filter"
-                            class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
-                            <li class="active">
-                                <a href="#">
-                                    <i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
-                                    This Month
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                    Previous Month
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <a href="#" data-action="collapse">
-                        <i class="ace-icon fa fa-chevron-up"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="widget-body">
-                <div class="widget-main padding-8">
-                    <table id="badges_table" class="bn-dtable table table-striped table-bordered table-hover">
-                        <thead class="thin-border-bottom">
-                        <tr>
-                            <th>Name</th>
-                            <th>Achieved On</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <td>Green</td>
-                            <td>20 Nov 2014</td>
-                        </tr>
-                        <tr>
-                            <td>Red</td>
-                            <td>18 Nov 2014</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.widget-main -->
-            </div>
-            <!-- /.widget-body -->
-        </div>
-        <!-- /.widget-box -->
-    </div>
-</div>
-
-<hr class="hr dotted hr-16">
-
-<div class="row">
-    <div class="col-sm-4">
-        <div class="widget-box transparent">
-            <div class="widget-header widget-header-flat">
-                <h4 class="widget-title blue smaller">
-                    <i class="ace-icon fa fa-magic orange"></i>
-                    Points
-                </h4>
-
-                <div class="widget-toolbar">
-                    <a href="#" data-action="collapse">
-                        <i class="ace-icon fa fa-chevron-up"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="widget-body">
-                <div class="widget-main padding-8">
-                    <div class="center">
-                               <span class="btn btn-app btn-lg btn-success no-hover">
-                                      <span class="line-height-1 bigger-140 white"> 3500 </span>
-                                             <br>
-                                             <span class="line-height-1 smaller-70"> Total Points </span>
-                                        </span>
-                                         <span class="btn btn-app btn-lg btn-grey no-hover">
-                                               <span class="line-height-1 bigger-140 white"> 1800 </span>
-                                                    <br>
-                                                 <span class="line-height-1 smaller-70"> Business Points </span>
-                                                   </span>
-                    </div>
-                </div>
-                <!-- /.widget-main -->
-            </div>
-            <!-- /.widget-body -->
-        </div>
-        <!-- /.widget-box -->
-    </div>
-    <div class="col-sm-7 col-sm-offset-1">
-        <div class="widget-box transparent">
-            <div class="widget-header widget-header-flat">
-                <h4 class="widget-title blue smaller">
-                    <i class="ace-icon fa fa-magic orange"></i>
-                    Product wise Points
-                </h4>
-
-                <div class="widget-toolbar">
-                    <a href="#" data-action="collapse">
-                        <i class="ace-icon fa fa-chevron-up"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="widget-body">
-                <div class="widget-main padding-8">
-                    <table class="bn-dtable table table-striped table-bordered table-hover">
-                        <thead class="thin-border-bottom">
-                        <tr>
-                            <th>Product</th>
-                            <th>Points</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <td class="">Product 01</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td class="">Product 02</td>
-                            <td>250</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.widget-main -->
-            </div>
-            <!-- /.widget-body -->
-        </div>
-        <!-- /.widget-box -->
-    </div>
-
-
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="widget-box transparent">
-            <div class="widget-header widget-header-flat">
-                <h4 class="widget-title blue smaller">
-                    <i class="ace-icon fa fa-magic orange"></i>
-                    Activity Based Points
-                </h4>
-
-                <div class="widget-toolbar">
-
-                    <div class="inline dropdown-hover">
-                        <button class="btn btn-minier btn-primary">
-                            <span id="activity_points_filter_btn" class="bn-filter">This Month</span>
-                            <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
-                        </button>
-
-                        <ul id="activity_points_filter"
-                            class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
-                            <li class="active">
-                                <a href="#">
-                                    <i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
-                                    This Month
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                    Previous Month
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                    Quarter
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                    This Year
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <a href="#" data-action="collapse">
-                        <i class="ace-icon fa fa-chevron-up"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="widget-body">
-                <div class="widget-main padding-8">
-                    <table class="bn-dtable table table-striped table-bordered table-hover">
-                        <thead class="thin-border-bottom">
-                        <tr>
-                            <th>Activity</th>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Points</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <td class="">Call Report Submission</td>
-                            <td>Nov 20 2014</td>
-                            <td>Activity</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td class="">Excel Import Feature</td>
-                            <td>Nov 20 2014</td>
-                            <td>Goal Based Activity</td>
-                            <td>100</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.widget-main -->
-            </div>
-            <!-- /.widget-body -->
-        </div>
-        <!-- /.widget-box -->
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <a href="#" class="btn btn-success">View My Game Plan</a>
-    </div>
-</div>
-</div>
-
-<div id="scorecard_view_tab" class="tab-pane fade">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="widget-box transparent">
-                <div class="widget-header widget-header-flat">
-                    <h4 class="widget-title blue smaller">
-                        <i class="ace-icon fa fa-bullseye orange"></i>
-                        Goal Status
-                    </h4>
-
-                    <div class="widget-toolbar">
-                        <div class="inline dropdown-hover">
-                            <button class="btn btn-minier btn-primary">
-                                <span id="lb_filter_btn">Filter by</span>
-                                <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
-                            </button>
-
-                            <ul id="lb_filter"
-                                class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
-                                <li class="active">
-                                    <a href="#">
-                                        <i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
-                                        Cycle
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                        MTD
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                        YTD
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
-                                        GAP
-                                    </a>
-                                </li>
-                            </ul>
+                <div class="widget-main padding-6">
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="action_select">Select Action</label>
                         </div>
-                        <a href="#" data-action="collapse">
-                            <i class="ace-icon fa fa-chevron-up"></i>
-                        </a>
+                        <div class="col-md-8">
+                            <select class="chosen-select" id="action_select" data-placeholder="Choose a action...">
+                                <option>Income</option>
+                                <option>Client acquisition</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-6"></div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div for="target_value">Target Value</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="target_value">3000</div>
+                        </div>
+
+                    </div>
+                    <div class="space-6"></div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div for="target_value">If i have completed acquired</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div id="slider_range_target"></div>
+                            <div class="space-4"></div>
+                            <span class="pull-left">0</span><span class="pull-right">3000</span>
+                        </div>
+
+                    </div>
+
+                    <div class="space-6"></div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div for="result_value">Result</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div id="result_view">1000 points</div>
+                        </div>
+
                     </div>
                 </div>
-
-                <div class="widget-body">
-                    <div class="widget-main padding-8">
-                        <table id="goal-status-table" class="table table-striped table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>
-                                    <i class="ace-icon fa fa-bullseye bigger-120"></i>
-                                    Name
-                                </th>
-                                <th>
-                                    <i class="ace-icon fa fa-calendar bigger-120"></i>
-                                    Target Date
-                                </th>
-                                <th>
-                                    <i class="ace-icon fa fa-tachometer"></i>
-                                    Percentage Completion
-                                </th>
-                                <th>
-                                    <i class="ace-icon fa fa-tachometer"></i>
-                                    How much you need to score
-                                </th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr>
-                                <td style="vertical-align: middle"><a href="#">Goal 01</a></td>
-                                <td style="vertical-align: middle">Nov 20 2014</td>
-                                <td>
-                                    <div class="profile-skills bn-progress-bar">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" style="width:90%">
-                                                <span class="pull-right">90%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td style="vertical-align: middle">10% you need to store</td>
-
-                            </tr>
-                            <tr>
-                                <td style="vertical-align: middle"><a href="#">Goal 02</a></td>
-                                <td style="vertical-align: middle">Nov 22 2014</td>
-                                <td>
-                                    <div class="profile-skills bn-progress-bar">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-info" style="width:65%">
-                                                <span class="pull-right">65%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td style="vertical-align: middle">35% you need to store</td>
-                            </tr>
-                            <tr>
-                                <td style="vertical-align: middle"><a href="#">Goal 03</a></td>
-                                <td style="vertical-align: middle">Nov 19 2014</td>
-                                <td>
-                                    <div class="profile-skills bn-progress-bar">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-warning" style="width:40%">
-                                                <span class="pull-right">40%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td style="vertical-align: middle">60% you need to store</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div class="hr hr-double"></div>
-                        <a href="#" class="btn btn-sm btn-warning pull-right">
-                            <span class="bigger-110">My Gameplan</span>
-                        </a>
-                    </div>
-                    <!-- /.widget-main -->
-                </div>
-                <!-- /.widget-body -->
+                <!-- /.widget-main -->
             </div>
-            <!-- /.widget-box -->
+            <!-- /.widget-body -->
         </div>
-
-
+        <!-- /.widget-box -->
     </div>
+    <!-- /.col -->
 
-    <hr class="hr dotted hr-16">
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title blue smaller">
+                    <i class="ace-icon fa fa-bell-o orange"></i>
+                    Recommendations
+                </h4>
 
-
-</div>
-
-<div id="analytics_tab" class="tab-pane fade">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <div class="widget-box transparent">
-                <div class="widget-header widget-header-flat">
-                    <h4 class="widget-title blue smaller">
-                        <i class="ace-icon fa fa-signal"></i>
-                        Trend line for points earned
-                    </h4>
-
-                    <div class="widget-toolbar">
-                        <a href="#" data-action="collapse">
-                            <i class="ace-icon fa fa-chevron-up"></i>
-                        </a>
-                    </div>
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
                 </div>
-
-                <div class="widget-body">
-                    <div class="widget-main padding-8">
-                        <div id="poi    nts_trend_line"></div>
-                    </div>
-                    <!-- /.widget-main -->
-                </div>
-                <!-- /.widget-body -->
             </div>
-            <!-- /.widget-box -->
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <div id="profile-feed-2" class="profile-feed">
+                        <div class="profile-activity clearfix">
+                            <div>
+                                <i class="pull-left thumbicon fa fa-gift btn-info no-hover"></i>
+                                Earn 500 points to meet your goal.
+                            </div>
+                        </div>
+                        <div class="profile-activity clearfix">
+                            <div>
+                                <i class="pull-left thumbicon fa fa-magic btn-warning no-hover"></i>
+                                Max is 200 points ahead of you Earn 100 points to overcome him.
+                            </div>
+                        </div>
+                        <div class="profile-activity clearfix">
+                            <div>
+                                <img class="pull-left" alt="Alex Doe's avatar" src="assets/avatars/avatar5.png"/>
+                                Score points by completeing your Challenge by today.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.widget-main -->
+            </div>
+            <!-- /.widget-body -->
         </div>
+        <!-- /.widget-box -->
     </div>
-</div>
-</div>
-</div>
-</div>
-<!-- /.col -->
+    <!-- /.col -->
+
 </div>
 <!-- /.row -->
+
+<div class="hr dotted hr-16"></div>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title blue smaller">
+                    <i class="ace-icon fa fa-bullseye orange"></i>
+                    Your Aspiration
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <div class="row">
+                        <div class="col-md-4">Pick your aspiration</div>
+                        <div class="col-md-7">
+                            <select class="chosen-select" id="select_aspiration"
+                                    data-placeholder="Choose a Aspiration...">
+                                <option>Become top decile</option>
+                                <option>Beat player X</option>
+                                <option>Be #1 in region</option>
+                                <option>Be #1 in circle</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-12"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn medium btn-warning" type="reset">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.widget-main -->
+            </div>
+            <!-- /.widget-body -->
+        </div>
+        <!-- /.widget-box -->
+    </div>
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title blue smaller">
+                    <i class="ace-icon fa fa fa-bar-chart-o orange"></i>
+                    Your strategy
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <div class="row">
+                        <div class="col-md-4">Pick your strategy</div>
+                        <div class="col-md-7">
+                            <select class="chosen-select" id="select_strategy"
+                                    data-placeholder="Choose a Aspiration...">
+                                <option>Become top decile</option>
+                                <option>Beat player X</option>
+                                <option>Be #1 in region</option>
+                                <option>Be #1 in circle</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+
+                    <div class="space-12"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn medium btn-warning" type="reset">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.widget-main -->
+            </div>
+            <!-- /.widget-body -->
+        </div>
+        <!-- /.widget-box -->
+    </div>
+    <!-- /.col -->
+    <!-- /.col -->
+</div>
+<div class="hr dotted hr-16"></div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title blue smaller">
+                    <i class="ace-icon fa fa-signal orange"></i>
+                    History of Achievement vs. Target
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="assets/img/line_graph.jpg" width="100%">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.widget-main -->
+            </div>
+            <!-- /.widget-body -->
+        </div>
+        <!-- /.widget-box -->
+    </div>
+
+
+</div>
+
+<div class="hr dotted hr-16"></div>
 
 
 <!-- PAGE CONTENT ENDS -->
@@ -996,148 +763,69 @@
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 <script src="assets/js/chosen.jquery.min.js"></script>
-<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
-<script src="assets/js/date-time/bootstrap-timepicker.min.js"></script>
-<script src="assets/js/date-time/moment.min.js"></script>
-<script src="assets/js/date-time/daterangepicker.min.js"></script>
-<script src="assets/js/date-time/bootstrap-datetimepicker.min.js"></script>
-
-<script src="assets/js/jquery.easypiechart.min.js"></script>
-<script src="assets/js/jquery.sparkline.min.js"></script>
-<script src="assets/js/flot/jquery.flot.min.js"></script>
-<script src="assets/js/flot/jquery.flot.pie.min.js"></script>
-<script src="assets/js/flot/jquery.flot.time.js"></script>
-<script src="assets/js/flot/jquery.flot.resize.min.js"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
 <script src="assets/js/ace.min.js"></script>
 
-<script type="text/javascript">
-
-    function resize_chosen() {
-        $('.chosen-select').each(function () {
-            var $this = $(this);
-            $this.next().css({'width': '100%'});
-        })
-    }
-
-    jQuery(function ($) {
-
-        $('.chosen-select').chosen({allow_single_deselect: true});
-        //resize the chosen on window resize
-        resize_chosen();
-
-        $('.scrollable').each(function () {
-            var $this = $(this);
-            $(this).ace_scroll({
-                size: $this.data('size') || 100
-                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
-            });
-        });
-        $('.scrollable-horizontal').each(function () {
-            var $this = $(this);
-            $(this).ace_scroll(
-                    {
-                        horizontal: true,
-                        styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
-                        size: $this.data('size') || 500,
-                        mouseWheelLock: true
-                    }
-            ).css({'padding-top': 12});
-        });
-
-        $('#profile-feed-1').ace_scroll({
-            height: '250px',
-            mouseWheelLock: true,
-            alwaysVisible: true
-        });
-
-
-        $('.bn-dtable').dataTable({
-            "bPaginate": false,
-            "bFilter": true,
-            "bLengthChange": false,
-            "bSort": false,
-            "iDisplayLength": 10
-        });
-
-        $(window).on('resize.scroll_reset', function () {
-            $('.scrollable-horizontal').ace_scroll('reset');
-        });
-
-
-        var points_trend_line = $('#points_trend_line').css({'width': '100%', 'height': '180px'});
-
-        function gd(year, month, day) {
-            return new Date(year, month - 1, day).getTime();
-        }
-
-        var data = [
-            [gd(2014, 1, 1), 4],
-            [gd(2014, 2, 1), 8],
-            [gd(2014, 3, 1), 4],
-            [gd(2014, 4, 1), 10],
-            [gd(2014, 5, 1), 4],
-            [gd(2014, 6, 1), 16],
-            [gd(2014, 7, 1), 5]
-        ];
-
-//        var dataset = [
-//            {
-//                label: "line1",
-//                data: data
-//            }
-//        ];
-//
-//        var options = {
-//            series: {
-//                lines: { show: true },
-//                points: {
-//                    radius: 3,
-//                    show: true
-//                }
-//            },
-//            legend: {
-//                show: true
-//            }
-//        };
-//
-//        //$.plot($("#points_trend_line"), [ [[0, 0], [1, 1]] ], { yaxis: { max: 1 } });
-//        $.plot($("#points_trend_line"), dataset, options);
-
-        $.plot($("#points_trend_line"), data, {
-            yaxis: {
-            },
-            xaxis: { mode: "time", minTickSize: [1, "hour"],
-                min: (new Date("2014/11/01")).getTime(),
-                max: (new Date("2014/11/17")).getTime()
-
-            },
-            "lines": {"show": "true"},
-            "points": {"show": "true"},
-            clickable: true, hoverable: true
-        });
-
-
-    });
-</script>
-
 <!-- inline scripts related to this page -->
+
 
 <script src="assets/js/app/app_config.js"></script>
 <script>
-    $('#goal-status-table')
-        //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-            .dataTable({
-                "bPaginate": true,
-                "bFilter": true,
-                "bLengthChange": true,
-                "bSort": false,
-                "iDisplayLength": 3
-            });
-</script>
+    $('.chosen-select').chosen({allow_single_deselect: true});
+    //resize the chosen on window resize
 
+    $(window)
+            .off('resize.chosen')
+            .on('resize.chosen', function () {
+                $('.chosen-select').each(function () {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            }).trigger('resize.chosen');
+
+    $("#slider_range_target").css('width', '350px').slider({
+        orientation: "horizontal",
+        range: true,
+        min: 0,
+        max: 3000,
+        values: [ 0, 0 ],
+        slide: function (event, ui) {
+            var val = ui.values[$(ui.handle).index() - 1] + "";
+
+            if (!ui.handle.firstChild) {
+                $("<div class='tooltip right in' style='display:none;left:16px;top:-6px;'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>")
+                        .prependTo(ui.handle);
+            }
+            $(ui.handle.firstChild).show().children().eq(1).text(val);
+            $('.ui-slider .ui-slider-handle:first').css('display', 'none');
+
+        }
+    }).find('a').on('blur', function () {
+        $(this.firstChild).hide();
+    });
+
+
+    $("#slider-range-max").slider({
+        range: "max",
+        min: 1,
+        max: 10,
+        value: 2
+    });
+
+    $("#slider-eq > span").css({width: '90%', 'float': 'left', margin: '15px'}).each(function () {
+        // read initial values from markup and remove that
+        var value = parseInt($(this).text(), 10);
+        $(this).empty().slider({
+            value: value,
+            range: "min",
+            animate: true
+
+        });
+    });
+
+</script>
 <script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
 
@@ -1161,27 +849,59 @@
 
         employee_name();
 
-        //TODO: write single fn.
-        $("#badges_filter li").click(function () {
-            $("#badges_filter").find("li").removeClass("active");
-            $("#badges_filter").find("li").find(".fa-caret-right").addClass("invisible");
+    });
 
-            $(this).addClass("active");
-            $(this).find(".fa-caret-right").removeClass("invisible");
 
-            $("#badges_filter_btn").text($(this).text());
+    jQuery(function ($) {
 
+
+        $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
+            var color_class = $(this).find('option:selected').data('class');
+            var new_class = 'widget-box';
+            if (color_class != 'default')  new_class += ' widget-color-' + color_class;
+            $(this).closest('.widget-box').attr('class', new_class);
         });
 
-        $("#activity_points_filter li").click(function () {
-            $("#activity_points_filter").find("li").removeClass("active");
-            $("#activity_points_filter").find("li").find(".fa-caret-right").addClass("invisible");
 
-            $(this).addClass("active");
-            $(this).find(".fa-caret-right").removeClass("invisible");
+        // scrollables
+        $('.scrollable').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll({
+                size: $this.data('size') || 100
+                //styleClass: 'scroll-left scroll-margin scroll-thin scroll-dark scroll-light no-track scroll-visible'
+            });
+        });
+        $('.scrollable-horizontal').each(function () {
+            var $this = $(this);
+            $(this).ace_scroll(
+                    {
+                        horizontal: true,
+                        styleClass: 'scroll-top',//show the scrollbars on top(default is bottom)
+                        size: $this.data('size') || 500,
+                        mouseWheelLock: true
+                    }
+            ).css({'padding-top': 12});
+        });
 
-            $("#activity_points_filter_btn").text($(this).text());
+        $('#profile-feed-1, #profile-feed-2').ace_scroll({
+            height: '250px',
+            mouseWheelLock: true,
+            alwaysVisible: true
+        });
 
+
+        var oTable1 =
+                $('#sample-table-2')
+                        .dataTable({
+                            "bPaginate": false,
+                            "bFilter": true,
+                            "bLengthChange": false,
+                            "bSort": false,
+                            "iDisplayLength": 5
+                        });
+
+        $(window).on('resize.scroll_reset', function () {
+            $('.scrollable-horizontal').ace_scroll('reset');
         });
 
 
@@ -1200,10 +920,8 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
-
 <script src="assets/js/toastr.min.js"></script>
 <script src="assets/js/jquery.jgrowl.min.js"></script>
-
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>
