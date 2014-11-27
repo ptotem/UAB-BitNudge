@@ -15,7 +15,6 @@
     <!-- page specific plugin styles -->
     <link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css"/>
     <link rel="stylesheet" href="assets/css/chosen.css"/>
-    <link rel="stylesheet" href="assets/css/datepicker.css"/>
 
     <!-- text fonts -->
     <link rel="stylesheet" href="assets/css/ace-fonts.css"/>
@@ -33,6 +32,8 @@
     <link rel="stylesheet" href="assets/css/ace-ie.min.css"/>
     <![endif]-->
 
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css?v=1">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -44,6 +45,13 @@
     <script src="assets/js/html5shiv.min.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        .bn-progress-bar {
+            background: none repeat scroll 0 0 #dadada;
+        }
+    </style>
+
 </head>
 
 <body class="no-skin">
@@ -89,6 +97,8 @@
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
                 <!-- #section:basics/navbar.user_menu -->
+
+
                 <li class="purple">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-bell icon-animated-bell"></i>
@@ -133,9 +143,10 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo"/>
+                        <!--<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />-->
 								<span class="user-info">
 									<small>Welcome,</small>
 									<span id="user_name"></span>
@@ -153,7 +164,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <!-- /section:basics/navbar.user_menu -->
             </ul>
         </div>
@@ -310,6 +320,7 @@
     </ul>
     <!-- /.nav-list -->
 
+
     <!-- #section:basics/sidebar.layout.minimize -->
     <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
         <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left"
@@ -335,19 +346,11 @@
         } catch (e) {
         }
     </script>
-
-
-    <!-- /.breadcrumb -->
-
-    <!-- #section:basics/content.searchbox -->
-
-    <!-- /.nav-search -->
-
-    <!-- /section:basics/content.searchbox -->
 </div>
 
 <!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
+
 <!-- #section:settings.box -->
 <div class="ace-settings-container" id="ace-settings-container">
     <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
@@ -440,115 +443,300 @@
     <!-- /.ace-settings-box -->
 </div>
 <!-- /.ace-settings-container -->
-
 <!-- /section:settings.box -->
+
 <div class="page-content-area">
+<div class="page-header">
+    <h1>My Game Plan</h1>
+</div>
+<!-- /.page-header -->
 
-    <!-- /.page-header -->
-    <!--row 1-->
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- PAGE CONTENT BEGINS -->
-            <!--<row 1 >-->
-            <div class="row">
-                <div class="col-lg-12 col-md-12 widget-container-col">
-                    <!-- #section:custom/widget-box -->
-                    <div class="page-header">
-                        <h1>Create Sub Goal for :- Acquire 30 New Clients this quarter</h1>
+<div class="row">
+<div class="col-xs-12">
+<!-- PAGE CONTENT BEGINS -->
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title blue smaller">
+                    <i class="ace-icon fa fa-magic orange"></i>
+                    Simulation
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main padding-6">
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="action_select">Select Action</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="chosen-select" id="action_select" data-placeholder="Choose a action...">
+                                <option>Income Booking</option>
+                                <option>Client Acquisition</option>
+                            </select>
+                        </div>
                     </div>
-
-                    <div class="widget-body">
-                        <div class="widget-main" style="height:360px; max-height: 580px; overflow-y: auto; overflow-x: hidden;">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <button id="create_subgoal" type="submit" class="btn medium btn-primary">
-                                        Add Sub Goal
-                                    </button>
-                                </div>
-                            </div>
-                            <br>
-                            <div id="subgoal">
-
-                                <div class="row">
-                                    <!--<div class="col-md-3"><label id="subgoal_name">Goal 1</label></div>-->
-
-                                    <div class="col-md-3">
-                                        <label>Select Goal</label>
-                                        <select class="chosen-select" id="select_subgoal"
-                                                data-placeholder="Choose a Aspiration...">
-                                            <option value="default" selected="selected" disabled="disabled">Select One--</option>
-                                            <option>Client First Contact Call Report Submission</option>
-                                            <option>Meeting Call Report Submission</option>
-                                            <option>Phone Call Report Submission</option>
-                                            <option>Senior Meeting Call Report Submission</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label>Start Date</label>
-                                        <div class="input-group">
-                                            <input class="form-control date-picker"
-                                                   id="goal-start-date-js" type="text"
-                                                   data-date-format="dd-mm-yyyy"/>
-																	<span class="input-group-addon">
-																		<i class="fa fa-calendar bigger-110"></i>
-																	</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label>End Date</label>
-                                        <div class="input-group">
-                                            <input class="form-control date-picker"
-                                                   id="goal-end-date-js" type="text"
-                                                   data-date-format="dd-mm-yyyy"/>
-																	<span class="input-group-addon">
-																		<i class="fa fa-calendar bigger-110"></i>
-																	</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label>Target Value</label>
-                                        <input type="text" class="form-control"
-                                               id="subgoal_target_value"/></div>
-                                </div>
-                                <br>
-
-                            </div>
-
-                            <div id="subgoal_part">
-
-                            </div>
-
-                            <br/>
-
-
-
-
+                    <div class="space-6"></div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div for="target_value">Target</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="target_value">50</div>
                         </div>
 
-                        <div class="row">
-                            <button id="create_subgoal_submit" type="submit" class="btn medium btn-primary">
-                                Create
-                            </button>
+                    </div>
+                    <div class="space-6"></div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div for="target_value">If You Acquire <br> (for This Month)</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div id="slider_range_target"></div>
+                            <div class="space-4"></div>
+                            <span class="pull-left">0</span><span class="pull-right">50</span>
+                        </div>
+
+                    </div>
+
+                    <div class="space-6"></div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div for="result_value">You will have</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div id="result_view">
+                                <!--1000 points-->
+                                <table class="table no-border">
+                                    <tr>
+                                        <th>Points</th>
+                                        <td>100</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Badge</th>
+                                        <td>Fastest Deal Closer</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Level</th>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Green Zone / Red Zone</th>
+                                        <td>Green Zone</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
 
                     </div>
                 </div>
-
-
-                <!-- /section:custom/widget-box -->
+                <!-- /.widget-main -->
             </div>
-
-
+            <!-- /.widget-body -->
         </div>
-        <!-- /.row 1 end -->
-
-        <!-- PAGE CONTENT ENDS -->
+        <!-- /.widget-box -->
     </div>
     <!-- /.col -->
+
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title blue smaller">
+                    <i class="ace-icon fa fa-bell-o orange"></i>
+                    Recommendations
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <div id="profile-feed-2" class="profile-feed">
+                        <div class="profile-activity clearfix">
+                            <div>
+                                <i class="pull-left thumbicon fa fa-gift btn-info no-hover"></i>
+                                Earn 500 points to achieve your goal X.
+                            </div>
+                        </div>
+                        <div class="profile-activity clearfix">
+                            <div>
+                                <img class="pull-left" alt="Alex Doe's avatar" src="assets/avatars/avatar5.png"/>
+                                Max is 200 points ahead of you Earn 100 points to overcome him.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.widget-main -->
+            </div>
+            <!-- /.widget-body -->
+        </div>
+        <!-- /.widget-box -->
+    </div>
+    <!-- /.col -->
+
 </div>
-<!-- /1 row -->
+<!-- /.row -->
+
+<div class="hr dotted hr-16"></div>
+
+
+
+<div class="hr dotted hr-16"></div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="widget-box transparent">
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title blue smaller">
+                    <i class="ace-icon fa fa-signal orange"></i>
+                    History of Achievement vs. Target
+                </h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-up"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main padding-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="assets/img/line_graph.jpg" width="100%">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.widget-main -->
+            </div>
+            <!-- /.widget-body -->
+        </div>
+        <!-- /.widget-box -->
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class="widget-title blue smaller">
+                            <i class="ace-icon fa fa-bullseye orange"></i>
+                            Your Aspiration
+                        </h4>
+
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div class="row">
+                                <div class="col-md-4">Pick Your Aspiration</div>
+                                <div class="col-md-7">
+                                    <select class="chosen-select" id="select_aspiration"
+                                            data-placeholder="Choose a Aspiration...">
+                                        <option value="default" selected="selected" disabled="disabled">Select One--</option>
+                                        <option>Become Top Decile</option>
+                                        <option>Beat Player X</option>
+                                        <option>Be #1 in Region</option>
+                                        <option>Be #1 in Circle</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="space-12"></div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <button class="btn medium btn-warning pull-right" type="reset">Submit</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.widget-main -->
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-box -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class="widget-title blue smaller">
+                            <i class="ace-icon fa fa fa-bar-chart-o orange"></i>
+                            Your Strategy
+                        </h4>
+
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div class="row">
+                                <div class="col-md-4">Pick Your Strategy</div>
+                                <div class="col-md-7">
+                                    <select class="chosen-select" id="select_strategy"
+                                            data-placeholder="Choose a Aspiration...">
+                                        <option value="default" selected="selected" disabled="disabled">Select One--</option>
+                                        <option>Become Top Decile</option>
+                                        <option>Beat Player X</option>
+                                        <option>Be #1 in Region</option>
+                                        <option>Be #1 in Circle</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+
+                            <div class="space-12"></div>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <button class="btn medium btn-warning pull-right" type="reset">Submit</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.widget-main -->
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-box -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="hr dotted hr-16"></div>
+
+
+<!-- PAGE CONTENT ENDS -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
 </div>
 <!-- /.page-content-area -->
 </div>
@@ -577,16 +765,19 @@
     window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>" + "<" + "/script>");
 </script>
 <![endif]-->
+
 <script type="text/javascript">
     if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
+
 <script src="assets/js/bootstrap.min.js"></script>
+
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
 
 <!-- page specific plugin scripts -->
 <script src="assets/js/jquery-ui.custom.min.js"></script>
 <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
-
 <script src="assets/js/chosen.jquery.min.js"></script>
 
 <!-- ace scripts -->
@@ -595,9 +786,9 @@
 
 <!-- inline scripts related to this page -->
 
-<script src="assets/js/app/app_config.js"></script>
-<script type="text/javascript">
 
+<script src="assets/js/app/app_config.js"></script>
+<script>
     $('.chosen-select').chosen({allow_single_deselect: true});
     //resize the chosen on window resize
 
@@ -610,50 +801,75 @@
                 })
             }).trigger('resize.chosen');
 
-    $("#somebutton").click(function () {
-        $("#container").append('<div class="module_holder"><div class="module_item"><img src="images/i-5.png" alt="Sweep Stakes"><br>sendSMS</div></div>');
+    $("#slider_range_target").css('width', '350px').slider({
+        orientation: "horizontal",
+        range: true,
+        min: 0,
+        max: 50,
+        values: [ 0, 0 ],
+        slide: function (event, ui) {
+            var val = ui.values[$(ui.handle).index() - 1] + "";
+
+            if (!ui.handle.firstChild) {
+                $("<div class='tooltip right in' style='display:none;left:16px;top:-6px;'><div class='tooltip-arrow'></div><div class='tooltip-inner'></div></div>")
+                        .prependTo(ui.handle);
+            }
+            $(ui.handle.firstChild).show().children().eq(1).text(val);
+            $('.ui-slider .ui-slider-handle:first').css('display', 'none');
+
+        }
+    }).find('a').on('blur', function () {
+        $(this.firstChild).hide();
     });
+
+
+    $("#slider-range-max").slider({
+        range: "max",
+        min: 1,
+        max: 10,
+        value: 2
+    });
+
+    $("#slider-eq > span").css({width: '90%', 'float': 'left', margin: '15px'}).each(function () {
+        // read initial values from markup and remove that
+        var value = parseInt($(this).text(), 10);
+        $(this).empty().slider({
+            value: value,
+            range: "min",
+            animate: true
+
+        });
+    });
+
+</script>
+<script type="text/javascript">
     var urlParams = JSON.parse(localStorage.getItem('user_data'));
-    var actionsJSON = "";
-    var criteria_val = "";
-    var scope_val = "";
 
 
-    function set_datepicker_date(date) {
-        var date_field = $(".date");
-        date_field.each(function () {
-            $(this).attr("data-date", date);
-            $(this).find(".datepicker-input").val(date);
+    function employee_name() {
+        $.ajax({
+            url: remote_host + "org/" + urlParams.orgId + "/users/" + urlParams.userId,
+            type: 'GET',
+            dataType: 'json',
+            success: function (res) {
+                $("#user_name").text(res.name);
+            },
+            error: function (e, msg) {
+                //processError(e,msg);
+            }
         });
     }
 
 
-    var hasTag = function (key_param_val) {
-        var i = null;
-        var filteredactionsJSON = []
-        for (i = 0; actionsJSON.length > i; i += 1) {
-            //console.log(actionsJSON[i]);
-            if (actionsJSON[i].keyParam === key_param_val) {
-                filteredactionsJSON.push(actionsJSON[i]);
-                //return actionsJSON[i];
-            }
-        }
-        return filteredactionsJSON;
-//        return false;
-    };
     $(function () {
-        $("#create_subgoal").click(function (e) {
-             $("#subgoal_part").append($("#subgoal").html());
-        });
 
-        if ($('#goal-start-date-js').length) {
-            $('#goal-start-date-js, #goal-end-date-js').datepicker()
-        }
+        employee_name();
 
     });
 
 
     jQuery(function ($) {
+
 
         $('#simple-colorpicker-1').ace_colorpicker({pull_right: true}).on('change', function () {
             var color_class = $(this).find('option:selected').data('class');
@@ -683,58 +899,27 @@
             ).css({'padding-top': 12});
         });
 
+        $('#profile-feed-1, #profile-feed-2').ace_scroll({
+            height: '250px',
+            mouseWheelLock: true,
+            alwaysVisible: true
+        });
+
+
+        var oTable1 =
+                $('#sample-table-2')
+                        .dataTable({
+                            "bPaginate": false,
+                            "bFilter": true,
+                            "bLengthChange": false,
+                            "bSort": false,
+                            "iDisplayLength": 5
+                        });
+
         $(window).on('resize.scroll_reset', function () {
             $('.scrollable-horizontal').ace_scroll('reset');
         });
-        $('.date-picker').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        })
 
-
-        $('.date-picker').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        })
-            //show datepicker when clicking on the icon
-                .next().on(ace.click_event, function () {
-                    $(this).prev().focus();
-                });
-
-        //or change it into a date range picker
-        $('.input-daterange').datepicker({autoclose: true});
-
-        /**
-         //or use slimScroll plugin
-         $('.slim-scrollable').each(function () {
-					var $this = $(this);
-					$this.slimScroll({
-						height: $this.data('height') || 100,
-						railVisible:true
-					});
-				});
-         */
-
-
-        /**$('.widget-box').on('setting.ace.widget' , function(e) {
-					e.preventDefault();
-				});*/
-
-        /**
-         $('.widget-box').on('show.ace.widget', function(e) {
-					//e.preventDefault();
-					//this = the widget-box
-				});
-         $('.widget-box').on('reload.ace.widget', function(e) {
-					//this = the widget-box
-				});
-         */
-
-        //$('#my-widget-box').widget_box('hide');
-
-
-        // widget boxes
-        // widget box drag & drop example
 
     });
 </script>
@@ -751,6 +936,8 @@
 <script src="docs/assets/js/language/html.js"></script>
 <script src="docs/assets/js/language/css.js"></script>
 <script src="docs/assets/js/language/javascript.js"></script>
+<script src="assets/js/toastr.min.js"></script>
+<script src="assets/js/jquery.jgrowl.min.js"></script>
 <script src="assets/js/app/logout.js"></script>
 </body>
 </html>
