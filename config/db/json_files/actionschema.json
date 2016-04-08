@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Client Acquisition",
+        "format": "Acquired %{number} clients of %{company}'s %{role}",
+        "keyParam": "number",
+        "paramCategory": "additive",
+        "pointType": "impact",
+        "pointsFn": "function(t){return 5*t;}"
+    },
+    {
+        "name": "Income Booking",
+        "format": "Booked %{income} of %{company}",
+        "keyParam": "income",
+        "paramCategory": "additive",
+        "pointType": "impact",
+        "pointsFn": "function(t){return 5*t;}"
+    },
+    {
+        "name": "Team Work Commendation",
+        "format": "Received %{number} of compliments on %{project}",
+        "keyParam": "number",
+        "paramCategory": "additive",
+        "pointType": "activity",
+        "pointsFn": "function(t){return 5*t;}"
+    }
+]
